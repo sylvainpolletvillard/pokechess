@@ -1,0 +1,21 @@
+import {POKEMON_TYPES} from "../types";
+import {TETARTE} from "./tetarte";
+import {SKILLS} from "../skills";
+import {PokemonEntry} from "../pokemons";
+
+export const PTITARD: PokemonEntry = {
+    ref: "ptitard",
+    name: "Ptitard",
+    maxPV: 40,
+    maxPP: 20,
+    attack: 50,
+    attackRange: 3,
+    defense: 40,
+    speed: 90,
+    types: [POKEMON_TYPES.EAU],
+    evolution: TETARTE,
+    evolutionLevel: 25,
+    rank: 1,
+    baseSkill: SKILLS.FOUET_LIANES, // bulles d'O
+    ppSkill: SKILLS.LANCE_SOLEIL // hypnose
+}

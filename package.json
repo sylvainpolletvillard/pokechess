@@ -1,0 +1,38 @@
+{
+  "name": "pokechess",
+  "version": "0.0.1",
+  "description": "Pokemon Autobattler - Made with Phaser 3 TypeScript Starter",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geocine/phaser3-rollup-typescript.git"
+  },
+  "author": "Sylvain Pollet-Villard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geocine/phaser3-rollup-typescript/issues"
+  },
+  "homepage": "https://github.com/geocine/phaser3-rollup-typescript#readme",
+  "devDependencies": {
+    "@rollup/plugin-alias": "^3.1.5",
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-replace": "^3.0.0",
+    "@types/node": "^16.11.0",
+    "phaser": "^3.55.2",
+    "phaser3-webfont-loader": "^1.0.0",
+    "typescript": "^4.4.4",
+    "vite": "^2.6.7"
+  },
+  "dependencies": {
+    "baragouin": "^0.1.3",
+    "nanoid": "^3.1.30",
+    "pathfinding": "^0.4.18",
+    "phaser3-nineslice": "^0.5.0",
+    "pokemon-font": "^1.8.1"
+  }
+}

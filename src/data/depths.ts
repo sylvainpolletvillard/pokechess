@@ -1,0 +1,30 @@
+export const Z ={
+    GRID: 10,
+    GRID_ACTIVE_TILE: 11,
+    POKEMON: 12,
+
+    POKEMON_BARS: 20,
+
+    CENTER_TEXT: 30,
+
+    MAP_HIGHLIGHT: 30,
+
+    CHAMPION: 35,
+
+
+    GUI_BUTTON: 41,
+
+    DIALOG: 45,
+    MENU: 50,
+
+    MENU_LAYOUT: 51,
+    MENU_OBJECTS: 52,
+    MENU_TOOLTIPS: 53,
+    MENU_CURSOR: 59,
+
+    PLAYER: 60,
+
+    SPRITE_DRAGGED: 90,
+    JUST_BELOW_CURSOR: 99,
+    CURSOR: 100,
+}

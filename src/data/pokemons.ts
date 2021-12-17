@@ -1,0 +1,458 @@
+import {nanoid} from "nanoid";
+
+import {PokemonType} from "./types";
+import {Skill} from "./skills";
+import {POKEBALLS} from "./pokeballs";
+
+import {BULBIZARRE} from "./pokemons/bulbizarre";
+import {HERBIZARRE} from "./pokemons/herbizarre";
+import {FLORIZARRE} from "./pokemons/florizarre";
+import {SALAMECHE} from "./pokemons/salameche";
+import {REPTINCEL} from "./pokemons/reptincel";
+import {DRACAUFEU} from "./pokemons/dracaufeu";
+import {CARAPUCE} from "./pokemons/carapuce";
+import {CARABAFFE} from "./pokemons/carabaffe";
+import {TORTANK} from "./pokemons/tortank";
+import {CHENIPAN} from "./pokemons/chenipan";
+import {CHRYSACIER} from "./pokemons/chrysacier";
+import {PAPILUSION} from "./pokemons/papilusion";
+import {ASPICOT} from "./pokemons/aspicot";
+import {COCONFORT} from "./pokemons/coconfort";
+import {DARDARGNAN} from "./pokemons/dardargnan";
+import {ROUCOOL} from "./pokemons/roucool";
+import {ROUCOUPS} from "./pokemons/roucoups";
+import {ROUCARNAGE} from "./pokemons/roucarnage";
+import {RATTATA} from "./pokemons/rattata";
+import {RATTATAC} from "./pokemons/rattatac";
+import {PIAFABEC} from "./pokemons/piafabec";
+import {RAPASDEPIC} from "./pokemons/rapasdepic";
+import {ABO} from "./pokemons/abo";
+import {ARBOK} from "./pokemons/arbok";
+import {PIKACHU} from "./pokemons/pikachu";
+import {RAICHU} from "./pokemons/raichu";
+import {SABELETTE} from "./pokemons/sabelette";
+import {SABLAIREAU} from "./pokemons/sablaireau";
+import {NIDORAN_FEMALE} from "./pokemons/nidoranf";
+import {NIDORINA} from "./pokemons/nidorina";
+import {NIDOQUEEN} from "./pokemons/nidoqueen";
+import {NIDORAN_MALE} from "./pokemons/nidoranm";
+import {NIDORINO} from "./pokemons/nidorino";
+import {NIDOKING} from "./pokemons/nidoking";
+import {MELOFEE} from "./pokemons/melofee";
+import {MELODELFE} from "./pokemons/melodelfe";
+import {GOUPIX} from "./pokemons/goupix";
+import {FEUNARD} from "./pokemons/feunard";
+import {RONDOUDOU} from "./pokemons/rondoudou";
+import {GRODOUDOU} from "./pokemons/grodoudou";
+import {NOSFERAPTI} from "./pokemons/nosferapti";
+import {NOSFERALTO} from "./pokemons/nosferalto";
+import {MYSTHERBE} from "./pokemons/mystherbe";
+import {ORTIDE} from "./pokemons/ortide";
+import {RAFFLESIA} from "./pokemons/rafflesia";
+import {PARAS} from "./pokemons/paras";
+import {PARASECT} from "./pokemons/parasect";
+import {MIMITOSS} from "./pokemons/mimitoss";
+import {AEROMITE} from "./pokemons/aeromite";
+import {TAUPIQUEUR} from "./pokemons/taupiqueur";
+import {TRIOPIKEUR} from "./pokemons/triopikeur";
+import {MIAOUSS} from "./pokemons/miaouss";
+import {PERSIAN} from "./pokemons/persian";
+import {PSYKOKWAK} from "./pokemons/psykokwak";
+import {AKWAKWAK} from "./pokemons/akwakwak";
+import {FEROSINGE} from "./pokemons/ferosinge";
+import {COLOSSINGE} from "./pokemons/colossinge";
+import {CANINOS} from "./pokemons/caninos";
+import {ARCANIN} from "./pokemons/arcanin";
+import {PTITARD} from "./pokemons/ptitard";
+import {TETARTE} from "./pokemons/tetarte";
+import {TARTARD} from "./pokemons/tartard";
+import {ABRA} from "./pokemons/abra";
+import {KADABRA} from "./pokemons/kadabra";
+import {ALAKAZAM} from "./pokemons/alakazam";
+import {MACHOC} from "./pokemons/machoc";
+import {MACHOPEUR} from "./pokemons/machopeur";
+import {MACKOGNEUR} from "./pokemons/mackogneur";
+import {CHETIFLOR} from "./pokemons/chetiflor";
+import {BOUSTIFLOR} from "./pokemons/boustiflor";
+import {EMPIFLOR} from "./pokemons/empiflor";
+import {TENTACOOL} from "./pokemons/tentacool";
+import {TENTACRUEL} from "./pokemons/tentacruel";
+import {RACAILLOU} from "./pokemons/racaillou";
+import {GRAVALANCH} from "./pokemons/gravalanch";
+import {GROLEM} from "./pokemons/grolem";
+import {PONYTA} from "./pokemons/ponyta";
+import {GALOPA} from "./pokemons/galopa";
+import {RAMOLOSS} from "./pokemons/ramoloss";
+import {FLAGADOSS} from "./pokemons/flagadoss";
+import {MAGNETI} from "./pokemons/magneti";
+import {MAGNETON} from "./pokemons/magneton";
+import {CANARTICHO} from "./pokemons/canarticho";
+import {DODUO} from "./pokemons/doduo";
+import {DODRIO} from "./pokemons/dodrio";
+import {OTARIA} from "./pokemons/otaria";
+import {LAMANTINE} from "./pokemons/lamantine";
+import {TADMORV} from "./pokemons/tadmorv";
+import {GROTADMORV} from "./pokemons/grotadmorv";
+import {KOKIYAS} from "./pokemons/kokiyas";
+import {CRUSTABRI} from "./pokemons/crustabri";
+import {FANTOMINUS} from "./pokemons/fantominus";
+import {SPECTRUM} from "./pokemons/spectrum";
+import {ECTOPLASMA} from "./pokemons/ectoplasma";
+import {ONIX} from "./pokemons/onix";
+import {SOPORIFIK} from "./pokemons/soporifik";
+import {HYPNOMADE} from "./pokemons/hypnomade";
+import {KRABBY} from "./pokemons/krabby";
+import {KRABBOSS} from "./pokemons/krabboss";
+import {VOLTORBE} from "./pokemons/voltorbe";
+import {ELECTRODE} from "./pokemons/electrode";
+
+
+export interface HoldableItem {
+    name: string;
+}
+
+export interface PokemonEntry {
+    ref: string;
+    name: string ;
+    types: PokemonType[];
+    maxPV: number;
+    maxPP: number;
+    attack: number;
+    attackRange: number;
+    defense: number;
+    speed: number;
+    baseSkill: Skill;
+    ppSkill: Skill;
+    evolution?: PokemonEntry;
+    evolutionLevel?: number;
+    rank: number;
+}
+
+export class Pokemon implements PokemonEntry {
+    uid: string;
+    owner: number;
+    basePV: number;
+    pv: number;
+    pp: number;
+    item?: HoldableItem | null;
+    level: number;
+    ref: string;
+    baseAttack: number;
+    attackRange: number;
+    baseDefense: number;
+    baseSpeed: number;
+    maxPP: number;
+    name: string;
+    types: PokemonType[];
+    baseSkill: Skill;
+    ppSkill: Skill;
+    evolution?: PokemonEntry;
+    evolutionLevel?: number;
+    rank: number;
+    pokeball: string;
+    entry: PokemonEntry;
+
+    constructor(entry: PokemonEntry | Pokemon, owner: number, level = 1) {
+        this.uid = entry instanceof Pokemon ? entry.uid : nanoid()
+        this.entry = entry
+        this.owner = owner
+        this.level = level
+        this.item = null
+        this.ref = entry.ref
+        this.name = entry.name
+        this.types = entry.types
+        this.baseSkill = entry.baseSkill
+        this.ppSkill = entry.ppSkill
+        this.basePV = entry.maxPV
+        this.maxPP = entry.maxPP
+        this.pv = this.maxPV;
+        this.pp = 0
+        this.attackRange = entry.attackRange
+        this.baseAttack = entry.attack
+        this.baseDefense = entry.defense
+        this.baseSpeed = entry.speed
+        this.evolution = entry.evolution
+        this.evolutionLevel = entry.evolutionLevel
+        this.rank = entry.rank
+        this.pokeball = POKEBALLS[this.rank-1] // TEMP: set on capture, based on rank or safari ball
+    }
+
+    get maxPV(): number {
+        return Math.round(this.basePV * this.level / 50 + 10)
+    }
+
+    get attack(): number {
+        return Math.round(this.baseAttack * this.level / 50 + 5)
+    }
+
+    get defense(): number {
+        return Math.round(this.baseDefense * this.level / 50 + 5)
+    }
+
+    get speed(): number {
+        return Math.round(this.baseSpeed * this.level / 50 + 5)
+    }
+}
+
+export enum PokemonTypeAction { MOVE, ATTACK, SKILL, IDLE}
+
+export interface PokemonAction {
+    type: PokemonTypeAction
+    path?: [x:number, y:number][]
+    target?: PokemonEntry
+}
+
+export const POKEMONS: PokemonEntry[] = [
+    BULBIZARRE,
+    HERBIZARRE,
+    FLORIZARRE,
+    SALAMECHE,
+    REPTINCEL,
+    DRACAUFEU,
+    CARAPUCE,
+    CARABAFFE,
+    TORTANK,
+    CHENIPAN,
+    CHRYSACIER,
+    PAPILUSION,
+    ASPICOT,
+    COCONFORT,
+    DARDARGNAN,
+    ROUCOOL,
+    ROUCOUPS,
+    ROUCARNAGE,
+    RATTATA,
+    RATTATAC,
+    PIAFABEC,
+    RAPASDEPIC,
+    ABO,
+    ARBOK,
+    PIKACHU,
+    RAICHU,
+    SABELETTE,
+    SABLAIREAU,
+    NIDORAN_FEMALE,
+    NIDORINA,
+    NIDOQUEEN,
+    NIDORAN_MALE,
+    NIDORINO,
+    NIDOKING,
+    MELOFEE,
+    MELODELFE,
+    GOUPIX,
+    FEUNARD,
+    RONDOUDOU,
+    GRODOUDOU,
+    NOSFERAPTI,
+    NOSFERALTO,
+    MYSTHERBE,
+    ORTIDE,
+    RAFFLESIA,
+    PARAS,
+    PARASECT,
+    MIMITOSS,
+    AEROMITE,
+    TAUPIQUEUR,
+    TRIOPIKEUR,
+    MIAOUSS,
+    PERSIAN,
+    PSYKOKWAK,
+    AKWAKWAK,
+    FEROSINGE,
+    COLOSSINGE,
+    CANINOS,
+    ARCANIN,
+    PTITARD,
+    TETARTE,
+    TARTARD,
+    ABRA,
+    KADABRA,
+    ALAKAZAM,
+    MACHOC,
+    MACHOPEUR,
+    MACKOGNEUR,
+    CHETIFLOR,
+    BOUSTIFLOR,
+    EMPIFLOR,
+    TENTACOOL,
+    TENTACRUEL,
+    RACAILLOU,
+    GRAVALANCH,
+    GROLEM,
+    PONYTA,
+    GALOPA,
+    RAMOLOSS,
+    FLAGADOSS,
+    MAGNETI,
+    MAGNETON,
+    CANARTICHO,
+    DODUO,
+    DODRIO,
+    OTARIA,
+    LAMANTINE,
+    TADMORV,
+    GROTADMORV,
+    KOKIYAS,
+    CRUSTABRI,
+    FANTOMINUS,
+    SPECTRUM,
+    ECTOPLASMA,
+    ONIX,
+    SOPORIFIK,
+    HYPNOMADE,
+    KRABBY,
+    KRABBOSS,
+    VOLTORBE,
+    ELECTRODE,
+    /*
+    {
+        ref: "noeufnoeuf"
+    },
+    {
+        ref: "noadkoko"
+    },
+    {
+        ref: "osselait"
+    },
+    {
+        ref: "ossatueur"
+    },
+    {
+        ref: "kicklee"
+    },
+    {
+        ref: "tygnon"
+    },
+    {
+        ref: "excellangue"
+    },
+    {
+        ref: "smogo"
+    },
+    {
+        ref: "smogogo"
+    },
+    {
+        ref: "rhinocorne"
+    },
+    {
+        ref: "rhinoferos"
+    },
+    {
+        ref: "leveinard"
+    },
+    {
+        ref: "saquedeneu"
+    },
+    {
+        ref: "kangourex"
+    },
+    {
+        ref: "hypotrempe"
+    },
+    {
+        ref: "hypocean"
+    },
+    {
+        ref: "poissirene"
+    },
+    {
+        ref: "poissoroy"
+    },
+    {
+        ref: "stari"
+    },
+    {
+        ref: "staross"
+    },
+    {
+        ref: "mrmime"
+    },
+    {
+        ref: "insecateur"
+    },
+    {
+        ref: "lippoutou"
+    },
+    {
+        ref: "elektek"
+    },
+    {
+        ref: "magmar"
+    },
+    {
+        ref: "scarabrute"
+    },
+    {
+        ref: "tauros"
+    },
+    {
+        ref: "magicarpe"
+    },
+    {
+        ref: "leviator"
+    },
+    {
+        ref: "loklass"
+    },
+    {
+        ref: "metamorph"
+    },
+    {
+        ref: "evoli"
+    },
+    {
+        ref: "aquali"
+    },
+    {
+        ref: "voltali"
+    },
+    {
+        ref: "pyroli"
+    },
+    {
+        ref: "porygon"
+    },
+    {
+        ref: "amonita"
+    },
+    {
+        ref: "amonistar"
+    },
+    {
+        ref: "kabuto"
+    },
+    {
+        ref: "kabutops"
+    },
+    {
+        ref: "ptera"
+    },
+    {
+        ref: "ronflex"
+    },
+    {
+        ref: "artikodin"
+    },
+    {
+        ref: "elekthor"
+    },
+    {
+        ref: "sulfura"
+    },
+    {
+        ref: "minidraco"
+    },
+    {
+        ref: "draco"
+    },
+    {
+        ref: "dracolosse"
+    },
+    {
+        ref: "mewtwo"
+    },
+    {
+        ref: "mew"
+    }*/
+]

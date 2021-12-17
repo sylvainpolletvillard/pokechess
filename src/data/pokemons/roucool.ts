@@ -1,0 +1,21 @@
+import {POKEMON_TYPES} from "../types";
+import {SKILLS} from "../skills";
+import {ROUCOUPS} from "./roucoups";
+import {PokemonEntry} from "../pokemons";
+
+export const ROUCOOL: PokemonEntry = {
+    ref: "roucool",
+    name: "Roucool",
+    maxPV: 40,
+    maxPP: 20,
+    attack: 45,
+    attackRange: 1,
+    defense: 40,
+    speed: 56,
+    types: [POKEMON_TYPES.VOL, POKEMON_TYPES.NORMAL],
+    evolution: ROUCOUPS,
+    evolutionLevel: 18,
+    rank: 1,
+    baseSkill: SKILLS.FOUET_LIANES, // picpic
+    ppSkill: SKILLS.LANCE_SOLEIL // tornade
+}
