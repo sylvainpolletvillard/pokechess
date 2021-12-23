@@ -24,6 +24,7 @@ import {hideDestinationNamePanel, showDestinationNamePanel} from "../objects/des
 import {enterDestination} from "../logic/destination";
 import {startMusic} from "../logic/audio";
 import {drawTourCounter} from "../objects/gui";
+import { ALL_BADGES } from "../data/badges";
 
 
 export default class MapScene extends MyScene {
@@ -76,6 +77,7 @@ export default class MapScene extends MyScene {
         setupAnims(this.anims)
         this.drawMap();
         this.drawMapObjects();
+        this.drawBadges();
         this.updateDestinations()
         this.updateDirections(this.origin.nextDestinations);
         showDestinationNamePanel(this.origin, this)
@@ -203,6 +205,15 @@ export default class MapScene extends MyScene {
 
         const ronflex = this.add.sprite(136,72, "map").play("ronflex")
         this.sprites.set("ronflex", ronflex)
+    }
+
+    drawBadges(){
+        ALL_BADGES.forEach((badge, i) => {
+            let x = 40 + (i%5)*17, y = 12 + Math.floor(i/5)*17;
+            let frame = badge.frameIndex + (gameState.hasBadge(badge)? 0 : 10)
+            const sprite = this.add.sprite(x,y, "badges").setFrame(frame)
+            this.sprites.set(badge.ref, sprite)
+        })
     }
 
     updateDestinations(){

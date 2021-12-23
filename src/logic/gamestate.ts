@@ -13,6 +13,7 @@ import {pickStarters} from "./spawns";
 import {BOURG_PALETTE, TEST_ROOM} from "../data/destinations/bourg_palette";
 import {voicesByActor} from "../data/voices";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
+import { Badge } from "../data/badges";
 
 export enum GameStage {
     CREATION,
@@ -37,6 +38,7 @@ export class GameState {
     music: Phaser.Sound.BaseSound | undefined;
     dialogStates: { [pnjName: string]: Number }
     seed: number;
+    badges: string[];
 
     constructor() {
         this.day = 0
@@ -53,6 +55,7 @@ export class GameState {
         this.starters = pickStarters()
         this.dialogStates = {}
         this.seed = randomInt(1, Math.pow(4,10))
+        this.badges = [];
         window.gameState = this; //TEMP: DEBUG
     }
 
@@ -63,6 +66,16 @@ export class GameState {
     get currentRoom(){
         const roomRef = this.currentDestination.getRoomOrder()[this.currentRoomIndex]
         return this.currentDestination.rooms[roomRef]
+    }
+
+    hasBadge(badge: Badge){
+        return gameState.badges.includes(badge.ref)
+    }
+
+    receiveBadge(badge: Badge){
+        if(!gameState.badges.includes(badge.ref)){
+            gameState.badges.push(badge.ref)
+        }
     }
 
     goToNextRoom(){

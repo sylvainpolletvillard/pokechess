@@ -113,8 +113,7 @@ export function showNextLine(){
 
 export function sayLine(line: string) {
     if(!gameState.activeDialog) return
-    if(line.startsWith("E:")){
-        line = line.slice(2)
+    if(!['me','system'].includes(gameState.activeDialog.speaker)){
         gameState.activeDialog.bgSprite.setPosition(48, 2)
         gameState.activeDialog.textSprite.setPosition(56, 6)
     }

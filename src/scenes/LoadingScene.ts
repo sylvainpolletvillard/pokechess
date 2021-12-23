@@ -14,9 +14,10 @@ import {DRACAUFEU} from "../data/pokemons/dracaufeu";
 import {JADIELLE} from "../data/destinations/jadielle";
 import {FORET_JADE} from "../data/destinations/foret_jade";
 import {ITEM_POKEBALL, VITESSE_PLUS} from "../data/items";
+import { ARGENTA } from "../data/destinations/argenta";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
-	gameState.currentDestination = MONT_SELENITE
+	gameState.currentDestination = ARGENTA
 	gameState.player.team = [ new PokemonOnBoard( new Pokemon(DRACAUFEU, 1, 50), 4 ,6)]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1
