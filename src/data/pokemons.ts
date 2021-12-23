@@ -105,6 +105,15 @@ import {KRABBY} from "./pokemons/krabby";
 import {KRABBOSS} from "./pokemons/krabboss";
 import {VOLTORBE} from "./pokemons/voltorbe";
 import {ELECTRODE} from "./pokemons/electrode";
+import { NOEUFNOEUF } from "./pokemons/noeufnoeuf";
+import { NOADKOKO } from "./pokemons/noadkoko";
+import { OSSELAIT } from "./pokemons/osselait";
+import { OSSATUEUR } from "./pokemons/ossatueur";
+import { KICKLEE } from "./pokemons/kicklee";
+import { TYGNON } from "./pokemons/tygnon";
+import { EXCELANGUE } from "./pokemons/excelangue";
+import { SMOGO } from "./pokemons/smogo";
+import { SMOGOGO } from "./pokemons/smogogo";
 
 
 export interface HoldableItem {
@@ -125,6 +134,7 @@ export interface PokemonEntry {
     ppSkill: Skill;
     evolution?: PokemonEntry;
     evolutionLevel?: number;
+    devolution?: PokemonEntry;
     rank: number;
 }
 
@@ -304,34 +314,16 @@ export const POKEMONS: PokemonEntry[] = [
     KRABBOSS,
     VOLTORBE,
     ELECTRODE,
+    NOEUFNOEUF,
+    NOADKOKO,
+    OSSELAIT,
+    OSSATUEUR,
+    KICKLEE,
+    TYGNON,
+    EXCELANGUE,
+    SMOGO,
+    SMOGOGO,
     /*
-    {
-        ref: "noeufnoeuf"
-    },
-    {
-        ref: "noadkoko"
-    },
-    {
-        ref: "osselait"
-    },
-    {
-        ref: "ossatueur"
-    },
-    {
-        ref: "kicklee"
-    },
-    {
-        ref: "tygnon"
-    },
-    {
-        ref: "excellangue"
-    },
-    {
-        ref: "smogo"
-    },
-    {
-        ref: "smogogo"
-    },
     {
         ref: "rhinocorne"
     },
@@ -456,3 +448,10 @@ export const POKEMONS: PokemonEntry[] = [
         ref: "mew"
     }*/
 ]
+
+POKEMONS.forEach(pokemon => {
+    const devolution = POKEMONS.find(p => p.evolution === pokemon)
+    if(devolution){
+        pokemon.devolution = devolution
+    }
+})

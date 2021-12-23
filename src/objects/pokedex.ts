@@ -341,7 +341,7 @@ function drawPokemonInfo(pokemon: PokemonEntry){
     let currentMember: PokemonEntry | undefined = pokemon;
     while(currentMember != undefined){
         family.unshift(currentMember)
-        currentMember = POKEMONS.find(p => p.evolution === currentMember)
+        currentMember = currentMember.devolution
     }
     currentMember = pokemon.evolution
     while(currentMember != undefined){
