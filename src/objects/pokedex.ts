@@ -74,6 +74,7 @@ export function showPokedex(game: Game, pokemonToShow?: Pokemon){
                     selectType(typeSelectedIndex - 1)
                 }
             }
+            updateCursorHover(game)
         },
         draw(menuGroup){
             list.selectedIndex = 0;
@@ -148,11 +149,10 @@ function drawPokedex(){
     }
 
     // cursor
-    if(list.pageSelectedIndex >= 0){
+    if(cursorZone === CursorZone.LIST && list.pageSelectedIndex >= 0){
         cursorSprite = game.add.sprite(180, 42 + list.pageSelectedIndex*20, "gui", 16);
         cursorSprite.setScale(0.5).setDepth(Z.MENU_CURSOR)
         pokedexContainer.add(cursorSprite)
-        cursorZone = CursorZone.LIST
     }
 
     pokedexContainer.setDepth(Z.MENU)

@@ -3,7 +3,7 @@ import {addText} from "../utils/text";
 import {gameState} from "../logic/gamestate";
 import {MyScene} from "./MyScene";
 import {loadFonts} from "../data/fonts";
-import {ARGENTA} from "../data/destinations/argenta";
+import {MONT_SELENITE} from "../data/destinations/mont_selenite";
 import {COL_DE_MONTAGNE} from "../data/destinations/col_montagne";
 import {loadTilemaps} from "../data/tilemaps";
 import {loadSprites} from "../data/sprites";
@@ -16,7 +16,7 @@ import {FORET_JADE} from "../data/destinations/foret_jade";
 import {ITEM_POKEBALL, VITESSE_PLUS} from "../data/items";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
-	gameState.currentDestination = JADIELLE
+	gameState.currentDestination = MONT_SELENITE
 	gameState.player.team = [ new PokemonOnBoard( new Pokemon(DRACAUFEU, 1, 50), 4 ,6)]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1

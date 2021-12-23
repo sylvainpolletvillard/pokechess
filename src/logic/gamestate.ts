@@ -97,7 +97,7 @@ export class GameState {
                     spawnPokemon(pokemon, game)
                 }
 
-                if(gameState.currentDestination.type === DestinationType.ARENA) {
+                if(gameState.currentRoom.type === RoomType.ARENA) {
                     for (let pokemon of this.board.otherTeam) {
                         spawnPokemon(pokemon, game)
                     }
@@ -146,7 +146,7 @@ export class GameState {
             `Vos Pokemon gagnent 1500xp`,
             `Reptincel passe au niveau 7`
         ]).then(() => {
-            if(gameState.currentDestination.type === DestinationType.ARENA){
+            if(gameState.currentRoom.type === RoomType.ARENA){
                 const arena = gameState.currentRoom as RoomArena
                 return startDialog(hasWon
                     ? arena.champion.dialogs.victory

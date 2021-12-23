@@ -16,8 +16,10 @@ export function displayPokemonInfo(pokemon: Pokemon){
 
     pokemonInfoBox = scene.add.group();
 
-    let oy = pokemon instanceof PokemonOnBoard && pokemon.y < 4 ? game.scale.height - 42 : 42;
-    let ox = game.scale.width / 2
+    const isOnPlayerSide = pokemon instanceof PokemonOnBoard && pokemon.y < 4
+
+    let oy = isOnPlayerSide ? game.scale.height - 42 : 42;
+    let ox = isOnPlayerSide ? game.scale.width / 2 + 20 : game.scale.width / 2
 
     const pokemonInfoBoxBackground = scene.add.nineslice(
         ox, oy,   // this is the starting x/y location

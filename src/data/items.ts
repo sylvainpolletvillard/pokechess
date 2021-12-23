@@ -8,7 +8,7 @@ export interface Item {
 export const ITEM_POKEBALL: Item = {
     ref: "pokeball",
     label: "Pokéball",
-    desc: "L'outil de capture de tout dresseur est aussi devenu la monnaie de Kanto"
+    desc: "L'outil de capture de tout dresseur et monnaie d'échange dans les magasins"
 }
 
 export const BAIE_SITRUS: Item = {
@@ -203,7 +203,7 @@ export const GRELOT_COQUE: Item = {
 export const BOULE_FUMEE: Item = {
     ref: "boule_fumee",
     label: "Boule Fumée",
-    desc: "Rend le Pokémon impossible à cibler pendant 3 secondes quand les PV tombent sous les 30%",
+    desc: "Rend le Pokémon impossible à cibler pendant 3s quand les PV tombent sous les 30%",
     cost: 4
 }
 

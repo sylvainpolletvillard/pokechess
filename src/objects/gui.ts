@@ -181,7 +181,7 @@ export function drawPlayers(game: Game){
     game.sprites.set("player", player)
     player.play("trainer_idle");
 
-    if(game.state.currentDestination.type === DestinationType.ARENA){
+    if(game.state.currentRoom.type === RoomType.ARENA){
         const arena = game.state.currentRoom as RoomArena
         const champion = game.add.sprite(game.scale.width - 24, 32, "trainer")
             .setDepth(Z.CHAMPION)
@@ -197,7 +197,7 @@ export function drawIntro(game: Game): Promise<any>{
     drawRoomNamePanel()
     drawPlayers(game)
 
-    if(gameState.currentDestination.type === DestinationType.WILD){
+    if(gameState.currentRoom.type === RoomType.WILD){
         return wait(1000).then(() => {
             drawPokeballsCounter(game)
             return showCenterText("text_capture", game)

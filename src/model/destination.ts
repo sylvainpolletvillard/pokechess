@@ -34,7 +34,7 @@ export interface Destination {
     subtext: string
     rooms: { [ref: string]: Room },
     getRoomOrder: () => string[]
-    shopId: number,
+    shopId?: number,
 }
 
 export interface RoomConfig {

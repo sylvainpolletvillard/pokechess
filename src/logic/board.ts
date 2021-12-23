@@ -70,12 +70,10 @@ export function initPlacement(game: Game){
         const sprite = makePokemonSprite(pokemon, game)
         sprite.setAlpha(0.5)
     }
-    if(gameState.currentDestination.type === DestinationType.WILD
-    || gameState.currentDestination.type === DestinationType.ARENA){
-        for (let pokemon of gameState.board.otherTeam) {
-            const sprite = makePokemonSprite(pokemon, game)
-            sprite.anims.resume()
-        }
+
+    for (let pokemon of gameState.board.otherTeam) {
+        const sprite = makePokemonSprite(pokemon, game)
+        sprite.anims.resume()
     }
 }
 
@@ -83,7 +81,7 @@ export function clearPlacement(game: Game){
     for (let pokemon of gameState.player.team) {
         game.sprites.get(pokemon.uid)?.destroy()
     }
-    if(gameState.currentDestination.type === DestinationType.ARENA) {
+    if(gameState.currentRoom.type === RoomType.ARENA) {
         for (let pokemon of gameState.board.otherTeam) {
             game.sprites.get(pokemon.uid)?.destroy(true)
         }
@@ -271,8 +269,8 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: Game){
         && (gameState.activeMenu == null || gameState.activeMenu?.ref == "box")){
 
         if(pokemonOnTile.owner === 1
-            || gameState.currentDestination.type === DestinationType.WILD
-            || gameState.currentDestination.type === DestinationType.ARENA
+            || gameState.currentRoom.type === RoomType.WILD
+            || gameState.currentRoom.type === RoomType.ARENA
             || gameState.stage === GameStage.FIGHT){
             displayPokemonInfo(pokemonOnTile)
         }

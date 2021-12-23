@@ -15,17 +15,21 @@ import {pauseMusicAndPlaySound} from "./audio";
 import {startDialog} from "./dialog";
 
 export function spawnWildTeamByType(typesFactors: {[typeRef: string]: number }){
-    const pokemonsByTypes = Object.keys(typesFactors)
-        .map(typeRef => POKEMONS.filter(p => p.types.includes(POKEMON_TYPES[typeRef])))
+    const types = Object.keys(typesFactors)
+    const pokemonsByTypes = types.map(typeRef => POKEMONS.filter(p => p.types.includes(POKEMON_TYPES[typeRef])))
 
     const numberToSpawn = Math.min(8, Math.floor((10 + gameState.player.boxScore) / 10))
+    
     const sumFactors = Object.values(typesFactors).reduce((a,b) => a+b, 0)
 
     const team: PokemonOnBoard[] = [];
     for(let i=0; i<numberToSpawn; i++){
         const rand = Math.random() * sumFactors
         let acc=0, factorIndex=0;
-        while(acc < rand){ acc += typesFactors[factorIndex++] }
+        while(acc < rand){
+            acc += typesFactors[types[factorIndex]]
+            factorIndex++;
+         }
 
         const pokemonEntry = pickRandomIn(pokemonsByTypes[factorIndex-1])
         const level = gameState.player.averagePokemonLevel;

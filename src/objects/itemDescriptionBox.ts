@@ -28,6 +28,10 @@ export function showItemDescription(item: Item){
 
     const itemSprite = gameState.activeScene!.add.sprite(ox+78, oy + 96, "items", ITEMS_SPRITES_INDEX.indexOf(item)).setOrigin(0.5, 0.5)
     itemDescriptionGroup.add(itemSprite)
+    if(gameState.activeScene?.scene.key === "GameScene"){
+        itemSprite.x -= 48;
+        itemSprite.y -= 64;
+    }
 
     itemDescriptionGroup.add(addText(ox+ 56, oy + 8, item.label, {
         fontStyle: "strong",

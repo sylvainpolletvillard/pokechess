@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../model/destination";
 import {spawnWildTeamByType} from "../../logic/spawns";
-import {TYPE_EAU, TYPE_FEE, TYPE_NORMAL, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE} from "../types";
+import {TYPE_EAU, TYPE_FEE, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE} from "../types";
 
 export const MONT_SELENITE: Destination = {
     ref: "MONT_SELENITE",

@@ -67,7 +67,7 @@ export function updatePokemonCaptureInfoPosition(game: Game){
     if(!currentPokemonCaptureInfoDisplayed) return;
     pokemonCaptureBox?.setPosition(
         Math.max(2, Math.floor(game.input.activePointer.x - WIDTH - 8)),
-        Math.floor(game.input.activePointer.y - HEIGHT - 8)
+        Math.max(0, Math.floor(game.input.activePointer.y - HEIGHT - 8))
     )
     pokeballOnHand?.setPosition(
         Math.floor(game.input.activePointer.x +8),

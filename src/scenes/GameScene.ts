@@ -37,12 +37,7 @@ export default class GameScene extends MyScene {
     setupAnims(this.anims)
     this.drawMap();
     drawIntro(this).then(() => drawGUI(this));
-    if(gameState.currentDestination.type === DestinationType.ARENA){
-      gameState.board = setupRoomBoard(gameState.player, gameState.currentRoom as RoomArena)
-    }
-    if(gameState.currentDestination.type === DestinationType.WILD){
-      gameState.board = setupRoomBoard(gameState.player, gameState.currentRoom as RoomWild)
-    }
+    gameState.board = setupRoomBoard(gameState.player, gameState.currentRoom as RoomWild)
 
     initPlacement(this)
     startMusic(gameState.currentRoom.music)
