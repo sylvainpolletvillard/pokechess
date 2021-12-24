@@ -114,6 +114,11 @@ import { TYGNON } from "./pokemons/tygnon";
 import { EXCELANGUE } from "./pokemons/excelangue";
 import { SMOGO } from "./pokemons/smogo";
 import { SMOGOGO } from "./pokemons/smogogo";
+import { RHINOCORNE } from "./pokemons/rhinocorne";
+import { RHINOFEROS } from "./pokemons/rhinoferos";
+import { LEVEINARD } from "./pokemons/leveinard";
+import { SAQUEDENEU } from "./pokemons/saquedeneu";
+import { KANGOUREX } from "./pokemons/kangourex";
 
 
 export interface HoldableItem {
@@ -323,19 +328,12 @@ export const POKEMONS: PokemonEntry[] = [
     EXCELANGUE,
     SMOGO,
     SMOGOGO,
+    RHINOCORNE,
+    RHINOFEROS,
+    LEVEINARD,
+    SAQUEDENEU,
+    KANGOUREX,
     /*
-    {
-        ref: "rhinocorne"
-    },
-    {
-        ref: "rhinoferos"
-    },
-    {
-        ref: "leveinard"
-    },
-    {
-        ref: "saquedeneu"
-    },
     {
         ref: "kangourex"
     },
