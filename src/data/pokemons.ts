@@ -2,7 +2,7 @@ import {nanoid} from "nanoid";
 
 import {PokemonType} from "./types";
 import {Skill} from "./skills";
-import {POKEBALLS} from "./pokeballs";
+import {POKEBALLS, POKEBALL_COSTS} from "./pokeballs";
 
 import {BULBIZARRE} from "./pokemons/bulbizarre";
 import {HERBIZARRE} from "./pokemons/herbizarre";
@@ -206,6 +206,10 @@ export class Pokemon implements PokemonEntry {
 
     get speed(): number {
         return Math.round(this.baseSpeed * this.level / 50 + 5)
+    }
+
+    get cost(){
+        return POKEBALL_COSTS[this.pokeball]
     }
 }
 

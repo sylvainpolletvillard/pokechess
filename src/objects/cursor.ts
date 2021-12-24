@@ -148,5 +148,8 @@ export function testIfCanBeDroppedOn(elem: InteractiveElem){
     if(elem.getData("type") === "boxButton"){
         return true
     }
+    if(elem.getData("type") === "releaseZone"){
+        return true
+    }
     return false;
 }

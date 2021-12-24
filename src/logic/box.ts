@@ -5,12 +5,17 @@ import {addToBoxGroup, removeFromBoxGroup} from "../objects/pokemonBox";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {drawAlliancesInfo} from "../objects/alliancesInfo";
 import {removeInArray} from "../utils/helpers";
+import { ITEM_POKEBALL } from "../data/items";
+import { RoomType } from "../model/destination";
+import { drawPokeballsCounter } from "../objects/gui";
+import { MyScene } from "../scenes/MyScene";
 
-export function removeFromBox(pokemon: Pokemon, game: Game){
+export function removeFromBox(pokemon: Pokemon){
     const box = gameState.player.box;
     box[box.indexOf(pokemon)] = null;
 
-    const pokemonSprite = game.sprites.get(pokemon.uid)
+    const scene = gameState.activeScene as MyScene;
+    const pokemonSprite = scene.sprites.get(pokemon.uid)
     if(gameState.activeMenu?.group
     && gameState.activeMenu.ref === "box"
     && pokemonSprite != null){
@@ -26,7 +31,7 @@ export function addToBox(pokemon: Pokemon, game: Game, caseIndex?: number){
     const box = gameState.player.box;
     if(pokemon instanceof PokemonOnBoard){
         // board to box
-        removeFromTeam(pokemon, game)
+        removeFromTeam(pokemon)
         pokemon = pokemon.toBoxPokemon(game); // PokemonOnBoard → Pokemon
     } else if(box.includes(pokemon)){
         // switch position in box
@@ -49,12 +54,24 @@ export function addToTeam(pokemon: PokemonOnBoard){
     drawAlliancesInfo(0)
 }
 
-export function removeFromTeam(pokemon: PokemonOnBoard, game: Game){
+export function removeFromTeam(pokemon: PokemonOnBoard){
     if(pokemon.owner === 1){
         removeInArray(gameState.player.team, pokemon)
         removeInArray(gameState.board.playerTeam, pokemon)
         drawAlliancesInfo(0)
     } else {
         removeInArray(gameState.board.otherTeam, pokemon)
+    }
+}
+
+export function releasePokemon(pokemon: Pokemon){
+    if(pokemon instanceof PokemonOnBoard){
+        removeFromTeam(pokemon)
+    } else {
+        removeFromBox(pokemon)
+    }
+    gameState.player.inventory[ITEM_POKEBALL.ref] += pokemon.cost;
+    if(gameState.currentRoom.type === RoomType.WILD || gameState.currentRoom.type === RoomType.FREEWALK){
+        drawPokeballsCounter(gameState.activeScene as MyScene)
     }
 }

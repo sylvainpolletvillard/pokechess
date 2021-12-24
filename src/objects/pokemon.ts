@@ -7,8 +7,9 @@ import {Direction} from "../utils/directions";
 import {removeFromBox} from "../logic/box";
 import {gameState} from "../logic/gamestate";
 import {getCurrentPokemonCaptureInfoDisplayed} from "./pokemonCaptureBox";
-import {POKEBALL_COSTS} from "../data/pokeballs";
 import {canAfford} from "../logic/shop";
+import { displayPokemonReleaseBox, hidePokemonReleaseInfo } from "./pokemonReleaseBox";
+import { hidePokemonInfo } from "./pokemonInfoBox";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -46,10 +47,6 @@ export class PokemonOnBoard extends Pokemon {
 
     get positionPlacement(){
         return getPositionFromCoords(this.placementX, this.placementY)
-    }
-
-    get cost(){
-        return POKEBALL_COSTS[this.pokeball]
     }
 
     toBoxPokemon(game: Game){
@@ -91,6 +88,8 @@ export function makePokemonSprite(
         if(pokemon.owner !== 1) return;
         sprite.anims.resume()
         sprite.setAlpha(1)
+        hidePokemonInfo();
+        displayPokemonReleaseBox(pokemon);
 
         if(gameState.player.box.includes(pokemon)){
             removeFromBox(pokemon, game)
@@ -99,6 +98,7 @@ export function makePokemonSprite(
     sprite.on('drop', (pointer: PointerEvent) => {
         sprite.anims.pause(sprite.anims.currentAnim.getFrameByProgress(0))
         sprite.setAlpha(0.5)
+        hidePokemonReleaseInfo();
     })
     return sprite;
 }

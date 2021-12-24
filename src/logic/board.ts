@@ -16,7 +16,7 @@ import {makePokemonSprite, PokemonOnBoard} from "../objects/pokemon";
 import {Pokemon} from "../data/pokemons";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
-import {DestinationType, RoomArena, RoomType, RoomWild} from "../model/destination";
+import { RoomArena, RoomType, RoomWild} from "../model/destination";
 import {displayPokemonCaptureInfo, hidePokemonCaptureInfo} from "../objects/pokemonCaptureBox";
 import {spend} from "./shop";
 
