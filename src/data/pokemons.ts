@@ -119,6 +119,17 @@ import { RHINOFEROS } from "./pokemons/rhinoferos";
 import { LEVEINARD } from "./pokemons/leveinard";
 import { SAQUEDENEU } from "./pokemons/saquedeneu";
 import { KANGOUREX } from "./pokemons/kangourex";
+import { HYPOTREMPE } from "./pokemons/hypotrempe";
+import { HYPOCEAN } from "./pokemons/hypocean";
+import { POISSIRENE } from "./pokemons/poissirene";
+import { POISSOROY } from "./pokemons/poissoroy";
+import { STARI } from "./pokemons/stari";
+import { STAROSS } from "./pokemons/staross";
+import { MR_MIME } from "./pokemons/mrmime";
+import { INSECATEUR } from "./pokemons/insecateur";
+import { LIPPOUTOU } from "./pokemons/lippoutou";
+import { ELEKTEK } from "./pokemons/elektek";
+import { MAGMAR } from "./pokemons/magmar";
 
 
 export interface HoldableItem {
@@ -337,43 +348,18 @@ export const POKEMONS: PokemonEntry[] = [
     LEVEINARD,
     SAQUEDENEU,
     KANGOUREX,
+    HYPOTREMPE,
+    HYPOCEAN,
+    POISSIRENE,
+    POISSOROY,
+    STARI,
+    STAROSS,
+    MR_MIME,
+    INSECATEUR,
+    LIPPOUTOU,
+    ELEKTEK,
+    MAGMAR,
     /*
-    {
-        ref: "kangourex"
-    },
-    {
-        ref: "hypotrempe"
-    },
-    {
-        ref: "hypocean"
-    },
-    {
-        ref: "poissirene"
-    },
-    {
-        ref: "poissoroy"
-    },
-    {
-        ref: "stari"
-    },
-    {
-        ref: "staross"
-    },
-    {
-        ref: "mrmime"
-    },
-    {
-        ref: "insecateur"
-    },
-    {
-        ref: "lippoutou"
-    },
-    {
-        ref: "elektek"
-    },
-    {
-        ref: "magmar"
-    },
     {
         ref: "scarabrute"
     },
