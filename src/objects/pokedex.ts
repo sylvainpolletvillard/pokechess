@@ -7,6 +7,10 @@ import {addInteractiveElem, InteractiveElem, removeInteractiveElem, updateCursor
 import {Z} from "../data/depths";
 import {gameState} from "../logic/gamestate";
 import GameScene from "../scenes/GameScene";
+import { EVOLI } from "../data/pokemons/evoli";
+import { AQUALI } from "../data/pokemons/aquali";
+import { VOLTALI } from "../data/pokemons/voltali";
+import { PYROLI } from "../data/pokemons/pyroli";
 
 enum CursorZone { TYPES, LIST }
 
@@ -322,14 +326,16 @@ function drawPokemonInfo(pokemon: PokemonEntry){
     pokedexContainer.add(attackTypeSprite)
     pokedexContainer.add(addText(cx+22, cy+14, pokemon.baseSkill.name))
 
-    const effectTypeSprite = game.add.sprite(cx+10, cy+38, "icons16x16", pokemon.ppSkill.type.frameIndex)
-    pokedexContainer.add(effectTypeSprite)
-    pokedexContainer.add(addText(cx+22, cy+31, pokemon.ppSkill.name, { color: "blue"}))
-    pokedexContainer.add(addText(cx+10, cy+46, pokemon.ppSkill.description ?? '', {
-        color: "black",
-        fontSize: "10px",
-        wordWrap: {width: 160}
-    }))
+    if(pokemon.ppSkill){
+        const effectTypeSprite = game.add.sprite(cx+10, cy+38, "icons16x16", pokemon.ppSkill.type.frameIndex)
+        pokedexContainer.add(effectTypeSprite)
+        pokedexContainer.add(addText(cx+22, cy+31, pokemon.ppSkill.name, { color: "blue"}))
+        pokedexContainer.add(addText(cx+10, cy+46, pokemon.ppSkill.description ?? '', {
+            color: "black",
+            fontSize: "10px",
+            wordWrap: {width: 160}
+        }))
+    }
 
     cx = 10
     cy += 72
@@ -337,7 +343,7 @@ function drawPokemonInfo(pokemon: PokemonEntry){
     headers.fillRoundedRect(cx-6, cy, 60, 9, 4);
     pokedexContainer.add(addText(cx+2, cy-2, "EVOLUTION", { fontSize: "10px", color: "white" }))
 
-    const family: PokemonEntry[] = [];
+    let family: PokemonEntry[] = [];
     let currentMember: PokemonEntry | undefined = pokemon;
     while(currentMember != undefined){
         family.unshift(currentMember)
@@ -351,6 +357,8 @@ function drawPokemonInfo(pokemon: PokemonEntry){
 
     cy += 22
     cx = 32;
+
+    if(pokemon === EVOLI) family = [AQUALI, VOLTALI, PYROLI]
 
     for(let member of family){
         const memberSprite =  game.add.sprite(cx, cy, "pokemon")

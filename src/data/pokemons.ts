@@ -130,6 +130,16 @@ import { INSECATEUR } from "./pokemons/insecateur";
 import { LIPPOUTOU } from "./pokemons/lippoutou";
 import { ELEKTEK } from "./pokemons/elektek";
 import { MAGMAR } from "./pokemons/magmar";
+import { SCARABRUTE } from "./pokemons/scarabrute";
+import { TAUROS } from "./pokemons/tauros";
+import { MAGICARPE } from "./pokemons/magicarpe";
+import { LEVIATOR } from "./pokemons/leviator";
+import { LOKHLASS } from "./pokemons/lokhlass";
+import { METAMORPH } from "./pokemons/metamorph";
+import { EVOLI } from "./pokemons/evoli";
+import { AQUALI } from "./pokemons/aquali";
+import { VOLTALI } from "./pokemons/voltali";
+import { PYROLI } from "./pokemons/pyroli";
 
 
 export interface HoldableItem {
@@ -147,7 +157,7 @@ export interface PokemonEntry {
     defense: number;
     speed: number;
     baseSkill: Skill;
-    ppSkill: Skill;
+    ppSkill?: Skill;
     evolution?: PokemonEntry;
     evolutionLevel?: number;
     devolution?: PokemonEntry;
@@ -171,7 +181,7 @@ export class Pokemon implements PokemonEntry {
     name: string;
     types: PokemonType[];
     baseSkill: Skill;
-    ppSkill: Skill;
+    ppSkill?: Skill;
     evolution?: PokemonEntry;
     evolutionLevel?: number;
     rank: number;
@@ -359,37 +369,17 @@ export const POKEMONS: PokemonEntry[] = [
     LIPPOUTOU,
     ELEKTEK,
     MAGMAR,
+    SCARABRUTE,
+    TAUROS,
+    MAGICARPE,
+    LEVIATOR,
+    LOKHLASS,
+    METAMORPH,
+    EVOLI,
+    AQUALI,
+    VOLTALI,
+    PYROLI,
     /*
-    {
-        ref: "scarabrute"
-    },
-    {
-        ref: "tauros"
-    },
-    {
-        ref: "magicarpe"
-    },
-    {
-        ref: "leviator"
-    },
-    {
-        ref: "loklass"
-    },
-    {
-        ref: "metamorph"
-    },
-    {
-        ref: "evoli"
-    },
-    {
-        ref: "aquali"
-    },
-    {
-        ref: "voltali"
-    },
-    {
-        ref: "pyroli"
-    },
     {
         ref: "porygon"
     },

@@ -12,7 +12,7 @@ export const INSECATEUR: PokemonEntry = {
     defense: 80,
     speed: 105,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.VOL],
-    rank: 2,
+    rank: 3,
     baseSkill: SKILLS.FOUET_LIANES, // vive attaque
     ppSkill: SKILLS.LANCE_SOLEIL // danse lames
 }
