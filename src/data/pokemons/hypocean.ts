@@ -11,7 +11,7 @@ export const HYPOCEAN: PokemonEntry = {
     attackRange: 4,
     defense: 95,
     speed: 85,
-    types: [POKEMON_TYPES.EAU, POKEMON_TYPES.DRAGON],
+    types: [POKEMON_TYPES.EAU],
     rank: 2,
     baseSkill: SKILLS.FOUET_LIANES, // bulles d'o
     ppSkill: SKILLS.LANCE_SOLEIL // ouragan

@@ -140,6 +140,21 @@ import { EVOLI } from "./pokemons/evoli";
 import { AQUALI } from "./pokemons/aquali";
 import { VOLTALI } from "./pokemons/voltali";
 import { PYROLI } from "./pokemons/pyroli";
+import { PORYGON } from "./pokemons/porygon";
+import { AMONITA } from "./pokemons/amonita";
+import { AMONISTAR } from "./pokemons/amonistar";
+import { KABUTO } from "./pokemons/kabuto";
+import { KABUTOPS } from "./pokemons/kabutops";
+import { PTERA } from "./pokemons/ptera";
+import { RONFLEX } from "./pokemons/ronflex";
+import { ARTIKODIN } from "./pokemons/artikodin";
+import { ELECTHOR } from "./pokemons/electhor";
+import { SULFURA } from "./pokemons/sulfura";
+import { MINIDRACO } from "./pokemons/minidraco";
+import { DRACO } from "./pokemons/draco";
+import { DRACOLOSSE } from "./pokemons/dracolosse";
+import { MEWTWO } from "./pokemons/mewtwo";
+import { MEW } from "./pokemons/mew";
 
 
 export interface HoldableItem {
@@ -379,52 +394,21 @@ export const POKEMONS: PokemonEntry[] = [
     AQUALI,
     VOLTALI,
     PYROLI,
-    /*
-    {
-        ref: "porygon"
-    },
-    {
-        ref: "amonita"
-    },
-    {
-        ref: "amonistar"
-    },
-    {
-        ref: "kabuto"
-    },
-    {
-        ref: "kabutops"
-    },
-    {
-        ref: "ptera"
-    },
-    {
-        ref: "ronflex"
-    },
-    {
-        ref: "artikodin"
-    },
-    {
-        ref: "elekthor"
-    },
-    {
-        ref: "sulfura"
-    },
-    {
-        ref: "minidraco"
-    },
-    {
-        ref: "draco"
-    },
-    {
-        ref: "dracolosse"
-    },
-    {
-        ref: "mewtwo"
-    },
-    {
-        ref: "mew"
-    }*/
+    PORYGON,
+    AMONITA,
+    AMONISTAR,
+    KABUTO,
+    KABUTOPS,
+    PTERA,
+    RONFLEX,
+    ARTIKODIN,
+    ELECTHOR,
+    SULFURA,
+    MINIDRACO,
+    DRACO,
+    DRACOLOSSE,
+    MEWTWO,
+    MEW
 ]
 
 POKEMONS.forEach(pokemon => {

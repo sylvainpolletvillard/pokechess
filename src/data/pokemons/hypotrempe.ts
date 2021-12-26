@@ -12,7 +12,7 @@ export const HYPOTREMPE: PokemonEntry = {
     attackRange: 4,
     defense: 70,
     speed: 60,
-    types: [POKEMON_TYPES.EAU, POKEMON_TYPES.DRAGON],
+    types: [POKEMON_TYPES.EAU],
     evolution: HYPOCEAN,
     evolutionLevel: 32,
     rank: 1,
