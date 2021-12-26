@@ -1,14 +1,14 @@
 import {Destination, DestinationType, RoomType} from "../../model/destination";
 import {spawnChampionTeam} from "../../logic/spawns";
-import {SALAMECHE} from "../pokemons/salameche";
-import {HECTOR, SALLY} from "../champions";
-import {CHRYSACIER} from "../pokemons/chrysacier";
+import {HECTOR} from "../champions";
 import {COCONFORT} from "../pokemons/coconfort";
 import {MIMITOSS} from "../pokemons/mimitoss";
 import {AEROMITE} from "../pokemons/aeromite";
 import {DARDARGNAN} from "../pokemons/dardargnan";
 import {PAPILUSION} from "../pokemons/papilusion";
 import {PARASECT} from "../pokemons/parasect";
+import { INSECATEUR } from "../pokemons/insecateur";
+import { SCARABRUTE } from "../pokemons/scarabrute";
 
 export const CAMP_NOMADE: Destination = {
     ref: "CAMP_NOMADE",
@@ -29,18 +29,14 @@ export const CAMP_NOMADE: Destination = {
             map: "arene_camp_nomade",
             spawnOtherTeam() {
                 return spawnChampionTeam([
-                        /*INSECATEUR,
-                        SCARABRUTE
-                        */
-                        CHRYSACIER,
                         COCONFORT,
                         MIMITOSS,
                         AEROMITE,
                         DARDARGNAN,
                         PAPILUSION,
                         PARASECT,
-                        SALAMECHE,
-                        SALAMECHE
+                        INSECATEUR,
+                        SCARABRUTE
                     ],
                     [
                         [2, 3],

@@ -1,9 +1,14 @@
 import {Destination, DestinationType, RoomType} from "../../model/destination";
 import {KOGA} from "../champions";
 import {spawnChampionTeam} from "../../logic/spawns";
-import {SALAMECHE} from "../pokemons/salameche";
-import {REPTINCEL} from "../pokemons/reptincel";
-import {DRACAUFEU} from "../pokemons/dracaufeu";
+import { AEROMITE } from "../pokemons/aeromite";
+import { ARBOK } from "../pokemons/arbok";
+import { RAFFLESIA } from "../pokemons/rafflesia";
+import { SMOGO } from "../pokemons/smogo";
+import { SMOGOGO } from "../pokemons/smogogo";
+import { TADMORV } from "../pokemons/tadmorv";
+import { TENTACRUEL } from "../pokemons/tentacruel";
+import { GROTADMORV } from "../pokemons/grotadmorv";
 
 export const PARMANIE: Destination = {
     ref: "PARMANIE",
@@ -26,23 +31,14 @@ export const PARMANIE: Destination = {
             map: "parmanie",
             spawnOtherTeam() {
                 return spawnChampionTeam([
-                        /*SMOGO,
+                        SMOGO,
                         SMOGOGO,
                         TADMORV,
-                        GRODATMORV,
+                        GROTADMORV,
                         ARBOK,
                         AEROMITE,
                         TENTACRUEL,
-                        RAFFLESIA,
-                        */
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        REPTINCEL,
-                        DRACAUFEU
+                        RAFFLESIA
                     ],
                     [
                         [2, 3],

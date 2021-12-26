@@ -1,9 +1,14 @@
 import {Destination, DestinationType, RoomType} from "../../model/destination";
 import {spawnChampionTeam} from "../../logic/spawns";
-import {SALAMECHE} from "../pokemons/salameche";
-import {REPTINCEL} from "../pokemons/reptincel";
-import {DRACAUFEU} from "../pokemons/dracaufeu";
-import {ONDINE, SALLY} from "../champions";
+import { SALLY} from "../champions";
+import { GRODOUDOU } from "../pokemons/grodoudou";
+import { LEVEINARD } from "../pokemons/leveinard";
+import { MELODELFE } from "../pokemons/melodelfe";
+import { MELOFEE } from "../pokemons/melofee";
+import { MEW } from "../pokemons/mew";
+import { RONDOUDOU } from "../pokemons/rondoudou";
+import { MR_MIME } from "../pokemons/mrmime";
+import { PAPILUSION } from "../pokemons/papilusion";
 
 export const LAVANVILLE: Destination = {
     ref: "LAVANVILLE",
@@ -25,23 +30,14 @@ export const LAVANVILLE: Destination = {
             map: "arene_lavanville",
             spawnOtherTeam() {
                 return spawnChampionTeam([
-                        /*MELOFEE,
+                        MELOFEE,
                         MELODELFE,
                         RONDOUDOU,
                         GRODOUDOU,
-                        MRMIME,
+                        MR_MIME,
                         LEVEINARD,
-                        PAPILLUSION,
-                        MEW,
-                        */
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        REPTINCEL,
-                        DRACAUFEU
+                        PAPILUSION,
+                        MEW
                     ],
                     [
                         [2, 3],

@@ -3,7 +3,6 @@ import {homeLevel} from "../levels/home";
 import {chenLevel} from "../levels/labo_chen";
 import {gameState} from "../../logic/gamestate";
 import {spawnTutoCaptureTeam, spawnWildTeamByType} from "../../logic/spawns";
-import {TYPE_FEE, TYPE_INSECTE, TYPE_PLANTE, TYPE_POISON} from "../types";
 
 export const BOURG_PALETTE: Destination = {
     ref: "BOURG_PALETTE",

@@ -1,9 +1,15 @@
 import {Destination, DestinationType, RoomType} from "../../model/destination";
 import {ONDINE} from "../champions";
 import {spawnChampionTeam} from "../../logic/spawns";
-import {SALAMECHE} from "../pokemons/salameche";
-import {REPTINCEL} from "../pokemons/reptincel";
-import {DRACAUFEU} from "../pokemons/dracaufeu";
+
+import { AKWAKWAK } from "../pokemons/akwakwak";
+import { AQUALI } from "../pokemons/aquali";
+import { HYPOCEAN } from "../pokemons/hypocean";
+import { LEVIATOR } from "../pokemons/leviator";
+import { LOKHLASS } from "../pokemons/lokhlass";
+import { STARI } from "../pokemons/stari";
+import { STAROSS } from "../pokemons/staross";
+import { PSYKOKWAK } from "../pokemons/psykokwak";
 
 export const AZURIA: Destination = {
     ref: "AZURIA",
@@ -28,23 +34,14 @@ export const AZURIA: Destination = {
             map: "arene_azuria",
             spawnOtherTeam(){
                 return spawnChampionTeam([
-                        /*STARI,
+                        STARI,
                         STAROSS,
-                        PSYKOWKAK,
+                        PSYKOKWAK,
                         AKWAKWAK,
                         AQUALI,
                         LOKHLASS,
                         LEVIATOR,
                         HYPOCEAN
-                        */
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        REPTINCEL,
-                        DRACAUFEU
                     ],
                     [
                         [2,3],

@@ -1,9 +1,15 @@
 import {Destination, DestinationType, RoomType} from "../../model/destination";
 import {PIERRE} from "../champions";
 import {spawnChampionTeam} from "../../logic/spawns";
-import {SALAMECHE} from "../pokemons/salameche";
-import {REPTINCEL} from "../pokemons/reptincel";
-import {DRACAUFEU} from "../pokemons/dracaufeu";
+
+import { AMONISTAR } from "../pokemons/amonistar";
+import { GRAVALANCH } from "../pokemons/gravalanch";
+import { GROLEM } from "../pokemons/grolem";
+import { KABUTOPS } from "../pokemons/kabutops";
+import { ONIX } from "../pokemons/onix";
+import { RACAILLOU } from "../pokemons/racaillou";
+import { RHINOCORNE } from "../pokemons/rhinocorne";
+import { RHINOFEROS } from "../pokemons/rhinoferos";
 
 export const ARGENTA: Destination = {
     ref: "ARGENTA",
@@ -27,23 +33,14 @@ export const ARGENTA: Destination = {
             map: "arene_argenta",
             spawnOtherTeam(){
                 return spawnChampionTeam([
-                        /*RACAILLOU,
+                        RACAILLOU,
                         ONIX,
                         GRAVALANCH,
                         RHINOCORNE,
                         RHINOFEROS,
                         GROLEM,
                         AMONISTAR,
-                        KABUTOPS,
-                        */
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        REPTINCEL,
-                        DRACAUFEU
+                        KABUTOPS
                     ],
                     [
                         [2,3],

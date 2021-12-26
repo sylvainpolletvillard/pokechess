@@ -1,10 +1,15 @@
 import {Destination, DestinationType, RoomType} from "../../model/destination";
-import {DRACAUFEU} from "../pokemons/dracaufeu";
-import {SALAMECHE} from "../pokemons/salameche";
-import {REPTINCEL} from "../pokemons/reptincel";
 import {AUGUSTE, SCIENTIFIQUE_TUTO} from "../champions";
 import {spawnChampionTeam, spawnTutoCaptureTeam} from "../../logic/spawns";
 import {gameState} from "../../logic/gamestate";
+import { ARCANIN } from "../pokemons/arcanin";
+import { CANINOS } from "../pokemons/caninos";
+import { FEUNARD } from "../pokemons/feunard";
+import { GALOPA } from "../pokemons/galopa";
+import { GOUPIX } from "../pokemons/goupix";
+import { MAGMAR } from "../pokemons/magmar";
+import { PONYTA } from "../pokemons/ponyta";
+import {DRACAUFEU} from "../pokemons/dracaufeu";
 
 export const CRAMOISILE: Destination = {
     ref: "CRAMOISILE",
@@ -32,21 +37,13 @@ export const CRAMOISILE: Destination = {
             champion: AUGUSTE,
             spawnOtherTeam(){
                 return spawnChampionTeam([
-                        /*CANINOS,
                         CANINOS,
                         ARCANIN,
                         PONYTA,
                         GALOPA,
                         GOUPIX,
                         FEUNARD,
-                        MAGMAR*/
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        SALAMECHE,
-                        REPTINCEL,
+                        MAGMAR,
                         DRACAUFEU
                     ],
                     [
