@@ -167,6 +167,7 @@ export const SBIRE_ROCKET: Champion = {
     introFrameIndex: null,
     dialogs:{
         start: [
+            `Eh toi là, qu'est-ce que tu fiches ici ?`,
             `Quoi ? Tu veux affronter le champion d'arène, notre chef Giovanni ?`,
             `Laisse-moi rire ! Tu ne lui arrives pas à la cheville !`,
             `Essaie déjà de me battre, et je songerais à te laisser passer.`,

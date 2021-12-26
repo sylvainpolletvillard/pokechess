@@ -1,11 +1,19 @@
 import {Destination, DestinationType, RoomArena, RoomType} from "../../model/destination";
 import {GIOVANNI, SBIRE_ROCKET} from "../champions";
 import {spawnChampionTeam} from "../../logic/spawns";
-import {SALAMECHE} from "../pokemons/salameche";
-import {REPTINCEL} from "../pokemons/reptincel";
-import {DRACAUFEU} from "../pokemons/dracaufeu";
 import {gameState} from "../../logic/gamestate";
 import {shopJadielleLevel} from "../levels/shop_jadielle";
+import { MIAOUSS } from "../pokemons/miaouss";
+import { ABO } from "../pokemons/abo";
+import { SMOGO } from "../pokemons/smogo";
+import { GROLEM } from "../pokemons/grolem";
+import { NIDOKING } from "../pokemons/nidoking";
+import { NIDOQUEEN } from "../pokemons/nidoqueen";
+import { ONIX } from "../pokemons/onix";
+import { OSSATUEUR } from "../pokemons/ossatueur";
+import { RHINOCORNE } from "../pokemons/rhinocorne";
+import { RHINOFEROS } from "../pokemons/rhinoferos";
+import { TRIOPIKEUR } from "../pokemons/triopikeur";
 
 const ARENA_GIOVANNI: RoomArena = {
     type: RoomType.ARENA,
@@ -15,22 +23,14 @@ const ARENA_GIOVANNI: RoomArena = {
     champion: GIOVANNI,
     spawnOtherTeam(){
         return spawnChampionTeam([
-                /*RHINOCORNE,
+                RHINOCORNE,
                 TRIOPIKEUR,
                 NIDOQUEEN,
                 NIDOKING,
                 RHINOFEROS,
                 OSSATUEUR,
                 ONIX,
-                GROLEM*/
-                SALAMECHE,
-                SALAMECHE,
-                SALAMECHE,
-                SALAMECHE,
-                SALAMECHE,
-                SALAMECHE,
-                REPTINCEL,
-                DRACAUFEU
+                GROLEM
             ],
             [
                 [2,3],
@@ -53,11 +53,14 @@ export const TUTO_SBIRE: RoomArena = {
     champion: SBIRE_ROCKET,
     spawnOtherTeam(){
         return spawnChampionTeam([
-            SALAMECHE
-            //MIAOUSS
+            MIAOUSS,
+            ABO,
+            SMOGO
             ],
             [
-                [3,3]
+                [3,2],
+                [4,3],
+                [2,3]
             ])
     }
 }

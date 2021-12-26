@@ -208,8 +208,9 @@ export default class MapScene extends MyScene {
     }
 
     drawBadges(){
+        const nbBadges = ALL_BADGES.length
         ALL_BADGES.forEach((badge, i) => {
-            let x = 40 + (i%5)*17, y = 12 + Math.floor(i/5)*17;
+            let x = 48 + (i%(nbBadges/2))*17, y = 12 + Math.floor(i/(nbBadges/2))*17;
             let frame = badge.frameIndex + (gameState.hasBadge(badge)? 0 : 10)
             const sprite = this.add.sprite(x,y, "badges").setFrame(frame)
             this.sprites.set(badge.ref, sprite)

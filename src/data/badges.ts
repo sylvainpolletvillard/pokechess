@@ -63,8 +63,6 @@ export const ALL_BADGES: Badge[] = [
     BADGE_AME,
     BADGE_MARAIS,
     BADGE_VOLCAN,
-    BADGE_TERRE,
-    BADGE_ESSAIM,
-    BADGE_ESPRIT
+    BADGE_TERRE
 ]
 
