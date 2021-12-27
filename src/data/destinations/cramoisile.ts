@@ -25,7 +25,7 @@ export const CRAMOISILE: Destination = {
         ILES_ECUME: [[4,0]]
     },
     getRoomOrder(){
-        if(gameState.day === 0) return ["tuto"]
+        if(gameState.day <= 1) return ["tuto"]
         else return ["arena"]
     },
     rooms: {

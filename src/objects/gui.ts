@@ -181,7 +181,7 @@ export function drawPlayers(game: Game){
     game.sprites.set("player", player)
     player.play("trainer_idle");
 
-    if(game.state.currentRoom.type === RoomType.ARENA){
+    if([RoomType.ARENA, RoomType.TUTORIAL].includes(game.state.currentRoom.type)){
         const arena = game.state.currentRoom as RoomArena
         const champion = game.add.sprite(game.scale.width - 24, 32, "trainer")
             .setDepth(Z.CHAMPION)
