@@ -53,5 +53,6 @@ export const SAFRANIA: Destination = {
                         [3,0]
                     ])
             }
+        }
     }
 }

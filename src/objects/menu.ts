@@ -52,7 +52,7 @@ export function chooseEntry(){
     const selectedEntry = gameState.activeMenu.entries[menuCursorPos]
     const menuToBeClosed = gameState.activeMenu
     closeMenu()
-    menuToBeClosed.handleChoice!(selectedEntry);
+    if(menuToBeClosed.handleChoice) menuToBeClosed.handleChoice(selectedEntry);
     return true;
 }
 

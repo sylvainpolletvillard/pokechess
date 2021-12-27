@@ -78,7 +78,7 @@ export function startDialog(lines: DialogLine[], params: DialogParams = {}){
     })
 }
 
-export function showNextLine(){
+export function showNextLine(line?: DialogLine){
     if(!gameState.activeDialog || !gameState.activeScene || gameState.activeDialog.waitBeforeNextLine) return;
     if (gameState.activeDialog.speech) {
         gameState.activeDialog.speech.stop()
@@ -86,10 +86,7 @@ export function showNextLine(){
         return
     }
 
-    let line
-    if (gameState.activeDialog.choice) {
-        line = endChoice()
-    } else {
+    if(!line) {
         line = gameState.activeDialog.lines.shift()
     }
 
@@ -165,16 +162,14 @@ export function startChoice(choice: DialogChoice) {
         height,
         entries: Object.entries(choice).map(([label, value], i) => ({
             label, value, x: 4, y: i*16
-        }))
+        })),
+        handleChoice(selectedChoice){
+            if(!gameState.activeDialog?.choice) return;
+            delete gameState.activeDialog.choice
+            closeMenu()
+            showNextLine(selectedChoice?.value || selectedChoice?.label);
+        }
     })
-}
-
-export function endChoice() {
-    if(!gameState.activeDialog?.choice) return
-    let selectedChoice = getSelectedMenuEntry()
-    delete gameState.activeDialog.choice
-    closeMenu()
-    return selectedChoice?.value || selectedChoice?.label
 }
 
 let talkingTo: string | null = null;

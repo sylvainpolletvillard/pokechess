@@ -10,11 +10,11 @@ export const assistant1 = () => {
             ],
             "Où suis-je ?":  () => [
                 "Tu te trouves au labo Pokémon de Bourg Palette.",
-                "Nous étudions ici les différentes espèces de Pokémon de Kanto."
+                "Nous étudions ici les différentes espèces de Pokémons de Kanto."
             ],
             "Que faites-vous ?": () => [
                 "Je regroupe les dernières données recueillies par les dresseurs comme toi.",
-                "En étudiant vos combats, nous recueillons des informations sur les Pokémon.",
+                "En étudiant vos combats, nous recueillons des informations sur les Pokémons.",
                 "Ces informations sont ensuite regroupées dans le Pokédex.",
                 "C'est utile pour nos recherches, mais aussi pour vos stratégies de combat."
             ]
@@ -30,7 +30,6 @@ export const assistant2 = () => {
         "ASSISTANT: Cette machine garde en mémoire les équipes de Pokémon",
         "qui se sont illustrées en battant la ligue Pokemon.",
         "Analyser les meilleures équipes nous permet d'en apprendre un maximum !",
-        "Si tu parviens à battre la ligue, nous ajouterons avec plaisir ton équipe",
-        "dans la mémoire de la machine."
+        "Si tu parviens à battre la ligue, nous ajouterons avec plaisir ton équipe."
     ], { speaker: "assistant2"})
 }
