@@ -155,6 +155,7 @@ import { DRACO } from "./pokemons/draco";
 import { DRACOLOSSE } from "./pokemons/dracolosse";
 import { MEWTWO } from "./pokemons/mewtwo";
 import { MEW } from "./pokemons/mew";
+import { levelToXP, xpToLevel } from "../logic/xp";
 
 
 export interface HoldableItem {
@@ -202,6 +203,7 @@ export class Pokemon implements PokemonEntry {
     rank: number;
     pokeball: string;
     entry: PokemonEntry;
+    xp: number;
 
     constructor(entry: PokemonEntry | Pokemon, owner: number, level = 1) {
         this.uid = entry instanceof Pokemon ? entry.uid : nanoid()
@@ -226,6 +228,21 @@ export class Pokemon implements PokemonEntry {
         this.evolutionLevel = entry.evolutionLevel
         this.rank = entry.rank
         this.pokeball = POKEBALLS[this.rank-1] // TEMP: set on capture, based on rank or safari ball
+        
+        this.xp = levelToXP(this.level);
+    }
+
+    get baseXP(): number {
+         //TODO: this.baseXP = entry.baseXP; // see https://pwo-wiki.info/index.php/Base_Experience
+         switch(this.rank){
+            case 1: return 60;
+            case 2: return 130;
+            case 3: return 200;
+            case 4: return 260;
+            case 5: return 320;
+        }
+
+        return 99999999999999999999
     }
 
     get maxPV(): number {
@@ -246,6 +263,12 @@ export class Pokemon implements PokemonEntry {
 
     get cost(){
         return POKEBALL_COSTS[this.pokeball]
+    }
+
+    gainXP(amount: number){
+        this.xp += amount;
+        this.level = xpToLevel(this.xp);
+        return this.level
     }
 }
 

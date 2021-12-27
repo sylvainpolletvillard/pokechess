@@ -1,17 +1,16 @@
 import Phaser from "phaser";
 import {Destination, DestinationType, RoomArena, RoomTutorial, RoomType, RoomWild} from "../model/destination";
 import {Player} from "./player";
-import {Board, clearPlacement, setupPlayerIdleBoard, spawnPokemon} from "./board";
+import {Board, calcXpBoard, clearPlacement, setupPlayerIdleBoard, spawnPokemon} from "./board";
 import {updatePokemonAction} from "./fight";
 import Game from "../scenes/GameScene";
 import {closeMenu, Menu} from "../objects/menu";
-import {Dialog, startDialog} from "./dialog";
+import {Dialog, DialogLine, startDialog} from "./dialog";
 import {showCenterText} from "../objects/gui";
 import { MyScene } from "../scenes/MyScene"
 import {Pokemon} from "../data/pokemons";
 import {pickStarters} from "./spawns";
 import {BOURG_PALETTE, TEST_ROOM} from "../data/destinations/bourg_palette";
-import {voicesByActor} from "../data/voices";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
 import { Badge } from "../data/badges";
 
@@ -155,9 +154,17 @@ export class GameState {
             showCenterText("text_defaite", game).then(() => {})
         }
 
+        const xpPerPokemon = calcXpBoard() / gameState.board.playerTeam.length
+        const levelUps: DialogLine[] = [];
+        gameState.board.playerTeam.forEach(pokemon => {
+            const oldLvl = pokemon.level
+            pokemon.gainXP(xpPerPokemon)
+            if(oldLvl !== pokemon.level) levelUps.push(`${pokemon.name} passe au niveau ${pokemon.level}`)
+        })
+
         startDialog([
-            `Vos Pokemon gagnent 1500xp`,
-            `Reptincel passe au niveau 7`
+            `Vos Pokémon gagnent ${xpPerPokemon}xp`,
+            ...levelUps
         ]).then(() => {
             if(gameState.currentRoom.type === RoomType.ARENA){
                 const arena = gameState.currentRoom as RoomArena

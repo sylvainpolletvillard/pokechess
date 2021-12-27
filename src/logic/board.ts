@@ -1,4 +1,4 @@
-import {NO_OWNER, OWNER_CHANGING, Player} from "./player";
+import {Player} from "./player";
 import {addToBox, addToTeam} from "./box";
 import Game from "../scenes/GameScene";
 import Phaser from "phaser";
@@ -16,9 +16,11 @@ import {makePokemonSprite, PokemonOnBoard} from "../objects/pokemon";
 import {Pokemon} from "../data/pokemons";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
+import { NO_OWNER, OWNER_CHANGING } from "../data/owners";
 import { RoomArena, RoomType, RoomWild} from "../model/destination";
 import {displayPokemonCaptureInfo, hidePokemonCaptureInfo} from "../objects/pokemonCaptureBox";
 import {spend} from "./shop";
+import { calcXpEarnedOnDefeat } from "./xp";
 
 export interface Board {
     mapName: string;
@@ -333,4 +335,10 @@ export function cancelPokemonDrag(){
         dragState.draggedElem.emit('drop')
         dragState.draggedElem = null;
     }
+}
+
+export function calcXpBoard(){ 
+    return gameState.board.otherTeam.reduce((total, pokemon) => {
+        return total + calcXpEarnedOnDefeat(pokemon)
+    }, 0)
 }

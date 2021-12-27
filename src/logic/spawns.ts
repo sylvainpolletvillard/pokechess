@@ -7,7 +7,7 @@ import {BULBIZARRE} from "../data/pokemons/bulbizarre";
 import {SALAMECHE} from "../data/pokemons/salameche";
 import {CARAPUCE} from "../data/pokemons/carapuce";
 import {CHEN_DIALOG_STATE} from "../data/dialogs/chen";
-import {NO_OWNER, OWNER_ARENA_CHAMPION, OWNER_CHEN} from "./player";
+import {NO_OWNER, OWNER_ARENA_CHAMPION, OWNER_CHEN} from "../data/owners";
 import {displayPokemonInfo, hidePokemonInfo} from "../objects/pokemonInfoBox";
 import {addToTeam} from "./box";
 import {Description} from "../objects/description";
@@ -99,7 +99,7 @@ export const pickStarter = (index: number) => (desc: Description) => {
 export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, number][]) {
     const team: PokemonOnBoard[] = []
 
-    const numberToSpawn = Math.min( clamp(Math.floor((gameState.player.boxScore) / 10), 3, 8 ), positions.length, pokemons.length)
+    const numberToSpawn = Math.min( clamp(Math.floor((gameState.player.boxScore) / 10), 1, 8 ), positions.length, pokemons.length)
     const level = gameState.player.averagePokemonLevel;
 
     for(let i=0; i<numberToSpawn; i++){
