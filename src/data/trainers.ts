@@ -201,11 +201,10 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Une minute ! Si tu veux monter une équipe, il te faut des Pokéballs !`,
             `Tiens, voilà 5 Pokéballs pour capturer tes premiers Pokémons.`,
             () => {
-                let promise = receiveItem(ITEM_POKEBALL, 5)             
+                gameState.player.inventory[ITEM_POKEBALL.ref] += 5;
                 drawPokeballsCounter(gameState.activeScene as MyScene)
-                return promise
+                return `Sais-tu comment on s'en sert ?`
             },
-            `Sais-tu comment on s'en sert ?`,
             {
                 "Oui": () => [
                     `Très bien, alors capture ces Pokémons sauvages. Ou mets-les KO, comme tu veux !`

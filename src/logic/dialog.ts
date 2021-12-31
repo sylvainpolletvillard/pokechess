@@ -70,15 +70,21 @@ export function startDialog(lines: DialogLine[], params: DialogParams = {}): Pro
     showNextLine()
 
     if(params.wait && gameState.activeDialog){
+        
+    }
+
+    return dialogPromise
+}
+
+export function waitBeforeNextLine(delay: number){
+    if(gameState.activeDialog){
         gameState.activeDialog.waitBeforeNextLine = true;
         setTimeout(() => {
             if(gameState.activeDialog){
                 gameState.activeDialog.waitBeforeNextLine = false;
             }
-        }, params.wait)
+        }, delay)
     }
-
-    return dialogPromise
 }
 
 export async function showNextLine(){
@@ -169,7 +175,7 @@ export function startChoice(choice: DialogChoice) {
             delete gameState.activeDialog.choice
             closeMenu()
             gameState.activeDialog.lines.unshift(selectedChoice?.value || selectedChoice?.label)
-            showNextLine()            
+            showNextLine()
         }
     })
 }

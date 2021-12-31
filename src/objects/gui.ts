@@ -9,7 +9,7 @@ import {closeMenu} from "./menu";
 import {openBox} from "./pokemonBox";
 import {addToBox} from "../logic/box";
 import {Z} from "../data/depths";
-import {DestinationType, RoomArena, RoomType} from "../logic/destination";
+import {RoomArena, RoomType} from "../logic/destination";
 import {wait} from "../utils/helpers";
 import {startDialog} from "../logic/dialog";
 import {tweenFade, tweenPop} from "../utils/tweens";
@@ -154,22 +154,20 @@ export function drawGUI(game: Game){
     addInteractiveElem(bagButton)
     menuButtonsGroup.add(bagButton)
 
-    if(gameState.currentRoom.type !== RoomType.TUTORIAL){
-        fightButton = game.add.sprite(295, game.scale.height - 12, "buttons_big",0)
-        fightButton
-            .on("over", () => {
-                fightButton.setFrame(1)
-            })
-            .on("out", () => {
-                fightButton.setFrame(0)
-            })
-            .on("click", () => {
-                hideMenuButtons()
-                game.launchFight()
-            })
-        addInteractiveElem(fightButton)
-        menuButtonsGroup.add(fightButton)
-    }
+    fightButton = game.add.sprite(295, game.scale.height - 12, "buttons_big",0)
+    fightButton
+        .on("over", () => {
+            fightButton.setFrame(1)
+        })
+        .on("out", () => {
+            fightButton.setFrame(0)
+        })
+        .on("click", () => {
+            hideMenuButtons()
+            game.launchFight()
+        })
+    addInteractiveElem(fightButton)
+    menuButtonsGroup.add(fightButton)
     
     menuButtonsGroup.setDepth(Z.GUI_BUTTON);
 }

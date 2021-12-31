@@ -1,4 +1,4 @@
-import {DialogLine, startDialog} from "../../logic/dialog";
+import {DialogLine, startDialog, waitBeforeNextLine} from "../../logic/dialog";
 import {pickRandomIn} from "../../utils/helpers";
 import {pickStarter} from "../../logic/starters";
 import {Description} from "../../objects/description";
@@ -13,7 +13,8 @@ export function receiveItem(item: Item, quantity: number = 1){
     }
     gameState.player.inventory[item.ref] += quantity;
     const label = ITEMS[item.ref]?.label ?? "???"
-    return startDialog([`Vous recevez: ${label} x${quantity}`], { wait: 2000 })
+    waitBeforeNextLine(2000)
+    return `Vous recevez: ${label} x${quantity}`
 }
 
 export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) => DialogLine[]) } = {

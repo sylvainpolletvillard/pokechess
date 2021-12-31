@@ -22,7 +22,7 @@ import { PokemonOnBoard } from "../objects/pokemon";
 import { displayPokemonInfo, hidePokemonInfo } from "../objects/pokemonInfoBox";
 import { pauseMusicAndPlaySound } from "./audio";
 import { addToTeam } from "./box";
-import { startDialog } from "./dialog";
+import { waitBeforeNextLine } from "./dialog";
 import { gameState } from "./gamestate";
 
 const STARTERS = [
@@ -66,7 +66,8 @@ export const pickStarter = (index: number) => (desc: Description) => {
             desc.sprite.destroy(true)
             gameState.dialogStates.chen = CHEN_DIALOG_STATE.after_starter_choice
             pauseMusicAndPlaySound("pokemon_received")
-            return startDialog([`Vous choisissez ${starter.name} !`], { wait: 2000 })
+            waitBeforeNextLine(2000)
+            return `Vous choisissez ${starter.name} !`
         },
         "NON": () => hidePokemonInfo()
     }]

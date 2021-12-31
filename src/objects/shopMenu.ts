@@ -6,7 +6,7 @@ import {addText} from "../utils/text";
 import {drawPokeballsCounter} from "./gui";
 import RoomScene from "../scenes/RoomScene";
 import {getShopContent, spend} from "../logic/shop";
-import {endDialog, startDialog} from "../logic/dialog";
+import {endDialog, startDialog, waitBeforeNextLine} from "../logic/dialog";
 import {receiveItem} from "../data/dialogs/descriptions";
 import {hideItemDescription, showItemDescription} from "./itemDescriptionBox";
 
@@ -84,9 +84,10 @@ export function openBuyMenu(seller: string){
             const item = ITEMS[choice.value] as Item;
             if(!item.cost) return;
 
+            waitBeforeNextLine(1600)
             startDialog([
                 `1 ${item.label} pour ${item.cost} ball${item.cost > 1 ? 's' : ''}, c'est ça ?`
-            ], { speaker: seller, wait: 1600 }).then(() => {})
+            ], { speaker: seller }).then(() => {})
 
             await wait(1500);
 
