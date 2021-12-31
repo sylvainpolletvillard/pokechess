@@ -90,7 +90,7 @@ export function spawnTutoCaptureTeam(){
     const selection = pickNRandomIn(SECONDERS, 3)
     const team: PokemonOnBoard[] = selection.map(
         (entry: PokemonEntry, i: number) => new PokemonOnBoard(
-            new Pokemon(entry, NO_OWNER, 3),
+            new Pokemon(entry, NO_OWNER, 1),
             2*i + 1, (i%2) + 1
         )
     )

@@ -1,5 +1,5 @@
 import {Player} from "./player";
-import {addToTeam, removeFromTeam} from "./box";
+import {addToBox, addToTeam, removeFromTeam} from "./box";
 import Game from "../scenes/GameScene";
 import Phaser from "phaser";
 import {displayPokemonInfo, getCurrentPokemonInfoDisplayed, hidePokemonInfo} from "../objects/pokemonInfoBox";
@@ -16,11 +16,12 @@ import {makePokemonSprite, PokemonOnBoard} from "../objects/pokemon";
 import {Pokemon} from "../data/pokemons";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
-import { NO_OWNER, OWNER_CHANGING } from "../data/owners";
+import { NO_OWNER, OWNER_CHANGING, OWNER_PLAYER } from "../data/owners";
 import { RoomArena, RoomType, RoomWild} from "./destination";
 import {displayPokemonCaptureInfo, hidePokemonCaptureInfo} from "../objects/pokemonCaptureBox";
 import {spend} from "./shop";
 import { calcXpEarnedOnDefeat } from "./xp";
+import { startDialog } from "./dialog";
 
 export interface Board {
     mapName: string;
@@ -193,7 +194,24 @@ export async function capturePokemon(
         pokeball.destroy()
         removeFromTeam(pokemon)
 
-        if(gameState.board.otherTeam.length === 0) await gameState.endCapture(pokemon, game)
+        const pokemons = gameState.player.boardAndBox
+        const myPokemon = pokemons.find(p => p.entry.ref === pokemon.entry.ref)
+        if(myPokemon != null){
+            wait(100).then(() => startDialog([
+                `Le ${myPokemon.name} sauvage partage son expérience avant d'être relaché.`,
+                `Votre ${myPokemon.name} gagne ${pokemon.xp} XP`
+            ])).then(() => {
+                const oldLvl = myPokemon.level
+                myPokemon.gainXP(pokemon.xp)
+                if(oldLvl !== myPokemon.level){
+                    return startDialog([`${myPokemon.name} passe au niveau ${myPokemon.level}`])
+                }
+            })
+        } else {
+            addToBox(pokemon, game)
+        }
+
+        if(gameState.board.otherTeam.length === 0) await gameState.endCapture(game)
     })
 }
 
@@ -272,9 +290,8 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: Game){
     } else if(!dragState.draggedElem
         && (gameState.activeMenu == null || gameState.activeMenu?.ref == "box")){
 
-        if(pokemonOnTile.owner === 1
-            || gameState.currentRoom.type === RoomType.WILD
-            || gameState.currentRoom.type === RoomType.ARENA
+        if(pokemonOnTile.owner === OWNER_PLAYER
+            || [RoomType.WILD, RoomType.ARENA, RoomType.TUTORIAL].includes(gameState.currentRoom.type)            
             || gameState.stage === GameStage.FIGHT){
             displayPokemonInfo(pokemonOnTile)
         }
@@ -285,7 +302,6 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: Game){
         && gameState.stage === GameStage.PLACEMENT){
             displayPokemonCaptureInfo(pokemonOnTile, game)
         }
-
     }
 }
 

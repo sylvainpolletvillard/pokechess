@@ -6,7 +6,7 @@ export function levelToXP(level: number){
 }
 
 export function xpToLevel(xp: number){
-    return Math.floor(Math.pow(xp, 1/3))
+    return Math.floor(Math.pow(xp+0.1, 1/3))
 }
 
 export function calcXpEarnedOnDefeat(pokemon: Pokemon){

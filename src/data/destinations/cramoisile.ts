@@ -1,7 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {AUGUSTE, SCIENTIFIQUE_TUTO} from "../trainers";
-import {spawnTrainerTeam, spawnTutoCaptureTeam} from "../../logic/spawns";
-import {gameState} from "../../logic/gamestate";
+import {AUGUSTE} from "../trainers";
+import {spawnTrainerTeam} from "../../logic/spawns";
 import { ARCANIN } from "../pokemons/arcanin";
 import { CANINOS } from "../pokemons/caninos";
 import { FEUNARD } from "../pokemons/feunard";

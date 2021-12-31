@@ -69,8 +69,7 @@ export interface RoomTutorial extends RoomConfig {
     type: RoomType.TUTORIAL,
     map: string;
     spawnOtherTeam: () => PokemonOnBoard[],
-    trainer: Trainer,
-    step: number;
+    trainer: Trainer    
 }
 
 export function enterDestination(destination: Destination){

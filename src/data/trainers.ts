@@ -1,9 +1,8 @@
-import {gameState} from "../logic/gamestate";
+import {GameStage, gameState} from "../logic/gamestate";
 import { BADGE_ROCHE } from "./badges";
-import {receiveItem} from "./dialogs/descriptions";
 import {ITEM_POKEBALL} from "./items";
 import {DialogLine} from "../logic/dialog";
-import { spawnTutoCaptureTeam, spawnTutoCaptureTeamStep2 } from "../logic/spawns";
+import { spawnTutoCaptureTeamStep2 } from "../logic/spawns";
 import { drawPokeballsCounter } from "../objects/gui";
 import { MyScene } from "../scenes/MyScene";
 import { spawnPokemon } from "../logic/board";
@@ -192,6 +191,12 @@ export const SBIRE_ROCKET: Trainer = {
     }
 }
 
+export const SCIENTIFIQUE_TUTO_DIALOG_STATE = {
+    BEFORE_WILD: 0,
+    AFTER_WILD: 1,
+    AFTER_CAPTURE_SELF: 2    
+}
+
 export const SCIENTIFIQUE_TUTO: Trainer = {
     name: "scientifique_tuto",
     frameIndex: 19,
@@ -203,6 +208,7 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             () => {
                 gameState.player.inventory[ITEM_POKEBALL.ref] += 5;
                 drawPokeballsCounter(gameState.activeScene as MyScene)
+                gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.BEFORE_WILD
                 return `Sais-tu comment on s'en sert ?`
             },
             {
@@ -210,12 +216,22 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
                     `Très bien, alors capture ces Pokémons sauvages. Ou mets-les KO, comme tu veux !`
                 ],
                 "Non": () => [
-                    `Si tu ne veux pas affronter des Pokémons sauvages, tu peux les capturer.`,
+                    `Tu peux capturer un Pokémon sauvage plutôt que de l'affronter.`,
                     `Plus le Pokémon est puissant, plus il te faudra de Pokéballs pour le capturer.`,
                     `Un Pokémon capturé rejoint ta box, qui peut contenir jusqu'à 8 Pokémons.`,
                     `Tu peux ensuite les déplacer de ta box vers le terrain pour qu'ils combattent.`
                 ]
             }           
+        ],
+        victory: [
+            `Bien, tu sembles te débrouiller comme un chef !`
+        ],
+        defeat: [
+            () => {
+                // make scientist capture remaining wild pokemons
+                return `La prochaine fois, sers-toi de mes Pokéballs !`
+            },
+            `Tu augmenteras nettement tes chances de victoire !`
         ],
         step2: [
             `Tes Pokémon deviennnent plus fort en gagnant de l'expérience après un combat.`,
@@ -223,14 +239,17 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Il suffit de capturer un Pokémon sauvage de la même espèce.`,
             `Il partagera son expérience avec ton Pokémon avant d'être relâché.`,
             () => {
-                spawnTutoCaptureTeamStep2();
+                gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD
+                gameState.stage === GameStage.PLACEMENT
+                gameState.board.otherTeam = spawnTutoCaptureTeamStep2();
                 spawnPokemon(gameState.board.otherTeam[0], gameState.activeScene as Game)
                 return `Tiens, essaie tout de suite. Essaie de capturer mon ${gameState.player.team[0].name}.`
-            },
-            `Plus le niveau du Pokémon capturé est élevé, plus il donnera d'expérience`,
-            `Rappelle-toi, cela marche uniquement si les Pokémon sont de la même espèce !`
+            }            
         ],
-        victory: [],
-        defeat: []
+        step3: [
+            `Plus le niveau du Pokémon capturé est élevé, plus il donnera d'expérience`,
+            `Rappelle-toi, cela marche uniquement si les Pokémon sont de la même espèce !`,
+            `Bien, tu sais tout. Bon voyage et bonne chance!`
+        ]
     }
 }

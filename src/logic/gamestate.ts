@@ -14,6 +14,7 @@ import {BOURG_PALETTE, TEST_ROOM} from "../data/destinations/bourg_palette";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
 import { Badge } from "../data/badges";
 import {addToBox} from "./box";
+import { SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 
 export enum GameStage {
     CREATION,
@@ -156,19 +157,24 @@ export class GameState {
             showCenterText("text_defaite", game).then(() => {})
         }
 
-        const xpPerPokemon = calcXpBoard() / gameState.board.playerTeam.length
-        const levelUps: DialogLine[] = [];
+        let xpPerPokemon = calcXpBoard() / gameState.player.team.length
+        if(hasWon) xpPerPokemon = Math.floor(xpPerPokemon / 2)
+
+        const lines: DialogLine[] = [];
+        if(hasWon){
+            lines.push(`Vos Pokémon gagnent ${xpPerPokemon}xp`)            
+        } else if(gameState.currentRoom.type !== RoomType.TUTORIAL){
+            lines.push(`Vous courrez jusqu'au centre Pokémon le plus proche.`)
+        }
+
         gameState.board.playerTeam.forEach(pokemon => {
             const oldLvl = pokemon.level
             pokemon.gainXP(xpPerPokemon)
-            if(oldLvl !== pokemon.level) levelUps.push(`${pokemon.name} passe au niveau ${pokemon.level}`)
+            if(oldLvl !== pokemon.level) lines.push(`${pokemon.name} passe au niveau ${pokemon.level}`)
         })
 
-        startDialog([
-            `Vos Pokémon gagnent ${xpPerPokemon}xp`,
-            ...levelUps
-        ]).then(() => {
-            if(gameState.currentRoom.type === RoomType.ARENA){
+        startDialog(lines).then(() => {
+            if([RoomType.ARENA, RoomType.TUTORIAL].includes(gameState.currentRoom.type)){
                 const arena = gameState.currentRoom as RoomArena
                 return startDialog(hasWon
                     ? arena.trainer.dialogs.victory
@@ -177,43 +183,39 @@ export class GameState {
             }
             return Promise.resolve()
         }).then(() => {
-            gameState.goToNextRoom()
+            gameState.afterEnd()
         })
-
     }
 
-    endCapture(pokemonCaptured: Pokemon, game: Game){
+    endCapture(game: Game){
         this.stage = GameStage.ENDED;
         const player = game.sprites.get("player")
         player && player.play("trainer_victory")
 
-        let promise: Promise<any> = wait(100);
-
-        const pokemons = gameState.player.boardAndBox
-        const myPokemon = pokemons.find(p => p.entry.ref === pokemonCaptured.entry.ref)
-        if(myPokemon != null){
-            promise = promise.then(() => startDialog([
-                `Le ${myPokemon.name} sauvage partage son expérience avant d'être relaché.`,
-                `Votre ${myPokemon.name} gagne ${pokemonCaptured.xp} XP`
-            ])).then(() => {
-                const oldLvl = myPokemon.level
-                myPokemon.gainXP(pokemonCaptured.xp)
-                if(oldLvl !== myPokemon.level){
-                    return startDialog([`${myPokemon.name} passe au niveau ${myPokemon.level}`])
-                }
-            })
-        } else {
-            addToBox(pokemonCaptured, game)
-        }
-
-        return promise.then(() => {
+        return wait(100).then(() => {
             if(gameState.currentRoom.type === RoomType.TUTORIAL){
-                const arena = gameState.currentRoom as RoomTutorial
-                return startDialog(arena.trainer.dialogs.victory, { speaker: arena.trainer.name })
+                const room = gameState.currentRoom as RoomTutorial
+                let dialog = room.trainer.dialogs.afterCaptureWild
+                if(gameState.dialogStates["scientifique_tuto"] === SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD){
+                    dialog = room.trainer.dialogs.step3
+                }
+                return startDialog(dialog, { speaker: room.trainer.name })
             }
         }).then(() => {
-            gameState.goToNextRoom()
+            gameState.afterEnd()
         })
+    }
+
+    afterEnd(){        
+        if(gameState.currentRoom.type === RoomType.TUTORIAL 
+        && gameState.dialogStates["scientifique_tuto"] === SCIENTIFIQUE_TUTO_DIALOG_STATE.BEFORE_WILD){
+            const room = gameState.currentRoom as RoomTutorial
+            return startDialog(room.trainer.dialogs.step2, { 
+                speaker: room.trainer.name 
+            })
+        } else {
+            gameState.goToNextRoom()
+        }
     }
 }
 

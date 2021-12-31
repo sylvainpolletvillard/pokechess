@@ -183,9 +183,16 @@ export function drawPlayers(game: Game){
 
     if([RoomType.ARENA, RoomType.TUTORIAL].includes(game.state.currentRoom.type)){
         const arena = game.state.currentRoom as RoomArena
-        const trainer = game.add.sprite(game.scale.width - 24, 32, "trainer")
+        const trainer = game.add.sprite(game.scale.width + 40, 32, "trainer")
             .setDepth(Z.TRAINER)
             .setFrame(arena.trainer.frameIndex)
+        game.add.tween({
+            targets: [trainer],
+            delay: 1000,
+            duration: 600,
+            x: "-=64",
+            ease: 'Linear'
+        })
         game.sprites.set("opponent", trainer)
     }
 
