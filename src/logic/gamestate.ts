@@ -13,7 +13,6 @@ import {pickStarters} from "./starters";
 import {BOURG_PALETTE, TEST_ROOM} from "../data/destinations/bourg_palette";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
 import { Badge } from "../data/badges";
-import {addToBox} from "./box";
 import { SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 
 export enum GameStage {
@@ -157,8 +156,8 @@ export class GameState {
             showCenterText("text_defaite", game).then(() => {})
         }
 
-        let xpPerPokemon = calcXpBoard() / gameState.player.team.length
-        if(hasWon) xpPerPokemon = Math.floor(xpPerPokemon / 2)
+        let xpPerPokemon = calcXpBoard() / gameState.player.team.length        
+        xpPerPokemon = Math.max(1, xpPerPokemon)
 
         const lines: DialogLine[] = [];
         if(hasWon){

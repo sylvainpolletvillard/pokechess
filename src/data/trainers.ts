@@ -240,7 +240,7 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Il partagera son expérience avec ton Pokémon avant d'être relâché.`,
             () => {
                 gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD
-                gameState.stage === GameStage.PLACEMENT
+                gameState.stage = GameStage.PLACEMENT
                 gameState.board.otherTeam = spawnTutoCaptureTeamStep2();
                 spawnPokemon(gameState.board.otherTeam[0], gameState.activeScene as Game)
                 return `Tiens, essaie tout de suite. Essaie de capturer mon ${gameState.player.team[0].name}.`
