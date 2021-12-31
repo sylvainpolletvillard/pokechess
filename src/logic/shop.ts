@@ -1,5 +1,5 @@
 import {gameState} from "./gamestate";
-import {RoomType} from "../model/destination";
+import {RoomType} from "./destination";
 import {drawPokeballsCounter} from "../objects/gui";
 import {ITEMS} from "../data/items";
 import {MyScene} from "../scenes/MyScene";

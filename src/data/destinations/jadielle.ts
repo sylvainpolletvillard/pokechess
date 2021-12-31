@@ -1,6 +1,6 @@
-import {Destination, DestinationType, RoomArena, RoomType} from "../../model/destination";
-import {GIOVANNI, SBIRE_ROCKET} from "../champions";
-import {spawnChampionTeam} from "../../logic/spawns";
+import {Destination, DestinationType, RoomArena, RoomType} from "../../logic/destination";
+import {GIOVANNI, SBIRE_ROCKET} from "../trainers";
+import {spawnTrainerTeam} from "../../logic/spawns";
 import {gameState} from "../../logic/gamestate";
 import {shopJadielleLevel} from "../levels/shop_jadielle";
 import { MIAOUSS } from "../pokemons/miaouss";
@@ -20,9 +20,9 @@ const ARENA_GIOVANNI: RoomArena = {
     map: "arene_jadielle",
     music: "music_jadielle",
     name: "Arène de Jadielle",
-    champion: GIOVANNI,
+    trainer: GIOVANNI,
     spawnOtherTeam(){
-        return spawnChampionTeam([
+        return spawnTrainerTeam([
                 RHINOCORNE,
                 TRIOPIKEUR,
                 NIDOQUEEN,
@@ -50,9 +50,9 @@ export const TUTO_SBIRE: RoomArena = {
     map: "arene_jadielle",
     music: "music_jadielle",
     name: "Arène de Jadielle",
-    champion: SBIRE_ROCKET,
+    trainer: SBIRE_ROCKET,
     spawnOtherTeam(){
-        return spawnChampionTeam([
+        return spawnTrainerTeam([
             MIAOUSS,
             ABO,
             SMOGO

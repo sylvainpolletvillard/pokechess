@@ -9,7 +9,7 @@ export const Z ={
 
     MAP_HIGHLIGHT: 30,
 
-    CHAMPION: 35,
+    TRAINER: 35,
 
 
     GUI_BUTTON: 41,

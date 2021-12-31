@@ -1,5 +1,5 @@
 import {Player} from "./player";
-import {addToBox, addToTeam} from "./box";
+import {addToTeam, removeFromTeam} from "./box";
 import Game from "../scenes/GameScene";
 import Phaser from "phaser";
 import {displayPokemonInfo, getCurrentPokemonInfoDisplayed, hidePokemonInfo} from "../objects/pokemonInfoBox";
@@ -17,7 +17,7 @@ import {Pokemon} from "../data/pokemons";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
 import { NO_OWNER, OWNER_CHANGING } from "../data/owners";
-import { RoomArena, RoomType, RoomWild} from "../model/destination";
+import { RoomArena, RoomType, RoomWild} from "./destination";
 import {displayPokemonCaptureInfo, hidePokemonCaptureInfo} from "../objects/pokemonCaptureBox";
 import {spend} from "./shop";
 import { calcXpEarnedOnDefeat } from "./xp";
@@ -171,7 +171,7 @@ export async function capturePokemon(
         pokeball.play(`${pokemon.pokeball}_jiggle`)
         await wait(1100)
         pokeball.play(`${pokemon.pokeball}_catch`)
-        addToBox(pokemon, game)
+
         if(getCurrentPokemonInfoDisplayed() == pokemon){
             hidePokemonInfo()
         }
@@ -191,7 +191,9 @@ export async function capturePokemon(
         })
         await wait(800)
         pokeball.destroy()
-        if(gameState.board.otherTeam.length === 0) gameState.endCapture(game)
+        removeFromTeam(pokemon)
+
+        if(gameState.board.otherTeam.length === 0) await gameState.endCapture(pokemon, game)
     })
 }
 

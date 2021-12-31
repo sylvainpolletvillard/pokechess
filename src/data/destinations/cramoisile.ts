@@ -1,6 +1,6 @@
-import {Destination, DestinationType, RoomType} from "../../model/destination";
-import {AUGUSTE, SCIENTIFIQUE_TUTO} from "../champions";
-import {spawnChampionTeam, spawnTutoCaptureTeam} from "../../logic/spawns";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import {AUGUSTE, SCIENTIFIQUE_TUTO} from "../trainers";
+import {spawnTrainerTeam, spawnTutoCaptureTeam} from "../../logic/spawns";
 import {gameState} from "../../logic/gamestate";
 import { ARCANIN } from "../pokemons/arcanin";
 import { CANINOS } from "../pokemons/caninos";
@@ -25,8 +25,7 @@ export const CRAMOISILE: Destination = {
         ILES_ECUME: [[4,0]]
     },
     getRoomOrder(){
-        if(gameState.day <= 1) return ["tuto"]
-        else return ["arena"]
+        return ["arena"]
     },
     rooms: {
         arena: {
@@ -34,9 +33,9 @@ export const CRAMOISILE: Destination = {
             type: RoomType.ARENA,
             map: "cramoisile",
             music: "music_cramoisile",
-            champion: AUGUSTE,
+            trainer: AUGUSTE,
             spawnOtherTeam(){
-                return spawnChampionTeam([
+                return spawnTrainerTeam([
                         CANINOS,
                         ARCANIN,
                         PONYTA,
@@ -57,16 +56,6 @@ export const CRAMOISILE: Destination = {
                         [3,0]
                     ])
             }
-        },
-        tuto:  {
-            name: "Arène de Cramois'Île",
-            type: RoomType.TUTORIAL,
-            map: "cramoisile",
-            music: "music_cramoisile",
-            champion: SCIENTIFIQUE_TUTO,
-            spawnOtherTeam(){
-                return spawnTutoCaptureTeam()
-            }
-        },
+        }
     },
 }

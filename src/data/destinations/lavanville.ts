@@ -1,6 +1,6 @@
-import {Destination, DestinationType, RoomType} from "../../model/destination";
-import {spawnChampionTeam} from "../../logic/spawns";
-import { SALLY} from "../champions";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import {spawnTrainerTeam} from "../../logic/spawns";
+import { SALLY} from "../trainers";
 import { GRODOUDOU } from "../pokemons/grodoudou";
 import { LEVEINARD } from "../pokemons/leveinard";
 import { MELODELFE } from "../pokemons/melodelfe";
@@ -29,7 +29,7 @@ export const LAVANVILLE: Destination = {
             name: "Arène de Lavanville",
             map: "arene_lavanville",
             spawnOtherTeam() {
-                return spawnChampionTeam([
+                return spawnTrainerTeam([
                         MELOFEE,
                         MELODELFE,
                         RONDOUDOU,
@@ -51,7 +51,7 @@ export const LAVANVILLE: Destination = {
                     ])
             },
             music: "music_lavanville",
-            champion: SALLY
+            trainer: SALLY
         }
     }
 }

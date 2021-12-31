@@ -1,4 +1,4 @@
-import {Destination, DestinationType} from "../../model/destination";
+import {Destination, DestinationType} from "../../logic/destination";
 
 export const DOJO: Destination = {
     ref: "DOJO",

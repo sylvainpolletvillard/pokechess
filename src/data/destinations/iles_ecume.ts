@@ -1,4 +1,4 @@
-import {Destination, DestinationType} from "../../model/destination";
+import {Destination, DestinationType} from "../../logic/destination";
 
 export const ILES_ECUME: Destination = {
     ref: "ILES_ECUME",

@@ -1,4 +1,4 @@
-import {Destination, DestinationType} from "../../model/destination";
+import {Destination, DestinationType} from "../../logic/destination";
 
 export const CHAMPS_VERDOYANTS: Destination = {
     ref: "CHAMPS_VERDOYANTS",

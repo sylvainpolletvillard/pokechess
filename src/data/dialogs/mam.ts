@@ -6,9 +6,9 @@ export const MAM = () => {
     return startDialog([
       "Bonjour mon chéri !",
       "Je t'ai acheté un cadeau !"
-    ])
+    ], { speaker: "mam" })
     .then(() => receiveItem(SUPER_BONBON))
     .then(() => startDialog([
         "Bon courage dans ton aventure !"
-    ]))
+    ], { speaker: "mam" }))
 }

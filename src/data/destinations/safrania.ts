@@ -1,6 +1,6 @@
-import {Destination, DestinationType, RoomType} from "../../model/destination";
-import {spawnChampionTeam} from "../../logic/spawns";
-import {MORGANE} from "../champions";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import {spawnTrainerTeam} from "../../logic/spawns";
+import {MORGANE} from "../trainers";
 import { KADABRA } from "../pokemons/kadabra";
 import { AEROMITE } from "../pokemons/aeromite";
 import { MR_MIME } from "../pokemons/mrmime";
@@ -30,9 +30,9 @@ export const SAFRANIA: Destination = {
             type: RoomType.ARENA,
             map: "safrania",
             music: "music_safrania",
-            champion: MORGANE,
+            trainer: MORGANE,
             spawnOtherTeam(){
-                return spawnChampionTeam([
+                return spawnTrainerTeam([
                         KADABRA,
                         MR_MIME,
                         SOPORIFIK,

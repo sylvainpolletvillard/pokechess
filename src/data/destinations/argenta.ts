@@ -1,6 +1,6 @@
-import {Destination, DestinationType, RoomType} from "../../model/destination";
-import {PIERRE} from "../champions";
-import {spawnChampionTeam} from "../../logic/spawns";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import {PIERRE} from "../trainers";
+import {spawnTrainerTeam} from "../../logic/spawns";
 
 import { AMONISTAR } from "../pokemons/amonistar";
 import { GRAVALANCH } from "../pokemons/gravalanch";
@@ -29,10 +29,10 @@ export const ARGENTA: Destination = {
         arena: {
             name: "Arène d'Argenta",
             type: RoomType.ARENA,
-            champion: PIERRE,
+            trainer: PIERRE,
             map: "arene_argenta",
             spawnOtherTeam(){
-                return spawnChampionTeam([
+                return spawnTrainerTeam([
                         RACAILLOU,
                         ONIX,
                         GRAVALANCH,

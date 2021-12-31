@@ -1,18 +1,27 @@
 import {gameState} from "../logic/gamestate";
 import { BADGE_ROCHE } from "./badges";
+import {receiveItem} from "./dialogs/descriptions";
+import {ITEM_POKEBALL} from "./items";
+import {DialogLine} from "../logic/dialog";
+import { spawnTutoCaptureTeam, spawnTutoCaptureTeamStep2 } from "../logic/spawns";
+import { drawPokeballsCounter } from "../objects/gui";
+import { MyScene } from "../scenes/MyScene";
+import { spawnPokemon } from "../logic/board";
+import Game from "../scenes/GameScene";
 
-export interface Champion {
+export interface Trainer {
     name: string;
     frameIndex: number,
     introFrameIndex: number | null,
     dialogs: {
-        start: Array<string | (() => string)>,
-        victory: Array<string | (() => string)>,
-        defeat: Array<string | (() => string)>
+        start: DialogLine[],
+        victory: DialogLine[],
+        defeat: DialogLine[],
+        [other: string]: DialogLine[]
     }
 }
 
-export const PIERRE: Champion = {
+export const PIERRE: Trainer = {
     name: "pierre",
     frameIndex: 8,
     introFrameIndex: 0,
@@ -40,7 +49,7 @@ export const PIERRE: Champion = {
     }
 }
 
-export const ONDINE: Champion = {
+export const ONDINE: Trainer = {
     name: "ondine",
     frameIndex: 9,
     introFrameIndex: 1,
@@ -51,7 +60,7 @@ export const ONDINE: Champion = {
     }
 }
 
-export const MAJOR_BOB: Champion = {
+export const MAJOR_BOB: Trainer = {
     name: "major_bob",
     frameIndex: 10,
     introFrameIndex: 2,
@@ -62,7 +71,7 @@ export const MAJOR_BOB: Champion = {
     }
 }
 
-export const ERIKA: Champion = {
+export const ERIKA: Trainer = {
     name: "erika",
     frameIndex: 11,
     introFrameIndex: 3,
@@ -73,7 +82,7 @@ export const ERIKA: Champion = {
     }
 }
 
-export const KOGA: Champion = {
+export const KOGA: Trainer = {
     name: "koga",
     frameIndex: 12,
     introFrameIndex: 4,
@@ -84,7 +93,7 @@ export const KOGA: Champion = {
     }
 }
 
-export const MORGANE: Champion = {
+export const MORGANE: Trainer = {
     name: "morgane",
     frameIndex: 13,
     introFrameIndex: 5,
@@ -95,7 +104,7 @@ export const MORGANE: Champion = {
     }
 }
 
-export const AUGUSTE: Champion = {
+export const AUGUSTE: Trainer = {
     name: "auguste",
     frameIndex: 14,
     introFrameIndex: 6,
@@ -106,7 +115,7 @@ export const AUGUSTE: Champion = {
     }
 }
 
-export const GIOVANNI: Champion = {
+export const GIOVANNI: Trainer = {
     name: "giovanni",
     frameIndex: 15,
     introFrameIndex: 7,
@@ -126,7 +135,7 @@ export const GIOVANNI: Champion = {
     }
 }
 
-export const HECTOR: Champion = {
+export const HECTOR: Trainer = {
     name: "hector",
     frameIndex: 16,
     introFrameIndex: 8,
@@ -144,7 +153,7 @@ export const HECTOR: Champion = {
 }
 
 
-export const SALLY: Champion = {
+export const SALLY: Trainer = {
     name: "sally",
     frameIndex: 17,
     introFrameIndex: 9,
@@ -161,7 +170,7 @@ export const SALLY: Champion = {
     }
 }
 
-export const SBIRE_ROCKET: Champion = {
+export const SBIRE_ROCKET: Trainer = {
     name: "sbire_rocket",
     frameIndex: 18,
     introFrameIndex: null,
@@ -183,25 +192,46 @@ export const SBIRE_ROCKET: Champion = {
     }
 }
 
-export const SCIENTIFIQUE_TUTO: Champion = {
+export const SCIENTIFIQUE_TUTO: Trainer = {
     name: "scientifique_tuto",
     frameIndex: 19,
     introFrameIndex: null,
     dialogs:{
         start: [
-            `Une minute ! Ne me dis pas que tu comptes te mesurer à Auguste notre champion ?`,
-            `Ton Pokémon n'est pas encore assez fort ! Laisse-moi t'expliquer.`,
+            `Une minute ! Si tu veux monter une équipe, il te faut des Pokéballs !`,
+            `Tiens, voilà 5 Pokéballs pour capturer tes premiers Pokémons.`,
+            () => {
+                let promise = receiveItem(ITEM_POKEBALL, 5)             
+                drawPokeballsCounter(gameState.activeScene as MyScene)
+                return promise
+            },
+            `Sais-tu comment on s'en sert ?`,
+            {
+                "Oui": () => [
+                    `Très bien, alors capture ces Pokémons sauvages. Ou mets-les KO, comme tu veux !`
+                ],
+                "Non": () => [
+                    `Si tu ne veux pas affronter des Pokémons sauvages, tu peux les capturer.`,
+                    `Plus le Pokémon est puissant, plus il te faudra de Pokéballs pour le capturer.`,
+                    `Un Pokémon capturé rejoint ta box, qui peut contenir jusqu'à 8 Pokémons.`,
+                    `Tu peux ensuite les déplacer de ta box vers le terrain pour qu'ils combattent.`
+                ]
+            }           
+        ],
+        step2: [
             `Tes Pokémon deviennnent plus fort en gagnant de l'expérience après un combat.`,
             `Mais il existe une autre manière de faire monter en expérience un Pokémon.`,
             `Il suffit de capturer un Pokémon sauvage de la même espèce.`,
             `Il partagera son expérience avec ton Pokémon avant d'être relâché.`,
-            () => `Tiens, essaie tout de suite. Essaie de capturer mon ${gameState.player.team[0].name}.`,
-        ],
-        victory: [
+            () => {
+                spawnTutoCaptureTeamStep2();
+                spawnPokemon(gameState.board.otherTeam[0], gameState.activeScene as Game)
+                return `Tiens, essaie tout de suite. Essaie de capturer mon ${gameState.player.team[0].name}.`
+            },
             `Plus le niveau du Pokémon capturé est élevé, plus il donnera d'expérience`,
-            `Rappelle-toi, cela marche uniquement si les Pokémon sont de la même espèce !`,
-            `Entraîne tes Pokémons et reviens quand tu seras prêt à affronter Auguste.`
+            `Rappelle-toi, cela marche uniquement si les Pokémon sont de la même espèce !`
         ],
+        victory: [],
         defeat: []
     }
 }

@@ -36,14 +36,9 @@ export const CHEN: () => Promise<any> = () => {
             "Ton Pokémon te protégera des Pokémons sauvages.",
             "Mais tout seul il ne sera pas de taille face aux champions d'arène!",
             "Il te faudra capturer des Pokémon sauvages pour composer une équipe.",
-            "Tiens, voilà 5 Pokéballs pour capturer tes premiers Pokémon."
-        ], { speaker: "chen" })
-            .then(() => receiveItem(ITEM_POKEBALL, 5))
-            .then(() => startDialog([
             "Chaque espèce de Pokémon a ses forces et faiblesses. N'oublie pas ça:",
-            "La clé de la victoire est une équipe équilibrée et bien positionnée.",
-            "Bon voyage et bonne chance !"
-        ], { speaker: "chen" }))
+            "La clé de la victoire est une équipe équilibrée et bien positionnée."
+        ], { speaker: "chen" })
     } 
     else {
         return startDialog([

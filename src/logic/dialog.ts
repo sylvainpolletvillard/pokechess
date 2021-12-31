@@ -6,14 +6,16 @@ import {Character, CHARACTER_STATE} from "../objects/character";
 import {DIALOGS} from "../data/dialogs";
 import {DEFAULT_VOICE, VoiceConfig, voicesByActor} from "../data/voices";
 import {MyScene} from "../scenes/MyScene";
-import {closeMenu, getSelectedMenuEntry, Menu, openMenu} from "../objects/menu";
+import {closeMenu, Menu, openMenu} from "../objects/menu";
+import { wait } from "../utils/helpers";
 
-export type DialogLine = string | DialogChoice | null | (() => DialogLine) ;
+export type DialogLine = string | DialogChoice | DialogLine[] | null | Promise<DialogLine> | (() => DialogLine);
 
 export interface Dialog {
     lines: DialogLine[];
     speaker: string;
     voice: VoiceConfig;
+    params: DialogParams;
     dialogGroup: Phaser.GameObjects.Group;
     textSprite: Phaser.GameObjects.Text;
     bgSprite: Phaser.GameObjects.RenderTexture;
@@ -31,11 +33,9 @@ export interface DialogParams {
 
 export type DialogChoice = { [option: string]: () => any }
 
-export function startDialog(lines: DialogLine[], params: DialogParams = {}){
+export function startDialog(lines: DialogLine[], params: DialogParams = {}): Promise<null>{
     const scene = gameState.activeScene
     if(!scene) return Promise.reject("No scene");
-
-    if(gameState.activeDialog) endDialog()
 
     let speaker = params.speaker ?? "system";
 
@@ -62,6 +62,11 @@ export function startDialog(lines: DialogLine[], params: DialogParams = {}){
     dialogGroup?.add(textSprite)?.setDepth(Z.DIALOG)
 
     gameState.activeDialog = { lines: [...lines], speaker, voice, dialogGroup, textSprite, bgSprite }
+
+    const dialogPromise = new Promise((resolve) => {
+        gameState.activeDialog!.onEnd = () => wait(0).then(() => resolve(null))
+    })
+
     showNextLine()
 
     if(params.wait && gameState.activeDialog){
@@ -73,12 +78,10 @@ export function startDialog(lines: DialogLine[], params: DialogParams = {}){
         }, params.wait)
     }
 
-    return new Promise((resolve) => {
-        gameState.activeDialog!.onEnd = () => resolve(true)
-    })
+    return dialogPromise
 }
 
-export function showNextLine(line?: DialogLine){
+export async function showNextLine(){
     if(!gameState.activeDialog || !gameState.activeScene || gameState.activeDialog.waitBeforeNextLine) return;
     if (gameState.activeDialog.speech) {
         gameState.activeDialog.speech.stop()
@@ -86,25 +89,23 @@ export function showNextLine(line?: DialogLine){
         return
     }
 
-    if(!line) {
-        line = gameState.activeDialog.lines.shift()
-    }
+    let line = gameState.activeDialog.lines.shift();
 
-    while (typeof line === "function" || Array.isArray(line)) {
+    while (typeof line === "function" || Array.isArray(line) || line instanceof Promise) {
         if (typeof line === "function") line = line()
+        if(line instanceof Promise) line = await line;
         if (Array.isArray(line)) {
             gameState.activeDialog.lines.unshift(...line)
             line = gameState.activeDialog.lines.shift()
         }
     }
 
-    if (line instanceof Promise) return
-    if (!line) return endDialog()
-
     if (typeof line === "string") {
         sayLine(line)
-    } else {
+    } else if(typeof line === "object" && line !== null){
         startChoice(line)
+    } else {
+        endDialog()
     }
 }
 
@@ -167,7 +168,8 @@ export function startChoice(choice: DialogChoice) {
             if(!gameState.activeDialog?.choice) return;
             delete gameState.activeDialog.choice
             closeMenu()
-            showNextLine(selectedChoice?.value || selectedChoice?.label);
+            gameState.activeDialog.lines.unshift(selectedChoice?.value || selectedChoice?.label)
+            showNextLine()            
         }
     })
 }

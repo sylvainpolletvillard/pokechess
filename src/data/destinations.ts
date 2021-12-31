@@ -1,4 +1,4 @@
-import {Destination, DestinationType, Intersection} from "../model/destination";
+import {Destination, DestinationType, Intersection} from "../logic/destination";
 import {BOURG_PALETTE} from "./destinations/bourg_palette";
 import {JADIELLE} from "./destinations/jadielle";
 import {FORET_JADE} from "./destinations/foret_jade";

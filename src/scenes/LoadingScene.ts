@@ -20,8 +20,7 @@ function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	/*gameState.currentDestination = JADIELLE
 	gameState.player.team = [ new PokemonOnBoard( new Pokemon(DRACAUFEU, 1, 50), 4 ,6)]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
-	gameState.player.inventory[VITESSE_PLUS.ref] = 1
-	*/
+	gameState.player.inventory[VITESSE_PLUS.ref] = 1*/
 }
 
 export default class LoadingScene extends MyScene {

@@ -1,14 +1,15 @@
-import {Destination, DestinationType, RoomType, RoomWild} from "../../model/destination";
+import {Destination, DestinationType, RoomType, RoomWild} from "../../logic/destination";
 import {homeLevel} from "../levels/home";
 import {chenLevel} from "../levels/labo_chen";
 import {gameState} from "../../logic/gamestate";
-import {spawnTutoCaptureTeam, spawnWildTeamByType} from "../../logic/spawns";
+import {spawnTutoCaptureTeam} from "../../logic/spawns";
+import {SCIENTIFIQUE_TUTO} from "../trainers";
 
 export const BOURG_PALETTE: Destination = {
     ref: "BOURG_PALETTE",
     name: "Bourg Palette",
     getRoomOrder(){
-        if(gameState.day === 0) return ["labo"]
+        if(gameState.day === 0) return ["labo", "tuto"]
         else return ["home"]
     },
     rooms: {
@@ -23,7 +24,17 @@ export const BOURG_PALETTE: Destination = {
             type: RoomType.FREEWALK,
             level: chenLevel,
             music: "music_labo_chen"
-        }
+        },
+        tuto:  {
+            name: "Route de Bourg Palette",
+            type: RoomType.TUTORIAL,
+            map: "foret_de_jade",
+            music: "music_labo_chen",
+            trainer: SCIENTIFIQUE_TUTO,
+            spawnOtherTeam(){
+                return spawnTutoCaptureTeam()
+            }
+        },
     },
     nextDestinations: {
         JADIELLE: [[0,-3]],

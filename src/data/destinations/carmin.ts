@@ -1,6 +1,6 @@
-import { spawnChampionTeam } from "../../logic/spawns";
-import {Destination, DestinationType, RoomType} from "../../model/destination";
-import { MAJOR_BOB } from "../champions";
+import { spawnTrainerTeam } from "../../logic/spawns";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import { MAJOR_BOB } from "../trainers";
 import { ELECTRODE } from "../pokemons/electrode";
 import { ELEKTEK } from "../pokemons/elektek";
 import { MAGNETI } from "../pokemons/magneti";
@@ -30,7 +30,7 @@ export const CARMIN: Destination = {
             name: "Arène de Carmin s.mer",
             map: "arene_carmin",
             spawnOtherTeam() {
-                return spawnChampionTeam([
+                return spawnTrainerTeam([
                         VOLTORBE,
                         PIKACHU,
                         RAICHU,
@@ -52,7 +52,7 @@ export const CARMIN: Destination = {
                     ])
             },
             music: "music_carmin",
-            champion: MAJOR_BOB
+            trainer: MAJOR_BOB
         }
     }
 }

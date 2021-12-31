@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import {Destination, DestinationType, RoomArena, RoomTutorial, RoomType, RoomWild} from "../model/destination";
+import {Destination, RoomArena, RoomTutorial, RoomType} from "./destination";
 import {Player} from "./player";
 import {Board, calcXpBoard, clearPlacement, setupPlayerIdleBoard, spawnPokemon} from "./board";
 import {updatePokemonAction} from "./fight";
@@ -9,10 +9,11 @@ import {Dialog, DialogLine, startDialog} from "./dialog";
 import {showCenterText} from "../objects/gui";
 import { MyScene } from "../scenes/MyScene"
 import {Pokemon} from "../data/pokemons";
-import {pickStarters} from "./spawns";
+import {pickStarters} from "./starters";
 import {BOURG_PALETTE, TEST_ROOM} from "../data/destinations/bourg_palette";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
 import { Badge } from "../data/badges";
+import {addToBox} from "./box";
 
 export enum GameStage {
     CREATION,
@@ -55,6 +56,7 @@ export class GameState {
         this.dialogStates = {}
         this.seed = randomInt(1, Math.pow(4,10))
         this.badges = [];
+        // @ts-ignore
         window.gameState = this; //TEMP: DEBUG
     }
 
@@ -169,9 +171,9 @@ export class GameState {
             if(gameState.currentRoom.type === RoomType.ARENA){
                 const arena = gameState.currentRoom as RoomArena
                 return startDialog(hasWon
-                    ? arena.champion.dialogs.victory
-                    : arena.champion.dialogs.defeat
-                , { speaker: arena.champion.name })
+                    ? arena.trainer.dialogs.victory
+                    : arena.trainer.dialogs.defeat
+                , { speaker: arena.trainer.name })
             }
             return Promise.resolve()
         }).then(() => {
@@ -180,17 +182,35 @@ export class GameState {
 
     }
 
-    endCapture(game: Game){
+    endCapture(pokemonCaptured: Pokemon, game: Game){
         this.stage = GameStage.ENDED;
         const player = game.sprites.get("player")
         player && player.play("trainer_victory")
 
-        wait(100).then(() => {
+        let promise: Promise<any> = wait(100);
+
+        const pokemons = gameState.player.boardAndBox
+        const myPokemon = pokemons.find(p => p.entry.ref === pokemonCaptured.entry.ref)
+        if(myPokemon != null){
+            promise = promise.then(() => startDialog([
+                `Le ${myPokemon.name} sauvage partage son expérience avant d'être relaché.`,
+                `Votre ${myPokemon.name} gagne ${pokemonCaptured.xp} XP`
+            ])).then(() => {
+                const oldLvl = myPokemon.level
+                myPokemon.gainXP(pokemonCaptured.xp)
+                if(oldLvl !== myPokemon.level){
+                    return startDialog([`${myPokemon.name} passe au niveau ${myPokemon.level}`])
+                }
+            })
+        } else {
+            addToBox(pokemonCaptured, game)
+        }
+
+        return promise.then(() => {
             if(gameState.currentRoom.type === RoomType.TUTORIAL){
                 const arena = gameState.currentRoom as RoomTutorial
-                return startDialog(arena.champion.dialogs.victory, { speaker: arena.champion.name })
+                return startDialog(arena.trainer.dialogs.victory, { speaker: arena.trainer.name })
             }
-            return Promise.resolve()
         }).then(() => {
             gameState.goToNextRoom()
         })

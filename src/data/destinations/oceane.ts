@@ -1,4 +1,4 @@
-import {Destination, DestinationType, RoomType, RoomWild} from "../../model/destination";
+import {Destination, DestinationType, RoomType, RoomWild} from "../../logic/destination";
 import {spawnWildTeamByType} from "../../logic/spawns";
 import {TYPE_EAU, TYPE_VOL} from "../types";
 

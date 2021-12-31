@@ -19,8 +19,6 @@ export const assistant1 = () => {
                 "C'est utile pour nos recherches, mais aussi pour vos stratégies de combat."
             ]
         }
-      ,
-      ""
     ], { speaker: "assistant1"})
 }
 

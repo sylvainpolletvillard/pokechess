@@ -1,6 +1,6 @@
-import {Destination, DestinationType, RoomType} from "../../model/destination";
-import {ONDINE} from "../champions";
-import {spawnChampionTeam} from "../../logic/spawns";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import {ONDINE} from "../trainers";
+import {spawnTrainerTeam} from "../../logic/spawns";
 
 import { AKWAKWAK } from "../pokemons/akwakwak";
 import { AQUALI } from "../pokemons/aquali";
@@ -33,7 +33,7 @@ export const AZURIA: Destination = {
             name: "Arène d'Azuria",
             map: "arene_azuria",
             spawnOtherTeam(){
-                return spawnChampionTeam([
+                return spawnTrainerTeam([
                         STARI,
                         STAROSS,
                         PSYKOKWAK,
@@ -55,7 +55,7 @@ export const AZURIA: Destination = {
                     ])
             },
             music: "music_azuria",
-            champion: ONDINE
+            trainer: ONDINE
         }
     }
 }

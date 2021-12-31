@@ -9,11 +9,11 @@ import {closeMenu} from "./menu";
 import {openBox} from "./pokemonBox";
 import {addToBox} from "../logic/box";
 import {Z} from "../data/depths";
-import {DestinationType, RoomArena, RoomType} from "../model/destination";
+import {DestinationType, RoomArena, RoomType} from "../logic/destination";
 import {wait} from "../utils/helpers";
 import {startDialog} from "../logic/dialog";
 import {tweenFade, tweenPop} from "../utils/tweens";
-import {Champion} from "../data/champions";
+import {Trainer} from "../data/trainers";
 import {MyScene} from "../scenes/MyScene";
 import {cancelPokemonDrag} from "../logic/board";
 import RoomScene from "../scenes/RoomScene";
@@ -70,6 +70,7 @@ export function drawGUI(game: Game){
             }
         })
     addInteractiveElem(pokedexButton)
+    menuButtonsGroup.add(pokedexButton)
 
     boxButton = game.add.sprite(160, game.scale.height - 12, "buttons", 0)
     boxButton.setData("type", "boxButton")
@@ -110,6 +111,7 @@ export function drawGUI(game: Game){
             }
         })
     addInteractiveElem(boxButton)
+    menuButtonsGroup.add(boxButton)
 
     bagButton = game.add.sprite(220, game.scale.height - 12, "buttons",1)
     let bagButtonText: Phaser.GameObjects.Text | null;
@@ -148,27 +150,27 @@ export function drawGUI(game: Game){
                 //TODO: prendre l'objet tenu par le pokemon
             }
         })
-
+        
     addInteractiveElem(bagButton)
-
-    fightButton = game.add.sprite(295, game.scale.height - 12, "buttons_big",0)
-    fightButton
-        .on("over", () => {
-            fightButton.setFrame(1)
-        })
-        .on("out", () => {
-            fightButton.setFrame(0)
-        })
-        .on("click", () => {
-            hideMenuButtons()
-            game.launchFight()
-        })
-    addInteractiveElem(fightButton)
-
-    menuButtonsGroup.add(pokedexButton)
-    menuButtonsGroup.add(boxButton)
     menuButtonsGroup.add(bagButton)
-    menuButtonsGroup.add(fightButton)
+
+    if(gameState.currentRoom.type !== RoomType.TUTORIAL){
+        fightButton = game.add.sprite(295, game.scale.height - 12, "buttons_big",0)
+        fightButton
+            .on("over", () => {
+                fightButton.setFrame(1)
+            })
+            .on("out", () => {
+                fightButton.setFrame(0)
+            })
+            .on("click", () => {
+                hideMenuButtons()
+                game.launchFight()
+            })
+        addInteractiveElem(fightButton)
+        menuButtonsGroup.add(fightButton)
+    }
+    
     menuButtonsGroup.setDepth(Z.GUI_BUTTON);
 }
 
@@ -183,10 +185,10 @@ export function drawPlayers(game: Game){
 
     if([RoomType.ARENA, RoomType.TUTORIAL].includes(game.state.currentRoom.type)){
         const arena = game.state.currentRoom as RoomArena
-        const champion = game.add.sprite(game.scale.width - 24, 32, "trainer")
-            .setDepth(Z.CHAMPION)
-            .setFrame(arena.champion.frameIndex)
-        game.sprites.set("opponent", champion)
+        const trainer = game.add.sprite(game.scale.width - 24, 32, "trainer")
+            .setDepth(Z.TRAINER)
+            .setFrame(arena.trainer.frameIndex)
+        game.sprites.set("opponent", trainer)
     }
 
     drawAlliancesInfo(0)
@@ -206,8 +208,8 @@ export function drawIntro(game: Game): Promise<any>{
 
     if(gameState.currentRoom.type === RoomType.ARENA || gameState.currentRoom.type === RoomType.TUTORIAL){
         const arena = gameState.currentRoom as RoomArena
-        showTrainerIntro(arena.champion, game).then(() => {})
-        return wait(2000).then(() => startDialog(arena.champion.dialogs.start, { speaker: arena.champion.name }))
+        showTrainerIntro(arena.trainer, game).then(() => {})
+        return wait(2000).then(() => startDialog(arena.trainer.dialogs.start, { speaker: arena.trainer.name }))
     }
 
     return Promise.resolve()
@@ -277,8 +279,15 @@ export function drawTourCounter(){
 export function drawPokeballsCounter(scene: MyScene){
     if(pokeballsCounterGroup != null) pokeballsCounterGroup.destroy(true, true)
 
-    let pokeballPos = [game.scale.width - 64, -16],
-        counterPos = [game.scale.width - 24, 8];
+    let ox = game.scale.width - 64
+
+    if(gameState.currentRoom.type === RoomType.TUTORIAL){
+        ox = -16
+    }
+
+    let pokeballPos = [ox, -16],
+        counterPos = [ox + 40, 8];
+
     if(scene instanceof RoomScene){
       counterPos = [28, 8];
       pokeballPos = [32, 48];
@@ -304,10 +313,10 @@ export function showCenterText(animName: string, game: Game){
     return tweenPop(game, text, 500);
 }
 
-export function showTrainerIntro(champion: Champion, game: Game){
-    if(champion.introFrameIndex === null) return Promise.resolve(); // no intro
+export function showTrainerIntro(trainer: Trainer, game: Game){
+    if(trainer.introFrameIndex === null) return Promise.resolve(); // no intro
     const portrait = game.add.sprite(game.scale.width/2, game.scale.height/2, "trainers_intros")
-    portrait.setDepth(Z.CENTER_TEXT).setFrame(champion.introFrameIndex)
+    portrait.setDepth(Z.CENTER_TEXT).setFrame(trainer.introFrameIndex)
     game.sprites.set("centerIntro", portrait)
     return tweenFade(game, portrait, 2000);
 }

@@ -1,6 +1,6 @@
-import { spawnChampionTeam } from "../../logic/spawns";
-import {Destination, DestinationType, RoomType} from "../../model/destination";
-import { ERIKA } from "../champions";
+import { spawnTrainerTeam } from "../../logic/spawns";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import { ERIKA } from "../trainers";
 import { BOUSTIFLOR } from "../pokemons/boustiflor";
 import { EMPIFLOR } from "../pokemons/empiflor";
 import { FLORIZARRE } from "../pokemons/florizarre";
@@ -30,7 +30,7 @@ export const CELADOPOLE: Destination = {
             name: "Arène de Céladopole",
             map: "arene_celadopole",
             spawnOtherTeam() {
-                return spawnChampionTeam([
+                return spawnTrainerTeam([
                         SAQUEDENEU,
                         ORTIDE,
                         BOUSTIFLOR,
@@ -52,7 +52,7 @@ export const CELADOPOLE: Destination = {
                     ])
             },
             music: "music_celadopole",
-            champion: ERIKA
+            trainer: ERIKA
         }
     }
 }

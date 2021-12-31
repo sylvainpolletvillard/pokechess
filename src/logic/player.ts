@@ -72,4 +72,8 @@ export class Player {
     get hasBoxFull(){
         return this.box.every(slot => slot != null)
     }
+
+    get boardAndBox(): Pokemon[] {
+        return [...this.team, ...(this.box.filter(p => p != null) as Pokemon[])]
+    }
 }

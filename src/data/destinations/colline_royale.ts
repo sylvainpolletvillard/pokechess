@@ -1,4 +1,4 @@
-import {Destination, DestinationType} from "../../model/destination";
+import {Destination, DestinationType} from "../../logic/destination";
 
 export const COLLINE_ROYALE: Destination = {
     ref: "COLLINE_ROYALE",

@@ -1,6 +1,6 @@
-import {Destination, DestinationType, RoomType} from "../../model/destination";
-import {KOGA} from "../champions";
-import {spawnChampionTeam} from "../../logic/spawns";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import {KOGA} from "../trainers";
+import {spawnTrainerTeam} from "../../logic/spawns";
 import { AEROMITE } from "../pokemons/aeromite";
 import { ARBOK } from "../pokemons/arbok";
 import { RAFFLESIA } from "../pokemons/rafflesia";
@@ -30,7 +30,7 @@ export const PARMANIE: Destination = {
             name: "Arène de Parmanie",
             map: "parmanie",
             spawnOtherTeam() {
-                return spawnChampionTeam([
+                return spawnTrainerTeam([
                         SMOGO,
                         SMOGOGO,
                         TADMORV,
@@ -52,7 +52,7 @@ export const PARMANIE: Destination = {
                     ])
             },
             music: "music_parmanie",
-            champion: KOGA
+            trainer: KOGA
         }
     }
 }

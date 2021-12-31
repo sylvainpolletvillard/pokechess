@@ -1,6 +1,6 @@
 import {DialogLine, startDialog} from "../../logic/dialog";
 import {pickRandomIn} from "../../utils/helpers";
-import {pickStarter} from "../../logic/spawns";
+import {pickStarter} from "../../logic/starters";
 import {Description} from "../../objects/description";
 import {pauseMusicAndPlaySound} from "../../logic/audio";
 import {gameState} from "../../logic/gamestate";

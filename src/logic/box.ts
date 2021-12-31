@@ -6,7 +6,7 @@ import {PokemonOnBoard} from "../objects/pokemon";
 import {drawAlliancesInfo} from "../objects/alliancesInfo";
 import {removeInArray} from "../utils/helpers";
 import { ITEM_POKEBALL } from "../data/items";
-import { RoomType } from "../model/destination";
+import { RoomType } from "./destination";
 import { drawPokeballsCounter } from "../objects/gui";
 import { MyScene } from "../scenes/MyScene";
 
