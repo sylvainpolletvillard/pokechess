@@ -5,7 +5,8 @@ import Game from "../scenes/GameScene";
 import {faceTarget, getDirection, renderAttack} from "./anims";
 import Phaser from "phaser";
 import {PokemonOnBoard} from "../objects/pokemon";
-import {gameState} from "./gamestate";
+import {GameStage, gameState} from "./gamestate";
+import GameScene from "../scenes/GameScene";
 
 export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: Game){
     if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || pokemon.pv <= 0) return;
@@ -78,7 +79,7 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
                 //console.log(`${pokemon.name} is attacking ${target.name}  for ${damage} damage !`)
                 target.pv = Math.max(0, target.pv - damage)
                 target.pp = Math.min(target.maxPP, target.pp + 2);
-                if(target.pv === 0) killPokemon(target, board, game)
+                if(target.pv === 0) killPokemon(target)
             }
             pokemon.nextAction = { type: PokemonTypeAction.IDLE }
         }
@@ -92,11 +93,25 @@ export function calcDamage(pokemon: PokemonOnBoard, target: PokemonOnBoard){
 }
 
 
-export function killPokemon(pokemon: PokemonOnBoard, board: Board, game: Game){
+export function killPokemon(pokemon: PokemonOnBoard){
+    const board = gameState.board;
     const team = pokemon.owner === 1 ? board.playerTeam : board.otherTeam;
     const index = team.indexOf(pokemon)
-    const sprite = game.sprites.get(pokemon.uid)
+
     if(index === -1) return console.error(`Error killPokemon: pokemon ${pokemon.uid} not found in team ${pokemon.owner}`)
+    
+    sendBackToPokeball(pokemon)
+    team.splice(index, 1)
+
+    if(team.length === 0 && gameState.stage === GameStage.FIGHT){
+        gameState.endFight(pokemon.owner)
+    }
+}
+
+export function sendBackToPokeball(pokemon: PokemonOnBoard){
+    const game = gameState.activeScene as GameScene;
+    const sprite = game.sprites.get(pokemon.uid)
+
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
     const pokeball = game.add.sprite(sprite.x, sprite.y, "pokeball");
@@ -105,7 +120,6 @@ export function killPokemon(pokemon: PokemonOnBoard, board: Board, game: Game){
         pokeball.destroy()
     })
 
-    team.splice(index, 1)
     sprite.destroy();
     game.sprites.delete(pokemon.uid)
 
@@ -113,9 +127,5 @@ export function killPokemon(pokemon: PokemonOnBoard, board: Board, game: Game){
     if(bars != null){
         bars.destroy();
         game.graphics.delete(pokemon.uid);
-    }
-
-    if(team.length === 0){
-        gameState.endFight(pokemon.owner, game)
     }
 }

@@ -6,7 +6,9 @@ import { spawnTutoCaptureTeamStep2 } from "../logic/spawns";
 import { drawPokeballsCounter } from "../objects/gui";
 import { MyScene } from "../scenes/MyScene";
 import { spawnPokemon } from "../logic/board";
+import { killPokemon, sendBackToPokeball } from "../logic/fight";
 import Game from "../scenes/GameScene";
+import { wait } from "../utils/helpers";
 
 export interface Trainer {
     name: string;
@@ -238,7 +240,9 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Mais il existe une autre manière de faire monter en expérience un Pokémon.`,
             `Il suffit de capturer un Pokémon sauvage de la même espèce.`,
             `Il partagera son expérience avec ton Pokémon avant d'être relâché.`,
-            () => {
+            async function() {
+                gameState.board.playerTeam.forEach(pokemon => sendBackToPokeball(pokemon))
+                await wait(1000);
                 gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD
                 gameState.stage = GameStage.PLACEMENT
                 gameState.board.otherTeam = spawnTutoCaptureTeamStep2();

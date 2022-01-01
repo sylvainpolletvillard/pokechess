@@ -197,7 +197,7 @@ export async function capturePokemon(
         const pokemons = gameState.player.boardAndBox
         const myPokemon = pokemons.find(p => p.entry.ref === pokemon.entry.ref)
         if(myPokemon != null){
-            wait(100).then(() => startDialog([
+            await wait(100).then(() => startDialog([
                 `Le ${myPokemon.name} sauvage partage son expérience avant d'être relaché.`,
                 `Votre ${myPokemon.name} gagne ${pokemon.xp} XP`
             ])).then(() => {
@@ -211,7 +211,7 @@ export async function capturePokemon(
             addToBox(pokemon, game)
         }
 
-        if(gameState.board.otherTeam.length === 0) await gameState.endCapture(game)
+        if(gameState.board.otherTeam.length === 0) await gameState.endCapture()
     })
 }
 

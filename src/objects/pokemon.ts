@@ -92,7 +92,7 @@ export function makePokemonSprite(
         displayPokemonReleaseBox(pokemon);
 
         if(gameState.player.box.includes(pokemon)){
-            removeFromBox(pokemon, game)
+            removeFromBox(pokemon)
         }
     })
     sprite.on('drop', (pointer: PointerEvent) => {

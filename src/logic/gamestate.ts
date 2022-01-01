@@ -3,7 +3,7 @@ import {Destination, RoomArena, RoomTutorial, RoomType} from "./destination";
 import {Player} from "./player";
 import {Board, calcXpBoard, clearPlacement, setupPlayerIdleBoard, spawnPokemon} from "./board";
 import {updatePokemonAction} from "./fight";
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import {closeMenu, Menu} from "../objects/menu";
 import {Dialog, DialogLine, startDialog} from "./dialog";
 import {showCenterText} from "../objects/gui";
@@ -99,7 +99,7 @@ export class GameState {
         }
     }
 
-    initFight(game: Game){
+    initFight(game: GameScene){
         closeMenu()
         clearPlacement(game)
         this.stage = GameStage.LAUNCH
@@ -125,7 +125,7 @@ export class GameState {
                 this.stage = GameStage.FIGHT
                 this.fightTimer = game.time.addEvent({
                     delay: game.gameSpeed,
-                    callback: () => this.loopFight(game),
+                    callback: this.loopFight,
                     callbackScope: this,
                     loop: true
                 });
@@ -133,7 +133,8 @@ export class GameState {
         })
     }
 
-    loopFight(game: Game){
+    loopFight(){
+        const game = gameState.activeScene as GameScene;
         if(this.stage === GameStage.FIGHT){
             for (let pokemon of this.board.playerTeam) {
                 updatePokemonAction(pokemon, this.board, game)
@@ -144,7 +145,8 @@ export class GameState {
         }
     }
 
-    endFight(loser: number, game: Game){
+    endFight(loser: number){        
+        const game = gameState.activeScene as GameScene;
         this.stage = GameStage.ENDED;
         const player = game.sprites.get("player")
         const hasWon = (loser !== 1)
@@ -186,7 +188,8 @@ export class GameState {
         })
     }
 
-    endCapture(game: Game){
+    endCapture(){
+        const game = gameState.activeScene as GameScene;
         this.stage = GameStage.ENDED;
         const player = game.sprites.get("player")
         player && player.play("trainer_victory")
