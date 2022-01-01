@@ -63,7 +63,7 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     const sprite = game.sprites.get(pokemon.uid)
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
-    const attackSpeed = 5000000 / (pokemon.speed+20) / game.gameSpeed
+    const attackSpeed = 5000000 / (pokemon.speed+25) / game.gameSpeed
     pokemon.nextAction = { type: PokemonTypeAction.ATTACK, target };
     faceTarget(pokemon, target, game);
     game.time.addEvent({

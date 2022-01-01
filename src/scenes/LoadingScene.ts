@@ -19,7 +19,7 @@ import { NIDORAN_MALE } from "../data/pokemons/nidoranm";
 import { SALAMECHE } from "../data/pokemons/salameche";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
-	gameState.currentDestination = JADIELLE
+	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [ 
 		new PokemonOnBoard( new Pokemon(SALAMECHE, 1, 5), 4 ,5),
 		new PokemonOnBoard( new Pokemon(NIDORAN_MALE, 1, 2), 5 ,5),

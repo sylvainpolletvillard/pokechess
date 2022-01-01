@@ -2,7 +2,7 @@ import {loadSprites} from "../data/sprites";
 import {loadSpritesheets} from "../data/spritesheets";
 import {loadTilemaps} from "../data/tilemaps";
 import {Z} from "../data/depths";
-import { Destination, Intersection, Path } from "../model/destination";
+import { Destination, Intersection, Path } from "../logic/destination";
 import {DESTINATIONS, DestinationTypeHighlightTint, INTERSECTIONS} from "../data/destinations"
 import {loadFonts} from "../data/fonts";
 import {setupAnims} from "../logic/anims";

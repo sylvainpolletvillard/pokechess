@@ -37,8 +37,7 @@ export class GameState {
     starters: Pokemon[];
     music: Phaser.Sound.BaseSound | undefined;
     dialogStates: { [pnjName: string]: Number }
-    seed: number;
-    badges: string[];
+    seed: number;    
 
     constructor() {
         this.day = 0
@@ -55,7 +54,6 @@ export class GameState {
         this.starters = pickStarters()
         this.dialogStates = {}
         this.seed = randomInt(1, Math.pow(4,10))
-        this.badges = [];
         // @ts-ignore
         window.gameState = this; //TEMP: DEBUG
     }
@@ -70,12 +68,12 @@ export class GameState {
     }
 
     hasBadge(badge: Badge){
-        return gameState.badges.includes(badge.ref)
+        return gameState.player.badges.includes(badge.ref)
     }
 
     receiveBadge(badge: Badge){
-        if(!gameState.badges.includes(badge.ref)){
-            gameState.badges.push(badge.ref)
+        if(!gameState.player.badges.includes(badge.ref)){
+            gameState.player.badges.push(badge.ref)
         }
     }
 

@@ -58,13 +58,13 @@ export function spawnTrainerTeam(pokemons: PokemonEntry[], positions: [number, n
     const team: PokemonOnBoard[] = []
 
     const numberToSpawn = Math.min( 
-        clamp(gameState.player.teamSize, 1, 8 ), 
+        clamp(gameState.player.badges.length + 1, 3, 8 ), 
         positions.length,
         pokemons.length
     )
 
     for(let i=0; i<numberToSpawn; i++){
-        let level = gameState.player.averagePokemonLevel + randomInt(1,3)
+        let level = (gameState.player.badges.length + 1) * 5 + (i%5)
         const entry = pokemons[i]
         const [x,y] = positions[i]
         team.push(

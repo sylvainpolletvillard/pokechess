@@ -5,7 +5,7 @@ import {PokemonEntry} from "../pokemons";
 
 export const NIDORAN_MALE: PokemonEntry = {
     ref: "nidoran_m",
-    name: "Nidoran♂",
+    name: "Nidoran ♂",
     maxPV: 46,
     maxPP: 20,
     attack: 57,

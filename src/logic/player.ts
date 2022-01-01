@@ -14,6 +14,7 @@ export class Player {
     team: PokemonOnBoard[];
     box: (Pokemon | null)[];
     inventory: { [itemRef: string]: number };
+    badges: string[];
 
     constructor(ref: number) {
         this.ref = ref;
@@ -30,6 +31,7 @@ export class Player {
             null,
             null
         ];
+        this.badges = [];
     }
 
     setupTeam(owner: number){
