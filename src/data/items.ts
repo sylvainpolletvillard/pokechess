@@ -273,6 +273,18 @@ export const FOSSILE_PTERA: Item = {
     desc: "Un fossile de Pokémon antique en forme d'oeuf"
 }
 
+export const ITEM_FILET: Item = {
+    ref: "filet",
+    label: "Filet d'Hector",
+    desc: "Récupère une Pokéball par Pokémon éliminé par son porteur"
+}
+
+export const ITEM_PARAPLUIE: Item = {
+    ref: "parapluie",
+    label: "Parapluie de Sally",
+    desc: "Protège le porteur de toutes les altérations"
+}
+
 export const ITEMS: { [ref: string]: Item } = {
     [ITEM_POKEBALL.ref]: ITEM_POKEBALL,
     [BAIE_CERIZ.ref]: BAIE_CERIZ,

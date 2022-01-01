@@ -1,14 +1,14 @@
 import {GameStage, gameState} from "../logic/gamestate";
-import { BADGE_ROCHE } from "./badges";
-import {ITEM_POKEBALL} from "./items";
+import { BADGE_AME, BADGE_CASCADE, BADGE_FOUDRE, BADGE_MARAIS, BADGE_PRISME, BADGE_ROCHE, BADGE_TERRE, BADGE_VOLCAN } from "./badges";
+import {ITEM_FILET, ITEM_PARAPLUIE, ITEM_POKEBALL} from "./items";
 import {DialogLine} from "../logic/dialog";
 import { spawnTutoCaptureTeamStep2 } from "../logic/spawns";
 import { drawPokeballsCounter } from "../objects/gui";
 import { MyScene } from "../scenes/MyScene";
 import { spawnPokemon } from "../logic/board";
-import { killPokemon, sendBackToPokeball } from "../logic/fight";
+import { sendBackToPokeball } from "../logic/fight";
 import Game from "../scenes/GameScene";
-import { wait } from "../utils/helpers";
+import { receiveItem } from "./dialogs/descriptions";
 
 export interface Trainer {
     name: string;
@@ -34,7 +34,8 @@ export const PIERRE: Trainer = {
             `Tu veux toujours te battre avec moi ? Très bien. En garde !`
         ],
         victory: [
-            `Hmm... Beau combat. En reconnaissance de ta victoire, voici le Badge Roche !`,
+            `Hmm... Beau combat.`,
+            `En reconnaissance de ta victoire, voici le BADGE ROCHE !`,
             () => {
                 gameState.receiveBadge(BADGE_ROCHE);
                 return `C'est un Badge officiel de la Ligue Pokémon !` 
@@ -55,9 +56,23 @@ export const ONDINE: Trainer = {
     frameIndex: 9,
     introFrameIndex: 1,
     dialogs:{
-        start: [`Je suis Ondine`],
-        victory: [`J'ai perdu ! Voilà le badge Cascade.`],
-        defeat: [`T'es nul !`]
+        start: [
+            `Salut ! T'es un nouveau ?`,
+            `Si tu veux être un vrai dresseur, il te faut une stratégie !`,
+            `C'est quoi ta tactique pour capturer les pokémons sauvages ?`,
+            `Moi je leur fonce dans le tas avec mes pokémons aquatiques !`],
+        victory: [
+            `Whouha ! T'es super fort ! Très bien !`,
+            `Je te donne le BADGE CASCADE pour m'avoir battue!`,
+            () => {
+                gameState.receiveBadge(BADGE_CASCADE);
+                return `Il t'ouvre aussi le chemin vers la grotte au nord d'Azuria.` 
+            },
+        ],
+        defeat: [
+            `Haha, on dirait que ton équipe a pris l'eau !`,
+            `Il va te falloir trouver une autre tactique.`
+        ]
     }
 }
 
@@ -66,9 +81,27 @@ export const MAJOR_BOB: Trainer = {
     frameIndex: 10,
     introFrameIndex: 2,
     dialogs:{
-        start: [`Je suis le major Bob`],
-        victory: [`J'ai perdu ! Voilà le badge Foudre.`],
-        defeat: [`T'es nul !`]
+        start: [
+            `Hé, gamin ! Tu fais quoi là ?`,
+            `Tu ne résisterais pas longtemps en temps de guerre !`,
+            `Je vais te dire, mes Pokémon Électriques m'ont sauvé la vie !`,
+            `Et ouais ! Ils ont paralysé mes ennemis avec leurs éclairs !`,
+            `Une vraie boucherie ! Y va t'arriver la même chose !`,
+            `Compte tes dents ! Tu vas morfler !`
+        ],
+        victory: [
+            `Whoo ! Gard'vous ! T'es un dur, mon p'tit gars !`,
+            `Très bien, prends le BADGE FOUDRE !`,
+            () => {
+                gameState.receiveBadge(BADGE_FOUDRE);
+                return `T'en auras besoin pour rentrer dans la Ligue Pokémon.` 
+            }
+        ],
+        defeat: [
+            `Ha ! Une défaite foudroyante !`,
+            `Un p'tit conseil, gamin ! L'électricité est très puissante !`,
+            `Mais elle est inutile face à des Pokémon de la terre !`
+        ]
     }
 }
 
@@ -77,9 +110,32 @@ export const ERIKA: Trainer = {
     frameIndex: 11,
     introFrameIndex: 3,
     dialogs:{
-        start: [`Je suis Erika`],
-        victory: [`J'ai perdu ! Voilà le badge Fleur.`],
-        defeat: [`T'es nul !`]
+        start: [
+            `Bonjour et sois le bienvenu. Il fait beau, n'est-ce pas?`,
+            `J'aime la vie. J'aime les fleurs et les chansons. C'est chou, non?`,
+            `Moi, c'est ERIKA, la Championne de l'arène de Céladopole.`,
+            `L'arrangement floral est ma spécialité.`,
+            `Mes Pokémons sont du type plante.`,
+            `Il fit grand froid hier, alors j'ai mis un pull.`,
+            `Hein? Tu veux te battre? Bah... Dis-le, mon vieux !`,
+            `Tu sais quoi? Tu vas perdre!`
+        ],
+        victory: [
+            `Oh! J'ai perdu? Bien joué. C'est mérité.`,
+            `Je te confie le BADGE PRISME.`,
+            () => {
+                gameState.receiveBadge(BADGE_PRISME);
+                return [
+                    `Chaque badge te permet de contrôler un Pokémon de plus`,
+                    `sur le terrain, tu le savais ?`
+                ]                
+            }
+        ],
+        defeat: [
+            `Perdre fait toujours un peu mal mais...`,
+            `Combattre un bon adversaire est stimulant... `,
+            `Allez, ne reste pas planté là !`            
+        ]
     }
 }
 
@@ -88,9 +144,29 @@ export const KOGA: Trainer = {
     frameIndex: 12,
     introFrameIndex: 4,
     dialogs:{
-        start: [`Je suis Koga`],
-        victory: [`J'ai perdu ! Voilà le badge Poubelle.`],
-        defeat: [`T'es nul !`]
+        start: [
+            `Gwahahaha ! Un nain ose me défier ?`,
+            `Moi, le grand le beau le terrible Koga ?`,
+            `Par l'enfer, par le sang, par l'acier, j'vais gagner !`,
+            `Puisse la poigne de mes poisons pétrifier de peur tes petits Pokémon !`,
+        ],
+        victory: [
+            `Gwaha... heu ? Tu as prouvé ta valeur !`,
+            `Ouvre ta mimine, car voici... le BADGE ÂME !`,
+            () => {
+                gameState.receiveBadge(BADGE_AME);
+                return [
+                    `J'ai combattu de toutes mes forces...`,
+                    `Mais... Je ne suis pas assez fort.`,
+                    `Va dans la prochaine arène ! Explore tes limites !`,
+                    `Bonne chance !`,
+                ]                
+            }
+        ],
+        defeat: [
+            `Ha ha ! Il est temps de t'apprendre que certains Pokémon`,
+            `ne peuvent pas être vaincus par la force pure !`
+        ]
     }
 }
 
@@ -99,9 +175,29 @@ export const MORGANE: Trainer = {
     frameIndex: 13,
     introFrameIndex: 5,
     dialogs:{
-        start: [`Je suis Morgane`],
-        victory: [`J'ai perdu ! Voilà le badge Cerveau.`],
-        defeat: [`T'es nul !`]
+        start: [
+            `J'avais prédit ton arrivée !`,
+            `J'ai des pouvoirs psychiques depuis l'enfance.`,
+            `J'ai appris à plier les cuillères par la force de mon esprit.`,
+            `C'est pas super utile, mais ça en jette !`,
+            `Je n'aime pas les combats, mais si tu insistes, je vais te montrer mes pouvoirs !`
+        ],
+        victory: [
+            `Ha! Je suis surprise ! Tu as gagné.`,
+            `C'est vrai, je n'ai pas fait de mon mieux !`,
+            `Tu mérites ta victoire ! Tu gagnes le BADGE MARAIS !`,
+            () => {
+                gameState.receiveBadge(BADGE_MARAIS);
+                return [
+                    `Le Badge Marais renforce les pouvoirs occultes...`,
+                    `Et ça... C'est pas de la gnognotte.`,
+                    `Tu deviendras un Maître ! Je le sens !`
+                ]                
+            }
+        ],
+        defeat: [
+            `C'est exactement ce que j'avais prédit.`
+        ]
     }
 }
 
@@ -110,9 +206,21 @@ export const AUGUSTE: Trainer = {
     frameIndex: 14,
     introFrameIndex: 6,
     dialogs:{
-        start: [`Je suis Auguste, champion de Cramoisîle !`,`Et je pète le feu !`],
-        victory: [`J'ai gagné !`, `J'ai perdu ! Voilà le badge Volcan.`],
-        defeat: [`J'ai perdu !`, `T'es nul !`]
+        start: [
+            `Salutations. Mon nom est... Auguste !`,
+            `Je suis le Champion de l'Arène de Cramois'Île !`,
+            `Mes Pokémon flamboyants vont te réduire en cendres !`,
+            `Haha ! Y va bientôt faire très chaud !`
+        ],
+        victory: [
+            `Vlouff ! Je me suis fait vaporiser !`,
+            `Tu as gagné le badge Volcan !`,
+            () => {
+                gameState.receiveBadge(BADGE_VOLCAN);
+                return `Plus tu possèdes de badges, plus ton équipe sera grande !`
+            }
+        ],
+        defeat: [`Maintenant tu sais de quel bois je me chauffe !`]
     }
 }
 
@@ -123,15 +231,25 @@ export const GIOVANNI: Trainer = {
     dialogs:{
         start: [
             `Je dois dire que je suis surpris que tu sois arrivé jusqu'ici !`,
-            `Maintenant tu vas affronter Giovanni, le plus grand des dresseurs !`
+            `Te voici dans mon repaire ! Je compte reformer la Team Rocket ici !`,
+            `Tu oses me défier, moi, le grand Giovanni ? Tu vas déguster !`
         ],
         victory: [
-            `C'était un combat intense. Et tu as gagné !`,
+            `Ah ! Voilà ce que j'appelle du combat ! Tu as gagné !`,
+            `En récompense voici le badge Terre !`,
+            () => {
+                gameState.receiveBadge(BADGE_TERRE);
+                return `Une fois les 8 badges obtenus, tu pourras accéder à la Ligue Pokémon !`
+            },
             `Comme preuve de ta maîtrise comme dresseur Pokémon, voici le badge Terre.`,
-            `Avec ce dernier badge, tu peux désormais défier la Ligue Pokémon.`
+            `Je ne suis pas digne d'être le chef de la Team Rocket !`,
+            `Ainsi, son existence s'achève avec ma défaite !`,
+            `Je vais me retirer, loin, en ermite, pour étudier les Pokémon !`,
+            `Un jour, nos chemins se croiseront à nouveau ! Adieu !`
         ],
         defeat: [
-            `Ha ha ! Tu pensais être à la heureur face au chef de la Team Rocket ?`
+            `Tu élèves tes Pokémon trop soigneusement.`,
+            `Un gosse comme toi ne peut pas comprendre mes plans !`
         ]
     }
 }
@@ -142,13 +260,28 @@ export const HECTOR: Trainer = {
     introFrameIndex: 8,
     dialogs: {
         start: [
-            `Je suis Hector`
+            `Tiens, tu as trouvé mon camp ? Moi, c'est Hector!`,            
+            `Je suis venu étudier les Pokémon Insecte de cette région.`,
+            `Personne ne connait mieux les Pokémon Insecte que moi!`,
+            `Quand je serai adulte, je serai un grand expert en Pokémon Insecte!`,
+            `Tu veux que je te montre ?`,
+            `Prépare toi à admirer le résultat de mes recherches!`
         ],
         victory: [
-            `J'ai perdu`
+            `Wah, Ça alors ! Tu connais vraiment bien les Pokémon !`,
+            `Ah, j'ai encore beaucoup à apprendre! ... `,
+            `Oui, je sais ! Prends mon filet à insecte comme récompense !`,
+            () => {
+                return receiveItem(ITEM_FILET)
+                .then(() => `Tu verras, il te sera très utile !`)
+            },
+            `Bien, je vais lever le camp. J'ai fini ce que j'avais à faire ici.`,
+            `Ce coin regorge de Pokémons rares, tu devrais y repasser !`
         ],
         defeat: [
-            `J'ai gagné`
+            `Les Pokémon insecte ont des talents cachés.`,
+            `Il faudra encore du temps pour tous les découvrir.`,
+            `Étudies-les minutieusement.`
         ]
     }
 }
@@ -160,13 +293,28 @@ export const SALLY: Trainer = {
     introFrameIndex: 9,
     dialogs: {
         start: [
-            `Je suis Sally`
+            `Tiens, tiens. J'ai entendu parler de toi, mon enfant.`,
+            `Je suis Sally, la championne d'arène de Corrifey de la région de Galar.`,
+            `Je suis venu à Lavanville pour rendre visite à un vieil ami...`,
+            `Cet endroit a quelque-chose de féérique à mes yeux.`,
+            `Bien, que dirais-tu d'un combat ?`,
+            `Ça m'intéresserait de voir comment tu te bats...`,            
         ],
         victory: [
-            `J'ai perdu`
+            `Félicitations pour cette victoire ! Je me suis follement amusée !`,            
+            `Même si j'ai passé l’âge pour ce genre de choses...`,
+            `Tu me rappelles mon mari dans ces jeunes années.`,
+            `Tu sais quoi ? Tu devrais prendre ce parapluie.`,
+            () => {
+                return receiveItem(ITEM_PARAPLUIE)
+                .then(() => `Il m'a été très utile lors de mes voyages`)
+            },
+            `Allez, ouste ! Tu as une Ligue à affronter !`
         ],
         defeat: [
-            `J'ai gagné`
+            `C'est beau, l'énergie de la jeunesse.`,
+            `Mais la puissance des attaques ne fait pas tout...`,
+            `Commencerais-tu enfin à comprendre ce qu'est la féérie ?`
         ]
     }
 }
