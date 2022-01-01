@@ -86,34 +86,20 @@ export function openBuyMenu(seller: string){
 
             waitBeforeNextLine(1600)
             startDialog([
-                `1 ${item.label} pour ${item.cost} ball${item.cost > 1 ? 's' : ''}, c'est ça ?`
-            ], { speaker: seller }).then(() => {})
-
-            await wait(1500);
-
-            openMenu({
-                ref: "shop_confirm",
-                background: "box2",
-                x: 265,
-                y: 240,
-                width: 48,
-                height: 48,
-                offset: 4,
-                entries: [
-                    { x:4, y: 4, label: "Oui" },
-                    { x:4, y: 24, label: "Non" }
-                ],
-                handleChoice(choice){
-                    endDialog();
-                    if(choice.label === "Oui"){
-                        spend(item.cost!)
+                `1 ${item.label} pour ${item.cost} ball${item.cost > 1 ? 's' : ''}, c'est ça ?`,
+                {
+                    "Oui": () => {
+                        endDialog();
+                        spend(item.cost!)                        
                         return receiveItem(item, 1)
-                            .then(() => openBuyMenu(seller))
-                    } else {
-                        return wait(100).then(() => openBuyMenu(seller))
-                    }
+                            .then(() => { openBuyMenu(seller) })
+                    },
+                    "Non": () => wait(100).then(() => {
+                        endDialog();
+                        openBuyMenu(seller)
+                    })
                 }
-            })
+            ], { speaker: seller })
         },
         handleCancel(){
             hideItemDescription();

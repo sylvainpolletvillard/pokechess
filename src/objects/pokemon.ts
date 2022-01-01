@@ -80,7 +80,7 @@ export function makePokemonSprite(
             && pokemon instanceof PokemonOnBoard
             && canAfford(pokemon.cost)
             && !gameState.player.hasBoxFull){
-            capturePokemon(pokemon, sprite, game).then()
+            capturePokemon(pokemon, sprite, game)
         }
     })
     sprite.on('dragstart', () => {

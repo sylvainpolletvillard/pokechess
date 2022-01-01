@@ -1,14 +1,11 @@
 import {gameState} from "./gamestate";
-import {RoomType} from "./destination";
 import {drawPokeballsCounter} from "../objects/gui";
 import {ITEMS} from "../data/items";
 import {MyScene} from "../scenes/MyScene";
 
 export function spend(amount: number){
     gameState.player.inventory.pokeball -= amount
-    if(gameState.currentRoom.type === RoomType.WILD || gameState.currentRoom.type === RoomType.FREEWALK){
-        drawPokeballsCounter(gameState.activeScene as MyScene)
-    }
+    drawPokeballsCounter(gameState.activeScene as MyScene)    
 }
 
 export function canAfford(amount: number): boolean {

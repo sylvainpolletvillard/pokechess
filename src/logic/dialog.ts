@@ -8,6 +8,7 @@ import {DEFAULT_VOICE, VoiceConfig, voicesByActor} from "../data/voices";
 import {MyScene} from "../scenes/MyScene";
 import {closeMenu, Menu, openMenu} from "../objects/menu";
 import { wait } from "../utils/helpers";
+import { RoomType } from "./destination";
 
 export type DialogLine = string | DialogChoice | DialogLine[] | null | Promise<DialogLine> | (() => DialogLine);
 
@@ -117,7 +118,8 @@ export async function showNextLine(){
 
 export function sayLine(line: string) {
     if(!gameState.activeDialog) return
-    if(!['me','system'].includes(gameState.activeDialog.speaker)){
+    if(!['me','system'].includes(gameState.activeDialog.speaker)
+    && gameState.currentRoom.type !== RoomType.FREEWALK){
         gameState.activeDialog.bgSprite.setPosition(48, 2)
         gameState.activeDialog.textSprite.setPosition(56, 6)
     }

@@ -197,7 +197,7 @@ export class GameState {
         return wait(100).then(() => {
             if(gameState.currentRoom.type === RoomType.TUTORIAL){
                 const room = gameState.currentRoom as RoomTutorial
-                let dialog = room.trainer.dialogs.afterCaptureWild
+                let dialog = room.trainer.dialogs.victory
                 if(gameState.dialogStates["scientifique_tuto"] === SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD){
                     dialog = room.trainer.dialogs.step3
                 }

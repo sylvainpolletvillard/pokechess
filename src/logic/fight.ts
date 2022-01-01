@@ -84,14 +84,13 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
             pokemon.nextAction = { type: PokemonTypeAction.IDLE }
         }
     })
-
 }
 
 export function calcDamage(pokemon: PokemonOnBoard, target: PokemonOnBoard){
-    return Math.ceil(pokemon.attack * 10 / target.defense) // 10 is the base attack power, to adjust
+    const ATK_RATIO = 1.5 //  base attack power, to adjust
+    return Math.ceil(pokemon.attack * ATK_RATIO / target.defense) 
     // TODO: gérer les types de damage eau/feu plus ou moins efficaces
 }
-
 
 export function killPokemon(pokemon: PokemonOnBoard){
     const board = gameState.board;

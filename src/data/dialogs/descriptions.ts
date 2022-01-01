@@ -14,7 +14,7 @@ export function receiveItem(item: Item, quantity: number = 1){
     gameState.player.inventory[item.ref] += quantity;
     const label = ITEMS[item.ref]?.label ?? "???"
     waitBeforeNextLine(2000)
-    return `Vous recevez: ${label} x${quantity}`
+    return startDialog([`Vous recevez: ${label} x${quantity}`], { speaker: "system"})
 }
 
 export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) => DialogLine[]) } = {

@@ -15,12 +15,17 @@ import {JADIELLE} from "../data/destinations/jadielle";
 import {FORET_JADE} from "../data/destinations/foret_jade";
 import {ITEM_POKEBALL, VITESSE_PLUS} from "../data/items";
 import { ARGENTA } from "../data/destinations/argenta";
+import { NIDORAN_MALE } from "../data/pokemons/nidoranm";
+import { SALAMECHE } from "../data/pokemons/salameche";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
-	/*gameState.currentDestination = JADIELLE
-	gameState.player.team = [ new PokemonOnBoard( new Pokemon(DRACAUFEU, 1, 50), 4 ,6)]
+	gameState.currentDestination = JADIELLE
+	gameState.player.team = [ 
+		new PokemonOnBoard( new Pokemon(SALAMECHE, 1, 5), 4 ,6),
+		new PokemonOnBoard( new Pokemon(NIDORAN_MALE, 1, 2), 4 ,6),
+	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
-	gameState.player.inventory[VITESSE_PLUS.ref] = 1*/
+	gameState.player.inventory[VITESSE_PLUS.ref] = 1
 }
 
 export default class LoadingScene extends MyScene {

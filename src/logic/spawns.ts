@@ -57,10 +57,14 @@ export function spawnWildTeamByType(typesFactors: {[typeRef: string]: number }){
 export function spawnTrainerTeam(pokemons: PokemonEntry[], positions: [number, number][]) {
     const team: PokemonOnBoard[] = []
 
-    const numberToSpawn = Math.min( clamp(Math.floor((gameState.player.boxScore) / 10), 1, 8 ), positions.length, pokemons.length)
-    const level = gameState.player.averagePokemonLevel;
+    const numberToSpawn = Math.min( 
+        clamp(Math.floor((gameState.player.boxScore) / 10), 1, 8 ), 
+        positions.length,
+        pokemons.length
+    )
 
     for(let i=0; i<numberToSpawn; i++){
+        let level = gameState.player.averagePokemonLevel + randomInt(1,3)
         const entry = pokemons[i]
         const [x,y] = positions[i]
         team.push(
