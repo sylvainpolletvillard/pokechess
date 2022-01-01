@@ -24,7 +24,7 @@ export function spawnWildTeamByType(typesFactors: {[typeRef: string]: number }){
     const types = Object.keys(typesFactors)
     const pokemonsByTypes = types.map(typeRef => POKEMONS.filter(p => p.types.includes(POKEMON_TYPES[typeRef])))
 
-    const numberToSpawn = Math.min(8, Math.floor((10 + gameState.player.boxScore) / 10))
+    const numberToSpawn = Math.min(8, gameState.player.teamSize + 1)
     
     const sumFactors = Object.values(typesFactors).reduce((a,b) => a+b, 0)
 
@@ -58,7 +58,7 @@ export function spawnTrainerTeam(pokemons: PokemonEntry[], positions: [number, n
     const team: PokemonOnBoard[] = []
 
     const numberToSpawn = Math.min( 
-        clamp(Math.floor((gameState.player.boxScore) / 10), 1, 8 ), 
+        clamp(gameState.player.teamSize, 1, 8 ), 
         positions.length,
         pokemons.length
     )

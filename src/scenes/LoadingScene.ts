@@ -21,8 +21,8 @@ import { SALAMECHE } from "../data/pokemons/salameche";
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = JADIELLE
 	gameState.player.team = [ 
-		new PokemonOnBoard( new Pokemon(SALAMECHE, 1, 5), 4 ,6),
-		new PokemonOnBoard( new Pokemon(NIDORAN_MALE, 1, 2), 4 ,6),
+		new PokemonOnBoard( new Pokemon(SALAMECHE, 1, 5), 4 ,5),
+		new PokemonOnBoard( new Pokemon(NIDORAN_MALE, 1, 2), 5 ,5),
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1

@@ -102,6 +102,7 @@ export class GameState {
     initFight(game: GameScene){
         closeMenu()
         clearPlacement(game)
+        gameState.board.xpEarned = calcXpBoard()
         this.stage = GameStage.LAUNCH
         game.time.addEvent({
             delay: 400,
@@ -158,7 +159,7 @@ export class GameState {
             showCenterText("text_defaite", game).then(() => {})
         }
 
-        let xpPerPokemon = calcXpBoard() / gameState.player.team.length        
+        let xpPerPokemon = (gameState.board.xpEarned || 0) / gameState.player.team.length        
         xpPerPokemon = Math.max(1, xpPerPokemon)
 
         const lines: DialogLine[] = [];

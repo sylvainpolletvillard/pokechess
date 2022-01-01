@@ -57,13 +57,22 @@ export class Player {
         const top8 = [...this.team, ...this.box]
         .sort((a,b) => (b ? b.level : 0) - (a ? a.level : 0))
         .slice(0,8)
-        const sumOfBest = top8.reduce((total, p) => total + (p ? p.level : 0), 0)
+        .filter(p => p instanceof Pokemon)
+        const sumOfBest = top8.reduce((total, p) => total + p.level, 0)
         return Math.max(1, Math.floor(sumOfBest / top8.length))
+    }
+
+    get teamSize(): number {
+        return [...this.team, ...this.box]
+            .reduce((total, p) => { 
+                if(!p) return total
+                return total + 1
+            }, 0)
     }
 
     get boxScore(): number {
         return [...this.team, ...this.box]
-            .reduce((total, p) => {
+            .reduce((total, p) => { 
                 if(!p) return total
                 return total + p.level
             }, 0)

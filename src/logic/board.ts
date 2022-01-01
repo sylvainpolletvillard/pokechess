@@ -22,6 +22,7 @@ import {displayPokemonCaptureInfo, hidePokemonCaptureInfo} from "../objects/poke
 import {spend} from "./shop";
 import { calcXpEarnedOnDefeat } from "./xp";
 import { startDialog } from "./dialog";
+import { hidePokemonReleaseInfo } from "../objects/pokemonReleaseBox";
 
 export interface Board {
     mapName: string;
@@ -30,6 +31,7 @@ export interface Board {
     playerTeam: PokemonOnBoard[]
     otherTeam: PokemonOnBoard[]
     activeTile: number[] | null
+    xpEarned?: number
 }
 
 export function setupPlayerIdleBoard(player: Player, room: RoomArena | RoomWild){
@@ -90,6 +92,7 @@ export function clearPlacement(game: Game){
         }
     }
     game.graphics.get("grid")?.destroy();
+    hidePokemonReleaseInfo();
 }
 
 export function getPositionFromCoords(i: number, j:number): [number, number]{
