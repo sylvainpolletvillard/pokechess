@@ -1,9 +1,9 @@
 import {Destination, DestinationType, RoomType, RoomWild} from "../../logic/destination";
-import {homeLevel} from "../levels/home";
-import {chenLevel} from "../levels/labo_chen";
 import {gameState} from "../../logic/gamestate";
 import {spawnTutoCaptureTeam} from "../../logic/spawns";
 import {SCIENTIFIQUE_TUTO} from "../trainers";
+import {homeLevel} from "../levels/home";
+import {chenLevel} from "../levels/labo_chen";
 
 export const BOURG_PALETTE: Destination = {
     ref: "BOURG_PALETTE",

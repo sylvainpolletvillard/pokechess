@@ -3,6 +3,7 @@ import {gameState} from "../logic/gamestate";
 import {MyScene} from "../scenes/MyScene";
 import {addText} from "../utils/text";
 import {Z} from "../data/depths";
+import { makeItemSprite } from "./itemBox";
 
 let itemDescriptionGroup: Phaser.GameObjects.Group | null;
 
@@ -26,7 +27,7 @@ export function showItemDescription(item: Item){
 
     itemDescriptionGroup.add(background)
 
-    const itemSprite = gameState.activeScene!.add.sprite(ox+78, oy + 96, "items", ITEMS_SPRITES_INDEX.indexOf(item)).setOrigin(0.5, 0.5)
+    const itemSprite = makeItemSprite(item).setPosition(ox+78, oy + 96)
     itemDescriptionGroup.add(itemSprite)
     if(gameState.activeScene?.scene.key === "GameScene"){
         itemSprite.x -= 48;

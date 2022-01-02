@@ -66,6 +66,7 @@ export function makePokemonSprite(
     game.sprites.set(pokemon.uid, sprite)
     game.graphics.set(pokemon.uid, game.add.graphics()) // hp bar
     sprite.setData("pokemon", pokemon)
+    sprite.setData("type", "pokemon")
     sprite.play(`${pokemon.ref}_DOWN`)
     sprite.anims.pause()
     sprite.setInteractive()
@@ -83,6 +84,7 @@ export function makePokemonSprite(
             capturePokemon(pokemon, sprite, game)
         }
     })
+
     sprite.on('dragstart', () => {
         const pokemon = sprite.getData("pokemon")
         if(pokemon.owner !== 1) return;
@@ -95,10 +97,12 @@ export function makePokemonSprite(
             removeFromBox(pokemon)
         }
     })
+
     sprite.on('drop', (pointer: PointerEvent) => {
         sprite.anims.pause(sprite.anims.currentAnim.getFrameByProgress(0))
         sprite.setAlpha(0.5)
         hidePokemonReleaseInfo();
     })
+    
     return sprite;
 }

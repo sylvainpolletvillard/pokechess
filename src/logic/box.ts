@@ -31,6 +31,7 @@ export function addToBox(pokemon: Pokemon, game: Game, caseIndex?: number){
     const box = gameState.player.box;
     if(pokemon instanceof PokemonOnBoard){
         // board to box
+        removeFromTeam(pokemon)
         pokemon = pokemon.toBoxPokemon(game); // PokemonOnBoard → Pokemon
     } else if(box.includes(pokemon)){
         // switch position in box

@@ -4,9 +4,8 @@ import {GameStage, gameState} from "../logic/gamestate";
 import {Z} from "../data/depths";
 import {MyScene} from "../scenes/MyScene";
 import {showNextLine} from "../logic/dialog";
-import {chooseEntry} from "./menu";
 
-export type InteractiveElem = Phaser.GameObjects.Sprite | Phaser.GameObjects.Zone | Phaser.GameObjects.Rectangle
+export type InteractiveElem = Phaser.GameObjects.Sprite | Phaser.GameObjects.Zone | Phaser.GameObjects.Rectangle | Phaser.GameObjects.Text
 const interactiveElems: Set<InteractiveElem> = new Set();
 let hoveredElems: InteractiveElem[] = [];
 
@@ -42,12 +41,8 @@ export function moveCursor(vector: Phaser.Math.Vector2, scene: MyScene, snapToGr
     }
 }
 
-export function clickCursor(scene: MyScene){
-    if(gameState.activeMenu != null){
-        const shouldStopPropagation = chooseEntry()
-        if(shouldStopPropagation) return;
-    }
-    else if(gameState.activeDialog != null){
+export function handleClick(scene: MyScene){
+    if(gameState.activeDialog != null){
         return showNextLine()
     }
 
@@ -55,6 +50,7 @@ export function clickCursor(scene: MyScene){
         const cursor = scene.sprites.get("cursor")
         cursor?.play("cursor_click")
     }
+
     hoveredElems
         .filter(e => e!== dragState.draggedElem)
         .forEach(e => e.emit('click'))
@@ -132,24 +128,24 @@ export function testIfCanBeDragged(sprite: Phaser.GameObjects.Sprite){
 
 export function testIfCanBeDroppedOn(elem: InteractiveElem){
     if(gameState.stage !== GameStage.PLACEMENT) return false;
-    if(elem.getData("type") === "gridTile"){
-        const [x,y] = elem.getData("position")
-        return x >= 0
-            && x < gameState.board.width
-            && y >= gameState.board.height/2
-            && y < gameState.board.height
+    const dropZoneType = elem.getData("type");
+    const draggedType = dragState.draggedElem?.getData("type")
+
+    switch(dropZoneType){
+        case "gridTile":            
+            const [x,y] = elem.getData("position")
+            return draggedType === "pokemon"
+                && x >= 0
+                && x < gameState.board.width
+                && y >= gameState.board.height/2
+                && y < gameState.board.height
+        case "boxTile":
+        case "pokedexButton":
+        case "boxButton":
+            return draggedType === "pokemon"
+        case "bagButton":
+            return draggedType === "pokemon" || draggedType === "item"
     }
-    if(elem.getData("type") === "boxTile"){
-        return true
-    }
-    if(elem.getData("type") === "pokedexButton"){
-        return true
-    }
-    if(elem.getData("type") === "boxButton"){
-        return true
-    }
-    if(elem.getData("type") === "releaseZone"){
-        return true
-    }
+
     return false;
 }

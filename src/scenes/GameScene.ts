@@ -5,12 +5,12 @@ import {loadSpritesheets} from "../data/spritesheets";
 import {loadTilemaps} from "../data/tilemaps";
 import {loadSprites} from "../data/sprites";
 import {drawGUI, drawIntro, showCenterText, updateGUI} from "../objects/gui";
-import {clickCursor} from "../objects/cursor";
+import {handleClick} from "../objects/cursor";
 import {closeMenu} from "../objects/menu";
 import {MyScene} from "./MyScene";
 import {loadFonts} from "../data/fonts";
 import {initPlacement, setupRoomBoard} from "../logic/board";
-import {DestinationType, RoomArena, RoomWild} from "../model/destination";
+import {RoomArena, RoomWild} from "../logic/destination";
 import {startMusic} from "../logic/audio";
 
 export default class GameScene extends MyScene {
@@ -79,11 +79,11 @@ export default class GameScene extends MyScene {
   }
 
   onPressA(){
-    clickCursor(this)
+    handleClick(this)
   }
 
   onClick(){
-    clickCursor(this)
+    handleClick(this)
   }
 
   onAllPokemonsCaptured(){

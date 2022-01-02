@@ -1,23 +1,25 @@
-import {GameStage, gameState} from "../logic/gamestate";
-import {updatePokemonBars} from "./pokemonBar";
-import Game from "../scenes/GameScene";
-import {drawAlliancesInfo} from "./alliancesInfo";
-import {addText} from "../utils/text";
-import {showPokedex} from "./pokedex";
-import {addInteractiveElem, dragState, handleDragEnd} from "./cursor";
-import {closeMenu} from "./menu";
-import {openBox} from "./pokemonBox";
-import {addToBox} from "../logic/box";
-import {Z} from "../data/depths";
-import {RoomArena, RoomType} from "../logic/destination";
-import {wait} from "../utils/helpers";
-import {startDialog} from "../logic/dialog";
-import {tweenFade, tweenPop} from "../utils/tweens";
-import {Trainer} from "../data/trainers";
-import {MyScene} from "../scenes/MyScene";
-import {cancelPokemonDrag} from "../logic/board";
-import RoomScene from "../scenes/RoomScene";
-import {openItemMenu} from "./itemBox";
+import Game from '../scenes/GameScene';
+import RoomScene from '../scenes/RoomScene';
+import { addInteractiveElem, dragState, handleDragEnd } from './cursor';
+import { addText } from '../utils/text';
+import { addToBox } from '../logic/box';
+import { cancelPokemonDrag } from '../logic/board';
+import { closeMenu } from './menu';
+import { drawAlliancesInfo } from './alliancesInfo';
+import { GameStage, gameState } from '../logic/gamestate';
+import { Item } from '../data/items';
+import { MyScene } from '../scenes/MyScene';
+import { openBox } from './pokemonBox';
+import { openItemMenu } from './itemBox';
+import { Pokemon } from '../data/pokemons';
+import { RoomArena, RoomType } from '../logic/destination';
+import { showPokedex } from './pokedex';
+import { startDialog } from '../logic/dialog';
+import { Trainer } from '../data/trainers';
+import { tweenFade, tweenPop } from '../utils/tweens';
+import { updatePokemonBars } from './pokemonBar';
+import { wait } from '../utils/helpers';
+import { Z } from '../data/depths';
 
 export function updateGUI(game: Game){
     if(gameState.stage === GameStage.FIGHT){
@@ -107,6 +109,7 @@ export function drawGUI(game: Game){
         .on("dropReceived", (pokemonSprite: Phaser.GameObjects.Sprite) => {
             const pokemon = pokemonSprite.getData("pokemon");
             if(pokemon != null){
+                boxButtonText?.destroy()
                 addToBox(pokemon, game)
             }
         })
@@ -114,6 +117,7 @@ export function drawGUI(game: Game){
     menuButtonsGroup.add(boxButton)
 
     bagButton = game.add.sprite(220, game.scale.height - 12, "buttons",1)
+    bagButton.setData("type", "bagButton")
     let bagButtonText: Phaser.GameObjects.Text | null;
     bagButton
         .on("click", () => {
@@ -128,10 +132,18 @@ export function drawGUI(game: Game){
         .on("over", () => {
             bagButton.setTint(0xffffcc)
             if(dragState.draggedElem != null){
-                const pokemon = dragState.draggedElem.getData("pokemon")
+                const pokemon: Pokemon = dragState.draggedElem.getData("pokemon")
+                const item: Item = dragState.draggedElem.getData("item")
                 if(pokemon != null){
                     bagButtonText = addText(204, game.scale.height - 30,
-                        `Retirer objet de ${pokemon.name}`,
+                        pokemon.item 
+                            ? `Récupérer ${pokemon.item.name}`
+                            : `${pokemon.name} ne tient pas d'objet`,
+                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
+                        .setOrigin(0.5)
+                } else if(item != null){
+                    bagButtonText = addText(204, game.scale.height - 30,
+                        `Ranger ${item.label}`,
                         { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
                         .setOrigin(0.5)
                 }
@@ -144,10 +156,16 @@ export function drawGUI(game: Game){
             bagButton.setTint(0xffffff)
             bagButtonText?.destroy()
         })
-        .on("dropReceived", (pokemonSprite: Phaser.GameObjects.Sprite) => {
-            const pokemon = pokemonSprite.getData("pokemon");
+        .on("dropReceived", (sprite: Phaser.GameObjects.Sprite) => {
+            const pokemon = sprite.getData("pokemon");
+            const item: Item = sprite.getData("item")
             if(pokemon != null){
+                bagButtonText?.destroy()
                 //TODO: prendre l'objet tenu par le pokemon
+                cancelPokemonDrag();                
+            } else if(item != null){
+                bagButtonText?.destroy()           
+                sprite.destroy(); // range l'item
             }
         })
         

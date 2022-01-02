@@ -2,6 +2,7 @@ import {addText} from "../utils/text";
 import {Z} from "../data/depths";
 import {gameState} from "../logic/gamestate";
 import {MyScene} from "../scenes/MyScene";
+import { addInteractiveElem } from "./cursor";
 
 let menuCursorPos: number = 0;
 let cursorSprite: Phaser.GameObjects.Sprite | null = null;
@@ -11,6 +12,7 @@ export interface MenuEntry {
     value?: any;
     x: number;
     y: number;
+    color?: string;
 }
 
 export interface Menu {
@@ -27,6 +29,7 @@ export interface Menu {
     handleCancel?: () => any;
     handleChoice?: (selectedEntry: MenuEntry) => any;
     onSelect?: (selectedEntry: MenuEntry) => any;
+    onClose?: () => any;
     group?: Phaser.GameObjects.Group
 }
 
@@ -47,7 +50,7 @@ export function getSelectedMenuEntry(): MenuEntry | null {
     return gameState.activeMenu.entries[menuCursorPos]
 }
 
-export function chooseEntry(){
+export function clickEntry(){
     if(!gameState.activeMenu?.entries) return false;
     const selectedEntry = gameState.activeMenu.entries[menuCursorPos]
     const menuToBeClosed = gameState.activeMenu
@@ -92,9 +95,13 @@ export function openMenu(menu: Menu){
         menu.group.add(cursorSprite)
 
         menu.entries.forEach((entry, i) => {
-            const menuAction = addText(menu.x+8+entry.x, menu.y+4+entry.y, entry.label)
+            const menuAction = addText(menu.x+8+entry.x, menu.y+4+entry.y, entry.label, { 
+                color: entry.color ?? "black"
+            })
             menuAction.setInteractive()
+            addInteractiveElem(menuAction)
             menuAction.on("pointerover", () => selectEntry(i))
+            menuAction.on("click", () => clickEntry())
             menu.group!.add(menuAction)
         })
 
@@ -109,6 +116,7 @@ export function openMenu(menu: Menu){
 
 export function closeMenu(){
     if(!gameState.activeMenu || !gameState.activeMenu.group) return
+    gameState.activeMenu.onClose && gameState.activeMenu.onClose()
     gameState.activeMenu.group.destroy(true)
     gameState.activeMenu = null;
 }

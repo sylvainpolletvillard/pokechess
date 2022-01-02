@@ -13,7 +13,7 @@ import {Pokemon} from "../data/pokemons";
 import {DRACAUFEU} from "../data/pokemons/dracaufeu";
 import {JADIELLE} from "../data/destinations/jadielle";
 import {FORET_JADE} from "../data/destinations/foret_jade";
-import {ITEM_POKEBALL, VITESSE_PLUS} from "../data/items";
+import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
 import { ARGENTA } from "../data/destinations/argenta";
 import { NIDORAN_MALE } from "../data/pokemons/nidoranm";
 import { SALAMECHE } from "../data/pokemons/salameche";
@@ -26,6 +26,8 @@ function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1
+	gameState.player.inventory[GEMME_VOLT.ref] = 1
+	gameState.player.inventory[ORBE_GLACE.ref] = 1
 }
 
 export default class LoadingScene extends MyScene {

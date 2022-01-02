@@ -19,7 +19,7 @@ import {
     getRotationAngle
 } from "../utils/directions";
 import {getPathLength} from "../utils/path";
-import {addInteractiveElem, clickCursor, drawCursor} from "../objects/cursor";
+import {addInteractiveElem, handleClick, drawCursor} from "../objects/cursor";
 import {hideDestinationNamePanel, showDestinationNamePanel} from "../objects/destinationNamePanel";
 import {enterDestination} from "../logic/destination";
 import {startMusic} from "../logic/audio";
@@ -121,7 +121,7 @@ export default class MapScene extends MyScene {
     }
 
     onClick(){
-        clickCursor(this)
+        handleClick(this)
     }
 
     changeOrigin(newOrigin: Destination){

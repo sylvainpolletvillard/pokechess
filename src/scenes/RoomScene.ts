@@ -9,10 +9,10 @@ import {loadSpritesheets} from "../data/spritesheets";
 import {loadTilemaps} from "../data/tilemaps";
 import {setupAnims} from "../logic/anims";
 import {drawRoomNamePanel} from "../objects/gui";
-import {RoomFreewalk} from "../model/destination";
+import {RoomFreewalk} from "../logic/destination";
 import {homeLevel} from "../data/levels/home";
 import {startMusic} from "../logic/audio";
-import {chooseEntry} from "../objects/menu";
+import {clickEntry} from "../objects/menu";
 
 export default class RoomScene extends MyScene {
 
@@ -88,7 +88,7 @@ export default class RoomScene extends MyScene {
     }
 
     onPressA(){
-        if(gameState.activeMenu != null) return chooseEntry()
+        if(gameState.activeMenu != null) return clickEntry()
         this.player?.doAction()
     }
 }
