@@ -3,7 +3,7 @@ import { BADGE_AME, BADGE_CASCADE, BADGE_FOUDRE, BADGE_MARAIS, BADGE_PRISME, BAD
 import {ITEM_FILET, ITEM_PARAPLUIE, ITEM_POKEBALL} from "./items";
 import {DialogLine} from "../logic/dialog";
 import { spawnTutoCaptureTeamStep2 } from "../logic/spawns";
-import { drawPokeballsCounter } from "../objects/gui";
+import { drawPokeballsCounter } from "../objects/pokeballsCounter";
 import { MyScene } from "../scenes/MyScene";
 import { spawnPokemon } from "../logic/board";
 import { sendBackToPokeball } from "../logic/fight";

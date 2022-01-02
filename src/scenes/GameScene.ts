@@ -4,7 +4,8 @@ import {handleCursor, setupInputs} from "../logic/inputs";
 import {loadSpritesheets} from "../data/spritesheets";
 import {loadTilemaps} from "../data/tilemaps";
 import {loadSprites} from "../data/sprites";
-import {drawGUI, drawIntro, showCenterText, updateGUI} from "../objects/gui";
+import {drawIntro, showCenterText, updateGUI} from "../objects/gui";
+import {drawMenuButtons} from "../objects/menuButtons";
 import {handleClick} from "../objects/cursor";
 import {closeMenu} from "../objects/menu";
 import {MyScene} from "./MyScene";
@@ -36,7 +37,7 @@ export default class GameScene extends MyScene {
     setupInputs(this)
     setupAnims(this.anims)
     this.drawMap();
-    drawIntro(this).then(() => drawGUI(this));
+    drawIntro(this).then(() => drawMenuButtons(this));
     gameState.board = setupRoomBoard(gameState.player, gameState.currentRoom as RoomWild)
 
     initPlacement(this)

@@ -3,7 +3,7 @@ import {gameState} from "../logic/gamestate";
 import {Item, ITEMS} from "../data/items";
 import {wait} from "../utils/helpers";
 import {addText} from "../utils/text";
-import {drawPokeballsCounter} from "./gui";
+import {drawPokeballsCounter} from "./pokeballsCounter";
 import RoomScene from "../scenes/RoomScene";
 import {getShopContent, spend} from "../logic/shop";
 import {endDialog, startDialog, waitBeforeNextLine} from "../logic/dialog";

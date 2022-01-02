@@ -1,5 +1,5 @@
 import {gameState} from "./gamestate";
-import {drawPokeballsCounter} from "../objects/gui";
+import {drawPokeballsCounter} from "../objects/pokeballsCounter";
 import {ITEMS} from "../data/items";
 import {MyScene} from "../scenes/MyScene";
 

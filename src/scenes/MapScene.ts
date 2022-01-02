@@ -1,30 +1,31 @@
-import {loadSprites} from "../data/sprites";
-import {loadSpritesheets} from "../data/spritesheets";
-import {loadTilemaps} from "../data/tilemaps";
-import {Z} from "../data/depths";
-import { Destination, Intersection, Path } from "../logic/destination";
-import {DESTINATIONS, DestinationTypeHighlightTint, INTERSECTIONS} from "../data/destinations"
-import {loadFonts} from "../data/fonts";
-import {setupAnims} from "../logic/anims";
-import {getMovementVector, setupInputs} from "../logic/inputs";
-import {gameState} from "../logic/gamestate";
-import {MyScene} from "./MyScene";
-import {wait} from "../utils/helpers";
+import { addInteractiveElem, drawCursor, handleClick } from '../objects/cursor';
+import { ALL_BADGES } from '../data/badges';
+import { Destination, Intersection, Path } from '../logic/destination';
+import { DESTINATIONS, DestinationTypeHighlightTint, INTERSECTIONS } from '../data/destinations';
 import {
     Direction,
     DirectionalData,
-    emptyDirectionalData, getDeltaFromDirection,
+    emptyDirectionalData,
+    getDeltaFromDirection,
     getDirectionFromDelta,
     getDirectionFromVector,
     getRotationAngle
-} from "../utils/directions";
-import {getPathLength} from "../utils/path";
-import {addInteractiveElem, handleClick, drawCursor} from "../objects/cursor";
-import {hideDestinationNamePanel, showDestinationNamePanel} from "../objects/destinationNamePanel";
-import {enterDestination} from "../logic/destination";
-import {startMusic} from "../logic/audio";
-import {drawTourCounter} from "../objects/gui";
-import { ALL_BADGES } from "../data/badges";
+    } from '../utils/directions';
+import { drawTourCounter } from '../objects/tourCounter';
+import { enterDestination } from '../logic/destination';
+import { gameState } from '../logic/gamestate';
+import { getMovementVector, setupInputs } from '../logic/inputs';
+import { getPathLength } from '../utils/path';
+import { hideDestinationNamePanel, showDestinationNamePanel } from '../objects/destinationNamePanel';
+import { loadFonts } from '../data/fonts';
+import { loadSprites } from '../data/sprites';
+import { loadSpritesheets } from '../data/spritesheets';
+import { loadTilemaps } from '../data/tilemaps';
+import { MyScene } from './MyScene';
+import { setupAnims } from '../logic/anims';
+import { startMusic } from '../logic/audio';
+import { wait } from '../utils/helpers';
+import { Z } from '../data/depths';
 
 
 export default class MapScene extends MyScene {

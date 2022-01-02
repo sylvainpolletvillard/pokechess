@@ -1,25 +1,24 @@
 import Game from '../scenes/GameScene';
-import RoomScene from '../scenes/RoomScene';
 import { addInteractiveElem, dragState, handleDragEnd } from './cursor';
 import { addText } from '../utils/text';
 import { addToBox } from '../logic/box';
 import { cancelPokemonDrag } from '../logic/board';
 import { closeMenu } from './menu';
-import { drawAlliancesInfo } from './alliancesInfo';
 import { GameStage, gameState } from '../logic/gamestate';
 import { Item } from '../data/items';
-import { MyScene } from '../scenes/MyScene';
 import { openBox } from './pokemonBox';
 import { openItemMenu } from './itemBox';
 import { Pokemon } from '../data/pokemons';
 import { RoomArena, RoomType } from '../logic/destination';
 import { showPokedex } from './pokedex';
 import { startDialog } from '../logic/dialog';
-import { Trainer } from '../data/trainers';
-import { tweenFade, tweenPop } from '../utils/tweens';
+import { tweenPop } from '../utils/tweens';
 import { updatePokemonBars } from './pokemonBar';
 import { wait } from '../utils/helpers';
 import { Z } from '../data/depths';
+import { drawTrainers, showTrainerIntro } from './trainers';
+import { drawPokeballsCounter } from './pokeballsCounter';
+import { drawRoomNamePanel } from './roomNamePanel';
 
 export function updateGUI(game: Game){
     if(gameState.stage === GameStage.FIGHT){
@@ -32,195 +31,9 @@ export function updateGUI(game: Game){
     }
 }
 
-let menuButtonsGroup: Phaser.GameObjects.Group;
-let pokeballsCounterGroup: Phaser.GameObjects.Group;
-let pokedexButton: Phaser.GameObjects.Sprite;
-let bagButton: Phaser.GameObjects.Sprite;
-let boxButton: Phaser.GameObjects.Sprite;
-let fightButton: Phaser.GameObjects.Sprite;
-
-export function drawGUI(game: Game){
-    menuButtonsGroup = game.add.group();
-
-    pokedexButton = game.add.sprite(100, game.scale.height - 12, "buttons",2)
-    pokedexButton.setData("type", "pokedexButton")
-    let pokedexButtonText: Phaser.GameObjects.Text | null;
-    pokedexButton
-        .on("click", () => {
-            if(gameState.activeMenu?.ref === "pokedex"){
-                return closeMenu() // close pokedex
-            } else {
-                closeMenu() // close other menu before opening pokedex
-            }
-            if(dragState.draggedElem != null){ handleDragEnd(game) }
-            else showPokedex(game)
-        })
-        .on("over", () => {
-            pokedexButton.setTint(0xffdddd)
-            pokedexButtonText = addText(78, game.scale.height - 36, "POKEDEX",
-                { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
-        })
-        .on("out", () => {
-            pokedexButton.setTint(0xffffff)
-            pokedexButtonText?.destroy()
-        })
-        .on("dropReceived", (pokemonSprite: Phaser.GameObjects.Sprite) => {
-            const pokemon = pokemonSprite.getData("pokemon");
-            if(pokemon != null){
-                showPokedex(game, pokemon)
-                cancelPokemonDrag();
-            }
-        })
-    addInteractiveElem(pokedexButton)
-    menuButtonsGroup.add(pokedexButton)
-
-    boxButton = game.add.sprite(160, game.scale.height - 12, "buttons", 0)
-    boxButton.setData("type", "boxButton")
-    let boxButtonText: Phaser.GameObjects.Text | null;
-    boxButton
-        .on("click", () => {
-            if(dragState.draggedElem != null){ handleDragEnd(game) }
-            else if(gameState.activeMenu?.ref === "box"){
-                return closeMenu() // close box
-            } else {
-                closeMenu() // close other menu before opening box
-                openBox(game)
-            }
-        })
-        .on("over", () => {
-            boxButton.setTint(0xccffcc)
-            if(dragState.draggedElem != null){
-                const pokemon = dragState.draggedElem.getData("pokemon")
-                if(pokemon != null){
-                    boxButtonText = addText(game.scale.width/2, game.scale.height - 30,
-                        `Retirer ${pokemon.name}`,
-                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
-                        .setOrigin(0.5)
-                }
-            } else {
-                boxButtonText = addText(136, game.scale.height - 36, "POKEMONS",
-                    { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
-            }
-        })
-        .on("out", () => {
-            boxButton.setTint(0xffffff)
-            boxButtonText?.destroy()
-        })
-        .on("dropReceived", (pokemonSprite: Phaser.GameObjects.Sprite) => {
-            const pokemon = pokemonSprite.getData("pokemon");
-            if(pokemon != null){
-                boxButtonText?.destroy()
-                addToBox(pokemon, game)
-            }
-        })
-    addInteractiveElem(boxButton)
-    menuButtonsGroup.add(boxButton)
-
-    bagButton = game.add.sprite(220, game.scale.height - 12, "buttons",1)
-    bagButton.setData("type", "bagButton")
-    let bagButtonText: Phaser.GameObjects.Text | null;
-    bagButton
-        .on("click", () => {
-            if(dragState.draggedElem != null){ handleDragEnd(game) }
-            else if(gameState.activeMenu?.ref === "items_box"){
-                return closeMenu() // close box
-            } else {
-                closeMenu() // close other menu before opening box
-                openItemMenu(game)
-            }
-        })
-        .on("over", () => {
-            bagButton.setTint(0xffffcc)
-            if(dragState.draggedElem != null){
-                const pokemon: Pokemon = dragState.draggedElem.getData("pokemon")
-                const item: Item = dragState.draggedElem.getData("item")
-                if(pokemon != null){
-                    bagButtonText = addText(204, game.scale.height - 30,
-                        pokemon.item 
-                            ? `Récupérer ${pokemon.item.name}`
-                            : `${pokemon.name} ne tient pas d'objet`,
-                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
-                        .setOrigin(0.5)
-                } else if(item != null){
-                    bagButtonText = addText(204, game.scale.height - 30,
-                        `Ranger ${item.label}`,
-                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
-                        .setOrigin(0.5)
-                }
-            } else {
-                bagButtonText = addText(204, game.scale.height - 36, "ITEMS",
-                    { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
-            }
-        })
-        .on("out", () => {
-            bagButton.setTint(0xffffff)
-            bagButtonText?.destroy()
-        })
-        .on("dropReceived", (sprite: Phaser.GameObjects.Sprite) => {
-            const pokemon = sprite.getData("pokemon");
-            const item: Item = sprite.getData("item")
-            if(pokemon != null){
-                bagButtonText?.destroy()
-                //TODO: prendre l'objet tenu par le pokemon
-                cancelPokemonDrag();                
-            } else if(item != null){
-                bagButtonText?.destroy()           
-                sprite.destroy(); // range l'item
-            }
-        })
-        
-    addInteractiveElem(bagButton)
-    menuButtonsGroup.add(bagButton)
-
-    fightButton = game.add.sprite(295, game.scale.height - 12, "buttons_big",0)
-    fightButton
-        .on("over", () => {
-            fightButton.setFrame(1)
-        })
-        .on("out", () => {
-            fightButton.setFrame(0)
-        })
-        .on("click", () => {
-            hideMenuButtons()
-            game.launchFight()
-        })
-    addInteractiveElem(fightButton)
-    menuButtonsGroup.add(fightButton)
-    
-    menuButtonsGroup.setDepth(Z.GUI_BUTTON);
-}
-
-export function hideMenuButtons(){
-    menuButtonsGroup.destroy(true)
-}
-
-export function drawPlayers(game: Game){
-    const player = game.add.sprite(32,game.scale.height - 32, "player").setDepth(Z.PLAYER)
-    game.sprites.set("player", player)
-    player.play("trainer_idle");
-
-    if([RoomType.ARENA, RoomType.TUTORIAL].includes(game.state.currentRoom.type)){
-        const arena = game.state.currentRoom as RoomArena
-        const trainer = game.add.sprite(game.scale.width + 40, 32, "trainer")
-            .setDepth(Z.TRAINER)
-            .setFrame(arena.trainer.frameIndex)
-        game.add.tween({
-            targets: [trainer],
-            delay: 1000,
-            duration: 600,
-            x: "-=64",
-            ease: 'Linear'
-        })
-        game.sprites.set("opponent", trainer)
-    }
-
-    drawAlliancesInfo(0)
-    //drawAlliancesInfo(1, game)
-}
-
 export function drawIntro(game: Game): Promise<any>{
     drawRoomNamePanel()
-    drawPlayers(game)
+    drawTrainers(game)
 
     if(gameState.currentRoom.type === RoomType.WILD){
         return wait(1000).then(() => {
@@ -238,108 +51,9 @@ export function drawIntro(game: Game): Promise<any>{
     return Promise.resolve()
 }
 
-export function drawRoomNamePanel(){
-    const scene = gameState.activeScene as MyScene;
-    const room = gameState.currentRoom
-    const roomNameBg = scene.add.nineslice(scene.scale.width/2, -32,160,0,"box2",4)
-    roomNameBg.setOrigin(0.5,0.5)
-
-    const roomNameText = addText(scene.scale.width/2, -30, room.name, {
-        color: "#000"
-    })
-    roomNameText.setOrigin(0.5,0.5)
-    roomNameText.setScrollFactor(0)
-
-    roomNameBg.setSize(roomNameText.width+24,roomNameText.height+12)
-    roomNameBg.setScrollFactor(0)
-    roomNameBg.setDepth(Z.MENU_TOOLTIPS)
-    roomNameText.setDepth(Z.MENU_TOOLTIPS+1)
-
-    scene.add.tween({
-        targets: [roomNameBg, roomNameText],
-        duration: 400,
-        y: "+=38",
-        ease: 'Linear'
-    })
-    scene.add.tween({
-        targets: [roomNameBg, roomNameText],
-        duration: 400,
-        y:-36,
-        ease: 'Linear',
-        delay: 2000
-    })
-}
-
-export function drawTourCounter(){
-    const scene = gameState.activeScene as MyScene;
-    const bg = scene.add.nineslice(scene.scale.width/2, -32,160,0,"box2",4)
-    bg.setOrigin(0.5,0.5)
-
-    const text = addText(scene.scale.width/2, -30, `Tour ${gameState.day}`, { color: "#000" })
-    text.setOrigin(0.5,0.5)
-    text.setScrollFactor(0)
-
-    bg.setSize(text.width+24,text.height+12)
-    bg.setScrollFactor(0)
-    bg.setDepth(Z.MENU_TOOLTIPS)
-    text.setDepth(Z.MENU_TOOLTIPS+1)
-
-    scene.add.tween({
-        targets: [bg, text],
-        duration: 400,
-        y: "+=38",
-        ease: 'Linear'
-    })
-    scene.add.tween({
-        targets: [bg, text],
-        duration: 400,
-        y:-36,
-        ease: 'Linear',
-        delay: 2000
-    })
-}
-
-export function drawPokeballsCounter(scene: MyScene){
-    if(pokeballsCounterGroup != null) pokeballsCounterGroup.destroy(true, true)
-
-    let ox = game.scale.width - 64
-
-    if(gameState.currentRoom.type === RoomType.TUTORIAL){
-        ox = -16
-    }
-
-    let pokeballPos = [ox, -16],
-        counterPos = [ox + 40, 8];
-
-    if(scene instanceof RoomScene){
-      counterPos = [28, 8];
-      pokeballPos = [32, 48];
-    }
-    const pokeball = scene.add.sprite(pokeballPos[0], pokeballPos[1], "pokeball", 0)
-    pokeball.play(`POKEBALL_${pokeballsCounterGroup ? 'jiggle_once' : 'in'}`)
-        .once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => pokeball.play(`POKEBALL_idle`))
-        .setOrigin(0,0)
-
-    scene.sprites.set("pokeball", pokeball)
-    const pokeballCount = addText(counterPos[0], counterPos[1], gameState.player.inventory.pokeball.toString(), {
-        align: "left",
-        color: "white"
-    })
-    pokeballCount.setStroke("#000000", 3);
-    pokeballsCounterGroup = scene.add.group([pokeball, pokeballCount])
-}
-
 export function showCenterText(animName: string, game: Game){
     const text = game.add.sprite(game.scale.width/2, game.scale.height/2, "texts")
     text.setDepth(Z.CENTER_TEXT).play(animName)
     game.sprites.set("centerText", text)
     return tweenPop(game, text, 500);
-}
-
-export function showTrainerIntro(trainer: Trainer, game: Game){
-    if(trainer.introFrameIndex === null) return Promise.resolve(); // no intro
-    const portrait = game.add.sprite(game.scale.width/2, game.scale.height/2, "trainers_intros")
-    portrait.setDepth(Z.CENTER_TEXT).setFrame(trainer.introFrameIndex)
-    game.sprites.set("centerIntro", portrait)
-    return tweenFade(game, portrait, 2000);
 }

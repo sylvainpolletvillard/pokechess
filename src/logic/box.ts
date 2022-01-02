@@ -1,14 +1,14 @@
-import {Pokemon} from "../data/pokemons";
-import Game from "../scenes/GameScene";
-import {gameState} from "./gamestate";
-import {addToBoxGroup, removeFromBoxGroup} from "../objects/pokemonBox";
-import {PokemonOnBoard} from "../objects/pokemon";
-import {drawAlliancesInfo} from "../objects/alliancesInfo";
-import {removeInArray} from "../utils/helpers";
-import { ITEM_POKEBALL } from "../data/items";
-import { RoomType } from "./destination";
-import { drawPokeballsCounter } from "../objects/gui";
-import { MyScene } from "../scenes/MyScene";
+import Game from '../scenes/GameScene';
+import { addToBoxGroup, removeFromBoxGroup } from '../objects/pokemonBox';
+import { drawAlliancesInfo } from '../objects/alliancesInfo';
+import { drawPokeballsCounter } from '../objects/pokeballsCounter';
+import { gameState } from './gamestate';
+import { ITEM_POKEBALL } from '../data/items';
+import { MyScene } from '../scenes/MyScene';
+import { Pokemon } from '../data/pokemons';
+import { PokemonOnBoard } from '../objects/pokemon';
+import { removeInArray } from '../utils/helpers';
+import { RoomType } from './destination';
 
 export function removeFromBox(pokemon: Pokemon){
     const box = gameState.player.box;
