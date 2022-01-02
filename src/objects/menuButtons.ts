@@ -20,8 +20,10 @@ let fightButton: Phaser.GameObjects.Sprite;
 
 export function drawMenuButtons(game: Game){
     menuButtonsGroup = game.add.group();
+    let dyText = 30
 
-    pokedexButton = game.add.sprite(100, game.scale.height - 12, "buttons",2)
+    let pokedexButtonX = 100
+    pokedexButton = game.add.sprite(pokedexButtonX, game.scale.height - 12, "buttons",2)
     pokedexButton.setData("type", "pokedexButton")
     let pokedexButtonText: Phaser.GameObjects.Text | null;
     pokedexButton
@@ -39,14 +41,13 @@ export function drawMenuButtons(game: Game){
             if(dragState.draggedElem != null){
                 const pokemon = dragState.draggedElem.getData("pokemon")
                 if(pokemon != null){
-                    pokedexButtonText = addText(78, game.scale.height - 36,
+                    pokedexButtonText = addText(pokedexButtonX, game.scale.height - dyText,
                         `Voir ${pokemon.name}`,
-                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
-                        .setOrigin(0.5)
+                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                        
                 }
             } else {
-                pokedexButtonText = addText(78, game.scale.height - 36, "POKEDEX",
-                { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
+                pokedexButtonText = addText(pokedexButtonX, game.scale.height - dyText, "POKEDEX",
+                { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)
             }            
         })
         .on("out", () => {
@@ -63,7 +64,9 @@ export function drawMenuButtons(game: Game){
     addInteractiveElem(pokedexButton)
     menuButtonsGroup.add(pokedexButton)
 
-    boxButton = game.add.sprite(160, game.scale.height - 12, "buttons", 0)
+
+    let boxButtonX = game.scale.width/2
+    boxButton = game.add.sprite(boxButtonX, game.scale.height - 12, "buttons", 0)
     boxButton.setData("type", "boxButton")
     let boxButtonText: Phaser.GameObjects.Text | null;
     boxButton
@@ -81,14 +84,13 @@ export function drawMenuButtons(game: Game){
             if(dragState.draggedElem != null){
                 const pokemon = dragState.draggedElem.getData("pokemon")
                 if(pokemon != null){
-                    boxButtonText = addText(game.scale.width/2, game.scale.height - 36,
+                    boxButtonText = addText(boxButtonX, game.scale.height - dyText,
                         `Retirer ${pokemon.name}`,
-                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
-                        .setOrigin(0.5)
+                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                        
                 }
             } else {
-                boxButtonText = addText(136, game.scale.height - 36, "POKEMONS",
-                    { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
+                boxButtonText = addText(boxButtonX, game.scale.height - dyText, "POKEMONS",
+                    { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                    
             }
         })
         .on("out", () => {
@@ -105,7 +107,9 @@ export function drawMenuButtons(game: Game){
     addInteractiveElem(boxButton)
     menuButtonsGroup.add(boxButton)
 
-    bagButton = game.add.sprite(220, game.scale.height - 12, "buttons",1)
+
+    let bagButtonX = 220
+    bagButton = game.add.sprite(bagButtonX, game.scale.height - 12, "buttons", 1)
     bagButton.setData("type", "bagButton")
     let bagButtonText: Phaser.GameObjects.Text | null;
     bagButton
@@ -124,21 +128,19 @@ export function drawMenuButtons(game: Game){
                 const pokemon: Pokemon = dragState.draggedElem.getData("pokemon")
                 const item: Item = dragState.draggedElem.getData("item")
                 if(pokemon != null){
-                    bagButtonText = addText(204, game.scale.height - 36,
+                    bagButtonText = addText(bagButtonX, game.scale.height - dyText,
                         pokemon.item 
                             ? `Récupérer ${pokemon.item.name}`
                             : `${pokemon.name} ne tient pas d'objet`,
-                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
-                        .setOrigin(0.5)
+                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                        
                 } else if(item != null){
-                    bagButtonText = addText(204, game.scale.height - 36,
+                    bagButtonText = addText(bagButtonX, game.scale.height - dyText,
                         `Ranger ${item.label}`,
-                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
-                        .setOrigin(0.5)
+                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                        
                 }
             } else {
-                bagButtonText = addText(204, game.scale.height - 36, "ITEMS",
-                    { align: "center", color: "white", strokeThickness: 4, stroke: "black" })
+                bagButtonText = addText(bagButtonX, game.scale.height - dyText, "ITEMS",
+                    { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)
             }
         })
         .on("out", () => {
