@@ -9,13 +9,13 @@ export const CARABAFFE: PokemonEntry = {
     maxPV: 59,
     maxPP: 20,
     attack: 63,
-    attackRange: 1,
+    attackRange: 3,
     defense: 80,
     speed: 58,
     types: [POKEMON_TYPES.EAU],
     evolution: TORTANK,
     evolutionLevel: 36,
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // pistolet à eau
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL // hydrocanon
 }

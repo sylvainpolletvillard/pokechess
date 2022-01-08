@@ -9,13 +9,13 @@ export const CARAPUCE: PokemonEntry = {
     maxPV: 44,
     maxPP: 20,
     attack: 48,
-    attackRange: 1,
+    attackRange: 3,
     defense: 65,
     speed: 43,
     types: [POKEMON_TYPES.EAU],
     evolution: CARABAFFE,
     evolutionLevel: 16,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // pistolet à eau
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL // hydrocanon
 }

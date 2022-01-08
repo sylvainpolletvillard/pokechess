@@ -54,7 +54,7 @@ const titleize = (str) =>
     .replace(/[ ]+/gi, " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
 
-const aliasize = (str) => str.replace(/[-_ ]{1,}/gi, "");
+const aliasize = (str) => str.replace(/[-_ ]+/gi, "");
 
 module.exports = {
   vv: vv,

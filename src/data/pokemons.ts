@@ -1,7 +1,7 @@
 import {nanoid} from "nanoid";
 
 import {PokemonType} from "./types";
-import {Skill} from "./skills";
+import {Skill} from "../logic/skill";
 import {POKEBALLS, POKEBALL_COSTS} from "./pokeballs";
 
 import {BULBIZARRE} from "./pokemons/bulbizarre";

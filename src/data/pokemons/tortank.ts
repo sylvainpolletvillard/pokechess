@@ -8,11 +8,11 @@ export const TORTANK: PokemonEntry = {
     maxPV: 79,
     maxPP: 20,
     attack: 83,
-    attackRange: 2,
+    attackRange: 3,
     defense: 80,
     speed: 58,
     types: [POKEMON_TYPES.EAU],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES,
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL
 }

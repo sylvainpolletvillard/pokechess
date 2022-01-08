@@ -1,24 +1,14 @@
 import Game from '../scenes/GameScene';
-import { addInteractiveElem, dragState, handleDragEnd } from './cursor';
-import { addText } from '../utils/text';
-import { addToBox } from '../logic/box';
-import { cancelPokemonDrag } from '../logic/board';
-import { closeMenu } from './menu';
+import { drawPokeballsCounter } from './pokeballsCounter';
+import { drawRoomNamePanel } from './roomNamePanel';
+import { drawTrainers, showTrainerIntro } from './trainers';
 import { GameStage, gameState } from '../logic/gamestate';
-import { Item } from '../data/items';
-import { openBox } from './pokemonBox';
-import { openItemMenu } from './itemBox';
-import { Pokemon } from '../data/pokemons';
 import { RoomArena, RoomType } from '../logic/destination';
-import { showPokedex } from './pokedex';
 import { startDialog } from '../logic/dialog';
 import { tweenPop } from '../utils/tweens';
 import { updatePokemonBars } from './pokemonBar';
 import { wait } from '../utils/helpers';
 import { Z } from '../data/depths';
-import { drawTrainers, showTrainerIntro } from './trainers';
-import { drawPokeballsCounter } from './pokeballsCounter';
-import { drawRoomNamePanel } from './roomNamePanel';
 
 export function updateGUI(game: Game){
     if(gameState.stage === GameStage.FIGHT){

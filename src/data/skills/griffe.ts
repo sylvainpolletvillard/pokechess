@@ -1,9 +1,12 @@
-import {Skill} from "../skills";
+import {HitSkill, SkillBehavior} from "../../logic/skill";
 import {POKEMON_TYPES} from "../types";
 import {EFFECTS} from "../effects";
 
-export const GRIFFE: Skill = {
+export const GRIFFE: HitSkill = {
     name: "Griffe",
     type: POKEMON_TYPES.NORMAL,
     effect: EFFECTS.CLAW_LEFT,
+    behavior: SkillBehavior.DIRECT_HIT,
+    hitDelay: 100,
+    effectOrigin: "target"
 }

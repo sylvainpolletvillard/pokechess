@@ -73,17 +73,25 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
             if(target.pv > 0){ // if target is not already dead by another attack
                 pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
                 pokemon.pp = Math.min(pokemon.maxPP, pokemon.pp + 1);
-                renderAttack(pokemon, target, game);
                 //console.log(`${pokemon.name} (${pokemon.x},${pokemon.y}) is targeting ${target.name} (${target.x},${target.y}) → ${pokemon.facingDirection}`)
-                const damage = calcDamage(pokemon, target)
-                //console.log(`${pokemon.name} is attacking ${target.name}  for ${damage} damage !`)
-                target.pv = Math.max(0, target.pv - damage)
-                target.pp = Math.min(target.maxPP, target.pp + 2);
-                if(target.pv === 0) killPokemon(target)
+                faceTarget(pokemon, target, game);
+                renderAttack(pokemon, target, game).then(targets => {
+                    (targets || []).forEach(target => {
+                        applyDamage(target, pokemon)
+                    })
+                })
             }
             pokemon.nextAction = { type: PokemonTypeAction.IDLE }
         }
     })
+}
+
+export function applyDamage(target: PokemonOnBoard, attacker: PokemonOnBoard){
+    const damage = calcDamage(attacker, target)
+    console.log(`${attacker.name} is attacking ${target.name}  for ${damage} damage !`)
+    target.pv = Math.max(0, target.pv - damage)
+    target.pp = Math.min(target.maxPP, target.pp + 2);
+    if(target.pv === 0) killPokemon(target)
 }
 
 export function calcDamage(pokemon: PokemonOnBoard, target: PokemonOnBoard){

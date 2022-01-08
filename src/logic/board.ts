@@ -103,7 +103,8 @@ export function getCoordsFromPosition(x: number, y:number): [number, number]{
     return [ Math.floor((x-64)/32), Math.floor((y-48)/32) ]
 }
 
-export function getPokemonOnTile(i: number, j:number, board: Board){
+export function getPokemonOnTile(i: number, j:number){
+    const board = gameState.board
     return [ ...board.playerTeam, ...board.otherTeam]
         .find(pokemon => pokemon.x === i && pokemon.y === j)
 }
@@ -285,7 +286,7 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: Game){
             .stroke()
     }
 
-    const pokemonOnTile = getPokemonOnTile(i, j, gameState.board)
+    const pokemonOnTile = getPokemonOnTile(i, j)
     if(pokemonOnTile == null){
         if (gameState.activeMenu == null || (gameState.activeMenu?.ref == "box" && j > 4)){
             hidePokemonInfo()
@@ -322,7 +323,7 @@ export function dropPokemonOnBoard(sprite: Phaser.GameObjects.Sprite, x:number, 
     let pokemon: Pokemon = sprite.getData("pokemon")
     if(!pokemon) return;
 
-    const pokemonOnTile = getPokemonOnTile(x, y, gameState.board)
+    const pokemonOnTile = getPokemonOnTile(x, y)
     if(pokemonOnTile != null && pokemonOnTile !== pokemon){
         const newPokemonSprite = game.sprites.get(pokemonOnTile.uid)
         if(newPokemonSprite && testIfCanBeDragged(newPokemonSprite)){

@@ -4,13 +4,18 @@ export interface Effect {
     frameRate: number;
     scale?: number
     repeat: number;
-    origin?: "source" | "target";
 }
 
 export const EFFECTS: { [name: string] : Effect} = {
     WATER_BUBBLE: {
         key: "water_bubble",
-        frames: [0,1,2],
+        frames: [0],
+        frameRate: 8,
+        repeat: 0
+    },
+    WATER_BUBBLE_HIT: {
+        key: "water_bubble_hit",
+        frames: [1,2],
         frameRate: 8,
         repeat: 0
     },
@@ -284,15 +289,13 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [160,161,162,163,164],
         frameRate: 8,
         repeat: 0,
-        scale: 0.75,
-        origin: "source",
+        scale: 0.75
     },
     THORN_SPEAR: {
         key: "thorn_spear",
         frames: [165,166,167,168,169],
         frameRate: 8,
-        repeat: 0,
-        origin: "source",
+        repeat: 0
     },
     ROOTS: {
         key: "roots",

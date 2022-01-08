@@ -1,22 +1,14 @@
-import {PokemonType} from "./types";
-import {Pokemon} from "./pokemons";
-import {Effect} from "./effects";
 import {FOUET_LIANES} from "./skills/fouetLianes";
 import {LANCE_SOLEIL} from "./skills/lanceSoleil";
 import {FLAMMECHE} from "./skills/flammeche";
 import {GRIFFE} from "./skills/griffe";
+import {PISTOLET_A_O} from "./skills/pistoletO";
 
-export interface Skill {
-    type: PokemonType
-    name: string
-    description?: string
-    effect: Effect;
-    apply?: (source: Pokemon, target: Pokemon) => any
-}
 
 export const SKILLS = {
     FOUET_LIANES,
     LANCE_SOLEIL,
     FLAMMECHE,
-    GRIFFE
+    GRIFFE,
+    PISTOLET_A_O
 }

@@ -4,7 +4,7 @@ import {Board} from "./board";
 import {PokemonOnBoard} from "../objects/pokemon";
 
 export function distanceBetweenPokemon(pkm1: PokemonOnBoard, pkm2: PokemonOnBoard): number {
-    return (pkm1.x - pkm2.x) ** 2 + (pkm1.y - pkm2.y) ** 2
+    return Math.sqrt((pkm1.x - pkm2.x) ** 2 + (pkm1.y - pkm2.y) ** 2)
 }
 
 export function findClosestReachableTarget(pkm: PokemonOnBoard, targets: PokemonOnBoard[]): PokemonOnBoard | null {

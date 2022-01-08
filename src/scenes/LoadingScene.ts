@@ -17,12 +17,14 @@ import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items
 import { ARGENTA } from "../data/destinations/argenta";
 import { NIDORAN_MALE } from "../data/pokemons/nidoranm";
 import { SALAMECHE } from "../data/pokemons/salameche";
+import {CARAPUCE} from "../data/pokemons/carapuce";
+import {CARABAFFE} from "../data/pokemons/carabaffe";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [ 
-		new PokemonOnBoard( new Pokemon(SALAMECHE, 1, 5), 4 ,5),
-		new PokemonOnBoard( new Pokemon(NIDORAN_MALE, 1, 2), 5 ,5),
+		new PokemonOnBoard( new Pokemon(CARAPUCE, 1, 5), 4 ,5),
+		new PokemonOnBoard( new Pokemon(CARABAFFE, 1, 2), 5 ,5),
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1

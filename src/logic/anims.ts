@@ -6,6 +6,9 @@ import {POKEMON_TYPES} from "../data/types";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {Direction} from "../utils/directions";
 import {declareAnims} from "../utils/anims";
+import {HitSkill, ProjectileSkill, SkillBehavior} from "./skill";
+import {wait} from "../utils/helpers";
+import {launchProjectile} from "./projectile";
 
 export const DIRECTIONS = [Direction.UP, Direction.LEFT, Direction.DOWN, Direction.RIGHT]
 
@@ -160,16 +163,27 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
     sprite.play(`${pokemon.ref}_${pokemon.facingDirection}`)
 }
 
-export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: Game){
+export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: Game): Promise<PokemonOnBoard[]> {
     faceTarget(pokemon, target, game);
-    const effect = pokemon.baseSkill.effect;
+    const skill = pokemon.baseSkill;
+
+    if(skill.behavior === SkillBehavior.DIRECT_HIT){
+        return renderDirectHitAttack(skill as HitSkill, pokemon, target, game)
+    } else if(pokemon.baseSkill.behavior === SkillBehavior.PROJECTILE) {
+        return launchProjectile(skill as ProjectileSkill, pokemon, target, game)
+    }
+    console.error(`Not yet implemented: ${skill.name}`)
+    return Promise.resolve([])
+}
+
+export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: Game): Promise<PokemonOnBoard[]>{
     let x,y, angle
-    if(effect.origin === "source"){
-        [x,y] = pokemon.position
-        angle = Math.atan2(target.y - pokemon.y, target.x - pokemon.x)
+    if(skill.effectOrigin === "source"){
+        [x,y] = attacker.position
+        angle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
     } else {
         [x,y] = target.position
-        angle = Math.atan2(pokemon.y - target.y, pokemon.x - target.x)
+        angle = Math.atan2(attacker.y - target.y, attacker.x - target.x)
     }
 
     const dx = Math.round(Math.cos(angle) * 8)
@@ -178,14 +192,15 @@ export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
     const sprite = game.add.sprite(x + dx, y + dy, "effects")
 
     sprite.rotation = angle;
-    sprite.scale = effect.scale ?? 0.5;
+    sprite.scale = skill.effect.scale ?? 0.5;
     sprite.blendMode = Phaser.BlendModes.OVERLAY
 
-    sprite.play(effect.key)
+    sprite.play(skill.effect.key)
     sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
         sprite.destroy()
     })
 
+    return wait(skill.hitDelay).then(() => [target])
 }
 
 export function setupGUI(anims: Phaser.Animations.AnimationManager, debug?: boolean){
