@@ -17,5 +17,5 @@ export const CARABAFFE: PokemonEntry = {
     evolutionLevel: 36,
     rank: 2,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.LANCE_SOLEIL // hydrocanon
+    ppSkill: SKILLS.HYDROCANON
 }

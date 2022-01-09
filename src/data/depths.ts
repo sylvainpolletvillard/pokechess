@@ -1,7 +1,10 @@
 export const Z ={
     GRID: 10,
     GRID_ACTIVE_TILE: 11,
-    POKEMON: 12,
+
+    GROUND_SKILL_EFFECT: 14,
+    POKEMON: 15,
+    SKILL_EFFECT: 16,
 
     POKEMON_BARS: 20,
 

@@ -1,6 +1,6 @@
 import {PokemonType} from "../data/types";
 import {Effect} from "../data/effects";
-import {Pokemon} from "../data/pokemons";
+import { Alteration } from "../data/alterations";
 
 export interface Skill {
     type: PokemonType
@@ -8,27 +8,30 @@ export interface Skill {
     description?: string
     effect: Effect;
     behavior: SkillBehavior;
-    power: number; 
-    apply?: (source: Pokemon, target: Pokemon) => any
+    power: number;
+    triggerAlteration?: Alteration;    
 }
 
 export interface HitSkill extends Skill {
     behavior: SkillBehavior.DIRECT_HIT
     hitDelay: number
-    effectOrigin: "source" | "target";    
+    effectOrigin: "source" | "target" | "ground";
+    rotateSprite: boolean;
+    hitAlteration?: Alteration;
 }
 
 export interface DOTSkill extends Skill {
-    behavior: SkillBehavior.DAMAGE_OVER_TIME
+    behavior: SkillBehavior.DAMAGE_OVER_TIME    
 }
 
 export interface ProjectileSkill extends Skill {
     behavior: SkillBehavior.PROJECTILE
     travelSpeed: number;
     hitEffect?: Effect;
-    rotateProjectile?: boolean;
+    hitAlteration?: Alteration;
+    rotateProjectile: boolean;
     pierceThrough?: boolean;
-    projectileRadius: number;    
+    projectileRadius: number;
 }
 
 export interface AOESkill extends Skill {

@@ -16,6 +16,6 @@ export const HYPOTREMPE: PokemonEntry = {
     evolution: HYPOCEAN,
     evolutionLevel: 32,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // bulles d'o
+    baseSkill: SKILLS.BULLES_D_O,
     ppSkill: SKILLS.LANCE_SOLEIL // ouragan
 }

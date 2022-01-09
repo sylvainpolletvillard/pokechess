@@ -16,6 +16,7 @@ import { Badge } from "../data/badges";
 import { SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 import { checkProjectilesImpact } from "./projectile";
 import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
+import { updateAlterations } from "./alteration";
 
 export enum GameStage {
     CREATION,
@@ -144,6 +145,7 @@ export class GameState {
                 updatePokemonAction(pokemon, this.board, game)
             }
             checkProjectilesImpact()
+            updateAlterations([...gameState.board.playerTeam, ...gameState.board.otherTeam]);
             updatePokemonInfoBox()
         }
     }
@@ -161,8 +163,8 @@ export class GameState {
             showCenterText("text_defaite", game).then(() => {})
         }
 
-        let xpPerPokemon = (gameState.board.xpEarned || 0) / gameState.player.team.length        
-        xpPerPokemon = Math.max(1, xpPerPokemon)
+        let xpPerPokemon = (gameState.board.xpEarned || 0) / gameState.player.team.length
+        xpPerPokemon = Math.max(1, Math.ceil(xpPerPokemon))
 
         const lines: DialogLine[] = [];
         if(hasWon){

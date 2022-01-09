@@ -10,5 +10,6 @@ export const PISTOLET_A_O: ProjectileSkill = {
     travelSpeed: 3,
     power: 3,
     projectileRadius: 3,
-    hitEffect: EFFECTS.WATER_BUBBLE_HIT
+    hitEffect: EFFECTS.WATER_BUBBLE_HIT,
+    rotateProjectile: false
 }

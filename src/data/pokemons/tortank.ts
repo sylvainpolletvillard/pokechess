@@ -14,5 +14,5 @@ export const TORTANK: PokemonEntry = {
     types: [POKEMON_TYPES.EAU],
     rank: 3,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.LANCE_SOLEIL
+    ppSkill: SKILLS.HYDROCANON
 }

@@ -10,6 +10,8 @@ import {getCurrentPokemonCaptureInfoDisplayed} from "./pokemonCaptureBox";
 import {canAfford} from "../logic/shop";
 import { displayPokemonReleaseBox, hidePokemonReleaseInfo } from "./pokemonReleaseBox";
 import { hidePokemonInfo } from "./pokemonInfoBox";
+import { Alteration } from "../data/alterations";
+import { Z } from "../data/depths";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -18,6 +20,7 @@ export class PokemonOnBoard extends Pokemon {
     placementY: number;
     facingDirection: Direction;
     nextAction: PokemonAction;
+    alterations: Alteration[];
 
     constructor(pokemon: Pokemon, x:number, y:number) {
         super(pokemon, pokemon.owner, pokemon.level);
@@ -29,6 +32,7 @@ export class PokemonOnBoard extends Pokemon {
         this.nextAction = { type: PokemonTypeAction.IDLE }
         this.pv = this.maxPV
         this.pp = 0
+        this.alterations = []
     }
 
     reset(): PokemonOnBoard {
@@ -68,6 +72,7 @@ export function makePokemonSprite(
     sprite.setData("pokemon", pokemon)
     sprite.setData("type", "pokemon")
     sprite.play(`${pokemon.ref}_DOWN`)
+    sprite.setDepth(Z.POKEMON)
     sprite.anims.pause()
     sprite.setInteractive()
     game.input.setDraggable(sprite);

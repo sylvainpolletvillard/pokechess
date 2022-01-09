@@ -17,5 +17,5 @@ export const CARAPUCE: PokemonEntry = {
     evolutionLevel: 16,
     rank: 1,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.LANCE_SOLEIL // hydrocanon
+    ppSkill: SKILLS.HYDROCANON
 }

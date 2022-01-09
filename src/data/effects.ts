@@ -23,7 +23,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "water_jet",
         frames: [3,4,5,6],
         frameRate: 8,
-        repeat: 0
+        repeat: 2,
+        scale: 1
     },
     WATER_DROP: {
         key: "water_drop",
@@ -33,7 +34,13 @@ export const EFFECTS: { [name: string] : Effect} = {
     },
     WATER_BUBBLE_2: {
         key: "water_bubble2",
-        frames: [15,16,17,18],
+        frames: [15],
+        frameRate: 8,
+        repeat: 0
+    },
+    WATER_BUBBLE_2_HIT: {
+        key: "water_bubble2_hit",
+        frames: [16,17,18],
         frameRate: 8,
         repeat: 0
     },

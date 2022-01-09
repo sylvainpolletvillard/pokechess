@@ -4,11 +4,11 @@ import GameScene from "../scenes/GameScene";
 import {distanceBetweenPokemon} from "./pathfinding";
 import {getCoordsFromPosition, getPokemonOnTile} from "./board";
 import {OWNER_PLAYER} from "../data/owners";
-import { applyDamage } from "./fight";
-import { GameStage, gameState } from "./gamestate";
+import { applyDamage, calcDamage } from "./fight";
+import { gameState } from "./gamestate";
 import { wait } from "../utils/helpers";
 
-interface Projectile {
+export interface Projectile {
     sprite: Phaser.GameObjects.Sprite
     skill: ProjectileSkill
     attacker: PokemonOnBoard
@@ -39,7 +39,7 @@ export function launchProjectile(
 
     projectiles.add(projectile)
 
-    if(skill.rotateProjectile){        
+    if(skill.rotateProjectile){  
         projectile.sprite.rotation = angle;
     }
     if(skill.pierceThrough){
@@ -95,9 +95,10 @@ export function checkProjectilesImpact(){
             if(target && target.owner !== OWNER_PLAYER && !projectile.impactedPokemonIds.includes(target.uid)){                
                 projectile.impactedPokemonIds.push(target.uid)
                 wait(Math.floor(1000 / projectile.skill.travelSpeed)).then(() => {
-                    applyDamage(projectile.skill, target, projectile.attacker)
+                    let damage = calcDamage(projectile.skill, target, projectile.attacker)
+                    applyDamage(damage, target)                    
                     if(!projectile.skill.pierceThrough) destroyProjectile(projectile)
-                })                
+                })
             }
         })
     })

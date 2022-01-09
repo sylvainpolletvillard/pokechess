@@ -7,17 +7,23 @@ import Phaser from "phaser";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
 import GameScene from "../scenes/GameScene";
-import { Skill } from "./skill";
+import { Skill, SkillBehavior } from "./skill";
+import { canPokemonBeTargeted, hasBlockingAlteration } from "./alteration";
 
 export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: Game){
     if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || pokemon.pv <= 0) return;
 
-    const target = findClosestReachableTarget(pokemon, pokemon.owner === 1 ? board.otherTeam : board.playerTeam)
+    if(hasBlockingAlteration(pokemon)) return;
+
+    const targetCandidates = (pokemon.owner === 1 ? board.otherTeam : board.playerTeam)
+        .filter(candidate => canPokemonBeTargeted(candidate))
+    
+    const target = findClosestReachableTarget(pokemon, targetCandidates)
     if(target == null){
         pokemon.nextAction = { type: PokemonTypeAction.IDLE }
     } else {
         const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
-        if(distance <= pokemon.attackRange){
+        if(distance <= pokemon.attackRange){            
             attackTarget(pokemon, target, board, game)
         } else {
             moveToTarget(pokemon, target, board, game)
@@ -30,7 +36,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
     const path = findPathToTarget(pokemon, target, gameState.board)
-    console.log(`${pokemon.name} va vers ${target.name}`, path)
+    //console.log(`${pokemon.name} va vers ${target.name}`, path)
     pokemon.nextAction = { type: PokemonTypeAction.MOVE, path }
 
     // PATH >= 3 → pokemon tile + target tile + at least one free tile to move
@@ -83,16 +89,21 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     })
 }
 
-export function applyDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard){
-    const damage = calcDamage(skill, target, attacker)
-    console.log(`${attacker.name} is attacking ${target.name}  for ${damage} damage !`)
+export function applyDamage(damage: number, target: PokemonOnBoard){                
     target.pv = Math.max(0, target.pv - damage)
     target.pp = Math.min(target.maxPP, target.pp + 2);
     if(target.pv === 0) killPokemon(target)
 }
 
-export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard ){    
-    return Math.ceil(attacker.attack * skill.power / target.defense) 
+export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard | null){
+    if(attacker != null){
+        return Math.ceil(attacker.attack * skill.power / target.defense) 
+    } else if(skill.behavior === SkillBehavior.DAMAGE_OVER_TIME){
+        return skill.power // flat damage
+    } else {
+        return Math.ceil(skill.power / target.defense) 
+    }
+    
     // TODO: gérer les types de damage eau/feu plus ou moins efficaces
 }
 

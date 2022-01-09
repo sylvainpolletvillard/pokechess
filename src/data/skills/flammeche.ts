@@ -9,5 +9,6 @@ export const FLAMMECHE: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
     effectOrigin: "target",
-    power: 1.2
+    power: 1.2,
+    rotateSprite: true
 }

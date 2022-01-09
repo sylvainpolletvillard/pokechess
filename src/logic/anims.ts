@@ -9,7 +9,9 @@ import {declareAnims} from "../utils/anims";
 import {HitSkill, ProjectileSkill, SkillBehavior} from "./skill";
 import {wait} from "../utils/helpers";
 import {launchProjectile} from "./projectile";
-import { applyDamage } from "./fight";
+import { applyDamage, calcDamage } from "./fight";
+import { Z } from "../data/depths";
+import { addAlteration } from "./alteration";
 
 export const DIRECTIONS = [Direction.UP, Direction.LEFT, Direction.DOWN, Direction.RIGHT]
 
@@ -166,8 +168,12 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
 
 export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: Game) {
     faceTarget(pokemon, target, game);
-    const skill = pokemon.baseSkill;
-
+    let skill = pokemon.baseSkill;
+    if(pokemon.ppSkill && pokemon.pp >= pokemon.maxPP){
+        skill = pokemon.ppSkill
+        pokemon.pp = 0
+    }
+    
     if(skill.behavior === SkillBehavior.DIRECT_HIT){
         return renderDirectHitAttack(skill as HitSkill, pokemon, target, game)
     } else if(pokemon.baseSkill.behavior === SkillBehavior.PROJECTILE) {
@@ -178,30 +184,45 @@ export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
 }
 
 export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: Game){
-    let x,y, angle
+    let [x, y] = target.position, dx=0, dy=0, angle=0
     if(skill.effectOrigin === "source"){
         [x,y] = attacker.position
         angle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
-    } else {
-        [x,y] = target.position
+        dx = Math.round(Math.cos(angle) * 8)
+        dy = Math.round(Math.sin(angle) * 8)
+    } else if(skill.effectOrigin === "target"){
         angle = Math.atan2(attacker.y - target.y, attacker.x - target.x)
+        dx = Math.round(Math.cos(angle) * 8)
+        dy = Math.round(Math.sin(angle) * 8)
+    } else if(skill.effectOrigin === "ground"){
+        dy= -16 * (skill.effect.scale ?? 0.5)
     }
+    
+    const sprite = game.add.sprite(x + dx, y + dy, "effects")    
 
-    const dx = Math.round(Math.cos(angle) * 8)
-    const dy = Math.round(Math.sin(angle) * 8)
-
-    const sprite = game.add.sprite(x + dx, y + dy, "effects")
-
-    sprite.rotation = angle;
+    if(skill.rotateSprite){
+        sprite.rotation = angle;
+    }    
     sprite.scale = skill.effect.scale ?? 0.5;
     sprite.blendMode = Phaser.BlendModes.OVERLAY
+    if(skill.effectOrigin === "ground"){
+        sprite.setDepth(Z.GROUND_SKILL_EFFECT)
+    } else {
+        sprite.setDepth(Z.SKILL_EFFECT)
+    }
 
     sprite.play(skill.effect.key)
     sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
         sprite.destroy()
     })
 
-    wait(skill.hitDelay).then(() => applyDamage(skill, target, attacker))
+    if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
+        
+    wait(skill.hitDelay).then(() => {
+        const damage = calcDamage(skill, target, attacker)
+        console.log(`${attacker.name} is attacking ${target.name} for ${damage} damage !`)
+        applyDamage(damage, target)
+    })
 }
 
 export function setupGUI(anims: Phaser.Animations.AnimationManager, debug?: boolean){

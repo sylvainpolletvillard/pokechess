@@ -11,5 +11,6 @@ export const LANCE_SOLEIL: ProjectileSkill = {
     power: 10,
     travelSpeed: 2,
     pierceThrough: true,
-    projectileRadius: 8
+    projectileRadius: 8,
+    rotateProjectile: false
 }
