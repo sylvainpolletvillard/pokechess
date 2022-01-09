@@ -8,5 +8,6 @@ export const FOUET_LIANES: HitSkill = {
     effect: EFFECTS.VINE_WHIP,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 250,
-    effectOrigin: "source"
+    effectOrigin: "source",
+    power: 1.2
 }

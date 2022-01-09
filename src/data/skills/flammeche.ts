@@ -8,5 +8,6 @@ export const FLAMMECHE: HitSkill = {
     effect: EFFECTS.FIRE_BALL,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
-    effectOrigin: "target"
+    effectOrigin: "target",
+    power: 1.2
 }

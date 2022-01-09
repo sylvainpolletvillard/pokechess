@@ -9,6 +9,7 @@ import {declareAnims} from "../utils/anims";
 import {HitSkill, ProjectileSkill, SkillBehavior} from "./skill";
 import {wait} from "../utils/helpers";
 import {launchProjectile} from "./projectile";
+import { applyDamage } from "./fight";
 
 export const DIRECTIONS = [Direction.UP, Direction.LEFT, Direction.DOWN, Direction.RIGHT]
 
@@ -163,7 +164,7 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
     sprite.play(`${pokemon.ref}_${pokemon.facingDirection}`)
 }
 
-export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: Game): Promise<PokemonOnBoard[]> {
+export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: Game) {
     faceTarget(pokemon, target, game);
     const skill = pokemon.baseSkill;
 
@@ -173,10 +174,10 @@ export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
         return launchProjectile(skill as ProjectileSkill, pokemon, target, game)
     }
     console.error(`Not yet implemented: ${skill.name}`)
-    return Promise.resolve([])
+
 }
 
-export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: Game): Promise<PokemonOnBoard[]>{
+export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: Game){
     let x,y, angle
     if(skill.effectOrigin === "source"){
         [x,y] = attacker.position
@@ -200,7 +201,7 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
         sprite.destroy()
     })
 
-    return wait(skill.hitDelay).then(() => [target])
+    wait(skill.hitDelay).then(() => applyDamage(skill, target, attacker))
 }
 
 export function setupGUI(anims: Phaser.Animations.AnimationManager, debug?: boolean){

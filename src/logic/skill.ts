@@ -8,13 +8,14 @@ export interface Skill {
     description?: string
     effect: Effect;
     behavior: SkillBehavior;
+    power: number; 
     apply?: (source: Pokemon, target: Pokemon) => any
 }
 
 export interface HitSkill extends Skill {
     behavior: SkillBehavior.DIRECT_HIT
     hitDelay: number
-    effectOrigin: "source" | "target";
+    effectOrigin: "source" | "target";    
 }
 
 export interface DOTSkill extends Skill {
@@ -25,6 +26,9 @@ export interface ProjectileSkill extends Skill {
     behavior: SkillBehavior.PROJECTILE
     travelSpeed: number;
     hitEffect?: Effect;
+    rotateProjectile?: boolean;
+    pierceThrough?: boolean;
+    projectileRadius: number;    
 }
 
 export interface AOESkill extends Skill {

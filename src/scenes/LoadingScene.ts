@@ -19,12 +19,13 @@ import { NIDORAN_MALE } from "../data/pokemons/nidoranm";
 import { SALAMECHE } from "../data/pokemons/salameche";
 import {CARAPUCE} from "../data/pokemons/carapuce";
 import {CARABAFFE} from "../data/pokemons/carabaffe";
+import { BULBIZARRE } from "../data/pokemons/bulbizarre";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [ 
-		new PokemonOnBoard( new Pokemon(CARAPUCE, 1, 5), 4 ,5),
-		new PokemonOnBoard( new Pokemon(CARABAFFE, 1, 2), 5 ,5),
+		new PokemonOnBoard( new Pokemon(BULBIZARRE, 1, 40), 4 ,5),
+		new PokemonOnBoard( new Pokemon(CARABAFFE, 1, 40), 5 ,5),
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1

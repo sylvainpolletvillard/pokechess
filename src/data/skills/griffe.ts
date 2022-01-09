@@ -8,5 +8,6 @@ export const GRIFFE: HitSkill = {
     effect: EFFECTS.CLAW_LEFT,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
-    effectOrigin: "target"
+    effectOrigin: "target",
+    power: 1
 }

@@ -2,7 +2,7 @@ import {addText} from "../utils/text";
 import {Pokemon} from "../data/pokemons";
 import {PokemonOnBoard} from "./pokemon";
 import {Z} from "../data/depths";
-import {gameState} from "../logic/gamestate";
+import {GameStage, gameState} from "../logic/gamestate";
 import {MyScene} from "../scenes/MyScene";
 
 let currentPokemonInfoDisplayed: Pokemon | null;
@@ -10,7 +10,7 @@ let pokemonInfoBox: Phaser.GameObjects.Group | null;
 
 export function displayPokemonInfo(pokemon: Pokemon){
     const scene = gameState.activeScene as MyScene;
-    if(currentPokemonInfoDisplayed === pokemon) return;
+    if(currentPokemonInfoDisplayed === pokemon && gameState.stage !== GameStage.FIGHT) return;
     if(currentPokemonInfoDisplayed != null) hidePokemonInfo();
     currentPokemonInfoDisplayed = pokemon
 
@@ -101,4 +101,10 @@ export function hidePokemonInfo(){
 
 export function getCurrentPokemonInfoDisplayed(){
     return currentPokemonInfoDisplayed
+}
+
+export function updatePokemonInfoBox(){
+    if(currentPokemonInfoDisplayed){
+        displayPokemonInfo(currentPokemonInfoDisplayed)
+    }
 }

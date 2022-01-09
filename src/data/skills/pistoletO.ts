@@ -8,5 +8,7 @@ export const PISTOLET_A_O: ProjectileSkill = {
     effect: EFFECTS.WATER_BUBBLE,
     behavior: SkillBehavior.PROJECTILE,
     travelSpeed: 3,
+    power: 3,
+    projectileRadius: 3,
     hitEffect: EFFECTS.WATER_BUBBLE_HIT
 }

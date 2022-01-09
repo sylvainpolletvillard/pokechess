@@ -14,6 +14,8 @@ import {BOURG_PALETTE, TEST_ROOM} from "../data/destinations/bourg_palette";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
 import { Badge } from "../data/badges";
 import { SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
+import { checkProjectilesImpact } from "./projectile";
+import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
 
 export enum GameStage {
     CREATION,
@@ -141,6 +143,8 @@ export class GameState {
             for (let pokemon of this.board.otherTeam) {
                 updatePokemonAction(pokemon, this.board, game)
             }
+            checkProjectilesImpact()
+            updatePokemonInfoBox()
         }
     }
 

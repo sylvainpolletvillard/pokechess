@@ -7,6 +7,7 @@ import Phaser from "phaser";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
 import GameScene from "../scenes/GameScene";
+import { Skill } from "./skill";
 
 export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: Game){
     if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || pokemon.pv <= 0) return;
@@ -75,28 +76,23 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
                 pokemon.pp = Math.min(pokemon.maxPP, pokemon.pp + 1);
                 //console.log(`${pokemon.name} (${pokemon.x},${pokemon.y}) is targeting ${target.name} (${target.x},${target.y}) → ${pokemon.facingDirection}`)
                 faceTarget(pokemon, target, game);
-                renderAttack(pokemon, target, game).then(targets => {
-                    (targets || []).forEach(target => {
-                        applyDamage(target, pokemon)
-                    })
-                })
+                renderAttack(pokemon, target, game)
             }
             pokemon.nextAction = { type: PokemonTypeAction.IDLE }
         }
     })
 }
 
-export function applyDamage(target: PokemonOnBoard, attacker: PokemonOnBoard){
-    const damage = calcDamage(attacker, target)
+export function applyDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard){
+    const damage = calcDamage(skill, target, attacker)
     console.log(`${attacker.name} is attacking ${target.name}  for ${damage} damage !`)
     target.pv = Math.max(0, target.pv - damage)
     target.pp = Math.min(target.maxPP, target.pp + 2);
     if(target.pv === 0) killPokemon(target)
 }
 
-export function calcDamage(pokemon: PokemonOnBoard, target: PokemonOnBoard){
-    const ATK_RATIO = 1.5 //  base attack power, to adjust
-    return Math.ceil(pokemon.attack * ATK_RATIO / target.defense) 
+export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard ){    
+    return Math.ceil(attacker.attack * skill.power / target.defense) 
     // TODO: gérer les types de damage eau/feu plus ou moins efficaces
 }
 
@@ -105,7 +101,7 @@ export function killPokemon(pokemon: PokemonOnBoard){
     const team = pokemon.owner === 1 ? board.playerTeam : board.otherTeam;
     const index = team.indexOf(pokemon)
 
-    if(index === -1) return console.error(`Error killPokemon: pokemon ${pokemon.uid} not found in team ${pokemon.owner}`)
+    if(index === -1) return; // already dead
     
     sendBackToPokeball(pokemon)
     team.splice(index, 1)
