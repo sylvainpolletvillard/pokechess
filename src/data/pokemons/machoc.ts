@@ -9,7 +9,7 @@ export const MACHOC: PokemonEntry = {
     maxPV: 70,
     maxPP: 20,
     attack: 80,
-    attackRange: 1,
+
     defense: 50,
     speed: 35,
     types: [POKEMON_TYPES.COMBAT],

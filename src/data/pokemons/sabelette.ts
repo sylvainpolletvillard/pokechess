@@ -9,7 +9,7 @@ export const SABELETTE: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 75,
-    attackRange: 1,
+
     defense: 85,
     speed: 40,
     types: [POKEMON_TYPES.SOL],

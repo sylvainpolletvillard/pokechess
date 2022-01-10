@@ -8,7 +8,7 @@ export const NOSFERALTO: PokemonEntry = {
     maxPV: 75,
     maxPP: 20,
     attack: 80,
-    attackRange: 1,
+
     defense: 70,
     speed: 90,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.POISON],

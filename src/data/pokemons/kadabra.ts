@@ -9,7 +9,7 @@ export const KADABRA: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 35,
-    attackRange: 4,
+
     defense: 30,
     speed: 105,
     types: [POKEMON_TYPES.PSY],

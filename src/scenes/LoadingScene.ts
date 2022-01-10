@@ -10,24 +10,17 @@ import {loadSprites} from "../data/sprites";
 import {loadSpritesheets} from "../data/spritesheets";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {Pokemon} from "../data/pokemons";
-import {DRACAUFEU} from "../data/pokemons/dracaufeu";
-import {JADIELLE} from "../data/destinations/jadielle";
 import {FORET_JADE} from "../data/destinations/foret_jade";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
-import { ARGENTA } from "../data/destinations/argenta";
-import { NIDORAN_MALE } from "../data/pokemons/nidoranm";
-import { SALAMECHE } from "../data/pokemons/salameche";
-import {CARAPUCE} from "../data/pokemons/carapuce";
-import {CARABAFFE} from "../data/pokemons/carabaffe";
-import { BULBIZARRE } from "../data/pokemons/bulbizarre";
-import { HYPOCEAN } from "../data/pokemons/hypocean";
+import { CHENIPAN } from "../data/pokemons/chenipan";
+import { CHRYSACIER } from "../data/pokemons/chrysacier";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [ 
 		//new PokemonOnBoard( new Pokemon(BULBIZARRE, 1, 20), 4 ,5),
-		new PokemonOnBoard( new Pokemon(CARABAFFE, 1, 20), 5 ,5),
-		//new PokemonOnBoard( new Pokemon(HYPOCEAN, 1, 20), 3 ,5),
+		new PokemonOnBoard( new Pokemon(CHENIPAN, 1, 20), 5 ,5),
+		new PokemonOnBoard( new Pokemon(CHRYSACIER, 1, 20), 3 ,5),
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1

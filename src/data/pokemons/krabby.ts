@@ -9,13 +9,13 @@ export const KRABBY: PokemonEntry = {
     maxPV: 30,
     maxPP: 20,
     attack: 105,
-    attackRange: 1,
+
     defense: 90,
     speed: 50,
     types: [POKEMON_TYPES.EAU],
     evolution: KRABBOSS,
     evolutionLevel: 28,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // pistolet à eau
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL // guillotine
 }

@@ -8,11 +8,11 @@ export const LOKHLASS: PokemonEntry = {
     maxPV: 130,
     maxPP: 20,
     attack: 85,
-    attackRange: 1,
+
     defense: 80,
     speed: 60,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.GLACE],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES, // pistoler à O
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL // surf
 }

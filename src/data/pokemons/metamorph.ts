@@ -8,7 +8,7 @@ export const METAMORPH: PokemonEntry = {
     maxPV: 48,
     maxPP: 0,
     attack: 48,
-    attackRange: 1,
+
     defense: 48,
     speed: 48,
     types: [POKEMON_TYPES.NORMAL],

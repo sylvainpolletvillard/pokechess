@@ -23,7 +23,8 @@ export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game:
         pokemon.nextAction = { type: PokemonTypeAction.IDLE }
     } else {
         const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
-        if(distance <= pokemon.attackRange){            
+        if(distance <= pokemon.baseSkill.attackRange 
+        || (pokemon.ppSkill && pokemon.pp >= pokemon.maxPP && distance <= pokemon.ppSkill.attackRange)){
             attackTarget(pokemon, target, board, game)
         } else {
             moveToTarget(pokemon, target, board, game)
@@ -97,11 +98,11 @@ export function applyDamage(damage: number, target: PokemonOnBoard){
 
 export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard | null){
     if(attacker != null){
-        return Math.ceil(attacker.attack * skill.power / target.defense) 
+        return attacker.attack * skill.power / target.defense
     } else if(skill.behavior === SkillBehavior.DAMAGE_OVER_TIME){
         return skill.power // flat damage
     } else {
-        return Math.ceil(skill.power / target.defense) 
+        return skill.power / target.defense
     }
     
     // TODO: gérer les types de damage eau/feu plus ou moins efficaces
@@ -113,7 +114,7 @@ export function killPokemon(pokemon: PokemonOnBoard){
     const index = team.indexOf(pokemon)
 
     if(index === -1) return; // already dead
-    
+        
     sendBackToPokeball(pokemon)
     team.splice(index, 1)
 
@@ -135,6 +136,7 @@ export function sendBackToPokeball(pokemon: PokemonOnBoard){
     })
 
     sprite.destroy();
+    pokemon.alterations.filter(alt => alt.effectSprite).forEach(alt => alt.effectSprite?.destroy())
     game.sprites.delete(pokemon.uid)
 
     const bars = game.graphics.get(pokemon.uid)

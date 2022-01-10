@@ -9,7 +9,7 @@ export const OSSELAIT: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 50,
-    attackRange: 3,
+
     defense: 95,
     speed: 35,
     types: [POKEMON_TYPES.SOL],

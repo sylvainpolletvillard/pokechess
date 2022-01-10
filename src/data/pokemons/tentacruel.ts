@@ -8,7 +8,7 @@ export const TENTACRUEL: PokemonEntry = {
     maxPV: 80,
     maxPP: 20,
     attack: 70,
-    attackRange: 1,
+
     defense: 65,
     speed: 100,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.POISON],

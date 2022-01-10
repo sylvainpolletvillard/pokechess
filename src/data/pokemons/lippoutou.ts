@@ -8,11 +8,11 @@ export const LIPPOUTOU: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 50,
-    attackRange: 3,
+
     defense: 35,
     speed: 95,
     types: [POKEMON_TYPES.GLACE, POKEMON_TYPES.PSY],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // poudreuse
+    baseSkill: SKILLS.POUDREUSE,
     ppSkill: SKILLS.LANCE_SOLEIL // grobisou
 }

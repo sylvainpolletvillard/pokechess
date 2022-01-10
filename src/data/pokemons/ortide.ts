@@ -9,7 +9,7 @@ export const ORTIDE: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 65,
-    attackRange: 1,
+
     defense: 70,
     speed: 40,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],

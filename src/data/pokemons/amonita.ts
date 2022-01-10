@@ -9,13 +9,12 @@ export const AMONITA: PokemonEntry = {
     maxPV: 35,
     maxPP: 20,
     attack: 40,
-    attackRange: 4,
     defense: 100,
     speed: 35,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.ROCHE],
     evolution: AMONISTAR,
     evolutionLevel: 40,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // pistolet à eau
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL // pouvoir antique
 }

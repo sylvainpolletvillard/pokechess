@@ -9,7 +9,7 @@ export const MIAOUSS: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 45,
-    attackRange: 1,
+
     defense: 35,
     speed: 90,
     types: [POKEMON_TYPES.NORMAL],

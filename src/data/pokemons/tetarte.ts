@@ -9,7 +9,7 @@ export const TETARTE: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 65,
-    attackRange: 1,
+
     defense: 65,
     speed: 90,
     types: [POKEMON_TYPES.EAU],

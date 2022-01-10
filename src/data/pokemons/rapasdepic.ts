@@ -8,7 +8,7 @@ export const RAPASDEPIC: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 90,
-    attackRange: 1,
+
     defense: 65,
     speed: 100,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.NORMAL],

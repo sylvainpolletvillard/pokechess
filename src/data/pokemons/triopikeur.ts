@@ -8,7 +8,7 @@ export const TRIOPIKEUR: PokemonEntry = {
     maxPV: 35,
     maxPP: 20,
     attack: 100,
-    attackRange: 3,
+
     defense: 50,
     speed: 120,
     types: [POKEMON_TYPES.SOL],

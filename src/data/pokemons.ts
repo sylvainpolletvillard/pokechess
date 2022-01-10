@@ -169,7 +169,6 @@ export interface PokemonEntry {
     maxPV: number;
     maxPP: number;
     attack: number;
-    attackRange: number;
     defense: number;
     speed: number;
     baseSkill: Skill;
@@ -190,7 +189,6 @@ export class Pokemon implements PokemonEntry {
     level: number;
     ref: string;
     baseAttack: number;
-    attackRange: number;
     baseDefense: number;
     baseSpeed: number;
     maxPP: number;
@@ -220,7 +218,6 @@ export class Pokemon implements PokemonEntry {
         this.maxPP = entry.maxPP
         this.pv = this.maxPV;
         this.pp = 0
-        this.attackRange = entry.attackRange
         this.baseAttack = entry.attack
         this.baseDefense = entry.defense
         this.baseSpeed = entry.speed

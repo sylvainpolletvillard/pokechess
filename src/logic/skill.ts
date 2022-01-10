@@ -7,9 +7,12 @@ export interface Skill {
     name: string
     description?: string
     effect: Effect;
+    effectDelta?: number;
+    effectDepth?: number;
     behavior: SkillBehavior;
     power: number;
     triggerAlteration?: Alteration;    
+    attackRange: number;
 }
 
 export interface HitSkill extends Skill {
@@ -20,8 +23,8 @@ export interface HitSkill extends Skill {
     hitAlteration?: Alteration;
 }
 
-export interface DOTSkill extends Skill {
-    behavior: SkillBehavior.DAMAGE_OVER_TIME    
+export interface BuffSkill extends Skill {
+    behavior: SkillBehavior.BUFF    
 }
 
 export interface ProjectileSkill extends Skill {
@@ -41,7 +44,7 @@ export interface AOESkill extends Skill {
 
 export enum SkillBehavior {
     DIRECT_HIT,
-    DAMAGE_OVER_TIME,
+    BUFF,
     PROJECTILE,
     AREA_OF_EFFECT
 }

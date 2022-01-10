@@ -9,7 +9,7 @@ export const PYROLI: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 130,
-    attackRange: 1,
+
     defense: 60,
     speed: 65,
     types: [POKEMON_TYPES.FEU],

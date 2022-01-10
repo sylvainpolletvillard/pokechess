@@ -8,11 +8,10 @@ export const AMONISTAR: PokemonEntry = {
     maxPV: 70,
     maxPP: 20,
     attack: 60,
-    attackRange: 4,
     defense: 125,
     speed: 55,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.ROCHE],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES, // pistolet à eau
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL // pouvoir antique
 }

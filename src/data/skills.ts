@@ -5,6 +5,12 @@ import {GRIFFE} from "./skills/griffe";
 import {PISTOLET_A_O} from "./skills/pistoletO";
 import { BULLES_D_O } from "./skills/bullesO";
 import { HYDROCANON } from "./skills/hydrocanon";
+import { LANCE_FLAMMES } from "./skills/lanceFlammes";
+import { TREMPETTE } from "./skills/trempette";
+import { POUDREUSE } from "./skills/poudreuse";
+import { ECLATS_GLACE } from "./skills/eclatsGlace";
+import { PIQURE } from "./skills/piqure";
+import { SECRETION } from "./skills/secretion";
 
 
 export const SKILLS = {
@@ -14,5 +20,11 @@ export const SKILLS = {
     GRIFFE,
     PISTOLET_A_O,
     BULLES_D_O,
-    HYDROCANON
+    HYDROCANON,
+    LANCE_FLAMMES,
+    TREMPETTE,
+    POUDREUSE,
+    ECLATS_GLACE,
+    PIQURE,
+    SECRETION
 }

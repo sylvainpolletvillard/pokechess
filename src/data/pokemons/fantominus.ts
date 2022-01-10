@@ -9,7 +9,7 @@ export const FANTOMINUS: PokemonEntry = {
     maxPV: 30,
     maxPP: 20,
     attack: 35,
-    attackRange: 1,
+
     defense: 30,
     speed: 80,
     types: [POKEMON_TYPES.SPECTRE, POKEMON_TYPES.POISON],

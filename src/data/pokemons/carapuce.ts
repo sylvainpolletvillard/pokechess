@@ -9,7 +9,7 @@ export const CARAPUCE: PokemonEntry = {
     maxPV: 44,
     maxPP: 20,
     attack: 48,
-    attackRange: 3,
+
     defense: 65,
     speed: 43,
     types: [POKEMON_TYPES.EAU],

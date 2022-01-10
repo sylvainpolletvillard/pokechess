@@ -39,7 +39,7 @@ export function displayPokemonInfo(pokemon: Pokemon){
 
     const hpText = addText(ox-50, oy-12, "HP")
     pokemonInfoBox.add(hpText)
-    const hpValueText = addText(ox+48, oy-12, `${pokemon.pv.toString().padStart(3)} / ${pokemon.maxPV}`)
+    const hpValueText = addText(ox+48, oy-12, `${Math.ceil(pokemon.pv).toString().padStart(3)} / ${pokemon.maxPV}`)
     pokemonInfoBox.add(hpValueText)
 
     const BAR_WIDTH = 72;
@@ -80,7 +80,7 @@ export function displayPokemonInfo(pokemon: Pokemon){
     const statRangeIcon = scene.add.sprite(ox+94, oy+14, "icons16x16", 19)
     statRangeIcon.setAlpha(0.25).setOrigin(0,0).setScrollFactor(0);
     pokemonInfoBox.add(statRangeIcon)
-    const statRangeText = addText(ox +114, oy+15, pokemon.attackRange.toString())
+    const statRangeText = addText(ox +114, oy+15, pokemon.baseSkill.attackRange.toString())
     pokemonInfoBox.add(statRangeText)
 
     for(let i=0; i< pokemon.types.length; i++) {

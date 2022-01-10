@@ -8,7 +8,7 @@ export const MELODELFE: PokemonEntry = {
     maxPV: 95,
     maxPP: 20,
     attack: 70,
-    attackRange: 1,
+
     defense: 73,
     speed: 60,
     types: [POKEMON_TYPES.FEE],

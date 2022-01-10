@@ -8,7 +8,7 @@ export const PERSIAN: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 70,
-    attackRange: 1,
+
     defense: 60,
     speed: 115,
     types: [POKEMON_TYPES.NORMAL],

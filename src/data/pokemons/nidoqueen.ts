@@ -8,7 +8,7 @@ export const NIDOQUEEN: PokemonEntry = {
     maxPV: 90,
     maxPP: 20,
     attack: 82,
-    attackRange: 1,
+
     defense: 87,
     speed: 76,
     types: [POKEMON_TYPES.POISON, POKEMON_TYPES.SOL],

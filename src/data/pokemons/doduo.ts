@@ -9,7 +9,7 @@ export const DODUO: PokemonEntry = {
     maxPV: 35,
     maxPP: 20,
     attack: 85,
-    attackRange: 1,
+
     defense: 45,
     speed: 75,
     types: [POKEMON_TYPES.NORMAL, POKEMON_TYPES.VOL],

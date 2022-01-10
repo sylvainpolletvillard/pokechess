@@ -8,11 +8,10 @@ export const ARTIKODIN: PokemonEntry = {
     maxPV: 90,
     maxPP: 20,
     attack: 95,
-    attackRange: 1,
     defense: 100,
     speed: 85,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.GLACE],
     rank: 5,
-    baseSkill: SKILLS.FLAMMECHE, // poudreuse
+    baseSkill: SKILLS.POUDREUSE,
     ppSkill: SKILLS.LANCE_SOLEIL // blizzard
 }

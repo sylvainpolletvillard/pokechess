@@ -9,7 +9,7 @@ export const VOLTALI: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 65,
-    attackRange: 1,
+
     defense: 60,
     speed: 130,
     types: [POKEMON_TYPES.ELECTRIQUE],

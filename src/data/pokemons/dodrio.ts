@@ -8,7 +8,7 @@ export const DODRIO: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 110,
-    attackRange: 1,
+
     defense: 70,
     speed: 110,
     types: [POKEMON_TYPES.NORMAL, POKEMON_TYPES.VOL],

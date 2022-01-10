@@ -9,7 +9,6 @@ export const ASPICOT: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 35,
-    attackRange: 1,
     defense: 30,
     speed: 50,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.POISON],

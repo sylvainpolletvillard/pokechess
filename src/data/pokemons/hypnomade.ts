@@ -8,7 +8,7 @@ export const HYPNOMADE: PokemonEntry = {
     maxPV: 85,
     maxPP: 20,
     attack: 73,
-    attackRange: 4,
+
     defense: 70,
     speed: 67,
     types: [POKEMON_TYPES.PSY],

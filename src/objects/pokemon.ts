@@ -10,7 +10,7 @@ import {getCurrentPokemonCaptureInfoDisplayed} from "./pokemonCaptureBox";
 import {canAfford} from "../logic/shop";
 import { displayPokemonReleaseBox, hidePokemonReleaseInfo } from "./pokemonReleaseBox";
 import { hidePokemonInfo } from "./pokemonInfoBox";
-import { Alteration } from "../data/alterations";
+import { Alteration, AlterationType } from "../data/alterations";
 import { Z } from "../data/depths";
 
 export class PokemonOnBoard extends Pokemon {
@@ -51,6 +51,18 @@ export class PokemonOnBoard extends Pokemon {
 
     get positionPlacement(){
         return getPositionFromCoords(this.placementX, this.placementY)
+    }
+
+    get speed(): number {
+        return Math.max(0, Math.ceil(super.speed * this.speedBuff))
+    }
+
+    get speedBuff(): number {
+        let factor = 1;
+        if(this.alterations.some(alt => alt.type === AlterationType.SECRETION)){
+            factor -= 0.5
+        } 
+        return factor
     }
 
     toBoxPokemon(game: Game){

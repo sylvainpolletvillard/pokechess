@@ -9,13 +9,13 @@ export const KOKIYAS: PokemonEntry = {
     maxPV: 30,
     maxPP: 20,
     attack: 65,
-    attackRange: 1,
+
     defense: 100,
     speed: 40,
     types: [POKEMON_TYPES.EAU],
     evolution: CRUSTABRI,
     evolutionLevel: 27,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // pistolet à eau
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL // abri
 }

@@ -9,7 +9,7 @@ export const ROUCOUPS: PokemonEntry = {
     maxPV: 63,
     maxPP: 20,
     attack: 60,
-    attackRange: 1,
+
     defense: 55,
     speed: 71,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.NORMAL],

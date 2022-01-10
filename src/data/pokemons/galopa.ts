@@ -8,7 +8,7 @@ export const GALOPA: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 100,
-    attackRange: 1,
+
     defense: 70,
     speed: 105,
     types: [POKEMON_TYPES.FEU],

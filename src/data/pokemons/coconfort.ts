@@ -9,7 +9,7 @@ export const COCONFORT: PokemonEntry = {
     maxPV: 45,
     maxPP: 20,
     attack: 25,
-    attackRange: 1,
+
     defense: 50,
     speed: 35,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.POISON],

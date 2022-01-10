@@ -8,7 +8,6 @@ export const AKWAKWAK: PokemonEntry = {
     maxPV: 80,
     maxPP: 20,
     attack: 82,
-    attackRange: 4,
     defense: 78,
     speed: 85,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.PSY],

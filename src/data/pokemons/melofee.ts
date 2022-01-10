@@ -9,7 +9,7 @@ export const MELOFEE: PokemonEntry = {
     maxPV: 70,
     maxPP: 20,
     attack: 45,
-    attackRange: 1,
+
     defense: 48,
     speed: 35,
     types: [POKEMON_TYPES.FEE],

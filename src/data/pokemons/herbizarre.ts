@@ -9,7 +9,7 @@ export const HERBIZARRE: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 62,
-    attackRange: 1,
+
     defense: 63,
     speed: 60,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],

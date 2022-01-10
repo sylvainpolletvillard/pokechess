@@ -10,5 +10,6 @@ export const FOUET_LIANES: HitSkill = {
     hitDelay: 250,
     effectOrigin: "source",
     power: 1.2,
-    rotateSprite: true
+    rotateSprite: true,
+    attackRange: 1
 }

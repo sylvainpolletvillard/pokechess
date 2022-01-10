@@ -9,7 +9,7 @@ export const SPECTRUM: PokemonEntry = {
     maxPV: 45,
     maxPP: 20,
     attack: 50,
-    attackRange: 1,
+
     defense: 45,
     speed: 95,
     types: [POKEMON_TYPES.SPECTRE, POKEMON_TYPES.POISON],

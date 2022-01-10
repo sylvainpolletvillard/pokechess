@@ -9,7 +9,6 @@ export const ABO: PokemonEntry = {
     maxPV: 35,
     maxPP: 20,
     attack: 60,
-    attackRange: 1,
     defense: 44,
     speed: 55,
     types: [POKEMON_TYPES.POISON],

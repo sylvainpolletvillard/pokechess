@@ -9,7 +9,7 @@ export const BULBIZARRE: PokemonEntry = {
     maxPV: 45,
     maxPP: 20,
     attack: 49,
-    attackRange: 1,
+
     defense: 49,
     speed: 45,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],

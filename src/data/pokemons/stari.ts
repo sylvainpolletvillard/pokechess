@@ -9,7 +9,7 @@ export const STARI: PokemonEntry = {
     maxPV: 30,
     maxPP: 20,
     attack: 45,
-    attackRange: 4,
+
     defense: 55,
     speed: 85,
     types: [POKEMON_TYPES.EAU],

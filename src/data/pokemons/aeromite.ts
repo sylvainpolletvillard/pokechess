@@ -8,7 +8,6 @@ export const AEROMITE: PokemonEntry = {
     maxPV: 70,
     maxPP: 20,
     attack: 65,
-    attackRange: 1,
     defense: 60,
     speed: 90,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.POISON],

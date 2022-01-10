@@ -8,7 +8,7 @@ export const PTERA: PokemonEntry = {
     maxPV: 80,
     maxPP: 20,
     attack: 105,
-    attackRange: 1,
+
     defense: 65,
     speed: 130,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.ROCHE],

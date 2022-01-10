@@ -9,7 +9,7 @@ export const PIKACHU: PokemonEntry = {
     maxPV: 35,
     maxPP: 20,
     attack: 55,
-    attackRange: 1,
+
     defense: 40,
     speed: 90,
     types: [POKEMON_TYPES.ELECTRIQUE],

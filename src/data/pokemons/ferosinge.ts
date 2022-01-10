@@ -9,7 +9,7 @@ export const FEROSINGE: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 80,
-    attackRange: 1,
+
     defense: 35,
     speed: 70,
     types: [POKEMON_TYPES.COMBAT],

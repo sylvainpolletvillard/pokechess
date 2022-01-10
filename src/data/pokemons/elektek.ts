@@ -8,7 +8,7 @@ export const ELEKTEK: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 83,
-    attackRange: 1,
+
     defense: 57,
     speed: 105,
     types: [POKEMON_TYPES.ELECTRIQUE],

@@ -9,7 +9,7 @@ export const HYPOTREMPE: PokemonEntry = {
     maxPV: 30,
     maxPP: 20,
     attack: 40,
-    attackRange: 4,
+
     defense: 70,
     speed: 60,
     types: [POKEMON_TYPES.EAU],

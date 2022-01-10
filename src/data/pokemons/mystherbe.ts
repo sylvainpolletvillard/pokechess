@@ -9,7 +9,7 @@ export const MYSTHERBE: PokemonEntry = {
     maxPV: 45,
     maxPP: 20,
     attack: 50,
-    attackRange: 1,
+
     defense: 55,
     speed: 30,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],

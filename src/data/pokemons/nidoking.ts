@@ -8,7 +8,7 @@ export const NIDOKING: PokemonEntry = {
     maxPV: 81,
     maxPP: 20,
     attack: 102,
-    attackRange: 1,
+
     defense: 77,
     speed: 85,
     types: [POKEMON_TYPES.POISON, POKEMON_TYPES.SOL],

@@ -9,7 +9,7 @@ export const CANINOS: PokemonEntry = {
     maxPV: 55,
     maxPP: 20,
     attack: 70,
-    attackRange: 1,
+
     defense: 45,
     speed: 60,
     types: [POKEMON_TYPES.FEU],

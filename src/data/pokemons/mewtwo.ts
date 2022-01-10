@@ -8,7 +8,7 @@ export const MEWTWO: PokemonEntry = {
     maxPV: 106,
     maxPP: 20,
     attack: 110,
-    attackRange: 4,
+
     defense: 90,
     speed: 130,
     types: [POKEMON_TYPES.PSY],

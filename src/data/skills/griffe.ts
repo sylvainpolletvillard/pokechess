@@ -10,5 +10,6 @@ export const GRIFFE: HitSkill = {
     hitDelay: 100,
     effectOrigin: "target",
     power: 1,
-    rotateSprite: true
+    rotateSprite: true,
+    attackRange: 1
 }

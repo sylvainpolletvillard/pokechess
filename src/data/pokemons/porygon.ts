@@ -8,7 +8,7 @@ export const PORYGON: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 60,
-    attackRange: 1,
+
     defense: 70,
     speed: 40,
     types: [POKEMON_TYPES.NORMAL],

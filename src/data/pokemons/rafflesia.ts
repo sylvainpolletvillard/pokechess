@@ -8,7 +8,7 @@ export const RAFFLESIA: PokemonEntry = {
     maxPV: 75,
     maxPP: 20,
     attack: 80,
-    attackRange: 1,
+
     defense: 85,
     speed: 50,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],

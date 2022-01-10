@@ -8,7 +8,7 @@ export const TARTARD: PokemonEntry = {
     maxPV: 90,
     maxPP: 20,
     attack: 95,
-    attackRange: 1,
+
     defense: 95,
     speed: 70,
     types: [POKEMON_TYPES.EAU],

@@ -8,7 +8,7 @@ export const SABLAIREAU: PokemonEntry = {
     maxPV: 75,
     maxPP: 20,
     attack: 100,
-    attackRange: 1,
+
     defense: 110,
     speed: 65,
     types: [POKEMON_TYPES.SOL],

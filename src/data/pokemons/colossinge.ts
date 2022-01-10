@@ -8,7 +8,7 @@ export const COLOSSINGE: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 105,
-    attackRange: 1,
+
     defense: 60,
     speed: 95,
     types: [POKEMON_TYPES.COMBAT],

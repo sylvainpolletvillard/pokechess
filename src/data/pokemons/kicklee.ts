@@ -8,7 +8,7 @@ export const KICKLEE: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 120,
-    attackRange: 1,
+
     defense: 53,
     speed: 87,
     types: [POKEMON_TYPES.COMBAT],

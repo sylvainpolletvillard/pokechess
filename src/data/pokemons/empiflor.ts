@@ -8,7 +8,7 @@ export const EMPIFLOR: PokemonEntry = {
     maxPV: 80,
     maxPP: 20,
     attack: 105,
-    attackRange: 1,
+
     defense: 65,
     speed: 70,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],

@@ -8,7 +8,7 @@ export const ROUCARNAGE: PokemonEntry = {
     maxPV: 83,
     maxPP: 20,
     attack: 80,
-    attackRange: 1,
+
     defense: 75,
     speed: 91,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.NORMAL],

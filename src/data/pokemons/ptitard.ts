@@ -9,7 +9,7 @@ export const PTITARD: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 50,
-    attackRange: 3,
+
     defense: 40,
     speed: 90,
     types: [POKEMON_TYPES.EAU],

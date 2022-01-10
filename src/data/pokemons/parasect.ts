@@ -8,7 +8,7 @@ export const PARASECT: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 95,
-    attackRange: 1,
+
     defense: 80,
     speed: 30,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.PLANTE],

@@ -8,7 +8,7 @@ export const MR_MIME: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 45,
-    attackRange: 1,
+
     defense: 65,
     speed: 90,
     types: [POKEMON_TYPES.PSY, POKEMON_TYPES.FEE],

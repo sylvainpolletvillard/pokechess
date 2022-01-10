@@ -9,7 +9,7 @@ export const MAGNETI: PokemonEntry = {
     maxPV: 25,
     maxPP: 20,
     attack: 35,
-    attackRange: 2,
+
     defense: 70,
     speed: 45,
     types: [POKEMON_TYPES.ELECTRIQUE],

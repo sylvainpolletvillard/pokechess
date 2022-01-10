@@ -8,7 +8,7 @@ export const PAPILUSION: PokemonEntry = {
     maxPV: 45,
     maxPP: 20,
     attack: 49,
-    attackRange: 2,
+
     defense: 49,
     speed: 45,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.VOL],

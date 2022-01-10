@@ -9,7 +9,7 @@ export const PSYKOKWAK: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 52,
-    attackRange: 4,
+
     defense: 48,
     speed: 55,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.PSY],

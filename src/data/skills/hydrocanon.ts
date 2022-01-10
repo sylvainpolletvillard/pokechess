@@ -7,11 +7,12 @@ export const HYDROCANON: HitSkill = {
     name: "Hydrocanon",
     description: "Geyser propulsant l'adversaire dans les airs",
     type: POKEMON_TYPES.EAU,
-    effect: EFFECTS.WATER_JET,
+    effect: EFFECTS.HYDROCANON,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 2000,
     effectOrigin: "ground",
     power: 10,
     rotateSprite: false, 
-    triggerAlteration: { type: AlterationType.MAELSTROM, stacks: 16 }
+    triggerAlteration: { type: AlterationType.MAELSTROM, stacks: 16 },
+    attackRange: 4
 }

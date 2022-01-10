@@ -8,7 +8,7 @@ export const SULFURA: PokemonEntry = {
     maxPV: 90,
     maxPP: 20,
     attack: 100,
-    attackRange: 1,
+
     defense: 90,
     speed: 90,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.FEU],

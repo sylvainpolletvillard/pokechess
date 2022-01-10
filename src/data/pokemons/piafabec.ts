@@ -9,7 +9,7 @@ export const PIAFABEC: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 60,
-    attackRange: 1,
+
     defense: 30,
     speed: 70,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.NORMAL],

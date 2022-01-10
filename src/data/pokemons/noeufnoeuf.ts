@@ -9,7 +9,7 @@ export const NOEUFNOEUF: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 40,
-    attackRange: 1,
+
     defense: 80,
     speed: 40,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.PSY],

@@ -8,7 +8,7 @@ export const FLORIZARRE: PokemonEntry = {
     maxPV: 80,
     maxPP: 20,
     attack: 82,
-    attackRange: 1,
+
     defense: 83,
     speed: 80,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],

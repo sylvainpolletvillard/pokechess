@@ -8,7 +8,7 @@ export const MAGMAR: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 95,
-    attackRange: 1,
+
     defense: 57,
     speed: 93,
     types: [POKEMON_TYPES.FEU],

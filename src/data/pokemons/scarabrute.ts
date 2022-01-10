@@ -8,7 +8,7 @@ export const SCARABRUTE: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 125,
-    attackRange: 1,
+
     defense: 100,
     speed: 85,
     types: [POKEMON_TYPES.INSECTE],

@@ -144,7 +144,7 @@ export class GameState {
             for (let pokemon of this.board.otherTeam) {
                 updatePokemonAction(pokemon, this.board, game)
             }
-            checkProjectilesImpact()
+            checkProjectilesImpact(game)
             updateAlterations([...gameState.board.playerTeam, ...gameState.board.otherTeam]);
             updatePokemonInfoBox()
         }

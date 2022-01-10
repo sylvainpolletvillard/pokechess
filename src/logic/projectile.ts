@@ -7,6 +7,8 @@ import {OWNER_PLAYER} from "../data/owners";
 import { applyDamage, calcDamage } from "./fight";
 import { gameState } from "./gamestate";
 import { wait } from "../utils/helpers";
+import { Z } from "../data/depths";
+import { addAlteration } from "./alteration";
 
 export interface Projectile {
     sprite: Phaser.GameObjects.Sprite
@@ -51,6 +53,7 @@ export function launchProjectile(
 
     projectile.sprite.scale = skill.effect.scale ?? 0.5;
     projectile.sprite.blendMode = Phaser.BlendModes.OVERLAY
+    projectile.sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
     projectile.sprite.play(skill.effect.key)
 
     projectile.tween = game.tweens.add({
@@ -71,6 +74,7 @@ export function destroyProjectile(projectile: Projectile){
     projectiles.delete(projectile)
     projectile.tween && game.tweens.remove(projectile.tween)
     if(projectile.skill.hitEffect){
+        projectile.sprite.setDepth(projectile.skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
         projectile.sprite.play(projectile.skill.hitEffect.key)
         projectile.sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
             projectile.sprite.destroy()
@@ -80,7 +84,7 @@ export function destroyProjectile(projectile: Projectile){
     }    
 }
 
-export function checkProjectilesImpact(){
+export function checkProjectilesImpact(game: GameScene){
     projectiles.forEach(projectile => {
         let {x,y} = projectile.sprite
         x+=8; y+=8; // try to better center for collision detection
@@ -96,7 +100,8 @@ export function checkProjectilesImpact(){
                 projectile.impactedPokemonIds.push(target.uid)
                 wait(Math.floor(1000 / projectile.skill.travelSpeed)).then(() => {
                     let damage = calcDamage(projectile.skill, target, projectile.attacker)
-                    applyDamage(damage, target)                    
+                    applyDamage(damage, target)
+                    if(projectile.skill.hitAlteration) addAlteration(target, projectile.skill.hitAlteration, game)               
                     if(!projectile.skill.pierceThrough) destroyProjectile(projectile)
                 })
             }

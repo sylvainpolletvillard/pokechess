@@ -9,7 +9,7 @@ export const OTARIA: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 45,
-    attackRange: 1,
+
     defense: 55,
     speed: 45,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.GLACE],
@@ -17,5 +17,5 @@ export const OTARIA: PokemonEntry = {
     evolutionLevel: 34,
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES, // coup d'Boule
-    ppSkill: SKILLS.LANCE_SOLEIL // éclats glace
+    ppSkill: SKILLS.ECLATS_GLACE
 }

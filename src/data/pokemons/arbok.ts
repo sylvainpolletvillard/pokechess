@@ -8,7 +8,6 @@ export const ARBOK: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 95,
-    attackRange: 1,
     defense: 69,
     speed: 65,
     types: [POKEMON_TYPES.POISON],

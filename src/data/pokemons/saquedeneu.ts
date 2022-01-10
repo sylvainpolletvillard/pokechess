@@ -8,7 +8,7 @@ export const SAQUEDENEU: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 55,
-    attackRange: 1,
+
     defense: 115,
     speed: 60,
     types: [POKEMON_TYPES.PLANTE],

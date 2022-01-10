@@ -9,7 +9,7 @@ export const NIDORINO: PokemonEntry = {
     maxPV: 61,
     maxPP: 20,
     attack: 72,
-    attackRange: 1,
+
     defense: 57,
     speed: 65,
     types: [POKEMON_TYPES.POISON],

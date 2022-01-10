@@ -8,7 +8,7 @@ export const NOADKOKO: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 95,
-    attackRange: 1,
+
     defense: 85,
     speed: 55,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.PSY],

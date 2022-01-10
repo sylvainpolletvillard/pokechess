@@ -8,7 +8,7 @@ export const LEVEINARD: PokemonEntry = {
     maxPV: 250,
     maxPP: 20,
     attack: 5,
-    attackRange: 1,
+
     defense: 5,
     speed: 50,
     types: [POKEMON_TYPES.NORMAL],

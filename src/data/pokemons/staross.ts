@@ -8,7 +8,7 @@ export const STAROSS: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 75,
-    attackRange: 4,
+
     defense: 85,
     speed: 115,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.PSY],

@@ -9,12 +9,11 @@ export const AQUALI: PokemonEntry = {
     maxPV: 130,
     maxPP: 20,
     attack: 65,
-    attackRange: 4,
     defense: 60,
     speed: 65,
     types: [POKEMON_TYPES.EAU],
     devolution: EVOLI,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // pistolet à O
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL // hydrocanon
 }

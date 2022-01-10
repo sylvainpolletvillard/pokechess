@@ -9,13 +9,13 @@ export const SALAMECHE: PokemonEntry = {
     maxPV: 39,
     maxPP: 20,
     attack: 52,
-    attackRange: 1,
+
     defense: 43,
     speed: 65,
     types: [POKEMON_TYPES.FEU],
     evolution: REPTINCEL,
     evolutionLevel: 16,
     rank: 1,
-    baseSkill: SKILLS.FLAMMECHE, // pistolet à eau
-    ppSkill: SKILLS.LANCE_SOLEIL // hydrocanon
+    baseSkill: SKILLS.FLAMMECHE,
+    ppSkill: SKILLS.LANCE_FLAMMES
 }

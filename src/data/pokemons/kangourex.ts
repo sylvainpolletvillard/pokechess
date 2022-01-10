@@ -8,7 +8,7 @@ export const KANGOUREX: PokemonEntry = {
     maxPV: 105,
     maxPP: 20,
     attack: 95,
-    attackRange: 1,
+
     defense: 80,
     speed: 90,
     types: [POKEMON_TYPES.NORMAL],

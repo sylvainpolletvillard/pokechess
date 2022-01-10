@@ -9,13 +9,13 @@ export const KABUTO: PokemonEntry = {
     maxPV: 30,
     maxPP: 20,
     attack: 80,
-    attackRange: 1,
+
     defense: 90,
     speed: 55,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.ROCHE],
     evolution: KABUTOPS,
     evolutionLevel: 40,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // griffe
+    baseSkill: SKILLS.GRIFFE,
     ppSkill: SKILLS.LANCE_SOLEIL // pouvoir antique
 }

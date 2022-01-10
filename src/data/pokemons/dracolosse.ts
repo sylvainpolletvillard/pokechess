@@ -8,7 +8,7 @@ export const DRACOLOSSE: PokemonEntry = {
     maxPV: 91,
     maxPP: 20,
     attack: 134,
-    attackRange: 1,
+
     defense: 95,
     speed: 80,
     types: [POKEMON_TYPES.DRAGON, POKEMON_TYPES.VOL],

@@ -9,7 +9,7 @@ export const RACAILLOU: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 80,
-    attackRange: 1,
+
     defense: 100,
     speed: 20,
     types: [POKEMON_TYPES.ROCHE, POKEMON_TYPES.SOL],

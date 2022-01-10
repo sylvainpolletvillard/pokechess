@@ -9,7 +9,6 @@ export const ABRA: PokemonEntry = {
     maxPV: 25,
     maxPP: 20,
     attack: 20,
-    attackRange: 4,
     defense: 15,
     speed: 90,
     types: [POKEMON_TYPES.PSY],

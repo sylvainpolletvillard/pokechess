@@ -313,7 +313,7 @@ function drawPokemonInfo(pokemon: PokemonEntry){
     const statRangeIcon = game.add.sprite(cx+110, cy+30, "icons16x16", 19)
     statRangeIcon.setAlpha(0.25).setOrigin(0,0)
     pokedexContainer.add(statRangeIcon)
-    const statRangeText = addText(cx +128, cy+30, `RNG: ${pokemon.attackRange}`)
+    const statRangeText = addText(cx +128, cy+30, `RNG: ${pokemon.baseSkill.attackRange}`)
     pokedexContainer.add(statRangeText)
 
     cx = 10
@@ -331,6 +331,12 @@ function drawPokemonInfo(pokemon: PokemonEntry){
         pokedexContainer.add(effectTypeSprite)
         pokedexContainer.add(addText(cx+22, cy+31, pokemon.ppSkill.name, { color: "blue"}))
         pokedexContainer.add(addText(cx+10, cy+46, pokemon.ppSkill.description ?? '', {
+            color: "black",
+            fontSize: "10px",
+            wordWrap: {width: 160}
+        }))
+    } else {
+        pokedexContainer.add(addText(cx+10, cy+28, pokemon.baseSkill.description ?? '', {
             color: "black",
             fontSize: "10px",
             wordWrap: {width: 160}

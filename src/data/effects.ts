@@ -7,51 +7,53 @@ export interface Effect {
 }
 
 export const EFFECTS: { [name: string] : Effect} = {
-    WATER_BUBBLE: {
-        key: "water_bubble",
+    PISTOLET_A_O: {
+        key: "pistolet_a_o",
         frames: [0],
         frameRate: 8,
         repeat: 0
     },
-    WATER_BUBBLE_HIT: {
-        key: "water_bubble_hit",
+    PISTOLET_A_O_HIT: {
+        key: "pistolet_a_o_hit",
         frames: [1,2],
         frameRate: 8,
         repeat: 0
     },
-    WATER_JET: {
-        key: "water_jet",
+    HYDROCANON: {
+        key: "hydrocanon",
         frames: [3,4,5,6],
         frameRate: 8,
         repeat: 2,
         scale: 1
     },
-    WATER_DROP: {
-        key: "water_drop",
+    TREMPETTE: {
+        key: "trempette",
         frames: [7,8,9,10,11,12,13,14],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 1
     },
-    WATER_BUBBLE_2: {
-        key: "water_bubble2",
+    BULLES_D_O: {
+        key: "bulles_d_o",
         frames: [15],
         frameRate: 8,
         repeat: 0
     },
-    WATER_BUBBLE_2_HIT: {
-        key: "water_bubble2_hit",
+    BULLES_D_O_HIT: {
+        key: "bulles_d_o_hit",
         frames: [16,17,18],
         frameRate: 8,
         repeat: 0
     },
-    WATER_SHIELD: {
-        key: "water_shield",
+    SECRETION_HIT: {
+        key: "secretion",
         frames: [19],
-        frameRate: 8,
-        repeat: 0
+        frameRate: 1,
+        repeat: 0,
+        scale: 1
     },
-    ICE_STAR: {
-        key: "ice_star",
+    POUDREUSE: {
+        key: "poudreuse",
         frames: [20,21,22,23,24,25,26],
         frameRate: 8,
         repeat: 0
@@ -62,8 +64,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 5,
         repeat: 0
     },
-    ICE_SHARD: {
-        key: "ice_shard",
+    ECLATS_GLACE: {
+        key: "eclats_glace",
         frames: [32,33,34,35],
         frameRate: 8,
         repeat: 0
@@ -92,11 +94,12 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    FIRE_BLAZE: {
-        key: "fire_blaze",
+    BURN: {
+        key: "burn",
         frames: [40,41,42,43,44,45,46,47],
         frameRate: 8,
-        repeat: 0
+        repeat: Infinity,
+        scale: 1
     },
     FIRE_BLAST: {
         key: "fire_blast",
@@ -121,7 +124,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "fire_jet",
         frames: [60,61,62,63,64],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 1
     },
     FIRE_CLAW: {
         key: "fire_claw",
@@ -171,15 +175,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    FIRE_SLICE:{
-        key: "fire_slice",
+    PIQURE:{
+        key: "piqure",
         frames: [100,101,102,103],
         frameRate: 8,
         repeat: 0
     },
-    FIRE_SWURL: {
-        key: "fire_swurl",
-        frames: [104,105,106,107,108],
+    SECRETION: {
+        key: "secretion",
+        frames: [104,105,106],
         frameRate: 8,
         repeat: 0
     },

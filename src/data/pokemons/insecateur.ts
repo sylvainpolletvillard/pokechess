@@ -8,7 +8,7 @@ export const INSECATEUR: PokemonEntry = {
     maxPV: 70,
     maxPP: 20,
     attack: 110,
-    attackRange: 1,
+
     defense: 80,
     speed: 105,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.VOL],

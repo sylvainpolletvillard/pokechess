@@ -8,7 +8,7 @@ export const OSSATUEUR: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 80,
-    attackRange: 3,
+
     defense: 110,
     speed: 45,
     types: [POKEMON_TYPES.SOL],

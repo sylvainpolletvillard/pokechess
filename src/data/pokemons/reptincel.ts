@@ -9,7 +9,7 @@ export const REPTINCEL: PokemonEntry = {
     maxPV: 58,
     maxPP: 20,
     attack: 64,
-    attackRange: 1,
+
     defense: 58,
     speed: 80,
     types: [POKEMON_TYPES.FEU],
@@ -17,5 +17,5 @@ export const REPTINCEL: PokemonEntry = {
     evolutionLevel: 36,
     rank: 2,
     baseSkill: SKILLS.FLAMMECHE,
-    ppSkill: SKILLS.LANCE_SOLEIL // lance-flammes
+    ppSkill: SKILLS.LANCE_FLAMMES
 }
