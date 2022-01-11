@@ -15,7 +15,7 @@ export const LANCE_FLAMMES: HitSkill = {
     hitDelay: 300,
     triggerAlteration: { type: AlterationType.BRULURE, stacks: 100 },
     effectOrigin: "source",
-    power: 10,
+    power: 200,
     rotateSprite: true,
     attackRange: 1
 }

@@ -6,13 +6,12 @@ export const PAPILUSION: PokemonEntry = {
     ref: "papillusion",
     name: "Papillusion",
     maxPV: 45,
-    maxPP: 20,
+    maxPP: 30,
     attack: 49,
-
     defense: 49,
     speed: 45,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.VOL],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES, // choc mental
-    ppSkill: SKILLS.LANCE_SOLEIL // poudre dodo
+    baseSkill: SKILLS.CHOC_MENTAL,
+    ppSkill: SKILLS.POUDRE_DODO
 }

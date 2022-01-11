@@ -9,7 +9,7 @@ export const BULLES_D_O: ProjectileSkill = {
     behavior: SkillBehavior.PROJECTILE,
     travelSpeed: 2,
     attackRange: 3,
-    power: 4,
+    power: 65,
     projectileRadius: 8,
     rotateProjectile: false,
     hitEffect: EFFECTS.BULLES_D_O_HIT

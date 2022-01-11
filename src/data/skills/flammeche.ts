@@ -11,7 +11,7 @@ export const FLAMMECHE: HitSkill = {
     hitDelay: 100,
     triggerAlteration: { type: AlterationType.BRULURE, stacks: 12 },
     effectOrigin: "target",
-    power: 1.2,
+    power: 40,
     rotateSprite: true,
     attackRange: 1
 }

@@ -11,7 +11,7 @@ export const POUDREUSE: HitSkill = {
     hitDelay: 200,
     triggerAlteration: { type: AlterationType.GEL, stacks: 12 },
     effectOrigin: "target",
-    power: 1,
+    power: 40,
     rotateSprite: true,
     attackRange: 1
 }

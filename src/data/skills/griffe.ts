@@ -9,7 +9,7 @@ export const GRIFFE: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
     effectOrigin: "target",
-    power: 1,
+    power: 40,
     rotateSprite: true,
     attackRange: 1
 }

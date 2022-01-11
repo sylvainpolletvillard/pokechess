@@ -9,7 +9,7 @@ export const PIQURE: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
     effectOrigin: "target",
-    power: 1,
+    power: 60,
     rotateSprite: true,
     attackRange: 1
 }

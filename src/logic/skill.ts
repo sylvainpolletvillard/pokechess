@@ -1,6 +1,8 @@
 import {PokemonType} from "../data/types";
 import {Effect} from "../data/effects";
 import { Alteration } from "../data/alterations";
+import { PokemonOnBoard } from "../objects/pokemon";
+
 
 export interface Skill {
     type: PokemonType
@@ -18,7 +20,7 @@ export interface Skill {
 export interface HitSkill extends Skill {
     behavior: SkillBehavior.DIRECT_HIT
     hitDelay: number
-    effectOrigin: "source" | "target" | "ground";
+    effectOrigin: "source" | "target" | "target_ground";
     rotateSprite: boolean;
     hitAlteration?: Alteration;
 }
@@ -38,8 +40,11 @@ export interface ProjectileSkill extends Skill {
 }
 
 export interface AOESkill extends Skill {
-    behavior: SkillBehavior.AREA_OF_EFFECT,
-    getTilesImpacted: () => [number, number][]
+    behavior: SkillBehavior.AREA_OF_EFFECT
+    effectOrigin: "source" | "target" | "source_ground";
+    getTilesImpacted: (attacker: PokemonOnBoard, target: PokemonOnBoard) => [number, number][]
+    hitDelay: number
+    hitAlteration?: Alteration;
 }
 
 export enum SkillBehavior {

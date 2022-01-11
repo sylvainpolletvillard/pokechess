@@ -2,13 +2,16 @@ import {PokemonTypeAction} from "../data/pokemons";
 import {findClosestReachableTarget, findPathToTarget} from "./pathfinding";
 import {Board,getPositionFromCoords} from "./board";
 import Game from "../scenes/GameScene";
-import {faceTarget, getDirection, renderAttack} from "./anims";
+import {getDirection} from "./anims";
 import Phaser from "phaser";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
 import GameScene from "../scenes/GameScene";
-import { Skill, SkillBehavior } from "./skill";
+import { Skill } from "./skill";
 import { canPokemonBeTargeted, hasBlockingAlteration } from "./alteration";
+import { renderAttack } from "./skill-anims";
+import { AlterationType } from "../data/alterations";
+import { clamp } from "../utils/helpers";
 
 export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: Game){
     if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || pokemon.pv <= 0) return;
@@ -30,6 +33,14 @@ export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game:
             moveToTarget(pokemon, target, board, game)
         }
     }
+}
+
+export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: Game){
+    const sprite = game.sprites.get(pokemon.uid)
+    if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
+
+    pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
+    sprite.play(`${pokemon.ref}_${pokemon.facingDirection}`)
 }
 
 export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, board: Board, game: Game){
@@ -92,19 +103,19 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
 
 export function applyDamage(damage: number, target: PokemonOnBoard){                
     target.pv = Math.max(0, target.pv - damage)
-    target.pp = Math.min(target.maxPP, target.pp + 2);
+    target.pp = Math.min(target.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))
     if(target.pv === 0) killPokemon(target)
+    else {
+        const sommeil = target.alterations.find(alt => alt.type === AlterationType.SOMMEIL)
+        if(sommeil){ 
+            sommeil.stacks -= Math.ceil((damage/target.maxPV)*100);
+            console.log("reducing stacks to "+sommeil.stacks, Math.ceil(damage*10)) 
+        }
+    }
 }
 
-export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard | null){
-    if(attacker != null){
-        return attacker.attack * skill.power / target.defense
-    } else if(skill.behavior === SkillBehavior.DAMAGE_OVER_TIME){
-        return skill.power // flat damage
-    } else {
-        return skill.power / target.defense
-    }
-    
+export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard){
+    return attacker.attack * (1+skill.power/100) / target.defense
     // TODO: gérer les types de damage eau/feu plus ou moins efficaces
 }
 

@@ -51,7 +51,7 @@ export function displayPokemonInfo(pokemon: Pokemon){
 
     const ppText = addText(ox-50, oy-1, "PP")
     pokemonInfoBox.add(ppText)
-    const ppValueText = addText(ox+48, oy-1, `${pokemon.pp.toString().padStart(3)} / ${pokemon.maxPP}`)
+    const ppValueText = addText(ox+48, oy-1, `${Math.floor(pokemon.pp).toString().padStart(3)} / ${pokemon.maxPP}`)
     pokemonInfoBox.add(ppValueText)
 
     bars.fillStyle(0x000000).fillRoundedRect(ox-30, oy+2, BAR_WIDTH+2, 6, 4)

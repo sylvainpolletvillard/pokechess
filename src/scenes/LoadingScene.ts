@@ -14,12 +14,13 @@ import {FORET_JADE} from "../data/destinations/foret_jade";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
 import { CHENIPAN } from "../data/pokemons/chenipan";
 import { CHRYSACIER } from "../data/pokemons/chrysacier";
+import { PAPILUSION } from "../data/pokemons/papilusion";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [ 
 		//new PokemonOnBoard( new Pokemon(BULBIZARRE, 1, 20), 4 ,5),
-		new PokemonOnBoard( new Pokemon(CHENIPAN, 1, 20), 5 ,5),
+		new PokemonOnBoard( new Pokemon(PAPILUSION, 1, 20), 5 ,5),
 		new PokemonOnBoard( new Pokemon(CHRYSACIER, 1, 20), 3 ,5),
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20

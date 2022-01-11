@@ -11,6 +11,8 @@ import { POUDREUSE } from "./skills/poudreuse";
 import { ECLATS_GLACE } from "./skills/eclatsGlace";
 import { PIQURE } from "./skills/piqure";
 import { SECRETION } from "./skills/secretion";
+import { CHOC_MENTAL } from "./skills/chocMental";
+import { POUDRE_DODO } from "./skills/poudreDodo";
 
 
 export const SKILLS = {
@@ -26,5 +28,7 @@ export const SKILLS = {
     POUDREUSE,
     ECLATS_GLACE,
     PIQURE,
-    SECRETION
+    SECRETION,
+    CHOC_MENTAL,
+    POUDRE_DODO
 }

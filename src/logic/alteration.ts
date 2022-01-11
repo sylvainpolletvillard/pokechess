@@ -14,8 +14,7 @@ export function updateAlterations(pokemons: PokemonOnBoard[]){
             applyAlterationEffect(pokemon, alt)
             alt.stacks--;            
             if(alt.stacks <= 0){
-                removeInArray(pokemon.alterations, alt)
-                if(alt.effectSprite) alt.effectSprite.destroy()
+                removeAlteration(pokemon, alt)                
             } else if(alt.effectSprite){                
                 alt.effectSprite.setPosition(...pokemon.position)
             }
@@ -25,6 +24,7 @@ export function updateAlterations(pokemons: PokemonOnBoard[]){
 
 export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alteration){
     const game = gameState.activeScene as GameScene;
+    const sprite = game.sprites.get(pokemon.uid)
     if(alteration.type === AlterationType.MAELSTROM){
         switch(pokemon.facingDirection){
             case Direction.UP: pokemon.facingDirection = Direction.RIGHT; break;
@@ -33,7 +33,6 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
             case Direction.LEFT: default: pokemon.facingDirection = Direction.UP; break;
         }
 
-        const sprite = game.sprites.get(pokemon.uid)
         sprite?.play(`${pokemon.ref}_${pokemon.facingDirection}`)
     } else if(alteration.type === AlterationType.POISON){
         let poisonDamage = Math.floor(Math.min(500, alteration.stacks) / 10000) * pokemon.maxPV
@@ -45,11 +44,16 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
     } else if(alteration.type === AlterationType.BRULURE){
         const burnDamage = 0.1 * (game.gameSpeed / 1000) * pokemon.level; // 0.1 HP per second per level
         applyDamage(burnDamage, pokemon)
+    } else if(alteration.type === AlterationType.SOMMEIL){
+        sprite?.anims.pause()
     }
 }
 
 export function hasBlockingAlteration(pokemon: PokemonOnBoard){
-    return pokemon.alterations.some(alt => alt.type === AlterationType.MAELSTROM)
+    return pokemon.alterations.some(alt => [
+        AlterationType.MAELSTROM, 
+        AlterationType.SOMMEIL   
+    ].includes(alt.type))
 }
 
 export function canPokemonBeTargeted(pokemon: PokemonOnBoard){
@@ -76,8 +80,23 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 .setScale(EFFECTS.BURN.scale ?? 1)
             game.tweens.add({ targets: alteration.effectSprite, alpha: 0.35, duration: 250, easing: "Linear" })
         }
+        if(alteration.type === AlterationType.SOMMEIL){
+            alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.SOMMEIL.key)                
+                .setScale(EFFECTS.SOMMEIL.scale ?? 1)            
+        }
 
         pokemon.alterations.push({ ...alteration })
+    }
+}
+
+export function removeAlteration(pokemon: PokemonOnBoard, alt: Alteration){
+    removeInArray(pokemon.alterations, alt)
+    if(alt.effectSprite) alt.effectSprite.destroy()
+
+    if(alt.type === AlterationType.SOMMEIL){
+        const game = gameState.activeScene as GameScene
+        const sprite = game.sprites.get(pokemon.uid)
+        sprite?.anims.resume()
     }
 }
 

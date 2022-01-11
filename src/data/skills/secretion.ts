@@ -13,7 +13,7 @@ export const SECRETION: ProjectileSkill = {
     behavior: SkillBehavior.PROJECTILE,
     travelSpeed: 4,
     attackRange: 4,
-    power: 1,
+    power: 50,
     projectileRadius: 3,
     rotateProjectile: true,
     hitEffect: EFFECTS.SECRETION_HIT,

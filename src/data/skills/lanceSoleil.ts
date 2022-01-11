@@ -8,7 +8,7 @@ export const LANCE_SOLEIL: ProjectileSkill = {
     type: POKEMON_TYPES.PLANTE,
     effect: EFFECTS.ENERGY_BALL,
     behavior: SkillBehavior.PROJECTILE,
-    power: 10,
+    power: 120,
     travelSpeed: 2,
     pierceThrough: true,
     projectileRadius: 8,

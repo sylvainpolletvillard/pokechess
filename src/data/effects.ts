@@ -58,10 +58,10 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    ICE_SQUARE: {
-        key: "ice_square",
+    CHOC_MENTAL: {
+        key: "choc_mental",
         frames: [27,28,29,30,31],
-        frameRate: 5,
+        frameRate: 8,
         repeat: 0
     },
     ECLATS_GLACE: {
@@ -187,16 +187,11 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    DARK_SLICE: {
-        key: "dark_slice",
-        frames: [109,110,111,112,113],
+    POUDRE_DODO: {
+        key: "poudre_dodo",
+        frames: [107,108,109,110,111,112,113,114],
         frameRate: 8,
-        repeat: 0
-    },
-    HIT_STAR_BIG: {
-        key: "hit_star_big",
-        frames: [114],
-        frameRate: 8,
+        scale: 1,
         repeat: 0
     },
     PARALYZE: {
@@ -319,5 +314,23 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [177,178,179],
         frameRate: 8,
         repeat: 0
+    },
+    DARK_SLICE: {
+        key: "dark_slice",
+        frames: [180,181,182,183],
+        frameRate: 8,
+        repeat: 0
+    },
+    CIRCLE_HIT: {
+        key: "circle_hit",
+        frames: [184,185,186,187,188],
+        frameRate: 8,
+        repeat: 0
+    },
+    SOMMEIL: {
+        key: "sommeil",
+        frames: [189,190,191,190],
+        frameRate: 4,
+        repeat: Infinity
     }
 }

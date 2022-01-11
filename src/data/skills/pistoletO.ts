@@ -8,7 +8,7 @@ export const PISTOLET_A_O: ProjectileSkill = {
     effect: EFFECTS.PISTOLET_A_O,
     behavior: SkillBehavior.PROJECTILE,
     travelSpeed: 3,
-    power: 3,
+    power: 40,
     projectileRadius: 3,
     hitEffect: EFFECTS.PISTOLET_A_O_HIT,
     rotateProjectile: false,
