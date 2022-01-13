@@ -13,5 +13,6 @@ export const POUDREUSE: HitSkill = {
     effectOrigin: "target",
     power: 40,
     rotateSprite: true,
-    attackRange: 1
+    attackRange: 1,
+    chargeDelta: 2,
 }

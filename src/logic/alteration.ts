@@ -7,6 +7,7 @@ import { Direction } from "../utils/directions"
 import { removeInArray } from "../utils/helpers"
 import { applyDamage } from "./fight"
 import { gameState } from "./gamestate"
+import { sendPokemonFlying } from "./skill-anims"
 
 export function updateAlterations(pokemons: PokemonOnBoard[]){
     pokemons.forEach((pokemon: PokemonOnBoard) => {
@@ -102,26 +103,4 @@ export function removeAlteration(pokemon: PokemonOnBoard, alt: Alteration){
         const sprite = game.sprites.get(pokemon.uid)
         sprite?.anims.resume()
     }
-}
-
-export function sendPokemonFlying(pokemon: PokemonOnBoard, game: GameScene){
-    const targetSprite = game.sprites.get(pokemon.uid)
-    if(!targetSprite) return;
-    let {x, y} = targetSprite            
-    game.tweens.add({
-        targets: targetSprite, 
-        x: x,
-        y: y - 20,
-        duration: 1600,
-        ease: Phaser.Math.Easing.Bounce.Out,
-        onComplete(){
-            game.tweens.add({
-                targets: targetSprite, 
-                x: x,
-                y: y,
-                duration: 800,
-                ease: Phaser.Math.Easing.Bounce.In
-            })
-        }
-    });
 }

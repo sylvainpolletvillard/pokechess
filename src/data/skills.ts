@@ -1,3 +1,4 @@
+import { CHARGE } from "./skills/charge";
 import {FOUET_LIANES} from "./skills/fouetLianes";
 import {LANCE_SOLEIL} from "./skills/lanceSoleil";
 import {FLAMMECHE} from "./skills/flammeche";
@@ -18,6 +19,7 @@ import { LIGOTAGE } from "./skills/ligotage";
 
 
 export const SKILLS = {
+    CHARGE,
     FOUET_LIANES,
     LANCE_SOLEIL,
     FLAMMECHE,

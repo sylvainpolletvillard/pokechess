@@ -16,6 +16,6 @@ export const MIMITOSS: PokemonEntry = {
     evolution: AEROMITE,
     evolutionLevel: 31,
     rank: 1,
-    baseSkill: SKILLS.GRIFFE, // charge
+    baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.LANCE_SOLEIL // rafale psy
 }

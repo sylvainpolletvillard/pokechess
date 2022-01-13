@@ -13,6 +13,6 @@ export const TAUROS: PokemonEntry = {
     speed: 110,
     types: [POKEMON_TYPES.NORMAL],
     rank: 2,
-    baseSkill: SKILLS.FLAMMECHE, // charge
+    baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.LANCE_SOLEIL // bélier
 }

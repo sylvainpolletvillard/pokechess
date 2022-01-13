@@ -11,5 +11,6 @@ export const MORSURE: HitSkill = {
     effectOrigin: "target",
     power: 60,
     rotateSprite: false,
-    attackRange: 1
+    attackRange: 1,
+    chargeDelta: 10,
 }

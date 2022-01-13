@@ -13,6 +13,6 @@ export const PORYGON: PokemonEntry = {
     speed: 40,
     types: [POKEMON_TYPES.NORMAL],
     rank: 2,
-    baseSkill: SKILLS.FLAMMECHE, // charge
+    baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.LANCE_SOLEIL // adaptation: change de type pour prendre celui de la dernière attaque reçue
 }

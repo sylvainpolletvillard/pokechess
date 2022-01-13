@@ -19,10 +19,12 @@ export interface Skill {
 
 export interface HitSkill extends Skill {
     behavior: SkillBehavior.DIRECT_HIT
-    hitDelay: number
+    hitDelay?: number
     effectOrigin: "source" | "target" | "target_ground";
+    effectDelay?: number;
     rotateSprite: boolean;
     hitAlteration?: Alteration;
+    chargeDelta?: number; // déplace l'attaquant, ex: charge
 }
 
 export interface BuffSkill extends Skill {

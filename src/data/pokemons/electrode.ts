@@ -13,6 +13,6 @@ export const ELECTRODE: PokemonEntry = {
     speed: 150,
     types: [POKEMON_TYPES.ELECTRIQUE],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // charge
+    baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.LANCE_SOLEIL // destruction
 }

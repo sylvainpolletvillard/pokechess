@@ -11,5 +11,6 @@ export const PIQURE: HitSkill = {
     effectOrigin: "target",
     power: 60,
     rotateSprite: true,
-    attackRange: 1
+    attackRange: 1,
+    chargeDelta: 10,
 }

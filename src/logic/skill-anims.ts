@@ -44,23 +44,26 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
         dy= -16 * (skill.effect.scale ?? 0.5) + delta
     }
     
-    const sprite = game.add.sprite(x + dx, y + dy, "effects")
+    wait(skill.effectDelay ?? 0).then(() => {
+        const sprite = game.add.sprite(x + dx, y + dy, "effects")
 
-    if(skill.rotateSprite){
-        sprite.rotation = angle + Math.PI/2;
-    }    
-    sprite.scale = skill.effect.scale ?? 0.5;
-    sprite.blendMode = Phaser.BlendModes.OVERLAY
-    sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
-
-    sprite.play(skill.effect.key)
-    sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-        sprite.destroy()
+        if(skill.rotateSprite){
+            sprite.rotation = angle + Math.PI/2;
+        }    
+        sprite.scale = skill.effect.scale ?? 0.5;
+        sprite.blendMode = Phaser.BlendModes.OVERLAY
+        sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
+    
+        sprite.play(skill.effect.key)
+        sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+            sprite.destroy()
+        })
     })
 
     if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
+    if(skill.chargeDelta) sendPokemonCharge(attacker, skill.chargeDelta, angle+Math.PI, game)
         
-    wait(skill.hitDelay).then(() => {
+    wait(skill.hitDelay ?? 0).then(() => {
         const damage = calcDamage(skill, target, attacker)
         console.log(`${attacker.name} is attacking ${target.name} for ${damage} damage !`)
         applyDamage(damage, target)
@@ -122,4 +125,48 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
             }
         })       
     })
+}
+
+export function sendPokemonFlying(pokemon: PokemonOnBoard, game: GameScene){
+    const targetSprite = game.sprites.get(pokemon.uid)
+    if(!targetSprite) return;
+    let {x, y} = targetSprite            
+    game.tweens.add({
+        targets: targetSprite, 
+        x: x,
+        y: y - 20,
+        duration: 1600,
+        ease: Phaser.Math.Easing.Bounce.Out,
+        onComplete(){
+            game.tweens.add({
+                targets: targetSprite, 
+                x: x,
+                y: y,
+                duration: 800,
+                ease: Phaser.Math.Easing.Bounce.In
+            })
+        }
+    });
+}
+
+export function sendPokemonCharge(pokemon: PokemonOnBoard, chargeDelta: number, chargeAngle: number, game: GameScene){
+    const sprite = game.sprites.get(pokemon.uid)
+    if(!sprite) return;
+    let {x, y} = sprite            
+    game.tweens.add({
+        targets: sprite, 
+        x: x + chargeDelta * Math.cos(chargeAngle),
+        y: y + chargeDelta * Math.sin(chargeAngle),
+        duration: 150,
+        ease: Phaser.Math.Easing.Cubic.In,        
+        onComplete(){
+            game.tweens.add({
+                targets: sprite, 
+                x: x,
+                y: y,
+                duration: 250,
+                ease: Phaser.Math.Easing.Linear
+            })
+        }
+    });
 }

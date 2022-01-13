@@ -109,11 +109,11 @@ export const EFFECTS: { [name: string] : Effect} = {
         repeat: 0,
         scale: 0.75
     },
-    FIRE_ARROW: {
-        key: "fire_arrow",
+    CHARGE_HIT: {
+        key: "charge_hit",
         frames: [59],
         frameRate: 8,
-        repeat: 0
+        repeat: 0        
     },
     FIRE_JET: {
         key: "fire_jet",

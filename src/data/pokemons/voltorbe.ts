@@ -16,6 +16,6 @@ export const VOLTORBE: PokemonEntry = {
     evolution: ELECTRODE,
     evolutionLevel: 22,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // charge
+    baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.LANCE_SOLEIL // destruction
 }

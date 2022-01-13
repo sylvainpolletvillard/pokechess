@@ -13,6 +13,6 @@ export const EVOLI: PokemonEntry = {
     speed: 55,
     types: [POKEMON_TYPES.NORMAL],
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // charge
+    baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.LANCE_SOLEIL // évo: évolution temporaire en voltali, aquali ou pyroli selon le pokémon ciblé ; basé sur le code de l'attaque morphing pour
 }
