@@ -8,11 +8,10 @@ export const MR_MIME: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 45,
-
     defense: 65,
     speed: 90,
     types: [POKEMON_TYPES.PSY, POKEMON_TYPES.FEE],
     rank: 1,
     baseSkill: SKILLS.FLAMMECHE, // torgnoles
-    ppSkill: SKILLS.LANCE_SOLEIL // imitation
+    ppSkill: SKILLS.LANCE_SOLEIL // encore (relance le dernier ppskill lancé)
 }

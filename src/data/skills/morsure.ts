@@ -2,14 +2,14 @@ import {HitSkill, SkillBehavior} from "../../logic/skill";
 import {POKEMON_TYPES} from "../types";
 import {EFFECTS} from "../effects";
 
-export const GRIFFE: HitSkill = {
-    name: "Griffe",
+export const MORSURE: HitSkill = {
+    name: "Morsure",
     type: POKEMON_TYPES.NORMAL,
-    effect: EFFECTS.GRIFFE,
+    effect: EFFECTS.MORSURE,
     behavior: SkillBehavior.DIRECT_HIT,
-    hitDelay: 100,
+    hitDelay: 140,
     effectOrigin: "target",
-    power: 40,
-    rotateSprite: true,
+    power: 60,
+    rotateSprite: false,
     attackRange: 1
 }

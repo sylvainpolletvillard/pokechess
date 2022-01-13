@@ -13,6 +13,6 @@ export const RATTATAC: PokemonEntry = {
     speed: 97,
     types: [POKEMON_TYPES.NORMAL],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // morsure
+    baseSkill: SKILLS.MORSURE,
     ppSkill: SKILLS.LANCE_SOLEIL // croc fatal
 }

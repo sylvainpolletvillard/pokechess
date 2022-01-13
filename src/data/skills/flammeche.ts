@@ -6,7 +6,7 @@ import { AlterationType } from "../alterations";
 export const FLAMMECHE: HitSkill = {
     name: "Flammèche",
     type: POKEMON_TYPES.FEU,
-    effect: EFFECTS.FIRE_BALL,
+    effect: EFFECTS.FLAMMECHE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
     triggerAlteration: { type: AlterationType.BRULURE, stacks: 12 },

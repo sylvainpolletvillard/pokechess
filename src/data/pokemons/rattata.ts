@@ -16,6 +16,6 @@ export const RATTATA: PokemonEntry = {
     evolution: RATTATAC,
     evolutionLevel: 20,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // morsure
+    baseSkill: SKILLS.MORSURE,
     ppSkill: SKILLS.LANCE_SOLEIL // croc fatal
 }

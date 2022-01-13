@@ -13,6 +13,7 @@ import { PIQURE } from "./skills/piqure";
 import { SECRETION } from "./skills/secretion";
 import { CHOC_MENTAL } from "./skills/chocMental";
 import { POUDRE_DODO } from "./skills/poudreDodo";
+import { MORSURE } from "./skills/morsure";
 
 
 export const SKILLS = {
@@ -30,5 +31,6 @@ export const SKILLS = {
     PIQURE,
     SECRETION,
     CHOC_MENTAL,
-    POUDRE_DODO
+    POUDRE_DODO,
+    MORSURE
 }

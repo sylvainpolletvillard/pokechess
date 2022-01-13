@@ -107,8 +107,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    FIRE_BALL: {
-        key: "fire_ball",
+    FLAMMECHE: {
+        key: "flammeche",
         frames: [54,55,56,57,58],
         frameRate: 8,
         repeat: 0,
@@ -332,5 +332,19 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [189,190,191,190],
         frameRate: 4,
         repeat: Infinity
+    },
+    GRIFFE: {
+        key: "griffe",
+        frames: [192,193,194,195],
+        frameRate: 8,
+        repeat: 0,
+        scale: 1
+    },
+    MORSURE: {
+        key: "morsure",
+        frames: [198,197,196,197,198,199],
+        frameRate: 12,
+        repeat: 0,
+        scale: 0.5
     }
 }

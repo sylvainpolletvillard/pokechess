@@ -12,6 +12,6 @@ export const ARBOK: PokemonEntry = {
     speed: 65,
     types: [POKEMON_TYPES.POISON],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // morsure
+    baseSkill: SKILLS.MORSURE,
     ppSkill: SKILLS.LANCE_SOLEIL // ligotage
 }
