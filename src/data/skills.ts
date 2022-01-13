@@ -14,6 +14,7 @@ import { SECRETION } from "./skills/secretion";
 import { CHOC_MENTAL } from "./skills/chocMental";
 import { POUDRE_DODO } from "./skills/poudreDodo";
 import { MORSURE } from "./skills/morsure";
+import { LIGOTAGE } from "./skills/ligotage";
 
 
 export const SKILLS = {
@@ -32,5 +33,6 @@ export const SKILLS = {
     SECRETION,
     CHOC_MENTAL,
     POUDRE_DODO,
-    MORSURE
+    MORSURE,
+    LIGOTAGE
 }

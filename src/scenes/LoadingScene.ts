@@ -14,13 +14,14 @@ import {FORET_JADE} from "../data/destinations/foret_jade";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
 import { ABO } from "../data/pokemons/abo";
 import { ARCANIN } from "../data/pokemons/arcanin";
+import { SAQUEDENEU } from "../data/pokemons/saquedeneu";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [ 
 		//new PokemonOnBoard( new Pokemon(BULBIZARRE, 1, 20), 4 ,5),
 		new PokemonOnBoard( new Pokemon(ABO, 1, 20), 5 ,5),
-		new PokemonOnBoard( new Pokemon(ARCANIN, 1, 20), 3 ,5),
+		new PokemonOnBoard( new Pokemon(SAQUEDENEU, 1, 20), 3 ,5),
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1

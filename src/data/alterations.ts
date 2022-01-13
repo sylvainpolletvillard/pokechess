@@ -7,7 +7,8 @@ export enum AlterationType {
     PEUR = "PEUR", // oblige le pokémon à changer de cible, et réduit l’attaque de 20% par stack
     SOMMEIL = "SOMMEIL", // incapable d’attaquer pendant 1 frame par stack
     CONFUSION = "CONFUSION", // oblige le pokémon à changer de cible, et peut cibler un pokémon de sa propre équipe,
-    SECRETION = "SECRETION" // divise par 2 la vitesse ennemie
+    SECRETION = "SECRETION", // divise par 2 la vitesse ennemie,
+    LIGOTAGE = "LIGOTAGE" // empêche la cible de se déplacer
 }
 
 export interface Alteration {

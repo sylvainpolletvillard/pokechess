@@ -40,12 +40,16 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
             poisonDamage = Math.floor(poisonDamage * 0.5) 
             // type poison = 50% résistance au poison //TODO: bonus alliance à prendre en compte
         } 
-        applyDamage(poisonDamage, pokemon)
+        applyDamage(poisonDamage, pokemon, true)
     } else if(alteration.type === AlterationType.BRULURE){
         const burnDamage = 0.1 * (game.gameSpeed / 1000) * pokemon.level; // 0.1 HP per second per level
-        applyDamage(burnDamage, pokemon)
+        applyDamage(burnDamage, pokemon, true)
     } else if(alteration.type === AlterationType.SOMMEIL){
         sprite?.anims.pause()
+    } else if(alteration.type === AlterationType.LIGOTAGE){
+        let damage = pokemon.maxPV * (2/100) * (game.gameSpeed / 1000) // 2% HP max per second
+        console.log("damage ligotage", damage)
+        applyDamage(damage, pokemon, true)
     }
 }
 

@@ -13,6 +13,6 @@ export const SAQUEDENEU: PokemonEntry = {
     speed: 60,
     types: [POKEMON_TYPES.PLANTE],
     rank: 3,
-    baseSkill: SKILLS.FLAMMECHE, // fouet lianes
-    ppSkill: SKILLS.LANCE_SOLEIL // ligotage
+    baseSkill: SKILLS.FOUET_LIANES,
+    ppSkill: SKILLS.LIGOTAGE
 }

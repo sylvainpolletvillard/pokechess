@@ -14,5 +14,5 @@ export const TENTACRUEL: PokemonEntry = {
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.POISON],
     rank: 2,
     baseSkill: SKILLS.FOUET_LIANES, // dard venin
-    ppSkill: SKILLS.LANCE_SOLEIL // ligotage
+    ppSkill: SKILLS.LIGOTAGE
 }

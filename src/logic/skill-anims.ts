@@ -41,7 +41,7 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
         dx = Math.round(Math.cos(angle) * delta)
         dy = Math.round(Math.sin(angle) * delta)
     } else if(skill.effectOrigin === "target_ground"){
-        dy= -16 * (skill.effect.scale ?? 0.5)
+        dy= -16 * (skill.effect.scale ?? 0.5) + delta
     }
     
     const sprite = game.add.sprite(x + dx, y + dy, "effects")

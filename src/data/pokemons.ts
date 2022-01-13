@@ -156,6 +156,7 @@ import { DRACOLOSSE } from "./pokemons/dracolosse";
 import { MEWTWO } from "./pokemons/mewtwo";
 import { MEW } from "./pokemons/mew";
 import { levelToXP, xpToLevel } from "../logic/xp";
+import { PokemonOnBoard } from "../objects/pokemon";
 
 
 export interface HoldableItem {
@@ -274,7 +275,7 @@ export enum PokemonTypeAction { MOVE, ATTACK, SKILL, IDLE}
 export interface PokemonAction {
     type: PokemonTypeAction
     path?: [x:number, y:number][]
-    target?: PokemonEntry
+    target?: PokemonOnBoard
 }
 
 export const POKEMONS: PokemonEntry[] = [

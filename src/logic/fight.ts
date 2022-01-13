@@ -13,6 +13,29 @@ import { renderAttack } from "./skill-anims";
 import { AlterationType } from "../data/alterations";
 import { clamp } from "../utils/helpers";
 
+export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
+    const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
+    const isInAttackRange = (
+        distance <= pokemon.baseSkill.attackRange 
+        || (pokemon.ppSkill && pokemon.pp >= pokemon.maxPP && distance <= pokemon.ppSkill.attackRange)
+    )
+    const hasBlockingAlterations = pokemon.alterations.some(alt => [
+        AlterationType.GEL,
+        AlterationType.PEUR,
+        AlterationType.SOMMEIL
+    ].includes(alt.type))
+
+    return isInAttackRange && !hasBlockingAlterations
+}
+
+export function canPokemonMove(pokemon: PokemonOnBoard){
+    return !pokemon.alterations.some(alt => [
+        AlterationType.GEL,
+        AlterationType.LIGOTAGE,
+        AlterationType.SOMMEIL
+    ].includes(alt.type))
+}
+
 export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: Game){
     if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || pokemon.pv <= 0) return;
 
@@ -21,15 +44,13 @@ export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game:
     const targetCandidates = (pokemon.owner === 1 ? board.otherTeam : board.playerTeam)
         .filter(candidate => canPokemonBeTargeted(candidate))
     
-    const target = findClosestReachableTarget(pokemon, targetCandidates)
+    const target = pokemon.nextAction.target || findClosestReachableTarget(pokemon, targetCandidates)
     if(target == null){
         pokemon.nextAction = { type: PokemonTypeAction.IDLE }
-    } else {
-        const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
-        if(distance <= pokemon.baseSkill.attackRange 
-        || (pokemon.ppSkill && pokemon.pp >= pokemon.maxPP && distance <= pokemon.ppSkill.attackRange)){
+    } else {        
+        if(canPokemonAttack(pokemon, target)){
             attackTarget(pokemon, target, board, game)
-        } else {
+        } else if(canPokemonMove(pokemon)) {
             moveToTarget(pokemon, target, board, game)
         }
     }
@@ -88,6 +109,7 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     game.time.addEvent({
         delay: attackSpeed,
         callback: () => {
+            pokemon.nextAction = { type: PokemonTypeAction.IDLE }
             if(pokemon.pv === 0) return // pokemon died while preparing attack
             if(target.pv > 0){ // if target is not already dead by another attack
                 pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
@@ -95,15 +117,15 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
                 //console.log(`${pokemon.name} (${pokemon.x},${pokemon.y}) is targeting ${target.name} (${target.x},${target.y}) → ${pokemon.facingDirection}`)
                 faceTarget(pokemon, target, game);
                 renderAttack(pokemon, target, game)
-            }
-            pokemon.nextAction = { type: PokemonTypeAction.IDLE }
+                pokemon.nextAction.target = target // prevent changing target
+            }            
         }
     })
 }
 
-export function applyDamage(damage: number, target: PokemonOnBoard){                
+export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=false){
     target.pv = Math.max(0, target.pv - damage)
-    target.pp = Math.min(target.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))
+    if(!noPPGain) target.pp = Math.min(target.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))
     if(target.pv === 0) killPokemon(target)
     else {
         const sommeil = target.alterations.find(alt => alt.type === AlterationType.SOMMEIL)

@@ -70,17 +70,12 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    ICE_TEAR: {
-        key: "ice_tear",
-        frames: [36],
-        frameRate: 8,
-        repeat: 0
-    },
-    ICE_SHIELD: {
-        key: "ice_shield",
-        frames: [37],
-        frameRate: 8,
-        repeat: 0
+    LIGOTAGE: {
+        key: "ligotage",
+        frames: [36,37],
+        frameRate: 6,
+        repeat: 2,
+        scale: 1
     },
     ICE_CRYSTAL: {
         key: "ice_crystal",

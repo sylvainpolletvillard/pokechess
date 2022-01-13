@@ -17,5 +17,5 @@ export const CHETIFLOR: PokemonEntry = {
     evolutionLevel: 21,
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES,
-    ppSkill: SKILLS.LANCE_SOLEIL // ligotage
+    ppSkill: SKILLS.LIGOTAGE
 }
