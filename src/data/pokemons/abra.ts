@@ -7,7 +7,7 @@ export const ABRA: PokemonEntry = {
     ref: "abra",
     name: "Abra",
     maxPV: 25,
-    maxPP: 20,
+    maxPP: 10,
     attack: 20,
     defense: 15,
     speed: 90,
@@ -16,5 +16,5 @@ export const ABRA: PokemonEntry = {
     evolutionLevel: 16,
     rank: 1,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.LANCE_SOLEIL // teleport
+    ppSkill: SKILLS.TELEPORT
 }

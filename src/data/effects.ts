@@ -158,9 +158,9 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    ENERGY_BALL: {
-        key: "energy_ball",
-        frames: [89,90,91,92,93,94],
+    LANCE_SOLEIL: {
+        key: "lance_soleil",
+        frames: [89,90,91,92,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94,93,94],
         frameRate: 8,
         repeat: 0
     },
@@ -291,15 +291,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    VINE_WHIP: {
-        key: "vine_whip",
+    FOUET_LIANES: {
+        key: "fouet_lianes",
         frames: [160,161,162,163,164],
         frameRate: 8,
         repeat: 0,
         scale: 0.75
     },
-    THORN_SPEAR: {
-        key: "thorn_spear",
+    TELEPORT: {
+        key: "teleport",
         frames: [165,166,167,168,169],
         frameRate: 8,
         repeat: 0

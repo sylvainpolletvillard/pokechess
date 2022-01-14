@@ -7,7 +7,7 @@ import { drawPokeballsCounter } from "../objects/pokeballsCounter";
 import { MyScene } from "../scenes/MyScene";
 import { spawnPokemon } from "../logic/board";
 import { sendBackToPokeball } from "../logic/fight";
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import { receiveItem } from "./dialogs/descriptions";
 
 export interface Trainer {
@@ -393,7 +393,7 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
                 gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD
                 gameState.stage = GameStage.PLACEMENT
                 gameState.board.otherTeam = spawnTutoCaptureTeamStep2();
-                spawnPokemon(gameState.board.otherTeam[0], gameState.activeScene as Game)
+                spawnPokemon(gameState.board.otherTeam[0], gameState.activeScene as GameScene)
                 return `Tiens, essaie tout de suite. Essaie de capturer mon ${gameState.player.team[0].name}.`
             }            
         ],

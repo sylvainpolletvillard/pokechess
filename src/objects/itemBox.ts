@@ -1,5 +1,5 @@
 import {MenuEntry, openMenu} from "./menu";
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import {gameState} from "../logic/gamestate";
 import {Item, ITEMS, ITEMS_SPRITES_INDEX, ITEM_POKEBALL} from "../data/items";
 import {hideItemDescription, showItemDescription} from "./itemDescriptionBox";
@@ -14,7 +14,7 @@ export function makeItemSprite(item: Item){
     return sprite
 }
 
-export function openItemMenu(game: Game){
+export function openItemMenu(game: GameScene){
     const rowHeight = 20
     const width = 104, height = 6 * rowHeight + 8
     let ox = 320 - width - 8;

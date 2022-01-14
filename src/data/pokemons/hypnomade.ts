@@ -14,5 +14,5 @@ export const HYPNOMADE: PokemonEntry = {
     types: [POKEMON_TYPES.PSY],
     rank: 2,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.LANCE_SOLEIL // teleport
+    ppSkill: SKILLS.HYPNOSE
 }

@@ -3,7 +3,7 @@ import { addText } from '../utils/text';
 import { addToBox } from '../logic/box';
 import { cancelPokemonDrag } from '../logic/board';
 import { closeMenu } from './menu';
-import Game from '../scenes/GameScene';
+import GameScene from '../scenes/GameScene';
 import { gameState } from '../logic/gamestate';
 import { Item } from '../data/items';
 import { openBox } from './pokemonBox';
@@ -18,7 +18,7 @@ let bagButton: Phaser.GameObjects.Sprite;
 let boxButton: Phaser.GameObjects.Sprite;
 let fightButton: Phaser.GameObjects.Sprite;
 
-export function drawMenuButtons(game: Game){
+export function drawMenuButtons(game: GameScene){
     menuButtonsGroup = game.add.group();
     let dyText = 30
 

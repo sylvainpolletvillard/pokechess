@@ -11,13 +11,13 @@ import {Pokemon} from "../data/pokemons";
 import {FORET_JADE} from "../data/destinations/foret_jade";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
 import { SOPORIFIK } from "../data/pokemons/soporifik";
-import { HERBIZARRE } from "../data/pokemons/herbizarre";
+import { ABRA } from "../data/pokemons/abra";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [
 		new PokemonOnBoard( new Pokemon(SOPORIFIK, 1, 20), 4 ,5),
-		new PokemonOnBoard( new Pokemon(HERBIZARRE, 1, 20), 3 ,5),
+		new PokemonOnBoard( new Pokemon(ABRA, 1, 20), 3 ,5),
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1

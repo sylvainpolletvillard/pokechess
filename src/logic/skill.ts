@@ -28,7 +28,8 @@ export interface HitSkill extends Skill {
 }
 
 export interface BuffSkill extends Skill {
-    behavior: SkillBehavior.BUFF    
+    behavior: SkillBehavior.BUFF
+    triggerSpecial: string;
 }
 
 export interface ProjectileSkill extends Skill {

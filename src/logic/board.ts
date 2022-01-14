@@ -1,6 +1,6 @@
 import {Player} from "./player";
 import {addToBox, addToTeam, removeFromTeam} from "./box";
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import Phaser from "phaser";
 import {displayPokemonInfo, getCurrentPokemonInfoDisplayed, hidePokemonInfo} from "../objects/pokemonInfoBox";
 import {GameStage, gameState} from "./gamestate";
@@ -67,7 +67,7 @@ export function setupRoomBoard(p1: Player, room: RoomArena | RoomWild){
     }
 }
 
-export function initPlacement(game: Game){
+export function initPlacement(game: GameScene){
     gameState.stage = GameStage.PLACEMENT
     drawGrid(game)
     drawCursor(game)
@@ -82,7 +82,7 @@ export function initPlacement(game: Game){
     }
 }
 
-export function clearPlacement(game: Game){
+export function clearPlacement(game: GameScene){
     for (let pokemon of gameState.player.team) {
         game.sprites.get(pokemon.uid)?.destroy()
     }
@@ -109,7 +109,7 @@ export function getPokemonOnTile(i: number, j:number){
         .find(pokemon => pokemon.x === i && pokemon.y === j)
 }
 
-export function launchPokeball(player: number, pokeballType: string, x:number, y:number, game: Game){
+export function launchPokeball(player: number, pokeballType: string, x:number, y:number, game: GameScene){
     return new Promise<Phaser.GameObjects.Sprite>(resolve => {
         let playerX, playerY;
         if(player === 1){
@@ -136,7 +136,7 @@ export function launchPokeball(player: number, pokeballType: string, x:number, y
     })
 }
 
-export function spawnPokemon(pokemon: PokemonOnBoard, game: Game){
+export function spawnPokemon(pokemon: PokemonOnBoard, game: GameScene){
     const [x,y] = pokemon.positionPlacement;
     launchPokeball(pokemon.owner, pokemon.pokeball, x, y, game)
         .then((pokeball) => {
@@ -152,7 +152,7 @@ export function spawnPokemon(pokemon: PokemonOnBoard, game: Game){
 export async function capturePokemon(
     pokemon: PokemonOnBoard,
     pokemonSprite: Phaser.GameObjects.Sprite,
-    game: Game
+    game: GameScene
 ){
     hidePokemonInfo()
     hidePokemonCaptureInfo(game)
@@ -219,7 +219,7 @@ export async function capturePokemon(
     })
 }
 
-export function drawGrid(game: Game){
+export function drawGrid(game: GameScene){
     const grid = game.add.graphics();
     game.graphics.set("grid", grid);
     grid.setDepth(Z.GRID);
@@ -264,7 +264,7 @@ export function drawGrid(game: Game){
     }
 }
 
-export function setActiveTile(zone: Phaser.GameObjects.Zone, game: Game){
+export function setActiveTile(zone: Phaser.GameObjects.Zone, game: GameScene){
     const {x,y} = zone;
     const [i,j] = getCoordsFromPosition(x+16, y+16)
 
@@ -309,7 +309,7 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: Game){
     }
 }
 
-export function clearActiveTile(game: Game){
+export function clearActiveTile(game: GameScene){
     if(gameState.board.activeTile == null) return;
     const gridActiveTile = game.graphics.get("gridActiveTile")
     gridActiveTile?.clear()
@@ -318,7 +318,7 @@ export function clearActiveTile(game: Game){
     gameState.board.activeTile = null
 }
 
-export function dropPokemonOnBoard(sprite: Phaser.GameObjects.Sprite, x:number, y:number, game: Game){
+export function dropPokemonOnBoard(sprite: Phaser.GameObjects.Sprite, x:number, y:number, game: GameScene){
     let pokemonOnBoard: PokemonOnBoard;
     let pokemon: Pokemon = sprite.getData("pokemon")
     if(!pokemon) return;

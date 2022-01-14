@@ -5,7 +5,7 @@ import {EFFECTS} from "../effects";
 export const FOUET_LIANES: HitSkill = {
     name: "Fouet-Lianes",
     type: POKEMON_TYPES.PLANTE,
-    effect: EFFECTS.VINE_WHIP,
+    effect: EFFECTS.FOUET_LIANES,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 250,
     effectOrigin: "source",

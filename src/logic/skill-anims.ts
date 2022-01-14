@@ -8,6 +8,7 @@ import { getPokemonOnTile } from "./board";
 import { faceTarget, calcDamage, applyDamage } from "./fight";
 import { launchProjectile } from "./projectile";
 import { SkillBehavior, HitSkill, ProjectileSkill, BuffSkill, AOESkill } from "./skill";
+import { triggerSpecial } from "./specials";
 
 export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene) {
     faceTarget(pokemon, target, game);
@@ -78,13 +79,13 @@ export function renderBuffAttack(skill: BuffSkill, target: PokemonOnBoard, game:
     sprite.scale = skill.effect.scale ?? 1;
     sprite.blendMode = Phaser.BlendModes.OVERLAY
     sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
-
     sprite.play(skill.effect.key)
     sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-        sprite.destroy()
+        sprite.destroy()        
     })
 
     if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
+    if(skill.triggerSpecial) triggerSpecial(skill.triggerSpecial, target)
 }
 
 export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){

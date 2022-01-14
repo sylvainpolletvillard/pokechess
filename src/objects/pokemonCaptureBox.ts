@@ -1,4 +1,4 @@
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import {addText} from "../utils/text";
 import {Pokemon} from "../data/pokemons";
 import {Z} from "../data/depths";
@@ -12,7 +12,7 @@ let pokeballOnHand: Phaser.GameObjects.Sprite | null;
 
 const WIDTH = 100, HEIGHT = 32;
 
-export function displayPokemonCaptureInfo(pokemon: PokemonOnBoard, game: Game){
+export function displayPokemonCaptureInfo(pokemon: PokemonOnBoard, game: GameScene){
     if(currentPokemonCaptureInfoDisplayed === pokemon) return;
     if(currentPokemonCaptureInfoDisplayed != null) hidePokemonCaptureInfo(game);
     currentPokemonCaptureInfoDisplayed = pokemon
@@ -63,7 +63,7 @@ export function displayPokemonCaptureInfo(pokemon: PokemonOnBoard, game: Game){
     pokemonCaptureBox.setDepth(Z.MENU);
 }
 
-export function updatePokemonCaptureInfoPosition(game: Game){
+export function updatePokemonCaptureInfoPosition(game: GameScene){
     if(!currentPokemonCaptureInfoDisplayed) return;
     pokemonCaptureBox?.setPosition(
         Math.max(2, Math.floor(game.input.activePointer.x - WIDTH - 8)),
@@ -75,7 +75,7 @@ export function updatePokemonCaptureInfoPosition(game: Game){
     )
 }
 
-export function hidePokemonCaptureInfo(game: Game){
+export function hidePokemonCaptureInfo(game: GameScene){
     if(!pokemonCaptureBox) return;
     pokemonCaptureBox.destroy(true)
     pokemonCaptureBox = null;

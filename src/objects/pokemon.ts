@@ -1,5 +1,5 @@
 import {Pokemon, PokemonAction, PokemonTypeAction} from "../data/pokemons";
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import {addInteractiveElem, dragState, handleDragStart, testIfCanBeDragged} from "./cursor";
 import {wait} from "../utils/helpers";
 import {capturePokemon, getPositionFromCoords} from "../logic/board";
@@ -65,7 +65,7 @@ export class PokemonOnBoard extends Pokemon {
         return factor
     }
 
-    toBoxPokemon(game: Game){
+    toBoxPokemon(game: GameScene){
         const pokemon = new Pokemon(this, this.owner, this.level)
         game.sprites.get(pokemon.uid)?.setData("pokemon", pokemon);
         pokemon.owner = 1
@@ -75,7 +75,7 @@ export class PokemonOnBoard extends Pokemon {
 
 export function makePokemonSprite(
     pokemon: Pokemon,
-    game: Game
+    game: GameScene
 ): Phaser.GameObjects.Sprite {
     const [x,y] = pokemon instanceof PokemonOnBoard ? pokemon.positionPlacement : [0,0];
     const sprite = game.add.sprite(x, y, "pokemon")

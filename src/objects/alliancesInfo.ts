@@ -1,4 +1,4 @@
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import {POKEMON_TYPES} from "../data/types";
 import {PokemonOnBoard} from "./pokemon";
 import {gameState} from "../logic/gamestate";
@@ -13,7 +13,7 @@ export function countByType(team: PokemonOnBoard[]): AllianceCount {
 }
 
 export function drawAlliancesInfo(playerIndex: number){
-    const game = gameState.activeScene as Game;
+    const game = gameState.activeScene as GameScene;
     const team: PokemonOnBoard[] = gameState.players[playerIndex].team;
     const alliances = countByType(team)
     if(alliancesInfoGroup != null){

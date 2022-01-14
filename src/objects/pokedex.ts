@@ -1,5 +1,5 @@
 import {openMenu} from "./menu";
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import {POKEMON_TYPES, PokemonType} from "../data/types";
 import {Pokemon, PokemonEntry, POKEMONS} from "../data/pokemons";
 import {addText} from "../utils/text";
@@ -44,7 +44,7 @@ let cursorZone: CursorZone = CursorZone.LIST
 let pokedexContainer: Phaser.GameObjects.Container | null = null;
 let interactiveElems: InteractiveElem[] = [];
 
-export function showPokedex(game: Game, pokemonToShow?: Pokemon){
+export function showPokedex(game: GameScene, pokemonToShow?: Pokemon){
     openMenu({
         ref: "pokedex",
         x: ox,

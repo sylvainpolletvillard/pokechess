@@ -1,10 +1,10 @@
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import {PokemonOnBoard} from "./pokemon";
 import {Z} from "../data/depths";
 
 const BAR_WIDTH = 16;
 
-export function updatePokemonBars(pokemon: PokemonOnBoard, game: Game){
+export function updatePokemonBars(pokemon: PokemonOnBoard, game: GameScene){
     const graphics = game.graphics.get(pokemon.uid)
     const sprite = game.sprites.get(pokemon.uid)
     if(sprite != null && graphics != null){

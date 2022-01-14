@@ -6,7 +6,7 @@ import {
     InteractiveElem,
     removeInteractiveElem, testIfCanBeDragged
 } from "./cursor";
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import {makePokemonSprite} from "./pokemon";
 import {addToBox} from "../logic/box";
 import {displayPokemonInfo, hidePokemonInfo} from "./pokemonInfoBox";
@@ -19,7 +19,7 @@ const ox = 20, oy = 100,  WIDTH = 248, HEIGHT = 24;
 const NB_ROWS = 1, NB_COLS = 8;
 const CASE_SIZE = 28, CASE_GAP = 4, L = CASE_SIZE + CASE_GAP;
 
-export function openBox(game: Game){
+export function openBox(game: GameScene){
     openMenu({
         ref: "box",
         x: ox,
@@ -34,7 +34,7 @@ export function openBox(game: Game){
     })
 }
 
-function draw(game: Game, group: Phaser.GameObjects.Group) {
+function draw(game: GameScene, group: Phaser.GameObjects.Group) {
     //group.clear(true, true)
     interactiveElems.forEach(elm => removeInteractiveElem(elm))
     interactiveElems = []
@@ -85,7 +85,7 @@ function draw(game: Game, group: Phaser.GameObjects.Group) {
     })
 }
 
-export function dropPokemonInBox(pokemonSprite: Phaser.GameObjects.Sprite, caseIndex:number, game: Game){
+export function dropPokemonInBox(pokemonSprite: Phaser.GameObjects.Sprite, caseIndex:number, game: GameScene){
     const droppedPokemon = dragState.draggedElem?.getData("pokemon")
     if(droppedPokemon == null) return;
 

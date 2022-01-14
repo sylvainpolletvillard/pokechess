@@ -1,4 +1,4 @@
-import Game from '../scenes/GameScene';
+import GameScene from '../scenes/GameScene';
 import { drawPokeballsCounter } from './pokeballsCounter';
 import { drawRoomNamePanel } from './roomNamePanel';
 import { drawTrainers, showTrainerIntro } from './trainers';
@@ -10,7 +10,7 @@ import { updatePokemonBars } from './pokemonBar';
 import { wait } from '../utils/helpers';
 import { Z } from '../data/depths';
 
-export function updateGUI(game: Game){
+export function updateGUI(game: GameScene){
     if(gameState.stage === GameStage.FIGHT){
         for (let pokemon of gameState.board.playerTeam) {
             updatePokemonBars(pokemon, game)
@@ -21,7 +21,7 @@ export function updateGUI(game: Game){
     }
 }
 
-export function drawIntro(game: Game): Promise<any>{
+export function drawIntro(game: GameScene): Promise<any>{
     drawRoomNamePanel()
     drawTrainers(game)
 
@@ -41,7 +41,7 @@ export function drawIntro(game: Game): Promise<any>{
     return Promise.resolve()
 }
 
-export function showCenterText(animName: string, game: Game){
+export function showCenterText(animName: string, game: GameScene){
     const text = game.add.sprite(game.scale.width/2, game.scale.height/2, "texts")
     text.setDepth(Z.CENTER_TEXT).play(animName)
     game.sprites.set("centerText", text)

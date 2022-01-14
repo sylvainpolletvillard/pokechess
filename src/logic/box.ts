@@ -1,4 +1,4 @@
-import Game from '../scenes/GameScene';
+import GameScene from '../scenes/GameScene';
 import { addToBoxGroup, removeFromBoxGroup } from '../objects/pokemonBox';
 import { drawAlliancesInfo } from '../objects/alliancesInfo';
 import { drawPokeballsCounter } from '../objects/pokeballsCounter';
@@ -23,7 +23,7 @@ export function removeFromBox(pokemon: Pokemon){
     }
 }
 
-export function addToBox(pokemon: Pokemon, game: Game, caseIndex?: number){
+export function addToBox(pokemon: Pokemon, game: GameScene, caseIndex?: number){
     if(caseIndex == null){
         caseIndex = gameState.player.box.indexOf(null) // find free case index
     }

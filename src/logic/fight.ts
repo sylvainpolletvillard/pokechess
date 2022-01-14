@@ -1,12 +1,11 @@
 import {PokemonTypeAction} from "../data/pokemons";
 import {findClosestReachableTarget, findPathToTarget} from "./pathfinding";
 import {Board,getPositionFromCoords} from "./board";
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import {getDirection} from "./anims";
 import Phaser from "phaser";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
-import GameScene from "../scenes/GameScene";
 import { Skill } from "./skill";
 import { canPokemonBeTargeted, hasBlockingAlteration } from "./alteration";
 import { renderAttack } from "./skill-anims";
@@ -36,7 +35,7 @@ export function canPokemonMove(pokemon: PokemonOnBoard){
     ].includes(alt.type))
 }
 
-export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: Game){
+export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: GameScene){
     if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || pokemon.pv <= 0) return;
 
     if(hasBlockingAlteration(pokemon)) return;
@@ -56,7 +55,7 @@ export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game:
     }
 }
 
-export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: Game){
+export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     const sprite = game.sprites.get(pokemon.uid)
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
@@ -64,7 +63,7 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
     sprite.play(`${pokemon.ref}_${pokemon.facingDirection}`)
 }
 
-export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, board: Board, game: Game){
+export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, board: Board, game: GameScene){
     const sprite = game.sprites.get(pokemon.uid)
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
@@ -99,7 +98,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     }
 }
 
-export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, board: Board, game: Game){
+export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, board: Board, game: GameScene){
     const sprite = game.sprites.get(pokemon.uid)
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 

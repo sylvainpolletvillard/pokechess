@@ -6,7 +6,7 @@ import {
     moveCursor, testIfCanBeDragged,
     updateCursorHover
 } from "../objects/cursor";
-import Game from "../scenes/GameScene";
+import GameScene from "../scenes/GameScene";
 import { gameState} from "./gamestate";
 import { MyScene } from "../scenes/MyScene";
 import {updatePokemonCaptureInfoPosition} from "../objects/pokemonCaptureBox";
@@ -178,7 +178,7 @@ export function onPointerMove(scene: MyScene, pointer: PointerEvent){
     )
     updateCursorHover(scene)
     handleDragMove(scene)
-    updatePokemonCaptureInfoPosition(scene as Game)
+    updatePokemonCaptureInfoPosition(scene as GameScene)
 }
 
 function onPressA(){

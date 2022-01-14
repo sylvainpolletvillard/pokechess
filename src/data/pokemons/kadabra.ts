@@ -7,9 +7,8 @@ export const KADABRA: PokemonEntry = {
     ref: "kadabra",
     name: "Kadabra",
     maxPV: 40,
-    maxPP: 20,
+    maxPP: 10,
     attack: 35,
-
     defense: 30,
     speed: 105,
     types: [POKEMON_TYPES.PSY],
@@ -17,5 +16,5 @@ export const KADABRA: PokemonEntry = {
     evolutionLevel: 33,
     rank: 2,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.LANCE_SOLEIL // teleport
+    ppSkill: SKILLS.TELEPORT
 }
