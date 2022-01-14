@@ -15,6 +15,6 @@ export const ABRA: PokemonEntry = {
     evolution: KADABRA,
     evolutionLevel: 16,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // choc mental
+    baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.LANCE_SOLEIL // teleport
 }

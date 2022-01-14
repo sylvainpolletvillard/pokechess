@@ -16,6 +16,6 @@ export const KADABRA: PokemonEntry = {
     evolution: ALAKAZAM,
     evolutionLevel: 33,
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // choc mental
+    baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.LANCE_SOLEIL // teleport
 }

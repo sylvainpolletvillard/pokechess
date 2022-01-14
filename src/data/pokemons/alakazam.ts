@@ -12,6 +12,6 @@ export const ALAKAZAM: PokemonEntry = {
     speed: 120,
     types: [POKEMON_TYPES.PSY],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES, // choc mental
+    baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.LANCE_SOLEIL // teleport
 }

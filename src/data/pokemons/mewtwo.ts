@@ -13,6 +13,6 @@ export const MEWTWO: PokemonEntry = {
     speed: 130,
     types: [POKEMON_TYPES.PSY],
     rank: 5,
-    baseSkill: SKILLS.FOUET_LIANES, // choc mental
+    baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.LANCE_SOLEIL // psyko
 }

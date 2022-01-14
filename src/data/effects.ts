@@ -11,13 +11,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "pistolet_a_o",
         frames: [0],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 0.5
     },
     PISTOLET_A_O_HIT: {
         key: "pistolet_a_o_hit",
         frames: [1,2],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 0.5
     },
     HYDROCANON: {
         key: "hydrocanon",
@@ -37,13 +39,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "bulles_d_o",
         frames: [15],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 0.5
     },
     BULLES_D_O_HIT: {
         key: "bulles_d_o_hit",
         frames: [16,17,18],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 0.5
     },
     SECRETION_HIT: {
         key: "secretion",
@@ -56,13 +60,14 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "poudreuse",
         frames: [20,21,22,23,24,25,26],
         frameRate: 8,
-        repeat: 0
+        repeat: 0        
     },
-    CHOC_MENTAL: {
-        key: "choc_mental",
+    HYPNOSE: {
+        key: "hypnose",
         frames: [27,28,29,30,31],
-        frameRate: 8,
-        repeat: 0
+        frameRate: 6,
+        repeat: 0,
+        scale: 1
     },
     ECLATS_GLACE: {
         key: "eclats_glace",
@@ -107,13 +112,14 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [54,55,56,57,58],
         frameRate: 8,
         repeat: 0,
-        scale: 0.75
+        scale: 1
     },
     CHARGE_HIT: {
         key: "charge_hit",
         frames: [59],
         frameRate: 8,
-        repeat: 0        
+        repeat: 0,
+        scale: 0.5  
     },
     FIRE_JET: {
         key: "fire_jet",
@@ -164,8 +170,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    FIRE_HIT: {
-        key: "fire_hit",
+    CHOC_MENTAL: {
+        key: "choc_mental",
         frames: [99],
         frameRate: 8,
         repeat: 0

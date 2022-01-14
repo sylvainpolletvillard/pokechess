@@ -13,6 +13,6 @@ export const HYPNOMADE: PokemonEntry = {
     speed: 67,
     types: [POKEMON_TYPES.PSY],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // choc mental
+    baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.LANCE_SOLEIL // teleport
 }

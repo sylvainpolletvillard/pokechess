@@ -3,8 +3,6 @@ import {addText} from "../utils/text";
 import {gameState} from "../logic/gamestate";
 import {MyScene} from "./MyScene";
 import {loadFonts} from "../data/fonts";
-import {MONT_SELENITE} from "../data/destinations/mont_selenite";
-import {COL_DE_MONTAGNE} from "../data/destinations/col_montagne";
 import {loadTilemaps} from "../data/tilemaps";
 import {loadSprites} from "../data/sprites";
 import {loadSpritesheets} from "../data/spritesheets";
@@ -12,15 +10,14 @@ import {PokemonOnBoard} from "../objects/pokemon";
 import {Pokemon} from "../data/pokemons";
 import {FORET_JADE} from "../data/destinations/foret_jade";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
-import { GALOPA } from "../data/pokemons/galopa";
-import { AEROMITE } from "../data/pokemons/aeromite";
+import { SOPORIFIK } from "../data/pokemons/soporifik";
+import { HERBIZARRE } from "../data/pokemons/herbizarre";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
-	gameState.player.team = [ 
-		//new PokemonOnBoard( new Pokemon(BULBIZARRE, 1, 20), 4 ,5),
-		new PokemonOnBoard( new Pokemon(GALOPA, 1, 20), 5 ,5),
-		new PokemonOnBoard( new Pokemon(AEROMITE, 1, 20), 3 ,5),
+	gameState.player.team = [
+		new PokemonOnBoard( new Pokemon(SOPORIFIK, 1, 20), 4 ,5),
+		new PokemonOnBoard( new Pokemon(HERBIZARRE, 1, 20), 3 ,5),
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1

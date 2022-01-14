@@ -9,13 +9,12 @@ export const SOPORIFIK: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 48,
-
     defense: 45,
     speed: 42,
     types: [POKEMON_TYPES.PSY],
     evolution: HYPNOMADE,
     evolutionLevel: 26,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // choc mental
-    ppSkill: SKILLS.LANCE_SOLEIL // hypnose
+    baseSkill: SKILLS.CHOC_MENTAL,
+    ppSkill: SKILLS.HYPNOSE
 }

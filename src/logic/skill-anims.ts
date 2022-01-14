@@ -41,7 +41,7 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
         dx = Math.round(Math.cos(angle) * delta)
         dy = Math.round(Math.sin(angle) * delta)
     } else if(skill.effectOrigin === "target_ground"){
-        dy= -16 * (skill.effect.scale ?? 0.5) + delta
+        dy= -16 * (skill.effect.scale ?? 1) + delta
     }
     
     wait(skill.effectDelay ?? 0).then(() => {
@@ -50,7 +50,7 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
         if(skill.rotateSprite){
             sprite.rotation = angle + Math.PI/2;
         }    
-        sprite.scale = skill.effect.scale ?? 0.5;
+        sprite.scale = skill.effect.scale ?? 1;
         sprite.blendMode = Phaser.BlendModes.OVERLAY
         sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
     
@@ -67,6 +67,7 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
         const damage = calcDamage(skill, target, attacker)
         console.log(`${attacker.name} is attacking ${target.name} for ${damage} damage !`)
         applyDamage(damage, target)
+        if(skill.hitAlteration) addAlteration(target, skill.hitAlteration, game)
     })
 }
 
@@ -74,7 +75,7 @@ export function renderBuffAttack(skill: BuffSkill, target: PokemonOnBoard, game:
     let [x, y] = target.position
     
     const sprite = game.add.sprite(x, y, "effects")
-    sprite.scale = skill.effect.scale ?? 0.5;
+    sprite.scale = skill.effect.scale ?? 1;
     sprite.blendMode = Phaser.BlendModes.OVERLAY
     sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
 
@@ -99,11 +100,11 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
         dy = Math.round(Math.sin(angle) * delta)
     } else if(skill.effectOrigin === "source_ground"){
         [x,y] = attacker.position
-        dy= -16 * (skill.effect.scale ?? 0.5)
+        dy= -16 * (skill.effect.scale ?? 1)
     }
     
     const sprite = game.add.sprite(x + dx, y + dy, "effects")
-    sprite.scale = skill.effect.scale ?? 0.5;
+    sprite.scale = skill.effect.scale ?? 1;
     sprite.blendMode = Phaser.BlendModes.OVERLAY
     sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
 

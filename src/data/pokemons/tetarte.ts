@@ -9,7 +9,6 @@ export const TETARTE: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 65,
-
     defense: 65,
     speed: 90,
     types: [POKEMON_TYPES.EAU],
@@ -17,5 +16,5 @@ export const TETARTE: PokemonEntry = {
     evolutionLevel: 35,
     rank: 2,
     baseSkill: SKILLS.FOUET_LIANES, // torgnoles
-    ppSkill: SKILLS.LANCE_SOLEIL // hypnose
+    ppSkill: SKILLS.HYPNOSE
 }

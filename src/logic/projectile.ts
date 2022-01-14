@@ -51,7 +51,7 @@ export function launchProjectile(
         travelTime = 1000 * 12 / skill.travelSpeed
     }
 
-    projectile.sprite.scale = skill.effect.scale ?? 0.5;
+    projectile.sprite.scale = skill.effect.scale ?? 1;
     projectile.sprite.blendMode = Phaser.BlendModes.OVERLAY
     projectile.sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
     projectile.sprite.play(skill.effect.key)

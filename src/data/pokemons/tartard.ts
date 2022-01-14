@@ -8,11 +8,10 @@ export const TARTARD: PokemonEntry = {
     maxPV: 90,
     maxPP: 20,
     attack: 95,
-
     defense: 95,
     speed: 70,
     types: [POKEMON_TYPES.EAU],
     rank: 3,
     baseSkill: SKILLS.FOUET_LIANES, // torgnoles
-    ppSkill: SKILLS.LANCE_SOLEIL // hypnose
+    ppSkill: SKILLS.HYPNOSE
 }

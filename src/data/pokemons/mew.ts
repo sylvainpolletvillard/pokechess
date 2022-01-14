@@ -13,6 +13,6 @@ export const MEW: PokemonEntry = {
     speed: 100,
     types: [POKEMON_TYPES.PSY],
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // choc mental
+    baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.LANCE_SOLEIL // métronome
 }

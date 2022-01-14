@@ -9,7 +9,6 @@ export const PTITARD: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 50,
-
     defense: 40,
     speed: 90,
     types: [POKEMON_TYPES.EAU],
@@ -17,5 +16,5 @@ export const PTITARD: PokemonEntry = {
     evolutionLevel: 25,
     rank: 1,
     baseSkill: SKILLS.BULLES_D_O,
-    ppSkill: SKILLS.LANCE_SOLEIL // hypnose
+    ppSkill: SKILLS.HYPNOSE
 }
