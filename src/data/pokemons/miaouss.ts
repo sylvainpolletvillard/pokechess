@@ -9,7 +9,6 @@ export const MIAOUSS: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 45,
-
     defense: 35,
     speed: 90,
     types: [POKEMON_TYPES.NORMAL],
@@ -17,5 +16,5 @@ export const MIAOUSS: PokemonEntry = {
     evolutionLevel: 28,
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES, // griffe
-    ppSkill: SKILLS.LANCE_SOLEIL // jackpot
+    ppSkill: SKILLS.LANCE_SOLEIL // provoc
 }

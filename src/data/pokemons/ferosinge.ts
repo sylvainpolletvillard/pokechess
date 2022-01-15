@@ -9,7 +9,6 @@ export const FEROSINGE: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 80,
-
     defense: 35,
     speed: 70,
     types: [POKEMON_TYPES.COMBAT],
@@ -17,5 +16,5 @@ export const FEROSINGE: PokemonEntry = {
     evolutionLevel: 28,
     rank: 1,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.LANCE_SOLEIL // poing karaté
+    ppSkill: SKILLS.LANCE_SOLEIL // provoc
 }

@@ -26,7 +26,7 @@ export function updateAlterations(pokemons: PokemonOnBoard[]){
 export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alteration){
     const game = gameState.activeScene as GameScene;
     const sprite = game.sprites.get(pokemon.uid)
-    if(alteration.type === AlterationType.MAELSTROM){
+    if(alteration.type === AlterationType.HYDROCANON){
         switch(pokemon.facingDirection){
             case Direction.UP: pokemon.facingDirection = Direction.RIGHT; break;
             case Direction.RIGHT: pokemon.facingDirection = Direction.DOWN; break;
@@ -56,13 +56,13 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
 
 export function hasBlockingAlteration(pokemon: PokemonOnBoard){
     return pokemon.alterations.some(alt => [
-        AlterationType.MAELSTROM, 
+        AlterationType.HYDROCANON, 
         AlterationType.SOMMEIL   
     ].includes(alt.type))
 }
 
 export function canPokemonBeTargeted(pokemon: PokemonOnBoard){
-    return !pokemon.alterations.some(alt => alt.type === AlterationType.MAELSTROM)
+    return !pokemon.alterations.some(alt => alt.type === AlterationType.HYDROCANON)
 }
 
 export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, game: GameScene){    
@@ -76,18 +76,27 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
         const targetSprite = game.sprites.get(pokemon.uid)
         if(!targetSprite) return console.error(`Error, can't find pokemon sprite uid ${pokemon.uid}`)
 
-        if(alteration.type === AlterationType.MAELSTROM){
-            sendPokemonFlying(pokemon, game)
-        } 
-        if(alteration.type === AlterationType.BRULURE){
-            alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.BURN.key)
-                .setAlpha(0)
-                .setScale(EFFECTS.BURN.scale ?? 1)
-            game.tweens.add({ targets: alteration.effectSprite, alpha: 0.35, duration: 250, easing: "Linear" })
-        }
-        if(alteration.type === AlterationType.SOMMEIL){
-            alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.SOMMEIL.key)                
-                .setScale(EFFECTS.SOMMEIL.scale ?? 1)            
+        switch(alteration.type){
+            case AlterationType.HYDROCANON:
+                sendPokemonFlying(pokemon, game)
+                break;
+            
+            case AlterationType.BRULURE:
+                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.BURN.key)
+                    .setAlpha(0)
+                    .setScale(EFFECTS.BURN.scale ?? 1)
+                game.tweens.add({ targets: alteration.effectSprite, alpha: 0.35, duration: 250, easing: "Linear" })
+                break;
+
+            case AlterationType.SOMMEIL:
+                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.SOMMEIL.key)                
+                    .setScale(EFFECTS.SOMMEIL.scale ?? 1)            
+                break;
+
+            case AlterationType.PARALYSIE:
+                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.PARALYSIE.key)                
+                    .setScale(EFFECTS.PARALYSIE.scale ?? 1)            
+                break;       
         }
 
         pokemon.alterations.push({ ...alteration })

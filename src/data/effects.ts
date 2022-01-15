@@ -188,15 +188,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    POUDRE_DODO: {
-        key: "poudre_dodo",
+    POUDRE_TOXIK: {
+        key: "poudre_toxik",
         frames: [107,108,109,110,111,112,113,114],
         frameRate: 8,
         scale: 1,
         repeat: 0
     },
-    PARALYZE: {
-        key: "paralyze",
+    PARALYSIE: {
+        key: "paralysie",
         frames: [115,116,117,118],
         frameRate: 8,
         repeat: 0
@@ -219,11 +219,11 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 16,
         repeat: 0
     },
-    ELEC_BALL: {
+    CAGE_ECLAIR: {
         key: "elec_ball",
         frames: [130,131,132,133,134,135],
         frameRate: 8,
-        repeat: 0
+        repeat: 1
     },
     CLAW_LEFT: {
         key: "claw_left",
@@ -304,10 +304,10 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    ROOTS: {
-        key: "roots",
+    ETINCELLE: {
+        key: "etincelle",
         frames: [170,171,172,173,174,175,176],
-        frameRate: 8,
+        frameRate: 16,
         repeat: 0
     },
     POISON_BALL: {

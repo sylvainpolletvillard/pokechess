@@ -8,11 +8,10 @@ export const ELEKTEK: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 83,
-
     defense: 57,
     speed: 105,
     types: [POKEMON_TYPES.ELECTRIQUE],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, //étincelle
+    baseSkill: SKILLS.ETINCELLE,
     ppSkill: SKILLS.LANCE_SOLEIL // tonnerre
 }

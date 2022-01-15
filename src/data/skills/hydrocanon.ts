@@ -13,6 +13,6 @@ export const HYDROCANON: HitSkill = {
     effectOrigin: "target_ground",
     power: 300,
     rotateSprite: false, 
-    triggerAlteration: { type: AlterationType.MAELSTROM, stacks: 16 },
+    triggerAlteration: { type: AlterationType.HYDROCANON, stacks: 16 },
     attackRange: 4
 }

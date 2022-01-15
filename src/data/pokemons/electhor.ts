@@ -13,6 +13,6 @@ export const ELECTHOR: PokemonEntry = {
     speed: 100,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.ELECTRIQUE],
     rank: 5,
-    baseSkill: SKILLS.FLAMMECHE, // étincelle
+    baseSkill: SKILLS.ETINCELLE,
     ppSkill: SKILLS.LANCE_SOLEIL // fatal foudre
 }

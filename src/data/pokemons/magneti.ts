@@ -9,13 +9,12 @@ export const MAGNETI: PokemonEntry = {
     maxPV: 25,
     maxPP: 20,
     attack: 35,
-
     defense: 70,
     speed: 45,
     types: [POKEMON_TYPES.ELECTRIQUE],
     evolution: MAGNETON,
     evolutionLevel: 30,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // étincelle
+    baseSkill: SKILLS.ETINCELLE,
     ppSkill: SKILLS.LANCE_SOLEIL // cage éclair
 }

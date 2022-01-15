@@ -8,11 +8,10 @@ export const COLOSSINGE: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 105,
-
     defense: 60,
     speed: 95,
     types: [POKEMON_TYPES.COMBAT],
     rank: 2,
     baseSkill: SKILLS.FOUET_LIANES, // griffe
-    ppSkill: SKILLS.LANCE_SOLEIL // poing karaté
+    ppSkill: SKILLS.LANCE_SOLEIL // provoc
 }

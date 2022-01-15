@@ -4,9 +4,9 @@ import { AlterationType } from "../alterations";
 import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
-export const POUDRE_DODO: AOESkill = {
-    name: "Poudre Dodo",
-    description: "Projète un somnifère qui endort tous les adversaires autour",
+export const POUDRE_TOXIK: AOESkill = {
+    name: "Poudre Toxik",
+    description: "Nuage de spores empoisonnant tous les adversaires autour",
     attackRange:1,
     behavior: SkillBehavior.AREA_OF_EFFECT,
     type: POKEMON_TYPES.PLANTE,
@@ -19,12 +19,12 @@ export const POUDRE_DODO: AOESkill = {
         ]        
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
-    effect: EFFECTS.POUDRE_DODO,
+    effect: EFFECTS.POUDRE_TOXIK,
     effectOrigin: "source_ground",    
     power: 0,
     hitDelay: 400,
     hitAlteration: {
-        type: AlterationType.SOMMEIL,
-        stacks: 80
+        type: AlterationType.POISON,
+        stacks: 100
     }
 }

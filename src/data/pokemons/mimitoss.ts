@@ -9,7 +9,6 @@ export const MIMITOSS: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 55,
-
     defense: 50,
     speed: 45,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.POISON],

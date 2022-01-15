@@ -9,7 +9,6 @@ export const MYSTHERBE: PokemonEntry = {
     maxPV: 45,
     maxPP: 20,
     attack: 50,
-
     defense: 55,
     speed: 30,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],
@@ -17,5 +16,5 @@ export const MYSTHERBE: PokemonEntry = {
     evolutionLevel: 21,
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES, // vol vie
-    ppSkill: SKILLS.LANCE_SOLEIL // poudre toxik
+    ppSkill: SKILLS.POUDRE_TOXIK
 }

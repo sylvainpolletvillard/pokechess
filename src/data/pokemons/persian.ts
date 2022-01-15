@@ -8,11 +8,10 @@ export const PERSIAN: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 70,
-
     defense: 60,
     speed: 115,
     types: [POKEMON_TYPES.NORMAL],
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES, // griffe
-    ppSkill: SKILLS.LANCE_SOLEIL // jackpot
+    ppSkill: SKILLS.LANCE_SOLEIL // provoc
 }

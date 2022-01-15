@@ -9,7 +9,6 @@ export const ORTIDE: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 65,
-
     defense: 70,
     speed: 40,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],
@@ -17,5 +16,5 @@ export const ORTIDE: PokemonEntry = {
     evolutionLevel: 37,
     rank: 2,
     baseSkill: SKILLS.FOUET_LIANES,  // vol vie
-    ppSkill: SKILLS.LANCE_SOLEIL  // poudre toxik
+    ppSkill: SKILLS.POUDRE_TOXIK
 }

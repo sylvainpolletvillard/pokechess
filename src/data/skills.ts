@@ -13,11 +13,12 @@ import { ECLATS_GLACE } from "./skills/eclatsGlace";
 import { PIQURE } from "./skills/piqure";
 import { SECRETION } from "./skills/secretion";
 import { CHOC_MENTAL } from "./skills/chocMental";
-import { POUDRE_DODO } from "./skills/poudreDodo";
+import { POUDRE_TOXIK } from "./skills/poudreToxik";
 import { MORSURE } from "./skills/morsure";
 import { LIGOTAGE } from "./skills/ligotage";
 import { HYPNOSE } from "./skills/hypnose";
 import { TELEPORT } from "./skills/teleport";
+import { ETINCELLE } from "./skills/etincelle";
 
 export const SKILLS = {
     CHARGE,
@@ -35,9 +36,10 @@ export const SKILLS = {
     PIQURE,
     SECRETION,
     CHOC_MENTAL,
-    POUDRE_DODO,
+    POUDRE_TOXIK,
     MORSURE,
     LIGOTAGE,
     HYPNOSE,
-    TELEPORT
+    TELEPORT,
+    ETINCELLE
 }

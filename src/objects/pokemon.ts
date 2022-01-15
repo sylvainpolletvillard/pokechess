@@ -1,7 +1,7 @@
 import {Pokemon, PokemonAction, PokemonTypeAction} from "../data/pokemons";
 import GameScene from "../scenes/GameScene";
 import {addInteractiveElem, dragState, handleDragStart, testIfCanBeDragged} from "./cursor";
-import {wait} from "../utils/helpers";
+import {clamp, wait} from "../utils/helpers";
 import {capturePokemon, getPositionFromCoords} from "../logic/board";
 import {Direction} from "../utils/directions";
 import {removeFromBox} from "../logic/box";
@@ -59,10 +59,14 @@ export class PokemonOnBoard extends Pokemon {
 
     get speedBuff(): number {
         let factor = 1;
-        if(this.alterations.some(alt => alt.type === AlterationType.SECRETION)){
-            factor -= 0.5
-        } 
-        return factor
+
+        let paralysie = this.alterations.find(alt => alt.type === AlterationType.PARALYSIE)        
+        if(paralysie){ factor -= clamp(0.01 * paralysie.stacks, 0, 0.5) }
+
+        let secretion = this.alterations.find(alt => alt.type === AlterationType.SECRETION)
+        if(secretion){ factor -= 0.5 }
+
+        return Math.max(0.1, factor)
     }
 
     toBoxPokemon(game: GameScene){
