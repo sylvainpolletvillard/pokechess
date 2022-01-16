@@ -6,12 +6,12 @@ export const RAICHU: PokemonEntry = {
     ref: "raichu",
     name: "Raichu",
     maxPV: 60,
-    maxPP: 20,
+    maxPP: 30,
     attack: 90,
     defense: 55,
     speed: 100,
     types: [POKEMON_TYPES.ELECTRIQUE],
     rank: 2,
     baseSkill: SKILLS.VIVE_ATTAQUE,
-    ppSkill: SKILLS.LANCE_SOLEIL // éclair
+    ppSkill: SKILLS.ECLAIR
 }

@@ -5,7 +5,7 @@ import {EFFECTS} from "../effects";
 export const PIQURE: HitSkill = {
     name: "Piqure",
     type: POKEMON_TYPES.INSECTE,
-    effect: EFFECTS.CLAW_LEFT,
+    effect: EFFECTS.PIQURE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
     effectOrigin: "target",

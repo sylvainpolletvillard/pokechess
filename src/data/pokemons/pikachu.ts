@@ -7,7 +7,7 @@ export const PIKACHU: PokemonEntry = {
     ref: "pikachu",
     name: "Pikachu",
     maxPV: 35,
-    maxPP: 20,
+    maxPP: 30,
     attack: 55,
     defense: 40,
     speed: 90,
@@ -16,5 +16,5 @@ export const PIKACHU: PokemonEntry = {
     evolutionLevel: 22,
     rank: 1,
     baseSkill: SKILLS.VIVE_ATTAQUE,
-    ppSkill: SKILLS.LANCE_SOLEIL // éclair
+    ppSkill: SKILLS.ECLAIR
 }

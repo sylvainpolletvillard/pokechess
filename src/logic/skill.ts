@@ -13,7 +13,7 @@ export interface Skill {
     effectDepth?: number;
     behavior: SkillBehavior;
     power: number;
-    triggerAlteration?: Alteration;    
+    triggerAlteration?: Alteration;
     attackRange: number;
 }
 
@@ -27,8 +27,8 @@ export interface HitSkill extends Skill {
     chargeDelta?: number; // déplace l'attaquant, ex: charge
 }
 
-export interface BuffSkill extends Skill {
-    behavior: SkillBehavior.BUFF
+export interface SpecialSkill extends Skill {
+    behavior: SkillBehavior.SPECIAL
     triggerSpecial: string;
 }
 
@@ -52,7 +52,7 @@ export interface AOESkill extends Skill {
 
 export enum SkillBehavior {
     DIRECT_HIT,
-    BUFF,
+    SPECIAL,
     PROJECTILE,
     AREA_OF_EFFECT
 }

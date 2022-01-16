@@ -9,7 +9,6 @@ export const CHRYSACIER: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 20,
-
     defense: 55,
     speed: 30,
     types: [POKEMON_TYPES.INSECTE],

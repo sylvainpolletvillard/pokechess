@@ -2,8 +2,9 @@ export interface Effect {
     key: string;
     frames: number[];
     frameRate: number;
-    scale?: number
+    scale?: number;
     repeat: number;
+    pattern?: string;
 }
 
 export const EFFECTS: { [name: string] : Effect} = {
@@ -213,11 +214,12 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    ELEC_THUNDER: {
-        key: "elec_thunder",
+    ECLAIR: {
+        key: "eclair",
         frames: [125,126,127,128,129],
         frameRate: 16,
-        repeat: 0
+        repeat: 0,
+        pattern: "eclair"
     },
     CAGE_ECLAIR: {
         key: "elec_ball",

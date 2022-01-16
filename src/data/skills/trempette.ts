@@ -1,9 +1,9 @@
-import { BuffSkill, SkillBehavior } from "../../logic/skill";
+import { SpecialSkill, SkillBehavior } from "../../logic/skill";
 import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
-export const TREMPETTE: BuffSkill = {
-    behavior: SkillBehavior.BUFF,    
+export const TREMPETTE: SpecialSkill = {
+    behavior: SkillBehavior.SPECIAL,    
     name: "Trempette",
     description: "Mais rien en se passe.",
     type: POKEMON_TYPES.EAU,

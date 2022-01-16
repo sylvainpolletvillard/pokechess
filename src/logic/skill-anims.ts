@@ -7,7 +7,7 @@ import { addAlteration } from "./alteration";
 import { getPokemonOnTile } from "./board";
 import { faceTarget, calcDamage, applyDamage } from "./fight";
 import { launchProjectile } from "./projectile";
-import { SkillBehavior, HitSkill, ProjectileSkill, BuffSkill, AOESkill } from "./skill";
+import { SkillBehavior, HitSkill, ProjectileSkill, SpecialSkill, AOESkill } from "./skill";
 import { triggerSpecial } from "./specials";
 
 export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene) {
@@ -22,8 +22,8 @@ export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
         return renderDirectHitAttack(skill as HitSkill, pokemon, target, game)
     } else if(skill.behavior === SkillBehavior.PROJECTILE) {
         return launchProjectile(skill as ProjectileSkill, pokemon, target, game)
-    } else if(skill.behavior === SkillBehavior.BUFF){
-        return renderBuffAttack(skill as BuffSkill, pokemon, game)
+    } else if(skill.behavior === SkillBehavior.SPECIAL){
+        return renderSpecialAttack(skill as SpecialSkill, pokemon, target, game)
     } else if(skill.behavior === SkillBehavior.AREA_OF_EFFECT){
         return renderAOEAttack(skill as AOESkill, pokemon, target, game)
     }
@@ -72,20 +72,8 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
     })
 }
 
-export function renderBuffAttack(skill: BuffSkill, target: PokemonOnBoard, game: GameScene){
-    let [x, y] = target.position
-    
-    const sprite = game.add.sprite(x, y, "effects")
-    sprite.scale = skill.effect.scale ?? 1;
-    sprite.blendMode = Phaser.BlendModes.OVERLAY
-    sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
-    sprite.play(skill.effect.key)
-    sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-        sprite.destroy()        
-    })
-
-    if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
-    if(skill.triggerSpecial) triggerSpecial(skill.triggerSpecial, target)
+export function renderSpecialAttack(skill: SpecialSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+     triggerSpecial(skill.triggerSpecial, attacker, target, game)
 }
 
 export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
