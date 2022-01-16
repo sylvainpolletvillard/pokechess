@@ -13,5 +13,5 @@ export const ARCANIN: PokemonEntry = {
     types: [POKEMON_TYPES.FEU],
     rank: 2,
     baseSkill: SKILLS.MORSURE,
-    ppSkill: SKILLS.LANCE_SOLEIL // crocs feu
+    ppSkill: SKILLS.CROCS_FEU
 }

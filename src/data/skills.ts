@@ -24,6 +24,7 @@ import { MASSDOS } from "./skills/massdOs";
 import { VIVE_ATTAQUE } from "./skills/vive attaque";
 import { ECLAIR } from "./skills/eclair";
 import { RAFALE_PSY } from "./skills/rafalePsy";
+import { CROCS_FEU } from "./skills/crocsFeu";
 
 export const SKILLS = {
     CHARGE,
@@ -51,5 +52,6 @@ export const SKILLS = {
     MASSDOS,
     VIVE_ATTAQUE,
     ECLAIR,
-    RAFALE_PSY
+    RAFALE_PSY,
+    CROCS_FEU
 }

@@ -15,5 +15,5 @@ export const PYROLI: PokemonEntry = {
     devolution: EVOLI,
     rank: 1,
     baseSkill: SKILLS.FLAMMECHE,
-    ppSkill: SKILLS.LANCE_SOLEIL // crocs feu
+    ppSkill: SKILLS.CROCS_FEU
 }

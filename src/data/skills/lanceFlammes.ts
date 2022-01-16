@@ -8,7 +8,7 @@ export const LANCE_FLAMMES: HitSkill = {
     name: "Lance-Flammes",
     description: "Jet de flammes infligeant de grosses brulures à la cible",
     type: POKEMON_TYPES.FEU,
-    effect: EFFECTS.FIRE_JET,
+    effect: EFFECTS.LANCE_FLAMMES,
     effectDelta: 32,
     effectDepth: Z.SKILL_EFFECT_BELOW_POKEMON,
     behavior: SkillBehavior.DIRECT_HIT,

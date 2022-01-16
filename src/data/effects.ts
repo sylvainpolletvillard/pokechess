@@ -122,22 +122,23 @@ export const EFFECTS: { [name: string] : Effect} = {
         repeat: 0,
         scale: 0.5  
     },
-    FIRE_JET: {
-        key: "fire_jet",
+    LANCE_FLAMMES: {
+        key: "lance_flammes",
         frames: [60,61,62,63,64],
         frameRate: 8,
         repeat: 0,
         scale: 1
     },
-    FIRE_CLAW: {
-        key: "fire_claw",
-        frames: [65,66,67,68],
+    CROCS_FEU: {
+        key: "crocs_feu",
+        frames: [65,66,67,68,69],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 1
     },
     FIRE_GROUND_EXPLOSION: {
         key: "fire_ground_explosion",
-        frames: [69,70,71,72,73],
+        frames: [70,71,72,73],
         frameRate: 8,
         repeat: 0
     },
