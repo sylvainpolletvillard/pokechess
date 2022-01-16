@@ -9,7 +9,6 @@ export const NIDORAN_MALE: PokemonEntry = {
     maxPV: 46,
     maxPP: 20,
     attack: 57,
-
     defense: 40,
     speed: 50,
     types: [POKEMON_TYPES.POISON],

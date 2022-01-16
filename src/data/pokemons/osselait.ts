@@ -9,13 +9,12 @@ export const OSSELAIT: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 50,
-
     defense: 95,
     speed: 35,
     types: [POKEMON_TYPES.SOL],
     evolution: OSSATUEUR,
     evolutionLevel: 28,
     rank: 1,
-    baseSkill: SKILLS.FLAMMECHE, // mass d'os
+    baseSkill: SKILLS.MASSDOS,
     ppSkill: SKILLS.LANCE_SOLEIL // rugissement
 }

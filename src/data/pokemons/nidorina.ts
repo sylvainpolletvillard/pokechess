@@ -9,13 +9,12 @@ export const NIDORINA: PokemonEntry = {
     maxPV: 70,
     maxPP: 20,
     attack: 62,
-
     defense: 67,
     speed: 56,
     types: [POKEMON_TYPES.POISON],
     evolution: NIDOQUEEN,
     evolutionLevel: 32,
     rank: 1,
-    baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.LANCE_SOLEIL // crochet venin
+    baseSkill: SKILLS.GRIFFE, // dard venin
+    ppSkill: SKILLS.LANCE_SOLEIL // rugissement
 }

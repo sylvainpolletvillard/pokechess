@@ -80,7 +80,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [36,37],
         frameRate: 6,
         repeat: 2,
-        scale: 1
+        scale: 0.5
     },
     ICE_CRYSTAL: {
         key: "ice_crystal",
@@ -199,7 +199,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "paralysie",
         frames: [115,116,117,118],
         frameRate: 8,
-        repeat: 0
+        repeat: Infinity
     },
     HIT_STAR: {
         key: "hit_star",
@@ -223,7 +223,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "elec_ball",
         frames: [130,131,132,133,134,135],
         frameRate: 8,
-        repeat: 1
+        repeat: 2
     },
     CLAW_LEFT: {
         key: "claw_left",
@@ -273,11 +273,11 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    BONE: {
-        key: "bone",
+    MASSDOS: {
+        key: "massdos",
         frames: [149,150],
         frameRate: 8,
-        repeat: 0
+        repeat: Infinity
     },
     SWEEP: {
         key: "sweep",

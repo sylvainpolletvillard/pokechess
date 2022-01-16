@@ -20,10 +20,11 @@ export const CAGE_ECLAIR: AOESkill = {
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.CAGE_ECLAIR,
-    effectOrigin: "source_ground",    
+    effectOrigin: "source_ground",
+    effectDelta: 16,
     power: 0,
-    hitDelay: 400,
-    hitAlteration: {
+    hitDelay: 0,
+    triggerAlteration: {
         type: AlterationType.PARALYSIE,
         stacks: 100
     }

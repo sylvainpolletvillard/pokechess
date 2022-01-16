@@ -14,5 +14,6 @@ export const ETINCELLE: HitSkill = {
     effectOrigin: "target",
     power: 65,
     rotateSprite: true,
-    attackRange: 1
+    attackRange: 1,
+    chargeDelta: 4,
 }

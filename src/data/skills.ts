@@ -19,6 +19,8 @@ import { LIGOTAGE } from "./skills/ligotage";
 import { HYPNOSE } from "./skills/hypnose";
 import { TELEPORT } from "./skills/teleport";
 import { ETINCELLE } from "./skills/etincelle";
+import { CAGE_ECLAIR } from "./skills/cageEclair";
+import { MASSDOS } from "./skills/massdOs";
 
 export const SKILLS = {
     CHARGE,
@@ -41,5 +43,7 @@ export const SKILLS = {
     LIGOTAGE,
     HYPNOSE,
     TELEPORT,
-    ETINCELLE
+    ETINCELLE,
+    CAGE_ECLAIR,
+    MASSDOS
 }

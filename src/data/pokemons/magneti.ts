@@ -16,5 +16,5 @@ export const MAGNETI: PokemonEntry = {
     evolutionLevel: 30,
     rank: 1,
     baseSkill: SKILLS.ETINCELLE,
-    ppSkill: SKILLS.LANCE_SOLEIL // cage éclair
+    ppSkill: SKILLS.CAGE_ECLAIR
 }

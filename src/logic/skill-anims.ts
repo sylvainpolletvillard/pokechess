@@ -101,7 +101,7 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
         dy = Math.round(Math.sin(angle) * delta)
     } else if(skill.effectOrigin === "source_ground"){
         [x,y] = attacker.position
-        dy= -16 * (skill.effect.scale ?? 1)
+        dy= -16 * (skill.effect.scale ?? 1) + delta
     }
     
     const sprite = game.add.sprite(x + dx, y + dy, "effects")

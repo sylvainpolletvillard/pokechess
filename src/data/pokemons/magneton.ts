@@ -13,5 +13,5 @@ export const MAGNETON: PokemonEntry = {
     types: [POKEMON_TYPES.ELECTRIQUE],
     rank: 2,
     baseSkill: SKILLS.ETINCELLE,
-    ppSkill: SKILLS.LANCE_SOLEIL // cage éclair
+    ppSkill: SKILLS.CAGE_ECLAIR
 }
