@@ -9,7 +9,6 @@ export const VOLTORBE: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 30,
-
     defense: 50,
     speed: 100,
     types: [POKEMON_TYPES.ELECTRIQUE],

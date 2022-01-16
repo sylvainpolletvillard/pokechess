@@ -8,7 +8,6 @@ export const GROLEM: PokemonEntry = {
     maxPV: 80,
     maxPP: 20,
     attack: 120,
-
     defense: 130,
     speed: 45,
     types: [POKEMON_TYPES.ROCHE, POKEMON_TYPES.SOL],

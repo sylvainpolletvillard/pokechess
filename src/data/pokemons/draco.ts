@@ -9,7 +9,6 @@ export const DRACO: PokemonEntry = {
     maxPV: 61,
     maxPP: 20,
     attack: 84,
-
     defense: 65,
     speed: 70,
     types: [POKEMON_TYPES.DRAGON],

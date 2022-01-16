@@ -13,5 +13,5 @@ export const AEROMITE: PokemonEntry = {
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.POISON],
     rank: 2,
     baseSkill: SKILLS.CHARGE,
-    ppSkill: SKILLS.LANCE_SOLEIL // rafale psy
+    ppSkill: SKILLS.RAFALE_PSY
 }

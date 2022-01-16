@@ -13,11 +13,12 @@ import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items
 import { MAGNETON } from "../data/pokemons/magneton";
 import { PIKACHU } from "../data/pokemons/pikachu";
 import { RAICHU } from "../data/pokemons/raichu";
+import { AEROMITE } from "../data/pokemons/aeromite";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [
-		new PokemonOnBoard( new Pokemon(RAICHU, 1, 20), 4 ,5),
+		new PokemonOnBoard( new Pokemon(AEROMITE, 1, 20), 4 ,5),
 		//new PokemonOnBoard( new Pokemon(PIKACHU, 1, 20), 3 ,5),
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20

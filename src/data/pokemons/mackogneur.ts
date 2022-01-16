@@ -8,7 +8,6 @@ export const MACKOGNEUR: PokemonEntry = {
     maxPV: 90,
     maxPP: 20,
     attack: 130,
-
     defense: 80,
     speed: 55,
     types: [POKEMON_TYPES.COMBAT],

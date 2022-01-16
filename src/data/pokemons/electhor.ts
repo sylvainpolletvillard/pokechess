@@ -8,7 +8,6 @@ export const ELECTHOR: PokemonEntry = {
     maxPV: 90,
     maxPP: 20,
     attack: 90,
-
     defense: 85,
     speed: 100,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.ELECTRIQUE],

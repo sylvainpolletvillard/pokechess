@@ -9,7 +9,6 @@ export const NOSFERAPTI: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 45,
-
     defense: 35,
     speed: 55,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.POISON],

@@ -8,11 +8,10 @@ export const MAGMAR: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 95,
-
     defense: 57,
     speed: 93,
     types: [POKEMON_TYPES.FEU],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // flammeche
+    baseSkill: SKILLS.FLAMMECHE,
     ppSkill: SKILLS.LANCE_SOLEIL // brouillard
 }

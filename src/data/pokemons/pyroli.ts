@@ -9,12 +9,11 @@ export const PYROLI: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 130,
-
     defense: 60,
     speed: 65,
     types: [POKEMON_TYPES.FEU],
     devolution: EVOLI,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // flammeche
+    baseSkill: SKILLS.FLAMMECHE,
     ppSkill: SKILLS.LANCE_SOLEIL // crocs feu
 }

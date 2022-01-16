@@ -9,7 +9,6 @@ export const MACHOPEUR: PokemonEntry = {
     maxPV: 80,
     maxPP: 20,
     attack: 100,
-
     defense: 70,
     speed: 45,
     types: [POKEMON_TYPES.COMBAT],

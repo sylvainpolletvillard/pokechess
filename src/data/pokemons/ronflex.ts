@@ -8,7 +8,6 @@ export const RONFLEX: PokemonEntry = {
     maxPV: 160,
     maxPP: 20,
     attack: 110,
-
     defense: 65,
     speed: 30,
     types: [POKEMON_TYPES.NORMAL],

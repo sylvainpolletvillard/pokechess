@@ -9,7 +9,6 @@ export const POISSIRENE: PokemonEntry = {
     maxPV: 45,
     maxPP: 20,
     attack: 67,
-
     defense: 60,
     speed: 63,
     types: [POKEMON_TYPES.EAU],

@@ -9,7 +9,6 @@ export const OTARIA: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 45,
-
     defense: 55,
     speed: 45,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.GLACE],

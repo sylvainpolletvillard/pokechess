@@ -8,7 +8,6 @@ export const ECTOPLASMA: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 65,
-
     defense: 60,
     speed: 110,
     types: [POKEMON_TYPES.SPECTRE, POKEMON_TYPES.POISON],

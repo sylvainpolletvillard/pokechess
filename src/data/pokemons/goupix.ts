@@ -9,7 +9,6 @@ export const GOUPIX: PokemonEntry = {
     maxPV: 38,
     maxPP: 20,
     attack: 41,
-
     defense: 40,
     speed: 65,
     types: [POKEMON_TYPES.FEU],

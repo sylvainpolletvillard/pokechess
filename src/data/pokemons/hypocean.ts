@@ -8,7 +8,6 @@ export const HYPOCEAN: PokemonEntry = {
     maxPV: 55,
     maxPP: 20,
     attack: 65,
-
     defense: 95,
     speed: 85,
     types: [POKEMON_TYPES.EAU],

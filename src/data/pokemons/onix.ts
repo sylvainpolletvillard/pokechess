@@ -8,7 +8,6 @@ export const ONIX: PokemonEntry = {
     maxPV: 35,
     maxPP: 20,
     attack: 45,
-
     defense: 160,
     speed: 70,
     types: [POKEMON_TYPES.ROCHE, POKEMON_TYPES.SOL],

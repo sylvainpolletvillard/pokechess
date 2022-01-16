@@ -9,7 +9,6 @@ export const RONDOUDOU: PokemonEntry = {
     maxPV: 115,
     maxPP: 20,
     attack: 45,
-
     defense: 20,
     speed: 20,
     types: [POKEMON_TYPES.FEE],

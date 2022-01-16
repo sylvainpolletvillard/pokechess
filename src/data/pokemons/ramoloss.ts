@@ -9,7 +9,6 @@ export const RAMOLOSS: PokemonEntry = {
     maxPV: 90,
     maxPP: 20,
     attack: 65,
-
     defense: 65,
     speed: 15,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.PSY],

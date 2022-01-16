@@ -9,7 +9,6 @@ export const CHETIFLOR: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 75,
-
     defense: 35,
     speed: 40,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],

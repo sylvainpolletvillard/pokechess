@@ -9,7 +9,6 @@ export const PONYTA: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 85,
-
     defense: 55,
     speed: 90,
     types: [POKEMON_TYPES.FEU],

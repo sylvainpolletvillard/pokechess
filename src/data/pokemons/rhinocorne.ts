@@ -9,7 +9,6 @@ export const RHINOCORNE: PokemonEntry = {
     maxPV: 80,
     maxPP: 20,
     attack: 85,
-
     defense: 95,
     speed: 25,
     types: [POKEMON_TYPES.ROCHE, POKEMON_TYPES.SOL],

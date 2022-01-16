@@ -23,6 +23,7 @@ import { CAGE_ECLAIR } from "./skills/cageEclair";
 import { MASSDOS } from "./skills/massdOs";
 import { VIVE_ATTAQUE } from "./skills/vive attaque";
 import { ECLAIR } from "./skills/eclair";
+import { RAFALE_PSY } from "./skills/rafalePsy";
 
 export const SKILLS = {
     CHARGE,
@@ -49,5 +50,6 @@ export const SKILLS = {
     CAGE_ECLAIR,
     MASSDOS,
     VIVE_ATTAQUE,
-    ECLAIR
+    ECLAIR,
+    RAFALE_PSY
 }

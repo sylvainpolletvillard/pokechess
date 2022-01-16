@@ -9,7 +9,6 @@ export const KRABBY: PokemonEntry = {
     maxPV: 30,
     maxPP: 20,
     attack: 105,
-
     defense: 90,
     speed: 50,
     types: [POKEMON_TYPES.EAU],

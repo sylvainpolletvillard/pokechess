@@ -8,7 +8,6 @@ export const LIPPOUTOU: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 50,
-
     defense: 35,
     speed: 95,
     types: [POKEMON_TYPES.GLACE, POKEMON_TYPES.PSY],

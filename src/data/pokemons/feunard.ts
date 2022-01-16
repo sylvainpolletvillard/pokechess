@@ -8,7 +8,6 @@ export const FEUNARD: PokemonEntry = {
     maxPV: 73,
     maxPP: 20,
     attack: 76,
-
     defense: 75,
     speed: 100,
     types: [POKEMON_TYPES.FEU],

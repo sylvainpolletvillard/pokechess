@@ -9,7 +9,6 @@ export const KOKIYAS: PokemonEntry = {
     maxPV: 30,
     maxPP: 20,
     attack: 65,
-
     defense: 100,
     speed: 40,
     types: [POKEMON_TYPES.EAU],

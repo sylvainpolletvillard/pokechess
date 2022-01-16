@@ -8,7 +8,6 @@ export const KABUTOPS: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 115,
-
     defense: 105,
     speed: 70,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.ROCHE],

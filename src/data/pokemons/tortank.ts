@@ -8,7 +8,6 @@ export const TORTANK: PokemonEntry = {
     maxPV: 79,
     maxPP: 20,
     attack: 83,
-
     defense: 80,
     speed: 58,
     types: [POKEMON_TYPES.EAU],

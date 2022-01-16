@@ -15,6 +15,6 @@ export const MIAOUSS: PokemonEntry = {
     evolution: PERSIAN,
     evolutionLevel: 28,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // griffe
+    baseSkill: SKILLS.GRIFFE,
     ppSkill: SKILLS.LANCE_SOLEIL // provoc
 }

@@ -8,7 +8,6 @@ export const MEW: PokemonEntry = {
     maxPV: 100,
     maxPP: 20,
     attack: 100,
-
     defense: 100,
     speed: 100,
     types: [POKEMON_TYPES.PSY],

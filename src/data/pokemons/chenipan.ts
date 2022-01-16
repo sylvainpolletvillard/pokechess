@@ -9,7 +9,6 @@ export const CHENIPAN: PokemonEntry = {
     maxPV: 45,
     maxPP: 20,
     attack: 30,
-
     defense: 35,
     speed: 45,
     types: [POKEMON_TYPES.INSECTE],

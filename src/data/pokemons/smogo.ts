@@ -9,7 +9,6 @@ export const SMOGO: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 65,
-
     defense: 95,
     speed: 35,
     types: [POKEMON_TYPES.POISON],

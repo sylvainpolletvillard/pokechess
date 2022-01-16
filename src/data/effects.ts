@@ -251,21 +251,16 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    HAND: {
-        key: "hand",
+    RAFALE_PSY: {
+        key: "rafale_psy",
         frames: [147],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 1
     },
     PROVOCATED: {
         key: "provocated",
         frames: [148],
-        frameRate: 8,
-        repeat: 0
-    },
-    PROVOCATION: {
-        key: "provocation",
-        frames: [151,152,153,152,153],
         frameRate: 8,
         repeat: 0
     },
@@ -274,6 +269,12 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [149,150],
         frameRate: 8,
         repeat: Infinity
+    },
+    PROVOCATION: {
+        key: "provocation",
+        frames: [151,152,153,152,153],
+        frameRate: 8,
+        repeat: 0
     },
     SWEEP: {
         key: "sweep",

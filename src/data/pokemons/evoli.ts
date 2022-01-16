@@ -8,7 +8,6 @@ export const EVOLI: PokemonEntry = {
     maxPV: 55,
     maxPP: 20,
     attack: 55,
-
     defense: 50,
     speed: 55,
     types: [POKEMON_TYPES.NORMAL],

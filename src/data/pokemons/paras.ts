@@ -9,7 +9,6 @@ export const PARAS: PokemonEntry = {
     maxPV: 35,
     maxPP: 20,
     attack: 70,
-
     defense: 55,
     speed: 25,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.PLANTE],

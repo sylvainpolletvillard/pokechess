@@ -9,7 +9,6 @@ export const ROUCOOL: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 45,
-
     defense: 40,
     speed: 56,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.NORMAL],

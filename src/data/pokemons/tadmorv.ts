@@ -9,7 +9,6 @@ export const TADMORV: PokemonEntry = {
     maxPV: 80,
     maxPP: 20,
     attack: 80,
-
     defense: 50,
     speed: 25,
     types: [POKEMON_TYPES.POISON],

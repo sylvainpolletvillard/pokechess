@@ -9,7 +9,6 @@ export const TENTACOOL: PokemonEntry = {
     maxPV: 40,
     maxPP: 20,
     attack: 40,
-
     defense: 35,
     speed: 70,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.POISON],

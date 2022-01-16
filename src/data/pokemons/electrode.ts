@@ -8,7 +8,6 @@ export const ELECTRODE: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 50,
-
     defense: 70,
     speed: 150,
     types: [POKEMON_TYPES.ELECTRIQUE],

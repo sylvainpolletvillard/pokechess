@@ -8,7 +8,6 @@ export const DRACAUFEU: PokemonEntry = {
     maxPV: 78,
     maxPP: 20,
     attack: 84,
-
     defense: 78,
     speed: 100,
     types: [POKEMON_TYPES.FEU, POKEMON_TYPES.VOL],

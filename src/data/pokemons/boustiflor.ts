@@ -9,7 +9,6 @@ export const BOUSTIFLOR: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 90,
-
     defense: 50,
     speed: 55,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],

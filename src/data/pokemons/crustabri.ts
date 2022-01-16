@@ -8,7 +8,6 @@ export const CRUSTABRI: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 95,
-
     defense: 180,
     speed: 70,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.GLACE],

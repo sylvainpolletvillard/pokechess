@@ -12,6 +12,6 @@ export const COLOSSINGE: PokemonEntry = {
     speed: 95,
     types: [POKEMON_TYPES.COMBAT],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // griffe
+    baseSkill: SKILLS.GRIFFE,
     ppSkill: SKILLS.LANCE_SOLEIL // provoc
 }

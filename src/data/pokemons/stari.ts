@@ -9,13 +9,12 @@ export const STARI: PokemonEntry = {
     maxPV: 30,
     maxPP: 20,
     attack: 45,
-
     defense: 55,
     speed: 85,
     types: [POKEMON_TYPES.EAU],
     evolution: STAROSS,
     evolutionLevel: 40,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // pistolet à eau
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL // météores
 }

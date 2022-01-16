@@ -8,7 +8,6 @@ export const RHINOFEROS: PokemonEntry = {
     maxPV: 105,
     maxPP: 20,
     attack: 130,
-
     defense: 120,
     speed: 40,
     types: [POKEMON_TYPES.ROCHE, POKEMON_TYPES.SOL],

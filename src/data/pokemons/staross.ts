@@ -8,11 +8,10 @@ export const STAROSS: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 75,
-
     defense: 85,
     speed: 115,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.PSY],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES, // pistolet à eau
+    baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.LANCE_SOLEIL // psyko
 }

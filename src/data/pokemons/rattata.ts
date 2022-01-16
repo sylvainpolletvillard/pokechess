@@ -9,7 +9,6 @@ export const RATTATA: PokemonEntry = {
     maxPV: 30,
     maxPP: 20,
     attack: 56,
-
     defense: 35,
     speed: 72,
     types: [POKEMON_TYPES.NORMAL],

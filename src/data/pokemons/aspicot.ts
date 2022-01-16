@@ -16,5 +16,5 @@ export const ASPICOT: PokemonEntry = {
     evolutionLevel: 7,
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES, // dard venin
-    ppSkill: SKILLS.LANCE_SOLEIL // secrétion
+    ppSkill: SKILLS.SECRETION
 }

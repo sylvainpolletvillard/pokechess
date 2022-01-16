@@ -9,13 +9,12 @@ export const SABELETTE: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 75,
-
     defense: 85,
     speed: 40,
     types: [POKEMON_TYPES.SOL],
     evolution: SABLAIREAU,
     evolutionLevel: 22,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // griffe
+    baseSkill: SKILLS.GRIFFE,
     ppSkill: SKILLS.LANCE_SOLEIL // jet de sable
 }

@@ -8,7 +8,6 @@ export const TYGNON: PokemonEntry = {
     maxPV: 50,
     maxPP: 20,
     attack: 105,
-
     defense: 79,
     speed: 76,
     types: [POKEMON_TYPES.COMBAT],

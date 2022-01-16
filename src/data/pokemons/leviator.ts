@@ -8,7 +8,6 @@ export const LEVIATOR: PokemonEntry = {
     maxPV: 95,
     maxPP: 20,
     attack: 125,
-
     defense: 79,
     speed: 81,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.VOL],

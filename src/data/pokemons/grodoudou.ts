@@ -8,7 +8,6 @@ export const GRODOUDOU: PokemonEntry = {
     maxPV: 140,
     maxPP: 20,
     attack: 70,
-
     defense: 45,
     speed: 45,
     types: [POKEMON_TYPES.FEE],

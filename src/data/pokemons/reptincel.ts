@@ -9,7 +9,6 @@ export const REPTINCEL: PokemonEntry = {
     maxPV: 58,
     maxPP: 20,
     attack: 64,
-
     defense: 58,
     speed: 80,
     types: [POKEMON_TYPES.FEU],

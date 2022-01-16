@@ -8,7 +8,6 @@ export const LOKHLASS: PokemonEntry = {
     maxPV: 130,
     maxPP: 20,
     attack: 85,
-
     defense: 80,
     speed: 60,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.GLACE],

@@ -9,7 +9,6 @@ export const SALAMECHE: PokemonEntry = {
     maxPV: 39,
     maxPP: 20,
     attack: 52,
-
     defense: 43,
     speed: 65,
     types: [POKEMON_TYPES.FEU],

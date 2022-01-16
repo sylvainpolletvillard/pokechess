@@ -8,7 +8,6 @@ export const GROTADMORV: PokemonEntry = {
     maxPV: 105,
     maxPP: 20,
     attack: 105,
-
     defense: 75,
     speed: 50,
     types: [POKEMON_TYPES.POISON],

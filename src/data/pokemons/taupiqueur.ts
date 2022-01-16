@@ -9,7 +9,6 @@ export const TAUPIQUEUR: PokemonEntry = {
     maxPV: 10,
     maxPP: 20,
     attack: 55,
-
     defense: 25,
     speed: 95,
     types: [POKEMON_TYPES.SOL],

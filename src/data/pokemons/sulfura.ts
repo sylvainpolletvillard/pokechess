@@ -8,11 +8,10 @@ export const SULFURA: PokemonEntry = {
     maxPV: 90,
     maxPP: 20,
     attack: 100,
-
     defense: 90,
     speed: 90,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.FEU],
     rank: 5,
-    baseSkill: SKILLS.FLAMMECHE, // flammèche
+    baseSkill: SKILLS.FLAMMECHE,
     ppSkill: SKILLS.LANCE_SOLEIL // déflagration
 }

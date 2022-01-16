@@ -9,7 +9,6 @@ export const MINIDRACO: PokemonEntry = {
     maxPV: 41,
     maxPP: 20,
     attack: 64,
-
     defense: 45,
     speed: 50,
     types: [POKEMON_TYPES.DRAGON],

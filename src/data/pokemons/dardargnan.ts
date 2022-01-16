@@ -8,7 +8,6 @@ export const DARDARGNAN: PokemonEntry = {
     maxPV: 65,
     maxPP: 20,
     attack: 80,
-
     defense: 40,
     speed: 75,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.POISON],

@@ -8,7 +8,6 @@ export const POISSOROY: PokemonEntry = {
     maxPV: 80,
     maxPP: 20,
     attack: 92,
-
     defense: 65,
     speed: 68,
     types: [POKEMON_TYPES.EAU],

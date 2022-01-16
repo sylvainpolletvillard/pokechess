@@ -9,7 +9,6 @@ export const CARABAFFE: PokemonEntry = {
     maxPV: 59,
     maxPP: 20,
     attack: 63,
-
     defense: 80,
     speed: 58,
     types: [POKEMON_TYPES.EAU],

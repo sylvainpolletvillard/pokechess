@@ -8,7 +8,6 @@ export const TAUROS: PokemonEntry = {
     maxPV: 75,
     maxPP: 20,
     attack: 100,
-
     defense: 95,
     speed: 110,
     types: [POKEMON_TYPES.NORMAL],
