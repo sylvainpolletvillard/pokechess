@@ -21,6 +21,7 @@ import { TELEPORT } from "./skills/teleport";
 import { ETINCELLE } from "./skills/etincelle";
 import { CAGE_ECLAIR } from "./skills/cageEclair";
 import { MASSDOS } from "./skills/massdOs";
+import { VIVE_ATTAQUE } from "./skills/vive attaque";
 
 export const SKILLS = {
     CHARGE,
@@ -45,5 +46,6 @@ export const SKILLS = {
     TELEPORT,
     ETINCELLE,
     CAGE_ECLAIR,
-    MASSDOS
+    MASSDOS,
+    VIVE_ATTAQUE
 }

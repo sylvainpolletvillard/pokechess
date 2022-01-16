@@ -9,13 +9,12 @@ export const PIKACHU: PokemonEntry = {
     maxPV: 35,
     maxPP: 20,
     attack: 55,
-
     defense: 40,
     speed: 90,
     types: [POKEMON_TYPES.ELECTRIQUE],
     evolution: RAICHU,
     evolutionLevel: 22,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // vive attaque
+    baseSkill: SKILLS.VIVE_ATTAQUE,
     ppSkill: SKILLS.LANCE_SOLEIL // éclair
 }

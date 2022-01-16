@@ -8,7 +8,7 @@ import {
 } from "./cursor";
 import GameScene from "../scenes/GameScene";
 import {makePokemonSprite} from "./pokemon";
-import {addToBox} from "../logic/box";
+import {addToBox, removeFromTeam} from "../logic/box";
 import {displayPokemonInfo, hidePokemonInfo} from "./pokemonInfoBox";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
@@ -97,6 +97,7 @@ export function dropPokemonInBox(pokemonSprite: Phaser.GameObjects.Sprite, caseI
         }
     }
 
+    removeFromTeam(droppedPokemon)
     addToBox(droppedPokemon, game, caseIndex)
 }
 

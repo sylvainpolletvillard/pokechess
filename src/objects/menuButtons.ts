@@ -1,6 +1,6 @@
 import { addInteractiveElem, dragState, handleDragEnd } from './cursor';
 import { addText } from '../utils/text';
-import { addToBox } from '../logic/box';
+import { addToBox, removeFromTeam } from '../logic/box';
 import { cancelPokemonDrag } from '../logic/board';
 import { closeMenu } from './menu';
 import GameScene from '../scenes/GameScene';
@@ -101,6 +101,7 @@ export function drawMenuButtons(game: GameScene){
             const pokemon = pokemonSprite.getData("pokemon");
             if(pokemon != null){
                 boxButtonText?.destroy()
+                removeFromTeam(pokemon)
                 addToBox(pokemon, game)
             }
         })

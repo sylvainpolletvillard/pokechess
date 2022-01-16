@@ -225,16 +225,10 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 2
     },
-    CLAW_LEFT: {
-        key: "claw_left",
-        frames: [136,137,138,139],
-        frameRate: 8,
-        repeat: 0
-    },
-    CLAW_RIGHT: {
-        key: "claw_right",
-        frames: [140,141,142,143],
-        frameRate: 8,
+    VIVE_ATTAQUE: {
+        key: "vive_attaque",
+        frames: [136,137,138,139,140,141,142,143],
+        frameRate: 16,
         repeat: 0
     },
     FIST: {

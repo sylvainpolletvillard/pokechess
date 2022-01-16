@@ -9,13 +9,12 @@ export const DODUO: PokemonEntry = {
     maxPV: 35,
     maxPP: 20,
     attack: 85,
-
     defense: 45,
     speed: 75,
     types: [POKEMON_TYPES.NORMAL, POKEMON_TYPES.VOL],
     evolution: DODRIO,
     evolutionLevel: 31,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // vive attaque
+    baseSkill: SKILLS.VIVE_ATTAQUE,
     ppSkill: SKILLS.LANCE_SOLEIL // furie
 }
