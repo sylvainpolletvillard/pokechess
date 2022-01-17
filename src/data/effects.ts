@@ -142,8 +142,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    FIRE_FLAMETHROWER: {
-        key: "fire_flamethrower",
+    POUVOIR_ANTIQUE: {
+        key: "pouvoir_antique",
         frames: [74,75,76,77,78,79],
         frameRate: 8,
         repeat: 0
@@ -357,6 +357,13 @@ export const EFFECTS: { [name: string] : Effect} = {
     SOIN: {
         key: "soin",
         frames: [203,204,205,206,207,208,209,210],
+        frameRate: 8,
+        repeat: Infinity,
+        scale: 1
+    },
+    SURF: {
+        key: "surf",
+        frames: [211,212,213,214,215,216,217,218],
         frameRate: 8,
         repeat: Infinity,
         scale: 1

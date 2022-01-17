@@ -16,5 +16,5 @@ export const AMONITA: PokemonEntry = {
     evolutionLevel: 40,
     rank: 1,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.LANCE_SOLEIL // pouvoir antique
+    ppSkill: SKILLS.POUVOIR_ANTIQUE
 }

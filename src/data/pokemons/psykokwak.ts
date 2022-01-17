@@ -16,5 +16,5 @@ export const PSYKOKWAK: PokemonEntry = {
     evolutionLevel: 33,
     rank: 1,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.LANCE_SOLEIL // surf
+    ppSkill: SKILLS.SURF
 }

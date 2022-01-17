@@ -29,6 +29,8 @@ import { CROC_DE_MORT } from "./skills/croc_de_mort";
 import { VAMPIRISME } from "./skills/vampirisme";
 import { REPOS } from "./skills/repos";
 import { PROVOC } from "./skills/provoc";
+import { SURF } from "./skills/surf";
+import { POUVOIR_ANTIQUE } from "./skills/pouvoirAntique";
 
 export const SKILLS = {
     CHARGE,
@@ -61,5 +63,7 @@ export const SKILLS = {
     CROC_DE_MORT,
     VAMPIRISME,
     REPOS,
-    PROVOC
+    PROVOC,
+    SURF,
+    POUVOIR_ANTIQUE
 }

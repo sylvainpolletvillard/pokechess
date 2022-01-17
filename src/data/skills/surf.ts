@@ -2,17 +2,16 @@ import { ProjectileSkill, SkillBehavior} from "../../logic/skill";
 import {POKEMON_TYPES} from "../types";
 import {EFFECTS} from "../effects";
 
-export const RAFALE_PSY: ProjectileSkill = {
-    name: "Rafale Psy",
-    description: "Vague d'énergie Psy traversant les adversaires",
-    type: POKEMON_TYPES.PSY,
-    effect: EFFECTS.RAFALE_PSY,
+export const SURF: ProjectileSkill = {
+    name: "Surf",
+    description: "Déclenche une grosse vague balayant tout dans son passage",
+    type: POKEMON_TYPES.EAU,
+    effect: EFFECTS.SURF,
     behavior: SkillBehavior.PROJECTILE,
-    travelSpeed: 6,
+    travelSpeed: 4,
     projectileRadius: 16,
     pierceThrough: true,
     rotateProjectile: true,
     power: 100,
-    attackRange: 4,
-    effectDelta: 8
+    attackRange: 9    
 }

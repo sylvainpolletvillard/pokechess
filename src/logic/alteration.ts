@@ -13,7 +13,7 @@ export function updateAlterations(pokemons: PokemonOnBoard[]){
     pokemons.forEach((pokemon: PokemonOnBoard) => {
         pokemon.alterations.forEach(alt => {
             applyAlterationEffect(pokemon, alt)
-            alt.stacks--;            
+            if(!alt.keepStacks) alt.stacks--;
             if(alt.stacks <= 0){
                 removeAlteration(pokemon, alt)                
             } else if(alt.effectSprite){                

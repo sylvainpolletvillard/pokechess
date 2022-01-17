@@ -62,25 +62,25 @@ export function displayPokemonInfo(pokemon: Pokemon){
     const statAttackIcon = scene.add.sprite(ox-50, oy+14, "icons16x16", 16)
     statAttackIcon.setAlpha(0.25).setOrigin(0,0).setScrollFactor(0);
     pokemonInfoBox.add(statAttackIcon)
-    const statAttackText = addText(ox - 30, oy+15, pokemon.attack.toString())
+    const statAttackText = addText(ox - 30, oy+15, pokemon.attack.toFixed(0))
     pokemonInfoBox.add(statAttackText)
 
     const statDefenseIcon = scene.add.sprite(ox-2, oy+14, "icons16x16", 17)
     statDefenseIcon.setAlpha(0.25).setOrigin(0,0).setScrollFactor(0);
     pokemonInfoBox.add(statDefenseIcon)
-    const statDefenseText = addText(ox + 18, oy+15, pokemon.defense.toString())
+    const statDefenseText = addText(ox + 18, oy+15, pokemon.defense.toFixed(0))
     pokemonInfoBox.add(statDefenseText)
 
     const statSpeedIcon = scene.add.sprite(ox+46, oy+14, "icons16x16", 18)
     statSpeedIcon.setAlpha(0.25).setOrigin(0,0).setScrollFactor(0);
     pokemonInfoBox.add(statSpeedIcon)
-    const statSpeedText = addText(ox+66, oy+15, pokemon.speed.toString())
+    const statSpeedText = addText(ox+66, oy+15, pokemon.speed.toFixed(0))
     pokemonInfoBox.add(statSpeedText)
 
     const statRangeIcon = scene.add.sprite(ox+94, oy+14, "icons16x16", 19)
     statRangeIcon.setAlpha(0.25).setOrigin(0,0).setScrollFactor(0);
     pokemonInfoBox.add(statRangeIcon)
-    const statRangeText = addText(ox +114, oy+15, pokemon.baseSkill.attackRange.toString())
+    const statRangeText = addText(ox +114, oy+15, pokemon.baseSkill.attackRange.toFixed(0))
     pokemonInfoBox.add(statRangeText)
 
     for(let i=0; i< pokemon.types.length; i++) {

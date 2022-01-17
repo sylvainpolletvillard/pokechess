@@ -39,9 +39,10 @@ export class PokemonOnBoard extends Pokemon {
         this.x = this.placementX
         this.y = this.placementY
         this.facingDirection = this.owner === 1 ? Direction.UP : Direction.DOWN
-        this.nextAction = { type: PokemonTypeAction.IDLE }
+        this.nextAction = { type: PokemonTypeAction.IDLE }        
         this.pv = this.maxPV
         this.pp = 0
+        this.alterations = []
         return this
     }
 
@@ -53,20 +54,37 @@ export class PokemonOnBoard extends Pokemon {
         return getPositionFromCoords(this.placementX, this.placementY)
     }
 
-    get speed(): number {
-        return Math.max(0, Math.ceil(super.speed * this.speedBuff))
+    get attack(): number {
+        let buffFactor = 1
+
+        const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
+        if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
+
+        return super.attack * buffFactor
     }
 
-    get speedBuff(): number {
-        let factor = 1;
+    get defense(): number {
+        let buffFactor = 1
 
-        let paralysie = this.alterations.find(alt => alt.type === AlterationType.PARALYSIE)        
-        if(paralysie){ factor -= clamp(0.01 * paralysie.stacks, 0, 0.5) }
+        const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
+        if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
 
-        let secretion = this.alterations.find(alt => alt.type === AlterationType.SECRETION)
-        if(secretion){ factor -= 0.5 }
+        return super.attack * buffFactor
+    }
 
-        return Math.max(0.1, factor)
+    get speed(): number {
+        let buffFactor = 1;
+
+        const paralysie = this.alterations.find(alt => alt.type === AlterationType.PARALYSIE)
+        if(paralysie){ buffFactor -= clamp(0.01 * paralysie.stacks, 0, 0.5) }
+
+        const secretion = this.alterations.find(alt => alt.type === AlterationType.SECRETION)
+        if(secretion){ buffFactor -= 0.5 }
+
+        const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
+        if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
+
+        return Math.max(1, Math.ceil(super.speed * Math.max(0.1, buffFactor)))
     }
 
     toBoxPokemon(game: GameScene){

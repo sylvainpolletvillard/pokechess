@@ -94,6 +94,7 @@ export function renderSpecialAttack(skill: SpecialSkill, attacker: PokemonOnBoar
 
 export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     renderSkillEffect(skill, attacker, target, game)
+    if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)
 
     const tiles = skill.getTilesImpacted(attacker, target)
     
