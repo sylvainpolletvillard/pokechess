@@ -13,5 +13,5 @@ export const PERSIAN: PokemonEntry = {
     types: [POKEMON_TYPES.NORMAL],
     rank: 1,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.LANCE_SOLEIL // provoc
+    ppSkill: SKILLS.PROVOC // Jackpot
 }

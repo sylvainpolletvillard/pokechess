@@ -16,5 +16,5 @@ export const MIAOUSS: PokemonEntry = {
     evolutionLevel: 28,
     rank: 1,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.LANCE_SOLEIL // provoc
+    ppSkill: SKILLS.PROVOC // Jackpot
 }

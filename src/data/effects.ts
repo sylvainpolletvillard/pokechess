@@ -275,7 +275,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "provocation",
         frames: [151,152,153,152,153],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 1
     },
     SWEEP: {
         key: "sweep",

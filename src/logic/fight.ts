@@ -7,7 +7,7 @@ import Phaser from "phaser";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
 import { Skill } from "./skill";
-import { canPokemonBeTargeted, hasBlockingAlteration } from "./alteration";
+import { hasBlockingAlteration } from "./alteration";
 import { renderAttack } from "./skill-anims";
 import { AlterationType } from "../data/alterations";
 import { clamp } from "../utils/helpers";
@@ -33,15 +33,13 @@ export function canPokemonMove(pokemon: PokemonOnBoard){
 }
 
 export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: GameScene){
+    // update pokemon action only when pokemon is idle
     if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || pokemon.pv <= 0) return;
 
     if(hasBlockingAlteration(pokemon)) return;
-
-    const targetCandidates = (pokemon.owner === 1 ? board.otherTeam : board.playerTeam)
-        .filter(candidate => canPokemonBeTargeted(candidate))
     
-    const target = pokemon.nextAction.target || findClosestReachableTarget(pokemon, targetCandidates)
-    if(target == null){
+    const target = pokemon.nextAction.target || findClosestReachableTarget(pokemon)
+    if(target == null || target.pv <= 0){
         pokemon.nextAction = { type: PokemonTypeAction.IDLE }
     } else {        
         if(canPokemonAttack(pokemon, target)){
@@ -66,7 +64,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
 
     const path = findPathToTarget(pokemon, target, gameState.board)
     //console.log(`${pokemon.name} va vers ${target.name}`, path)
-    pokemon.nextAction = { type: PokemonTypeAction.MOVE, path }
+    pokemon.nextAction = { type: PokemonTypeAction.MOVE, path, target }
 
     // PATH >= 3 → pokemon tile + target tile + at least one free tile to move
     if(pokemon.nextAction.path && pokemon.nextAction.path.length >= 3){
@@ -87,11 +85,11 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
         });
         game.time.addEvent({
             delay: duration,
-            callback: () => { pokemon.nextAction = { type: PokemonTypeAction.IDLE } }
+            callback: () => { pokemon.nextAction = { type: PokemonTypeAction.IDLE, target } }
         })
     } else {
         // Pokemon is already at range to attack
-        pokemon.nextAction = { type: PokemonTypeAction.IDLE }
+        pokemon.nextAction = { type: PokemonTypeAction.IDLE, target }
     }
 }
 
@@ -100,21 +98,24 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
     const attackSpeed = 5000000 / (pokemon.speed+25) / game.gameSpeed
-    pokemon.nextAction = { type: PokemonTypeAction.ATTACK, target };
+    pokemon.nextAction = { type: PokemonTypeAction.ATTACK, target }; // prevent changing target
     faceTarget(pokemon, target, game);
-    game.time.addEvent({
+    pokemon.nextAction.timer = game.time.addEvent({
         delay: attackSpeed,
+        loop: true,
         callback: () => {
-            pokemon.nextAction = { type: PokemonTypeAction.IDLE }
             if(pokemon.pv === 0) return // pokemon died while preparing attack
             if(target.pv > 0){ // if target is not already dead by another attack
                 pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
                 pokemon.pp = Math.min(pokemon.maxPP, pokemon.pp + 1);
                 //console.log(`${pokemon.name} (${pokemon.x},${pokemon.y}) is targeting ${target.name} (${target.x},${target.y}) → ${pokemon.facingDirection}`)
                 faceTarget(pokemon, target, game);
-                renderAttack(pokemon, target, game)
-                pokemon.nextAction.target = target // prevent changing target
-            }            
+                renderAttack(pokemon, target, game)                
+            } else {
+                // target died, update action
+                pokemon.nextAction.timer?.remove()
+                pokemon.nextAction = { type: PokemonTypeAction.IDLE }                
+            }
         }
     })
 }

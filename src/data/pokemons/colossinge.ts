@@ -13,5 +13,5 @@ export const COLOSSINGE: PokemonEntry = {
     types: [POKEMON_TYPES.COMBAT],
     rank: 2,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.LANCE_SOLEIL // provoc
+    ppSkill: SKILLS.PROVOC
 }

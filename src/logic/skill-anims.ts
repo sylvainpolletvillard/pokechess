@@ -45,6 +45,9 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
         dy = Math.round(Math.sin(angle) * delta)
     } else if(skill.effectOrigin === "target_ground"){
         dy= -16 * (skill.effect?.scale ?? 1) + delta
+    } else if(skill.effectOrigin === "source_ground"){
+        [x,y] = attacker.position
+        dy= -16 * (skill.effect?.scale ?? 1) + delta
     }
     
     wait(skill.effectDelay ?? 0).then(() => {
@@ -132,12 +135,13 @@ export function sendPokemonFlying(pokemon: PokemonOnBoard, game: GameScene){
 export function sendPokemonCharge(pokemon: PokemonOnBoard, chargeDelta: number, chargeAngle: number, game: GameScene){
     const sprite = game.sprites.get(pokemon.uid)
     if(!sprite) return;
-    let {x, y} = sprite            
+    let {x, y} = sprite
+    const attackSpeed = 5000000 / (pokemon.speed+25) / game.gameSpeed       
     game.tweens.add({
         targets: sprite, 
         x: x + chargeDelta * Math.cos(chargeAngle),
         y: y + chargeDelta * Math.sin(chargeAngle),
-        duration: 150,
+        duration: Math.min(150, attackSpeed),
         ease: Phaser.Math.Easing.Cubic.In,        
         onComplete(){
             game.tweens.add({

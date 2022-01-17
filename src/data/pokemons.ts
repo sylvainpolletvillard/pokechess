@@ -166,7 +166,7 @@ export interface HoldableItem {
 export interface PokemonEntry {
     ref: string;
     name: string ;
-    types: PokemonType[];
+    types: PokemonType[];    
     maxPV: number;
     maxPP: number;
     attack: number;
@@ -270,12 +270,17 @@ export class Pokemon implements PokemonEntry {
     }
 }
 
-export enum PokemonTypeAction { MOVE, ATTACK, SKILL, IDLE}
+export enum PokemonTypeAction { 
+    MOVE = "MOVE", 
+    ATTACK = "ATTACK",
+    IDLE = "IDLE"
+}
 
 export interface PokemonAction {
     type: PokemonTypeAction
     path?: [x:number, y:number][]
     target?: PokemonOnBoard
+    timer?: Phaser.Time.TimerEvent
 }
 
 export const POKEMONS: PokemonEntry[] = [

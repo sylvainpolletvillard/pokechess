@@ -2,19 +2,22 @@ import Phaser from "phaser";
 import { AlterationType } from "../data/alterations";
 import { Z } from "../data/depths";
 import { EFFECTS } from "../data/effects";
+import { PokemonTypeAction } from "../data/pokemons";
 import { SKILLS } from "../data/skills";
 import { PokemonOnBoard } from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
-import { pickRandomIn, randomInt } from "../utils/helpers";
+import { pickRandomIn, randomInt, wait } from "../utils/helpers";
 import { addAlteration } from "./alteration";
 import { getPokemonOnTile, getPositionFromCoords } from "./board";
 import { applyDamage, calcDamage } from "./fight";
 import { gameState } from "./gamestate";
+import { distanceBetweenPokemon } from "./pathfinding";
 
 export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     switch(specialMoveName){
         case "teleport": return teleport(attacker)
-        case "eclair": return renderEclair(attacker, game) 
+        case "eclair": return renderEclair(attacker, game)
+        case "provoc": return provoc(attacker, game)
     }
 }
 
@@ -60,4 +63,26 @@ export function renderEclair(attacker: PokemonOnBoard, game: GameScene){
         applyDamage(damage, randomTarget)
         addAlteration(randomTarget, { type: AlterationType.PARALYSIE, stacks: 50 }, game)
     }
+}
+
+export function provoc(attacker: PokemonOnBoard, game: GameScene){
+    const pokemonsProvocated = gameState.board.otherTeam.filter(p => distanceBetweenPokemon(attacker, p) <= Math.sqrt(8))
+    //console.log("PROVOC", { pokemonsProvocated })
+    pokemonsProvocated.forEach(pokemon => {
+        const provocatedSprite = game.add.sprite(pokemon.x+8, pokemon.y, "effects")
+        provocatedSprite.scale = EFFECTS.PROVOCATED.scale ?? 1;
+        provocatedSprite.blendMode = Phaser.BlendModes.OVERLAY
+        provocatedSprite.setDepth(Z.SKILL_EFFECT_ABOVE_POKEMON)
+        provocatedSprite.play(EFFECTS.PROVOCATED.key)
+        wait(500).then(() => provocatedSprite.destroy())
+        if(pokemon.nextAction.timer){
+            console.log({ TIMER: pokemon.nextAction.timer.getRemaining() })
+            wait(pokemon.nextAction.timer.getRemaining()).then(() => {
+                pokemon.nextAction = { type: PokemonTypeAction.IDLE, target: attacker }
+            })            
+        } else {
+            pokemon.nextAction = { type: PokemonTypeAction.IDLE, target: attacker }
+        }
+        
+    })
 }
