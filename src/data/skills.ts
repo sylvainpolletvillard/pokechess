@@ -1,9 +1,9 @@
 import { CHARGE } from "./skills/charge";
-import {FOUET_LIANES} from "./skills/fouetLianes";
-import {LANCE_SOLEIL} from "./skills/lanceSoleil";
-import {FLAMMECHE} from "./skills/flammeche";
-import {GRIFFE} from "./skills/griffe";
-import {PISTOLET_A_O} from "./skills/pistoletO";
+import { FOUET_LIANES } from "./skills/fouetLianes";
+import { LANCE_SOLEIL } from "./skills/lanceSoleil";
+import { FLAMMECHE } from "./skills/flammeche";
+import { GRIFFE } from "./skills/griffe";
+import { PISTOLET_A_O } from "./skills/pistoletO";
 import { BULLES_D_O } from "./skills/bullesO";
 import { HYDROCANON } from "./skills/hydrocanon";
 import { LANCE_FLAMMES } from "./skills/lanceFlammes";
@@ -25,6 +25,9 @@ import { VIVE_ATTAQUE } from "./skills/vive attaque";
 import { ECLAIR } from "./skills/eclair";
 import { RAFALE_PSY } from "./skills/rafalePsy";
 import { CROCS_FEU } from "./skills/crocsFeu";
+import { CROC_DE_MORT } from "./skills/croc_de_mort";
+import { VAMPIRISME } from "./skills/vampirisme";
+import { REPOS } from "./skills/repos";
 
 export const SKILLS = {
     CHARGE,
@@ -53,5 +56,8 @@ export const SKILLS = {
     VIVE_ATTAQUE,
     ECLAIR,
     RAFALE_PSY,
-    CROCS_FEU
+    CROCS_FEU,
+    CROC_DE_MORT,
+    VAMPIRISME,
+    REPOS
 }

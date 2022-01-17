@@ -7,7 +7,7 @@ export const RATTATA: PokemonEntry = {
     ref: "rattata",
     name: "Rattata",
     maxPV: 30,
-    maxPP: 20,
+    maxPP: 30,
     attack: 56,
     defense: 35,
     speed: 72,
@@ -16,5 +16,5 @@ export const RATTATA: PokemonEntry = {
     evolutionLevel: 20,
     rank: 1,
     baseSkill: SKILLS.MORSURE,
-    ppSkill: SKILLS.LANCE_SOLEIL // croc fatal
+    ppSkill: SKILLS.CROC_DE_MORT
 }

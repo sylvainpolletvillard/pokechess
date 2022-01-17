@@ -3,15 +3,15 @@ import {SKILLS} from "../skills";
 import {PokemonEntry} from "../pokemons";
 
 export const RATTATAC: PokemonEntry = {
-    ref: "rattata",
-    name: "Rattata",
+    ref: "rattatac",
+    name: "Rattatac",
     maxPV: 55,
-    maxPP: 20,
+    maxPP: 30,
     attack: 81,
     defense: 60,
     speed: 97,
     types: [POKEMON_TYPES.NORMAL],
     rank: 2,
     baseSkill: SKILLS.MORSURE,
-    ppSkill: SKILLS.LANCE_SOLEIL // croc fatal
+    ppSkill: SKILLS.CROC_DE_MORT
 }

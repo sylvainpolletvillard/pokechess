@@ -7,7 +7,7 @@ import { addAlteration } from "./alteration";
 import { getPokemonOnTile } from "./board";
 import { faceTarget, calcDamage, applyDamage } from "./fight";
 import { launchProjectile } from "./projectile";
-import { SkillBehavior, HitSkill, ProjectileSkill, SpecialSkill, AOESkill } from "./skill";
+import { SkillBehavior, HitSkill, ProjectileSkill, SpecialSkill, AOESkill, Skill } from "./skill";
 import { triggerSpecial } from "./specials";
 
 export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene) {
@@ -30,7 +30,9 @@ export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
     console.error(`Not yet implemented: ${skill.name}`)
 }
 
-export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+    if(!skill.effect) return { angle: 0, dx: 0, dy: 0 };
+
     let [x, y] = target.position, dx=0, dy=0, angle=0, delta = skill.effectDelta ?? 8;
     if(skill.effectOrigin === "source"){
         [x,y] = attacker.position
@@ -42,16 +44,17 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
         dx = Math.round(Math.cos(angle) * delta)
         dy = Math.round(Math.sin(angle) * delta)
     } else if(skill.effectOrigin === "target_ground"){
-        dy= -16 * (skill.effect.scale ?? 1) + delta
+        dy= -16 * (skill.effect?.scale ?? 1) + delta
     }
     
     wait(skill.effectDelay ?? 0).then(() => {
+        if(!skill.effect) return;
         const sprite = game.add.sprite(x + dx, y + dy, "effects")
 
         if(skill.rotateSprite){
             sprite.rotation = angle + Math.PI/2;
         }    
-        sprite.scale = skill.effect.scale ?? 1;
+        sprite.scale = skill.effect?.scale ?? 1;
         sprite.blendMode = Phaser.BlendModes.OVERLAY
         sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
     
@@ -61,6 +64,12 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
         })
     })
 
+    return { angle, dx, dy }
+}
+
+export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+    let { angle } = renderSkillEffect(skill, attacker, target, game)
+
     if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
     if(skill.chargeDelta) sendPokemonCharge(attacker, skill.chargeDelta, angle+Math.PI, game)
         
@@ -69,38 +78,19 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
         console.log(`${attacker.name} is attacking ${target.name} for ${damage} damage !`)
         applyDamage(damage, target)
         if(skill.hitAlteration) addAlteration(target, skill.hitAlteration, game)
+        if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)
     })
 }
 
 export function renderSpecialAttack(skill: SpecialSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
-     triggerSpecial(skill.triggerSpecial, attacker, target, game)
+    renderSkillEffect(skill, attacker, target, game)
+    if(skill.triggerSpecial) triggerSpecial(skill.triggerSpecial, attacker, target, game)
+    if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
+    if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)    
 }
 
 export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
-    let [x, y] = target.position, dx=0, dy=0, angle=0, delta = skill.effectDelta ?? 8;
-    if(skill.effectOrigin === "source"){
-        [x,y] = attacker.position
-        angle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
-        dx = Math.round(Math.cos(angle) * delta)
-        dy = Math.round(Math.sin(angle) * delta)
-    } else if(skill.effectOrigin === "target"){
-        angle = Math.atan2(attacker.y - target.y, attacker.x - target.x)
-        dx = Math.round(Math.cos(angle) * delta)
-        dy = Math.round(Math.sin(angle) * delta)
-    } else if(skill.effectOrigin === "source_ground"){
-        [x,y] = attacker.position
-        dy= -16 * (skill.effect.scale ?? 1) + delta
-    }
-    
-    const sprite = game.add.sprite(x + dx, y + dy, "effects")
-    sprite.scale = skill.effect.scale ?? 1;
-    sprite.blendMode = Phaser.BlendModes.OVERLAY
-    sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
-
-    sprite.play(skill.effect.key)
-    sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-        sprite.destroy()
-    })
+    renderSkillEffect(skill, attacker, target, game)
 
     const tiles = skill.getTilesImpacted(attacker, target)
     

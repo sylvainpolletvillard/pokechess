@@ -5,7 +5,7 @@ import { PokemonOnBoard } from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import { Direction } from "../utils/directions"
 import { removeInArray } from "../utils/helpers"
-import { applyDamage } from "./fight"
+import { applyDamage, healPokemon } from "./fight"
 import { gameState } from "./gamestate"
 import { sendPokemonFlying } from "./skill-anims"
 
@@ -26,6 +26,7 @@ export function updateAlterations(pokemons: PokemonOnBoard[]){
 export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alteration){
     const game = gameState.activeScene as GameScene;
     const sprite = game.sprites.get(pokemon.uid)
+    const perSecond = game.gameSpeed / 1000
     if(alteration.type === AlterationType.HYDROCANON){
         switch(pokemon.facingDirection){
             case Direction.UP: pokemon.facingDirection = Direction.RIGHT; break;
@@ -43,26 +44,27 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
         } 
         applyDamage(poisonDamage, pokemon, true)
     } else if(alteration.type === AlterationType.BRULURE){
-        const burnDamage = 0.1 * (game.gameSpeed / 1000) * pokemon.level; // 0.1 HP per second per level
+        const burnDamage = 0.1 * perSecond * pokemon.level; // 0.1 HP per second per level
         applyDamage(burnDamage, pokemon, true)
     } else if(alteration.type === AlterationType.SOMMEIL){
         sprite?.anims.pause()
     } else if(alteration.type === AlterationType.LIGOTAGE){
-        let damage = pokemon.maxPV * (2/100) * (game.gameSpeed / 1000) // 2% HP max per second
-        console.log("damage ligotage", damage)
+        let damage = pokemon.maxPV * (2/100) * perSecond // 2% HP max per second        
         applyDamage(damage, pokemon, true)
+    } else if(alteration.type === AlterationType.SOIN){
+        healPokemon(pokemon, 0.1 * perSecond * pokemon.level)  // 0.1 HP par level par seconde                
+    } else if(alteration.type === AlterationType.REPOS){
+        healPokemon(pokemon, (5/100) * perSecond * pokemon.maxPV) // 5% max HP par seconde
     }
 }
 
 export function hasBlockingAlteration(pokemon: PokemonOnBoard){
-    return pokemon.alterations.some(alt => [
-        AlterationType.HYDROCANON, 
-        AlterationType.SOMMEIL   
-    ].includes(alt.type))
+    return pokemon.hasAlteration(AlterationType.HYDROCANON)
+        || pokemon.hasAlteration(AlterationType.SOMMEIL)
 }
 
 export function canPokemonBeTargeted(pokemon: PokemonOnBoard){
-    return !pokemon.alterations.some(alt => alt.type === AlterationType.HYDROCANON)
+    return !pokemon.hasAlteration(AlterationType.HYDROCANON)
 }
 
 export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, game: GameScene){    
@@ -97,9 +99,19 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.PARALYSIE.key)                
                     .setScale(EFFECTS.PARALYSIE.scale ?? 1)            
                 break;       
+
+            case AlterationType.SOIN:
+            case AlterationType.REPOS:
+                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.SOIN.key)                
+                    .setScale(EFFECTS.SOIN.scale ?? 1) 
+                break;
         }
 
         pokemon.alterations.push({ ...alteration })
+    }
+
+    if(alteration.type === AlterationType.REPOS){
+        addAlteration(pokemon, { type: AlterationType.SOMMEIL, stacks: alteration.stacks }, game)
     }
 }
 
@@ -111,5 +123,7 @@ export function removeAlteration(pokemon: PokemonOnBoard, alt: Alteration){
         const game = gameState.activeScene as GameScene
         const sprite = game.sprites.get(pokemon.uid)
         sprite?.anims.resume()
+        const repos = pokemon.alterations.find(alt => alt.type === AlterationType.REPOS)
+        if(repos) removeAlteration(pokemon, repos)
     }
 }

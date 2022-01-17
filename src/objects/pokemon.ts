@@ -75,6 +75,10 @@ export class PokemonOnBoard extends Pokemon {
         pokemon.owner = 1
         return pokemon
     }
+
+    hasAlteration(type: AlterationType){
+        return this.alterations.some(alt => alt.type === type)
+    }
 }
 
 export function makePokemonSprite(

@@ -136,8 +136,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         repeat: 0,
         scale: 1
     },
-    FIRE_GROUND_EXPLOSION: {
-        key: "fire_ground_explosion",
+    CROC_DE_MORT: {
+        key: "croc_de_mort",
         frames: [70,71,72,73],
         frameRate: 8,
         repeat: 0
@@ -345,5 +345,19 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 12,
         repeat: 0,
         scale: 0.5
+    },
+    VAMPIRISME: {
+        key: "vampirisme",
+        frames: [200,201,202],
+        frameRate: 8,
+        repeat: 0,
+        scale: 1
+    },
+    SOIN: {
+        key: "soin",
+        frames: [203,204,205,206,207,208,209,210],
+        frameRate: 8,
+        repeat: Infinity,
+        scale: 1
     }
 }

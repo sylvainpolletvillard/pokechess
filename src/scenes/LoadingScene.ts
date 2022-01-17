@@ -10,16 +10,14 @@ import {PokemonOnBoard} from "../objects/pokemon";
 import {Pokemon} from "../data/pokemons";
 import {FORET_JADE} from "../data/destinations/foret_jade";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
-import { MAGNETON } from "../data/pokemons/magneton";
-import { PIKACHU } from "../data/pokemons/pikachu";
-import { RAICHU } from "../data/pokemons/raichu";
 import { AEROMITE } from "../data/pokemons/aeromite";
+import { RONFLEX } from "../data/pokemons/ronflex";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [
 		new PokemonOnBoard( new Pokemon(AEROMITE, 1, 20), 4 ,5),
-		//new PokemonOnBoard( new Pokemon(PIKACHU, 1, 20), 3 ,5),
+		new PokemonOnBoard( new Pokemon(RONFLEX, 1, 20), 3 ,5),
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
 	gameState.player.inventory[VITESSE_PLUS.ref] = 1

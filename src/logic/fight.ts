@@ -18,21 +18,18 @@ export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard
         distance <= pokemon.baseSkill.attackRange 
         || (pokemon.ppSkill && pokemon.pp >= pokemon.maxPP && distance <= pokemon.ppSkill.attackRange)
     )
-    const hasBlockingAlterations = pokemon.alterations.some(alt => [
-        AlterationType.GEL,
-        AlterationType.PEUR,
-        AlterationType.SOMMEIL
-    ].includes(alt.type))
+    const hasBlockingAlterations = pokemon.hasAlteration(AlterationType.GEL) 
+                                || pokemon.hasAlteration(AlterationType.PEUR) 
+                                || pokemon.hasAlteration(AlterationType.SOMMEIL)
 
     return isInAttackRange && !hasBlockingAlterations
 }
 
 export function canPokemonMove(pokemon: PokemonOnBoard){
-    return !pokemon.alterations.some(alt => [
-        AlterationType.GEL,
-        AlterationType.LIGOTAGE,
-        AlterationType.SOMMEIL
-    ].includes(alt.type))
+    return !(pokemon.hasAlteration(AlterationType.GEL) 
+        || pokemon.hasAlteration(AlterationType.LIGOTAGE)
+        || pokemon.hasAlteration(AlterationType.SOMMEIL)
+    )
 }
 
 export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: GameScene){
@@ -176,4 +173,8 @@ export function sendBackToPokeball(pokemon: PokemonOnBoard){
         bars.destroy();
         game.graphics.delete(pokemon.uid);
     }
+}
+
+export function healPokemon(pokemon: PokemonOnBoard, healAmount: number){
+    pokemon.pv = Math.min(pokemon.maxPV, pokemon.pv + healAmount)
 }

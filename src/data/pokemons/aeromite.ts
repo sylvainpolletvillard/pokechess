@@ -12,6 +12,6 @@ export const AEROMITE: PokemonEntry = {
     speed: 90,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.POISON],
     rank: 2,
-    baseSkill: SKILLS.CHARGE,
+    baseSkill: SKILLS.VAMPIRISME,
     ppSkill: SKILLS.RAFALE_PSY
 }

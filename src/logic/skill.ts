@@ -3,33 +3,33 @@ import {Effect} from "../data/effects";
 import { Alteration } from "../data/alterations";
 import { PokemonOnBoard } from "../objects/pokemon";
 
-
 export interface Skill {
     type: PokemonType
     name: string
     description?: string
-    effect: Effect;
+    effect?: Effect;
+    effectDelay?: number;
     effectDelta?: number;
     effectDepth?: number;
+    effectOrigin?: "source" | "target" | "source_ground" | "target_ground";
+    rotateSprite?: boolean;
     behavior: SkillBehavior;
     power: number;
     triggerAlteration?: Alteration;
+    selfAlteration?: Alteration;
     attackRange: number;
 }
 
 export interface HitSkill extends Skill {
-    behavior: SkillBehavior.DIRECT_HIT
-    hitDelay?: number
-    effectOrigin: "source" | "target" | "target_ground";
-    effectDelay?: number;
-    rotateSprite: boolean;
-    hitAlteration?: Alteration;
+    behavior: SkillBehavior.DIRECT_HIT    
+    hitDelay?: number        
+    hitAlteration?: Alteration;    
     chargeDelta?: number; // déplace l'attaquant, ex: charge
 }
 
 export interface SpecialSkill extends Skill {
     behavior: SkillBehavior.SPECIAL
-    triggerSpecial: string;
+    triggerSpecial?: string;
 }
 
 export interface ProjectileSkill extends Skill {
@@ -44,7 +44,6 @@ export interface ProjectileSkill extends Skill {
 
 export interface AOESkill extends Skill {
     behavior: SkillBehavior.AREA_OF_EFFECT
-    effectOrigin: "source" | "target" | "source_ground";
     getTilesImpacted: (attacker: PokemonOnBoard, target: PokemonOnBoard) => [number, number][]
     hitDelay: number
     hitAlteration?: Alteration;

@@ -7,7 +7,7 @@ export const RAFALE_PSY: ProjectileSkill = {
     type: POKEMON_TYPES.PSY,
     effect: EFFECTS.RAFALE_PSY,
     behavior: SkillBehavior.PROJECTILE,
-    travelSpeed: 8,
+    travelSpeed: 6,
     projectileRadius: 16,
     pierceThrough: true,
     rotateProjectile: true,

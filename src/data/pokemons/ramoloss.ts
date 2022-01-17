@@ -16,5 +16,5 @@ export const RAMOLOSS: PokemonEntry = {
     evolutionLevel: 37,
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES, // baillement
-    ppSkill: SKILLS.LANCE_SOLEIL // repos
+    ppSkill: SKILLS.REPOS
 }

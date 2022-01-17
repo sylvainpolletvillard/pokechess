@@ -8,7 +8,9 @@ export enum AlterationType {
     CONFUSION = "CONFUSION", // oblige le pokémon à changer de cible, et peut cibler un pokémon de sa propre équipe,
     SECRETION = "SECRETION", // divise par 2 la vitesse ennemie,
     LIGOTAGE = "LIGOTAGE", // empêche la cible de se déplacer
-    HYDROCANON = "HYDROCANON", // envoie le pokémon dans les airs
+    HYDROCANON = "HYDROCANON", // envoie le pokémon dans les airs,
+    SOIN = "SOIN", // restaure les HP à un rythme de 1HP par seconde (vampirisme),
+    REPOS = "REPOS" // restaure les HP à un rythme de 5% max HP par seconde, à condition que le lanceur soit endormi
 }
 
 export interface Alteration {
