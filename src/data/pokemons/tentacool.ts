@@ -16,5 +16,5 @@ export const TENTACOOL: PokemonEntry = {
     evolutionLevel: 30,
     rank: 1,
     baseSkill: SKILLS.DARD_VENIN,
-    ppSkill: SKILLS.LIGOTAGE
+    ppSkill: SKILLS.ACIDE
 }

@@ -15,6 +15,6 @@ export const GRAVALANCH: PokemonEntry = {
     evolution: GROLEM,
     evolutionLevel: 38,
     rank: 2,
-    baseSkill: SKILLS.FLAMMECHE, // roulade
-    ppSkill: SKILLS.LANCE_SOLEIL // boul-armure
+    baseSkill: SKILLS.FLAMMECHE, // jet pierres
+    ppSkill: SKILLS.LANCE_SOLEIL // armure
 }

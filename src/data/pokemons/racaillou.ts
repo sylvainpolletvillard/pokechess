@@ -15,6 +15,6 @@ export const RACAILLOU: PokemonEntry = {
     evolution: GRAVALANCH,
     evolutionLevel: 25,
     rank: 1,
-    baseSkill: SKILLS.FLAMMECHE, // roulade
-    ppSkill: SKILLS.LANCE_SOLEIL // boul'armure
+    baseSkill: SKILLS.FLAMMECHE, // jet pierres
+    ppSkill: SKILLS.LANCE_SOLEIL // armure
 }

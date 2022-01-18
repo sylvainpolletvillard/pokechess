@@ -16,5 +16,5 @@ export const NIDORAN_MALE: PokemonEntry = {
     evolutionLevel: 16,
     rank: 1,
     baseSkill: SKILLS.DARD_VENIN,
-    ppSkill: SKILLS.LANCE_SOLEIL // Koud'Korne
+    ppSkill: SKILLS.LANCE_SOLEIL // Empal'Korne
 }

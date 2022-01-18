@@ -32,6 +32,7 @@ import { PROVOC } from "./skills/provoc";
 import { SURF } from "./skills/surf";
 import { POUVOIR_ANTIQUE } from "./skills/pouvoirAntique";
 import { DARD_VENIN } from "./skills/dardVenin";
+import { ACIDE } from "./skills/acide";
 
 export const SKILLS = {
     CHARGE,
@@ -67,5 +68,66 @@ export const SKILLS = {
     PROVOC,
     SURF,
     POUVOIR_ANTIQUE,
-    DARD_VENIN
+    DARD_VENIN,
+    ACIDE,
+    
+    // furie
+    // léchouille
+    // coud'boue
+    // ouragan
+    // dracorage
+    // dracocharge
+    // danse flammes
+    // ultrason
+    // destruction
+    // tonnerre
+    // baillement
+    // nitrocharge
+    // torgnoles
+    // berceuse
+    // encore
+    // armure
+    // bomb beurk
+    // danse lames
+    // frénésie
+    // poing karaté
+    // ultimapoing
+    // double pied
+    // mawashi geri
+    // balayage
+    // abri
+    // guillotine
+    // coud'boule
+    // e-coque
+    // grobisou
+    // brouillard,
+    // pouvoir lunaire
+    // morphing
+    // évolution
+    // adaptation
+    // métronome
+    // psyko
+    // jackpot
+    // encore
+    // vol vie
+    // empal'korne
+    // rugissement
+    // crochet venin
+    // bomb'oeuf
+    // jet pierres
+    // paraspore
+    // pic-pic
+    // hâte
+    // tornade
+    // cru-aile
+    // amnésie
+    // koud'korne
+    // jet de sable
+    // détritus
+    // météores
+    // devoreve
+    // déflagration
+    // tunnel
+    // bélier
+    // riposte
 }

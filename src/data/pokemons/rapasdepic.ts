@@ -13,5 +13,5 @@ export const RAPASDEPIC: PokemonEntry = {
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.NORMAL],
     rank: 2,
     baseSkill: SKILLS.FOUET_LIANES, // picpic
-    ppSkill: SKILLS.LANCE_SOLEIL // piqué
+    ppSkill: SKILLS.LANCE_SOLEIL // hâte
 }

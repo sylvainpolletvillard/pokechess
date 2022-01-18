@@ -60,16 +60,18 @@ export class PokemonOnBoard extends Pokemon {
         const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
         if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
 
-        return super.attack * buffFactor
+        return Math.max(1, super.attack * buffFactor)
     }
 
     get defense(): number {
         let buffFactor = 1
 
+        if(this.hasAlteration(AlterationType.ACIDE)) buffFactor -= 0.5
+
         const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
         if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
 
-        return super.attack * buffFactor
+        return Math.max(1, super.defense * buffFactor)
     }
 
     get speed(): number {
@@ -77,9 +79,8 @@ export class PokemonOnBoard extends Pokemon {
 
         const paralysie = this.alterations.find(alt => alt.type === AlterationType.PARALYSIE)
         if(paralysie){ buffFactor -= clamp(0.01 * paralysie.stacks, 0, 0.5) }
-
-        const secretion = this.alterations.find(alt => alt.type === AlterationType.SECRETION)
-        if(secretion){ buffFactor -= 0.5 }
+        
+        if(this.hasAlteration(AlterationType.SECRETION)) buffFactor -= 0.5
 
         const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
         if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }

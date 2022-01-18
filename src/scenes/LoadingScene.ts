@@ -18,8 +18,7 @@ import { NIDOKING } from "../data/pokemons/nidoking";
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [
-		new PokemonOnBoard( new Pokemon(TENTACRUEL, 1, 20), 4 ,5),
-		new PokemonOnBoard( new Pokemon(NIDOKING, 1, 20), 4 ,5),
+		new PokemonOnBoard( new Pokemon(TENTACRUEL, 1, 20), 4 ,5),		
 		new PokemonOnBoard( new Pokemon(COCONFORT, 1, 20), 3 ,5),		
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20

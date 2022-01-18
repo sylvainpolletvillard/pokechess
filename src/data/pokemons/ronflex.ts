@@ -12,6 +12,6 @@ export const RONFLEX: PokemonEntry = {
     speed: 30,
     types: [POKEMON_TYPES.NORMAL],
     rank: 3,
-    baseSkill: SKILLS.FLAMMECHE, // roulade
+    baseSkill: SKILLS.FLAMMECHE, // coud'boule
     ppSkill: SKILLS.REPOS
 }

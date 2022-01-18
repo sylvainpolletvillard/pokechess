@@ -16,5 +16,5 @@ export const BOUSTIFLOR: PokemonEntry = {
     evolutionLevel: 38,
     rank: 2,
     baseSkill: SKILLS.FOUET_LIANES,
-    ppSkill: SKILLS.LANCE_SOLEIL // ACIDE
+    ppSkill: SKILLS.ACIDE
 }

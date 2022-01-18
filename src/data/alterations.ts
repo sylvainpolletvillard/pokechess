@@ -11,7 +11,8 @@ export enum AlterationType {
     HYDROCANON = "HYDROCANON", // envoie le pokémon dans les airs,
     SOIN = "SOIN", // restaure les HP à un rythme de 1HP par seconde (vampirisme),
     REPOS = "REPOS", // restaure les HP à un rythme de 5% max HP par seconde, à condition que le lanceur soit endormi
-    POUVOIR_ANTIQUE = "POUVOIR_ANTIQUE" // augmente l'attaque, défense et vitesse de 10% par stack
+    POUVOIR_ANTIQUE = "POUVOIR_ANTIQUE", // augmente l'attaque, défense et vitesse de 10% par stack
+    ACIDE = "ACIDE" // divise par 2 la défense ennemie
 }
 
 export interface Alteration {

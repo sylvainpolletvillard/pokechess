@@ -381,5 +381,23 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 10,
         repeat: Infinity,
         scale: 0.5
+    },
+    ACIDE: {
+        key: "acide",
+        frames: [232,233,234,235],
+        frameRate: 8,
+        repeat: 0        
+    },
+    ACIDE_HIT: {
+        key: "acide_hit",
+        frames: [236,237,238,239,240,241,242],
+        frameRate: 8,
+        repeat: 0
+    },
+    DARD_VENIN_HIT: {
+        key: "dard_venin_hit",
+        frames: [243],
+        frameRate: 8,
+        repeat: 0
     }
 }

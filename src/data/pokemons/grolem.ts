@@ -12,6 +12,6 @@ export const GROLEM: PokemonEntry = {
     speed: 45,
     types: [POKEMON_TYPES.ROCHE, POKEMON_TYPES.SOL],
     rank: 3,
-    baseSkill: SKILLS.FLAMMECHE, // roulade
-    ppSkill: SKILLS.LANCE_SOLEIL // boul'armure
+    baseSkill: SKILLS.FLAMMECHE, // jet pierres
+    ppSkill: SKILLS.LANCE_SOLEIL // armure
 }

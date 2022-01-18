@@ -11,7 +11,7 @@ export const DARD_VENIN: ProjectileSkill = {
     travelSpeed: 6,
     power: 15,
     projectileRadius: 2,
-    hitEffect: EFFECTS.CHARGE_HIT,
+    hitEffect: EFFECTS.DARD_VENIN_HIT,
     hitAlteration: { type: AlterationType.POISON, stacks: 20 },
     rotateProjectile: true,
     attackRange: 2

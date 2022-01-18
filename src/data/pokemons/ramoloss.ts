@@ -15,6 +15,6 @@ export const RAMOLOSS: PokemonEntry = {
     evolution: FLAGADOSS,
     evolutionLevel: 37,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // baillement
-    ppSkill: SKILLS.REPOS
+    baseSkill: SKILLS.PISTOLET_A_O,
+    ppSkill: SKILLS.REPOS // amnésie
 }

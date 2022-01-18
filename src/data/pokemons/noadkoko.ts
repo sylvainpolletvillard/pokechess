@@ -12,6 +12,6 @@ export const NOADKOKO: PokemonEntry = {
     speed: 55,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.PSY],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // pillonage
-    ppSkill: SKILLS.LANCE_SOLEIL // protection
+    baseSkill: SKILLS.CHOC_MENTAL,
+    ppSkill: SKILLS.LANCE_SOLEIL // bomb'oeuf
 }
