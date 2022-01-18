@@ -15,6 +15,6 @@ export const NIDORINO: PokemonEntry = {
     evolution: NIDOKING,
     evolutionLevel: 32,
     rank: 1,
-    baseSkill: SKILLS.GRIFFE, // dard venin
+    baseSkill: SKILLS.DARD_VENIN,
     ppSkill: SKILLS.LANCE_SOLEIL // koud'korne
 }

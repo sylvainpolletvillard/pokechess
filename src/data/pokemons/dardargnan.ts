@@ -12,6 +12,6 @@ export const DARDARGNAN: PokemonEntry = {
     speed: 75,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.POISON],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES, // dard venin
+    baseSkill: SKILLS.DARD_VENIN,
     ppSkill: SKILLS.LANCE_SOLEIL // furie
 }

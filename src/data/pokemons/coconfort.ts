@@ -15,6 +15,6 @@ export const COCONFORT: PokemonEntry = {
     evolution: DARDARGNAN,
     evolutionLevel: 10,
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // dard venin
+    baseSkill: SKILLS.DARD_VENIN,
     ppSkill: SKILLS.LANCE_SOLEIL // armure
 }

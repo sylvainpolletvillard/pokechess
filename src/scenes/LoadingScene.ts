@@ -12,11 +12,14 @@ import {FORET_JADE} from "../data/destinations/foret_jade";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
 import { KABUTOPS } from "../data/pokemons/kabutops";
 import { COCONFORT } from "../data/pokemons/coconfort";
+import { TENTACRUEL } from "../data/pokemons/tentacruel";
+import { NIDOKING } from "../data/pokemons/nidoking";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
 	gameState.player.team = [
-		new PokemonOnBoard( new Pokemon(KABUTOPS, 1, 20), 4 ,5),
+		new PokemonOnBoard( new Pokemon(TENTACRUEL, 1, 20), 4 ,5),
+		new PokemonOnBoard( new Pokemon(NIDOKING, 1, 20), 4 ,5),
 		new PokemonOnBoard( new Pokemon(COCONFORT, 1, 20), 3 ,5),		
 	]
 	gameState.player.inventory[ITEM_POKEBALL.ref] = 20

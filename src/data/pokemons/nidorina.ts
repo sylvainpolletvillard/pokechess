@@ -15,6 +15,6 @@ export const NIDORINA: PokemonEntry = {
     evolution: NIDOQUEEN,
     evolutionLevel: 32,
     rank: 1,
-    baseSkill: SKILLS.GRIFFE, // dard venin
+    baseSkill: SKILLS.DARD_VENIN,
     ppSkill: SKILLS.LANCE_SOLEIL // rugissement
 }

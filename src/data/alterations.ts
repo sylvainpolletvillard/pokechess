@@ -17,6 +17,7 @@ export enum AlterationType {
 export interface Alteration {
     type: AlterationType
     stacks: number
-    keepStacks?: boolean;
+    keepStacks?: boolean
     effectSprite?: Phaser.GameObjects.Sprite
+    effectDelta?: number
 }

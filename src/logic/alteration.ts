@@ -1,4 +1,5 @@
 import { AlterationType, Alteration } from "../data/alterations"
+import { Z } from "../data/depths"
 import { EFFECTS } from "../data/effects"
 import { POKEMON_TYPES } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
@@ -16,8 +17,9 @@ export function updateAlterations(pokemons: PokemonOnBoard[]){
             if(!alt.keepStacks) alt.stacks--;
             if(alt.stacks <= 0){
                 removeAlteration(pokemon, alt)                
-            } else if(alt.effectSprite){                
-                alt.effectSprite.setPosition(...pokemon.position)
+            } else if(alt.effectSprite){
+                const [x,y] = pokemon.position
+                alt.effectSprite.setPosition(x, y+(alt.effectDelta ?? 0))                
             }
         })
     })
@@ -37,11 +39,11 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
 
         sprite?.play(`${pokemon.ref}_${pokemon.facingDirection}`)
     } else if(alteration.type === AlterationType.POISON){
-        let poisonDamage = Math.floor(Math.min(500, alteration.stacks) / 10000) * pokemon.maxPV
+        let poisonDamage = Math.min(500, alteration.stacks) * perSecond * (1 / 10000) * pokemon.maxPV // 0.01% max HP per stack per second
         if(pokemon.types.includes(POKEMON_TYPES.POISON)){
-            poisonDamage = Math.floor(poisonDamage * 0.5) 
+            poisonDamage *= 0.5
             // type poison = 50% résistance au poison //TODO: bonus alliance à prendre en compte
-        } 
+        }
         applyDamage(poisonDamage, pokemon, true)
     } else if(alteration.type === AlterationType.BRULURE){
         const burnDamage = 0.1 * perSecond * pokemon.level; // 0.1 HP per second per level
@@ -91,14 +93,20 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 break;
 
             case AlterationType.SOMMEIL:
-                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.SOMMEIL.key)                
-                    .setScale(EFFECTS.SOMMEIL.scale ?? 1)            
+                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").setScale(EFFECTS.SOMMEIL.scale ?? 1).play(EFFECTS.SOMMEIL.key)
                 break;
 
             case AlterationType.PARALYSIE:
-                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.PARALYSIE.key)                
-                    .setScale(EFFECTS.PARALYSIE.scale ?? 1)            
-                break;       
+                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").setScale(EFFECTS.PARALYSIE.scale ?? 1).play(EFFECTS.PARALYSIE.key)
+                break;
+
+            case AlterationType.POISON:
+                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y-8, "effects")
+                    .setScale(EFFECTS.POISON.scale ?? 1)
+                    .setDepth(Z.SKILL_EFFECT_ABOVE_POKEMON)
+                    .play(EFFECTS.POISON.key)
+                alteration.effectDelta = -8;
+                break;  
 
             case AlterationType.SOIN:
             case AlterationType.REPOS:

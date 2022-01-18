@@ -31,6 +31,7 @@ import { REPOS } from "./skills/repos";
 import { PROVOC } from "./skills/provoc";
 import { SURF } from "./skills/surf";
 import { POUVOIR_ANTIQUE } from "./skills/pouvoirAntique";
+import { DARD_VENIN } from "./skills/dardVenin";
 
 export const SKILLS = {
     CHARGE,
@@ -65,5 +66,6 @@ export const SKILLS = {
     REPOS,
     PROVOC,
     SURF,
-    POUVOIR_ANTIQUE
+    POUVOIR_ANTIQUE,
+    DARD_VENIN
 }

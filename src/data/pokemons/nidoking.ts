@@ -12,6 +12,6 @@ export const NIDOKING: PokemonEntry = {
     speed: 85,
     types: [POKEMON_TYPES.POISON, POKEMON_TYPES.SOL],
     rank: 1,
-    baseSkill: SKILLS.GRIFFE, // dard venin
+    baseSkill: SKILLS.DARD_VENIN,
     ppSkill: SKILLS.LANCE_SOLEIL // Empal'Korne
 }
