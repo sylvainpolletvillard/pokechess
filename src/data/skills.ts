@@ -33,6 +33,7 @@ import { SURF } from "./skills/surf";
 import { POUVOIR_ANTIQUE } from "./skills/pouvoirAntique";
 import { DARD_VENIN } from "./skills/dardVenin";
 import { ACIDE } from "./skills/acide";
+import { CRUAILE } from "./skills/cruaile";
 
 export const SKILLS = {
     CHARGE,
@@ -70,6 +71,7 @@ export const SKILLS = {
     POUVOIR_ANTIQUE,
     DARD_VENIN,
     ACIDE,
+    CRUAILE
     
     // furie
     // léchouille
@@ -118,8 +120,7 @@ export const SKILLS = {
     // paraspore
     // pic-pic
     // hâte
-    // tornade
-    // cru-aile
+    // tornade    
     // amnésie
     // koud'korne
     // jet de sable

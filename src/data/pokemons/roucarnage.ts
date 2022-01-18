@@ -12,6 +12,6 @@ export const ROUCARNAGE: PokemonEntry = {
     speed: 91,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.NORMAL],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES, // picpic
+    baseSkill: SKILLS.CRUAILE,
     ppSkill: SKILLS.LANCE_SOLEIL // tornade
 }

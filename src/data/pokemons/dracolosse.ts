@@ -12,6 +12,6 @@ export const DRACOLOSSE: PokemonEntry = {
     speed: 80,
     types: [POKEMON_TYPES.DRAGON, POKEMON_TYPES.VOL],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES, // cru-aile
+    baseSkill: SKILLS.CRUAILE
     ppSkill: SKILLS.LANCE_SOLEIL // ultralaser
 }

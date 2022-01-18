@@ -12,6 +12,6 @@ export const CANARTICHO: PokemonEntry = {
     speed: 60,
     types: [POKEMON_TYPES.NORMAL, POKEMON_TYPES.VOL],
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // pic-pic
+    baseSkill: SKILLS.FOUET_LIANES, // picpic
     ppSkill: SKILLS.LANCE_SOLEIL // danse-lames
 }

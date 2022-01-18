@@ -166,8 +166,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    FIRE_PIERCE: {
-        key: "fire_pierce",
+    CRUAILE: {
+        key: "cruaile",
         frames: [95,96,97,98],
         frameRate: 8,
         repeat: 0

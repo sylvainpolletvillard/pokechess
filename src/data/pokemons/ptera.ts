@@ -12,6 +12,6 @@ export const PTERA: PokemonEntry = {
     speed: 130,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.ROCHE],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES, // cru-aile
+    baseSkill: SKILLS.CRUAILE,
     ppSkill: SKILLS.POUVOIR_ANTIQUE
 }
