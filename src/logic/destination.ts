@@ -1,8 +1,6 @@
-import {gameState} from "./gamestate";
-
 import {PokemonOnBoard} from "../objects/pokemon";
 import {Trainer} from "../data/trainers";
-import {LevelConfig} from "../logic/level";
+import {LevelConfig} from "./level";
 
 export type Path = [dx:number, dy:number][];
 

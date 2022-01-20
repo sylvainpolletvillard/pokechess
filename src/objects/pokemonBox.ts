@@ -28,13 +28,13 @@ export function openBox(game: GameScene){
         height: HEIGHT + 16*2,
         background: "box1",
         offset: 8,
-        draw(boxGroup){
-            draw(game, boxGroup)
+        draw(container){
+            draw(game, container)
         }
     })
 }
 
-function draw(game: GameScene, group: Phaser.GameObjects.Group) {
+function draw(game: GameScene, container: Phaser.GameObjects.Container) {
     //group.clear(true, true)
     interactiveElems.forEach(elm => removeInteractiveElem(elm))
     interactiveElems = []
@@ -70,17 +70,17 @@ function draw(game: GameScene, group: Phaser.GameObjects.Group) {
                 if(pokemon != null) displayPokemonInfo(pokemon)
             })
             boxZone.on("out", () => hidePokemonInfo())
-            group.add(boxZone);
+            container.add(boxZone);
         }
     }
     cases.stroke().setDepth(Z.MENU_LAYOUT)
-    group.add(cases);
+    container.add(cases);
 
     // pokemon
     gameState.player.box.forEach((pokemon, i) => {
         if(pokemon != null){
             const pokemonSprite = makePokemonSprite(pokemon, game);
-            addToBoxGroup(pokemonSprite, i)
+            addToBoxPanel(pokemonSprite, i)
         }
     })
 }
@@ -101,11 +101,11 @@ export function dropPokemonInBox(pokemonSprite: Phaser.GameObjects.Sprite, caseI
     addToBox(droppedPokemon, game, caseIndex)
 }
 
-export function addToBoxGroup(
+export function addToBoxPanel(
     sprite: Phaser.GameObjects.Sprite,
     caseIndex: number
 ){
-    gameState.activeMenu?.group?.add(sprite)
+    gameState.activeMenu?.container?.add(sprite)
     const x = ox + 10 + CASE_GAP + CASE_SIZE/2 + (caseIndex%NB_COLS)*L
     const y = oy + 10 + CASE_GAP + CASE_SIZE/2 + Math.floor(caseIndex/NB_COLS)*L
     sprite.anims.pause()
@@ -113,11 +113,4 @@ export function addToBoxGroup(
         .setScale(1)
         .setDepth(Z.MENU_OBJECTS)
         .setPosition(x,y)
-}
-
-export function removeFromBoxGroup(
-    sprite: Phaser.GameObjects.Sprite,
-    boxGroup: Phaser.GameObjects.Group
-){
-    boxGroup.remove(sprite)
 }

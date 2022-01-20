@@ -1,4 +1,4 @@
-import {Destination, Room, RoomType} from "../logic/destination";
+import {Destination, RoomType} from "../logic/destination";
 import {addText} from "../utils/text";
 import {Z} from "../data/depths";
 import MapScene from "../scenes/MapScene";

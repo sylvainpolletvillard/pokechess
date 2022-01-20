@@ -1,7 +1,6 @@
 import {Destination, DestinationType, RoomArena, RoomType} from "../../logic/destination";
 import {GIOVANNI, SBIRE_ROCKET} from "../trainers";
 import {spawnChampionTeam} from "../../logic/spawns";
-import {gameState} from "../../logic/gamestate";
 import {shopJadielleLevel} from "../levels/shop_jadielle";
 import { MIAOUSS } from "../pokemons/miaouss";
 import { ABO } from "../pokemons/abo";

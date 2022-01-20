@@ -1,7 +1,5 @@
 import {startDialog} from "../../logic/dialog";
-import {receiveItem} from "./descriptions";
 import {gameState} from "../../logic/gamestate";
-import {ITEM_POKEBALL} from "../items";
 
 export const CHEN_DIALOG_STATE = {
     hello: 0,

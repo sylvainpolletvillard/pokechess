@@ -10,10 +10,8 @@ import {PokemonOnBoard} from "../objects/pokemon";
 import {Pokemon} from "../data/pokemons";
 import {FORET_JADE} from "../data/destinations/foret_jade";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
-import { KABUTOPS } from "../data/pokemons/kabutops";
 import { COCONFORT } from "../data/pokemons/coconfort";
 import { TENTACRUEL } from "../data/pokemons/tentacruel";
-import { NIDOKING } from "../data/pokemons/nidoking";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE

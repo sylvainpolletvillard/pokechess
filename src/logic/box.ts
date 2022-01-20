@@ -1,5 +1,5 @@
 import GameScene from '../scenes/GameScene';
-import { addToBoxGroup, removeFromBoxGroup } from '../objects/pokemonBox';
+import { addToBoxPanel } from '../objects/pokemonBox';
 import { drawAlliancesInfo } from '../objects/alliancesInfo';
 import { drawPokeballsCounter } from '../objects/pokeballsCounter';
 import { gameState } from './gamestate';
@@ -16,10 +16,10 @@ export function removeFromBox(pokemon: Pokemon){
 
     const scene = gameState.activeScene as MyScene;
     const pokemonSprite = scene.sprites.get(pokemon.uid)
-    if(gameState.activeMenu?.group
+    if(gameState.activeMenu?.container
     && gameState.activeMenu.ref === "box"
     && pokemonSprite != null){
-        removeFromBoxGroup(pokemonSprite, gameState.activeMenu.group)
+        gameState.activeMenu.container.remove(pokemonSprite)
     }
 }
 
@@ -40,7 +40,7 @@ export function addToBox(pokemon: Pokemon, game: GameScene, caseIndex?: number){
 
     const pokemonSprite = game.sprites.get(pokemon.uid)
     if(gameState.activeMenu?.ref === "box" && pokemonSprite != null){
-        addToBoxGroup(pokemonSprite, caseIndex)
+        addToBoxPanel(pokemonSprite, caseIndex)
     } else if(pokemonSprite != null){
         pokemonSprite.destroy()
     }

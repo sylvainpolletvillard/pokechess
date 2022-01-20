@@ -33,7 +33,7 @@ export function canPokemonMove(pokemon: PokemonOnBoard){
 }
 
 export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: GameScene){
-    // update pokemon action only when pokemon is idle
+    // update Pokémon action only when Pokémon is idle
     if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || pokemon.pv <= 0) return;
 
     if(hasBlockingAlteration(pokemon)) return;
@@ -88,7 +88,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
             callback: () => { pokemon.nextAction = { type: PokemonTypeAction.IDLE, target } }
         })
     } else {
-        // Pokemon is already at range to attack
+        // Pokémon is already at range to attack
         pokemon.nextAction = { type: PokemonTypeAction.IDLE, target }
     }
 }
@@ -104,7 +104,7 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
         delay: attackSpeed,
         loop: true,
         callback: () => {
-            if(pokemon.pv === 0) return // pokemon died while preparing attack
+            if(pokemon.pv === 0) return // Pokémon died while preparing attack
             if(target.pv > 0){ // if target is not already dead by another attack
                 pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
                 pokemon.pp = Math.min(pokemon.maxPP, pokemon.pp + 1);

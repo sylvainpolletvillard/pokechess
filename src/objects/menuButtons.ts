@@ -31,7 +31,7 @@ export function drawMenuButtons(game: GameScene){
             if(gameState.activeMenu?.ref === "pokedex"){
                 return closeMenu() // close pokedex
             } else {
-                closeMenu() // close other menu before opening pokedex
+                closeMenu() // close other menu before opening Pokédex
             }
             if(dragState.draggedElem != null){ handleDragEnd(game) }
             else showPokedex(game)

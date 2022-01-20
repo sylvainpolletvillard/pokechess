@@ -1,6 +1,5 @@
 import { SpecialSkill, SkillBehavior } from "../../logic/skill";
 import { AlterationType } from "../alterations";
-import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const REPOS: SpecialSkill = {

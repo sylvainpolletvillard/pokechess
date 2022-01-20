@@ -40,6 +40,7 @@ export function openShop(seller: string){
 
 
 export function openBuyMenu(seller: string){
+    if(!gameState.currentDestination.shopId) return console.error(`Missing shopId`)
     drawPokeballsCounter(gameState.activeScene as RoomScene)
     const rowHeight = 20
     const width = 144, height = 6 * rowHeight + 8
@@ -76,7 +77,7 @@ export function openBuyMenu(seller: string){
                 container.add(cost)
             })
         },
-        async handleChoice(choice){
+        handleChoice(choice){
             hideItemDescription();
 
             if(!choice.value) return; // Quitter

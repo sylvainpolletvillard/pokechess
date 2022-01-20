@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import {Destination, Room, RoomArena, RoomTutorial, RoomType} from "./destination";
+import {Destination, RoomArena, RoomTutorial, RoomType} from "./destination";
 import {Player} from "./player";
 import {Board, calcXpBoard, clearPlacement, setupPlayerIdleBoard, spawnPokemon} from "./board";
 import {updatePokemonAction} from "./fight";

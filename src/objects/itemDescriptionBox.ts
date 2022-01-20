@@ -1,4 +1,4 @@
-import {Item, ITEMS_SPRITES_INDEX} from "../data/items";
+import {Item} from "../data/items";
 import {gameState} from "../logic/gamestate";
 import {MyScene} from "../scenes/MyScene";
 import {addText} from "../utils/text";

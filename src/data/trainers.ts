@@ -378,7 +378,7 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
         ],
         defeat: [
             () => {
-                // make scientist capture remaining wild pokemons
+                // make scientist capture remaining wild Pokémon
                 return `La prochaine fois, sers-toi de mes Pokéballs !`
             },
             `Tu augmenteras nettement tes chances de victoire !`

@@ -1,5 +1,4 @@
 import {openMenu} from "./menu";
-import GameScene from "../scenes/GameScene";
 import {POKEMON_TYPES, PokemonType} from "../data/types";
 import {Pokemon, PokemonEntry, POKEMONS} from "../data/pokemons";
 import {addText} from "../utils/text";
