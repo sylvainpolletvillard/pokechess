@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import {KOGA} from "../trainers";
-import {spawnTrainerTeam} from "../../logic/spawns";
+import {spawnChampionTeam} from "../../logic/spawns";
 import { AEROMITE } from "../pokemons/aeromite";
 import { ARBOK } from "../pokemons/arbok";
 import { RAFFLESIA } from "../pokemons/rafflesia";
@@ -23,14 +23,13 @@ export const PARMANIE: Destination = {
     type: DestinationType.ARENA,
     icons: ["type_POISON"],
     subtext: "Arène",
-    getRoomOrder(){ return ["arena"] },
     rooms: {
         arena: {
             type: RoomType.ARENA,
             name: "Arène de Parmanie",
             map: "parmanie",
             spawnOtherTeam() {
-                return spawnTrainerTeam([
+                return spawnChampionTeam([
                         SMOGO,
                         SMOGOGO,
                         TADMORV,

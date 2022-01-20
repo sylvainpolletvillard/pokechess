@@ -14,7 +14,6 @@ export const MONT_SELENITE: Destination = {
     type: DestinationType.SPECIAL,
     icons: ["type_FEE"],
     subtext: "Paléontologie et Capture",
-    getRoomOrder(){ return ["wild"] },
     rooms: {
         wild: {
             type: RoomType.WILD,

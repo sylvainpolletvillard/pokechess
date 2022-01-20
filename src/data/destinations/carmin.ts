@@ -1,4 +1,4 @@
-import { spawnTrainerTeam } from "../../logic/spawns";
+import { spawnChampionTeam } from "../../logic/spawns";
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import { MAJOR_BOB } from "../trainers";
 import { ELECTRODE } from "../pokemons/electrode";
@@ -23,14 +23,13 @@ export const CARMIN: Destination = {
     type: DestinationType.ARENA,
     icons: ["type_ELECTRIQUE"],
     subtext: "Arène",
-    getRoomOrder(){ return ["arena"] },
     rooms: {
         arena: {
             type: RoomType.ARENA,
             name: "Arène de Carmin s.mer",
             map: "arene_carmin",
             spawnOtherTeam() {
-                return spawnTrainerTeam([
+                return spawnChampionTeam([
                         VOLTORBE,
                         PIKACHU,
                         RAICHU,

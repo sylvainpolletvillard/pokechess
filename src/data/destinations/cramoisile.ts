@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import {AUGUSTE} from "../trainers";
-import {spawnTrainerTeam} from "../../logic/spawns";
+import {spawnChampionTeam} from "../../logic/spawns";
 import { ARCANIN } from "../pokemons/arcanin";
 import { CANINOS } from "../pokemons/caninos";
 import { FEUNARD } from "../pokemons/feunard";
@@ -23,9 +23,6 @@ export const CRAMOISILE: Destination = {
         OCEANE_CRAMOISILE: [[-2,0]],
         ILES_ECUME: [[4,0]]
     },
-    getRoomOrder(){
-        return ["arena"]
-    },
     rooms: {
         arena: {
             name: "Arène de Cramois'Île",
@@ -34,7 +31,7 @@ export const CRAMOISILE: Destination = {
             music: "music_cramoisile",
             trainer: AUGUSTE,
             spawnOtherTeam(){
-                return spawnTrainerTeam([
+                return spawnChampionTeam([
                         CANINOS,
                         ARCANIN,
                         PONYTA,

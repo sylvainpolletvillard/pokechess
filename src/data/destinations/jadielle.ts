@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomArena, RoomType} from "../../logic/destination";
 import {GIOVANNI, SBIRE_ROCKET} from "../trainers";
-import {spawnTrainerTeam} from "../../logic/spawns";
+import {spawnChampionTeam} from "../../logic/spawns";
 import {gameState} from "../../logic/gamestate";
 import {shopJadielleLevel} from "../levels/shop_jadielle";
 import { MIAOUSS } from "../pokemons/miaouss";
@@ -22,7 +22,7 @@ const ARENA_GIOVANNI: RoomArena = {
     name: "Arène de Jadielle",
     trainer: GIOVANNI,
     spawnOtherTeam(){
-        return spawnTrainerTeam([
+        return spawnChampionTeam([
                 RHINOCORNE,
                 TRIOPIKEUR,
                 NIDOQUEEN,
@@ -52,7 +52,7 @@ export const TUTO_SBIRE: RoomArena = {
     name: "Arène de Jadielle",
     trainer: SBIRE_ROCKET,
     spawnOtherTeam(){
-        return spawnTrainerTeam([
+        return spawnChampionTeam([
             MIAOUSS,
             ABO,
             SMOGO
@@ -78,10 +78,6 @@ export const JADIELLE: Destination = {
     type: DestinationType.ARENA,
     icons: ["type_SOL"],
     subtext: "Arène",
-    getRoomOrder(){
-        if(gameState.day <= 8) return ["shop","sbire"]
-        else return ["shop","giovanni"]
-    },
     rooms: {
         giovanni: ARENA_GIOVANNI,
         sbire: TUTO_SBIRE,

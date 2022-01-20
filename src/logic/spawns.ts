@@ -33,7 +33,7 @@ export function spawnWildTeamByType(typesFactors: {[typeRef: string]: number }){
          }
 
         const pokemonEntry = pickRandomIn(pokemonsByTypes[factorIndex-1])
-        const level = gameState.player.averagePokemonLevel;
+        const level = Math.min(Math.floor(gameState.worldLevel)/2, 50);
 
         let x: number, y: number;
         do {
@@ -42,24 +42,24 @@ export function spawnWildTeamByType(typesFactors: {[typeRef: string]: number }){
         } while(team.some(p => p.x === x && p.y === y))
 
         team.push(
-            new PokemonOnBoard( new Pokemon(pokemonEntry, 0,level + randomInt(-2,3)), x, y)
+            new PokemonOnBoard( new Pokemon(pokemonEntry, 0,level + randomInt(-5,0)), x, y)
         )
     }
 
     return team;
 }
 
-export function spawnTrainerTeam(pokemons: PokemonEntry[], positions: [number, number][]) {
+export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, number][]) {
     const team: PokemonOnBoard[] = []
 
     const numberToSpawn = Math.min( 
-        clamp(gameState.player.badges.length + 1, 3, 8 ), 
+        clamp(Math.floor(gameState.worldLevel / 12), 3, 8 ),
         positions.length,
         pokemons.length
     )
 
     for(let i=0; i<numberToSpawn; i++){
-        let level = (gameState.player.badges.length + 1) * 5 + (i%5)
+        let level = Math.min(Math.floor(gameState.worldLevel)/2, 50) + (i%5)
         const entry = pokemons[i]
         const [x,y] = positions[i]
         team.push(

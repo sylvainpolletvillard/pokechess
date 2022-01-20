@@ -1,4 +1,6 @@
-import {Destination, DestinationType} from "../../logic/destination";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import { spawnWildTeamByType } from "../../logic/spawns";
+import { TYPE_ROCHE, TYPE_EAU, TYPE_VOL, TYPE_SOL } from "../types";
 
 export const FALAISES: Destination = {
     ref: "FALAISES",
@@ -13,6 +15,20 @@ export const FALAISES: Destination = {
     type: DestinationType.WILD,
     icons: ["type_ROCHE"],
     subtext: "Capture",
-    getRoomOrder(){ return ["wild"] },
-    rooms: {}
+    rooms: {
+        wild: {
+            type: RoomType.WILD,
+            name: "Falaises",
+            map: "foret_de_jade",
+            music: "music_foret_jade",
+            spawnOtherTeam(){
+                return spawnWildTeamByType({
+                    [TYPE_ROCHE.ref]: 1,
+                    [TYPE_EAU.ref]: 1,
+                    [TYPE_VOL.ref]: 1,
+                    [TYPE_SOL.ref]: 0.5
+                })
+            },
+        }
+    }
 }

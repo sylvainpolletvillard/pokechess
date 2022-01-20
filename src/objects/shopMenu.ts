@@ -66,14 +66,14 @@ export function openBuyMenu(seller: string){
         background: "box1",
         offset: 8,
         entries,
-        draw(group){
+        draw(container){
             entries.forEach((entry, i) => {
                 if(!entry.value) return
                 const item = ITEMS[entry.value]
-                const pokeball = group.scene.add.sprite(330, 87+i*rowHeight, "pokeball", 0).play("POKEBALL_idle")
+                const pokeball = container.scene.add.sprite(330, 87+i*rowHeight, "pokeball", 0).play("POKEBALL_idle")
                 const cost = addText(320-28, 17+i*rowHeight, "x"+item.cost)
-                group.add(pokeball)
-                group.add(cost)
+                container.add(pokeball)
+                container.add(cost)
             })
         },
         async handleChoice(choice){

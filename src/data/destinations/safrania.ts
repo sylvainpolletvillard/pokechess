@@ -1,5 +1,5 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnTrainerTeam} from "../../logic/spawns";
+import {spawnChampionTeam} from "../../logic/spawns";
 import {MORGANE} from "../trainers";
 import { KADABRA } from "../pokemons/kadabra";
 import { AEROMITE } from "../pokemons/aeromite";
@@ -23,7 +23,6 @@ export const SAFRANIA: Destination = {
     type: DestinationType.ARENA,
     icons: ["type_PSY"],
     subtext: "Arène",
-    getRoomOrder(){ return ["arena"] },
     rooms: {
         arena: {
             name: "Arène de Safrania",
@@ -32,7 +31,7 @@ export const SAFRANIA: Destination = {
             music: "music_safrania",
             trainer: MORGANE,
             spawnOtherTeam(){
-                return spawnTrainerTeam([
+                return spawnChampionTeam([
                         KADABRA,
                         MR_MIME,
                         SOPORIFIK,

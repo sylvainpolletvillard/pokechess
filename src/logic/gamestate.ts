@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import {Destination, RoomArena, RoomTutorial, RoomType} from "./destination";
+import {Destination, Room, RoomArena, RoomTutorial, RoomType} from "./destination";
 import {Player} from "./player";
 import {Board, calcXpBoard, clearPlacement, setupPlayerIdleBoard, spawnPokemon} from "./board";
 import {updatePokemonAction} from "./fight";
@@ -29,7 +29,7 @@ export enum GameStage {
 export class GameState {
     day: number;
     currentDestination: Destination;
-    currentRoomIndex: number;
+    currentRoomRef: string;
     players: Player[];
     board: Board;
     stage: GameStage;
@@ -45,7 +45,7 @@ export class GameState {
     constructor() {
         this.day = 0
         this.currentDestination = BOURG_PALETTE;
-        this.currentRoomIndex = 0;
+        this.currentRoomRef = "labo";
         const p1 = new Player(1)
         const p2 = new Player(2)
         this.players = [p1 , p2]
@@ -66,8 +66,12 @@ export class GameState {
     }
 
     get currentRoom(){
-        const roomRef = this.currentDestination.getRoomOrder()[this.currentRoomIndex]
-        return this.currentDestination.rooms[roomRef]
+        return this.currentDestination.rooms[this.currentRoomRef]
+    }
+
+    get worldLevel(): number {
+        // should be between 0 and 200, with max world level reached at 100
+        return this.player.badges.length*10 + this.player.averagePokemonLevel 
     }
 
     hasBadge(badge: Badge){
@@ -80,20 +84,10 @@ export class GameState {
         }
     }
 
-    goToNextRoom(){
-        const rooms = this.currentDestination.getRoomOrder()
-        this.currentRoomIndex++;
-        if(this.currentRoomIndex >= rooms.length){
-            gameState.day++;
-            gameState.activeScene!.scene.start("MapScene")
-        } else {
-            gameState.initRoom()
-        }
-    }
-
-    initRoom(){
+    initRoom(roomRef: string){
         clearTimeouts();
-        if(gameState.currentRoom.type === RoomType.FREEWALK){
+        this.currentRoomRef = roomRef
+        if(this.currentRoom.type === RoomType.FREEWALK){
             gameState.activeScene!.scene.start("RoomScene")
         } else {
             gameState.activeScene!.scene.start("GameScene")
@@ -220,8 +214,11 @@ export class GameState {
             return startDialog(room.trainer.dialogs.step2, { 
                 speaker: room.trainer.name 
             })
+        } else if(gameState.currentRoom.nextRoom) {
+            gameState.initRoom(gameState.currentRoom.nextRoom)
         } else {
-            gameState.goToNextRoom()
+            gameState.day++;
+            gameState.activeScene!.scene.start("MapScene")
         }
     }
 }

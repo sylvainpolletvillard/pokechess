@@ -13,7 +13,6 @@ export const TOUR_POKEMON: Destination = {
     type: DestinationType.WILD,
     icons: ["type_SPECTRE"],
     subtext: "Capture",
-    getRoomOrder(){ return ["wild"] },
     rooms: {
         wild: {
             name: "Tour Pokémon",

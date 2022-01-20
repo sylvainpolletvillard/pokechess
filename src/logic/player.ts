@@ -56,10 +56,10 @@ export class Player {
     }
 
     get averagePokemonLevel(): number {
-        const top8 = [...this.team, ...this.box]
-        .sort((a,b) => (b ? b.level : 0) - (a ? a.level : 0))
-        .slice(0,8)
-        .filter(p => p instanceof Pokemon)
+        const top8: Pokemon[] = [...this.team, ...this.box]
+            .sort((a,b) => (b ? b.level : 0) - (a ? a.level : 0))
+            .slice(0,8)
+            .filter(p => p instanceof Pokemon) as Pokemon[]
         const sumOfBest = top8.reduce((total, p) => total + p.level, 0)
         return Math.max(1, Math.floor(sumOfBest / top8.length))
     }

@@ -14,7 +14,6 @@ export const COL_DE_MONTAGNE: Destination = {
     type: DestinationType.WILD,
     icons: ["type_VOL"],
     subtext: "Capture",
-    getRoomOrder(){ return ["wild"] },
     rooms: {
         wild: {
             type: RoomType.WILD,

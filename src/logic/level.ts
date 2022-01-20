@@ -120,6 +120,5 @@ export class Level {
     exit() {
         this.clearTileMap();
         this.config.exit?.call(this)
-        gameState.goToNextRoom()
     }
 }

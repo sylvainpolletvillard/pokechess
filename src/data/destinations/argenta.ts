@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import {PIERRE} from "../trainers";
-import {spawnTrainerTeam} from "../../logic/spawns";
+import {spawnChampionTeam} from "../../logic/spawns";
 
 import { AMONISTAR } from "../pokemons/amonistar";
 import { GRAVALANCH } from "../pokemons/gravalanch";
@@ -24,7 +24,6 @@ export const ARGENTA: Destination = {
     type: DestinationType.ARENA,
     icons: ["type_ROCHE"],
     subtext: "Arène",
-    getRoomOrder(){ return ["arena"] },
     rooms: {
         arena: {
             name: "Arène d'Argenta",
@@ -32,7 +31,7 @@ export const ARGENTA: Destination = {
             trainer: PIERRE,
             map: "arene_argenta",
             spawnOtherTeam(){
-                return spawnTrainerTeam([
+                return spawnChampionTeam([
                         RACAILLOU,
                         ONIX,
                         GRAVALANCH,

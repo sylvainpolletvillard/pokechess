@@ -17,6 +17,7 @@ import { NIDOKING } from "../data/pokemons/nidoking";
 
 function quickStart(scene: Phaser.Scenes.ScenePlugin){
 	gameState.currentDestination = FORET_JADE
+	gameState.activeScene!.scene.start("MapScene")
 	gameState.player.team = [
 		new PokemonOnBoard( new Pokemon(TENTACRUEL, 1, 20), 4 ,5),		
 		new PokemonOnBoard( new Pokemon(COCONFORT, 1, 20), 3 ,5),		
@@ -56,7 +57,7 @@ export default class LoadingScene extends MyScene {
 
 			// TEMP: QUICK START TEST
 			quickStart(this.scene)
-			gameState.initRoom()
+			//gameState.initRoom() // TEMP
 		});
 
 		// load title screen

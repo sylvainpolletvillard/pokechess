@@ -24,13 +24,13 @@ export interface Menu {
     background?: string;
     offset ?: number;
     entries?: MenuEntry[];
-    draw?: (menuGroup: Phaser.GameObjects.Group) => any;
+    draw?: (container: Phaser.GameObjects.Container) => any;
     handleMove?: (moveVector: Phaser.Math.Vector2) => any;
     handleCancel?: () => any;
     handleChoice?: (selectedEntry: MenuEntry) => any;
     onSelect?: (selectedEntry: MenuEntry) => any;
     onClose?: () => any;
-    group?: Phaser.GameObjects.Group
+    container?: Phaser.GameObjects.Container
 }
 
 export function selectEntry(index: number){
@@ -70,7 +70,7 @@ export function openMenu(menu: Menu){
     const scene = gameState.activeScene as MyScene
     //game.sprites.get("cursor")?.setVisible(false)
     gameState.activeMenu = menu;
-    menu.group = scene.add.group().setOrigin(0,0)
+    menu.container = scene.add.container()
 
     const menuBackground = scene.add.nineslice(
         menu.x, menu.y,   // this is the starting x/y location
@@ -79,8 +79,8 @@ export function openMenu(menu: Menu){
         menu.offset!,   // the width and height to offset for a corner slice
     ).setScrollFactor(0);
 
-    menu.group.add(menuBackground)
-    if(menu.draw) menu.draw(menu.group)
+    menu.container.add(menuBackground)
+    if(menu.draw) menu.draw(menu.container)
 
     if(menu.entries != null){
         menuCursorPos = 0;
@@ -92,7 +92,7 @@ export function openMenu(menu: Menu){
         );
         scene.sprites.set("menuCursor", cursorSprite)
         cursorSprite.setScrollFactor(0).setScale(0.5)
-        menu.group.add(cursorSprite)
+        menu.container.add(cursorSprite)
 
         menu.entries.forEach((entry, i) => {
             const menuAction = addText(menu.x+8+entry.x, menu.y+4+entry.y, entry.label, { 
@@ -102,7 +102,7 @@ export function openMenu(menu: Menu){
             addInteractiveElem(menuAction)
             menuAction.on("pointerover", () => selectEntry(i))
             menuAction.on("click", () => clickEntry())
-            menu.group!.add(menuAction)
+            menu.container!.add(menuAction)
         })
 
         if(menu.onSelect){
@@ -110,14 +110,14 @@ export function openMenu(menu: Menu){
         }
     }
 
-    menu.group.setDepth(Z.MENU);
+    menu.container.setDepth(Z.MENU);
     return menu
 }
 
 export function closeMenu(){
-    if(!gameState.activeMenu || !gameState.activeMenu.group) return
+    if(!gameState.activeMenu || !gameState.activeMenu.container) return
     gameState.activeMenu.onClose && gameState.activeMenu.onClose()
-    gameState.activeMenu.group.destroy(true)
+    gameState.activeMenu.container.destroy(true)
     gameState.activeMenu = null;
 }
 

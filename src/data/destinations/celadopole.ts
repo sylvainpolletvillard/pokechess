@@ -1,4 +1,4 @@
-import { spawnTrainerTeam } from "../../logic/spawns";
+import { spawnChampionTeam } from "../../logic/spawns";
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import { ERIKA } from "../trainers";
 import { BOUSTIFLOR } from "../pokemons/boustiflor";
@@ -23,14 +23,13 @@ export const CELADOPOLE: Destination = {
     type: DestinationType.ARENA,
     icons: ["type_PLANTE"],
     subtext: "Arène",
-    getRoomOrder(){ return ["arena"] },
     rooms: {
         arena: {
             type: RoomType.ARENA,
             name: "Arène de Céladopole",
             map: "arene_celadopole",
             spawnOtherTeam() {
-                return spawnTrainerTeam([
+                return spawnChampionTeam([
                         SAQUEDENEU,
                         ORTIDE,
                         BOUSTIFLOR,

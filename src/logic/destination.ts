@@ -13,9 +13,9 @@ export interface Intersection {
 }
 
 export enum DestinationType {
-    ARENA,
-    WILD,
-    SPECIAL
+    ARENA = "ARENA",
+    WILD = "WILD",
+    SPECIAL = "SPECIAL"
 }
 
 export enum RoomType {
@@ -27,53 +27,51 @@ export enum RoomType {
 }
 
 export interface Destination {
-    ref: string;
-    name: string;
-    type: DestinationType;
-    coordinates: [number, number];
-    nextDestinations: { [destinationRef: string]: Path },
+    ref: string
+    name: string
+    type: DestinationType
+    coordinates: [number, number]
+    nextDestinations: { [destinationRef: string]: Path }
     icons: string[]
     subtext: string
-    rooms: { [ref: string]: Room },
-    getRoomOrder: () => string[]
-    shopId?: number,
+    rooms: { [ref: string]: Room }
+    shopId?: number
 }
 
 export interface RoomConfig {
     type: RoomType;
     name: string;
     music: string;
+    nextRoom?: string;
 }
 
-export type Room = RoomWild | RoomArena | RoomFreewalk | RoomTutorial
+export type Room = RoomWild | RoomArena | RoomFreewalk | RoomTutorial | RoomSafari
 
 export interface RoomWild extends RoomConfig {
-    type: RoomType.WILD,
-    map: string;
-    spawnOtherTeam: () => PokemonOnBoard[],
+    type: RoomType.WILD
+    map: string
+    spawnOtherTeam: () => PokemonOnBoard[]
 }
 
 export interface RoomArena extends RoomConfig {
-    type: RoomType.ARENA,
-    map: string;
-    spawnOtherTeam: () => PokemonOnBoard[],
+    type: RoomType.ARENA
+    map: string
+    spawnOtherTeam: () => PokemonOnBoard[]
     trainer: Trainer
 }
 
 export interface RoomFreewalk extends RoomConfig {
-    type: RoomType.FREEWALK,
+    type: RoomType.FREEWALK
     level: LevelConfig
 }
 
 export interface RoomTutorial extends RoomConfig {
-    type: RoomType.TUTORIAL,
-    map: string;
-    spawnOtherTeam: () => PokemonOnBoard[],
+    type: RoomType.TUTORIAL
+    map: string
+    spawnOtherTeam: () => PokemonOnBoard[]
     trainer: Trainer    
 }
 
-export function enterDestination(destination: Destination){
-    gameState.currentDestination = destination
-    gameState.currentRoomIndex = 0;
-    gameState.initRoom()
+export interface RoomSafari extends RoomConfig {
+    type: RoomType.SAFARI
 }

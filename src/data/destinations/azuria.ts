@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import {ONDINE} from "../trainers";
-import {spawnTrainerTeam} from "../../logic/spawns";
+import {spawnChampionTeam} from "../../logic/spawns";
 
 import { AKWAKWAK } from "../pokemons/akwakwak";
 import { AQUALI } from "../pokemons/aquali";
@@ -26,14 +26,13 @@ export const AZURIA: Destination = {
     type: DestinationType.ARENA,
     icons: ["type_EAU"],
     subtext: "Arène",
-    getRoomOrder(){ return ["arena"] },
     rooms: {
         arena: {
             type: RoomType.ARENA,
             name: "Arène d'Azuria",
             map: "arene_azuria",
             spawnOtherTeam(){
-                return spawnTrainerTeam([
+                return spawnChampionTeam([
                         STARI,
                         STAROSS,
                         PSYKOKWAK,

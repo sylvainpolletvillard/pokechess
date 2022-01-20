@@ -13,7 +13,6 @@ export const PISTE_CYCLABLE: Destination = {
     type: DestinationType.WILD,
     icons: ["type_POISON"],
     subtext: "Capture",
-    getRoomOrder(){ return ["wild"] },
     rooms: {
         wild: {
             type: RoomType.WILD,
@@ -23,7 +22,7 @@ export const PISTE_CYCLABLE: Destination = {
             spawnOtherTeam(){
                 return spawnWildTeamByType({
                     [TYPE_POISON.ref]: 1,
-                    [TYPE_NORMAL.ref]:0.4,
+                    [TYPE_NORMAL.ref]: 0.4,
                     [TYPE_ELECTRIQUE.ref]: 0.4
                 })
             }

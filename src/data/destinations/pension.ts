@@ -13,7 +13,6 @@ export const PENSION: Destination = {
     type: DestinationType.SPECIAL,
     icons: ["type_NORMAL"],
     subtext: "Éleveur",
-    getRoomOrder(){ return ["pension"] },
     rooms: {
         pension: {
             type: RoomType.WILD,

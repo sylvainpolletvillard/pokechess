@@ -1,4 +1,6 @@
-import {Destination, DestinationType} from "../../logic/destination";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import { spawnWildTeamByType } from "../../logic/spawns";
+import { TYPE_PSY, TYPE_NORMAL, TYPE_PLANTE, TYPE_FEU } from "../types";
 
 export const MAISON_PSY: Destination = {
     ref: "MAISON_PSY",
@@ -11,6 +13,20 @@ export const MAISON_PSY: Destination = {
     type: DestinationType.WILD,
     icons: ["type_PSY"],
     subtext: "Capture",
-    getRoomOrder(){ return ["wild"] },
-    rooms: {}
+    rooms: {
+        wild: {
+            type: RoomType.WILD,
+            music: "",
+            name: "Grotte Azurée",
+            map: "grotte_azuree",
+            spawnOtherTeam(){
+                return spawnWildTeamByType({                    
+                    [TYPE_PSY.ref]: 1,
+                    [TYPE_NORMAL.ref]: 0.2,
+                    [TYPE_PLANTE.ref]: 0.2,
+                    [TYPE_FEU.ref]: 0.2,
+                })
+            }
+        }
+    }
 }

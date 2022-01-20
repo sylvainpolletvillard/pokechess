@@ -8,10 +8,6 @@ import {chenLevel} from "../levels/labo_chen";
 export const BOURG_PALETTE: Destination = {
     ref: "BOURG_PALETTE",
     name: "Bourg Palette",
-    getRoomOrder(){
-        if(gameState.day === 0) return ["labo", "tuto"]
-        else return ["home"]
-    },
     rooms: {
         home: {
             name: "Maison de Red",

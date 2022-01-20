@@ -13,7 +13,6 @@ export const FORET_JADE: Destination = {
     type: DestinationType.WILD,
     icons: ["type_INSECTE"],
     subtext: "Capture",
-    getRoomOrder(){ return ["wild"] },
     rooms: {
         wild: {
             type: RoomType.WILD,

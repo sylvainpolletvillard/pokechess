@@ -1,4 +1,6 @@
-import {Destination, DestinationType} from "../../logic/destination";
+import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import { spawnWildTeamByType } from "../../logic/spawns";
+import { TYPE_EAU, TYPE_NORMAL, TYPE_PLANTE } from "../types";
 
 export const ILES_ECUME: Destination = {
     ref: "ILES_ECUME",
@@ -11,6 +13,19 @@ export const ILES_ECUME: Destination = {
     type: DestinationType.WILD,
     icons: ["type_EAU"],
     subtext: "Capture",
-    getRoomOrder(){ return ["wild"] },
-    rooms: {}
+    rooms: {
+        wild: {
+            type: RoomType.WILD,
+            music: "",
+            name: "Grotte Azurée",
+            map: "grotte_azuree",
+            spawnOtherTeam(){
+                return spawnWildTeamByType({                    
+                    [TYPE_EAU.ref]: 1,
+                    [TYPE_NORMAL.ref]: 0.2,
+                    [TYPE_PLANTE.ref]: 0.2,
+                })
+            }
+        }
+    }
 }

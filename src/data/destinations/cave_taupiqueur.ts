@@ -27,7 +27,6 @@ export const CAVE_TAUPIQUEUR_OUEST: Destination = {
     type: DestinationType.SPECIAL,
     icons: ["cave_entrance", "type_SOL"],
     subtext: "Voyage rapide et Capture",
-    getRoomOrder(){ return ["cave"] },
     rooms: { cave: ROOM_TAUPIQUEUR }
 }
 
@@ -42,6 +41,5 @@ export const CAVE_TAUPIQUEUR_EST: Destination = {
     type: DestinationType.SPECIAL,
     icons: ["cave_entrance","type_SOL"],
     subtext: "Voyage rapide et Capture",
-    getRoomOrder(){ return ["cave"] },
     rooms: { cave: ROOM_TAUPIQUEUR }
 }

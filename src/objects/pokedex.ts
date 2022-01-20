@@ -80,13 +80,13 @@ export function showPokedex(game: GameScene, pokemonToShow?: Pokemon){
             }
             updateCursorHover(game)
         },
-        draw(menuGroup){
+        draw(container){
             list.selectedIndex = 0;
             if(pokemonToShow != null){
                 list.selectedIndex = list.filtered.findIndex((p => p.ref === pokemonToShow.ref))
             }
             pokedexContainer = game.add.container(ox,oy)
-            menuGroup.add(pokedexContainer)
+            container.add(pokedexContainer)
             drawPokedex()
         },
         handleCancel(){

@@ -1,5 +1,5 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnTrainerTeam} from "../../logic/spawns";
+import {spawnChampionTeam} from "../../logic/spawns";
 import { SALLY} from "../trainers";
 import { GRODOUDOU } from "../pokemons/grodoudou";
 import { LEVEINARD } from "../pokemons/leveinard";
@@ -22,14 +22,13 @@ export const LAVANVILLE: Destination = {
     type: DestinationType.ARENA,
     icons: ["type_FEE"],
     subtext: "Arène",
-    getRoomOrder(){ return ["arena"] },
     rooms: {
         arena: {
             type: RoomType.ARENA,
             name: "Arène de Lavanville",
             map: "arene_lavanville",
             spawnOtherTeam() {
-                return spawnTrainerTeam([
+                return spawnChampionTeam([
                         MELOFEE,
                         MELODELFE,
                         RONDOUDOU,

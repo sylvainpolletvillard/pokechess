@@ -1,5 +1,5 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnTrainerTeam} from "../../logic/spawns";
+import {spawnChampionTeam} from "../../logic/spawns";
 import {HECTOR} from "../trainers";
 import {COCONFORT} from "../pokemons/coconfort";
 import {MIMITOSS} from "../pokemons/mimitoss";
@@ -21,14 +21,13 @@ export const CAMP_NOMADE: Destination = {
     type: DestinationType.ARENA,
     icons: ["type_INSECTE"],
     subtext: "Arène",
-    getRoomOrder(){ return ["arena"] },
     rooms: {
         arena: {
             type: RoomType.ARENA,
             name: "Arène sauvage",
             map: "arene_camp_nomade",
             spawnOtherTeam() {
-                return spawnTrainerTeam([
+                return spawnChampionTeam([
                         COCONFORT,
                         MIMITOSS,
                         AEROMITE,

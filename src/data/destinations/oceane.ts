@@ -2,7 +2,7 @@ import {Destination, DestinationType, RoomType, RoomWild} from "../../logic/dest
 import {spawnWildTeamByType} from "../../logic/spawns";
 import {TYPE_EAU, TYPE_VOL} from "../types";
 
-export  const OCEANE: RoomWild = {
+export const OCEANE: RoomWild = {
     type: RoomType.WILD,
     music: "",
     name: "Sur l'Océane",
@@ -25,7 +25,6 @@ export const OCEANE_CARMIN: Destination = {
     type: DestinationType.SPECIAL,
     icons: ["boat"],
     subtext: "Voyage rapide",
-    getRoomOrder(){ return ["oceane"] },
     rooms: { oceane: OCEANE }
 }
 
@@ -39,7 +38,6 @@ export const OCEANE_CRAMOISILE: Destination = {
     type: DestinationType.SPECIAL,
     icons: ["boat"],
     subtext: "Voyage rapide",
-    getRoomOrder(){ return ["oceane"] },
     rooms: { oceane: OCEANE }
 }
 
@@ -54,6 +52,5 @@ export const OCEANE_AZURIA: Destination = {
     type: DestinationType.SPECIAL,
     icons: ["boat"],
     subtext: "Voyage rapide",
-    getRoomOrder(){ return ["oceane"] },
     rooms: { oceane: OCEANE }
 }

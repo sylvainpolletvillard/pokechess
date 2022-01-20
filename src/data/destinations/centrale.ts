@@ -19,7 +19,6 @@ export const CENTRALE: Destination = {
     type: DestinationType.WILD,
     icons: ["type_ELECTRIQUE"],
     subtext: "Capture",
-    getRoomOrder(){ return ["centrale"] },
     rooms: {
         centrale: {
             type: RoomType.WILD,

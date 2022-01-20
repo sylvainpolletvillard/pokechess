@@ -13,9 +13,8 @@ export const MONT_BRAISE: Destination = {
     type: DestinationType.WILD,
     icons: ["type_FEU"],
     subtext: "Capture",
-    getRoomOrder(){ return ["wild"] },
     rooms: {
-        wild:  {
+        wild: {
             name: "Mont Braise",
             map: "mont_braise",
             type: RoomType.WILD,

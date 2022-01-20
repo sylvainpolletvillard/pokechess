@@ -14,7 +14,6 @@ export const PARC_SAFARI: Destination = {
         safari: {
             type: RoomType.SAFARI,
             name: "Parc Safari",
-            map: "safari",
             music: "",
         }
     }
