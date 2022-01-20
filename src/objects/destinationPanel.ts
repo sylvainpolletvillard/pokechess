@@ -6,10 +6,11 @@ import {openMenu} from "./menu";
 import {gameState} from "../logic/gamestate";
 
 let destinationPanel: Phaser.GameObjects.Container | null = null;
+let destinationPanelOpened: Destination | null = null;
 let destinationMenuOpened: Destination | null = null;
 
 export function showDestinationPanel(destination: Destination, scene: MapScene){
-    if(destinationMenuOpened) return;
+    if(destinationMenuOpened || destinationPanelOpened === destination) return;
 
     destinationPanel?.destroy(true)
     destinationPanel = scene.add.container(scene.scale.width - 8, scene.scale.height - 6)    
@@ -17,14 +18,6 @@ export function showDestinationPanel(destination: Destination, scene: MapScene){
     const destName = addText(-4, 3, destination.name)
         .setOrigin(1,0)
         .setDepth(Z.MENU_TOOLTIPS)
-
-   /* const subtextColor = DestinationTypeSubtextColor[destination.type as DestinationType]
-    const subtext = addText(
-        - 6 - (destination.icon ? 16 : 0),
-        + 16,
-        destination.subtext,
-        { color: subtextColor }
-    ).setOrigin(1,0).setDepth(Z.MENU_TOOLTIPS)*/
 
     const width = destName.width + destination.icons.length * 16 + 12
     const destinationPanelBg = scene.add.nineslice(-width, 0, width, 20, 'box2',4).setOrigin(0,0).setDepth(Z.MENU_LAYOUT)
@@ -42,6 +35,7 @@ export function showDestinationPanel(destination: Destination, scene: MapScene){
         destinationPanel?.add(iconSprite)
     })
 
+    destinationPanelOpened = destination
     scene.tweens.add({
         targets: [destinationPanel],
         y: "-=20",
@@ -60,18 +54,21 @@ export function hideDestinationPanel(scene: MapScene){
         onComplete(){ panel?.destroy(true )}
     })
     destinationPanel = null
+    destinationPanelOpened = null
 }
 
 export function openDestinationMenu(destination: Destination, scene: MapScene){
     destinationMenuOpened = destination
-    const entries = Object.entries(destination.rooms).map(([name, room]) => {
-        let label = room.name
-        if(room.type === RoomType.ARENA) label = "Arène"
-        if(room.type === RoomType.WILD) label = "Capture"
-        if(room.type === RoomType.SAFARI) label = "Safari"
-        if(room.name.startsWith("Magasin")) label = "Magasin"
-        return { label, value: name }
-    })
+    const entries = Object.entries(destination.rooms)
+        .filter(([, room]) => !room.hidden)
+        .map(([name, room]) => {
+            let label = room.name
+            if(room.type === RoomType.ARENA) label = "Arène"
+            if(room.type === RoomType.WILD) label = "Capture"
+            if(room.type === RoomType.SAFARI) label = "Safari"
+            if(room.name.startsWith("Magasin")) label = "Magasin"
+            return { label, value: name }
+        })
     entries.push({ label: "Quitter", value: "Quitter" })
     const height = entries.length*20 + 10
 

@@ -136,7 +136,7 @@ export function handleCursor(scene: MyScene) {
         cursorBlockerFlag = true;
         cursorBlockerTimer = scene.time.addEvent({ delay: 150, callback: () => { cursorBlockerFlag = false }})
         if(gameState.activeMenu != null && gameState.activeMenu.handleMove != null) gameState.activeMenu.handleMove(moveVector)
-        else moveCursor(moveVector, scene, true)
+        else if(scene.scene.key !== "MapScene") moveCursor(moveVector, scene, true)
     }
 
     return null

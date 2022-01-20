@@ -117,11 +117,3 @@ export const DestinationTypeHighlightTint: { [type in DestinationType]: number }
     [DestinationType.WILD]: 0x33ff33,
     [DestinationType.SPECIAL]: 0xffff33
 }
-
-export const DestinationTypeSubtextColor: { [type in DestinationType]: string } = {
-    [DestinationType.ARENA]: "#006699",
-    [DestinationType.WILD]: "#669900",
-    [DestinationType.SPECIAL]: "#996600"
-}
-
-

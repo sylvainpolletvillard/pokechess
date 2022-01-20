@@ -41,6 +41,7 @@ export interface RoomConfig {
     name: string;
     music: string;
     nextRoom?: string;
+    hidden?: boolean;
 }
 
 export type Room = RoomWild | RoomArena | RoomFreewalk | RoomTutorial | RoomSafari

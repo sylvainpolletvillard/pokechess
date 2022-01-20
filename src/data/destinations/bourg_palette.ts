@@ -9,7 +9,7 @@ export const BOURG_PALETTE: Destination = {
     name: "Bourg Palette",
     rooms: {
         home: {
-            name: "Maison de Red",
+            name: "Chez Maman",
             type: RoomType.FREEWALK,
             level: homeLevel,
             music: "music_labo_chen"
@@ -18,7 +18,9 @@ export const BOURG_PALETTE: Destination = {
             name: "Laboratoire de Chen",
             type: RoomType.FREEWALK,
             level: chenLevel,
-            music: "music_labo_chen"
+            music: "music_labo_chen",
+            hidden: true,
+            nextRoom: "tuto"
         },
         tuto:  {
             name: "Route de Bourg Palette",
@@ -26,6 +28,7 @@ export const BOURG_PALETTE: Destination = {
             map: "foret_de_jade",
             music: "music_labo_chen",
             trainer: SCIENTIFIQUE_TUTO,
+            hidden: true,
             spawnOtherTeam(){
                 return spawnTutoCaptureTeam()
             }
