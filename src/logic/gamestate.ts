@@ -84,6 +84,22 @@ export class GameState {
         }
     }
 
+    initGame(){
+        /*gameState.currentDestination = FORET_JADE
+        gameState.activeScene!.scene.start("MapScene")
+        gameState.player.team = [
+            new PokemonOnBoard( new Pokemon(TENTACRUEL, 1, 20), 4 ,5),
+            new PokemonOnBoard( new Pokemon(COCONFORT, 1, 20), 3 ,5),
+        ]
+        gameState.player.inventory[ITEM_POKEBALL.ref] = 20
+        gameState.player.inventory[VITESSE_PLUS.ref] = 1
+        gameState.player.inventory[GEMME_VOLT.ref] = 1
+        gameState.player.inventory[ORBE_GLACE.ref] = 1
+         */
+        gameState.currentDestination = BOURG_PALETTE
+        gameState.initRoom("labo")
+    }
+
     initRoom(roomRef: string){
         clearTimeouts();
         this.currentRoomRef = roomRef

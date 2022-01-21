@@ -319,28 +319,6 @@ export const SALLY: Trainer = {
     }
 }
 
-export const SBIRE_ROCKET: Trainer = {
-    name: "sbire_rocket",
-    frameIndex: 18,
-    introFrameIndex: null,
-    dialogs:{
-        start: [
-            `Eh toi là, qu'est-ce que tu fiches ici ?`,
-            `Quoi ? Tu veux affronter le champion d'arène, notre chef Giovanni ?`,
-            `Laisse-moi rire ! Tu ne lui arrives pas à la cheville !`,
-            `Essaie déjà de me battre, et je songerais à te laisser passer.`,
-        ],
-        victory: [
-            `Hmpff ! Tu es plus coriace que tu en as l'air... Mais ça ne change rien !`,
-            `Giovanni n'est pas là et tu n'es pas à la hauteur de toute façon.`,
-            `Reviens plus tard quand tu auras une vraie équipe.`
-        ],
-        defeat: [
-            `Allez, dégage d'ici minus, et reviens quand tu auras une vraie équipe !`
-        ]
-    }
-}
-
 export const SCIENTIFIQUE_TUTO_DIALOG_STATE = {
     BEFORE_WILD: 0,
     AFTER_WILD: 1,
@@ -369,7 +347,8 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
                     `Tu peux capturer un Pokémon sauvage plutôt que de l'affronter.`,
                     `Plus le Pokémon est puissant, plus il te faudra de Pokéballs pour le capturer.`,
                     `Un Pokémon capturé rejoint ta box, qui peut contenir jusqu'à 8 Pokémons.`,
-                    `Tu peux ensuite les déplacer de ta box vers le terrain pour qu'ils combattent.`
+                    `Tu peux ensuite les déplacer de ta box vers le terrain pour qu'ils combattent.`,
+                    `Vas-y, essaie de capturer ces Pokémons sauvages !`
                 ]
             }           
         ],
@@ -378,6 +357,7 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
         ],
         defeat: [
             () => {
+                gameState.board.otherTeam.forEach(pokemon => sendBackToPokeball(pokemon))
                 // make scientist capture remaining wild Pokémon
                 return `La prochaine fois, sers-toi de mes Pokéballs !`
             },
@@ -389,7 +369,7 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Il suffit de capturer un Pokémon sauvage de la même espèce.`,
             `Il partagera son expérience avec ton Pokémon avant d'être relâché.`,
             () => {
-                gameState.board.playerTeam.forEach(pokemon => sendBackToPokeball(pokemon))                
+                gameState.board.playerTeam.forEach(pokemon => sendBackToPokeball(pokemon))
                 gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD
                 gameState.stage = GameStage.PLACEMENT
                 gameState.board.otherTeam = spawnTutoCaptureTeamStep2();
@@ -401,6 +381,28 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Plus le niveau du Pokémon capturé est élevé, plus il donnera d'expérience`,
             `Rappelle-toi, cela marche uniquement si les Pokémon sont de la même espèce !`,
             `Bien, tu sais tout. Bon voyage et bonne chance!`
+        ]
+    }
+}
+
+export const SBIRE_ROCKET: Trainer = {
+    name: "sbire_rocket",
+    frameIndex: 18,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Eh toi là, qu'est-ce que tu fiches ici ?`,
+            `Ici c'est le territoire de Giovanni, notre chef et maître de l'arène !`,
+            `Quoi ? Tu comptes te mesurer à lui ? Laisse-moi rire !`,
+            `Je vais te montrer la puissance de la Team Rocket !`,
+        ],
+        victory: [
+            `Hmpff ! Tu es plus coriace que tu en as l'air... `,
+            `Mais ça ne change rien ! Giovanni va te régler ton compte !`,
+            `Reviens plus tard quand tu auras une vraie équipe.`
+        ],
+        defeat: [
+            `Allez, dégage d'ici minus, et reviens quand tu auras une vraie équipe !`
         ]
     }
 }

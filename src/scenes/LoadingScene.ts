@@ -6,25 +6,6 @@ import {loadFonts} from "../data/fonts";
 import {loadTilemaps} from "../data/tilemaps";
 import {loadSprites} from "../data/sprites";
 import {loadSpritesheets} from "../data/spritesheets";
-import {PokemonOnBoard} from "../objects/pokemon";
-import {Pokemon} from "../data/pokemons";
-import {FORET_JADE} from "../data/destinations/foret_jade";
-import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
-import { COCONFORT } from "../data/pokemons/coconfort";
-import { TENTACRUEL } from "../data/pokemons/tentacruel";
-
-function quickStart(scene: Phaser.Scenes.ScenePlugin){
-	gameState.currentDestination = FORET_JADE
-	gameState.activeScene!.scene.start("MapScene")
-	gameState.player.team = [
-		new PokemonOnBoard( new Pokemon(TENTACRUEL, 1, 20), 4 ,5),		
-		new PokemonOnBoard( new Pokemon(COCONFORT, 1, 20), 3 ,5),		
-	]
-	gameState.player.inventory[ITEM_POKEBALL.ref] = 20
-	gameState.player.inventory[VITESSE_PLUS.ref] = 1
-	gameState.player.inventory[GEMME_VOLT.ref] = 1
-	gameState.player.inventory[ORBE_GLACE.ref] = 1
-}
 
 export default class LoadingScene extends MyScene {
 	preload() {
@@ -52,10 +33,7 @@ export default class LoadingScene extends MyScene {
 		this.load.on('complete', () => {
 			progressBar.destroy();
 			progressBox.destroy();
-
-			// TEMP: QUICK START TEST
-			quickStart(this.scene)
-			//gameState.initRoom() // TEMP
+			gameState.initGame()
 		});
 
 		// load title screen

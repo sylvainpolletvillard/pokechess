@@ -7,7 +7,7 @@ import {loadSprites} from "../data/sprites";
 import {drawIntro, showCenterText, updateGUI} from "../objects/gui";
 import {drawMenuButtons} from "../objects/menuButtons";
 import {handleClick} from "../objects/cursor";
-import {closeMenu} from "../objects/menu";
+import {clickEntry, closeMenu} from "../objects/menu";
 import {MyScene} from "./MyScene";
 import {loadFonts} from "../data/fonts";
 import {initPlacement, setupRoomBoard} from "../logic/board";
@@ -80,15 +80,12 @@ export default class GameScene extends MyScene {
   }
 
   onPressA(){
-    handleClick(this)
+    if(gameState.activeMenu != null) clickEntry()
+    else handleClick(this)
   }
 
   onClick(){
     handleClick(this)
-  }
-
-  onAllPokemonsCaptured(){
-
   }
 
 }
