@@ -17,6 +17,11 @@ import { SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 import { checkProjectilesImpact } from "./projectile";
 import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
 import { updateAlterations } from "./alteration";
+import {FORET_JADE} from "../data/destinations/foret_jade";
+import {PokemonOnBoard} from "../objects/pokemon";
+import {TENTACRUEL} from "../data/pokemons/tentacruel";
+import {COCONFORT} from "../data/pokemons/coconfort";
+import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
 
 export enum GameStage {
     CREATION,
@@ -29,7 +34,8 @@ export enum GameStage {
 export class GameState {
     day: number;
     currentDestination: Destination;
-    currentRoomRef: string;
+    currentRoomIndex: number;
+    roomOrder: string[]
     players: Player[];
     board: Board;
     stage: GameStage;
@@ -40,12 +46,14 @@ export class GameState {
     starters: Pokemon[];
     music: Phaser.Sound.BaseSound | undefined;
     dialogStates: { [pnjName: string]: Number }
-    seed: number;    
+    seed: number;
+    lastCaptureDestination: Destination | null;
 
     constructor() {
         this.day = 0
         this.currentDestination = BOURG_PALETTE;
-        this.currentRoomRef = "labo";
+        this.currentRoomIndex = 0;
+        this.roomOrder = ["labo", "tuto"]
         const p1 = new Player(1)
         const p2 = new Player(2)
         this.players = [p1 , p2]
@@ -57,6 +65,7 @@ export class GameState {
         this.starters = pickStarters()
         this.dialogStates = {}
         this.seed = randomInt(1, Math.pow(4,10))
+        this.lastCaptureDestination = null
         // @ts-ignore
         window.gameState = this; //TEMP: DEBUG
     }
@@ -66,7 +75,8 @@ export class GameState {
     }
 
     get currentRoom(){
-        return this.currentDestination.rooms[this.currentRoomRef]
+        const roomRef = this.roomOrder[this.currentRoomIndex]
+        return this.currentDestination.rooms[roomRef]
     }
 
     get worldLevel(): number {
@@ -85,7 +95,7 @@ export class GameState {
     }
 
     initGame(){
-        /*gameState.currentDestination = FORET_JADE
+        gameState.currentDestination = FORET_JADE
         gameState.activeScene!.scene.start("MapScene")
         gameState.player.team = [
             new PokemonOnBoard( new Pokemon(TENTACRUEL, 1, 20), 4 ,5),
@@ -95,15 +105,25 @@ export class GameState {
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
-         */
-        gameState.currentDestination = BOURG_PALETTE
-        gameState.initRoom("labo")
+
+        /*gameState.currentDestination = BOURG_PALETTE
+        gameState.initRoom("labo")*/
     }
 
-    initRoom(roomRef: string){
+    goToNextRoom(){
+        const rooms = this.roomOrder
+        this.currentRoomIndex++;
+        if(this.currentRoomIndex >= rooms.length){
+            gameState.day++;
+            gameState.activeScene!.scene.start("MapScene")
+        } else {
+            gameState.initRoom()
+        }
+    }
+
+    initRoom(){
         clearTimeouts();
-        this.currentRoomRef = roomRef
-        if(this.currentRoom.type === RoomType.FREEWALK){
+        if(gameState.currentRoom.type === RoomType.FREEWALK){
             gameState.activeScene!.scene.start("RoomScene")
         } else {
             gameState.activeScene!.scene.start("GameScene")
@@ -230,11 +250,8 @@ export class GameState {
             startDialog(room.trainer.dialogs.step2, {
                 speaker: room.trainer.name
             })
-        } else if(gameState.currentRoom.nextRoom) {
-            gameState.initRoom(gameState.currentRoom.nextRoom)
         } else {
-            gameState.day++;
-            gameState.activeScene!.scene.start("MapScene")
+            gameState.goToNextRoom()
         }
     }
 }

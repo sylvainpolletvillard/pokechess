@@ -301,7 +301,7 @@ export const SALLY: Trainer = {
             `Ça m'intéresserait de voir comment tu te bats...`,            
         ],
         victory: [
-            `Félicitations pour cette victoire ! Je me suis follement amusée !`,            
+            `Félicitations pour cette victoire! Je me suis follement amusée !`,
             `Même si j'ai passé l’âge pour ce genre de choses...`,
             `Tu me rappelles mon mari dans ces jeunes années.`,
             `Tu sais quoi ? Tu devrais prendre ce parapluie.`,
@@ -314,10 +314,23 @@ export const SALLY: Trainer = {
         defeat: [
             `C'est beau, l'énergie de la jeunesse.`,
             `Mais la puissance des attaques ne fait pas tout...`,
-            `Commencerais-tu enfin à comprendre ce qu'est la féérie ?`
+            `Commencerais-tu enfin à comprendre ce qu'est la féérie ?`
         ]
     }
 }
+
+export const CHAMPIONS = [
+    PIERRE,
+    ONDINE,
+    MAJOR_BOB,
+    ERIKA,
+    KOGA,
+    MORGANE,
+    GIOVANNI,
+    AUGUSTE,
+    SALLY,
+    HECTOR
+]
 
 export const SCIENTIFIQUE_TUTO_DIALOG_STATE = {
     BEFORE_WILD: 0,
@@ -403,6 +416,25 @@ export const SBIRE_ROCKET: Trainer = {
         ],
         defeat: [
             `Allez, dégage d'ici minus, et reviens quand tu auras une vraie équipe !`
+        ]
+    }
+}
+
+export const DRESSEUR_FORET_JADE: Trainer = {
+    name: "dresseur_foret_jade",
+    frameIndex: 34,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Minute Papillon !`,
+            `Je vais te montrer ma collection d'insectes !`,
+            `Attends-toi à un combat pas piqué des hannetons !`
+        ],
+        victory: [
+            `Aïe ! Je me suis fait piquer par un moustique !`
+        ],
+        defeat: [
+            `Alors, tu as des fourmis dans les jambes ?`
         ]
     }
 }

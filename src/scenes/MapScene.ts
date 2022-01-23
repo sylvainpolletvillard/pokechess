@@ -12,10 +12,11 @@ import {
     getRotationAngle
     } from '../utils/directions';
 import { drawTourCounter } from '../objects/tourCounter';
+import { enterDestination } from '../logic/destination';
 import { gameState } from '../logic/gamestate';
-import {getMovementVector, handleCursor, setupInputs} from '../logic/inputs';
+import {getMovementVector, setupInputs} from '../logic/inputs';
 import { getPathLength } from '../utils/path';
-import { hideDestinationPanel, openDestinationMenu, showDestinationPanel } from '../objects/destinationPanel';
+import { hideDestinationPanel, showDestinationPanel } from '../objects/destinationPanel';
 import { loadFonts } from '../data/fonts';
 import { loadSprites } from '../data/sprites';
 import { loadSpritesheets } from '../data/spritesheets';
@@ -25,7 +26,6 @@ import { setupAnims } from '../logic/anims';
 import { startMusic } from '../logic/audio';
 import { wait } from '../utils/helpers';
 import { Z } from '../data/depths';
-import {clickEntry} from "../objects/menu";
 
 
 export default class MapScene extends MyScene {
@@ -89,12 +89,10 @@ export default class MapScene extends MyScene {
     }
 
     update(){
-        handleCursor(this)
-
         if(this.isMoving) this.updatePlayerPosition();
         else {
             const { moveVector } = getMovementVector(this);
-            if(moveVector.length() > 1 && !gameState.activeMenu){
+            if(moveVector.length() > 1){
                 const dir = getDirectionFromVector(moveVector)
                 if(dir != null && this.directions[dir] != null){
                     const destinations = this.intersectionReached?.nextDestinations
@@ -110,13 +108,11 @@ export default class MapScene extends MyScene {
     }
 
     onPressA() {
-        if(gameState.activeMenu != null) return clickEntry()
-        else if(!this.isMoving
+        if(!this.isMoving
             && this.destinationReached != null
             && (!this.destinationSelected || this.destinationSelected === this.destinationReached)
         ){
-            this.destinationSelected = this.destinationReached
-            this.openDestinationMenu(this.destinationSelected)
+            enterDestination(this.destinationReached)
         }
     }
 
@@ -175,14 +171,10 @@ export default class MapScene extends MyScene {
             } else if(destinationReached != null) {
                 //console.log(`reach ${destinationReached.ref}`)
                 showDestinationPanel(destinationReached, this)
-                if(!this.destinationSelected){
+                if(!this.destinationSelected || this.destinationSelected === destinationReached){
                     wait(350).then(() => {
                         this.updateDirections(destinationReached.nextDestinations)
                         //this.changeOrigin(this.destinationReached)
-                    })
-                } else if(this.destinationSelected === destinationReached){
-                    wait(350).then(() => {
-                        this.openDestinationMenu(destinationReached)
                     })
                 }
             }
@@ -342,11 +334,5 @@ export default class MapScene extends MyScene {
             this.updatePlayerPosition()
         }).catch(e => { if( e!=="STOP") throw e })
 
-    }
-
-    openDestinationMenu(destination: Destination){
-        this.directionsGroup?.clear(false, true)
-        showDestinationPanel(destination, this)
-        openDestinationMenu(destination, this)
     }
 }

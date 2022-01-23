@@ -443,3 +443,11 @@ POKEMONS.forEach(pokemon => {
         pokemon.devolution = devolution
     }
 })
+
+export function getPokemonsOfType(type: PokemonType){
+    return POKEMONS.filter(p => p.types.includes(type))
+}
+
+export function getNonLegendaryPokemonsOfType(type: PokemonType){
+    return getPokemonsOfType(type).filter(p => p.rank < 5)
+}

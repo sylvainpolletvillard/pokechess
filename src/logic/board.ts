@@ -158,6 +158,7 @@ export async function capturePokemon(
     hidePokemonCaptureInfo(game)
     pokemon.owner = OWNER_CHANGING // temp owner while waiting for end anim
     spend(pokemon.cost)
+    gameState.lastCaptureDestination = gameState.currentDestination
 
     const player = game.sprites.get("player")
     player?.play("trainer_launch");

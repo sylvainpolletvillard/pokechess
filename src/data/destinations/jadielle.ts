@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomArena, RoomType} from "../../logic/destination";
 import {GIOVANNI, SBIRE_ROCKET} from "../trainers";
-import {spawnChampionTeam} from "../../logic/spawns";
+import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
 import {shopJadielleLevel} from "../levels/shop_jadielle";
 import { MIAOUSS } from "../pokemons/miaouss";
 import { ABO } from "../pokemons/abo";
@@ -13,6 +13,14 @@ import { OSSATUEUR } from "../pokemons/ossatueur";
 import { RHINOCORNE } from "../pokemons/rhinocorne";
 import { RHINOFEROS } from "../pokemons/rhinoferos";
 import { TRIOPIKEUR } from "../pokemons/triopikeur";
+import {KOKIYAS} from "../pokemons/kokiyas";
+import {EXCELANGUE} from "../pokemons/excelangue";
+import {CHETIFLOR} from "../pokemons/chetiflor";
+import {MAGICARPE} from "../pokemons/magicarpe";
+import {OSSELAIT} from "../pokemons/osselait";
+import {SABELETTE} from "../pokemons/sabelette";
+import {RACAILLOU} from "../pokemons/racaillou";
+import {BADGE_TERRE} from "../badges";
 
 const ARENA_GIOVANNI: RoomArena = {
     type: RoomType.ARENA,
@@ -20,6 +28,7 @@ const ARENA_GIOVANNI: RoomArena = {
     music: "music_jadielle",
     name: "Arène de Jadielle",
     trainer: GIOVANNI,
+    badge: BADGE_TERRE,
     spawnOtherTeam(){
         return spawnChampionTeam([
                 RHINOCORNE,
@@ -51,19 +60,21 @@ export const TUTO_SBIRE: RoomArena = {
     name: "Arène de Jadielle",
     trainer: SBIRE_ROCKET,
     spawnOtherTeam(){
-        return spawnChampionTeam([
+        return spawnTrainerTeam([
             MIAOUSS,
             ABO,
-            SMOGO
-            ],
-            [
-                [3,2],
-                [4,3],
-                [2,3]
-            ])
+            SMOGO,
+            KOKIYAS,
+            EXCELANGUE,
+            CHETIFLOR,
+            MAGICARPE,
+            SABELETTE,
+            OSSELAIT,
+            RHINOCORNE,
+            RACAILLOU
+        ])
     }
 }
-
 
 export const JADIELLE: Destination = {
     ref: "JADIELLE",
@@ -78,8 +89,8 @@ export const JADIELLE: Destination = {
     icons: ["type_SOL"],
     subtext: "Arène",
     rooms: {
-        giovanni: ARENA_GIOVANNI,
-        sbire: TUTO_SBIRE,
+        arena: ARENA_GIOVANNI,
+        trainer: TUTO_SBIRE,
         shop: {
             type: RoomType.FREEWALK,
             name: "Magasin de Jadielle",

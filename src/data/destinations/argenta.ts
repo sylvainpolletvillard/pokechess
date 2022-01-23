@@ -53,6 +53,6 @@ export const ARGENTA: Destination = {
                     ])
             },
             music: "music_argenta"
-        }
+        },
     }
 }

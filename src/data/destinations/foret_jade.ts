@@ -1,6 +1,17 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnWildTeamByType} from "../../logic/spawns";
+import {spawnTrainerTeam, spawnWildTeamByType} from "../../logic/spawns";
 import {TYPE_FEE, TYPE_INSECTE, TYPE_PLANTE, TYPE_POISON} from "../types";
+import {RATTATA} from "../pokemons/rattata";
+import {BULBIZARRE} from "../pokemons/bulbizarre";
+import {MYSTHERBE} from "../pokemons/mystherbe";
+import {SCARABRUTE} from "../pokemons/scarabrute";
+import {MIMITOSS} from "../pokemons/mimitoss";
+import {PARAS} from "../pokemons/paras";
+import {SAQUEDENEU} from "../pokemons/saquedeneu";
+import {CHENIPAN} from "../pokemons/chenipan";
+import {INSECATEUR} from "../pokemons/insecateur";
+import {ASPICOT} from "../pokemons/aspicot";
+import {DRESSEUR_FORET_JADE} from "../trainers";
 
 export const FORET_JADE: Destination = {
     ref: "FORET_JADE",
@@ -27,6 +38,27 @@ export const FORET_JADE: Destination = {
                     [TYPE_FEE.ref]: 0.05,
                 })
             },
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Forêt de Jade",
+            map: "foret_de_jade",
+            music: "music_foret_jade",
+            trainer: DRESSEUR_FORET_JADE,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    CHENIPAN,
+                    SCARABRUTE,
+                    PARAS,
+                    ASPICOT,
+                    MIMITOSS,
+                    INSECATEUR,
+                    SAQUEDENEU,
+                    MYSTHERBE,
+                    BULBIZARRE,
+                    RATTATA
+                ])
+            }
         }
     }
 }

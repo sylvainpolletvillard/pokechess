@@ -11,7 +11,7 @@ export const MEW: PokemonEntry = {
     defense: 100,
     speed: 100,
     types: [POKEMON_TYPES.PSY],
-    rank: 1,
+    rank: 5,
     baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.LANCE_SOLEIL // métronome
 }
