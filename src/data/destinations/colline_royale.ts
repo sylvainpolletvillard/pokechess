@@ -1,6 +1,9 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import { spawnWildTeamByType } from "../../logic/spawns";
+import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
 import { TYPE_DRAGON, TYPE_VOL, TYPE_COMBAT } from "../types";
+import { DRESSEUR_COLLINE_ROYALE} from "../trainers";
+import {MINIDRACO} from "../pokemons/minidraco";
+import {REPTINCEL} from "../pokemons/reptincel";
 
 export const COLLINE_ROYALE: Destination = {
     ref: "COLLINE_ROYALE",
@@ -12,20 +15,33 @@ export const COLLINE_ROYALE: Destination = {
     coordinates: [168,72],
     type: DestinationType.WILD,
     icons: ["type_DRAGON"],
-    subtext: "Capture",
     rooms: {
         wild: {
             type: RoomType.WILD,
             name: "Colline des Rois",
-            map: "foret_de_jade",
-            music: "music_foret_jade",
+            map: "colline_royale",
+            music: "music_colline_royale",
             spawnOtherTeam(){
-                return spawnWildTeamByType({
+                return spawnTeamByTypeFactor({
                     [TYPE_DRAGON.ref]: 1,
                     [TYPE_VOL.ref]: 0.5,
                     [TYPE_COMBAT.ref]: 0.2,
                 })
             },
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Colline des Rois",
+            map: "colline_royale",
+            music: "music_colline_royale",
+            trainer: DRESSEUR_COLLINE_ROYALE,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    MINIDRACO,
+                    MINIDRACO,
+                    REPTINCEL
+                ])
+            }
         }
     }
 }

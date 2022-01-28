@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnChampionTeam} from "../../logic/spawns";
-import {MORGANE} from "../trainers";
+import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
+import {DRESSEUR_FALAISES, DRESSEUR_SAFRANIA, MORGANE} from "../trainers";
 import { KADABRA } from "../pokemons/kadabra";
 import { AEROMITE } from "../pokemons/aeromite";
 import { MR_MIME } from "../pokemons/mrmime";
@@ -9,6 +9,14 @@ import { LIPPOUTOU } from "../pokemons/lippoutou";
 import { HYPNOMADE } from "../pokemons/hypnomade";
 import { NOADKOKO } from "../pokemons/noadkoko";
 import { SOPORIFIK } from "../pokemons/soporifik";
+import {RACAILLOU} from "../pokemons/racaillou";
+import {ONIX} from "../pokemons/onix";
+import {CANINOS} from "../pokemons/caninos";
+import {RHINOCORNE} from "../pokemons/rhinocorne";
+import {SALAMECHE} from "../pokemons/salameche";
+import {PIAFABEC} from "../pokemons/piafabec";
+import {SAQUEDENEU} from "../pokemons/saquedeneu";
+import {SABELETTE} from "../pokemons/sabelette";
 
 export const SAFRANIA: Destination = {
     ref: "SAFRANIA",
@@ -22,7 +30,6 @@ export const SAFRANIA: Destination = {
     coordinates: [216,104],
     type: DestinationType.ARENA,
     icons: ["type_PSY"],
-    subtext: "Arène",
     rooms: {
         arena: {
             name: "Arène de Safrania",
@@ -51,6 +58,25 @@ export const SAFRANIA: Destination = {
                         [5,2],
                         [3,0]
                     ])
+            }
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Arène de Safrania",
+            map: "safrania",
+            music: "music_safrania",
+            trainer: DRESSEUR_SAFRANIA,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    RACAILLOU,
+                    ONIX,
+                    CANINOS,
+                    RHINOCORNE,
+                    SALAMECHE,
+                    PIAFABEC,
+                    SAQUEDENEU,
+                    SABELETTE
+                ])
             }
         }
     }

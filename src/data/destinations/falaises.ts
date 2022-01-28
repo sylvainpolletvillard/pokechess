@@ -1,6 +1,15 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import { spawnWildTeamByType } from "../../logic/spawns";
+import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
 import { TYPE_ROCHE, TYPE_EAU, TYPE_VOL, TYPE_SOL } from "../types";
+import {RACAILLOU} from "../pokemons/racaillou";
+import {ONIX} from "../pokemons/onix";
+import {CANINOS} from "../pokemons/caninos";
+import {RHINOCORNE} from "../pokemons/rhinocorne";
+import {PIAFABEC} from "../pokemons/piafabec";
+import {SALAMECHE} from "../pokemons/salameche";
+import {SAQUEDENEU} from "../pokemons/saquedeneu";
+import {SABELETTE} from "../pokemons/sabelette";
+import {DRESSEUR_FALAISES} from "../trainers";
 
 export const FALAISES: Destination = {
     ref: "FALAISES",
@@ -14,21 +23,39 @@ export const FALAISES: Destination = {
     coordinates: [296,168],
     type: DestinationType.WILD,
     icons: ["type_ROCHE"],
-    subtext: "Capture",
     rooms: {
         wild: {
             type: RoomType.WILD,
             name: "Falaises",
-            map: "foret_de_jade",
-            music: "music_foret_jade",
+            map: "map_falaises",
+            music: "music_falaises",
             spawnOtherTeam(){
-                return spawnWildTeamByType({
+                return spawnTeamByTypeFactor({
                     [TYPE_ROCHE.ref]: 1,
                     [TYPE_EAU.ref]: 1,
                     [TYPE_VOL.ref]: 1,
                     [TYPE_SOL.ref]: 0.5
                 })
             },
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Falaises",
+            map: "map_falaises",
+            music: "music_falaises",
+            trainer: DRESSEUR_FALAISES,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    RACAILLOU,
+                    ONIX,
+                    CANINOS,
+                    RHINOCORNE,
+                    SALAMECHE,
+                    PIAFABEC,
+                    SAQUEDENEU,
+                    SABELETTE
+                ])
+            }
         }
     }
 }

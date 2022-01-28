@@ -1,6 +1,16 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnWildTeamByType} from "../../logic/spawns";
+import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
 import {TYPE_EAU, TYPE_FEE, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE} from "../types";
+import {RACAILLOU} from "../pokemons/racaillou";
+import {MELOFEE} from "../pokemons/melofee";
+import {RONDOUDOU} from "../pokemons/rondoudou";
+import {PORYGON} from "../pokemons/porygon";
+import {SABELETTE} from "../pokemons/sabelette";
+import {STARI} from "../pokemons/stari";
+import {EVOLI} from "../pokemons/evoli";
+import {TAUPIQUEUR} from "../pokemons/taupiqueur";
+import {OSSELAIT} from "../pokemons/osselait";
+import {DRESSEUR_MONT_SELENITE} from "../trainers";
 
 export const MONT_SELENITE: Destination = {
     ref: "MONT_SELENITE",
@@ -19,15 +29,35 @@ export const MONT_SELENITE: Destination = {
             type: RoomType.WILD,
             name: "Mont Sélénite",
             map: "mont_selenite",
-            music: "",
+            music: "music_mont_selenite",
             spawnOtherTeam(){
-                return spawnWildTeamByType({
+                return spawnTeamByTypeFactor({
                     [TYPE_FEE.ref]: 1,
                     [TYPE_SOL.ref]: 0.5,
                     [TYPE_ROCHE.ref]: 0.5,
                     [TYPE_EAU.ref]: 0.5,
                     [TYPE_SPECTRE.ref]: 0.2
                 })
+            }
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Mont Sélénite",
+            map: "mont_selenite",
+            music: "music_mont_selenite",
+            trainer: DRESSEUR_MONT_SELENITE,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    MELOFEE,
+                    RONDOUDOU,
+                    STARI,
+                    EVOLI,
+                    PORYGON,
+                    RACAILLOU,
+                    SABELETTE,
+                    TAUPIQUEUR,
+                    OSSELAIT
+                ])
             }
         }
     }

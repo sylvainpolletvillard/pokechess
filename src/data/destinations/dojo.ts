@@ -1,6 +1,13 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import { spawnWildTeamByType } from "../../logic/spawns";
+import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
 import { TYPE_COMBAT, TYPE_NORMAL, TYPE_INSECTE, TYPE_FEU, TYPE_PSY } from "../types";
+import { DRESSEUR_DOJO} from "../trainers";
+import {TYGNON} from "../pokemons/tygnon";
+import {KICKLEE} from "../pokemons/kicklee";
+import {KANGOUREX} from "../pokemons/kangourex";
+import {MACHOPEUR} from "../pokemons/machopeur";
+import {FEROSINGE} from "../pokemons/ferosinge";
+import {TARTARD} from "../pokemons/tartard";
 
 export const DOJO: Destination = {
     ref: "DOJO",
@@ -12,15 +19,14 @@ export const DOJO: Destination = {
     coordinates: [184,104],
     type: DestinationType.WILD,
     icons: ["type_COMBAT"],
-    subtext: "Capture",
     rooms: {
         wild: {
             type: RoomType.WILD,
             name: "Dojo",
-            map: "foret_de_jade",
-            music: "music_foret_jade",
+            map: "map_dojo",
+            music: "music_dojo",
             spawnOtherTeam(){
-                return spawnWildTeamByType({
+                return spawnTeamByTypeFactor({
                     [TYPE_COMBAT.ref]: 1,
                     [TYPE_NORMAL.ref]: 0.2,
                     [TYPE_INSECTE.ref]: 0.2,
@@ -28,6 +34,25 @@ export const DOJO: Destination = {
                     [TYPE_PSY.ref]: 0.2,
                 })
             },
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Dojo",
+            map: "map_dojo",
+            music: "music_dojo",
+            trainer: DRESSEUR_DOJO,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    TYGNON,
+                    TYGNON,
+                    KICKLEE,
+                    KICKLEE,
+                    KANGOUREX,
+                    MACHOPEUR,
+                    FEROSINGE,
+                    TARTARD
+                ])
+            }
         }
     }
 }

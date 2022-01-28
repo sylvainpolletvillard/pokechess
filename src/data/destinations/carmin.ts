@@ -1,6 +1,6 @@
-import { spawnChampionTeam } from "../../logic/spawns";
+import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import { MAJOR_BOB } from "../trainers";
+import {DRESSEUR_CARMIN, MAJOR_BOB} from "../trainers";
 import { ELECTRODE } from "../pokemons/electrode";
 import { ELEKTEK } from "../pokemons/elektek";
 import { MAGNETI } from "../pokemons/magneti";
@@ -9,6 +9,10 @@ import { PIKACHU } from "../pokemons/pikachu";
 import { RAICHU } from "../pokemons/raichu";
 import { VOLTALI } from "../pokemons/voltali";
 import { VOLTORBE } from "../pokemons/voltorbe";
+import {SMOGO} from "../pokemons/smogo";
+import {FANTOMINUS} from "../pokemons/fantominus";
+import {MAGMAR} from "../pokemons/magmar";
+import {STARI} from "../pokemons/stari";
 
 export const CARMIN: Destination = {
     ref: "CARMIN",
@@ -22,12 +26,13 @@ export const CARMIN: Destination = {
     coordinates: [216,168],
     type: DestinationType.ARENA,
     icons: ["type_ELECTRIQUE"],
-    subtext: "Arène",
     rooms: {
         arena: {
             type: RoomType.ARENA,
             name: "Arène de Carmin s.mer",
             map: "arene_carmin",
+            music: "music_carmin",
+            trainer: MAJOR_BOB,
             spawnOtherTeam() {
                 return spawnChampionTeam([
                         VOLTORBE,
@@ -50,8 +55,27 @@ export const CARMIN: Destination = {
                         [3, 0]
                     ])
             },
+
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Arène de Carmin s.mer",
+            map: "arene_carmin",
             music: "music_carmin",
-            trainer: MAJOR_BOB
+            trainer: DRESSEUR_CARMIN,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    VOLTORBE,
+                    VOLTORBE,
+                    ELEKTEK,
+                    PIKACHU,
+                    SMOGO,
+                    MAGNETI,
+                    FANTOMINUS,
+                    MAGMAR,
+                    STARI
+                ])
+            }
         }
     }
 }

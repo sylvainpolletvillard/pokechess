@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {ONDINE} from "../trainers";
-import {spawnChampionTeam} from "../../logic/spawns";
+import {DRESSEUR_AZURIA, DRESSEUR_COL_DE_MONTAGNE, ONDINE} from "../trainers";
+import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
 
 import { AKWAKWAK } from "../pokemons/akwakwak";
 import { AQUALI } from "../pokemons/aquali";
@@ -10,6 +10,21 @@ import { LOKHLASS } from "../pokemons/lokhlass";
 import { STARI } from "../pokemons/stari";
 import { STAROSS } from "../pokemons/staross";
 import { PSYKOKWAK } from "../pokemons/psykokwak";
+import {ROUCOOL} from "../pokemons/roucool";
+import {PIAFABEC} from "../pokemons/piafabec";
+import {CANINOS} from "../pokemons/caninos";
+import {NOSFERAPTI} from "../pokemons/nosferapti";
+import {DODUO} from "../pokemons/doduo";
+import {SALAMECHE} from "../pokemons/salameche";
+import {MIMITOSS} from "../pokemons/mimitoss";
+import {CANARTICHO} from "../pokemons/canarticho";
+import {CARAPUCE} from "../pokemons/carapuce";
+import {PTITARD} from "../pokemons/ptitard";
+import {OTARIA} from "../pokemons/otaria";
+import {KOKIYAS} from "../pokemons/kokiyas";
+import {KRABBY} from "../pokemons/krabby";
+import {HYPOTREMPE} from "../pokemons/hypotrempe";
+import {POISSIRENE} from "../pokemons/poissirene";
 
 export const AZURIA: Destination = {
     ref: "AZURIA",
@@ -25,7 +40,6 @@ export const AZURIA: Destination = {
     coordinates: [216,38],
     type: DestinationType.ARENA,
     icons: ["type_EAU"],
-    subtext: "Arène",
     rooms: {
         arena: {
             type: RoomType.ARENA,
@@ -55,6 +69,28 @@ export const AZURIA: Destination = {
             },
             music: "music_azuria",
             trainer: ONDINE
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Arène d'Azuria",
+            map: "arene_azuria",
+            music: "music_azuria",
+            trainer: DRESSEUR_AZURIA,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    STARI,
+                    CARAPUCE,
+                    PSYKOKWAK,
+                    PTITARD,
+                    OTARIA,
+                    KOKIYAS,
+                    KRABBY,
+                    HYPOTREMPE,
+                    POISSIRENE,
+                    AQUALI,
+                    LOKHLASS
+                ])
+            }
         }
     }
 }

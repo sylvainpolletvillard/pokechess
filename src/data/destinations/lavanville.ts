@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnChampionTeam} from "../../logic/spawns";
-import { SALLY} from "../trainers";
+import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
+import {DRESSEUR_GROTTE_AZUREE, DRESSEUR_LAVANVILLE, SALLY} from "../trainers";
 import { GRODOUDOU } from "../pokemons/grodoudou";
 import { LEVEINARD } from "../pokemons/leveinard";
 import { MELODELFE } from "../pokemons/melodelfe";
@@ -9,6 +9,22 @@ import { MEW } from "../pokemons/mew";
 import { RONDOUDOU } from "../pokemons/rondoudou";
 import { MR_MIME } from "../pokemons/mrmime";
 import { PAPILUSION } from "../pokemons/papilusion";
+import {STARI} from "../pokemons/stari";
+import {CARAPUCE} from "../pokemons/carapuce";
+import {PSYKOKWAK} from "../pokemons/psykokwak";
+import {PTITARD} from "../pokemons/ptitard";
+import {OTARIA} from "../pokemons/otaria";
+import {KOKIYAS} from "../pokemons/kokiyas";
+import {KRABBY} from "../pokemons/krabby";
+import {HYPOTREMPE} from "../pokemons/hypotrempe";
+import {POISSIRENE} from "../pokemons/poissirene";
+import {AQUALI} from "../pokemons/aquali";
+import {LOKHLASS} from "../pokemons/lokhlass";
+import {FANTOMINUS} from "../pokemons/fantominus";
+import {MIAOUSS} from "../pokemons/miaouss";
+import {CANINOS} from "../pokemons/caninos";
+import {TAUROS} from "../pokemons/tauros";
+import {EVOLI} from "../pokemons/evoli";
 
 export const LAVANVILLE: Destination = {
     ref: "LAVANVILLE",
@@ -21,7 +37,6 @@ export const LAVANVILLE: Destination = {
     coordinates: [296,104],
     type: DestinationType.ARENA,
     icons: ["type_FEE"],
-    subtext: "Arène",
     rooms: {
         arena: {
             type: RoomType.ARENA,
@@ -51,6 +66,25 @@ export const LAVANVILLE: Destination = {
             },
             music: "music_lavanville",
             trainer: SALLY
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Arène de Lavanville",
+            map: "arene_lavanville",
+            music: "music_lavanville",
+            trainer: DRESSEUR_LAVANVILLE,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    MELOFEE,
+                    RONDOUDOU,
+                    MR_MIME,
+                    FANTOMINUS,
+                    MIAOUSS,
+                    CANINOS,
+                    EVOLI,
+                    TAUROS
+                ])
+            }
         }
     }
 }

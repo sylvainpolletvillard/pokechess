@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {PIERRE} from "../trainers";
-import {spawnChampionTeam} from "../../logic/spawns";
+import {DRESSEUR_ARGENTA, PIERRE} from "../trainers";
+import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
 
 import { AMONISTAR } from "../pokemons/amonistar";
 import { GRAVALANCH } from "../pokemons/gravalanch";
@@ -10,6 +10,18 @@ import { ONIX } from "../pokemons/onix";
 import { RACAILLOU } from "../pokemons/racaillou";
 import { RHINOCORNE } from "../pokemons/rhinocorne";
 import { RHINOFEROS } from "../pokemons/rhinoferos";
+import {FANTOMINUS} from "../pokemons/fantominus";
+import {OSSELAIT} from "../pokemons/osselait";
+import {NOSFERAPTI} from "../pokemons/nosferapti";
+import {GOUPIX} from "../pokemons/goupix";
+import {MELOFEE} from "../pokemons/melofee";
+import {ABRA} from "../pokemons/abra";
+import {KANGOUREX} from "../pokemons/kangourex";
+import {RONFLEX} from "../pokemons/ronflex";
+import {KABUTO} from "../pokemons/kabuto";
+import {KOKIYAS} from "../pokemons/kokiyas";
+import {KRABBY} from "../pokemons/krabby";
+import {MACHOC} from "../pokemons/machoc";
 
 export const ARGENTA: Destination = {
     ref: "ARGENTA",
@@ -23,13 +35,13 @@ export const ARGENTA: Destination = {
     coordinates: [104,72],
     type: DestinationType.ARENA,
     icons: ["type_ROCHE"],
-    subtext: "Arène",
     rooms: {
         arena: {
             name: "Arène d'Argenta",
             type: RoomType.ARENA,
             trainer: PIERRE,
             map: "arene_argenta",
+            music: "music_argenta",
             spawnOtherTeam(){
                 return spawnChampionTeam([
                         RACAILLOU,
@@ -51,8 +63,27 @@ export const ARGENTA: Destination = {
                         [5,2],
                         [3,0]
                     ])
-            },
-            music: "music_argenta"
+            }
         },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Arène d'Argenta",
+            map: "arene_argenta",
+            music: "music_argenta",
+            trainer: DRESSEUR_ARGENTA,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    RACAILLOU,
+                    ONIX,
+                    RHINOCORNE,
+                    KANGOUREX,
+                    RONFLEX,
+                    KABUTO,
+                    KOKIYAS,
+                    KRABBY,
+                    MACHOC
+                ])
+            }
+        }
     }
 }

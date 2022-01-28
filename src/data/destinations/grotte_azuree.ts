@@ -1,6 +1,18 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnWildTeamByType} from "../../logic/spawns";
+import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
 import {TYPE_DRAGON, TYPE_EAU, TYPE_GLACE, TYPE_ROCHE, TYPE_SPECTRE} from "../types";
+import {DRESSEUR_GROTTE_AZUREE} from "../trainers";
+import {STARI} from "../pokemons/stari";
+import {CARAPUCE} from "../pokemons/carapuce";
+import {PSYKOKWAK} from "../pokemons/psykokwak";
+import {PTITARD} from "../pokemons/ptitard";
+import {OTARIA} from "../pokemons/otaria";
+import {KOKIYAS} from "../pokemons/kokiyas";
+import {KRABBY} from "../pokemons/krabby";
+import {HYPOTREMPE} from "../pokemons/hypotrempe";
+import {POISSIRENE} from "../pokemons/poissirene";
+import {AQUALI} from "../pokemons/aquali";
+import {LOKHLASS} from "../pokemons/lokhlass";
 
 export const GROTTE_AZUREE: Destination = {
     ref: "GROTTE_AZUREE",
@@ -11,21 +23,42 @@ export const GROTTE_AZUREE: Destination = {
     coordinates: [216,8],
     type: DestinationType.WILD,
     icons: ["type_GLACE"],
-    subtext: "Capture",
     rooms: {
         wild: {
             type: RoomType.WILD,
-            music: "",
+            music: "music_grotte_azuree",
             name: "Grotte Azurée",
             map: "grotte_azuree",
             spawnOtherTeam(){
-                return spawnWildTeamByType({
+                return spawnTeamByTypeFactor({
                     [TYPE_GLACE.ref]: 0.5,
                     [TYPE_EAU.ref]: 0.5,
                     [TYPE_DRAGON.ref]: 0.3,
                     [TYPE_ROCHE.ref]: 0.2,
                     [TYPE_SPECTRE.ref]: 0.1,
                 })
+            }
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Grotte Azurée",
+            map: "grotte_azuree",
+            music: "music_grotte_azuree",
+            trainer: DRESSEUR_GROTTE_AZUREE,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    STARI,
+                    CARAPUCE,
+                    PSYKOKWAK,
+                    PTITARD,
+                    OTARIA,
+                    KOKIYAS,
+                    KRABBY,
+                    HYPOTREMPE,
+                    POISSIRENE,
+                    AQUALI,
+                    LOKHLASS
+                ])
             }
         }
     }

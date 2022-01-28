@@ -1,19 +1,49 @@
-import {Destination, DestinationType, RoomType, RoomWild} from "../../logic/destination";
-import {spawnWildTeamByType} from "../../logic/spawns";
+import {Destination, DestinationType, RoomArena, RoomType, RoomWild} from "../../logic/destination";
+import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
 import {TYPE_INSECTE, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE} from "../types";
+import {DRESSEUR_CAVE_TAUPIQUEUR} from "../trainers";
+import {SMOGO} from "../pokemons/smogo";
+import {FANTOMINUS} from "../pokemons/fantominus";
+import {MAGMAR} from "../pokemons/magmar";
+import {TAUPIQUEUR} from "../pokemons/taupiqueur";
+import {TADMORV} from "../pokemons/tadmorv";
+import {SABELETTE} from "../pokemons/sabelette";
+import {RACAILLOU} from "../pokemons/racaillou";
+import {MIAOUSS} from "../pokemons/miaouss";
 
-const ROOM_TAUPIQUEUR: RoomWild =  {
+const ROOM_TAUPIQUEUR_WILD: RoomWild = {
     type: RoomType.WILD,
     name: "Cave taupiqueur",
-    music: "",
+    music: "music_cave_taupiqueur",
     map: "cave_taupiqueur",
     spawnOtherTeam(){
-        return spawnWildTeamByType({
+        return spawnTeamByTypeFactor({
             [TYPE_SOL.ref]: 1,
             [TYPE_ROCHE.ref]: 0.2,
             [TYPE_INSECTE.ref]: 0.2,
             [TYPE_SPECTRE.ref]: 0.1
         })
+    }
+}
+
+const ROOM_TAUPIQUEUR_TRAINER: RoomArena = {
+    type: RoomType.ARENA,
+    name: "Cave taupiqueur",
+    music: "music_cave_taupiqueur",
+    map: "cave_taupiqueur",
+    trainer: DRESSEUR_CAVE_TAUPIQUEUR,
+    spawnOtherTeam(){
+        return spawnTrainerTeam([
+            TAUPIQUEUR,
+            TAUPIQUEUR,
+            TADMORV,
+            MAGMAR,
+            SABELETTE,
+            FANTOMINUS,
+            RACAILLOU,
+            SMOGO,
+            MIAOUSS
+        ])
     }
 }
 
@@ -26,8 +56,10 @@ export const CAVE_TAUPIQUEUR_OUEST: Destination = {
     coordinates: [104,156],
     type: DestinationType.SPECIAL,
     icons: ["cave_entrance", "type_SOL"],
-    subtext: "Voyage rapide et Capture",
-    rooms: { cave: ROOM_TAUPIQUEUR }
+    rooms: {
+        wild: ROOM_TAUPIQUEUR_WILD,
+        arena: ROOM_TAUPIQUEUR_TRAINER
+    }
 }
 
 export const CAVE_TAUPIQUEUR_EST: Destination = {
@@ -40,6 +72,8 @@ export const CAVE_TAUPIQUEUR_EST: Destination = {
     coordinates: [264,150],
     type: DestinationType.SPECIAL,
     icons: ["cave_entrance","type_SOL"],
-    subtext: "Voyage rapide et Capture",
-    rooms: { cave: ROOM_TAUPIQUEUR }
+    rooms: {
+        wild: ROOM_TAUPIQUEUR_WILD,
+        arena: ROOM_TAUPIQUEUR_TRAINER
+    }
 }

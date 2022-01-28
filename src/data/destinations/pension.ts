@@ -1,6 +1,7 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnWildTeamByType} from "../../logic/spawns";
+import {spawnTeamByTypeFactor} from "../../logic/spawns";
 import {TYPE_NORMAL} from "../types";
+import {DRESSEUR_PENSION} from "../trainers";
 
 export const PENSION: Destination = {
     ref: "PENSION",
@@ -12,15 +13,16 @@ export const PENSION: Destination = {
     coordinates: [216,74],
     type: DestinationType.SPECIAL,
     icons: ["type_NORMAL"],
-    subtext: "Éleveur",
+    subtext: "Élevage",
     rooms: {
         pension: {
-            type: RoomType.WILD,
-            music: "",
-            map: "",
             name: "Pension",
+            type: RoomType.PENSION,
+            trainer: DRESSEUR_PENSION,
+            music: "music_pension",
+            map: "pension",
             spawnOtherTeam(){
-                return spawnWildTeamByType({
+                return spawnTeamByTypeFactor({
                     [TYPE_NORMAL.ref]: 1
                 })
             }

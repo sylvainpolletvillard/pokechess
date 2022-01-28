@@ -1,4 +1,4 @@
-import {Pokemon, PokemonEntry, POKEMONS} from "../data/pokemons";
+import {getNonLegendaryPokemonsOfType, Pokemon, PokemonEntry, POKEMONS} from "../data/pokemons";
 import {POKEMON_TYPES} from "../data/types";
 import {gameState} from "./gamestate";
 import {clamp, pickNRandomIn, pickRandomIn, randomInt} from "../utils/helpers";
@@ -15,9 +15,8 @@ import { RONDOUDOU } from "../data/pokemons/rondoudou";
 import { SOPORIFIK } from "../data/pokemons/soporifik";
 import { NOSFERAPTI } from "../data/pokemons/nosferapti";
 
-export function spawnWildTeamByType(typesFactors: {[typeRef: string]: number }){
+export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }){
     const types = Object.keys(typesFactors)
-    const pokemonsByTypes = types.map(typeRef => POKEMONS.filter(p => p.types.includes(POKEMON_TYPES[typeRef])))
 
     const numberToSpawn = Math.min(8, gameState.player.teamSize + 1)
     
@@ -32,7 +31,7 @@ export function spawnWildTeamByType(typesFactors: {[typeRef: string]: number }){
             factorIndex++;
          }
 
-        const pokemonEntry = pickRandomIn(pokemonsByTypes[factorIndex-1])
+        const pokemonEntry = pickRandomIn(getNonLegendaryPokemonsOfType(POKEMON_TYPES[types[factorIndex-1]]))
         const level = Math.min(Math.floor(gameState.worldLevel/2), 50);
 
         let x: number, y: number;

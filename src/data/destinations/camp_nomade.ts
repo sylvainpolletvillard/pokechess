@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnChampionTeam} from "../../logic/spawns";
-import {HECTOR} from "../trainers";
+import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
+import {DRESSEUR_CAMP_NOMADE, DRESSEUR_FORET_JADE, HECTOR} from "../trainers";
 import {COCONFORT} from "../pokemons/coconfort";
 import {MIMITOSS} from "../pokemons/mimitoss";
 import {AEROMITE} from "../pokemons/aeromite";
@@ -9,6 +9,17 @@ import {PAPILUSION} from "../pokemons/papilusion";
 import {PARASECT} from "../pokemons/parasect";
 import { INSECATEUR } from "../pokemons/insecateur";
 import { SCARABRUTE } from "../pokemons/scarabrute";
+import {CHENIPAN} from "../pokemons/chenipan";
+import {PARAS} from "../pokemons/paras";
+import {ASPICOT} from "../pokemons/aspicot";
+import {SAQUEDENEU} from "../pokemons/saquedeneu";
+import {MYSTHERBE} from "../pokemons/mystherbe";
+import {BULBIZARRE} from "../pokemons/bulbizarre";
+import {RATTATA} from "../pokemons/rattata";
+import {BOUSTIFLOR} from "../pokemons/boustiflor";
+import {NOADKOKO} from "../pokemons/noadkoko";
+import {ABO} from "../pokemons/abo";
+import {PIKACHU} from "../pokemons/pikachu";
 
 export const CAMP_NOMADE: Destination = {
     ref: "CAMP_NOMADE",
@@ -20,12 +31,13 @@ export const CAMP_NOMADE: Destination = {
     coordinates: [296,214],
     type: DestinationType.ARENA,
     icons: ["type_INSECTE"],
-    subtext: "Arène",
     rooms: {
         arena: {
             type: RoomType.ARENA,
             name: "Arène sauvage",
             map: "arene_camp_nomade",
+            music: "music_camp_nomade",
+            trainer: HECTOR,
             spawnOtherTeam() {
                 return spawnChampionTeam([
                         COCONFORT,
@@ -47,9 +59,28 @@ export const CAMP_NOMADE: Destination = {
                         [5, 2],
                         [3, 0]
                     ])
-            },
-            music: "music_camp_nomade",
-            trainer: HECTOR
+            }
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Arène sauvage",
+            map: "arene_camp_nomade",
+            music: "music_foret_jade",
+            trainer: DRESSEUR_CAMP_NOMADE,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    CHENIPAN,
+                    SCARABRUTE,
+                    PARAS,
+                    ASPICOT,
+                    MIMITOSS,
+                    INSECATEUR,
+                    BOUSTIFLOR,
+                    NOADKOKO,
+                    ABO,
+                    PIKACHU
+                ])
+            }
         }
     }
 }

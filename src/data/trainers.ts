@@ -16,8 +16,6 @@ export interface Trainer {
     introFrameIndex: number | null,
     dialogs: {
         start: DialogLine[],
-        victory: DialogLine[],
-        defeat: DialogLine[],
         [other: string]: DialogLine[]
     }
 }
@@ -420,8 +418,274 @@ export const SBIRE_ROCKET: Trainer = {
     }
 }
 
+export const DRESSEUR_COL_DE_MONTAGNE: Trainer = {
+    name: "Sébastien l'ornithologue",
+    frameIndex: 20,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Salut blanc-bec, tu t'es perdu ?`,
+            `Ne compte pas sur moi pour te prendre sous mon aile !`,
+            `Moi je cherche plutôt la prise de bec !`
+        ],
+        victory: [
+            `Ouille, j'ai du plomb dans l'aile ! Bisous je m'envole !`
+        ],
+        defeat: [
+            `Va-t'en à tire-d'aile avant d'y laisser des plumes !`
+        ]
+    }
+}
+
+export const DRESSEUR_DOJO: Trainer = {
+    name: "Koichi le Karatéka",
+    frameIndex: 21,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `P'tit faiblard ! Je suis le GRAND MAITRE de KARATE !`,
+            `Tu me provoques ? Tu veux t'battre ?`,
+            `Tu cherches le contact ? HAHAHA ! Ayaaaaa !`
+        ],
+        victory: [
+            `STOP ! Tu m'as battu ! J'ai honte !`,
+            `OK, tu as gagné ! Mais ne va pas le crier sur tous les toits !`
+        ],
+        defeat: [
+            `Ton entraînement n'est pas encore suffisant ! Ayaaaaa !`
+        ]
+    }
+}
+
+export const DRESSEUR_FALAISES: Trainer = {
+    name: "Maurice le Montagnard",
+    frameIndex: 22,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Salut petit gars ! Je suis le plus grand grimpeur de Kanto !`,
+            `Et j'ai bien l'intention de me hisser au sommet !`,
+            `Un combat ? C'est dans mes cordes !`
+        ],
+        victory: [
+            `Bon, j'ai perdu, on va pas en faire toute une montagne !`
+        ],
+        defeat: [
+            `Alors, on est sur la corde raide ?`
+        ]
+    }
+}
+
+export const DRESSEUR_SAFRANIA: Trainer = {
+    name: "Polo le Kinésiste",
+    frameIndex: 23,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Tu oses revenir ici ? Tu as perdu l'esprit ?`,
+            `Nous autres adeptes Psy nous battons à la force du mental !`,
+            `Ma puissance va te faire tourner la tête !`
+        ],
+        victory: [
+            `Tu m'as collé la migraine !`
+        ],
+        defeat: [
+            `La force brute ne vaut rien contre la puissance de l'intellect !`
+        ]
+    }
+}
+
+export const DRESSEUR_PISTE_CYCLABLE: Trainer = {
+    name: "Karl le Loubard",
+    frameIndex: 24,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Allez gamin, aboule ton quatre heures ! J'ai faim !`,
+            `Essaie pas de fuir ! Mate un peu ma bécane !`,
+            `Tu n'iras pas loin avec ta petite bicyclette !`
+        ],
+        victory: [
+            `Raaah t'as rayé la carroserie ! Vite, au garage !`
+        ],
+        defeat: [
+            `Allez, je mets les gaz, à plus gros naze !`
+        ]
+    }
+}
+
+export const DRESSEUR_ILES_ECUME: Trainer = {
+    name: "Fabien le Pêcheur",
+    frameIndex: 25,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Fais pas de bruit, tu fais fuir les poissons !`
+        ],
+        victory: [
+            `J'aurais pas de belles prises aujourd'hui...`
+        ],
+        defeat: [
+            `Je suis frais comme un gardon !`
+        ]
+    }
+}
+
+export const DRESSEUR_CENTRALE: Trainer = {
+    name: "Bernard le mécano",
+    frameIndex: 26,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `Hé, t'as pété les plombs ?`,
+            `C'est pas un endroit pour les enfants ici !`,
+            `Mon équipe de Pokémons va te foudroyer !`
+        ],
+        victory: [
+            `Je me suis pris un sacré coup de jus !`
+        ],
+        defeat: [
+            `C'était une victoire éclair !`
+        ]
+    }
+}
+
 export const DRESSEUR_FORET_JADE: Trainer = {
-    name: "dresseur_foret_jade",
+    name: "Calvin le Gamin",
+    frameIndex: 27,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `T'es un dresseur Pokémon ? Moi aussi !`,
+            `J'ai capturé plein de Pokémon insectes !`,
+            `Maintenant on doit faire un combat, c'est la règle !`
+        ],
+        victory: [
+            `Je vais le dire à ma mère !`
+        ],
+        defeat: [
+            `Ouaiiiis j'ai gagné pour la première fois !`
+        ]
+    }
+}
+
+export const DRESSEUR_AZURIA: Trainer = {
+    name: "Anya la nageuse",
+    frameIndex: 28,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `De l'eau a coulé sous les ponts depuis ta victoire contre Ondine.`,
+            `Je suis plus fraîche que jamais ! Attends-toi à un raz de marée !`
+        ],
+        victory: [
+            `Gloups, j'ai bu la tasse !`
+        ],
+        defeat: [
+            `Alors, ta stratégie a pris l'eau ?`
+        ]
+    }
+}
+
+export const DRESSEUR_LAVANVILLE: Trainer = {
+    name: "Henri le gentilhomme",
+    frameIndex: 29,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `Sally m'a beaucoup parlé de vous.`,
+            `Me ferez-vous l'honneur d'un combat ?`
+        ],
+        victory: [
+            `C'était un combat magique, je n'aurais pas rêvé mieux.`
+        ],
+        defeat: [
+            `Allez vous reposer, la nuit porte conseil. Et croyez en vos rêves !`
+        ]
+    }
+}
+
+export const DRESSEUR_MONT_SELENITE: Trainer = {
+    name: "Arthur le paléontologue",
+    frameIndex: 30,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Je suis à la recherche de fossiles, tu n'en aurais pas vu ?`
+        ],
+        victory: [
+            `Il semblerait que ce soit moi le fossile...`
+        ],
+        defeat: [
+            `Tu ne feras pas de vieux os ici, mieux vaut que tu partes.`
+        ]
+    }
+}
+
+export const DRESSEUR_OCEANE: Trainer = {
+    name: "Firmin le Marin",
+    frameIndex: 31,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Ahoy, marin d'eau douce !`,
+            `La traversée va être longue...`,
+            `Faisons un combat pour passer le temps !`,
+            `Prêt ? Larguez les amarres !`,
+        ],
+        victory: [
+            `Bon, je dois aller souquer les artimuses... Bon vent !`
+        ],
+        defeat: [
+            `J'ai le vent en poupe aujourd'hui !`,
+            `Allez, les perdants à la cale ! Ha ha, je rigole !`
+        ]
+    }
+}
+
+export const DRESSEUR_MR_PSY: Trainer = {
+    name: "Monsieur Psy",
+    frameIndex: 32,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Ah, te revoilà ! Alors, as-tu entraîné tes Pokémon Psy ?`,
+            `C'est l'heure de... l'évaluation !`,
+        ],
+        victory: [
+            `C'est un 10/10 ! Tu es diplômé de l'école de Monsieur Psy !`
+        ],
+        defeat: [
+            `Quelle déception !`,
+            `Reviens me voir et je te laisserai capturer d'autres Pokémons Psy`,
+            `Ton équipe a besoin d'améliorer son mental !`
+        ]
+    }
+}
+
+export const DRESSEUR_CHAMPS_VERDOYANTS: Trainer = {
+    name: "Isabelle la Fleuriste",
+    frameIndex: 33,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Tiens ? Qui es-tu à arriver comme une fleur ?`,
+            `C'est mon coin ici ! Je vais t'envoyer sur les roses !`,
+        ],
+        victory: [
+            `Mon équipe a été envoyée dans les pâquerettes !`,
+            `Raaaah tu m'as mis les nerfs à fleur de peau !`
+        ],
+        defeat: [
+            `Je vais te faire une fleur et te donner un conseil:`,
+            `Il n'y a pas de rose sans épines.`,
+            `Il te faut une bonne attaque si tu veux gagner.`
+        ]
+    }
+}
+
+export const DRESSEUR_CAMP_NOMADE: Trainer = {
+    name: "Nancy la scout",
     frameIndex: 34,
     introFrameIndex: null,
     dialogs:{
@@ -435,6 +699,218 @@ export const DRESSEUR_FORET_JADE: Trainer = {
         ],
         defeat: [
             `Alors, tu as des fourmis dans les jambes ?`
+        ]
+    }
+}
+
+export const DRESSEUR_CELADOPOLE: Trainer = {
+    name: "Valentine la Citadine",
+    frameIndex: 35,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Je t'ai déjà croisé en ville, non ?`,
+            `Je peux te faire entrer dans les clubs de dresseurs les plus chics ici !`,
+            `Mais tu dois d'abord prouver que tu le mérites ! À l'attaque !`
+        ],
+        victory: [
+            `Mais euh ! Tu étais censé me laisser gagner !`,
+            `Vous autres provinciaux n'avez aucun savoir vivre !`
+        ],
+        defeat: [
+            `Finalement je n'ai plus trop envie qu'on traîne ensemble, hi hi !`
+        ]
+    }
+}
+
+export const DRESSEUR_ARGENTA: Trainer = {
+    name: "Roche le géologue",
+    frameIndex: 36,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Tu as vaincu Pierre, mais moi je suis solide comme un roc !`,
+        ],
+        victory: [
+            `Je crois que j'ai un caillou dans ma chaussure...`
+        ],
+        defeat: [
+            `Alors, on a un coup de calcaire ?`
+        ]
+    }
+}
+
+export const DRESSEUR_GROTTE_AZUREE: Trainer = {
+    name: "Ugo le vieux sage",
+    frameIndex: 37,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
+            `Hmmm... Drôle d'endroit pour une rencontre.`,
+            `Laisse moi briser la glace. En garde !`
+        ],
+        victory: [
+            `Ma défense a fondu comme neige au soleil !`
+        ],
+        defeat: [
+            `Hmm... Ton équipe s'est fait refroidir.`,
+            `Que fais-tu encore ici ? Tu attends le dégel ?`
+        ]
+    }
+}
+
+export const DRESSEUR_CARMIN: Trainer = {
+    name: "Elton le Rocker",
+    frameIndex: 38,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `Hey t'es venu pour mon concert ? L'ambiance est électrique ici !`,
+            `Comment ça, non ? T'as jamais écouté mon CD ?!`,
+            `Je vais pas te laisser gâcher la fête !`
+        ],
+        victory: [
+            `Ça y est t'as ruiné l'ambiance !`
+        ],
+        defeat: [
+            `Ça c'est du rock !!!`
+        ]
+    }
+}
+
+export const DRESSEUR_TOUR_POKEMON: Trainer = {
+    name: "Gwen l'Exorciste",
+    frameIndex: 39,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `Arrière, démon !!!`
+        ],
+        victory: [
+            `AaAaaaAaaah !!! Fuyez pour vos vies !!!`
+        ],
+        defeat: [
+            `Ça... ? Ça a marché ?`,
+            `Les démons ne prennent pas les coups d'habitude...`
+        ]
+    }
+}
+
+export const DRESSEUR_PENSION: Trainer = {
+    name: "Gaël de la Pension",
+    frameIndex: 40,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `Bienvenue à la Pension !`,
+            `Ici on prend soin des Pokémons quand leur propriétaire doit s'absenter.`,
+            `Il y a aussi des Pokémons qui ne cherchent qu'à être adoptés !`,
+            `Leur type est banal alors ils n'intéressent pas les autres dresseurs...`
+        ],
+        bye_deposed: [
+            `Je prendrais soin de tes Pokémon en ton absence !`
+        ],
+        bye: [
+            `Reviens quand tu veux !`
+        ],
+        back: [
+            `Tiens, c'est toi ! Tu viens nous confier des Pokémons ?`,
+        ],
+        back_deposed: [
+            `Ah, te revoilà ! Tes Pokémons bien grandi, regarde !`
+        ]
+    }
+}
+
+export const DRESSEUR_CAVE_TAUPIQUEUR: Trainer = {
+    name: "Joe le Cambrioleur",
+    frameIndex: 41,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `Hein ? Non, c'est pas moi !`,
+            `J'ai un alibi ! J'étais au cinéma !`,
+        ],
+        victory: [
+            `Pas la peine de s'énerver ! Tiens, prends ces Pokéballs !`,
+            `Et... on dit que tu ne m'as jamais vu, OK ?`
+        ],
+        defeat: [
+            `Ça t'apprendra à venir fouiner dans les coins sombres !`
+        ]
+    }
+}
+
+export const DRESSEUR_COLLINE_ROYALE: Trainer = {
+    name: "Norbert le Fan de Dragons",
+    frameIndex: 42,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `Tu cherches des Pokémons Dragons ?`,
+            `Moi aussi ! Moi aussi !`,
+            `Ils sont si grands ! si beaux ! si majestueux !`,
+            `Ils sont à moi ! Tu m'entends ? À moi seul !`
+        ],
+        victory: [
+            `La force ancestrale du dragon m'a abandonné !`
+        ],
+        defeat: [
+            `Mes dragons sont si forts ! si terrifiants !`,
+            `si puissants ! si... ah, il est parti.`
+        ]
+    }
+}
+
+export const DRESSEUR_MONT_BRAISE: Trainer = {
+    name: "Duo Ron & Mya les Casse-Cous",
+    frameIndex: 42,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `Eh bien que fait un jeune garçon dans un endroit pareil ?`,
+            `Tu n'as pas froid aux yeux, toi !`,
+            `Hé Ron, si on lui faisait un baptême du feu ?`
+        ],
+        victory: [
+            `Cessez-le-feu ! Viens Ron, on s'en va !`
+        ],
+        defeat: [
+            `Tu vois ce que ça fait d'être pris entre deux feux !`
+        ]
+    }
+}
+
+export const DRESSEUR_PARMANIE: Trainer = {
+    name: "Sbire Rocket",
+    frameIndex: 43,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `...`,
+        ],
+        victory: [
+            `...`
+        ],
+        defeat: [
+            `...`
+        ]
+    }
+}
+
+export const DRESSEUR_CRAMOISILE: Trainer = {
+    name: "Isaac le Scientifique",
+    frameIndex: 19,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `...`,
+        ],
+        victory: [
+            `...`
+        ],
+        defeat: [
+            `...`
         ]
     }
 }

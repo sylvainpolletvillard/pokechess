@@ -1,5 +1,5 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {spawnTrainerTeam, spawnWildTeamByType} from "../../logic/spawns";
+import {spawnTrainerTeam, spawnTeamByTypeFactor} from "../../logic/spawns";
 import {TYPE_FEE, TYPE_INSECTE, TYPE_PLANTE, TYPE_POISON} from "../types";
 import {RATTATA} from "../pokemons/rattata";
 import {BULBIZARRE} from "../pokemons/bulbizarre";
@@ -23,7 +23,6 @@ export const FORET_JADE: Destination = {
     coordinates: [72,136],
     type: DestinationType.WILD,
     icons: ["type_INSECTE"],
-    subtext: "Capture",
     rooms: {
         wild: {
             type: RoomType.WILD,
@@ -31,7 +30,7 @@ export const FORET_JADE: Destination = {
             map: "foret_de_jade",
             music: "music_foret_jade",
             spawnOtherTeam(){
-                return spawnWildTeamByType({
+                return spawnTeamByTypeFactor({
                     [TYPE_INSECTE.ref]: 1,
                     [TYPE_PLANTE.ref]: 0.2,
                     [TYPE_POISON.ref]: 0.2,

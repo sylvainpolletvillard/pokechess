@@ -1,6 +1,6 @@
-import { spawnChampionTeam } from "../../logic/spawns";
+import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import { ERIKA } from "../trainers";
+import {DRESSEUR_CELADOPOLE, ERIKA} from "../trainers";
 import { BOUSTIFLOR } from "../pokemons/boustiflor";
 import { EMPIFLOR } from "../pokemons/empiflor";
 import { FLORIZARRE } from "../pokemons/florizarre";
@@ -9,6 +9,13 @@ import { NOADKOKO } from "../pokemons/noadkoko";
 import { ORTIDE } from "../pokemons/ortide";
 import { RAFFLESIA } from "../pokemons/rafflesia";
 import { SAQUEDENEU } from "../pokemons/saquedeneu";
+import {MYSTHERBE} from "../pokemons/mystherbe";
+import {BULBIZARRE} from "../pokemons/bulbizarre";
+import {CHETIFLOR} from "../pokemons/chetiflor";
+import {NOEUFNOEUF} from "../pokemons/noeufnoeuf";
+import {PARAS} from "../pokemons/paras";
+import {PAPILUSION} from "../pokemons/papilusion";
+import {TAUPIQUEUR} from "../pokemons/taupiqueur";
 
 export const CELADOPOLE: Destination = {
     ref: "CELADOPOLE",
@@ -22,12 +29,13 @@ export const CELADOPOLE: Destination = {
     coordinates: [136,104],
     type: DestinationType.ARENA,
     icons: ["type_PLANTE"],
-    subtext: "Arène",
     rooms: {
         arena: {
             type: RoomType.ARENA,
             name: "Arène de Céladopole",
             map: "arene_celadopole",
+            music: "music_celadopole",
+            trainer: ERIKA,
             spawnOtherTeam() {
                 return spawnChampionTeam([
                         SAQUEDENEU,
@@ -49,9 +57,27 @@ export const CELADOPOLE: Destination = {
                         [5, 2],
                         [3, 0]
                     ])
-            },
+            }
+        },
+        trainer: {
+            type: RoomType.ARENA,
+            name: "Arène de Céladopole",
+            map: "arene_celadopole",
             music: "music_celadopole",
-            trainer: ERIKA
+            trainer: DRESSEUR_CELADOPOLE,
+            spawnOtherTeam(){
+                return spawnTrainerTeam([
+                    MYSTHERBE,
+                    MYSTHERBE,
+                    BULBIZARRE,
+                    CHETIFLOR,
+                    NOEUFNOEUF,
+                    PARAS,
+                    PAPILUSION,
+                    SAQUEDENEU,
+                    TAUPIQUEUR
+                ])
+            }
         }
     }
 }

@@ -87,7 +87,6 @@ export const JADIELLE: Destination = {
     coordinates: [72,184],
     type: DestinationType.ARENA,
     icons: ["type_SOL"],
-    subtext: "Arène",
     rooms: {
         arena: ARENA_GIOVANNI,
         trainer: TUTO_SBIRE,

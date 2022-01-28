@@ -1,8 +1,10 @@
 import {PokemonOnBoard} from "../objects/pokemon";
-import {Trainer} from "../data/trainers";
+import {DRESSEUR_PENSION, Trainer} from "../data/trainers";
 import {LevelConfig} from "./level";
 import {Badge} from "../data/badges";
 import {gameState} from "./gamestate";
+import {spawnTeamByTypeFactor} from "./spawns";
+import {TYPE_NORMAL} from "../data/types";
 
 export type Path = [dx:number, dy:number][];
 
@@ -19,11 +21,12 @@ export enum DestinationType {
 }
 
 export enum RoomType {
-    ARENA,
-    WILD,
-    FREEWALK,
-    SAFARI,
-    TUTORIAL
+    ARENA = "ARENA",
+    WILD = "WILD",
+    FREEWALK = "FREEWALK",
+    TUTORIAL = "TUTORIAL",
+    SAFARI = "SAFARI",
+    PENSION = "PENSION"
 }
 
 export interface Destination {
@@ -33,7 +36,7 @@ export interface Destination {
     coordinates: [number, number]
     nextDestinations: { [destinationRef: string]: Path }
     icons: string[]
-    subtext: string
+    subtext?: string
     rooms: { [ref: string]: Room }
     shopId?: number
 }
@@ -44,7 +47,7 @@ export interface RoomConfig {
     music: string;
 }
 
-export type Room = RoomWild | RoomArena | RoomFreewalk | RoomTutorial | RoomSafari
+export type Room = RoomWild | RoomArena | RoomFreewalk | RoomTutorial | RoomSafari | RoomPension
 
 export interface RoomWild extends RoomConfig {
     type: RoomType.WILD
@@ -76,6 +79,13 @@ export interface RoomSafari extends RoomConfig {
     type: RoomType.SAFARI
 }
 
+export interface RoomPension extends RoomConfig {
+    type: RoomType.PENSION
+    map: string
+    spawnOtherTeam: () => PokemonOnBoard[]
+    trainer: Trainer,
+}
+
 export function enterDestination(destination: Destination){
     gameState.roomOrder = getRoomOrder(destination)
     gameState.currentDestination = destination
@@ -103,4 +113,13 @@ export function getRoomOrder(destination: Destination): string[] {
     else {
         return Object.keys(destination.rooms)
     }
+}
+
+export function getSubText(destination: Destination): string {
+    if(destination.subtext) return destination.subtext
+    if(destination.type === DestinationType.ARENA) return "Arène"
+    if(destination.type === DestinationType.WILD){
+        return gameState.lastCaptureDestination === destination ? "Combat" : "Capture"
+    }
+    return "???"
 }

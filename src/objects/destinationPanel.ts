@@ -1,4 +1,4 @@
-import {Destination, DestinationType} from "../logic/destination";
+import {Destination, DestinationType, getSubText} from "../logic/destination";
 import {addText} from "../utils/text";
 import {Z} from "../data/depths";
 import MapScene from "../scenes/MapScene";
@@ -25,7 +25,7 @@ export function showDestinationPanel(destination: Destination, scene: MapScene){
     const subtext = addText(
         - 6 - destination.icons.length * 16,
         + 16,
-        destination.subtext,
+        getSubText(destination),
         { color: subtextColor }
     ).setOrigin(1,0).setDepth(Z.MENU_TOOLTIPS)
 
