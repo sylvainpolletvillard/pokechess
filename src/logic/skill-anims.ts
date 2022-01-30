@@ -5,8 +5,8 @@ import GameScene from "../scenes/GameScene";
 import { wait } from "../utils/helpers";
 import { addAlteration } from "./alteration";
 import { getPokemonOnTile } from "./board";
-import { faceTarget, calcDamage, applyDamage } from "./fight";
-import { launchProjectile } from "./projectile";
+import {faceTarget, calcDamage, applyDamage, testPrecision} from "./fight";
+import {destroyProjectile, launchProjectile, projectiles} from "./projectile";
 import { SkillBehavior, HitSkill, ProjectileSkill, SpecialSkill, AOESkill, Skill } from "./skill";
 import { triggerSpecial } from "./specials";
 
@@ -34,22 +34,22 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
     if(!skill.effect) return { angle: 0, dx: 0, dy: 0 };
 
     let [x, y] = target.position, dx=0, dy=0, angle=0, delta = skill.effectDelta ?? 8;
-    if(skill.effectOrigin === "source"){
+    if(skill.effectPosition === "source"){
         [x,y] = attacker.position
         angle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
         dx = Math.round(Math.cos(angle) * delta)
         dy = Math.round(Math.sin(angle) * delta)
-    } else if(skill.effectOrigin === "target"){
+    } else if(skill.effectPosition === "target" || skill.effectPosition === "target_to_source"){
         angle = Math.atan2(attacker.y - target.y, attacker.x - target.x)
         dx = Math.round(Math.cos(angle) * delta)
         dy = Math.round(Math.sin(angle) * delta)
-    } else if(skill.effectOrigin === "target_ground"){
+    } else if(skill.effectPosition === "target_ground"){
         dy= -16 * (skill.effect?.scale ?? 1) + delta
-    } else if(skill.effectOrigin === "source_ground"){
+    } else if(skill.effectPosition === "source_ground"){
         [x,y] = attacker.position
         dy= -16 * (skill.effect?.scale ?? 1) + delta
     }
-    
+
     wait(skill.effectDelay ?? 0).then(() => {
         if(!skill.effect) return;
         const sprite = game.add.sprite(x + dx, y + dy, "effects")
@@ -65,6 +65,21 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
         sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
             sprite.destroy()
         })
+
+        if(skill.effectPosition === "target_to_source"){
+            const [sourceX, sourceY] = attacker.position
+            game.tweens.add({
+                targets: sprite,
+                x: sourceX,
+                y: sourceY,
+                duration: (skill as HitSkill).hitDelay ?? 250,
+                ease: 'Linear',
+                onComplete(){
+                    sprite.destroy()
+                }
+            });
+
+        }
     })
 
     return { angle, dx, dy }
@@ -79,7 +94,7 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
     wait(skill.hitDelay ?? 0).then(() => {
         const damage = calcDamage(skill, target, attacker)
         console.log(`${attacker.name} is attacking ${target.name} for ${damage} damage !`)
-        applyDamage(damage, target)
+        testPrecision(attacker) && applyDamage(damage, target)
         if(skill.hitAlteration) addAlteration(target, skill.hitAlteration, game)
         if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)
     })

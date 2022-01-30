@@ -8,7 +8,7 @@ export const VIVE_ATTAQUE: HitSkill = {
     effect: EFFECTS.VIVE_ATTAQUE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 20,
-    effectOrigin: "target",
+    effectPosition: "target",
     power: 40,
     rotateSprite: true,
     attackRange: 1,

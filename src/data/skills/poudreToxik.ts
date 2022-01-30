@@ -20,7 +20,7 @@ export const POUDRE_TOXIK: AOESkill = {
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.POUDRE_TOXIK,
-    effectOrigin: "source_ground",    
+    effectPosition: "source_ground",    
     power: 0,
     hitDelay: 400,
     hitAlteration: {

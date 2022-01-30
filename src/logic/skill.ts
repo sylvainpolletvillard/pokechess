@@ -11,7 +11,7 @@ export interface Skill {
     effectDelay?: number;
     effectDelta?: number;
     effectDepth?: number;
-    effectOrigin?: "source" | "target" | "source_ground" | "target_ground";
+    effectPosition?: "source" | "target" | "source_ground" | "target_ground" | "target_to_source";
     rotateSprite?: boolean;
     behavior: SkillBehavior;
     power: number;

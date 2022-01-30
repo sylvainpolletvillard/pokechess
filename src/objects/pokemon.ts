@@ -8,10 +8,10 @@ import {removeFromBox} from "../logic/box";
 import {gameState} from "../logic/gamestate";
 import {getCurrentPokemonCaptureInfoDisplayed} from "./pokemonCaptureBox";
 import {canAfford} from "../logic/shop";
-import { displayPokemonReleaseBox, hidePokemonReleaseInfo } from "./pokemonReleaseBox";
-import { hidePokemonInfo } from "./pokemonInfoBox";
-import { Alteration, AlterationType } from "../data/alterations";
-import { Z } from "../data/depths";
+import {displayPokemonReleaseBox, hidePokemonReleaseInfo} from "./pokemonReleaseBox";
+import {hidePokemonInfo} from "./pokemonInfoBox";
+import {Alteration, AlterationType} from "../data/alterations";
+import {Z} from "../data/depths";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -86,6 +86,11 @@ export class PokemonOnBoard extends Pokemon {
         if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
 
         return Math.max(1, Math.ceil(super.speed * Math.max(0.1, buffFactor)))
+    }
+
+    get precision(): number {
+        if(this.hasAlteration(AlterationType.BOUE)) return 0.5
+        return 1
     }
 
     toBoxPokemon(game: GameScene){

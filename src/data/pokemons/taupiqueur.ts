@@ -15,6 +15,6 @@ export const TAUPIQUEUR: PokemonEntry = {
     evolution: TRIOPIKEUR,
     evolutionLevel: 26,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // coud'boue
+    baseSkill: SKILLS.COUD_BOUE,
     ppSkill: SKILLS.LANCE_SOLEIL // tunnel
 }

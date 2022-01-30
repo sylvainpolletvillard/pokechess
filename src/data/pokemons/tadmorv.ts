@@ -15,6 +15,6 @@ export const TADMORV: PokemonEntry = {
     evolution: GROTADMORV,
     evolutionLevel: 38,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // coud'Boue
+    baseSkill: SKILLS.COUD_BOUE,
     ppSkill: SKILLS.LANCE_SOLEIL // Bomb beurk
 }

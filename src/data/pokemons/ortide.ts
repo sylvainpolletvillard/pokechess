@@ -15,6 +15,6 @@ export const ORTIDE: PokemonEntry = {
     evolution: RAFFLESIA,
     evolutionLevel: 37,
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES,  // vol vie
+    baseSkill: SKILLS.VOL_VIE,
     ppSkill: SKILLS.POUDRE_TOXIK
 }

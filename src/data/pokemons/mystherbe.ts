@@ -15,6 +15,6 @@ export const MYSTHERBE: PokemonEntry = {
     evolution: ORTIDE,
     evolutionLevel: 21,
     rank: 1,
-    baseSkill: SKILLS.VOL, // vol vie
+    baseSkill: SKILLS.VOL_VIE,
     ppSkill: SKILLS.POUDRE_TOXIK
 }

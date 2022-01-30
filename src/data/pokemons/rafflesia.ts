@@ -12,6 +12,6 @@ export const RAFFLESIA: PokemonEntry = {
     speed: 50,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],
     rank: 3,
-    baseSkill: SKILLS.FOUET_LIANES,  // vol vie
+    baseSkill: SKILLS.VOL_VIE,
     ppSkill: SKILLS.POUDRE_TOXIK
 }

@@ -12,6 +12,6 @@ export const GROTADMORV: PokemonEntry = {
     speed: 50,
     types: [POKEMON_TYPES.POISON],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // coud'Boue
+    baseSkill: SKILLS.COUD_BOUE,
     ppSkill: SKILLS.LANCE_SOLEIL // Bomb beurk
 }

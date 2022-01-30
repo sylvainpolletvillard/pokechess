@@ -26,6 +26,7 @@ export function launchProjectile(
     target: PokemonOnBoard,
     game: GameScene
 ) {
+    if(!skill.effect) return console.error(`Missing projectile effect`, skill)
     let [x,y] = origin.position
     let [targetX,targetY] = target.position
     const distance = distanceBetweenPokemon(origin, target)    

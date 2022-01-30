@@ -204,7 +204,7 @@ export async function capturePokemon(
                 }
             })
         } else {
-            addToBox(pokemon, game)
+            addToBox(pokemon)
         }
 
         if(gameState.board.otherTeam.length === 0) await gameState.endCapture()
@@ -345,9 +345,15 @@ export function cancelPokemonDrag(){
     if(dragState.draggedElem != null){
         const pokemonDragged = dragState.draggedElem.getData("pokemon")
         if(!pokemonDragged) return;
-        dragState.draggedElem.setPosition(...pokemonDragged.positionPlacement)
-        dragState.draggedElem.emit('drop')
-        dragState.draggedElem = null;
+        if(!(pokemonDragged instanceof PokemonOnBoard)) {
+            // dragged from box to pokedex
+            addToBox(pokemonDragged)
+        } else {
+            // dragged from board to pokedex
+            dragState.draggedElem.setPosition(...pokemonDragged.positionPlacement)
+            dragState.draggedElem.emit('drop')
+            dragState.draggedElem = null;
+        }
     }
 }
 

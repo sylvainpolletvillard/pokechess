@@ -120,6 +120,11 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     })
 }
 
+export function testPrecision(attacker: PokemonOnBoard){
+    if(attacker.precision === 1) return true
+    else return Math.random() <= attacker.precision
+}
+
 export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=false){
     target.pv = Math.max(0, target.pv - damage)
     if(!noPPGain) target.pp = Math.min(target.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))

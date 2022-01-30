@@ -10,7 +10,7 @@ export const HYDROCANON: HitSkill = {
     effect: EFFECTS.HYDROCANON,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 2000,
-    effectOrigin: "target_ground",
+    effectPosition: "target_ground",
     power: 300,
     rotateSprite: false, 
     triggerAlteration: { type: AlterationType.HYDROCANON, stacks: 16 },

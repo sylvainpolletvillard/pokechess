@@ -102,7 +102,7 @@ export function drawMenuButtons(game: GameScene){
             if(pokemon != null){
                 boxButtonText?.destroy()
                 removeFromTeam(pokemon)
-                addToBox(pokemon, game)
+                addToBox(pokemon)
             }
         })
     addInteractiveElem(boxButton)

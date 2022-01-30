@@ -8,7 +8,7 @@ export const GRIFFE: HitSkill = {
     effect: EFFECTS.GRIFFE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
-    effectOrigin: "target",
+    effectPosition: "target",
     power: 40,
     rotateSprite: true,
     attackRange: 1,

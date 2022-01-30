@@ -11,7 +11,7 @@ export const LIGOTAGE: HitSkill = {
     effectDelta: 8,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 300,
-    effectOrigin: "target_ground",
+    effectPosition: "target_ground",
     power: 15,
     rotateSprite: false, 
     triggerAlteration: { type: AlterationType.LIGOTAGE, stacks: 120 },

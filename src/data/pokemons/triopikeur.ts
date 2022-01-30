@@ -12,6 +12,6 @@ export const TRIOPIKEUR: PokemonEntry = {
     speed: 120,
     types: [POKEMON_TYPES.SOL],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // coud'boue
+    baseSkill: SKILLS.COUD_BOUE,
     ppSkill: SKILLS.LANCE_SOLEIL // tunnel
 }

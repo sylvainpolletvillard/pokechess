@@ -10,7 +10,7 @@ export const HYPNOSE: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 500,
     hitAlteration: { type: AlterationType.SOMMEIL, stacks: 100 },
-    effectOrigin: "source",
+    effectPosition: "source",
     power: 0,
     rotateSprite: false,
     attackRange: 4

@@ -59,7 +59,7 @@ export function renderEclair(attacker: PokemonOnBoard, game: GameScene){
         y -= 32
 
         const damage = calcDamage(SKILLS.ECLAIR, randomTarget, attacker)
-        console.log(`Eclair sur ${randomTarget.name} ; ${randomTarget.name} receives ${damage} damage !`)
+        //console.log(`Eclair sur ${randomTarget.name} ; ${randomTarget.name} receives ${damage} damage !`)
         applyDamage(damage, randomTarget)
         addAlteration(randomTarget, { type: AlterationType.PARALYSIE, stacks: 50 }, game)
     }

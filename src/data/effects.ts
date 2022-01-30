@@ -399,5 +399,23 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [243],
         frameRate: 8,
         repeat: 0
-    }
+    },
+    VOL_VIE: {
+        key: "vol_vie",
+        frames: [244,245,246,247],
+        frameRate: 8,
+        repeat: Infinity
+    },
+    COUD_BOUE: {
+        key: "coud_boue",
+        frames: [248],
+        frameRate: 8,
+        repeat: 0
+    },
+    COUD_BOUE_HIT: {
+        key: "coud_boue_hit",
+        frames: [249,250,251,252,253,254],
+        frameRate: 8,
+        repeat: 0
+    },
 }

@@ -10,7 +10,7 @@ export const CROCS_FEU: HitSkill = {
     effect: EFFECTS.CROCS_FEU,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 140,
-    effectOrigin: "target",
+    effectPosition: "target",
     power: 100,
     hitAlteration: { type: AlterationType.BRULURE, stacks: 100 },
     rotateSprite: false,

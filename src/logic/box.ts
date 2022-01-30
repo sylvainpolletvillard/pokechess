@@ -23,7 +23,8 @@ export function removeFromBox(pokemon: Pokemon){
     }
 }
 
-export function addToBox(pokemon: Pokemon, game: GameScene, caseIndex?: number){
+export function addToBox(pokemon: Pokemon, caseIndex?: number){
+    const game = gameState.activeScene as GameScene;
     if(caseIndex == null){
         caseIndex = gameState.player.box.indexOf(null) // find free case index
     }

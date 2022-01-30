@@ -9,7 +9,7 @@ export const CHARGE: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 150,
     effectDelay: 150,
-    effectOrigin: "target",
+    effectPosition: "target",
     chargeDelta: 12,
     power: 40,
     rotateSprite: false,

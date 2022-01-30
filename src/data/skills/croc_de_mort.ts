@@ -8,7 +8,7 @@ export const CROC_DE_MORT: HitSkill = {
     effect: EFFECTS.CROC_DE_MORT,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 200,
-    effectOrigin: "target_ground",
+    effectPosition: "target_ground",
     power: 250,
     rotateSprite: false,
     attackRange: 1,

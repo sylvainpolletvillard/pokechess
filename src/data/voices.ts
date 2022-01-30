@@ -37,7 +37,7 @@ export const voicesByActor: { [name: string]: VoiceConfig } = {
         resonance: 5
     },
     red: {
-        volume: 0 //intense thinking
+        volume: 0 // intense thinking
     },
     auguste: {
         emotion: 80,

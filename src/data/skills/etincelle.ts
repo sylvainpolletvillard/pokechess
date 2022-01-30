@@ -11,7 +11,7 @@ export const ETINCELLE: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
     triggerAlteration: { type: AlterationType.PARALYSIE, stacks: 15 },
-    effectOrigin: "target",
+    effectPosition: "target",
     power: 65,
     rotateSprite: true,
     attackRange: 1,

@@ -34,6 +34,8 @@ import { POUVOIR_ANTIQUE } from "./skills/pouvoirAntique";
 import { DARD_VENIN } from "./skills/dardVenin";
 import { ACIDE } from "./skills/acide";
 import { CRUAILE } from "./skills/cruaile";
+import {VOL_VIE} from "./skills/volVie";
+import {COUD_BOUE} from "./skills/coudBoue";
 
 export const SKILLS = {
     CHARGE,
@@ -71,7 +73,9 @@ export const SKILLS = {
     POUVOIR_ANTIQUE,
     DARD_VENIN,
     ACIDE,
-    CRUAILE
+    CRUAILE,
+    VOL_VIE,
+    COUD_BOUE
     
     // furie
     // léchouille
@@ -111,7 +115,6 @@ export const SKILLS = {
     // psyko
     // jackpot
     // encore
-    // vol vie
     // empal'korne
     // rugissement
     // crochet venin

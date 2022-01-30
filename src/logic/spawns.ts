@@ -32,7 +32,7 @@ export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }
          }
 
         const pokemonEntry = pickRandomIn(getNonLegendaryPokemonsOfType(POKEMON_TYPES[types[factorIndex-1]]))
-        const level = Math.min(Math.floor(gameState.worldLevel/2), 50);
+        const level = clamp(Math.floor(gameState.worldLevel/2) + randomInt(-3,2), 1, 50);
 
         let x: number, y: number;
         do {
@@ -42,7 +42,7 @@ export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }
 
         team.push(
             new PokemonOnBoard(
-                autoEvolve(new Pokemon(pokemonEntry, 0,level + randomInt(-5,0))),
+                autoEvolve(new Pokemon(pokemonEntry, 0, level)),
                 x, y
             )
         )
@@ -61,7 +61,7 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
     )
 
     for(let i=0; i<numberToSpawn; i++){
-        let level = clamp(Math.floor(gameState.worldLevel/2), 1,50) + (i%5)
+        let level = clamp(Math.floor(gameState.worldLevel/2) + (i%5), 1,100)
         const entry = pokemons[i]
         const [x,y] = positions[i]
         team.push(
@@ -77,6 +77,7 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
 
 export function autoEvolve(pokemon: Pokemon): Pokemon{
     if(pokemon.evolution && pokemon.evolutionLevel && pokemon.level > pokemon.evolutionLevel) return autoEvolve(new Pokemon(pokemon.evolution, pokemon.owner, pokemon.level))
+    if(pokemon.entry.devolution && pokemon.level < pokemon.entry.devolution.evolutionLevel!) return autoEvolve(new Pokemon(pokemon.entry.devolution, pokemon.owner, pokemon.level))
     return pokemon
 }
 

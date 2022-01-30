@@ -8,7 +8,7 @@ export const MORSURE: HitSkill = {
     effect: EFFECTS.MORSURE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 140,
-    effectOrigin: "target",
+    effectPosition: "target",
     power: 60,
     rotateSprite: false,
     attackRange: 1,

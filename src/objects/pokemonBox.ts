@@ -98,7 +98,7 @@ export function dropPokemonInBox(pokemonSprite: Phaser.GameObjects.Sprite, caseI
     }
 
     removeFromTeam(droppedPokemon)
-    addToBox(droppedPokemon, game, caseIndex)
+    addToBox(droppedPokemon, caseIndex)
 }
 
 export function addToBoxPanel(

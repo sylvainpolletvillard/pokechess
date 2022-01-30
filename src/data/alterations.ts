@@ -12,7 +12,8 @@ export enum AlterationType {
     SOIN = "SOIN", // restaure les HP à un rythme de 1HP par seconde (vampirisme),
     REPOS = "REPOS", // restaure les HP à un rythme de 5% max HP par seconde, à condition que le lanceur soit endormi
     POUVOIR_ANTIQUE = "POUVOIR_ANTIQUE", // augmente l'attaque, défense et vitesse de 10% par stack
-    ACIDE = "ACIDE" // divise par 2 la défense ennemie
+    ACIDE = "ACIDE", // divise par 2 la défense ennemie
+    BOUE = "BOUE" // réduit de 50% la précision de l'ennemi
 }
 
 export interface Alteration {

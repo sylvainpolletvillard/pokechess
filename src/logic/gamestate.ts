@@ -23,6 +23,8 @@ import {TENTACRUEL} from "../data/pokemons/tentacruel";
 import {COCONFORT} from "../data/pokemons/coconfort";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
 import {loadSave, saveState} from "./save";
+import {MYSTHERBE} from "../data/pokemons/mystherbe";
+import {TADMORV} from "../data/pokemons/tadmorv";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -96,23 +98,27 @@ export class GameState {
     }
 
     initGame(){
-        /*
-        gameState.currentDestination = FORET_JADE
-        gameState.activeScene!.scene.start("MapScene")
-        /*gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(TENTACRUEL, 1, 20), 4 ,5),
-            new PokemonOnBoard( new Pokemon(COCONFORT, 1, 20), 3 ,5),
-        ]
-        gameState.player.inventory[ITEM_POKEBALL.ref] = 20
-        gameState.player.inventory[VITESSE_PLUS.ref] = 1
-        gameState.player.inventory[GEMME_VOLT.ref] = 1
-        gameState.player.inventory[ORBE_GLACE.ref] = 1
-*/
         if(!loadSave()) {
             //new game
             this.currentDestination = BOURG_PALETTE
             this.roomOrder = ["labo", "tuto"]
         }
+
+        // QUICK TESTING
+        /*
+        gameState.currentDestination = FORET_JADE
+        gameState.activeScene!.scene.start("MapScene")
+        gameState.player.team.push(
+            new PokemonOnBoard( new Pokemon(MYSTHERBE, 1, 20), 4 ,6)
+        )
+        gameState.player.inventory[ITEM_POKEBALL.ref] = 20
+        gameState.player.inventory[VITESSE_PLUS.ref] = 1
+        gameState.player.inventory[GEMME_VOLT.ref] = 1
+        gameState.player.inventory[ORBE_GLACE.ref] = 1
+*/
+        gameState.player.team.push(
+            new PokemonOnBoard( new Pokemon(TADMORV, 1, 8), 4 ,6)
+        )
 
         if(this.currentRoomIndex >= this.roomOrder.length) {
             this.activeScene!.scene.start("MapScene")
