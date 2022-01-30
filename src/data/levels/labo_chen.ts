@@ -5,7 +5,7 @@ import {startDialog} from "../../logic/dialog";
 
 export const chenLevel: LevelConfig = {
     title: "Laboratoire de Chen",
-    tilemap: "map_labo_chen",
+    tilemap: "labo_chen",
     tilesets: ["tileset_inside"],
     startAt: "labo_exit",
     canExit(){

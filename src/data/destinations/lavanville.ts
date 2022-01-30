@@ -25,6 +25,7 @@ import {MIAOUSS} from "../pokemons/miaouss";
 import {CANINOS} from "../pokemons/caninos";
 import {TAUROS} from "../pokemons/tauros";
 import {EVOLI} from "../pokemons/evoli";
+import {SHOP_JADIELLE} from "../levels/shops";
 
 export const LAVANVILLE: Destination = {
     ref: "LAVANVILLE",
@@ -85,6 +86,12 @@ export const LAVANVILLE: Destination = {
                     TAUROS
                 ])
             }
+        },
+        shop: {
+            type: RoomType.FREEWALK,
+            name: "Magasin de Lavanville",
+            music: "music_shop",
+            level: SHOP_JADIELLE
         }
     }
 }

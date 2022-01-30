@@ -1,7 +1,7 @@
 import {Destination, DestinationType, RoomArena, RoomType} from "../../logic/destination";
 import {GIOVANNI, SBIRE_ROCKET} from "../trainers";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
-import {shopJadielleLevel} from "../levels/shop_jadielle";
+import {SHOP_JADIELLE} from "../levels/shops";
 import { MIAOUSS } from "../pokemons/miaouss";
 import { ABO } from "../pokemons/abo";
 import { SMOGO } from "../pokemons/smogo";
@@ -94,7 +94,7 @@ export const JADIELLE: Destination = {
             type: RoomType.FREEWALK,
             name: "Magasin de Jadielle",
             music: "music_shop",
-            level: shopJadielleLevel
+            level: SHOP_JADIELLE
         }
     },
     shopId: 1

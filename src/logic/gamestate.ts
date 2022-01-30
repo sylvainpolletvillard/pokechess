@@ -10,7 +10,7 @@ import {showCenterText} from "../objects/gui";
 import { MyScene } from "../scenes/MyScene"
 import {Pokemon} from "../data/pokemons";
 import {pickStarters} from "./starters";
-import {BOURG_PALETTE, TEST_ROOM} from "../data/destinations/bourg_palette";
+import {BOURG_PALETTE} from "../data/destinations/bourg_palette";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
 import { Badge } from "../data/badges";
 import { SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
@@ -22,13 +22,14 @@ import {PokemonOnBoard} from "../objects/pokemon";
 import {TENTACRUEL} from "../data/pokemons/tentacruel";
 import {COCONFORT} from "../data/pokemons/coconfort";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
+import {loadSave, saveState} from "./save";
 
 export enum GameStage {
-    CREATION,
-    PLACEMENT,
-    LAUNCH,
-    FIGHT,
-    ENDED
+    CREATION = "CREATION",
+    PLACEMENT = "PLACEMENT",
+    LAUNCH = "LAUNCH",
+    FIGHT = "FIGHT",
+    ENDED = "ENDED"
 }
 
 export class GameState {
@@ -45,7 +46,7 @@ export class GameState {
     activeDialog: Dialog | null;
     starters: Pokemon[];
     music: Phaser.Sound.BaseSound | undefined;
-    dialogStates: { [pnjName: string]: Number }
+    dialogStates: { [pnjName: string]: number }
     seed: number;
     lastCaptureDestination: Destination | null;
 
@@ -57,7 +58,7 @@ export class GameState {
         const p1 = new Player(1)
         const p2 = new Player(2)
         this.players = [p1 , p2]
-        this.board = setupPlayerIdleBoard(this.player, TEST_ROOM);
+        this.board = setupPlayerIdleBoard(p1);
         this.stage = GameStage.CREATION
         this.activeScene = null;
         this.activeMenu = null;
@@ -95,9 +96,10 @@ export class GameState {
     }
 
     initGame(){
+        /*
         gameState.currentDestination = FORET_JADE
         gameState.activeScene!.scene.start("MapScene")
-        gameState.player.team = [
+        /*gameState.player.team = [
             new PokemonOnBoard( new Pokemon(TENTACRUEL, 1, 20), 4 ,5),
             new PokemonOnBoard( new Pokemon(COCONFORT, 1, 20), 3 ,5),
         ]
@@ -105,9 +107,18 @@ export class GameState {
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
+*/
+        if(!loadSave()) {
+            //new game
+            this.currentDestination = BOURG_PALETTE
+            this.roomOrder = ["labo", "tuto"]
+        }
 
-        /*gameState.currentDestination = BOURG_PALETTE
-        gameState.initRoom("labo")*/
+        if(this.currentRoomIndex >= this.roomOrder.length) {
+            this.activeScene!.scene.start("MapScene")
+        } else {
+            gameState.initRoom()
+        }
     }
 
     goToNextRoom(){
@@ -115,6 +126,7 @@ export class GameState {
         this.currentRoomIndex++;
         if(this.currentRoomIndex >= rooms.length){
             gameState.day++;
+            saveState()
             gameState.activeScene!.scene.start("MapScene")
         } else {
             gameState.initRoom()

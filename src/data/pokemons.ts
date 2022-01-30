@@ -186,7 +186,7 @@ export class Pokemon implements PokemonEntry {
     basePV: number;
     pv: number;
     pp: number;
-    item?: HoldableItem | null;
+    item?: HoldableItem;
     level: number;
     ref: string;
     baseAttack: number;
@@ -209,7 +209,7 @@ export class Pokemon implements PokemonEntry {
         this.entry = entry
         this.owner = owner
         this.level = level
-        this.item = null
+        this.item = undefined
         this.ref = entry.ref
         this.name = entry.name
         this.types = entry.types

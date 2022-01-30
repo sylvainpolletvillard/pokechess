@@ -24,32 +24,26 @@ import { calcXpEarnedOnDefeat } from "./xp";
 import { startDialog } from "./dialog";
 import { hidePokemonReleaseInfo } from "../objects/pokemonReleaseBox";
 
+export const BOARD_WIDTH = 7
+export const BOARD_HEIGHT = 8
+
 export interface Board {
-    mapName: string;
-    width: number;
-    height: number;
     playerTeam: PokemonOnBoard[]
     otherTeam: PokemonOnBoard[]
     activeTile: number[] | null
     xpEarned?: number
 }
 
-export function setupPlayerIdleBoard(player: Player, room: RoomArena | RoomWild){
+export function setupPlayerIdleBoard(player: Player): Board {
     return {
-        mapName: room.map,
-        width: 7,
-        height: 8,
         playerTeam: [...player.team],
         otherTeam: [],
         activeTile: null
     }
 }
 
-export function setupPlayerFightBoard(p1: Player, p2: Player, room: RoomArena){
+export function setupPlayerFightBoard(p1: Player, p2: Player){
     return {
-        mapName: room.map,
-        width: 7,
-        height: 8,
         playerTeam: [...p1.team],
         otherTeam: [...p2.team],
         activeTile: null
@@ -58,9 +52,6 @@ export function setupPlayerFightBoard(p1: Player, p2: Player, room: RoomArena){
 
 export function setupRoomBoard(p1: Player, room: RoomArena | RoomWild){
     return {
-        mapName: room.map,
-        width: 7,
-        height: 8,
         playerTeam: p1.resetTeam(),
         otherTeam: room.spawnOtherTeam(),
         activeTile: null
@@ -225,10 +216,10 @@ export function drawGrid(game: GameScene){
     game.graphics.set("grid", grid);
     grid.setDepth(Z.GRID);
     grid.lineStyle(1, 0x000000, 0.1);
-    for(let x=1; x <= gameState.board.width+1; x++) {
+    for(let x=1; x <= BOARD_WIDTH+1; x++) {
         grid.lineBetween(x*32 + 16, 32, x*32 + 16, 288)
     }
-    for(let y=1; y <= gameState.board.height+1; y++) {
+    for(let y=1; y <= BOARD_HEIGHT+1; y++) {
         grid.lineBetween(48, y*32 + 32, 272, y*32 + 32)
     }
     /*grid.lineStyle(1, 0x000000, 0.25);
@@ -239,8 +230,8 @@ export function drawGrid(game: GameScene){
     grid.setDepth(Z.GRID_ACTIVE_TILE);
     grid.lineStyle(1, 0xffffff, 0.25);
 
-    for(let x=0; x < gameState.board.width; x++) {
-        for(let y=0; y < gameState.board.height; y++) {
+    for(let x=0; x < BOARD_WIDTH; x++) {
+        for(let y=0; y < BOARD_HEIGHT; y++) {
             const gridTile = game.add.zone(x*32 + 64, y*32 + 48, 32, 32)
             //game.add.rectangle(x*32 + 64, y*32 + 48, 32, 32, (y+x)%2?0xff0000:0xff00ff)
             gridTile.setData("type", "gridTile")

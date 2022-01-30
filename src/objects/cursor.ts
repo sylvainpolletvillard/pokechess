@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import {getCoordsFromPosition, getPositionFromCoords} from "../logic/board";
+import {BOARD_HEIGHT, BOARD_WIDTH, getCoordsFromPosition, getPositionFromCoords} from "../logic/board";
 import {GameStage, gameState} from "../logic/gamestate";
 import {Z} from "../data/depths";
 import {MyScene} from "../scenes/MyScene";
@@ -136,9 +136,9 @@ export function testIfCanBeDroppedOn(elem: InteractiveElem){
             const [x,y] = elem.getData("position")
             return draggedType === "pokemon"
                 && x >= 0
-                && x < gameState.board.width
-                && y >= gameState.board.height/2
-                && y < gameState.board.height
+                && x < BOARD_WIDTH
+                && y >= BOARD_HEIGHT/2
+                && y < BOARD_HEIGHT
         case "boxTile":
         case "pokedexButton":
         case "boxButton":

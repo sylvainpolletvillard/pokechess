@@ -16,6 +16,7 @@ import {NOEUFNOEUF} from "../pokemons/noeufnoeuf";
 import {PARAS} from "../pokemons/paras";
 import {PAPILUSION} from "../pokemons/papilusion";
 import {TAUPIQUEUR} from "../pokemons/taupiqueur";
+import {SHOP_JADIELLE} from "../levels/shops";
 
 export const CELADOPOLE: Destination = {
     ref: "CELADOPOLE",
@@ -78,6 +79,12 @@ export const CELADOPOLE: Destination = {
                     TAUPIQUEUR
                 ])
             }
+        },
+        shop: {
+            type: RoomType.FREEWALK,
+            name: "Magasin de Céladopole",
+            music: "music_shop",
+            level: SHOP_JADIELLE
         }
     }
 }

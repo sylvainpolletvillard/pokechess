@@ -1,10 +1,9 @@
 import {PokemonOnBoard} from "../objects/pokemon";
-import {DRESSEUR_PENSION, Trainer} from "../data/trainers";
+import {Trainer} from "../data/trainers";
 import {LevelConfig} from "./level";
 import {Badge} from "../data/badges";
 import {gameState} from "./gamestate";
-import {spawnTeamByTypeFactor} from "./spawns";
-import {TYPE_NORMAL} from "../data/types";
+import {BOURG_PALETTE} from "../data/destinations/bourg_palette";
 
 export type Path = [dx:number, dy:number][];
 
@@ -100,8 +99,8 @@ export function getRoomOrder(destination: Destination): string[] {
      */
     if(destination.type === DestinationType.ARENA){
         const arena = destination.rooms["arena"] as RoomArena
-        if(arena.badge && gameState.player.badges.includes(arena.badge.ref)) return ["shop", "arena"]
-        else return ["shop", "trainer"]
+        if(arena.badge && gameState.player.badges.includes(arena.badge.ref)) return ["shop", "arena"].filter(room => room in destination.rooms)
+        else return ["shop", "trainer"].filter(room => room in destination.rooms)
     }
     if(destination.type === DestinationType.WILD){
         if(gameState.lastCaptureDestination === destination){

@@ -22,6 +22,7 @@ import {KABUTO} from "../pokemons/kabuto";
 import {KOKIYAS} from "../pokemons/kokiyas";
 import {KRABBY} from "../pokemons/krabby";
 import {MACHOC} from "../pokemons/machoc";
+import {SHOP_JADIELLE} from "../levels/shops";
 
 export const ARGENTA: Destination = {
     ref: "ARGENTA",
@@ -84,6 +85,12 @@ export const ARGENTA: Destination = {
                     MACHOC
                 ])
             }
+        },
+        shop: {
+            type: RoomType.FREEWALK,
+            name: "Magasin d'Argenta",
+            music: "music_shop",
+            level: SHOP_JADIELLE
         }
     }
 }

@@ -1,4 +1,4 @@
-import {getNonLegendaryPokemonsOfType, Pokemon, PokemonEntry, POKEMONS} from "../data/pokemons";
+import {getNonLegendaryPokemonsOfType, Pokemon, PokemonEntry} from "../data/pokemons";
 import {POKEMON_TYPES} from "../data/types";
 import {gameState} from "./gamestate";
 import {clamp, pickNRandomIn, pickRandomIn, randomInt} from "../utils/helpers";
@@ -41,7 +41,10 @@ export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }
         } while(team.some(p => p.x === x && p.y === y))
 
         team.push(
-            new PokemonOnBoard( new Pokemon(pokemonEntry, 0,level + randomInt(-5,0)), x, y)
+            new PokemonOnBoard(
+                autoEvolve(new Pokemon(pokemonEntry, 0,level + randomInt(-5,0))),
+                x, y
+            )
         )
     }
 
@@ -63,13 +66,18 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
         const [x,y] = positions[i]
         team.push(
             new PokemonOnBoard(
-                new Pokemon(entry, OWNER_TRAINER, level),
+                autoEvolve(new Pokemon(entry, OWNER_TRAINER, level)),
                 x, y
             )
         )
     }
 
     return team
+}
+
+export function autoEvolve(pokemon: Pokemon): Pokemon{
+    if(pokemon.evolution && pokemon.evolutionLevel && pokemon.level > pokemon.evolutionLevel) return autoEvolve(new Pokemon(pokemon.evolution, pokemon.owner, pokemon.level))
+    return pokemon
 }
 
 export function spawnTrainerTeam(pokemons: PokemonEntry[]) {
@@ -91,7 +99,7 @@ export function spawnTrainerTeam(pokemons: PokemonEntry[]) {
 
         team.push(
             new PokemonOnBoard(
-                new Pokemon(entry, OWNER_TRAINER, level),
+                autoEvolve(new Pokemon(entry, OWNER_TRAINER, level)),
                 x, y
             )
         )

@@ -17,6 +17,7 @@ import {SALAMECHE} from "../pokemons/salameche";
 import {PIAFABEC} from "../pokemons/piafabec";
 import {SAQUEDENEU} from "../pokemons/saquedeneu";
 import {SABELETTE} from "../pokemons/sabelette";
+import {SHOP_JADIELLE} from "../levels/shops";
 
 export const SAFRANIA: Destination = {
     ref: "SAFRANIA",
@@ -78,6 +79,12 @@ export const SAFRANIA: Destination = {
                     SABELETTE
                 ])
             }
+        },
+        shop: {
+            type: RoomType.FREEWALK,
+            name: "Magasin de Safrania",
+            music: "music_shop",
+            level: SHOP_JADIELLE
         }
     }
 }

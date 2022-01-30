@@ -9,6 +9,7 @@ import { SMOGOGO } from "../pokemons/smogogo";
 import { TADMORV } from "../pokemons/tadmorv";
 import { TENTACRUEL } from "../pokemons/tentacruel";
 import { GROTADMORV } from "../pokemons/grotadmorv";
+import {SHOP_JADIELLE} from "../levels/shops";
 
 export const PARMANIE: Destination = {
     ref: "PARMANIE",
@@ -71,6 +72,12 @@ export const PARMANIE: Destination = {
                     RAFFLESIA
                 ])
             }
+        },
+        shop: {
+            type: RoomType.FREEWALK,
+            name: "Magasin de Parmanie",
+            music: "music_shop",
+            level: SHOP_JADIELLE
         }
     }
 }

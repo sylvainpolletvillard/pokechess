@@ -17,6 +17,7 @@ import {ARBOK} from "../pokemons/arbok";
 import {AEROMITE} from "../pokemons/aeromite";
 import {TENTACRUEL} from "../pokemons/tentacruel";
 import {RAFFLESIA} from "../pokemons/rafflesia";
+import {SHOP_JADIELLE} from "../levels/shops";
 
 export const CRAMOISILE: Destination = {
     ref: "CRAMOISILE",
@@ -78,6 +79,12 @@ export const CRAMOISILE: Destination = {
                     RAFFLESIA
                 ])
             }
+        },
+        shop: {
+            type: RoomType.FREEWALK,
+            name: "Magasin de Cramois'Île",
+            music: "music_shop",
+            level: SHOP_JADIELLE
         }
     },
 }

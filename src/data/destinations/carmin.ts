@@ -13,6 +13,7 @@ import {SMOGO} from "../pokemons/smogo";
 import {FANTOMINUS} from "../pokemons/fantominus";
 import {MAGMAR} from "../pokemons/magmar";
 import {STARI} from "../pokemons/stari";
+import {SHOP_JADIELLE} from "../levels/shops";
 
 export const CARMIN: Destination = {
     ref: "CARMIN",
@@ -76,6 +77,12 @@ export const CARMIN: Destination = {
                     STARI
                 ])
             }
+        },
+        shop: {
+            type: RoomType.FREEWALK,
+            name: "Magasin de Carmin sur Mer",
+            music: "music_shop",
+            level: SHOP_JADIELLE
         }
     }
 }

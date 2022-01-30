@@ -23,7 +23,7 @@ export const DOJO: Destination = {
         wild: {
             type: RoomType.WILD,
             name: "Dojo",
-            map: "map_dojo",
+            map: "dojo",
             music: "music_dojo",
             spawnOtherTeam(){
                 return spawnTeamByTypeFactor({
@@ -38,7 +38,7 @@ export const DOJO: Destination = {
         trainer: {
             type: RoomType.ARENA,
             name: "Dojo",
-            map: "map_dojo",
+            map: "dojo",
             music: "music_dojo",
             trainer: DRESSEUR_DOJO,
             spawnOtherTeam(){

@@ -27,7 +27,7 @@ export const FALAISES: Destination = {
         wild: {
             type: RoomType.WILD,
             name: "Falaises",
-            map: "map_falaises",
+            map: "falaises",
             music: "music_falaises",
             spawnOtherTeam(){
                 return spawnTeamByTypeFactor({
@@ -41,7 +41,7 @@ export const FALAISES: Destination = {
         trainer: {
             type: RoomType.ARENA,
             name: "Falaises",
-            map: "map_falaises",
+            map: "falaises",
             music: "music_falaises",
             trainer: DRESSEUR_FALAISES,
             spawnOtherTeam(){

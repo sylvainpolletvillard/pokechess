@@ -1,6 +1,6 @@
 // @ts-ignore
 import PF from "pathfinding";
-import {Board} from "./board";
+import {Board, BOARD_HEIGHT, BOARD_WIDTH} from "./board";
 import {PokemonOnBoard} from "../objects/pokemon";
 import { gameState } from "./gamestate";
 import { canPokemonBeTargeted } from "./alteration";
@@ -22,7 +22,7 @@ export function findClosestReachableTarget(pkm: PokemonOnBoard): PokemonOnBoard 
 
 export function findPathToTarget(pkm: PokemonOnBoard, target: PokemonOnBoard, board: Board): PF.path {
     //Walkability matrix. Zero is walkable, One is not
-    const grid = new PF.Grid(board.width,board.height);
+    const grid = new PF.Grid(BOARD_WIDTH, BOARD_HEIGHT);
     const solidEntities = [ ...board.playerTeam, ...board.otherTeam ]
     for(let entity of solidEntities){
         if(entity !== pkm && entity !== target){

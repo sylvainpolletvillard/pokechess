@@ -34,7 +34,7 @@ export const PISTE_CYCLABLE: Destination = {
         wild: {
             type: RoomType.WILD,
             name: "Piste cyclable",
-            map: "map_piste_cyclable",
+            map: "piste_cyclable",
             music: "music_piste_cyclable",
             spawnOtherTeam(){
                 return spawnTeamByTypeFactor({
@@ -47,7 +47,7 @@ export const PISTE_CYCLABLE: Destination = {
         trainer: {
             type: RoomType.ARENA,
             name: "Piste cyclable",
-            map: "map_piste_cyclable",
+            map: "piste_cyclable",
             music: "music_piste_cyclable",
             trainer: DRESSEUR_PISTE_CYCLABLE,
             spawnOtherTeam(){

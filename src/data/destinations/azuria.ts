@@ -25,6 +25,7 @@ import {KOKIYAS} from "../pokemons/kokiyas";
 import {KRABBY} from "../pokemons/krabby";
 import {HYPOTREMPE} from "../pokemons/hypotrempe";
 import {POISSIRENE} from "../pokemons/poissirene";
+import {SHOP_JADIELLE} from "../levels/shops";
 
 export const AZURIA: Destination = {
     ref: "AZURIA",
@@ -91,6 +92,12 @@ export const AZURIA: Destination = {
                     LOKHLASS
                 ])
             }
+        },
+        shop: {
+            type: RoomType.FREEWALK,
+            name: "Magasin d'Azuria",
+            music: "music_shop",
+            level: SHOP_JADIELLE
         }
     }
 }
