@@ -36,6 +36,10 @@ import { ACIDE } from "./skills/acide";
 import { CRUAILE } from "./skills/cruaile";
 import {VOL_VIE} from "./skills/volVie";
 import {COUD_BOUE} from "./skills/coudBoue";
+import {JET_DE_SABLE} from "./skills/jetSable";
+import {DETRITUS} from "./skills/detritus";
+import {GUILLOTINE} from "./skills/guillotine";
+import {PINCE_MASSE} from "./skills/pinceMasse";
 
 export const SKILLS = {
     CHARGE,
@@ -75,11 +79,14 @@ export const SKILLS = {
     ACIDE,
     CRUAILE,
     VOL_VIE,
-    COUD_BOUE
+    COUD_BOUE,
+    JET_DE_SABLE,
+    DETRITUS,
+    GUILLOTINE,
+    PINCE_MASSE,
     
     // furie
     // léchouille
-    // coud'boue
     // ouragan
     // dracorage
     // dracocharge
@@ -102,7 +109,6 @@ export const SKILLS = {
     // mawashi geri
     // balayage
     // abri
-    // guillotine
     // coud'boule
     // e-coque
     // grobisou
@@ -126,8 +132,6 @@ export const SKILLS = {
     // tornade    
     // amnésie
     // koud'korne
-    // jet de sable
-    // détritus
     // météores
     // devoreve
     // déflagration

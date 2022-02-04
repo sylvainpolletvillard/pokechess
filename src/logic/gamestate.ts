@@ -25,6 +25,7 @@ import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items
 import {loadSave, saveState} from "./save";
 import {MYSTHERBE} from "../data/pokemons/mystherbe";
 import {TADMORV} from "../data/pokemons/tadmorv";
+import {SABELETTE} from "../data/pokemons/sabelette";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -115,10 +116,11 @@ export class GameState {
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
-*/
+
         gameState.player.team.push(
-            new PokemonOnBoard( new Pokemon(TADMORV, 1, 8), 4 ,6)
-        )
+            new PokemonOnBoard( new Pokemon(TADMORV, 1, 8), 4 ,6),
+            new PokemonOnBoard( new Pokemon(SABELETTE, 1, 8), 5 ,6),
+        )*/
 
         if(this.currentRoomIndex >= this.roomOrder.length) {
             this.activeScene!.scene.start("MapScene")

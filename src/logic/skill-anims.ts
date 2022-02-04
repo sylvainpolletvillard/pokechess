@@ -56,9 +56,10 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
 
         if(skill.rotateSprite){
             sprite.rotation = angle + Math.PI/2;
-        }    
+        }
         sprite.scale = skill.effect?.scale ?? 1;
         sprite.blendMode = Phaser.BlendModes.OVERLAY
+        sprite.tint = skill.effect?.tint ?? 0xffffff;
         sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
     
         sprite.play(skill.effect.key)

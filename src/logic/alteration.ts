@@ -1,14 +1,14 @@
-import { AlterationType, Alteration } from "../data/alterations"
-import { Z } from "../data/depths"
-import { EFFECTS } from "../data/effects"
-import { POKEMON_TYPES } from "../data/types"
-import { PokemonOnBoard } from "../objects/pokemon"
+import {Alteration, AlterationType} from "../data/alterations"
+import {Z} from "../data/depths"
+import {EFFECTS} from "../data/effects"
+import {POKEMON_TYPES} from "../data/types"
+import {PokemonOnBoard} from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
-import { Direction } from "../utils/directions"
-import { removeInArray } from "../utils/helpers"
-import { applyDamage, healPokemon } from "./fight"
-import { gameState } from "./gamestate"
-import { sendPokemonFlying } from "./skill-anims"
+import {Direction} from "../utils/directions"
+import {removeInArray} from "../utils/helpers"
+import {applyDamage, healPokemon, killPokemon} from "./fight"
+import {gameState} from "./gamestate"
+import {sendPokemonFlying} from "./skill-anims"
 
 export function updateAlterations(pokemons: PokemonOnBoard[]){
     pokemons.forEach((pokemon: PokemonOnBoard) => {
@@ -57,6 +57,8 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
         healPokemon(pokemon, 0.1 * perSecond * pokemon.level)  // 0.1 HP par level par seconde                
     } else if(alteration.type === AlterationType.REPOS){
         healPokemon(pokemon, (5/100) * perSecond * pokemon.maxPV) // 5% max HP par seconde
+    } else if(alteration.type === AlterationType.EXECUTION){
+        if(pokemon.pv < 30/100 * pokemon.maxPV) killPokemon(pokemon)
     }
 }
 

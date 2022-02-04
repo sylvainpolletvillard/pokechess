@@ -15,5 +15,5 @@ export const COUD_BOUE: ProjectileSkill = {
     projectileRadius: 8,
     rotateProjectile: false,
     hitEffect: EFFECTS.COUD_BOUE_HIT,
-    hitAlteration: { type: AlterationType.BOUE, stacks: 10 }
+    hitAlteration: { type: AlterationType.AVEUGLE, stacks: 10 }
 }

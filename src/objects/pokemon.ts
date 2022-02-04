@@ -89,7 +89,7 @@ export class PokemonOnBoard extends Pokemon {
     }
 
     get precision(): number {
-        if(this.hasAlteration(AlterationType.BOUE)) return 0.5
+        if(this.hasAlteration(AlterationType.AVEUGLE)) return 0.5
         return 1
     }
 

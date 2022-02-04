@@ -5,6 +5,7 @@ export interface Effect {
     scale?: number;
     repeat: number;
     pattern?: string;
+    tint?: number;
 }
 
 export const EFFECTS: { [name: string] : Effect} = {
@@ -284,11 +285,12 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    VAMPIRE_SEED: {
-        key: "vampire_seed",
-        frames: [158,159],
+    PINCE_MASSE: {
+        key: "pince_masse",
+        frames: [158,159,158],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 0.5
     },
     FOUET_LIANES: {
         key: "fouet_lianes",
@@ -309,16 +311,16 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 16,
         repeat: 0
     },
-    POISON_BALL: {
-        key: "poison_ball",
+    DETRITUS: {
+        key: "detritus",
         frames: [177,178,179],
         frameRate: 8,
         repeat: 0
     },
-    DARK_SLICE: {
-        key: "dark_slice",
+    GUILLOTINE: {
+        key: "guillotine",
         frames: [180,181,182,183],
-        frameRate: 8,
+        frameRate: 4,
         repeat: 0
     },
     CIRCLE_HIT: {
@@ -418,4 +420,12 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
+    JET_DE_SABLE: {
+        key: "jet_de_sable",
+        frames: [250,251,252,253,254],
+        frameRate: 8,
+        repeat: 0,
+        tint: 0xffdd90,
+        scale: 1.5
+    }
 }

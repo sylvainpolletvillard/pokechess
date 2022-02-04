@@ -13,5 +13,5 @@ export const SCARABRUTE: PokemonEntry = {
     types: [POKEMON_TYPES.INSECTE],
     rank: 3,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.LANCE_SOLEIL // guillotine
+    ppSkill: SKILLS.GUILLOTINE
 }

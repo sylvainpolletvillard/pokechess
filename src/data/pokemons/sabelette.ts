@@ -7,7 +7,7 @@ export const SABELETTE: PokemonEntry = {
     ref: "sabelette",
     name: "Sabelette",
     maxPV: 50,
-    maxPP: 20,
+    maxPP: 15,
     attack: 75,
     defense: 85,
     speed: 40,
@@ -16,5 +16,5 @@ export const SABELETTE: PokemonEntry = {
     evolutionLevel: 22,
     rank: 1,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.LANCE_SOLEIL // jet de sable
+    ppSkill: SKILLS.JET_DE_SABLE
 }
