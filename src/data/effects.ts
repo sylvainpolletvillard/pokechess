@@ -106,11 +106,17 @@ export const EFFECTS: { [name: string] : Effect} = {
         repeat: Infinity,
         scale: 1
     },
-    FIRE_BLAST: {
-        key: "fire_blast",
-        frames: [48,49,50,51,52,53],
+    LECHOUILLE: {
+        key: "lechouille",
+        frames: [48,49,50,51,50,49],
         frameRate: 8,
         repeat: 0
+    },
+    DEVOREVE: {
+        key: "devoreve",
+        frames: [52,53],
+        frameRate: 16,
+        repeat: 3
     },
     FLAMMECHE: {
         key: "flammeche",
@@ -381,11 +387,11 @@ export const EFFECTS: { [name: string] : Effect} = {
         repeat: 0,
         scale: 1
     },
-    POISON: {
-        key: "poison",
+    DETRITUS_HIT: {
+        key: "detritus_hit",
         frames: [220,221,222,223,224,225,226,227,228,229,230,231],
         frameRate: 10,
-        repeat: Infinity,
+        repeat: 0,
         scale: 0.5
     },
     ACIDE: {
@@ -450,5 +456,11 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [266,267,268],
         frameRate: 8,
         repeat: Infinity
-    }
+    },
+    POISON: {
+        key: "poison",
+        frames: [269,270,271,270],
+        frameRate: 8,
+        repeat: Infinity
+    },
 }

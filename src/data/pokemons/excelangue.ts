@@ -12,6 +12,6 @@ export const EXCELANGUE: PokemonEntry = {
     speed: 76,
     types: [POKEMON_TYPES.NORMAL],
     rank: 2,
-    baseSkill: SKILLS.FLAMMECHE, // léchouille
+    baseSkill: SKILLS.LECHOUILLE,
     ppSkill: SKILLS.LANCE_SOLEIL // ultrason
 }

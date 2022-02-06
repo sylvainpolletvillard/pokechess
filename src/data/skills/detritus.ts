@@ -12,6 +12,7 @@ export const DETRITUS: ProjectileSkill = {
     attackRange: 3,
     power: 30,
     hitAlteration: { type: AlterationType.POISON, stacks: 20 },
+    hitEffect: EFFECTS.DETRITUS_HIT,
     projectileRadius: 6,
     rotateProjectile: true
 }

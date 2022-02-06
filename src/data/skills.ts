@@ -42,6 +42,7 @@ import {GUILLOTINE} from "./skills/guillotine";
 import {PINCE_MASSE} from "./skills/pinceMasse";
 import {OURAGAN} from "./skills/ouragan";
 import {BOMB_BEURK} from "./skills/bombBeurk";
+import {LECHOUILLE} from "./skills/lechouille";
 
 export const SKILLS = {
     CHARGE,
@@ -87,10 +88,10 @@ export const SKILLS = {
     GUILLOTINE,
     PINCE_MASSE,
     OURAGAN,
-    BOMB_BEURK
+    BOMB_BEURK,
+    LECHOUILLE
     
     // furie
-    // léchouille
     // dracorage
     // dracocharge
     // danse flammes
