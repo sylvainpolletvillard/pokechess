@@ -9,7 +9,6 @@ export const SECRETION: ProjectileSkill = {
     description: "Réduit la vitesse de l'adversaire",
     type: POKEMON_TYPES.INSECTE,
     effect: EFFECTS.SECRETION,
-    effectDepth: Z.SKILL_EFFECT_ABOVE_POKEMON,
     behavior: SkillBehavior.PROJECTILE,
     travelSpeed: 4,
     attackRange: 4,

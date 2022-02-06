@@ -10,7 +10,7 @@ export const COUD_BOUE: ProjectileSkill = {
     effect: EFFECTS.COUD_BOUE,
     behavior: SkillBehavior.PROJECTILE,
     travelSpeed: 5,
-    attackRange: 2,
+    attackRange: 3,
     power: 20,
     projectileRadius: 8,
     rotateProjectile: false,

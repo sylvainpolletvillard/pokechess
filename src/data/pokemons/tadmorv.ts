@@ -16,5 +16,5 @@ export const TADMORV: PokemonEntry = {
     evolutionLevel: 38,
     rank: 1,
     baseSkill: SKILLS.COUD_BOUE,
-    ppSkill: SKILLS.LANCE_SOLEIL // Bomb beurk
+    ppSkill: SKILLS.BOMB_BEURK
 }

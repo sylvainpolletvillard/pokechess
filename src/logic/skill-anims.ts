@@ -1,14 +1,15 @@
-import { Z } from "../data/depths";
-import { OWNER_PLAYER } from "../data/owners";
-import { PokemonOnBoard } from "../objects/pokemon";
+import {Z} from "../data/depths";
+import {OWNER_PLAYER} from "../data/owners";
+import {PokemonOnBoard} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
-import { wait } from "../utils/helpers";
-import { addAlteration } from "./alteration";
-import { getPokemonOnTile } from "./board";
-import {faceTarget, calcDamage, applyDamage, testPrecision} from "./fight";
-import {destroyProjectile, launchProjectile, projectiles} from "./projectile";
-import { SkillBehavior, HitSkill, ProjectileSkill, SpecialSkill, AOESkill, Skill } from "./skill";
-import { triggerSpecial } from "./specials";
+import {wait} from "../utils/helpers";
+import {addAlteration} from "./alteration";
+import {getPokemonOnTile} from "./board";
+import {applyDamage, calcDamage, faceTarget, testPrecision} from "./fight";
+import {launchProjectile} from "./projectile";
+import {AOESkill, HitSkill, ProjectileSkill, Skill, SkillBehavior, SpecialSkill} from "./skill";
+import {triggerSpecial} from "./specials";
+import {AlterationType} from "../data/alterations";
 
 export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene) {
     faceTarget(pokemon, target, game);
@@ -34,7 +35,7 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
     if(!skill.effect) return { angle: 0, dx: 0, dy: 0 };
 
     let [x, y] = target.position, dx=0, dy=0, angle=0, delta = skill.effectDelta ?? 8;
-    if(skill.effectPosition === "source"){
+    if(skill.effectPosition === "source" || skill.effectPosition === "parabolic_to_target"){
         [x,y] = attacker.position
         angle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
         dx = Math.round(Math.cos(angle) * delta)
@@ -50,38 +51,72 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
         dy= -16 * (skill.effect?.scale ?? 1) + delta
     }
 
-    wait(skill.effectDelay ?? 0).then(() => {
-        if(!skill.effect) return;
-        const sprite = game.add.sprite(x + dx, y + dy, "effects")
+    const effectSprite = game.add.sprite(x + dx, y + dy, "effects")
 
-        if(skill.rotateSprite){
-            sprite.rotation = angle + Math.PI/2;
-        }
-        sprite.scale = skill.effect?.scale ?? 1;
-        sprite.blendMode = Phaser.BlendModes.OVERLAY
-        sprite.tint = skill.effect?.tint ?? 0xffffff;
-        sprite.setDepth(skill.effectDepth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
-    
-        sprite.play(skill.effect.key)
-        sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-            sprite.destroy()
-        })
+    if(skill.rotateSprite){
+        effectSprite.rotation = angle + Math.PI/2;
+    }
+    effectSprite.scale = skill.effect?.scale ?? 1;
+    effectSprite.blendMode = Phaser.BlendModes.OVERLAY
+    effectSprite.tint = skill.effect?.tint ?? 0xffffff;
+    effectSprite.setDepth(skill.effect.depth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
 
-        if(skill.effectPosition === "target_to_source"){
-            const [sourceX, sourceY] = attacker.position
-            game.tweens.add({
-                targets: sprite,
-                x: sourceX,
-                y: sourceY,
-                duration: (skill as HitSkill).hitDelay ?? 250,
-                ease: 'Linear',
-                onComplete(){
-                    sprite.destroy()
-                }
-            });
-
-        }
+    effectSprite.play(skill.effect.key)
+    effectSprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+        effectSprite.destroy()
     })
+
+    if(skill.effectPosition === "target_to_source"){
+        const [sourceX, sourceY] = attacker.position
+        game.tweens.add({
+            targets: effectSprite,
+            x: sourceX,
+            y: sourceY,
+            duration: (skill as HitSkill).hitDelay ?? 250,
+            ease: 'Linear',
+            onComplete(){
+                if(!skill.hitEffect) effectSprite.destroy()
+            }
+        });
+    }
+
+    if(skill.effectPosition === "parabolic_to_target"){
+        const [sourceX, sourceY] = attacker.position
+        const [targetX, targetY] = target.position
+        const startPoint = new Phaser.Math.Vector2(sourceX, sourceY);
+        const controlPoint1 = new Phaser.Math.Vector2(sourceX + (targetX-sourceX)*0.2, sourceY-20);
+        const controlPoint2 = new Phaser.Math.Vector2(sourceX + (targetX-sourceX)*0.8, targetY-20);
+        const endPoint = new Phaser.Math.Vector2(targetX, targetY);
+        const curve = new Phaser.Curves.CubicBezier(startPoint, controlPoint1, controlPoint2, endPoint);
+        const tweenObj = { t: 0 };
+        const duration = skill.hitDelay ?? 250
+
+        game.tweens.add({
+            targets: tweenObj,
+            t: 1,
+            duration,
+            //ease: (t: number) => 0.5-(1-2*(t*1000/duration))**3,
+            ease: "Linear",
+            onComplete(){
+                if(!skill.hitEffect) effectSprite.destroy()
+            },
+            onUpdate: function(tween, tweenObj){
+                const position = curve.getPoint(tweenObj.t);
+                effectSprite.x = position.x;
+                effectSprite.y = position.y;
+            }
+        });
+    }
+
+    if(skill.hitEffect){
+        wait(skill.hitDelay ?? 0).then(() => {
+            effectSprite.play(skill.hitEffect!.key)
+            effectSprite.setDepth(skill.hitEffect!.depth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
+            effectSprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+                effectSprite.destroy()
+            })
+        })
+    }
 
     return { angle, dx, dy }
 }
@@ -114,7 +149,7 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
 
     const tiles = skill.getTilesImpacted(attacker, target)
     
-    wait(skill.hitDelay).then(() => {
+    wait(skill.hitDelay ?? 0).then(() => {
         tiles.forEach(([i,j]) => {
             const target = getPokemonOnTile(i,j)
             if(target && target.owner !== OWNER_PLAYER){
@@ -123,28 +158,31 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
                 applyDamage(damage, target)
                 if(skill.hitAlteration) addAlteration(target, skill.hitAlteration, game)
             }
-        })       
+        })
     })
 }
 
-export function sendPokemonFlying(pokemon: PokemonOnBoard, game: GameScene){
+export function sendPokemonFlying(pokemon: PokemonOnBoard, stacks: number, game: GameScene){
     const targetSprite = game.sprites.get(pokemon.uid)
     if(!targetSprite) return;
-    let {x, y} = targetSprite            
+
+    const [sourceX, sourceY] = pokemon.position
+    const startPoint = new Phaser.Math.Vector2(sourceX, sourceY);
+    const controlPoint = new Phaser.Math.Vector2(sourceX, sourceY-20);
+    const curve = new Phaser.Curves.CubicBezier(startPoint, controlPoint, controlPoint, startPoint);
+    const tweenObj = { t: 0 };
+    const duration = 250 + stacks*100
+
     game.tweens.add({
-        targets: targetSprite, 
-        x: x,
-        y: y - 20,
-        duration: 1600,
-        ease: Phaser.Math.Easing.Bounce.Out,
-        onComplete(){
-            game.tweens.add({
-                targets: targetSprite, 
-                x: x,
-                y: y,
-                duration: 800,
-                ease: Phaser.Math.Easing.Bounce.In
-            })
+        targets: tweenObj,
+        t: 1,
+        duration,
+        //ease: (t: number) => 0.5-(1-2*(t*1000/duration))**3,
+        ease: Phaser.Math.Easing.Circular.InOut,
+        onUpdate: function(tween, tweenObj){
+            const position = curve.getPoint(tweenObj.t);
+            targetSprite.x = position.x;
+            targetSprite.y = position.y;
         }
     });
 }

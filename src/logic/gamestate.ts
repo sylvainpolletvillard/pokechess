@@ -220,7 +220,10 @@ export class GameState {
         if(hasWon){
             lines.push(`Vos Pokémon gagnent ${Math.round(xpPerPokemon/10)}xp`)
         } else if(gameState.currentRoom.type !== RoomType.TUTORIAL){
-            lines.push(`Vous courrez jusqu'au centre Pokémon le plus proche.`)
+            lines.push(
+                `Votre équipe est KO !`,
+                `Vous courrez jusqu'au centre Pokémon le plus proche.`
+            )
         }
 
         gameState.board.playerTeam.forEach(pokemon => {

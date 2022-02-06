@@ -16,5 +16,5 @@ export const MINIDRACO: PokemonEntry = {
     evolutionLevel: 30,
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES, // dracocharge
-    ppSkill: SKILLS.LANCE_SOLEIL // ouragan
+    ppSkill: SKILLS.OURAGAN
 }

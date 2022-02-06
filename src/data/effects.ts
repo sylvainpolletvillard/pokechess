@@ -1,3 +1,5 @@
+import {Z} from "./depths";
+
 export interface Effect {
     key: string;
     frames: number[];
@@ -6,6 +8,7 @@ export interface Effect {
     repeat: number;
     pattern?: string;
     tint?: number;
+    depth?: number;
 }
 
 export const EFFECTS: { [name: string] : Effect} = {
@@ -128,7 +131,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [60,61,62,63,64],
         frameRate: 8,
         repeat: 0,
-        scale: 1
+        scale: 1,
+        depth: Z.SKILL_EFFECT_BELOW_POKEMON
     },
     CROCS_FEU: {
         key: "crocs_feu",
@@ -386,46 +390,65 @@ export const EFFECTS: { [name: string] : Effect} = {
     },
     ACIDE: {
         key: "acide",
-        frames: [232,233,234,235],
+        frames: [232,233,232,234],
         frameRate: 8,
-        repeat: 0        
+        repeat: Infinity
     },
     ACIDE_HIT: {
         key: "acide_hit",
-        frames: [236,237,238,239,240,241,242],
+        frames: [235,236,237,238],
         frameRate: 8,
         repeat: 0
     },
     DARD_VENIN_HIT: {
         key: "dard_venin_hit",
-        frames: [243],
+        frames: [239],
         frameRate: 8,
         repeat: 0
     },
     VOL_VIE: {
         key: "vol_vie",
-        frames: [244,245,246,247],
+        frames: [240,241,242,243],
         frameRate: 8,
         repeat: Infinity
     },
     COUD_BOUE: {
         key: "coud_boue",
-        frames: [248],
+        frames: [244],
         frameRate: 8,
         repeat: 0
     },
     COUD_BOUE_HIT: {
         key: "coud_boue_hit",
-        frames: [249,250,251,252,253,254],
+        frames: [245,246,247,248,249,250],
         frameRate: 8,
         repeat: 0
     },
     JET_DE_SABLE: {
         key: "jet_de_sable",
-        frames: [250,251,252,253,254],
+        frames: [246,247,248,249,250],
         frameRate: 8,
         repeat: 0,
         tint: 0xffdd90,
         scale: 1.5
+    },
+    BOMB_BEURK: {
+        key: "bomb_beurk",
+        frames: [251,252,253,254,255,256,257,258],
+        frameRate: 8,
+        repeat: Infinity
+    },
+    BOMB_BEURK_HIT: {
+        key: "bomb_beurk_hit",
+        frames: [260,261,262,263,264,265],
+        frameRate: 8,
+        repeat: 0,
+        depth: Z.SKILL_EFFECT_BELOW_POKEMON
+    },
+    OURAGAN: {
+        key: "ouragan",
+        frames: [266,267,268],
+        frameRate: 8,
+        repeat: Infinity
     }
 }

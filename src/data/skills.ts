@@ -40,6 +40,8 @@ import {JET_DE_SABLE} from "./skills/jetSable";
 import {DETRITUS} from "./skills/detritus";
 import {GUILLOTINE} from "./skills/guillotine";
 import {PINCE_MASSE} from "./skills/pinceMasse";
+import {OURAGAN} from "./skills/ouragan";
+import {BOMB_BEURK} from "./skills/bombBeurk";
 
 export const SKILLS = {
     CHARGE,
@@ -84,10 +86,11 @@ export const SKILLS = {
     DETRITUS,
     GUILLOTINE,
     PINCE_MASSE,
+    OURAGAN,
+    BOMB_BEURK
     
     // furie
     // léchouille
-    // ouragan
     // dracorage
     // dracocharge
     // danse flammes

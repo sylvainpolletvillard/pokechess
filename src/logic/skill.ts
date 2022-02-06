@@ -8,10 +8,11 @@ export interface Skill {
     name: string
     description?: string
     effect?: Effect;
-    effectDelay?: number;
     effectDelta?: number;
-    effectDepth?: number;
-    effectPosition?: "source" | "target" | "source_ground" | "target_ground" | "target_to_source";
+    effectPosition?: "source" | "target" | "source_ground" | "target_ground" | "target_to_source" | "parabolic_to_target";
+    hitDelay?: number
+    hitEffect?: Effect;
+    hitAlteration?: Alteration;
     rotateSprite?: boolean;
     behavior: SkillBehavior;
     power: number;
@@ -21,9 +22,7 @@ export interface Skill {
 }
 
 export interface HitSkill extends Skill {
-    behavior: SkillBehavior.DIRECT_HIT    
-    hitDelay?: number        
-    hitAlteration?: Alteration;    
+    behavior: SkillBehavior.DIRECT_HIT
     chargeDelta?: number; // déplace l'attaquant, ex: charge
 }
 
@@ -35,8 +34,6 @@ export interface SpecialSkill extends Skill {
 export interface ProjectileSkill extends Skill {
     behavior: SkillBehavior.PROJECTILE
     travelSpeed: number;
-    hitEffect?: Effect;
-    hitAlteration?: Alteration;
     rotateProjectile: boolean;
     pierceThrough?: boolean;
     projectileRadius: number;
@@ -45,8 +42,6 @@ export interface ProjectileSkill extends Skill {
 export interface AOESkill extends Skill {
     behavior: SkillBehavior.AREA_OF_EFFECT
     getTilesImpacted: (attacker: PokemonOnBoard, target: PokemonOnBoard) => [number, number][]
-    hitDelay: number
-    hitAlteration?: Alteration;
 }
 
 export enum SkillBehavior {

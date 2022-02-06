@@ -29,7 +29,7 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
     const game = gameState.activeScene as GameScene;
     const sprite = game.sprites.get(pokemon.uid)
     const perSecond = game.gameSpeed / 1000
-    if(alteration.type === AlterationType.HYDROCANON){
+    if(alteration.type === AlterationType.TOURBILLON){
         switch(pokemon.facingDirection){
             case Direction.UP: pokemon.facingDirection = Direction.RIGHT; break;
             case Direction.RIGHT: pokemon.facingDirection = Direction.DOWN; break;
@@ -63,12 +63,12 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
 }
 
 export function hasBlockingAlteration(pokemon: PokemonOnBoard){
-    return pokemon.hasAlteration(AlterationType.HYDROCANON)
+    return pokemon.hasAlteration(AlterationType.TOURBILLON)
         || pokemon.hasAlteration(AlterationType.SOMMEIL)
 }
 
 export function canPokemonBeTargeted(pokemon: PokemonOnBoard){
-    return !pokemon.hasAlteration(AlterationType.HYDROCANON)
+    return !pokemon.hasAlteration(AlterationType.TOURBILLON)
 }
 
 export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, game: GameScene){    
@@ -83,8 +83,8 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
         if(!targetSprite) return console.error(`Error, can't find pokemon sprite uid ${pokemon.uid}`)
 
         switch(alteration.type){
-            case AlterationType.HYDROCANON:
-                sendPokemonFlying(pokemon, game)
+            case AlterationType.TOURBILLON:
+                sendPokemonFlying(pokemon, alteration.stacks, game)
                 break;
             
             case AlterationType.BRULURE:
