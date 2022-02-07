@@ -15,6 +15,6 @@ export const ROUCOUPS: PokemonEntry = {
     evolution: ROUCARNAGE,
     evolutionLevel: 36,
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, //picpic
-    ppSkill: SKILLS.LANCE_SOLEIL // tornade
+    baseSkill: SKILLS.PICPIC,
+    ppSkill: SKILLS.OURAGAN
 }

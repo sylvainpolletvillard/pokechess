@@ -1,4 +1,5 @@
 import {Z} from "./depths";
+import {PARASPORE} from "./skills/paraSpore";
 
 export interface Effect {
     key: string;
@@ -87,11 +88,12 @@ export const EFFECTS: { [name: string] : Effect} = {
         repeat: 2,
         scale: 0.5
     },
-    ICE_CRYSTAL: {
-        key: "ice_crystal",
+    CHARGE_HIT: {
+        key: "charge_hit",
         frames: [38],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 0.5
     },
     FROZEN: {
         key: "frozen",
@@ -99,44 +101,37 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    BURN: {
-        key: "burn",
-        frames: [40,41,42,43,44,45,46,47],
+    LANCE_FLAMMES: {
+        key: "lance_flammes",
+        frames: [40,41,42,43,44,45,46,47,48],
         frameRate: 8,
-        repeat: Infinity,
+        repeat: 0,
         scale: 1
     },
     LECHOUILLE: {
         key: "lechouille",
-        frames: [48,49,50,51,50,49],
+        frames: [49,50,51,52,51,50],
         frameRate: 8,
         repeat: 0
     },
     DEVOREVE: {
         key: "devoreve",
-        frames: [52,53],
+        frames: [53,54],
         frameRate: 16,
         repeat: 3
     },
     FLAMMECHE: {
         key: "flammeche",
-        frames: [54,55,56,57,58],
+        frames: [55,56,57,58,59],
         frameRate: 8,
         repeat: 0,
         scale: 1
     },
-    CHARGE_HIT: {
-        key: "charge_hit",
-        frames: [59],
+    BURN: {
+        key: "burn",
+        frames: [40,41,42,43,44,45,46,47],
         frameRate: 8,
-        repeat: 0,
-        scale: 0.5  
-    },
-    LANCE_FLAMMES: {
-        key: "lance_flammes",
-        frames: [60,61,62,63,64],
-        frameRate: 8,
-        repeat: 0,
+        repeat: Infinity,
         scale: 1,
         depth: Z.SKILL_EFFECT_BELOW_POKEMON
     },
@@ -159,14 +154,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 0
     },
-    FIRE_EXPLOSION: {
-        key: "fire_explosion",
+    DESTRUCTION: {
+        key: "destruction",
         frames: [80,81,82,83],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 2
     },
-    FIRE_EXPLOSION_CIRCLE: {
-        key: "fire_explosion_circle",
+    NITROCHARGE_HIT: {
+        key: "nitrocharge_hit",
         frames: [84,85,86,87,88],
         frameRate: 8,
         repeat: 0
@@ -180,12 +176,6 @@ export const EFFECTS: { [name: string] : Effect} = {
     CRUAILE: {
         key: "cruaile",
         frames: [95,96,97,98],
-        frameRate: 8,
-        repeat: 0
-    },
-    CHOC_MENTAL: {
-        key: "choc_mental",
-        frames: [99],
         frameRate: 8,
         repeat: 0
     },
@@ -208,23 +198,39 @@ export const EFFECTS: { [name: string] : Effect} = {
         scale: 1,
         repeat: 0
     },
+    PARASPORE: {
+        key: "paraspore",
+        frames: [107,108,109,110,111,112,113,114],
+        frameRate: 6,
+        scale: 1,
+        repeat: 0,
+        tint: 0xff9900
+    },
     PARALYSIE: {
         key: "paralysie",
         frames: [115,116,117,118],
         frameRate: 8,
         repeat: Infinity
     },
-    HIT_STAR: {
-        key: "hit_star",
+    CHOC_MENTAL: {
+        key: "choc_mental",
         frames: [119],
         frameRate: 8,
         repeat: 0
     },
-    ELEC_SPARKS: {
-        key: "elec_sparks",
+    JET_PIERRES: {
+        key: "jet_pierres",
+        frames: [120],
+        frameRate: 8,
+        repeat: 0,
+        scale: 0.5
+    },
+    JET_PIERRES_HIT: {
+        key: "jet_pierres_hit",
         frames: [120,121,122,123,124],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        scale: 0.5
     },
     ECLAIR: {
         key: "eclair",
@@ -404,7 +410,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "acide_hit",
         frames: [235,236,237,238],
         frameRate: 8,
-        repeat: 0
+        repeat: 0,
+        depth: Z.SKILL_EFFECT_BELOW_POKEMON
     },
     DARD_VENIN_HIT: {
         key: "dard_venin_hit",
@@ -444,6 +451,12 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: Infinity
     },
+    PEUR: {
+        key: "peur",
+        frames: [259],
+        frameRate: 8,
+        repeat: 0
+    },
     BOMB_BEURK_HIT: {
         key: "bomb_beurk_hit",
         frames: [260,261,262,263,264,265],
@@ -462,5 +475,29 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [269,270,271,270],
         frameRate: 8,
         repeat: Infinity
+    },
+    ARMURE: {
+        key: "armure",
+        frames: [272,273,274,275,276,277,278],
+        frameRate: 12,
+        repeat: 0
+    },
+    HATE: {
+        key: "hate",
+        frames: [280,281,282],
+        frameRate: 8,
+        repeat: 0
+    },
+    DANSE_LAMES: {
+        key: "danse_lames",
+        frames: [283,284,285,286,287,288],
+        frameRate: 8,
+        repeat: 0
+    },
+    PICPIC: {
+        key: "picpic",
+        frames: [289,290,291,292,293],
+        frameRate: 8,
+        repeat: 0
     },
 }

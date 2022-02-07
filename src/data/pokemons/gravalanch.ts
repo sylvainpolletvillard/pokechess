@@ -7,7 +7,7 @@ export const GRAVALANCH: PokemonEntry = {
     ref: "gravalanch",
     name: "Gravalanch",
     maxPV: 55,
-    maxPP: 20,
+    maxPP: 10,
     attack: 95,
     defense: 115,
     speed: 35,
@@ -15,6 +15,6 @@ export const GRAVALANCH: PokemonEntry = {
     evolution: GROLEM,
     evolutionLevel: 38,
     rank: 2,
-    baseSkill: SKILLS.FLAMMECHE, // jet pierres
-    ppSkill: SKILLS.LANCE_SOLEIL // armure
+    baseSkill: SKILLS.JET_PIERRES,
+    ppSkill: SKILLS.ARMURE
 }

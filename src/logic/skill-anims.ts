@@ -5,11 +5,10 @@ import GameScene from "../scenes/GameScene";
 import {wait} from "../utils/helpers";
 import {addAlteration} from "./alteration";
 import {getPokemonOnTile} from "./board";
-import {applyDamage, calcDamage, faceTarget, testPrecision} from "./fight";
+import {applyDamage, calcDamage, calcSelfDamage, faceTarget, testPrecision} from "./fight";
 import {launchProjectile} from "./projectile";
 import {AOESkill, HitSkill, ProjectileSkill, Skill, SkillBehavior, SpecialSkill} from "./skill";
 import {triggerSpecial} from "./specials";
-import {AlterationType} from "../data/alterations";
 
 export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene) {
     faceTarget(pokemon, target, game);
@@ -32,18 +31,18 @@ export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
 }
 
 export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
-    if(!skill.effect) return { angle: 0, dx: 0, dy: 0 };
+    if(!skill.effect) return;
 
-    let [x, y] = target.position, dx=0, dy=0, angle=0, delta = skill.effectDelta ?? 8;
+    let [x, y] = target.position, dx=0, dy=0, delta = skill.effectDelta ?? 8;
+    let angle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
+
     if(skill.effectPosition === "source" || skill.effectPosition === "parabolic_to_target"){
         [x,y] = attacker.position
-        angle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
         dx = Math.round(Math.cos(angle) * delta)
         dy = Math.round(Math.sin(angle) * delta)
     } else if(skill.effectPosition === "target" || skill.effectPosition === "target_to_source"){
-        angle = Math.atan2(attacker.y - target.y, attacker.x - target.x)
-        dx = Math.round(Math.cos(angle) * delta)
-        dy = Math.round(Math.sin(angle) * delta)
+        dx = Math.round(Math.cos(angle+Math.PI) * delta)
+        dy = Math.round(Math.sin(angle+Math.PI) * delta)
     } else if(skill.effectPosition === "target_ground"){
         dy= -16 * (skill.effect?.scale ?? 1) + delta
     } else if(skill.effectPosition === "source_ground"){
@@ -117,20 +116,21 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
             })
         })
     }
-
-    return { angle, dx, dy }
 }
 
 export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
-    let { angle } = renderSkillEffect(skill, attacker, target, game)
+    renderSkillEffect(skill, attacker, target, game)
 
     if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
-    if(skill.chargeDelta) sendPokemonCharge(attacker, skill.chargeDelta, angle+Math.PI, game)
-        
+    if(skill.chargeDelta) sendPokemonCharge(attacker, target, skill.chargeDelta, game)
+
     wait(skill.hitDelay ?? 0).then(() => {
         const damage = calcDamage(skill, target, attacker)
         console.log(`${attacker.name} is attacking ${target.name} for ${damage} damage !`)
-        testPrecision(attacker) && applyDamage(damage, target)
+        if(testPrecision(attacker)){
+            applyDamage(damage, target)
+            if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker)
+        }
         if(skill.hitAlteration) addAlteration(target, skill.hitAlteration, game)
         if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)
     })
@@ -159,6 +159,8 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
                 if(skill.hitAlteration) addAlteration(target, skill.hitAlteration, game)
             }
         })
+
+        if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker)
     })
 }
 
@@ -187,11 +189,12 @@ export function sendPokemonFlying(pokemon: PokemonOnBoard, stacks: number, game:
     });
 }
 
-export function sendPokemonCharge(pokemon: PokemonOnBoard, chargeDelta: number, chargeAngle: number, game: GameScene){
-    const sprite = game.sprites.get(pokemon.uid)
+export function sendPokemonCharge(attacker: PokemonOnBoard, target: PokemonOnBoard, chargeDelta: number, game: GameScene){
+    const chargeAngle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
+    const sprite = game.sprites.get(attacker.uid)
     if(!sprite) return;
     let {x, y} = sprite
-    const attackSpeed = 5000000 / (pokemon.speed+25) / game.gameSpeed       
+    const attackSpeed = 5000000 / (attacker.speed+25) / game.gameSpeed
     game.tweens.add({
         targets: sprite, 
         x: x + chargeDelta * Math.cos(chargeAngle),

@@ -4,9 +4,9 @@ import { AlterationType } from "../alterations";
 import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
-export const POUDRE_TOXIK: AOESkill = {
+export const PARASPORE: AOESkill = {
     name: "Poudre Toxik",
-    description: "Projette des toxines empoisonnant tous les adversaires autour du lanceur",
+    description: "Nuage de spores qui paralyse tous les adversaires autour du lanceur",
     attackRange:1,
     behavior: SkillBehavior.AREA_OF_EFFECT,
     type: POKEMON_TYPES.PLANTE,
@@ -19,12 +19,12 @@ export const POUDRE_TOXIK: AOESkill = {
         ]        
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
-    effect: EFFECTS.POUDRE_TOXIK,
-    effectPosition: "source_ground",    
+    effect: EFFECTS.PARASPORE,
+    effectPosition: "source_ground",
     power: 0,
-    hitDelay: 400,
+    hitDelay: 300,
     hitAlteration: {
-        type: AlterationType.POISON,
+        type: AlterationType.PARALYSIE,
         stacks: 100
     }
 }

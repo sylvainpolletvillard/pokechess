@@ -16,5 +16,5 @@ export const PARAS: PokemonEntry = {
     evolutionLevel: 24,
     rank: 1,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.LANCE_SOLEIL // para-spore
+    ppSkill: SKILLS.PARASPORE
 }

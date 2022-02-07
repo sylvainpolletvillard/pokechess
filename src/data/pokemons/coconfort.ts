@@ -16,5 +16,5 @@ export const COCONFORT: PokemonEntry = {
     evolutionLevel: 10,
     rank: 2,
     baseSkill: SKILLS.DARD_VENIN,
-    ppSkill: SKILLS.LANCE_SOLEIL // armure
+    ppSkill: SKILLS.ARMURE
 }

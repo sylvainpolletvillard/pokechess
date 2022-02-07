@@ -8,11 +8,10 @@ export const PARASECT: PokemonEntry = {
     maxPV: 60,
     maxPP: 20,
     attack: 95,
-
     defense: 80,
     speed: 30,
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.PLANTE],
     rank: 2,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.LANCE_SOLEIL // para-spore
+    ppSkill: SKILLS.PARASPORE
 }

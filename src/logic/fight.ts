@@ -143,6 +143,10 @@ export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: Pokem
     // TODO: gérer les types de damage eau/feu plus ou moins efficaces
 }
 
+export function calcSelfDamage(skill: Skill, attacker: PokemonOnBoard){
+    return attacker.attack * (1+(skill.selfDamage??0)/100) / attacker.defense
+}
+
 export function killPokemon(pokemon: PokemonOnBoard){
     const board = gameState.board;
     const team = pokemon.owner === 1 ? board.playerTeam : board.otherTeam;
@@ -171,7 +175,7 @@ export function sendBackToPokeball(pokemon: PokemonOnBoard){
     })
 
     sprite.destroy();
-    pokemon.alterations.filter(alt => alt.effectSprite).forEach(alt => alt.effectSprite?.destroy())
+    pokemon.alterations.filter(alt => alt.effectSprite != null).forEach(alt => alt.effectSprite?.destroy())
     game.sprites.delete(pokemon.uid)
 
     const bars = game.graphics.get(pokemon.uid)

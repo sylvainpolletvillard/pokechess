@@ -71,7 +71,10 @@ export class PokemonOnBoard extends Pokemon {
         const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
         if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
 
-        return Math.max(1, super.defense * buffFactor)
+        const armure = this.alterations.find(alt => alt.type === AlterationType.ARMURE)
+        if(armure){ buffFactor += 0.2 * armure.stacks }
+
+        return clamp(super.defense * buffFactor, 1, 500)
     }
 
     get speed(): number {
@@ -85,7 +88,10 @@ export class PokemonOnBoard extends Pokemon {
         const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
         if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
 
-        return Math.max(1, Math.ceil(super.speed * Math.max(0.1, buffFactor)))
+        const hate = this.alterations.find(alt => alt.type === AlterationType.HATE)
+        if(hate){ buffFactor += 0.2 * hate.stacks }
+
+        return clamp(super.speed * buffFactor, 1, 500)
     }
 
     get precision(): number {

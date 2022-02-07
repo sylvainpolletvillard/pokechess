@@ -13,5 +13,5 @@ export const ELECTRODE: PokemonEntry = {
     types: [POKEMON_TYPES.ELECTRIQUE],
     rank: 2,
     baseSkill: SKILLS.CHARGE,
-    ppSkill: SKILLS.LANCE_SOLEIL // destruction
+    ppSkill: SKILLS.DESTRUCTION
 }

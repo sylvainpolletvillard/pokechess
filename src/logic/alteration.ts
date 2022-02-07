@@ -71,7 +71,7 @@ export function canPokemonBeTargeted(pokemon: PokemonOnBoard){
     return !pokemon.hasAlteration(AlterationType.TOURBILLON)
 }
 
-export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, game: GameScene){    
+export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, game: GameScene){
     const alterationToStack = pokemon.alterations.find(alt => alt.type === alteration.type)
     if(alterationToStack){        
         alterationToStack.stacks += alteration.stacks
@@ -100,6 +100,10 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
 
             case AlterationType.PARALYSIE:
                 alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").setScale(EFFECTS.PARALYSIE.scale ?? 1).play(EFFECTS.PARALYSIE.key)
+                break;
+
+            case AlterationType.PEUR:
+                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").setScale(EFFECTS.PEUR.scale ?? 1).play(EFFECTS.PEUR.key)
                 break;
 
             case AlterationType.POISON:

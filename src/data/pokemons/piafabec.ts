@@ -15,6 +15,6 @@ export const PIAFABEC: PokemonEntry = {
     evolution: RAPASDEPIC,
     evolutionLevel: 20,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // picpic
-    ppSkill: SKILLS.LANCE_SOLEIL // hâte
+    baseSkill: SKILLS.PICPIC,
+    ppSkill: SKILLS.HATE
 }

@@ -2,6 +2,7 @@ import { CHARGE } from "./skills/charge";
 import { FOUET_LIANES } from "./skills/fouetLianes";
 import { LANCE_SOLEIL } from "./skills/lanceSoleil";
 import { FLAMMECHE } from "./skills/flammeche";
+import { NITROCHARGE } from "./skills/nitroCharge";
 import { GRIFFE } from "./skills/griffe";
 import { PISTOLET_A_O } from "./skills/pistoletO";
 import { BULLES_D_O } from "./skills/bullesO";
@@ -43,12 +44,21 @@ import {PINCE_MASSE} from "./skills/pinceMasse";
 import {OURAGAN} from "./skills/ouragan";
 import {BOMB_BEURK} from "./skills/bombBeurk";
 import {LECHOUILLE} from "./skills/lechouille";
+import {BELIER} from "./skills/belier";
+import {PARASPORE} from "./skills/paraSpore";
+import {JET_PIERRES} from "./skills/jetPierres";
+import {ARMURE} from "./skills/armure";
+import {HATE} from "./skills/hate";
+import {DANSE_LAMES} from "./skills/danseLames";
+import {PICPIC} from "./skills/picpic";
+import {DESTRUCTION} from "./skills/destruction";
 
 export const SKILLS = {
     CHARGE,
     FOUET_LIANES,
     LANCE_SOLEIL,
     FLAMMECHE,
+    NITROCHARGE,
     GRIFFE,
     PISTOLET_A_O,
     BULLES_D_O,
@@ -61,6 +71,7 @@ export const SKILLS = {
     SECRETION,
     CHOC_MENTAL,
     POUDRE_TOXIK,
+    PARASPORE,
     MORSURE,
     LIGOTAGE,
     HYPNOSE,
@@ -89,23 +100,25 @@ export const SKILLS = {
     PINCE_MASSE,
     OURAGAN,
     BOMB_BEURK,
-    LECHOUILLE
-    
+    LECHOUILLE,
+    BELIER,
+    JET_PIERRES,
+    ARMURE,
+    HATE,
+    DANSE_LAMES,
+    PICPIC,
+    DESTRUCTION,
+
     // furie
     // dracorage
     // dracocharge
     // danse flammes
     // ultrason
-    // destruction
     // tonnerre
     // baillement
-    // nitrocharge
     // torgnoles
     // berceuse
     // encore
-    // armure
-    // bomb beurk
-    // danse lames
     // frénésie
     // poing karaté
     // ultimapoing
@@ -129,17 +142,11 @@ export const SKILLS = {
     // rugissement
     // crochet venin
     // bomb'oeuf
-    // jet pierres
-    // paraspore
-    // pic-pic
-    // hâte
-    // tornade    
     // amnésie
     // koud'korne
     // météores
     // devoreve
     // déflagration
     // tunnel
-    // bélier
     // riposte
 }

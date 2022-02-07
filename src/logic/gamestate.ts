@@ -26,6 +26,8 @@ import {loadSave, saveState} from "./save";
 import {MYSTHERBE} from "../data/pokemons/mystherbe";
 import {TADMORV} from "../data/pokemons/tadmorv";
 import {SABELETTE} from "../data/pokemons/sabelette";
+import {GRAVALANCH} from "../data/pokemons/gravalanch";
+import {ELECTRODE} from "../data/pokemons/electrode";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -118,8 +120,8 @@ export class GameState {
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 
         gameState.player.team.push(
-            new PokemonOnBoard( new Pokemon(TADMORV, 1, 8), 4 ,6),
-            new PokemonOnBoard( new Pokemon(SABELETTE, 1, 8), 5 ,6),
+            new PokemonOnBoard( new Pokemon(ELECTRODE, 1, 8), 4 ,6),
+            //new PokemonOnBoard( new Pokemon(SABELETTE, 1, 8), 5 ,6),
         )*/
 
         if(this.currentRoomIndex >= this.roomOrder.length) {

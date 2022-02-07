@@ -4,12 +4,12 @@ import { AlterationType } from "../alterations";
 import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
-export const POUDRE_TOXIK: AOESkill = {
-    name: "Poudre Toxik",
-    description: "Projette des toxines empoisonnant tous les adversaires autour du lanceur",
-    attackRange:1,
+export const DANSE_LAMES: AOESkill = {
+    name: "Danse-Lames",
+    description: "Attaque circulaire infligeant des dégâts à tous les adversaires autour",
+    attackRange: 1,
     behavior: SkillBehavior.AREA_OF_EFFECT,
-    type: POKEMON_TYPES.PLANTE,
+    type: POKEMON_TYPES.NORMAL,
     getTilesImpacted(attacker: PokemonOnBoard){
         let [i,j] = [attacker.x, attacker.y]
         const tiles: [number, number][] = [
@@ -19,12 +19,9 @@ export const POUDRE_TOXIK: AOESkill = {
         ]        
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
-    effect: EFFECTS.POUDRE_TOXIK,
-    effectPosition: "source_ground",    
-    power: 0,
-    hitDelay: 400,
-    hitAlteration: {
-        type: AlterationType.POISON,
-        stacks: 100
-    }
+    effect: EFFECTS.DANSE_LAMES,
+    effectPosition: "source_ground",
+    effectDelta: 16,
+    power: 80,
+    hitDelay: 100
 }

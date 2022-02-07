@@ -15,6 +15,6 @@ export const ROUCOOL: PokemonEntry = {
     evolution: ROUCOUPS,
     evolutionLevel: 18,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // picpic
-    ppSkill: SKILLS.LANCE_SOLEIL // tornade
+    baseSkill: SKILLS.PICPIC,
+    ppSkill: SKILLS.OURAGAN
 }

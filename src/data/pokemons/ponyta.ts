@@ -16,5 +16,5 @@ export const PONYTA: PokemonEntry = {
     evolutionLevel: 40,
     rank: 1,
     baseSkill: SKILLS.CHARGE,
-    ppSkill: SKILLS.LANCE_SOLEIL // nitrocharge
+    ppSkill: SKILLS.NITROCHARGE
 }

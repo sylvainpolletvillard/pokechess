@@ -16,6 +16,7 @@ export interface Skill {
     rotateSprite?: boolean;
     behavior: SkillBehavior;
     power: number;
+    selfDamage?: number;
     triggerAlteration?: Alteration;
     selfAlteration?: Alteration;
     attackRange: number;
