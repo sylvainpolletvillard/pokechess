@@ -13,5 +13,5 @@ export const ECTOPLASMA: PokemonEntry = {
     types: [POKEMON_TYPES.SPECTRE, POKEMON_TYPES.POISON],
     rank: 3,
     baseSkill: SKILLS.LECHOUILLE,
-    ppSkill: SKILLS.LANCE_SOLEIL // dévoreve
+    ppSkill: SKILLS.DEVOREVE
 }

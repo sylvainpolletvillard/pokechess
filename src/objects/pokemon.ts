@@ -109,6 +109,15 @@ export class PokemonOnBoard extends Pokemon {
     hasAlteration(type: AlterationType){
         return this.alterations.some(alt => alt.type === type)
     }
+
+    resetTarget(target?: PokemonOnBoard){
+        this.nextAction = { type: PokemonTypeAction.IDLE, target }
+    }
+
+    resetAction(){
+        this.nextAction.timer?.remove()
+        this.nextAction = { type: PokemonTypeAction.IDLE }
+    }
 }
 
 export function makePokemonSprite(

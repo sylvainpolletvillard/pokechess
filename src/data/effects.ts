@@ -135,6 +135,13 @@ export const EFFECTS: { [name: string] : Effect} = {
         scale: 1,
         depth: Z.SKILL_EFFECT_BELOW_POKEMON
     },
+    TORGNOLES: {
+        key: "torgnoles",
+        frames: [64],
+        frameRate: 8,
+        repeat: 0,
+        scale: 1
+    },
     CROCS_FEU: {
         key: "crocs_feu",
         frames: [65,66,67,68,69],
@@ -393,8 +400,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         repeat: 0,
         scale: 1
     },
-    DETRITUS_HIT: {
-        key: "detritus_hit",
+    POISON: {
+        key: "poison",
         frames: [220,221,222,223,224,225,226,227,228,229,230,231],
         frameRate: 10,
         repeat: 0,
@@ -451,10 +458,10 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: Infinity
     },
-    PEUR: {
-        key: "peur",
+    METRONOME: {
+        key: "metronome",
         frames: [259],
-        frameRate: 8,
+        frameRate: 1,
         repeat: 0
     },
     BOMB_BEURK_HIT: {
@@ -470,8 +477,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: Infinity
     },
-    POISON: {
-        key: "poison",
+    PEUR: {
+        key: "peur",
         frames: [269,270,271,270],
         frameRate: 8,
         repeat: Infinity
@@ -519,4 +526,16 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 5
     },
+    BERCEUSE: {
+        key: "berceuse",
+        frames: [303,304,305,304],
+        frameRate: 8,
+        repeat: 5
+    },
+    ENCORE: {
+        key: "encore",
+        frames: [306,307,308,307],
+        frameRate: 8,
+        repeat: 1
+    }
 }

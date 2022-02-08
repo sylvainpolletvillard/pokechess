@@ -44,15 +44,15 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
             poisonDamage *= 0.5
             // type poison = 50% résistance au poison //TODO: bonus alliance à prendre en compte
         }
-        applyDamage(poisonDamage, pokemon, true)
+        applyDamage(poisonDamage, pokemon, true, true)
     } else if(alteration.type === AlterationType.BRULURE){
         const burnDamage = 0.1 * perSecond * pokemon.level; // 0.1 HP per second per level
-        applyDamage(burnDamage, pokemon, true)
+        applyDamage(burnDamage, pokemon, true, false)
     } else if(alteration.type === AlterationType.SOMMEIL){
         sprite?.anims.pause()
     } else if(alteration.type === AlterationType.LIGOTAGE){
         let damage = pokemon.maxPV * (2/100) * perSecond // 2% HP max per second        
-        applyDamage(damage, pokemon, true)
+        applyDamage(damage, pokemon, true, false)
     } else if(alteration.type === AlterationType.SOIN){
         healPokemon(pokemon, 0.1 * perSecond * pokemon.level)  // 0.1 HP par level par seconde                
     } else if(alteration.type === AlterationType.REPOS){
@@ -86,6 +86,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
 
         switch(alteration.type){
             case AlterationType.TOURBILLON:
+                pokemon.resetAction()
                 sendPokemonFlying(pokemon, alteration.stacks, game)
                 break;
             
@@ -97,6 +98,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 break;
 
             case AlterationType.SOMMEIL:
+                pokemon.resetAction()
                 alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").setScale(EFFECTS.SOMMEIL.scale ?? 1).play(EFFECTS.SOMMEIL.key)
                 break;
 
@@ -105,6 +107,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 break;
 
             case AlterationType.PEUR:
+                pokemon.resetAction()
                 alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").setScale(EFFECTS.PEUR.scale ?? 1).play(EFFECTS.PEUR.key)
                 break;
 

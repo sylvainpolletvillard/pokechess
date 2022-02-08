@@ -15,6 +15,6 @@ export const TETARTE: PokemonEntry = {
     evolution: TARTARD,
     evolutionLevel: 35,
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // torgnoles
+    baseSkill: SKILLS.TORGNOLES,
     ppSkill: SKILLS.HYPNOSE
 }

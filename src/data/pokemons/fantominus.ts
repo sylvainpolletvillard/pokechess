@@ -16,5 +16,5 @@ export const FANTOMINUS: PokemonEntry = {
     evolutionLevel: 25,
     rank: 1,
     baseSkill: SKILLS.LECHOUILLE,
-    ppSkill: SKILLS.LANCE_SOLEIL // dévoreve
+    ppSkill: SKILLS.DEVOREVE
 }

@@ -5,27 +5,20 @@ import GameScene from "../scenes/GameScene";
 import {wait} from "../utils/helpers";
 import {addAlteration} from "./alteration";
 import {getPokemonOnTile} from "./board";
-import {applyDamage, calcDamage, calcSelfDamage, faceTarget, testPrecision} from "./fight";
+import {applyDamage, calcDamage, calcSelfDamage, testPrecision} from "./fight";
 import {launchProjectile} from "./projectile";
 import {AOESkill, HitSkill, ProjectileSkill, Skill, SkillBehavior, SpecialSkill} from "./skill";
 import {triggerSpecial} from "./specials";
 
-export function renderAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene) {
-    faceTarget(pokemon, target, game);
-    let skill = pokemon.baseSkill;
-    if(pokemon.ppSkill && pokemon.pp >= pokemon.maxPP){
-        skill = pokemon.ppSkill
-        pokemon.pp = 0
-    }
-    
+export function triggerSkill(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     if(skill.behavior === SkillBehavior.DIRECT_HIT){
-        return renderDirectHitAttack(skill as HitSkill, pokemon, target, game)
+        return renderDirectHitAttack(skill as HitSkill, attacker, target, game)
     } else if(skill.behavior === SkillBehavior.PROJECTILE) {
-        return launchProjectile(skill as ProjectileSkill, pokemon, target, game)
+        return launchProjectile(skill as ProjectileSkill, attacker, target, game)
     } else if(skill.behavior === SkillBehavior.SPECIAL){
-        return renderSpecialAttack(skill as SpecialSkill, pokemon, target, game)
+        return renderSpecialAttack(skill as SpecialSkill, attacker, target, game)
     } else if(skill.behavior === SkillBehavior.AREA_OF_EFFECT){
-        return renderAOEAttack(skill as AOESkill, pokemon, target, game)
+        return renderAOEAttack(skill as AOESkill, attacker, target, game)
     }
     console.error(`Not yet implemented: ${skill.name}`)
 }

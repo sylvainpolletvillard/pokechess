@@ -57,6 +57,11 @@ import {DRACORAGE} from "./skills/dracorage";
 import {DRACOCHARGE} from "./skills/dracocharge";
 import {DANSE_FLAMMES} from "./skills/danseFlammes";
 import {ULTRASON} from "./skills/ultrason";
+import {TORGNOLES} from "./skills/torgnoles";
+import {BERCEUSE} from "./skills/berceuse";
+import {ENCORE} from "./skills/encore";
+import {METRONOME} from "./skills/metronome";
+import {DEVOREVE} from "./skills/devoreve";
 
 export const SKILLS = {
     CHARGE,
@@ -106,6 +111,7 @@ export const SKILLS = {
     OURAGAN,
     BOMB_BEURK,
     LECHOUILLE,
+    DEVOREVE,
     BELIER,
     JET_PIERRES,
     ARMURE,
@@ -118,12 +124,13 @@ export const SKILLS = {
     DRACOCHARGE,
     DANSE_FLAMMES,
     ULTRASON,
+    TORGNOLES,
+    BERCEUSE,
+    ENCORE,
+    METRONOME
 
     // tonnerre
     // baillement
-    // torgnoles
-    // berceuse
-    // encore
     // frénésie
     // poing karaté
     // ultimapoing
@@ -139,10 +146,8 @@ export const SKILLS = {
     // morphing
     // évolution
     // adaptation
-    // métronome
     // psyko
     // jackpot
-    // encore
     // empal'korne
     // rugissement
     // crochet venin
@@ -150,7 +155,6 @@ export const SKILLS = {
     // amnésie
     // koud'korne
     // météores
-    // devoreve
     // déflagration
     // tunnel
     // riposte

@@ -15,6 +15,6 @@ export const MELOFEE: PokemonEntry = {
     evolution: MELODELFE,
     evolutionLevel: 26,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // torgnoles
+    baseSkill: SKILLS.TORGNOLES,
     ppSkill: SKILLS.LANCE_SOLEIL // pouvoir lunaire
 }

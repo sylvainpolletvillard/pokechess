@@ -31,6 +31,11 @@ import {ELECTRODE} from "../data/pokemons/electrode";
 import {FEUNARD} from "../data/pokemons/feunard";
 import {EXCELANGUE} from "../data/pokemons/excelangue";
 import {LEVIATOR} from "../data/pokemons/leviator";
+import {SPECTRUM} from "../data/pokemons/spectrum";
+import {MR_MIME} from "../data/pokemons/mrmime";
+import {MEW} from "../data/pokemons/mew";
+import {ASPICOT} from "../data/pokemons/aspicot";
+import {RONDOUDOU} from "../data/pokemons/rondoudou";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -122,9 +127,9 @@ export class GameState {
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 
         gameState.player.team = [
-            //new PokemonOnBoard( new Pokemon(EXCELANGUE, 1, 8), 3 ,6),
-            //new PokemonOnBoard( new Pokemon(FEUNARD, 1, 8), 4 ,6),
-            new PokemonOnBoard( new Pokemon(LEVIATOR, 1, 8), 5 ,6),
+            new PokemonOnBoard( new Pokemon(ASPICOT, 1, 8), 5 ,6),
+            new PokemonOnBoard( new Pokemon(RONDOUDOU, 1, 8), 5 ,6),
+            new PokemonOnBoard( new Pokemon(MEW, 1, 8), 4 ,6),
         ]
 
         if(this.currentRoomIndex >= this.roomOrder.length) {

@@ -8,9 +8,10 @@ import {PokemonOnBoard} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
 import { Skill } from "./skill";
 import { hasBlockingAlteration } from "./alteration";
-import { renderAttack } from "./skill-anims";
+import { triggerSkill} from "./skill-anims";
 import { AlterationType } from "../data/alterations";
 import { clamp } from "../utils/helpers";
+import {recordLastSkillSeen} from "./specials";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
@@ -40,8 +41,8 @@ export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game:
     
     const target = pokemon.nextAction.target || findClosestReachableTarget(pokemon)
     if(target == null || target.pv <= 0){
-        pokemon.nextAction = { type: PokemonTypeAction.IDLE }
-    } else {        
+        pokemon.resetAction()
+    } else {
         if(canPokemonAttack(pokemon, target)){
             attackTarget(pokemon, target, board, game)
         } else if(canPokemonMove(pokemon)) {
@@ -85,11 +86,11 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
         });
         game.time.addEvent({
             delay: duration,
-            callback: () => { pokemon.nextAction = { type: PokemonTypeAction.IDLE, target } }
+            callback: () => { pokemon.resetTarget(target) }
         })
     } else {
         // Pokémon is already at range to attack
-        pokemon.nextAction = { type: PokemonTypeAction.IDLE, target }
+        pokemon.resetTarget(target)
     }
 }
 
@@ -105,17 +106,21 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
         loop: true,
         callback: () => {
             if(pokemon.pv === 0) return // Pokémon died while preparing attack
-            if(target.pv > 0){ // if target is not already dead by another attack
-                pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
-                pokemon.pp = Math.min(pokemon.maxPP, pokemon.pp + 1);
-                //console.log(`${pokemon.name} (${pokemon.x},${pokemon.y}) is targeting ${target.name} (${target.x},${target.y}) → ${pokemon.facingDirection}`)
-                faceTarget(pokemon, target, game);
-                renderAttack(pokemon, target, game)                
-            } else {
-                // target died, update action
-                pokemon.nextAction.timer?.remove()
-                pokemon.nextAction = { type: PokemonTypeAction.IDLE }                
+            if(target.pv <= 0) return pokemon.resetAction() //target already dead by another attack
+            if(!canPokemonAttack(pokemon, target)) return pokemon.resetAction() // target moved away or blocking alteration
+
+            pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
+            pokemon.pp = Math.min(pokemon.maxPP, pokemon.pp + 1);
+            //console.log(`${pokemon.name} (${pokemon.x},${pokemon.y}) is targeting ${target.name} (${target.x},${target.y}) → ${pokemon.facingDirection}`)
+            faceTarget(pokemon, target, game);
+            let skill = pokemon.baseSkill;
+            if(pokemon.ppSkill && pokemon.pp >= pokemon.maxPP){
+                skill = pokemon.ppSkill
+                recordLastSkillSeen(skill)
+                pokemon.pp = 0
             }
+
+            triggerSkill(skill, pokemon, target, game)
         }
     })
 }
@@ -125,15 +130,15 @@ export function testPrecision(attacker: PokemonOnBoard){
     else return Math.random() <= attacker.precision
 }
 
-export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=false){
+export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=false, noWakeup = false){
     target.pv = Math.max(0, target.pv - damage)
     if(!noPPGain) target.pp = Math.min(target.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))
     if(target.pv === 0) killPokemon(target)
     else {
         const sommeil = target.alterations.find(alt => alt.type === AlterationType.SOMMEIL)
-        if(sommeil){ 
+        if(sommeil && !noWakeup){
             sommeil.stacks -= Math.ceil((damage/target.maxPV)*100);
-            console.log("reducing stacks to "+sommeil.stacks, Math.ceil(damage*10)) 
+            //console.log("reducing stacks to "+sommeil.stacks, Math.ceil(damage*10))
         }
     }
 }

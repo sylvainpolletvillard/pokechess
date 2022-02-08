@@ -2,8 +2,8 @@ import Phaser from "phaser";
 import { AlterationType } from "../data/alterations";
 import { Z } from "../data/depths";
 import { EFFECTS } from "../data/effects";
-import { PokemonTypeAction } from "../data/pokemons";
-import { SKILLS } from "../data/skills";
+import {POKEMONS, PokemonTypeAction} from "../data/pokemons";
+import { SKILLS} from "../data/skills";
 import { PokemonOnBoard } from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
 import { pickRandomIn, randomInt, wait } from "../utils/helpers";
@@ -12,12 +12,16 @@ import { getPokemonOnTile, getPositionFromCoords } from "./board";
 import { applyDamage, calcDamage } from "./fight";
 import { gameState } from "./gamestate";
 import { distanceBetweenPokemon } from "./pathfinding";
+import {triggerSkill} from "./skill-anims";
+import {Skill} from "./skill";
 
 export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     switch(specialMoveName){
         case "teleport": return teleport(attacker)
         case "eclair": return renderEclair(attacker, game)
         case "provoc": return provoc(attacker, game)
+        case "encore": return encore(attacker, target, game)
+        case "metronome": return metronome(attacker, target, game)
     }
 }
 
@@ -76,13 +80,33 @@ export function provoc(attacker: PokemonOnBoard, game: GameScene){
         provocatedSprite.play(EFFECTS.PROVOCATED.key)
         wait(500).then(() => provocatedSprite.destroy())
         if(pokemon.nextAction.timer){
-            console.log({ TIMER: pokemon.nextAction.timer.getRemaining() })
             wait(pokemon.nextAction.timer.getRemaining()).then(() => {
-                pokemon.nextAction = { type: PokemonTypeAction.IDLE, target: attacker }
+                pokemon.resetTarget(attacker)
             })            
         } else {
-            pokemon.nextAction = { type: PokemonTypeAction.IDLE, target: attacker }
+            pokemon.resetTarget(attacker)
         }
         
     })
+}
+
+let lastSkillSeen: Skill = SKILLS.TREMPETTE;
+export function recordLastSkillSeen(skill: Skill){
+    if(skill !== SKILLS.ENCORE) lastSkillSeen = skill
+}
+
+export function encore(attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+    console.log("Encore: "+lastSkillSeen.name)
+    return wait(500).then(() => triggerSkill(lastSkillSeen, attacker, target, game))
+}
+
+
+const PP_SKILLS = Object.values(SKILLS)
+    .filter(skill => POKEMONS.some(p => p.ppSkill === skill))
+
+export function metronome(attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+    const randomSkill = pickRandomIn(PP_SKILLS)
+    lastSkillSeen = randomSkill
+    console.log("Metronome: "+randomSkill.name)
+    return triggerSkill(randomSkill, attacker, target, game)
 }

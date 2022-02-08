@@ -28,10 +28,12 @@ export function launchProjectile(
 ) {
     if(!skill.effect) return console.error(`Missing projectile effect`, skill)
     let [x,y] = origin.position
-    let [targetX,targetY] = target.position
     const distance = distanceBetweenPokemon(origin, target)    
     const angle = Math.atan2(target.y - origin.y, target.x - origin.x)
-    let travelTime = 1000 * distance / skill.travelSpeed
+    // cible dans la direction de la cible, mais suffisamment loin pour sortir de l'écran
+    let targetX = Math.round(x + Math.cos(angle) * 12 * 32)
+    let targetY = Math.round(y + Math.sin(angle) * 12 * 32)
+    let travelTime = 1000 * 12 / skill.travelSpeed
 
     const projectile: Projectile = {
         sprite: game.add.sprite(x, y, "effects"),
@@ -44,12 +46,6 @@ export function launchProjectile(
 
     if(skill.rotateProjectile){  
         projectile.sprite.rotation = angle;
-    }
-    if(skill.pierceThrough){
-        // cible dans la direction de la cible, mais suffisamment loin pour sortir de l'écran        
-        targetX = Math.round(x + Math.cos(angle) * 12 * 32)
-        targetY = Math.round(y + Math.sin(angle) * 12 * 32)
-        travelTime = 1000 * 12 / skill.travelSpeed
     }
 
     projectile.sprite.scale = skill.effect.scale ?? 1;
@@ -90,21 +86,20 @@ export function checkProjectilesImpact(game: GameScene){
         let {x,y} = projectile.sprite
         x+=8; y+=8; // try to better center for collision detection
         const r = projectile.skill.projectileRadius
-        const targetsCovered = new Set([ [x-r, y-r], [x+r, y-r], [x-r, y+r], [x+r, y+r] ]
-            .map(([x,y]) => getCoordsFromPosition(x,y))
-            .map(([i,j]) => getPokemonOnTile(i, j))
-            .filter(target => target != null && target !== projectile.attacker)
-        )
+        const targets = projectile.attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
+        const targetsTouched = targets.filter(p => {
+            let [px, py] = p.position
+            let distance = Math.sqrt((px - x) ** 2 + (py - y) ** 2)
+            return distance < r + 10
+        })
 
-        targetsCovered.forEach(target => {
-            if(target && target.owner !== OWNER_PLAYER && !projectile.impactedPokemonIds.includes(target.uid)){                
+        targetsTouched.forEach(target => {
+            if(!projectile.impactedPokemonIds.includes(target.uid)){
                 projectile.impactedPokemonIds.push(target.uid)
-                wait(projectile.skill.pierceThrough ? 0 : Math.floor(1000 / projectile.skill.travelSpeed)).then(() => {
-                    let damage = calcDamage(projectile.skill, target, projectile.attacker)
-                    applyDamage(damage, target)
-                    if(projectile.skill.hitAlteration) addAlteration(target, projectile.skill.hitAlteration, game)               
-                    if(!projectile.skill.pierceThrough) destroyProjectile(projectile)
-                })
+                let damage = calcDamage(projectile.skill, target, projectile.attacker)
+                applyDamage(damage, target)
+                if(projectile.skill.hitAlteration) addAlteration(target, projectile.skill.hitAlteration, game)
+                if(!projectile.skill.pierceThrough) destroyProjectile(projectile)
             }
         })
     })

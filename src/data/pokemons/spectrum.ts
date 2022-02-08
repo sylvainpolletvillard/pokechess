@@ -16,5 +16,5 @@ export const SPECTRUM: PokemonEntry = {
     evolutionLevel: 40,
     rank: 2,
     baseSkill: SKILLS.LECHOUILLE,
-    ppSkill: SKILLS.LANCE_SOLEIL // dévoreve
+    ppSkill: SKILLS.DEVOREVE
 }
