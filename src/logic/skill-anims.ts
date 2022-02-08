@@ -146,7 +146,7 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
     wait(skill.hitDelay ?? 0).then(() => {
         tiles.forEach(([i,j]) => {
             const target = getPokemonOnTile(i,j)
-            if(target && target.owner !== OWNER_PLAYER){
+            if(target && target.owner !== attacker.owner){
                 const damage = calcDamage(skill, target, attacker)
                 console.log(`AOE from ${attacker.name} ; ${target.name} receives ${damage} damage !`)
                 applyDamage(damage, target)

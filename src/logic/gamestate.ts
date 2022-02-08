@@ -117,7 +117,7 @@ export class GameState {
 
         // QUICK TESTING
 
-        gameState.currentDestination = FORET_JADE
+        /*gameState.currentDestination = FORET_JADE
         gameState.player.team.push(
             new PokemonOnBoard( new Pokemon(MYSTHERBE, 1, 20), 4 ,6)
         )
@@ -130,7 +130,7 @@ export class GameState {
             new PokemonOnBoard( new Pokemon(ASPICOT, 1, 8), 5 ,6),
             new PokemonOnBoard( new Pokemon(RONDOUDOU, 1, 8), 5 ,6),
             new PokemonOnBoard( new Pokemon(MEW, 1, 8), 4 ,6),
-        ]
+        ]*/
 
         if(this.currentRoomIndex >= this.roomOrder.length) {
             this.activeScene!.scene.start("MapScene")
