@@ -16,5 +16,5 @@ export const NOSFERAPTI: PokemonEntry = {
     evolutionLevel: 25,
     rank: 1,
     baseSkill: SKILLS.VAMPIRISME,
-    ppSkill: SKILLS.LANCE_SOLEIL // ultrason
+    ppSkill: SKILLS.ULTRASON
 }

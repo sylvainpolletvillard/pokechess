@@ -56,7 +56,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         scale: 0.5
     },
     SECRETION_HIT: {
-        key: "secretion",
+        key: "secretion_hit",
         frames: [19],
         frameRate: 1,
         repeat: 0,
@@ -129,7 +129,7 @@ export const EFFECTS: { [name: string] : Effect} = {
     },
     BURN: {
         key: "burn",
-        frames: [40,41,42,43,44,45,46,47],
+        frames: [60,61,62,63],
         frameRate: 8,
         repeat: Infinity,
         scale: 1,
@@ -295,8 +295,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         repeat: 0,
         scale: 1
     },
-    SWEEP: {
-        key: "sweep",
+    FURIE: {
+        key: "furie",
         frames: [157,156,155,154],
         frameRate: 8,
         repeat: 0
@@ -339,9 +339,9 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 4,
         repeat: 0
     },
-    CIRCLE_HIT: {
-        key: "circle_hit",
-        frames: [184,185,186,187,188],
+    ULTRASON: {
+        key: "ultrason",
+        frames: [184,185,186,187,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188,188],
         frameRate: 8,
         repeat: 0
     },
@@ -499,5 +499,24 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [289,290,291,292,293],
         frameRate: 8,
         repeat: 0
+    },
+    DRACORAGE: {
+        key: "dracorage",
+        frames: [294,295,296,297],
+        frameRate: 12,
+        repeat: 3,
+        depth: Z.SKILL_EFFECT_BELOW_POKEMON
+    },
+    DRACOCHARGE: {
+        key: "dracocharge",
+        frames: [298,299],
+        frameRate: 8,
+        repeat: Infinity
+    },
+    DANSE_FLAMMES: {
+        key: "danseflammes",
+        frames: [300,301,302],
+        frameRate: 8,
+        repeat: 5
     },
 }

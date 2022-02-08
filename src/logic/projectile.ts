@@ -93,7 +93,7 @@ export function checkProjectilesImpact(game: GameScene){
         const targetsCovered = new Set([ [x-r, y-r], [x+r, y-r], [x-r, y+r], [x+r, y+r] ]
             .map(([x,y]) => getCoordsFromPosition(x,y))
             .map(([i,j]) => getPokemonOnTile(i, j))
-            .filter(target => target != null)
+            .filter(target => target != null && target !== projectile.attacker)
         )
 
         targetsCovered.forEach(target => {

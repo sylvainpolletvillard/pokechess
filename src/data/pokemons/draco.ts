@@ -15,6 +15,6 @@ export const DRACO: PokemonEntry = {
     evolution: DRACOLOSSE,
     evolutionLevel: 55,
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // dracocharge
+    baseSkill: SKILLS.DRACOCHARGE,
     ppSkill: SKILLS.OURAGAN
 }

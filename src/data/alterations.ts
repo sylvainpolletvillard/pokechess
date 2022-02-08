@@ -16,7 +16,8 @@ export enum AlterationType {
     HATE = "HATE", // augmente la vitesse de 20% par stack
     ACIDE = "ACIDE", // divise par 2 la défense ennemie
     AVEUGLE = "AVEUGLE", // réduit de 50% la précision de l'ennemi
-    EXECUTION = "EXECUTION" // met KO l'unité si moins de 30% de ses PV max
+    EXECUTION = "EXECUTION", // met KO l'unité si moins de 30% de ses PV max
+    DAMAGE_OVER_TIME = "DAMAGE_OVER_TIME", // inflige 1 HP brut par tick
 }
 
 export interface Alteration {

@@ -28,6 +28,9 @@ import {TADMORV} from "../data/pokemons/tadmorv";
 import {SABELETTE} from "../data/pokemons/sabelette";
 import {GRAVALANCH} from "../data/pokemons/gravalanch";
 import {ELECTRODE} from "../data/pokemons/electrode";
+import {FEUNARD} from "../data/pokemons/feunard";
+import {EXCELANGUE} from "../data/pokemons/excelangue";
+import {LEVIATOR} from "../data/pokemons/leviator";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -108,9 +111,8 @@ export class GameState {
         }
 
         // QUICK TESTING
-        /*
+
         gameState.currentDestination = FORET_JADE
-        gameState.activeScene!.scene.start("MapScene")
         gameState.player.team.push(
             new PokemonOnBoard( new Pokemon(MYSTHERBE, 1, 20), 4 ,6)
         )
@@ -119,10 +121,11 @@ export class GameState {
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 
-        gameState.player.team.push(
-            new PokemonOnBoard( new Pokemon(ELECTRODE, 1, 8), 4 ,6),
-            //new PokemonOnBoard( new Pokemon(SABELETTE, 1, 8), 5 ,6),
-        )*/
+        gameState.player.team = [
+            //new PokemonOnBoard( new Pokemon(EXCELANGUE, 1, 8), 3 ,6),
+            //new PokemonOnBoard( new Pokemon(FEUNARD, 1, 8), 4 ,6),
+            new PokemonOnBoard( new Pokemon(LEVIATOR, 1, 8), 5 ,6),
+        ]
 
         if(this.currentRoomIndex >= this.roomOrder.length) {
             this.activeScene!.scene.start("MapScene")

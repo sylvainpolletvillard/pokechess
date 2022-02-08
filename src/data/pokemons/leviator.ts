@@ -13,5 +13,5 @@ export const LEVIATOR: PokemonEntry = {
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.VOL],
     rank: 3,
     baseSkill: SKILLS.MORSURE,
-    ppSkill: SKILLS.LANCE_SOLEIL // draco rage
+    ppSkill: SKILLS.DRACORAGE
 }

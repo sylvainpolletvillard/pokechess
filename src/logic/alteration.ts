@@ -19,7 +19,7 @@ export function updateAlterations(pokemons: PokemonOnBoard[]){
                 removeAlteration(pokemon, alt)                
             } else if(alt.effectSprite){
                 const [x,y] = pokemon.position
-                alt.effectSprite.setPosition(x, y+(alt.effectDelta ?? 0))                
+                alt.effectSprite.setPosition(x, y+(alt.effectDelta ?? 0))
             }
         })
     })
@@ -59,6 +59,8 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
         healPokemon(pokemon, (5/100) * perSecond * pokemon.maxPV) // 5% max HP par seconde
     } else if(alteration.type === AlterationType.EXECUTION){
         if(pokemon.pv < 30/100 * pokemon.maxPV) killPokemon(pokemon)
+    } else if(alteration.type === AlterationType.DAMAGE_OVER_TIME){
+        applyDamage(10 * perSecond, pokemon)
     }
 }
 

@@ -52,6 +52,11 @@ import {HATE} from "./skills/hate";
 import {DANSE_LAMES} from "./skills/danseLames";
 import {PICPIC} from "./skills/picpic";
 import {DESTRUCTION} from "./skills/destruction";
+import {FURIE} from "./skills/furie";
+import {DRACORAGE} from "./skills/dracorage";
+import {DRACOCHARGE} from "./skills/dracocharge";
+import {DANSE_FLAMMES} from "./skills/danseFlammes";
+import {ULTRASON} from "./skills/ultrason";
 
 export const SKILLS = {
     CHARGE,
@@ -108,12 +113,12 @@ export const SKILLS = {
     DANSE_LAMES,
     PICPIC,
     DESTRUCTION,
+    FURIE,
+    DRACORAGE,
+    DRACOCHARGE,
+    DANSE_FLAMMES,
+    ULTRASON,
 
-    // furie
-    // dracorage
-    // dracocharge
-    // danse flammes
-    // ultrason
     // tonnerre
     // baillement
     // torgnoles
@@ -129,7 +134,7 @@ export const SKILLS = {
     // coud'boule
     // e-coque
     // grobisou
-    // brouillard,
+    // brouillard
     // pouvoir lunaire
     // morphing
     // évolution

@@ -40,6 +40,7 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
         [x,y] = attacker.position
         dx = Math.round(Math.cos(angle) * delta)
         dy = Math.round(Math.sin(angle) * delta)
+        angle += Math.PI
     } else if(skill.effectPosition === "target" || skill.effectPosition === "target_to_source"){
         dx = Math.round(Math.cos(angle+Math.PI) * delta)
         dy = Math.round(Math.sin(angle+Math.PI) * delta)
