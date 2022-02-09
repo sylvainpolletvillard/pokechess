@@ -1,6 +1,5 @@
 import { AOESkill, SkillBehavior } from "../../logic/skill";
 import { PokemonOnBoard } from "../../objects/pokemon";
-import { AlterationType } from "../alterations";
 import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 

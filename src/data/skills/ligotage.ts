@@ -1,7 +1,7 @@
 import {HitSkill, SkillBehavior} from "../../logic/skill";
 import {POKEMON_TYPES} from "../types";
 import {EFFECTS} from "../effects";
-import { AlterationType } from "../alterations";
+import {AlterationType} from "../alterations";
 
 export const LIGOTAGE: HitSkill = {
     name: "Ligotage",

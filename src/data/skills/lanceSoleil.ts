@@ -4,7 +4,7 @@ import {EFFECTS} from "../effects";
 
 export const LANCE_SOLEIL: ProjectileSkill = {
     name: "Lance-Soleil",
-    description: `Absorbe l'énergie solaire puis la relâche en un puissant faisceau.`,
+    description: `Absorbe l'énergie solaire puis la relâche en un puissant orbe`,
     type: POKEMON_TYPES.PLANTE,
     effect: EFFECTS.LANCE_SOLEIL,
     behavior: SkillBehavior.PROJECTILE,

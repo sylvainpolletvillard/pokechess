@@ -12,6 +12,6 @@ export const KICKLEE: PokemonEntry = {
     speed: 87,
     types: [POKEMON_TYPES.COMBAT],
     rank: 2,
-    baseSkill: SKILLS.FLAMMECHE, // double pied
+    baseSkill: SKILLS.DOUBLE_PIED,
     ppSkill: SKILLS.LANCE_SOLEIL // mawashi Geri
 }

@@ -5,6 +5,7 @@ import { AlterationType } from "../alterations";
 
 export const HYPNOSE: HitSkill = {
     name: "Hypnose",
+    description: "Endort profondément la cible",
     type: POKEMON_TYPES.PSY,
     effect: EFFECTS.HYPNOSE,
     behavior: SkillBehavior.DIRECT_HIT,

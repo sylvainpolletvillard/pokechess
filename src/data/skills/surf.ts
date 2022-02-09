@@ -4,7 +4,7 @@ import {EFFECTS} from "../effects";
 
 export const SURF: ProjectileSkill = {
     name: "Surf",
-    description: "Déclenche une grosse vague balayant tout dans son passage",
+    description: "Une vague balayant tout sur son passage",
     type: POKEMON_TYPES.EAU,
     effect: EFFECTS.SURF,
     behavior: SkillBehavior.PROJECTILE,

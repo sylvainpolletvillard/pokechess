@@ -15,6 +15,6 @@ export const MACHOC: PokemonEntry = {
     evolution: MACHOPEUR,
     evolutionLevel: 28,
     rank: 1,
-    baseSkill: SKILLS.FLAMMECHE, // poing karaté
-    ppSkill: SKILLS.LANCE_SOLEIL // balayage
+    baseSkill: SKILLS.POING_KARATE,
+    ppSkill: SKILLS.BALAYAGE
 }

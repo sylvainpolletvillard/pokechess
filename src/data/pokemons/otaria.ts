@@ -15,6 +15,6 @@ export const OTARIA: PokemonEntry = {
     evolution: LAMANTINE,
     evolutionLevel: 34,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, // coup d'Boule
-    ppSkill: SKILLS.ECLATS_GLACE
+    baseSkill: SKILLS.ECLATS_GLACE,
+    ppSkill: SKILLS.ECLATS_GLACE // laser glace
 }

@@ -13,5 +13,5 @@ export const TYGNON: PokemonEntry = {
     types: [POKEMON_TYPES.COMBAT],
     rank: 2,
     baseSkill: SKILLS.FLAMMECHE, // riposte
-    ppSkill: SKILLS.LANCE_SOLEIL // ultimapoing
+    ppSkill: SKILLS.ULTIMAPOING
 }

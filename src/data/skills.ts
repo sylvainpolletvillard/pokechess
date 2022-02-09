@@ -1,40 +1,40 @@
-import { CHARGE } from "./skills/charge";
-import { FOUET_LIANES } from "./skills/fouetLianes";
-import { LANCE_SOLEIL } from "./skills/lanceSoleil";
-import { FLAMMECHE } from "./skills/flammeche";
-import { NITROCHARGE } from "./skills/nitroCharge";
-import { GRIFFE } from "./skills/griffe";
-import { PISTOLET_A_O } from "./skills/pistoletO";
-import { BULLES_D_O } from "./skills/bullesO";
-import { HYDROCANON } from "./skills/hydrocanon";
-import { LANCE_FLAMMES } from "./skills/lanceFlammes";
-import { TREMPETTE } from "./skills/trempette";
-import { POUDREUSE } from "./skills/poudreuse";
-import { ECLATS_GLACE } from "./skills/eclatsGlace";
-import { PIQURE } from "./skills/piqure";
-import { SECRETION } from "./skills/secretion";
-import { CHOC_MENTAL } from "./skills/chocMental";
-import { POUDRE_TOXIK } from "./skills/poudreToxik";
-import { MORSURE } from "./skills/morsure";
-import { LIGOTAGE } from "./skills/ligotage";
-import { HYPNOSE } from "./skills/hypnose";
-import { TELEPORT } from "./skills/teleport";
-import { ETINCELLE } from "./skills/etincelle";
-import { CAGE_ECLAIR } from "./skills/cageEclair";
-import { MASSDOS } from "./skills/massdOs";
-import { VIVE_ATTAQUE } from "./skills/vive attaque";
-import { ECLAIR } from "./skills/eclair";
-import { RAFALE_PSY } from "./skills/rafalePsy";
-import { CROCS_FEU } from "./skills/crocsFeu";
-import { CROC_DE_MORT } from "./skills/croc_de_mort";
-import { VAMPIRISME } from "./skills/vampirisme";
-import { REPOS } from "./skills/repos";
-import { PROVOC } from "./skills/provoc";
-import { SURF } from "./skills/surf";
-import { POUVOIR_ANTIQUE } from "./skills/pouvoirAntique";
-import { DARD_VENIN } from "./skills/dardVenin";
-import { ACIDE } from "./skills/acide";
-import { CRUAILE } from "./skills/cruaile";
+import {CHARGE} from "./skills/charge";
+import {FOUET_LIANES} from "./skills/fouetLianes";
+import {LANCE_SOLEIL} from "./skills/lanceSoleil";
+import {FLAMMECHE} from "./skills/flammeche";
+import {NITROCHARGE} from "./skills/nitroCharge";
+import {GRIFFE} from "./skills/griffe";
+import {PISTOLET_A_O} from "./skills/pistoletO";
+import {BULLES_D_O} from "./skills/bullesO";
+import {HYDROCANON} from "./skills/hydrocanon";
+import {LANCE_FLAMMES} from "./skills/lanceFlammes";
+import {TREMPETTE} from "./skills/trempette";
+import {POUDREUSE} from "./skills/poudreuse";
+import {ECLATS_GLACE} from "./skills/eclatsGlace";
+import {PIQURE} from "./skills/piqure";
+import {SECRETION} from "./skills/secretion";
+import {CHOC_MENTAL} from "./skills/chocMental";
+import {POUDRE_TOXIK} from "./skills/poudreToxik";
+import {MORSURE} from "./skills/morsure";
+import {LIGOTAGE} from "./skills/ligotage";
+import {HYPNOSE} from "./skills/hypnose";
+import {TELEPORT} from "./skills/teleport";
+import {ETINCELLE} from "./skills/etincelle";
+import {CAGE_ECLAIR} from "./skills/cageEclair";
+import {MASSDOS} from "./skills/massdOs";
+import {VIVE_ATTAQUE} from "./skills/vive attaque";
+import {ECLAIR} from "./skills/eclair";
+import {RAFALE_PSY} from "./skills/rafalePsy";
+import {CROCS_FEU} from "./skills/crocsFeu";
+import {CROC_DE_MORT} from "./skills/croc_de_mort";
+import {VAMPIRISME} from "./skills/vampirisme";
+import {REPOS} from "./skills/repos";
+import {PROVOC} from "./skills/provoc";
+import {SURF} from "./skills/surf";
+import {POUVOIR_ANTIQUE} from "./skills/pouvoirAntique";
+import {DARD_VENIN} from "./skills/dardVenin";
+import {ACIDE} from "./skills/acide";
+import {CRUAILE} from "./skills/cruaile";
 import {VOL_VIE} from "./skills/volVie";
 import {COUD_BOUE} from "./skills/coudBoue";
 import {JET_DE_SABLE} from "./skills/jetSable";
@@ -62,6 +62,12 @@ import {BERCEUSE} from "./skills/berceuse";
 import {ENCORE} from "./skills/encore";
 import {METRONOME} from "./skills/metronome";
 import {DEVOREVE} from "./skills/devoreve";
+import {TONNERRE} from "./skills/tonnerre";
+import {POING_KARATE} from "./skills/poingKarate";
+import {DOUBLE_PIED} from "./skills/doublePied";
+import {ULTIMAPOING} from "./skills/ultimapoing";
+import {BROUILLARD} from "./skills/brouillard";
+import {BALAYAGE} from "./skills/balayage";
 
 export const SKILLS = {
     CHARGE,
@@ -127,26 +133,23 @@ export const SKILLS = {
     TORGNOLES,
     BERCEUSE,
     ENCORE,
-    METRONOME
+    METRONOME,
+    TONNERRE,
+    POING_KARATE,
+    DOUBLE_PIED,
+    ULTIMAPOING,
+    BROUILLARD,
+    BALAYAGE,
 
-    // tonnerre
-    // baillement
-    // frénésie
-    // poing karaté
-    // ultimapoing
-    // double pied
     // mawashi geri
-    // balayage
     // abri
-    // coud'boule
+    // laser glace
     // e-coque
     // grobisou
-    // brouillard
     // pouvoir lunaire
     // morphing
     // évolution
     // adaptation
-    // psyko
     // jackpot
     // empal'korne
     // rugissement
@@ -155,7 +158,10 @@ export const SKILLS = {
     // amnésie
     // koud'korne
     // météores
-    // déflagration
     // tunnel
     // riposte
+    // psyko
+    // déflagration
+    // blizzard
+    // fatal foudre
 }

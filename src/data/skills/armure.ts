@@ -5,7 +5,7 @@ import { POKEMON_TYPES } from "../types";
 
 export const ARMURE: AOESkill = {
     name: "Armure",
-    description: "Augmente la défense du lanceur jusqu'à la fin du combat.",
+    description: "Augmente la défense du lanceur jusqu'à la fin du combat - Accumulable",
     attackRange: 9,
     behavior: SkillBehavior.AREA_OF_EFFECT,
     type: POKEMON_TYPES.ROCHE,

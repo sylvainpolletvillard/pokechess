@@ -13,5 +13,5 @@ export const SMOGOGO: PokemonEntry = {
     types: [POKEMON_TYPES.POISON],
     rank: 2,
     baseSkill: SKILLS.DETRITUS,
-    ppSkill: SKILLS.LANCE_SOLEIL // brouillard
+    ppSkill: SKILLS.BROUILLARD
 }

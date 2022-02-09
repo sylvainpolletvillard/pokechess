@@ -23,8 +23,8 @@ export const CAGE_ECLAIR: AOESkill = {
     effectPosition: "source_ground",
     effectDelta: 16,
     power: 0,
-    hitDelay: 0,
-    triggerAlteration: {
+    hitDelay: 100,
+    hitAlteration: {
         type: AlterationType.PARALYSIE,
         stacks: 100
     }

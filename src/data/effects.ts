@@ -258,21 +258,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 16,
         repeat: 0
     },
-    FIST: {
-        key: "fist",
-        frames: [144],
+    POING_KARATE: {
+        key: "poing_karate",
+        frames: [99,144],
         frameRate: 8,
         repeat: 0
     },
-    PAW: {
-        key: "paw",
-        frames: [145],
-        frameRate: 8,
-        repeat: 0
-    },
-    FOOT: {
-        key: "foot",
-        frames: [146],
+    DOUBLE_PIED: {
+        key: "double_pied",
+        frames: [145,146],
         frameRate: 8,
         repeat: 0
     },
@@ -537,5 +531,29 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [306,307,308,307],
         frameRate: 8,
         repeat: 1
+    },
+    TONNERRE: {
+        key: "tonnerre",
+        frames: [309,310,311,312,313,314],
+        frameRate: 8,
+        repeat: 0
+    },
+    ULTIMAPOING: {
+        key: "ultimapoing",
+        frames: [315,316,315,316,317],
+        frameRate: 8,
+        repeat: 0
+    },
+    BROUILLARD: {
+        key: "brouillard",
+        frames: [318,319,320,321,322,323,324],
+        frameRate: 8,
+        repeat: 0
+    },
+    BALAYAGE: {
+        key: "balayage",
+        frames: [325,326,327,328],
+        frameRate: 8,
+        repeat: 0
     }
 }

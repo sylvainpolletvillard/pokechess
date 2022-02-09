@@ -12,6 +12,6 @@ export const NIDOQUEEN: PokemonEntry = {
     speed: 76,
     types: [POKEMON_TYPES.POISON, POKEMON_TYPES.SOL],
     rank: 1,
-    baseSkill: SKILLS.GRIFFE,
+    baseSkill: SKILLS.DOUBLE_PIED,
     ppSkill: SKILLS.LANCE_SOLEIL // rugissement
 }

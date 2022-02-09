@@ -2,6 +2,7 @@ import {POKEMON_TYPES} from "../types";
 import {MACKOGNEUR} from "./mackogneur";
 import {SKILLS} from "../skills";
 import {PokemonEntry} from "../pokemons";
+import {BALAYAGE} from "../skills/balayage";
 
 export const MACHOPEUR: PokemonEntry = {
     ref: "machopeur",
@@ -15,6 +16,6 @@ export const MACHOPEUR: PokemonEntry = {
     evolution: MACKOGNEUR,
     evolutionLevel: 40,
     rank: 2,
-    baseSkill: SKILLS.FLAMMECHE, // poing karaté
-    ppSkill: SKILLS.LANCE_SOLEIL // balayage
+    baseSkill: SKILLS.POING_KARATE,
+    ppSkill: SKILLS.BALAYAGE
 }

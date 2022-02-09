@@ -12,6 +12,6 @@ export const MACKOGNEUR: PokemonEntry = {
     speed: 55,
     types: [POKEMON_TYPES.COMBAT],
     rank: 3,
-    baseSkill: SKILLS.FLAMMECHE, // poing karaté
-    ppSkill: SKILLS.LANCE_SOLEIL // balayage
+    baseSkill: SKILLS.POING_KARATE,
+    ppSkill: SKILLS.BALAYAGE
 }

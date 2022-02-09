@@ -13,5 +13,5 @@ export const ELEKTEK: PokemonEntry = {
     types: [POKEMON_TYPES.ELECTRIQUE],
     rank: 2,
     baseSkill: SKILLS.ETINCELLE,
-    ppSkill: SKILLS.LANCE_SOLEIL // tonnerre
+    ppSkill: SKILLS.TONNERRE
 }

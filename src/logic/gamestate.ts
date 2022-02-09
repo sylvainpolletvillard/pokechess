@@ -23,19 +23,10 @@ import {TENTACRUEL} from "../data/pokemons/tentacruel";
 import {COCONFORT} from "../data/pokemons/coconfort";
 import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
 import {loadSave, saveState} from "./save";
-import {MYSTHERBE} from "../data/pokemons/mystherbe";
-import {TADMORV} from "../data/pokemons/tadmorv";
-import {SABELETTE} from "../data/pokemons/sabelette";
-import {GRAVALANCH} from "../data/pokemons/gravalanch";
-import {ELECTRODE} from "../data/pokemons/electrode";
-import {FEUNARD} from "../data/pokemons/feunard";
-import {EXCELANGUE} from "../data/pokemons/excelangue";
-import {LEVIATOR} from "../data/pokemons/leviator";
-import {SPECTRUM} from "../data/pokemons/spectrum";
-import {MR_MIME} from "../data/pokemons/mrmime";
-import {MEW} from "../data/pokemons/mew";
-import {ASPICOT} from "../data/pokemons/aspicot";
-import {RONDOUDOU} from "../data/pokemons/rondoudou";
+import {TYGNON} from "../data/pokemons/tygnon";
+import {MACHOPEUR} from "../data/pokemons/machopeur";
+import {MAGMAR} from "../data/pokemons/magmar";
+import {SMOGO} from "../data/pokemons/smogo";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -125,12 +116,12 @@ export class GameState {
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
-
+*/
         gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(ASPICOT, 1, 8), 5 ,6),
-            new PokemonOnBoard( new Pokemon(RONDOUDOU, 1, 8), 5 ,6),
-            new PokemonOnBoard( new Pokemon(MEW, 1, 8), 4 ,6),
-        ]*/
+            new PokemonOnBoard( new Pokemon(TYGNON, 1, 8), 5 ,6),
+            new PokemonOnBoard( new Pokemon(MACHOPEUR, 1, 8), 5 ,6),
+            new PokemonOnBoard( new Pokemon(SMOGO, 1, 8), 4 ,6),
+        ]
 
         if(this.currentRoomIndex >= this.roomOrder.length) {
             this.activeScene!.scene.start("MapScene")
