@@ -15,6 +15,6 @@ export const POISSIRENE: PokemonEntry = {
     evolution: POISSOROY,
     evolutionLevel: 33,
     rank: 1,
-    baseSkill: SKILLS.FOUET_LIANES, //koud'korne
-    ppSkill: SKILLS.LANCE_SOLEIL // empal'korne
+    baseSkill: SKILLS.KOUD_KORNE,
+    ppSkill: SKILLS.FURIE
 }

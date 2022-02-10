@@ -15,6 +15,6 @@ export const ABO: PokemonEntry = {
     evolution: ARBOK,
     evolutionLevel: 22,
     rank: 1,
-    baseSkill: SKILLS.MORSURE,
+    baseSkill: SKILLS.CROCHET_VENIN,
     ppSkill: SKILLS.LIGOTAGE
 }

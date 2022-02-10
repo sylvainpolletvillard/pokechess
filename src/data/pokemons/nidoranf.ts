@@ -16,5 +16,5 @@ export const NIDORAN_FEMALE: PokemonEntry = {
     evolutionLevel: 16,
     rank: 1,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.LANCE_SOLEIL // crochet venin
+    ppSkill: SKILLS.RUGISSEMENT
 }

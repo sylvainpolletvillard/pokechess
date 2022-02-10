@@ -16,5 +16,5 @@ export const OSSELAIT: PokemonEntry = {
     evolutionLevel: 28,
     rank: 1,
     baseSkill: SKILLS.MASSDOS,
-    ppSkill: SKILLS.LANCE_SOLEIL // rugissement
+    ppSkill: SKILLS.RUGISSEMENT
 }

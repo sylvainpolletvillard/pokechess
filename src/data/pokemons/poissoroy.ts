@@ -12,6 +12,6 @@ export const POISSOROY: PokemonEntry = {
     speed: 68,
     types: [POKEMON_TYPES.EAU],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, //koud'korne
-    ppSkill: SKILLS.LANCE_SOLEIL // empal'korne
+    baseSkill: SKILLS.KOUD_KORNE,
+    ppSkill: SKILLS.FURIE
 }

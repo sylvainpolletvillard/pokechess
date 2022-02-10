@@ -68,6 +68,11 @@ import {DOUBLE_PIED} from "./skills/doublePied";
 import {ULTIMAPOING} from "./skills/ultimapoing";
 import {BROUILLARD} from "./skills/brouillard";
 import {BALAYAGE} from "./skills/balayage";
+import {E_COQUE} from "./skills/eCoque";
+import {RUGISSEMENT} from "./skills/rugissement";
+import {CROCHET_VENIN} from "./skills/crochetVenin";
+import {KOUD_KORNE} from "./skills/koudKorne";
+import {EMPAL_KORNE} from "./skills/empalKorne";
 
 export const SKILLS = {
     CHARGE,
@@ -140,23 +145,23 @@ export const SKILLS = {
     ULTIMAPOING,
     BROUILLARD,
     BALAYAGE,
+    E_COQUE,
+    RUGISSEMENT,
+    CROCHET_VENIN,
+    KOUD_KORNE,
+    EMPAL_KORNE
 
     // mawashi geri
     // abri
     // laser glace
-    // e-coque
     // grobisou
     // pouvoir lunaire
     // morphing
     // évolution
     // adaptation
     // jackpot
-    // empal'korne
-    // rugissement
-    // crochet venin
     // bomb'oeuf
     // amnésie
-    // koud'korne
     // météores
     // tunnel
     // riposte

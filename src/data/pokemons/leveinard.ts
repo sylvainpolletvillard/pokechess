@@ -13,5 +13,5 @@ export const LEVEINARD: PokemonEntry = {
     types: [POKEMON_TYPES.NORMAL],
     rank: 3,
     baseSkill: SKILLS.TORGNOLES,
-    ppSkill: SKILLS.LANCE_SOLEIL // E-Coque
+    ppSkill: SKILLS.E_COQUE
 }

@@ -15,6 +15,6 @@ export const RHINOCORNE: PokemonEntry = {
     evolution: RHINOFEROS,
     evolutionLevel: 42,
     rank: 1,
-    baseSkill: SKILLS.FLAMMECHE, // koud'korne
-    ppSkill: SKILLS.LANCE_SOLEIL // Empal'Korne
+    baseSkill: SKILLS.KOUD_KORNE,
+    ppSkill: SKILLS.EMPAL_KORNE
 }

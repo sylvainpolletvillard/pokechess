@@ -132,7 +132,7 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
 
 export function renderSpecialAttack(skill: SpecialSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     renderSkillEffect(skill, attacker, target, game)
-    if(skill.triggerSpecial) triggerSpecial(skill.triggerSpecial, attacker, target, game)
+    if(skill.triggerSpecial) wait(skill.triggerSpecialDelay ?? 0).then(() => triggerSpecial(skill.triggerSpecial!, attacker, target, game))
     if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
     if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)    
 }

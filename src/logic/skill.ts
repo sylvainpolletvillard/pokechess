@@ -30,6 +30,7 @@ export interface HitSkill extends Skill {
 export interface SpecialSkill extends Skill {
     behavior: SkillBehavior.SPECIAL
     triggerSpecial?: string;
+    triggerSpecialDelay?: number
 }
 
 export interface ProjectileSkill extends Skill {

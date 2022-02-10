@@ -13,5 +13,5 @@ export const OSSATUEUR: PokemonEntry = {
     types: [POKEMON_TYPES.SOL],
     rank: 2,
     baseSkill: SKILLS.MASSDOS,
-    ppSkill: SKILLS.LANCE_SOLEIL // rugissement
+    ppSkill: SKILLS.RUGISSEMENT
 }

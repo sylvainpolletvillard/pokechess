@@ -77,7 +77,13 @@ export const EFFECTS: { [name: string] : Effect} = {
     },
     ECLATS_GLACE: {
         key: "eclats_glace",
-        frames: [32,33,34,35],
+        frames: [32],
+        frameRate: 8,
+        repeat: 0
+    },
+    ECLATS_GLACE_HIT: {
+        key: "eclats_glace_hit",
+        frames: [33,34,35],
         frameRate: 8,
         repeat: 0
     },
@@ -555,5 +561,41 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [325,326,327,328],
         frameRate: 8,
         repeat: 0
-    }
+    },
+    E_COQUE: {
+        key: "e_coque",
+        frames: [329,330,331,332,333,334,335,336,337,338,339,340,341,341,341,341],
+        frameRate: 8,
+        repeat: 0
+    },
+    RUGISSEMENT: {
+        key: "rugissement",
+        frames: [342,343,344,345,346],
+        frameRate: 8,
+        repeat: 0
+    },
+    CROCHET_VENIN: {
+        key: "crochet_venin",
+        frames: [347,348,349,350],
+        frameRate: 8,
+        repeat: 0
+    },
+    KOUD_KORNE: {
+        key: "koud_korne",
+        frames: [351,352,353,354],
+        frameRate: 8,
+        repeat: 0
+    },
+    MAWASHI_GERI: {
+        key: "mawashi_geri",
+        frames: [355,356,357,358],
+        frameRate: 8,
+        repeat: 0
+    },
+    EMPAL_KORNE: {
+        key: "empal_korne",
+        frames: [359,360,361,362,363,364,365,366,367,367,367],
+        frameRate: 8,
+        repeat: 0
+    },
 }
