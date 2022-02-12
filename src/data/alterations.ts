@@ -19,6 +19,7 @@ export enum AlterationType {
     AVEUGLE = "AVEUGLE", // réduit de 50% la précision
     EXECUTION = "EXECUTION", // met KO l'unité si moins de 30% de ses PV max
     DAMAGE_OVER_TIME = "DAMAGE_OVER_TIME", // inflige 1 HP brut par tick
+    INVULNERABLE = "INVULNERABLE" // ne peut plus recevoir de dégâts
 }
 
 export interface Alteration {

@@ -16,5 +16,5 @@ export const KOKIYAS: PokemonEntry = {
     evolutionLevel: 27,
     rank: 1,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.LANCE_SOLEIL // abri
+    ppSkill: SKILLS.ABRI
 }

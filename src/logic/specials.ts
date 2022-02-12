@@ -7,7 +7,7 @@ import {SKILLS} from "../data/skills";
 import {PokemonOnBoard} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
 import {pickRandomIn, randomInt, wait} from "../utils/helpers";
-import {addAlteration} from "./alteration";
+import {addAlteration, removeAlteration} from "./alteration";
 import {getPokemonOnTile, getPositionFromCoords} from "./board";
 import {applyDamage, calcDamage} from "./fight";
 import {gameState} from "./gamestate";
@@ -24,6 +24,7 @@ export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard
         case "encore": return encore(attacker, target, game)
         case "metronome": return metronome(attacker, target, game)
         case "e-coque": return eCoque(attacker, game)
+        case "amnesie": return amnesie(attacker)
     }
 }
 
@@ -116,4 +117,8 @@ export function metronome(attacker: PokemonOnBoard, target: PokemonOnBoard, game
 export function eCoque(attacker: PokemonOnBoard, game: GameScene){
     const team = attacker.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
     team.forEach(pokemon => addAlteration(pokemon, { type: AlterationType.SOIN, stacks: 60 }, game))
+}
+
+export function amnesie(pokemon: PokemonOnBoard){
+    pokemon.alterations.forEach(alt => removeAlteration(pokemon, alt))
 }

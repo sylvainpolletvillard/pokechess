@@ -16,5 +16,5 @@ export const RAMOLOSS: PokemonEntry = {
     evolutionLevel: 37,
     rank: 1,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.REPOS // amnésie
+    ppSkill: SKILLS.AMNESIE
 }

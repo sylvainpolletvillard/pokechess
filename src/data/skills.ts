@@ -73,6 +73,10 @@ import {RUGISSEMENT} from "./skills/rugissement";
 import {CROCHET_VENIN} from "./skills/crochetVenin";
 import {KOUD_KORNE} from "./skills/koudKorne";
 import {EMPAL_KORNE} from "./skills/empalKorne";
+import {MAWASHI_GERI} from "./skills/mawashiGeri";
+import {ABRI} from "./skills/abri";
+import {AMNESIE} from "./skills/amnesie";
+import {BOMB_OEUF} from "./skills/bombOeuf";
 
 export const SKILLS = {
     CHARGE,
@@ -149,10 +153,12 @@ export const SKILLS = {
     RUGISSEMENT,
     CROCHET_VENIN,
     KOUD_KORNE,
-    EMPAL_KORNE
+    EMPAL_KORNE,
+    MAWASHI_GERI,
+    ABRI,
+    AMNESIE,
+    BOMB_OEUF
 
-    // mawashi geri
-    // abri
     // laser glace
     // grobisou
     // pouvoir lunaire
@@ -160,8 +166,6 @@ export const SKILLS = {
     // évolution
     // adaptation
     // jackpot
-    // bomb'oeuf
-    // amnésie
     // météores
     // tunnel
     // riposte

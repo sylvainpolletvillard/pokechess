@@ -31,6 +31,9 @@ import {LEVEINARD} from "../data/pokemons/leveinard";
 import {RHINOFEROS} from "../data/pokemons/rhinoferos";
 import {RHINOCORNE} from "../data/pokemons/rhinocorne";
 import {NIDORINA} from "../data/pokemons/nidorina";
+import {NOADKOKO} from "../data/pokemons/noadkoko";
+import {FLAGADOSS} from "../data/pokemons/flagadoss";
+import {KOKIYAS} from "../data/pokemons/kokiyas";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -122,9 +125,9 @@ export class GameState {
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 */
         gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(LEVEINARD, 1, 8), 3 ,6),
-            new PokemonOnBoard( new Pokemon(RHINOCORNE, 1, 8), 5 ,6),
-            new PokemonOnBoard( new Pokemon(NIDORINA, 1, 8), 4 ,6),
+            new PokemonOnBoard( new Pokemon(KOKIYAS, 1, 8), 3 ,6),
+            new PokemonOnBoard( new Pokemon(NOADKOKO, 1, 8), 5 ,6),
+            new PokemonOnBoard( new Pokemon(FLAGADOSS, 1, 8), 4 ,6),
         ]
 
         if(this.currentRoomIndex >= this.roomOrder.length) {

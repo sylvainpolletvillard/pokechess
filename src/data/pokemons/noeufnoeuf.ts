@@ -16,5 +16,5 @@ export const NOEUFNOEUF: PokemonEntry = {
     evolutionLevel: 40,
     rank: 1,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.LANCE_SOLEIL // bomb'oeuf
+    ppSkill: SKILLS.BOMB_OEUF
 }

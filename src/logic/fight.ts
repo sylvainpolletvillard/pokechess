@@ -1,16 +1,16 @@
 import {PokemonTypeAction} from "../data/pokemons";
 import {findClosestReachableTarget, findPathToTarget} from "./pathfinding";
-import {Board,getPositionFromCoords} from "./board";
+import {Board, getPositionFromCoords} from "./board";
 import GameScene from "../scenes/GameScene";
 import {getDirection} from "./anims";
 import Phaser from "phaser";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
-import { Skill } from "./skill";
-import { hasBlockingAlteration } from "./alteration";
-import { triggerSkill} from "./skill-anims";
-import { AlterationType } from "../data/alterations";
-import { clamp } from "../utils/helpers";
+import {Skill} from "./skill";
+import {hasBlockingAlteration} from "./alteration";
+import {triggerSkill} from "./skill-anims";
+import {AlterationType} from "../data/alterations";
+import {clamp} from "../utils/helpers";
 import {recordLastSkillSeen} from "./specials";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
@@ -131,6 +131,7 @@ export function testPrecision(attacker: PokemonOnBoard){
 }
 
 export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=false, noWakeup = false){
+    if(target.hasAlteration(AlterationType.INVULNERABLE)) return;
     target.pv = Math.max(0, target.pv - damage)
     if(!noPPGain) target.pp = Math.min(target.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))
     if(target.pv === 0) killPokemon(target)

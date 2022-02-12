@@ -53,6 +53,7 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
     effectSprite.blendMode = Phaser.BlendModes.OVERLAY
     effectSprite.tint = skill.effect?.tint ?? 0xffffff;
     effectSprite.setDepth(skill.effect.depth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
+    effectSprite.alpha = skill.effect?.opacity ?? 1
 
     effectSprite.play(skill.effect.key)
     effectSprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
@@ -103,6 +104,7 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
 
     if(skill.hitEffect){
         wait(skill.hitDelay ?? 0).then(() => {
+            effectSprite.scale = skill.hitEffect?.scale ?? 1
             effectSprite.play(skill.hitEffect!.key)
             effectSprite.setDepth(skill.hitEffect!.depth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
             effectSprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
@@ -141,7 +143,7 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
     renderSkillEffect(skill, attacker, target, game)
     if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)
 
-    const tiles = skill.getTilesImpacted(attacker, target)
+    const tiles = skill.getTilesImpacted(attacker, target) // important: retrieve the impacted tiles at the BEGINNING of the anim
     
     wait(skill.hitDelay ?? 0).then(() => {
         tiles.forEach(([i,j]) => {

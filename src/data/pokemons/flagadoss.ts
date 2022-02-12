@@ -6,12 +6,12 @@ export const FLAGADOSS: PokemonEntry = {
     ref: "flagadoss",
     name: "Flagadoss",
     maxPV: 95,
-    maxPP: 20,
+    maxPP: 10,
     attack: 75,
     defense: 110,
     speed: 30,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.PSY],
     rank: 2,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.LANCE_SOLEIL // amnésie
+    ppSkill: SKILLS.AMNESIE
 }

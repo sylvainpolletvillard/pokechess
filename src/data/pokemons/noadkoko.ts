@@ -6,12 +6,12 @@ export const NOADKOKO: PokemonEntry = {
     ref: "noadkoko",
     name: "Noadkoko",
     maxPV: 60,
-    maxPP: 20,
+    maxPP: 10,
     attack: 95,
     defense: 85,
     speed: 55,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.PSY],
     rank: 2,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.LANCE_SOLEIL // bomb'oeuf
+    ppSkill: SKILLS.BOMB_OEUF
 }

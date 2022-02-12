@@ -27,7 +27,7 @@ export function setupEffects(anims: Phaser.Animations.AnimationManager, debug?: 
             key: effect.key,
             frames: anims.generateFrameNumbers('effects',{ frames: effect.frames }),
             frameRate: effect.frameRate,
-            repeat: debug ? -1 : effect.repeat
+            repeat: debug ? -1 : effect.repeat ?? 0
         })
     })
 }
