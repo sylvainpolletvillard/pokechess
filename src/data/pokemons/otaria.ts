@@ -16,5 +16,5 @@ export const OTARIA: PokemonEntry = {
     evolutionLevel: 34,
     rank: 1,
     baseSkill: SKILLS.ECLATS_GLACE,
-    ppSkill: SKILLS.ECLATS_GLACE // laser glace
+    ppSkill: SKILLS.LASER_GLACE
 }

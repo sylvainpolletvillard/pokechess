@@ -8,13 +8,14 @@ import {PokemonOnBoard} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
 import {pickRandomIn, randomInt, wait} from "../utils/helpers";
 import {addAlteration, removeAlteration} from "./alteration";
-import {getPokemonOnTile, getPositionFromCoords} from "./board";
+import {getCoordsFromPosition, getPokemonOnTile, getPositionFromCoords} from "./board";
 import {applyDamage, calcDamage} from "./fight";
 import {gameState} from "./gamestate";
 import {distanceBetweenPokemon} from "./pathfinding";
 import {triggerSkill} from "./skill-anims";
 import {Skill} from "./skill";
 import {OWNER_PLAYER} from "../data/owners";
+import {Direction, getDeltaFromDirection, getDirectionFromDelta, getRotationAngle} from "../utils/directions";
 
 export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     switch(specialMoveName){
@@ -25,6 +26,8 @@ export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard
         case "metronome": return metronome(attacker, target, game)
         case "e-coque": return eCoque(attacker, game)
         case "amnesie": return amnesie(attacker)
+        case "ultralaser": return renderUltralaser(attacker, target, game)
+        case "laser_glace": return renderLaserGlace(attacker, target, game)
     }
 }
 
@@ -64,12 +67,12 @@ export function renderEclair(attacker: PokemonOnBoard, game: GameScene){
         sprite.play(EFFECTS.ECLAIR.key)
         sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => sprite.destroy())
         y -= 32
-
-        const damage = calcDamage(SKILLS.ECLAIR, randomTarget, attacker)
-        //console.log(`Eclair sur ${randomTarget.name} ; ${randomTarget.name} receives ${damage} damage !`)
-        applyDamage(damage, randomTarget)
-        addAlteration(randomTarget, { type: AlterationType.PARALYSIE, stacks: 50 }, game)
     }
+
+    const damage = calcDamage(SKILLS.ECLAIR, randomTarget, attacker)
+    //console.log(`Eclair sur ${randomTarget.name} ; ${randomTarget.name} receives ${damage} damage !`)
+    applyDamage(damage, randomTarget)
+    addAlteration(randomTarget, { type: AlterationType.PARALYSIE, stacks: 50 }, game)
 }
 
 export function provoc(attacker: PokemonOnBoard, game: GameScene){
@@ -121,4 +124,66 @@ export function eCoque(attacker: PokemonOnBoard, game: GameScene){
 
 export function amnesie(pokemon: PokemonOnBoard){
     pokemon.alterations.forEach(alt => removeAlteration(pokemon, alt))
+}
+
+export function renderUltralaser(attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+    const direction = getDirectionFromDelta(target.x - attacker.x, target.y - attacker.y) ?? Direction.UP
+    let [x, y] = attacker.position;
+    let [dx,dy]  = getDeltaFromDirection(direction)
+    x+= dx*16; y+=dy*16
+    let part=0;
+
+    while(y >= 0 && y <= game.scale.height && x >= 0 && x <= game.scale.width){
+        const sprite = game.add.sprite(x, y, "effects")
+        sprite.scale = 1;
+        sprite.blendMode = Phaser.BlendModes.OVERLAY
+        sprite.setDepth( Z.SKILL_EFFECT_ABOVE_POKEMON)
+        sprite.setRotation(getRotationAngle(direction))
+        sprite.play(part === 0 ? EFFECTS.ULTRALASER_START.key : EFFECTS.ULTRALASER_BEAM.key)
+        sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => sprite.destroy())
+
+        const [i,j] = getCoordsFromPosition(x,y)
+        const pokemonOnTile = getPokemonOnTile(i, j)
+        if(pokemonOnTile && pokemonOnTile.owner !== attacker.owner) {
+            const damage = calcDamage(SKILLS.ULTRALASER, pokemonOnTile, attacker)
+            console.log(`Ultralaser sur ${pokemonOnTile.name} ; ${pokemonOnTile.name} receives ${damage} damage !`)
+            applyDamage(damage, pokemonOnTile)
+        }
+
+        y += dy*32
+        x += dx*32
+        part++
+    }
+}
+
+
+export function renderLaserGlace(attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+    const direction = getDirectionFromDelta(target.x - attacker.x, target.y - attacker.y) ?? Direction.UP
+    let [x, y] = attacker.position;
+    let [dx,dy]  = getDeltaFromDirection(direction)
+    x+= dx*16; y+=dy*16
+    let part=0;
+
+    while(y >= 0 && y <= game.scale.height && x >= 0 && x <= game.scale.width){
+        const sprite = game.add.sprite(x, y, "effects")
+        sprite.scale = 1;
+        sprite.blendMode = Phaser.BlendModes.OVERLAY
+        sprite.setDepth( Z.SKILL_EFFECT_ABOVE_POKEMON)
+        sprite.setRotation(getRotationAngle(direction))
+        sprite.play(part === 0 ? EFFECTS.LASER_GLACE_START.key : EFFECTS.LASER_GLACE_BEAM.key)
+        sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => sprite.destroy())
+
+        const [i,j] = getCoordsFromPosition(x,y)
+        const pokemonOnTile = getPokemonOnTile(i, j)
+        if(pokemonOnTile && pokemonOnTile.owner !== attacker.owner) {
+            const damage = calcDamage(SKILLS.LASER_GLACE, pokemonOnTile, attacker)
+            console.log(`Laser glace sur ${pokemonOnTile.name} ; ${pokemonOnTile.name} receives ${damage} damage !`)
+            applyDamage(damage, pokemonOnTile)
+            addAlteration(pokemonOnTile, { type: AlterationType.GEL, stacks: 50 }, game)
+        }
+
+        y += dy*32
+        x += dx*32
+        part++
+    }
 }

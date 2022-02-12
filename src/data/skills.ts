@@ -77,6 +77,8 @@ import {MAWASHI_GERI} from "./skills/mawashiGeri";
 import {ABRI} from "./skills/abri";
 import {AMNESIE} from "./skills/amnesie";
 import {BOMB_OEUF} from "./skills/bombOeuf";
+import {ULTRALASER} from "./skills/ultralaser";
+import {LASER_GLACE} from "./skills/laser_glace";
 
 export const SKILLS = {
     CHARGE,
@@ -157,9 +159,12 @@ export const SKILLS = {
     MAWASHI_GERI,
     ABRI,
     AMNESIE,
-    BOMB_OEUF
+    BOMB_OEUF,
+    ULTRALASER,
+    LASER_GLACE
 
     // laser glace
+    // ultra laser
     // grobisou
     // pouvoir lunaire
     // morphing

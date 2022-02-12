@@ -34,6 +34,8 @@ import {NIDORINA} from "../data/pokemons/nidorina";
 import {NOADKOKO} from "../data/pokemons/noadkoko";
 import {FLAGADOSS} from "../data/pokemons/flagadoss";
 import {KOKIYAS} from "../data/pokemons/kokiyas";
+import {DRACOLOSSE} from "../data/pokemons/dracolosse";
+import {LAMANTINE} from "../data/pokemons/lamantine";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -125,9 +127,8 @@ export class GameState {
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 */
         gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(KOKIYAS, 1, 8), 3 ,6),
-            new PokemonOnBoard( new Pokemon(NOADKOKO, 1, 8), 5 ,6),
-            new PokemonOnBoard( new Pokemon(FLAGADOSS, 1, 8), 4 ,6),
+            new PokemonOnBoard( new Pokemon(DRACOLOSSE, 1, 8), 3 ,6),
+            new PokemonOnBoard( new Pokemon(LAMANTINE, 1, 8), 5 ,6),
         ]
 
         if(this.currentRoomIndex >= this.roomOrder.length) {

@@ -71,6 +71,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "eclats_glace",
         frames: [32],
         frameRate: 8,
+        scale: 0.5
     },
     ECLATS_GLACE_HIT: {
         key: "eclats_glace_hit",
@@ -545,5 +546,29 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: Infinity,
         scale: 0.5
+    },
+    ULTRALASER_START: {
+        key: "ultralaser_start",
+        frames: [387,388],
+        frameRate: 8,
+        repeat: 2
+    },
+    ULTRALASER_BEAM: {
+        key: "ultralaser_beam",
+        frames: [389,390],
+        frameRate: 8,
+        repeat: 2
+    },
+    LASER_GLACE_START: {
+        key: "laser_glace_start",
+        frames: [391,392],
+        frameRate: 8,
+        repeat: 2
+    },
+    LASER_GLACE_BEAM: {
+        key: "laser_glace_beam",
+        frames: [393,394],
+        frameRate: 8,
+        repeat: 2
     },
 }
