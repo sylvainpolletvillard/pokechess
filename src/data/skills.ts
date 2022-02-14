@@ -79,6 +79,7 @@ import {AMNESIE} from "./skills/amnesie";
 import {BOMB_OEUF} from "./skills/bombOeuf";
 import {ULTRALASER} from "./skills/ultralaser";
 import {LASER_GLACE} from "./skills/laser_glace";
+import {JACKPOT} from "./skills/jackpot";
 
 export const SKILLS = {
     CHARGE,
@@ -161,16 +162,14 @@ export const SKILLS = {
     AMNESIE,
     BOMB_OEUF,
     ULTRALASER,
-    LASER_GLACE
+    LASER_GLACE,
+    JACKPOT,
 
-    // laser glace
-    // ultra laser
     // grobisou
     // pouvoir lunaire
     // morphing
     // évolution
     // adaptation
-    // jackpot
     // météores
     // tunnel
     // riposte

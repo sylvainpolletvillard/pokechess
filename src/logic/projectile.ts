@@ -2,13 +2,12 @@ import {ProjectileSkill} from "./skill";
 import {PokemonOnBoard} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
 import {distanceBetweenPokemon} from "./pathfinding";
-import {getCoordsFromPosition, getPokemonOnTile} from "./board";
 import {OWNER_PLAYER} from "../data/owners";
 import { applyDamage, calcDamage } from "./fight";
 import { gameState } from "./gamestate";
-import { wait } from "../utils/helpers";
 import { Z } from "../data/depths";
 import { addAlteration } from "./alteration";
+import {makeEffectSprite} from "./skill-anims";
 
 export interface Projectile {
     sprite: Phaser.GameObjects.Sprite
@@ -28,7 +27,6 @@ export function launchProjectile(
 ) {
     if(!skill.effect) return console.error(`Missing projectile effect`, skill)
     let [x,y] = origin.position
-    const distance = distanceBetweenPokemon(origin, target)    
     const angle = Math.atan2(target.y - origin.y, target.x - origin.x)
     // cible dans la direction de la cible, mais suffisamment loin pour sortir de l'écran
     let targetX = Math.round(x + Math.cos(angle) * 12 * 32)
@@ -36,7 +34,7 @@ export function launchProjectile(
     let travelTime = 1000 * 12 / skill.travelSpeed
 
     const projectile: Projectile = {
-        sprite: game.add.sprite(x, y, "effects"),
+        sprite: makeEffectSprite(skill.effect, x, y, game, true),
         skill,
         attacker: origin,
         impactedPokemonIds: []        
@@ -47,11 +45,6 @@ export function launchProjectile(
     if(skill.rotateProjectile){  
         projectile.sprite.rotation = angle;
     }
-
-    projectile.sprite.scale = skill.effect.scale ?? 1;
-    projectile.sprite.blendMode = Phaser.BlendModes.OVERLAY
-    projectile.sprite.setDepth(skill.effect.depth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
-    projectile.sprite.play(skill.effect.key)
 
     projectile.tween = game.tweens.add({
         targets: projectile.sprite,

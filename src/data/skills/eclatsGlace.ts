@@ -9,7 +9,7 @@ export const ECLATS_GLACE: ProjectileSkill = {
     hitEffect: EFFECTS.ECLATS_GLACE_HIT,
     behavior: SkillBehavior.PROJECTILE,
     travelSpeed: 5,
-    attackRange: 3,
+    attackRange: 1,
     power: 40,
     projectileRadius: 7,    
     rotateProjectile: true

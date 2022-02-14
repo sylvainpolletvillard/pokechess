@@ -1,5 +1,4 @@
 import {Z} from "../data/depths";
-import {OWNER_PLAYER} from "../data/owners";
 import {PokemonOnBoard} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
 import {wait} from "../utils/helpers";
@@ -9,6 +8,7 @@ import {applyDamage, calcDamage, calcSelfDamage, testPrecision} from "./fight";
 import {launchProjectile} from "./projectile";
 import {AOESkill, HitSkill, ProjectileSkill, Skill, SkillBehavior, SpecialSkill} from "./skill";
 import {triggerSpecial} from "./specials";
+import {Effect} from "../data/effects";
 
 export function triggerSkill(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     if(skill.behavior === SkillBehavior.DIRECT_HIT){
@@ -21,6 +21,21 @@ export function triggerSkill(skill: Skill, attacker: PokemonOnBoard, target: Pok
         return renderAOEAttack(skill as AOESkill, attacker, target, game)
     }
     console.error(`Not yet implemented: ${skill.name}`)
+}
+
+export function makeEffectSprite(effect: Effect, x: number, y: number, game: GameScene, doNotKillSpriteOnEndAnim?: boolean){
+    const effectSprite = game.add.sprite(x, y, "effects")
+    effectSprite.scale = effect?.scale ?? 1;
+    effectSprite.blendMode = Phaser.BlendModes.OVERLAY
+    effectSprite.tint = effect?.tint ?? 0xffffff;
+    effectSprite.setDepth(effect.depth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
+    effectSprite.alpha = effect?.opacity ?? 1
+    effectSprite.play(effect.key)
+    doNotKillSpriteOnEndAnim || effectSprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+        effectSprite.destroy()
+    })
+
+    return effectSprite
 }
 
 export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
@@ -44,21 +59,11 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
         dy= -16 * (skill.effect?.scale ?? 1) + delta
     }
 
-    const effectSprite = game.add.sprite(x + dx, y + dy, "effects")
+    const effectSprite = makeEffectSprite(skill.effect, x + dx, y + dy, game)
 
     if(skill.rotateSprite){
         effectSprite.rotation = angle + Math.PI/2;
     }
-    effectSprite.scale = skill.effect?.scale ?? 1;
-    effectSprite.blendMode = Phaser.BlendModes.OVERLAY
-    effectSprite.tint = skill.effect?.tint ?? 0xffffff;
-    effectSprite.setDepth(skill.effect.depth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
-    effectSprite.alpha = skill.effect?.opacity ?? 1
-
-    effectSprite.play(skill.effect.key)
-    effectSprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-        effectSprite.destroy()
-    })
 
     if(skill.effectPosition === "target_to_source"){
         const [sourceX, sourceY] = attacker.position

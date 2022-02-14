@@ -9,7 +9,6 @@ export const POUDREUSE: HitSkill = {
     effect: EFFECTS.POUDREUSE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 200,
-    triggerAlteration: { type: AlterationType.GEL, stacks: 12 },
     effectPosition: "target",
     power: 40,
     rotateSprite: true,

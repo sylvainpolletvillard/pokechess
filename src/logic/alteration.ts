@@ -1,5 +1,4 @@
 import {Alteration, AlterationType} from "../data/alterations"
-import {Z} from "../data/depths"
 import {EFFECTS} from "../data/effects"
 import {POKEMON_TYPES} from "../data/types"
 import {PokemonOnBoard} from "../objects/pokemon"
@@ -8,7 +7,7 @@ import {Direction} from "../utils/directions"
 import {removeInArray} from "../utils/helpers"
 import {applyDamage, healPokemon, killPokemon} from "./fight"
 import {gameState} from "./gamestate"
-import {sendPokemonFlying} from "./skill-anims"
+import {makeEffectSprite, sendPokemonFlying} from "./skill-anims"
 
 export function updateAlterations(pokemons: PokemonOnBoard[]){
     pokemons.forEach((pokemon: PokemonOnBoard) => {
@@ -48,6 +47,8 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
     } else if(alteration.type === AlterationType.BRULURE){
         const burnDamage = 0.1 * perSecond * pokemon.level; // 0.1 HP per second per level
         applyDamage(burnDamage, pokemon, true, false)
+        const gel = pokemon.alterations.find(alt => alt.type === AlterationType.GEL)
+        if(gel) gel.stacks -= 3
     } else if(alteration.type === AlterationType.SOMMEIL){
         sprite?.anims.pause()
     } else if(alteration.type === AlterationType.LIGOTAGE){
@@ -91,38 +92,37 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 break;
             
             case AlterationType.BRULURE:
-                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.BURN.key)
-                    .setAlpha(0)
-                    .setScale(EFFECTS.BURN.scale ?? 1)
-                game.tweens.add({ targets: alteration.effectSprite, alpha: 0.35, duration: 250, easing: "Linear" })
+                alteration.effectSprite = makeEffectSprite(EFFECTS.BURN, targetSprite.x, targetSprite.y, game)
+                //game.tweens.add({ targets: alteration.effectSprite, alpha: 0.35, duration: 250, easing: "Linear" })
+                break;
+
+            case AlterationType.GEL:
+                alteration.effectSprite = makeEffectSprite(EFFECTS.FROZEN, targetSprite.x, targetSprite.y, game)
+                //game.tweens.add({ targets: alteration.effectSprite, alpha: EFFECTS.FROZEN.opacity, duration: 250, easing: "Linear" })
                 break;
 
             case AlterationType.SOMMEIL:
                 pokemon.resetAction()
-                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").setScale(EFFECTS.SOMMEIL.scale ?? 1).play(EFFECTS.SOMMEIL.key)
+                alteration.effectSprite = makeEffectSprite(EFFECTS.SOMMEIL, targetSprite.x, targetSprite.y, game)
                 break;
 
             case AlterationType.PARALYSIE:
-                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").setScale(EFFECTS.PARALYSIE.scale ?? 1).play(EFFECTS.PARALYSIE.key)
+                alteration.effectSprite = makeEffectSprite(EFFECTS.PARALYSIE, targetSprite.x, targetSprite.y, game)
                 break;
 
             case AlterationType.PEUR:
                 pokemon.resetAction()
-                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").setScale(EFFECTS.PEUR.scale ?? 1).play(EFFECTS.PEUR.key)
+                alteration.effectSprite = makeEffectSprite(EFFECTS.PEUR, targetSprite.x, targetSprite.y, game)
                 break;
 
             case AlterationType.POISON:
-                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y-8, "effects")
-                    .setScale(EFFECTS.POISON.scale ?? 1)
-                    .setDepth(Z.SKILL_EFFECT_ABOVE_POKEMON)
-                    .play(EFFECTS.POISON.key)
+                alteration.effectSprite = makeEffectSprite(EFFECTS.POISON, targetSprite.x, targetSprite.y-8, game)
                 alteration.effectDelta = -8;
-                break;  
+                break;
 
             case AlterationType.SOIN:
             case AlterationType.REPOS:
-                alteration.effectSprite = game.add.sprite(targetSprite.x, targetSprite.y, "effects").play(EFFECTS.SOIN.key)                
-                    .setScale(EFFECTS.SOIN.scale ?? 1) 
+                alteration.effectSprite = makeEffectSprite(EFFECTS.SOIN, targetSprite.x, targetSprite.y-8, game)
                 break;
         }
 

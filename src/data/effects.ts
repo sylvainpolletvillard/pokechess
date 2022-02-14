@@ -71,7 +71,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "eclats_glace",
         frames: [32],
         frameRate: 8,
-        scale: 0.5
+        scale: 1
     },
     ECLATS_GLACE_HIT: {
         key: "eclats_glace_hit",
@@ -95,6 +95,10 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "frozen",
         frames: [39],
         frameRate: 8,
+        scale: 1,
+        opacity: 0.5,
+        depth: Z.SKILL_EFFECT_ABOVE_POKEMON,
+        repeat: Infinity
     },
     LANCE_FLAMMES: {
         key: "lance_flammes",
@@ -571,4 +575,21 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 2
     },
+    JACKPOT_WIN: {
+        key: "jackpot_win",
+        frames: [395,396],
+        frameRate: 8,
+        repeat: 2
+    },
+    JACKPOT_LOSE: {
+        key: "jackpot_lose",
+        frames: [397,398],
+        frameRate: 8,
+        repeat: 2
+    },
+    JACKPOT_START: {
+        key: "jackpot_start",
+        frames: [399],
+        frameRate: 4
+    }
 }

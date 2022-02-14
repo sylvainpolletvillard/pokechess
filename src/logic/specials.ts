@@ -12,10 +12,12 @@ import {getCoordsFromPosition, getPokemonOnTile, getPositionFromCoords} from "./
 import {applyDamage, calcDamage} from "./fight";
 import {gameState} from "./gamestate";
 import {distanceBetweenPokemon} from "./pathfinding";
-import {triggerSkill} from "./skill-anims";
+import {makeEffectSprite, triggerSkill} from "./skill-anims";
 import {Skill} from "./skill";
 import {OWNER_PLAYER} from "../data/owners";
 import {Direction, getDeltaFromDirection, getDirectionFromDelta, getRotationAngle} from "../utils/directions";
+import {drawPokeballsCounter} from "../objects/pokeballsCounter";
+import {MyScene} from "../scenes/MyScene";
 
 export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     switch(specialMoveName){
@@ -28,6 +30,7 @@ export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard
         case "amnesie": return amnesie(attacker)
         case "ultralaser": return renderUltralaser(attacker, target, game)
         case "laser_glace": return renderLaserGlace(attacker, target, game)
+        case "jackpot": return jackpot(attacker, game)
     }
 }
 
@@ -41,11 +44,7 @@ export function teleport(pokemon: PokemonOnBoard){
     } while (x === originX || y === originY || getPokemonOnTile(x,y) != null)    
 
     const [sceneX, sceneY] = getPositionFromCoords(x,y);
-    const sprite = game.add.sprite(sceneX, sceneY, "effects")
-    sprite.scale = 1;
-    sprite.blendMode = Phaser.BlendModes.OVERLAY
-    sprite.setDepth( Z.SKILL_EFFECT_ABOVE_POKEMON)
-    sprite.play(EFFECTS.TELEPORT.key)
+    const sprite = makeEffectSprite(EFFECTS.TELEPORT, sceneX, sceneY, game)
     sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
         sprite.destroy()
         pokemon.x = x
@@ -60,12 +59,7 @@ export function renderEclair(attacker: PokemonOnBoard, game: GameScene){
     let [x, y] = randomTarget.position;
     y-= 16;
     while(y >= 0){
-        const sprite = game.add.sprite(x, y, "effects")
-        sprite.scale = 1;
-        sprite.blendMode = Phaser.BlendModes.OVERLAY
-        sprite.setDepth( Z.SKILL_EFFECT_ABOVE_POKEMON)
-        sprite.play(EFFECTS.ECLAIR.key)
-        sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => sprite.destroy())
+        makeEffectSprite(EFFECTS.ECLAIR, x, y, game)
         y -= 32
     }
 
@@ -79,11 +73,7 @@ export function provoc(attacker: PokemonOnBoard, game: GameScene){
     const pokemonsProvocated = gameState.board.otherTeam.filter(p => distanceBetweenPokemon(attacker, p) <= Math.sqrt(8))
     //console.log("PROVOC", { pokemonsProvocated })
     pokemonsProvocated.forEach(pokemon => {
-        const provocatedSprite = game.add.sprite(pokemon.x+8, pokemon.y, "effects")
-        provocatedSprite.scale = EFFECTS.PROVOCATED.scale ?? 1;
-        provocatedSprite.blendMode = Phaser.BlendModes.OVERLAY
-        provocatedSprite.setDepth(Z.SKILL_EFFECT_ABOVE_POKEMON)
-        provocatedSprite.play(EFFECTS.PROVOCATED.key)
+        const provocatedSprite = makeEffectSprite(EFFECTS.PROVOCARED, pokemon.x+8, pokemon.y, game)
         wait(500).then(() => provocatedSprite.destroy())
         if(pokemon.nextAction.timer){
             wait(pokemon.nextAction.timer.getRemaining()).then(() => {
@@ -134,13 +124,8 @@ export function renderUltralaser(attacker: PokemonOnBoard, target: PokemonOnBoar
     let part=0;
 
     while(y >= 0 && y <= game.scale.height && x >= 0 && x <= game.scale.width){
-        const sprite = game.add.sprite(x, y, "effects")
-        sprite.scale = 1;
-        sprite.blendMode = Phaser.BlendModes.OVERLAY
-        sprite.setDepth( Z.SKILL_EFFECT_ABOVE_POKEMON)
+        const sprite = makeEffectSprite(part === 0 ? EFFECTS.ULTRALASER_START : EFFECTS.ULTRALASER_BEAM, x, y, game)
         sprite.setRotation(getRotationAngle(direction))
-        sprite.play(part === 0 ? EFFECTS.ULTRALASER_START.key : EFFECTS.ULTRALASER_BEAM.key)
-        sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => sprite.destroy())
 
         const [i,j] = getCoordsFromPosition(x,y)
         const pokemonOnTile = getPokemonOnTile(i, j)
@@ -165,13 +150,8 @@ export function renderLaserGlace(attacker: PokemonOnBoard, target: PokemonOnBoar
     let part=0;
 
     while(y >= 0 && y <= game.scale.height && x >= 0 && x <= game.scale.width){
-        const sprite = game.add.sprite(x, y, "effects")
-        sprite.scale = 1;
-        sprite.blendMode = Phaser.BlendModes.OVERLAY
-        sprite.setDepth( Z.SKILL_EFFECT_ABOVE_POKEMON)
+        const sprite = makeEffectSprite(part === 0 ? EFFECTS.LASER_GLACE_START : EFFECTS.LASER_GLACE_BEAM, x, y, game)
         sprite.setRotation(getRotationAngle(direction))
-        sprite.play(part === 0 ? EFFECTS.LASER_GLACE_START.key : EFFECTS.LASER_GLACE_BEAM.key)
-        sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => sprite.destroy())
 
         const [i,j] = getCoordsFromPosition(x,y)
         const pokemonOnTile = getPokemonOnTile(i, j)
@@ -185,5 +165,16 @@ export function renderLaserGlace(attacker: PokemonOnBoard, target: PokemonOnBoar
         y += dy*32
         x += dx*32
         part++
+    }
+}
+
+export function jackpot(attacker: PokemonOnBoard, game: GameScene){
+    const coinFlip = Math.random() < 1/2
+    const [x, y] = attacker.position;
+    makeEffectSprite(coinFlip ? EFFECTS.JACKPOT_WIN : EFFECTS.JACKPOT_LOSE, x, y-24, game);
+
+    if(coinFlip){
+        gameState.player.inventory.pokeball += 1
+        drawPokeballsCounter(gameState.activeScene as MyScene)
     }
 }

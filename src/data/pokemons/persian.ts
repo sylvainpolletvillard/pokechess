@@ -6,12 +6,12 @@ export const PERSIAN: PokemonEntry = {
     ref: "persian",
     name: "Persian",
     maxPV: 65,
-    maxPP: 20,
+    maxPP: 5,
     attack: 70,
     defense: 60,
     speed: 115,
     types: [POKEMON_TYPES.NORMAL],
     rank: 1,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.PROVOC // Jackpot
+    ppSkill: SKILLS.JACKPOT
 }

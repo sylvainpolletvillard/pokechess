@@ -10,5 +10,6 @@ export const TREMPETTE: SpecialSkill = {
     power: 0,
     effect: EFFECTS.TREMPETTE,
     effectPosition: "source_ground",
+    effectDelta: 16,
     attackRange: 9
 }
