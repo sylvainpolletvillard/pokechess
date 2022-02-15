@@ -4,6 +4,7 @@ import {PokemonOnBoard} from "./pokemon";
 import {Z} from "../data/depths";
 import {GameStage, gameState} from "../logic/gamestate";
 import {MyScene} from "../scenes/MyScene";
+import {METAMORPH} from "../data/pokemons/metamorph";
 
 let currentPokemonInfoDisplayed: Pokemon | null;
 let pokemonInfoBox: Phaser.GameObjects.Group | null;
@@ -29,11 +30,13 @@ export function displayPokemonInfo(pokemon: Pokemon){
     ).setOrigin(0.5,0.5).setScrollFactor(0);
     pokemonInfoBox.add(pokemonInfoBoxBackground)
 
-    const pokemonNameText = addText(ox - 50, oy - 28,`${pokemon.name} Lv${pokemon.level}`)
+    let name = pokemon.entry.name
+    if(pokemon instanceof PokemonOnBoard && pokemon.entry === METAMORPH) name = METAMORPH.name
+    const pokemonNameText = addText(ox - 50, oy - 28,`${name} Lv${pokemon.level}`)
     pokemonInfoBox.add(pokemonNameText)
 
     const portrait = scene.add.sprite(ox-92, oy-1, "pokemon_portraits")
-    portrait.play(`${pokemon.ref}_portrait`)
+    portrait.play(`${pokemon.entry.ref}_portrait`)
     portrait.setScrollFactor(0);
     pokemonInfoBox.add(portrait)
 
@@ -51,12 +54,12 @@ export function displayPokemonInfo(pokemon: Pokemon){
 
     const ppText = addText(ox-50, oy-1, "PP")
     pokemonInfoBox.add(ppText)
-    const ppValueText = addText(ox+48, oy-1, `${Math.floor(pokemon.pp).toString().padStart(3)} / ${pokemon.maxPP}`)
+    const ppValueText = addText(ox+48, oy-1, `${Math.floor(pokemon.pp).toString().padStart(3)} / ${pokemon.entry.maxPP}`)
     pokemonInfoBox.add(ppValueText)
 
     bars.fillStyle(0x000000).fillRoundedRect(ox-30, oy+2, BAR_WIDTH+2, 6, 4)
     bars.fillStyle(0xD0D0A0, 1).fillRoundedRect(ox-29, oy+3, BAR_WIDTH, 4, 2)
-    bars.fillStyle(0x0000FF, 1).fillRoundedRect(ox-29, oy+3, Math.ceil(BAR_WIDTH * pokemon.pp / pokemon.maxPP), 4, 2)
+    bars.fillStyle(0x0000FF, 1).fillRoundedRect(ox-29, oy+3, Math.ceil(BAR_WIDTH * pokemon.pp / pokemon.entry.maxPP), 4, 2)
     pokemonInfoBox.add(bars)
 
     const statAttackIcon = scene.add.sprite(ox-50, oy+14, "icons16x16", 16)
@@ -80,11 +83,11 @@ export function displayPokemonInfo(pokemon: Pokemon){
     const statRangeIcon = scene.add.sprite(ox+94, oy+14, "icons16x16", 19)
     statRangeIcon.setAlpha(0.25).setOrigin(0,0).setScrollFactor(0);
     pokemonInfoBox.add(statRangeIcon)
-    const statRangeText = addText(ox +114, oy+15, pokemon.baseSkill.attackRange.toFixed(0))
+    const statRangeText = addText(ox +114, oy+15, pokemon.entry.baseSkill.attackRange.toFixed(0))
     pokemonInfoBox.add(statRangeText)
 
-    for(let i=0; i< pokemon.types.length; i++) {
-        const typeSprite = scene.add.sprite(ox + 112 - i*20, oy-22, "icons16x16", pokemon.types[i].frameIndex)
+    for(let i=0; i< pokemon.entry.types.length; i++) {
+        const typeSprite = scene.add.sprite(ox + 112 - i*20, oy-22, "icons16x16", pokemon.entry.types[i].frameIndex)
         typeSprite.setScrollFactor(0);
         pokemonInfoBox.add(typeSprite)
     }

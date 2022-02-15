@@ -2,7 +2,6 @@ import {ProjectileSkill, SkillBehavior} from "../../logic/skill";
 import {POKEMON_TYPES} from "../types";
 import {EFFECTS} from "../effects";
 import { AlterationType } from "../alterations";
-import { Z } from "../depths";
 
 export const SECRETION: ProjectileSkill = {
     name: "Sécrétion",

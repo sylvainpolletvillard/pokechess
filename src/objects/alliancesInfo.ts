@@ -8,7 +8,7 @@ let alliancesInfoGroup: Phaser.GameObjects.Group | null = null;
 
 export function countByType(team: PokemonOnBoard[]): AllianceCount {
     return team.reduce((count: AllianceCount, pokemon: PokemonOnBoard) => {
-        return Object.assign(count, ...pokemon.types.map(type => ({ [type.ref]: (count[type.ref] ?? 0) + 1})))
+        return Object.assign(count, ...pokemon.entry.types.map(type => ({ [type.ref]: (count[type.ref] ?? 0) + 1})))
     }, {})
 }
 

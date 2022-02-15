@@ -1,7 +1,7 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import { TYPE_NORMAL, TYPE_PSY, TYPE_SPECTRE} from "../types";
 import {spawnTrainerTeam, spawnTeamByTypeFactor} from "../../logic/spawns";
-import {DRESSEUR_FORET_JADE, DRESSEUR_TOUR_POKEMON} from "../trainers";
+import { DRESSEUR_TOUR_POKEMON} from "../trainers";
 import {FANTOMINUS} from "../pokemons/fantominus";
 import {OSSELAIT} from "../pokemons/osselait";
 import {NOSFERAPTI} from "../pokemons/nosferapti";

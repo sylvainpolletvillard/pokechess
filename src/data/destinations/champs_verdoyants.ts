@@ -1,16 +1,7 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
 import { TYPE_PLANTE, TYPE_NORMAL, TYPE_INSECTE, TYPE_POISON, TYPE_SOL } from "../types";
-import {DRESSEUR_CHAMPS_VERDOYANTS, DRESSEUR_MR_PSY} from "../trainers";
-import {ABRA} from "../pokemons/abra";
-import {SOPORIFIK} from "../pokemons/soporifik";
-import {MR_MIME} from "../pokemons/mrmime";
-import {PSYKOKWAK} from "../pokemons/psykokwak";
-import {LEVEINARD} from "../pokemons/leveinard";
-import {LIPPOUTOU} from "../pokemons/lippoutou";
-import {RAMOLOSS} from "../pokemons/ramoloss";
-import {PORYGON} from "../pokemons/porygon";
-import {EVOLI} from "../pokemons/evoli";
+import {DRESSEUR_CHAMPS_VERDOYANTS} from "../trainers";
 import {MYSTHERBE} from "../pokemons/mystherbe";
 import {BULBIZARRE} from "../pokemons/bulbizarre";
 import {CHETIFLOR} from "../pokemons/chetiflor";

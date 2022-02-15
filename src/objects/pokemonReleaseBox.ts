@@ -24,7 +24,7 @@ export function displayPokemonReleaseBox(pokemon: PokemonOnBoard){
     bg.setOrigin(0.5,0.5)
     pokemonReleaseBox.add(bg)
 
-    const text = addText(0, 2, `Libérer ${pokemon.name}`, { color: "#000" })
+    const text = addText(0, 2, `Libérer ${pokemon.entry.name}`, { color: "#000" })
     text.setOrigin(0.5,0.5)
     text.setScrollFactor(0)
     pokemonReleaseBox.add(text)

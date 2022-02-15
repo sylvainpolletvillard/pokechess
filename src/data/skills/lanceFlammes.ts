@@ -1,7 +1,6 @@
 import {HitSkill, SkillBehavior} from "../../logic/skill";
 import {POKEMON_TYPES} from "../types";
 import {EFFECTS} from "../effects";
-import {Z} from "../depths"
 import { AlterationType } from "../alterations";
 
 export const LANCE_FLAMMES: HitSkill = {

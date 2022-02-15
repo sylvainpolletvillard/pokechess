@@ -6,11 +6,11 @@ export const METAMORPH: PokemonEntry = {
     ref: "metamorph",
     name: "Metamorph",
     maxPV: 48,
-    maxPP: 0,
+    maxPP: 1,
     attack: 48,
     defense: 48,
     speed: 48,
     types: [POKEMON_TYPES.NORMAL],
     rank: 2,
-    baseSkill: SKILLS.FOUET_LIANES, // morphing
+    baseSkill: SKILLS.MORPHING
 }

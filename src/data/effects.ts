@@ -612,5 +612,17 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "pouvoir_lunaire",
         frames: [428,429,430,431,432,433,434,435,436],
         frameRate: 8
+    },
+    EVOLUTION: {
+        key: "evolution",
+        frames: [437,438,439,440,441,442,443,444,445,446,447,448,449,450,451],
+        frameRate: 8,
+        depth: Z.SKILL_EFFECT_ABOVE_POKEMON
+    },
+    ADAPTATION: {
+        key: "adaptation",
+        frames: [452,453,454,455,456,457,458,459,460,461,462,463],
+        frameRate: 8,
+        depth: Z.SKILL_EFFECT_BELOW_POKEMON
     }
 }

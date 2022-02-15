@@ -180,83 +180,54 @@ export interface PokemonEntry {
     rank: number;
 }
 
-export class Pokemon implements PokemonEntry {
+export class Pokemon {
     uid: string;
     owner: number;
-    basePV: number;
     pv: number;
     pp: number;
     item?: HoldableItem;
     level: number;
-    ref: string;
-    baseAttack: number;
-    baseDefense: number;
-    baseSpeed: number;
-    maxPP: number;
-    name: string;
-    types: PokemonType[];
-    baseSkill: Skill;
-    ppSkill?: Skill;
-    evolution?: PokemonEntry;
-    evolutionLevel?: number;
-    rank: number;
     pokeball: string;
     entry: PokemonEntry;
     xp: number;
 
     constructor(entry: PokemonEntry | Pokemon, owner: number, level = 1) {
         this.uid = entry instanceof Pokemon ? entry.uid : nanoid()
-        this.entry = entry
+        this.entry = entry instanceof Pokemon ? entry.entry : entry
         this.owner = owner
         this.level = level
         this.item = undefined
-        this.ref = entry.ref
-        this.name = entry.name
-        this.types = entry.types
-        this.baseSkill = entry.baseSkill
-        this.ppSkill = entry.ppSkill
-        this.basePV = entry.maxPV
-        this.maxPP = entry.maxPP
         this.pv = this.maxPV;
         this.pp = 0
-        this.baseAttack = entry.attack
-        this.baseDefense = entry.defense
-        this.baseSpeed = entry.speed
-        this.evolution = entry.evolution
-        this.evolutionLevel = entry.evolutionLevel
-        this.rank = entry.rank
-        this.pokeball = POKEBALLS[this.rank-1] // TEMP: set on capture, based on rank or safari ball
-        
+        this.pokeball = POKEBALLS[this.entry.rank-1] // TEMP: set on capture, based on rank or safari ball
         this.xp = levelToXP(this.level);
     }
 
     get baseXP(): number {
          //TODO: this.baseXP = entry.baseXP; // see https://pwo-wiki.info/index.php/Base_Experience
-         switch(this.rank){
+         switch(this.entry.rank){
             case 1: return 60;
             case 2: return 130;
             case 3: return 200;
             case 4: return 260;
-            case 5: return 320;
+            case 5: default: return 320;
         }
-
-        return 99999999999999999999
     }
 
     get maxPV(): number {
-        return Math.round(this.basePV * this.level / 50 + 10)
+        return Math.round(this.entry.maxPV * this.level / 50 + 10)
     }
 
     get attack(): number {
-        return Math.round(this.baseAttack * this.level / 50 + 5)
+        return Math.round(this.entry.attack * this.level / 50 + 5)
     }
 
     get defense(): number {
-        return Math.round(this.baseDefense * this.level / 50 + 5)
+        return Math.round(this.entry.defense * this.level / 50 + 5)
     }
 
     get speed(): number {
-        return Math.round(this.baseSpeed * this.level / 50 + 5)
+        return Math.round(this.entry.speed * this.level / 50 + 5)
     }
 
     get cost(){

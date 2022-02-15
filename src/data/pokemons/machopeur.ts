@@ -2,7 +2,6 @@ import {POKEMON_TYPES} from "../types";
 import {MACKOGNEUR} from "./mackogneur";
 import {SKILLS} from "../skills";
 import {PokemonEntry} from "../pokemons";
-import {BALAYAGE} from "../skills/balayage";
 
 export const MACHOPEUR: PokemonEntry = {
     ref: "machopeur",

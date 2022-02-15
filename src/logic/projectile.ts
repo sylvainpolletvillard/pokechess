@@ -1,7 +1,6 @@
 import {ProjectileSkill} from "./skill";
 import {PokemonOnBoard} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
-import {distanceBetweenPokemon} from "./pathfinding";
 import {OWNER_PLAYER} from "../data/owners";
 import { applyDamage, calcDamage } from "./fight";
 import { gameState } from "./gamestate";

@@ -6,18 +6,7 @@ import {
     TYPE_ELECTRIQUE,
     TYPE_NORMAL,
 } from "../types";
-import {DRESSEUR_CENTRALE, DRESSEUR_GROTTE_AZUREE} from "../trainers";
-import {STARI} from "../pokemons/stari";
-import {CARAPUCE} from "../pokemons/carapuce";
-import {PSYKOKWAK} from "../pokemons/psykokwak";
-import {PTITARD} from "../pokemons/ptitard";
-import {OTARIA} from "../pokemons/otaria";
-import {KOKIYAS} from "../pokemons/kokiyas";
-import {KRABBY} from "../pokemons/krabby";
-import {HYPOTREMPE} from "../pokemons/hypotrempe";
-import {POISSIRENE} from "../pokemons/poissirene";
-import {AQUALI} from "../pokemons/aquali";
-import {LOKHLASS} from "../pokemons/lokhlass";
+import {DRESSEUR_CENTRALE} from "../trainers";
 import {MAGNETI} from "../pokemons/magneti";
 import {ELEKTEK} from "../pokemons/elektek";
 import {PIKACHU} from "../pokemons/pikachu";

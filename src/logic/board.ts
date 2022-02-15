@@ -128,14 +128,14 @@ export function launchPokeball(player: number, pokeballType: string, x:number, y
 }
 
 export function spawnPokemon(pokemon: PokemonOnBoard, game: GameScene){
-    const [x,y] = pokemon.positionPlacement;
+    const [x,y] = pokemon.position;
     launchPokeball(pokemon.owner, pokemon.pokeball, x, y, game)
         .then((pokeball) => {
             pokeball.play(`${pokemon.pokeball}_out`)
             pokeball.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
                 pokeball.destroy()
                 const sprite = makePokemonSprite(pokemon, game)
-                sprite.play(`${pokemon.ref}_${pokemon.facingDirection}`)
+                sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
             })
         })
 }
@@ -194,13 +194,13 @@ export async function capturePokemon(
         const myPokemon = pokemons.find(p => p.entry.ref === pokemon.entry.ref)
         if(myPokemon != null){
             await wait(100).then(() => startDialog([
-                `Le ${myPokemon.name} sauvage partage son expérience avant d'être relaché.`,
-                `Votre ${myPokemon.name} gagne ${pokemon.xp} XP`
+                `Le ${myPokemon.entry.name} sauvage partage son expérience avant d'être relaché.`,
+                `Votre ${myPokemon.entry.name} gagne ${pokemon.xp} XP`
             ])).then(() => {
                 const oldLvl = myPokemon.level
                 myPokemon.gainXP(pokemon.xp)
                 if(oldLvl !== myPokemon.level){
-                    return startDialog([`${myPokemon.name} passe au niveau ${myPokemon.level}`])
+                    return startDialog([`${myPokemon.entry.name} passe au niveau ${myPokemon.level}`])
                 }
             })
         } else {

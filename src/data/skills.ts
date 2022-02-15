@@ -10,7 +10,6 @@ import {HYDROCANON} from "./skills/hydrocanon";
 import {LANCE_FLAMMES} from "./skills/lanceFlammes";
 import {TREMPETTE} from "./skills/trempette";
 import {POUDREUSE} from "./skills/poudreuse";
-import {ECLATS_GLACE} from "./skills/eclatsGlace";
 import {PIQURE} from "./skills/piqure";
 import {SECRETION} from "./skills/secretion";
 import {CHOC_MENTAL} from "./skills/chocMental";
@@ -83,6 +82,8 @@ import {JACKPOT} from "./skills/jackpot";
 import {GROBISOU} from "./skills/grobisou";
 import {METEORES} from "./skills/meteores";
 import {POUVOIR_LUNAIRE} from "./skills/pouvoirLunaire";
+import {MORPHING} from "./skills/morphing";
+import {EVOLUTION} from "./skills/evolution";
 
 export const SKILLS = {
     CHARGE,
@@ -97,7 +98,6 @@ export const SKILLS = {
     LANCE_FLAMMES,
     TREMPETTE,
     POUDREUSE,
-    ECLATS_GLACE,
     PIQURE,
     SECRETION,
     CHOC_MENTAL,
@@ -170,9 +170,9 @@ export const SKILLS = {
     GROBISOU,
     METEORES,
     POUVOIR_LUNAIRE,
+    MORPHING,
+    EVOLUTION
 
-    // morphing
-    // évolution
     // adaptation
     // tunnel
     // psyko

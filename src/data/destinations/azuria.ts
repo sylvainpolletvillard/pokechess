@@ -1,5 +1,5 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import {DRESSEUR_AZURIA, DRESSEUR_COL_DE_MONTAGNE, ONDINE} from "../trainers";
+import {DRESSEUR_AZURIA, ONDINE} from "../trainers";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
 
 import { AKWAKWAK } from "../pokemons/akwakwak";
@@ -10,14 +10,6 @@ import { LOKHLASS } from "../pokemons/lokhlass";
 import { STARI } from "../pokemons/stari";
 import { STAROSS } from "../pokemons/staross";
 import { PSYKOKWAK } from "../pokemons/psykokwak";
-import {ROUCOOL} from "../pokemons/roucool";
-import {PIAFABEC} from "../pokemons/piafabec";
-import {CANINOS} from "../pokemons/caninos";
-import {NOSFERAPTI} from "../pokemons/nosferapti";
-import {DODUO} from "../pokemons/doduo";
-import {SALAMECHE} from "../pokemons/salameche";
-import {MIMITOSS} from "../pokemons/mimitoss";
-import {CANARTICHO} from "../pokemons/canarticho";
 import {CARAPUCE} from "../pokemons/carapuce";
 import {PTITARD} from "../pokemons/ptitard";
 import {OTARIA} from "../pokemons/otaria";

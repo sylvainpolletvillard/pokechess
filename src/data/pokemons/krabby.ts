@@ -2,7 +2,6 @@ import {POKEMON_TYPES} from "../types";
 import {KRABBOSS} from "./krabboss";
 import {SKILLS} from "../skills";
 import {PokemonEntry} from "../pokemons";
-import {PINCE_MASSE} from "../skills/pinceMasse";
 
 export const KRABBY: PokemonEntry = {
     ref: "krabby",

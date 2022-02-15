@@ -1,10 +1,9 @@
 import Phaser from "phaser";
 import {AlterationType} from "../data/alterations";
-import {Z} from "../data/depths";
 import {EFFECTS} from "../data/effects";
 import {POKEMONS} from "../data/pokemons";
 import {SKILLS} from "../data/skills";
-import {PokemonOnBoard} from "../objects/pokemon";
+import {makePokemonSprite, PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
 import {pickRandomIn, randomInt, wait} from "../utils/helpers";
 import {addAlteration, removeAlteration} from "./alteration";
@@ -18,6 +17,27 @@ import {OWNER_PLAYER} from "../data/owners";
 import {Direction, getDeltaFromDirection, getDirectionFromDelta, getRotationAngle} from "../utils/directions";
 import {drawPokeballsCounter} from "../objects/pokeballsCounter";
 import {MyScene} from "../scenes/MyScene";
+import {
+    TYPE_COMBAT,
+    TYPE_DRAGON,
+    TYPE_EAU,
+    TYPE_ELECTRIQUE,
+    TYPE_FEE,
+    TYPE_FEU,
+    TYPE_GLACE,
+    TYPE_INSECTE,
+    TYPE_NORMAL,
+    TYPE_PLANTE,
+    TYPE_POISON,
+    TYPE_PSY,
+    TYPE_ROCHE,
+    TYPE_SOL,
+    TYPE_SPECTRE,
+    TYPE_VOL
+} from "../data/types";
+import {PYROLI} from "../data/pokemons/pyroli";
+import {AQUALI} from "../data/pokemons/aquali";
+import {VOLTALI} from "../data/pokemons/voltali";
 
 export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     switch(specialMoveName){
@@ -31,6 +51,8 @@ export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard
         case "ultralaser": return renderUltralaser(attacker, target, game)
         case "laser_glace": return renderLaserGlace(attacker, target, game)
         case "jackpot": return jackpot(attacker, game)
+        case "morphing": return morphing(attacker, target, game)
+        case "evolution": return evolution(attacker, target, game)
     }
 }
 
@@ -131,7 +153,7 @@ export function renderUltralaser(attacker: PokemonOnBoard, target: PokemonOnBoar
         const pokemonOnTile = getPokemonOnTile(i, j)
         if(pokemonOnTile && pokemonOnTile.owner !== attacker.owner) {
             const damage = calcDamage(SKILLS.ULTRALASER, pokemonOnTile, attacker)
-            console.log(`Ultralaser sur ${pokemonOnTile.name} ; ${pokemonOnTile.name} receives ${damage} damage !`)
+            console.log(`Ultralaser sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
             applyDamage(damage, pokemonOnTile)
         }
 
@@ -157,7 +179,7 @@ export function renderLaserGlace(attacker: PokemonOnBoard, target: PokemonOnBoar
         const pokemonOnTile = getPokemonOnTile(i, j)
         if(pokemonOnTile && pokemonOnTile.owner !== attacker.owner) {
             const damage = calcDamage(SKILLS.LASER_GLACE, pokemonOnTile, attacker)
-            console.log(`Laser glace sur ${pokemonOnTile.name} ; ${pokemonOnTile.name} receives ${damage} damage !`)
+            console.log(`Laser glace sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
             applyDamage(damage, pokemonOnTile)
             addAlteration(pokemonOnTile, { type: AlterationType.GEL, stacks: 50 }, game)
         }
@@ -177,4 +199,42 @@ export function jackpot(attacker: PokemonOnBoard, game: GameScene){
         gameState.player.inventory.pokeball += 1
         drawPokeballsCounter(gameState.activeScene as MyScene)
     }
+}
+
+export function morphing(attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+    attacker.initialEntry = attacker.entry
+    attacker.entry = target.entry
+    removePokemonSprite(attacker, game)
+    const newSprite = makePokemonSprite(attacker, game)
+    newSprite.play(`${attacker.entry.ref}_${attacker.facingDirection}`)
+    game.sprites.set(attacker.uid, newSprite)
+}
+
+export function evolution(attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+    attacker.initialEntry = attacker.entry
+        // aquali voltali pyroli
+        const EVOLI_MAPPING = new Map([
+            [TYPE_COMBAT, AQUALI],
+            [TYPE_DRAGON, VOLTALI],
+            [TYPE_EAU, VOLTALI],
+            [TYPE_ELECTRIQUE, PYROLI],
+            [TYPE_FEE, VOLTALI],
+            [TYPE_FEU, AQUALI],
+            [TYPE_GLACE, PYROLI],
+            [TYPE_INSECTE, PYROLI],
+            [TYPE_NORMAL, VOLTALI],
+            [TYPE_PLANTE, PYROLI],
+            [TYPE_POISON, VOLTALI],
+            [TYPE_PSY, AQUALI],
+            [TYPE_ROCHE, AQUALI],
+            [TYPE_SOL, AQUALI],
+            [TYPE_SPECTRE, PYROLI],
+            [TYPE_VOL, VOLTALI]
+        ])
+
+    attacker.entry = EVOLI_MAPPING.get(target.entry.types[0]) ?? PYROLI
+    removePokemonSprite(attacker, game)
+    const newSprite = makePokemonSprite(attacker, game)
+    newSprite.play(`${attacker.entry.ref}_${attacker.facingDirection}`)
+    game.sprites.set(attacker.uid, newSprite)
 }

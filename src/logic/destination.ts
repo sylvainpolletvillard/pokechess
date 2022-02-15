@@ -3,7 +3,6 @@ import {Trainer} from "../data/trainers";
 import {LevelConfig} from "./level";
 import {Badge} from "../data/badges";
 import {gameState} from "./gamestate";
-import {BOURG_PALETTE} from "../data/destinations/bourg_palette";
 
 export type Path = [dx:number, dy:number][];
 

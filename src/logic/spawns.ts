@@ -76,7 +76,7 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
 }
 
 export function autoEvolve(pokemon: Pokemon): Pokemon{
-    if(pokemon.evolution && pokemon.evolutionLevel && pokemon.level > pokemon.evolutionLevel) return autoEvolve(new Pokemon(pokemon.evolution, pokemon.owner, pokemon.level))
+    if(pokemon.entry.evolution && pokemon.entry.evolutionLevel && pokemon.level > pokemon.entry.evolutionLevel) return autoEvolve(new Pokemon(pokemon.entry.evolution, pokemon.owner, pokemon.level))
     if(pokemon.entry.devolution && pokemon.level < pokemon.entry.devolution.evolutionLevel!) return autoEvolve(new Pokemon(pokemon.entry.devolution, pokemon.owner, pokemon.level))
     return pokemon
 }

@@ -30,7 +30,7 @@ export const CHEN: () => Promise<any> = () => {
     else if(gameState.dialogStates.chen === CHEN_DIALOG_STATE.after_starter_choice){
         gameState.dialogStates.chen = CHEN_DIALOG_STATE.end
         return startDialog([
-            `${gameState.player.team[0].name} ? Excellent choix !`,
+            `${gameState.player.team[0].entry.name} ? Excellent choix !`,
             "Ton Pokémon te protégera des Pokémons sauvages.",
             "Mais tout seul il ne sera pas de taille face aux champions d'arène!",
             "Il te faudra capturer des Pokémon sauvages pour composer une équipe.",

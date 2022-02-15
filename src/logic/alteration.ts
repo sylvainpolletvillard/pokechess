@@ -39,7 +39,7 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
         sprite?.play(`${pokemon.ref}_${pokemon.facingDirection}`)
     } else if(alteration.type === AlterationType.POISON){
         let poisonDamage = Math.min(500, alteration.stacks) * perSecond * (1 / 10000) * pokemon.maxPV // 0.01% max HP per stack per second
-        if(pokemon.types.includes(POKEMON_TYPES.POISON)){
+        if(pokemon.entry.types.includes(POKEMON_TYPES.POISON)){
             poisonDamage *= 0.5
             // type poison = 50% résistance au poison //TODO: bonus alliance à prendre en compte
         }
@@ -78,10 +78,10 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
     const alterationToStack = pokemon.alterations.find(alt => alt.type === alteration.type)
     if(alterationToStack){        
         alterationToStack.stacks += alteration.stacks
-        //console.log(`More stacks of ${alteration.type} on ${pokemon.name} (stacks: ${alterationToStack.stacks})`)
+        //console.log(`More stacks of ${alteration.type} on ${pokemon.entry.name} (stacks: ${alterationToStack.stacks})`)
     } 
     else {
-        console.log(`Apply ${alteration.type} on ${pokemon.name} (stacks: ${alteration.stacks})`)
+        console.log(`Apply ${alteration.type} on ${pokemon.entry.name} (stacks: ${alteration.stacks})`)
         const targetSprite = game.sprites.get(pokemon.uid)
         if(!targetSprite) return console.error(`Error, can't find pokemon sprite uid ${pokemon.uid}`)
 

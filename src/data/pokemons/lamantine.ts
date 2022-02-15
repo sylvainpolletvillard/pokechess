@@ -12,6 +12,6 @@ export const LAMANTINE: PokemonEntry = {
     speed: 70,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.GLACE],
     rank: 2,
-    baseSkill: SKILLS.ECLATS_GLACE,
+    baseSkill: SKILLS.POUDREUSE,
     ppSkill: SKILLS.LASER_GLACE
 }

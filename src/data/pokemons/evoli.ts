@@ -6,12 +6,12 @@ export const EVOLI: PokemonEntry = {
     ref: "evoli",
     name: "Evoli",
     maxPV: 55,
-    maxPP: 20,
+    maxPP: 10,
     attack: 55,
     defense: 50,
     speed: 55,
     types: [POKEMON_TYPES.NORMAL],
     rank: 1,
     baseSkill: SKILLS.CHARGE,
-    ppSkill: SKILLS.LANCE_SOLEIL // évo: évolution temporaire en voltali, aquali ou pyroli selon le pokémon ciblé ; basé sur le code de l'attaque morphing pour
+    ppSkill: SKILLS.EVOLUTION
 }

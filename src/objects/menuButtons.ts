@@ -42,7 +42,7 @@ export function drawMenuButtons(game: GameScene){
                 const pokemon = dragState.draggedElem.getData("pokemon")
                 if(pokemon != null){
                     pokedexButtonText = addText(pokedexButtonX, game.scale.height - dyText,
-                        `Voir ${pokemon.name}`,
+                        `Voir ${pokemon.entry.name}`,
                         { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                        
                 }
             } else {
@@ -85,7 +85,7 @@ export function drawMenuButtons(game: GameScene){
                 const pokemon = dragState.draggedElem.getData("pokemon")
                 if(pokemon != null){
                     boxButtonText = addText(boxButtonX, game.scale.height - dyText,
-                        `Retirer ${pokemon.name}`,
+                        `Retirer ${pokemon.entry.name}`,
                         { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                        
                 }
             } else {
@@ -132,7 +132,7 @@ export function drawMenuButtons(game: GameScene){
                     bagButtonText = addText(bagButtonX, game.scale.height - dyText,
                         pokemon.item 
                             ? `Récupérer ${pokemon.item.name}`
-                            : `${pokemon.name} ne tient pas d'objet`,
+                            : `${pokemon.entry.name} ne tient pas d'objet`,
                         { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                        
                 } else if(item != null){
                     bagButtonText = addText(bagButtonX, game.scale.height - dyText,

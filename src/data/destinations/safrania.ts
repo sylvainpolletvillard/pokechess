@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
-import {DRESSEUR_FALAISES, DRESSEUR_SAFRANIA, MORGANE} from "../trainers";
+import { DRESSEUR_SAFRANIA, MORGANE} from "../trainers";
 import { KADABRA } from "../pokemons/kadabra";
 import { AEROMITE } from "../pokemons/aeromite";
 import { MR_MIME } from "../pokemons/mrmime";

@@ -53,11 +53,11 @@ export function pickStarters(): Pokemon[] {
 }
 
 export const pickStarter = (index: number) => (desc: Description) => {
-    if(gameState.player.team.length > 0) return [`J'aurais peut-être dû prendre ${gameState.starters[index].name}...`]; // already picked one starter
+    if(gameState.player.team.length > 0) return [`J'aurais peut-être dû prendre ${gameState.starters[index].entry.name}...`]; // already picked one starter
     return [() => {
         const starter = gameState.starters[index]
         displayPokemonInfo(starter)
-        return `Choisir ${starter.name} comme starter ?`
+        return `Choisir ${starter.entry.name} comme starter ?`
     }, {
         "OUI": () => {
             const starter = gameState.starters[index]
@@ -67,7 +67,7 @@ export const pickStarter = (index: number) => (desc: Description) => {
             gameState.dialogStates.chen = CHEN_DIALOG_STATE.after_starter_choice
             pauseMusicAndPlaySound("pokemon_received")
             waitBeforeNextLine(2000)
-            return `Vous choisissez ${starter.name} !`
+            return `Vous choisissez ${starter.entry.name} !`
         },
         "NON": () => hidePokemonInfo()
     }]

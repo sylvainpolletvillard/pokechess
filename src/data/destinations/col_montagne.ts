@@ -1,16 +1,7 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
 import {TYPE_VOL, TYPE_GLACE, TYPE_ROCHE, TYPE_EAU, TYPE_NORMAL} from "../types";
-import {DRESSEUR_COL_DE_MONTAGNE, DRESSEUR_MONT_SELENITE} from "../trainers";
-import {MELOFEE} from "../pokemons/melofee";
-import {RONDOUDOU} from "../pokemons/rondoudou";
-import {STARI} from "../pokemons/stari";
-import {EVOLI} from "../pokemons/evoli";
-import {PORYGON} from "../pokemons/porygon";
-import {RACAILLOU} from "../pokemons/racaillou";
-import {SABELETTE} from "../pokemons/sabelette";
-import {TAUPIQUEUR} from "../pokemons/taupiqueur";
-import {OSSELAIT} from "../pokemons/osselait";
+import {DRESSEUR_COL_DE_MONTAGNE} from "../trainers";
 import {PIAFABEC} from "../pokemons/piafabec";
 import {ROUCOOL} from "../pokemons/roucool";
 import {CANINOS} from "../pokemons/caninos";

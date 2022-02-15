@@ -17,28 +17,10 @@ import { SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 import { checkProjectilesImpact } from "./projectile";
 import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
 import { updateAlterations } from "./alteration";
-import {FORET_JADE} from "../data/destinations/foret_jade";
 import {PokemonOnBoard} from "../objects/pokemon";
-import {TENTACRUEL} from "../data/pokemons/tentacruel";
-import {COCONFORT} from "../data/pokemons/coconfort";
-import {GEMME_VOLT, ITEM_POKEBALL, ORBE_GLACE, VITESSE_PLUS} from "../data/items";
 import {loadSave, saveState} from "./save";
-import {TYGNON} from "../data/pokemons/tygnon";
-import {MACHOPEUR} from "../data/pokemons/machopeur";
-import {MAGMAR} from "../data/pokemons/magmar";
-import {SMOGO} from "../data/pokemons/smogo";
-import {LEVEINARD} from "../data/pokemons/leveinard";
-import {RHINOFEROS} from "../data/pokemons/rhinoferos";
-import {RHINOCORNE} from "../data/pokemons/rhinocorne";
-import {NIDORINA} from "../data/pokemons/nidorina";
-import {NOADKOKO} from "../data/pokemons/noadkoko";
-import {FLAGADOSS} from "../data/pokemons/flagadoss";
-import {KOKIYAS} from "../data/pokemons/kokiyas";
-import {DRACOLOSSE} from "../data/pokemons/dracolosse";
-import {LAMANTINE} from "../data/pokemons/lamantine";
-import {PERSIAN} from "../data/pokemons/persian";
-import {MELODELFE} from "../data/pokemons/melodelfe";
-import {STAROSS} from "../data/pokemons/staross";
+import {EVOLI} from "../data/pokemons/evoli";
+import {METAMORPH} from "../data/pokemons/metamorph";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -130,8 +112,8 @@ export class GameState {
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 */
         gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(MELODELFE, 1, 8), 3 ,6),
-            new PokemonOnBoard( new Pokemon(STAROSS, 1, 8), 5 ,6),
+            new PokemonOnBoard( new Pokemon(EVOLI, 1, 8), 3 ,6),
+            new PokemonOnBoard( new Pokemon(METAMORPH, 1, 8), 5 ,6),
         ]
 
         if(this.currentRoomIndex >= this.roomOrder.length) {
@@ -238,10 +220,12 @@ export class GameState {
             )
         }
 
+        [...gameState.board.playerTeam, ...gameState.board.otherTeam].forEach(pokemon => pokemon.resetAfterFight())
+
         gameState.board.playerTeam.forEach(pokemon => {
             const oldLvl = pokemon.level
             pokemon.gainXP(xpPerPokemon)
-            if(oldLvl !== pokemon.level) lines.push(`${pokemon.name} passe au niveau ${pokemon.level}`)
+            if(oldLvl !== pokemon.level) lines.push(`${pokemon.entry.name} passe au niveau ${pokemon.level}`)
         })
 
         startDialog(lines).then(() => {

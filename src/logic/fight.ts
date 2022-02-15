@@ -4,7 +4,7 @@ import {Board, getPositionFromCoords} from "./board";
 import GameScene from "../scenes/GameScene";
 import {getDirection} from "./anims";
 import Phaser from "phaser";
-import {PokemonOnBoard} from "../objects/pokemon";
+import {PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
 import {Skill} from "./skill";
 import {hasBlockingAlteration} from "./alteration";
@@ -12,12 +12,13 @@ import {triggerSkill} from "./skill-anims";
 import {AlterationType} from "../data/alterations";
 import {clamp} from "../utils/helpers";
 import {recordLastSkillSeen} from "./specials";
+import {TABLE_TYPES} from "../data/types";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
     const isInAttackRange = (
-        distance <= pokemon.baseSkill.attackRange 
-        || (pokemon.ppSkill && pokemon.pp >= pokemon.maxPP && distance <= pokemon.ppSkill.attackRange)
+        distance <= pokemon.entry.baseSkill.attackRange
+        || (pokemon.entry.ppSkill && pokemon.pp >= pokemon.entry.maxPP && distance <= pokemon.entry.ppSkill.attackRange)
     )
     const hasBlockingAlterations = pokemon.hasAlteration(AlterationType.GEL) 
                                 || pokemon.hasAlteration(AlterationType.PEUR) 
@@ -56,7 +57,7 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
     pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
-    sprite.play(`${pokemon.ref}_${pokemon.facingDirection}`)
+    sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
 }
 
 export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, board: Board, game: GameScene){
@@ -64,7 +65,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
     const path = findPathToTarget(pokemon, target, gameState.board)
-    //console.log(`${pokemon.name} va vers ${target.name}`, path)
+    //console.log(`${pokemon.entry.name} va vers ${target.name}`, path)
     pokemon.nextAction = { type: PokemonTypeAction.MOVE, path, target }
 
     // PATH >= 3 → pokemon tile + target tile + at least one free tile to move
@@ -73,7 +74,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
         const [sceneX,sceneY] = getPositionFromCoords(nextX,nextY);
 
         pokemon.facingDirection = getDirection(nextX - pokemon.x, nextY - pokemon.y)
-        sprite.play(`${pokemon.ref}_${pokemon.facingDirection}`)
+        sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
         pokemon.x = nextX;
         pokemon.y = nextY;
         const duration = 3000000 / (pokemon.speed+20) / game.gameSpeed
@@ -110,12 +111,12 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
             if(!canPokemonAttack(pokemon, target)) return pokemon.resetAction() // target moved away or blocking alteration
 
             pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
-            pokemon.pp = Math.min(pokemon.maxPP, pokemon.pp + 1);
-            //console.log(`${pokemon.name} (${pokemon.x},${pokemon.y}) is targeting ${target.name} (${target.x},${target.y}) → ${pokemon.facingDirection}`)
+            pokemon.pp = Math.min(pokemon.entry.maxPP, pokemon.pp + 1);
+            //console.log(`${pokemon.entry.name} (${pokemon.x},${pokemon.y}) is targeting ${target.name} (${target.x},${target.y}) → ${pokemon.facingDirection}`)
             faceTarget(pokemon, target, game);
-            let skill = pokemon.baseSkill;
-            if(pokemon.ppSkill && pokemon.pp >= pokemon.maxPP){
-                skill = pokemon.ppSkill
+            let skill = pokemon.entry.baseSkill;
+            if(pokemon.entry.ppSkill && pokemon.pp >= pokemon.entry.maxPP){
+                skill = pokemon.entry.ppSkill
                 recordLastSkillSeen(skill)
                 pokemon.pp = 0
             }
@@ -133,7 +134,7 @@ export function testPrecision(attacker: PokemonOnBoard, skill: Skill){
 export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=false, noWakeup = false){
     if(target.hasAlteration(AlterationType.INVULNERABLE)) return;
     target.pv = Math.max(0, target.pv - damage)
-    if(!noPPGain) target.pp = Math.min(target.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))
+    if(!noPPGain) target.pp = Math.min(target.entry.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))
     if(target.pv === 0) killPokemon(target)
     else {
         const sommeil = target.alterations.find(alt => alt.type === AlterationType.SOMMEIL)
@@ -145,8 +146,13 @@ export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=fal
 }
 
 export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard){
-    return attacker.attack * (1+skill.power/100) / target.defense
-    // TODO: gérer les types de damage eau/feu plus ou moins efficaces
+    let targetTypes = target.entry.types
+    if(target.hasAlteration(AlterationType.ADAPTATION)) targetTypes = [skill.type]
+    const typeFactor = targetTypes
+        .map(type => TABLE_TYPES.get(skill.type)?.get(type) ?? 1)
+        .reduce((a,b) => a*b)
+
+    return attacker.attack * (1+skill.power/100) * typeFactor / target.defense
 }
 
 export function calcSelfDamage(skill: Skill, attacker: PokemonOnBoard){
@@ -180,15 +186,9 @@ export function sendBackToPokeball(pokemon: PokemonOnBoard){
         pokeball.destroy()
     })
 
-    sprite.destroy();
-    pokemon.alterations.filter(alt => alt.effectSprite != null).forEach(alt => alt.effectSprite?.destroy())
-    game.sprites.delete(pokemon.uid)
 
-    const bars = game.graphics.get(pokemon.uid)
-    if(bars != null){
-        bars.destroy();
-        game.graphics.delete(pokemon.uid);
-    }
+    pokemon.alterations.filter(alt => alt.effectSprite != null).forEach(alt => alt.effectSprite?.destroy())
+    removePokemonSprite(pokemon, game)
 }
 
 export function healPokemon(pokemon: PokemonOnBoard, healAmount: number){

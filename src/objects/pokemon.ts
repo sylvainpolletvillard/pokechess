@@ -1,4 +1,4 @@
-import {Pokemon, PokemonAction, PokemonTypeAction} from "../data/pokemons";
+import {Pokemon, PokemonAction, PokemonEntry, PokemonTypeAction} from "../data/pokemons";
 import GameScene from "../scenes/GameScene";
 import {addInteractiveElem, dragState, handleDragStart, testIfCanBeDragged} from "./cursor";
 import {clamp, wait} from "../utils/helpers";
@@ -21,6 +21,7 @@ export class PokemonOnBoard extends Pokemon {
     facingDirection: Direction;
     nextAction: PokemonAction;
     alterations: Alteration[];
+    initialEntry?: PokemonEntry;
 
     constructor(pokemon: Pokemon, x:number, y:number) {
         super(pokemon, pokemon.owner, pokemon.level);
@@ -118,19 +119,25 @@ export class PokemonOnBoard extends Pokemon {
         this.nextAction.timer?.remove()
         this.nextAction = { type: PokemonTypeAction.IDLE }
     }
+
+    resetAfterFight(){
+        this.x = this.placementX
+        this.y = this.placementY
+        if(this.initialEntry) this.entry = this.initialEntry
+    }
 }
 
 export function makePokemonSprite(
     pokemon: Pokemon,
     game: GameScene
 ): Phaser.GameObjects.Sprite {
-    const [x,y] = pokemon instanceof PokemonOnBoard ? pokemon.positionPlacement : [0,0];
+    const [x,y] = pokemon instanceof PokemonOnBoard ? pokemon.position : [0,0]
     const sprite = game.add.sprite(x, y, "pokemon")
     game.sprites.set(pokemon.uid, sprite)
     game.graphics.set(pokemon.uid, game.add.graphics()) // hp bar
     sprite.setData("pokemon", pokemon)
     sprite.setData("type", "pokemon")
-    sprite.play(`${pokemon.ref}_DOWN`)
+    sprite.play(`${pokemon.entry.ref}_DOWN`)
     sprite.setDepth(Z.POKEMON)
     sprite.anims.pause()
     sprite.setInteractive()
@@ -169,4 +176,16 @@ export function makePokemonSprite(
     })
     
     return sprite;
+}
+
+export function removePokemonSprite(pokemon: PokemonOnBoard, game: GameScene){
+    const sprite = game.sprites.get(pokemon.uid)
+    sprite?.destroy();
+    game.sprites.delete(pokemon.uid)
+
+    const bars = game.graphics.get(pokemon.uid)
+    if(bars != null){
+        bars.destroy();
+        game.graphics.delete(pokemon.uid);
+    }
 }

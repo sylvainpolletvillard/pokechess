@@ -1,15 +1,7 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
 import {TYPE_ELECTRIQUE, TYPE_NORMAL, TYPE_POISON} from "../types";
-import {DRESSEUR_COL_DE_MONTAGNE, DRESSEUR_PISTE_CYCLABLE} from "../trainers";
-import {ROUCOOL} from "../pokemons/roucool";
-import {PIAFABEC} from "../pokemons/piafabec";
-import {CANINOS} from "../pokemons/caninos";
-import {NOSFERAPTI} from "../pokemons/nosferapti";
-import {DODUO} from "../pokemons/doduo";
-import {SALAMECHE} from "../pokemons/salameche";
-import {MIMITOSS} from "../pokemons/mimitoss";
-import {CANARTICHO} from "../pokemons/canarticho";
+import { DRESSEUR_PISTE_CYCLABLE} from "../trainers";
 import {SMOGO} from "../pokemons/smogo";
 import {ABO} from "../pokemons/abo";
 import {MIAOUSS} from "../pokemons/miaouss";
