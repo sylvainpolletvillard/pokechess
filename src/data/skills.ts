@@ -80,6 +80,9 @@ import {BOMB_OEUF} from "./skills/bombOeuf";
 import {ULTRALASER} from "./skills/ultralaser";
 import {LASER_GLACE} from "./skills/laser_glace";
 import {JACKPOT} from "./skills/jackpot";
+import {GROBISOU} from "./skills/grobisou";
+import {METEORES} from "./skills/meteores";
+import {POUVOIR_LUNAIRE} from "./skills/pouvoirLunaire";
 
 export const SKILLS = {
     CHARGE,
@@ -164,15 +167,14 @@ export const SKILLS = {
     ULTRALASER,
     LASER_GLACE,
     JACKPOT,
+    GROBISOU,
+    METEORES,
+    POUVOIR_LUNAIRE,
 
-    // grobisou
-    // pouvoir lunaire
     // morphing
     // évolution
     // adaptation
-    // météores
     // tunnel
-    // riposte
     // psyko
     // déflagration
     // blizzard

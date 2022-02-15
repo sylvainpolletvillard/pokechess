@@ -12,6 +12,6 @@ export const TYGNON: PokemonEntry = {
     speed: 76,
     types: [POKEMON_TYPES.COMBAT],
     rank: 2,
-    baseSkill: SKILLS.FLAMMECHE, // riposte
+    baseSkill: SKILLS.POING_KARATE,
     ppSkill: SKILLS.ULTIMAPOING
 }

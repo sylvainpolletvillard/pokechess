@@ -590,6 +590,27 @@ export const EFFECTS: { [name: string] : Effect} = {
     JACKPOT_START: {
         key: "jackpot_start",
         frames: [399],
-        frameRate: 4
+        frameRate: 2
+    },
+    BOMB_OEUF_HIT: {
+        key: "bomb_oeuf_hit",
+        frames: [400,401,402,403,404,405,406,407],
+        frameRate: 8
+    },
+    GROBISOU: {
+        key: "grobisou",
+        frames: [408,409,410,411,409,408],
+        frameRate: 8
+    },
+    METEORES: {
+        key: "meteores",
+        frames: [412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427],
+        frameRate: 8,
+        repeat: Infinity
+    },
+    POUVOIR_LUNAIRE: {
+        key: "pouvoir_lunaire",
+        frames: [428,429,430,431,432,433,434,435,436],
+        frameRate: 8
     }
 }

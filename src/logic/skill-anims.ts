@@ -128,7 +128,7 @@ export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard,
     wait(skill.hitDelay ?? 0).then(() => {
         const damage = calcDamage(skill, target, attacker)
         console.log(`${attacker.name} is attacking ${target.name} for ${damage} damage !`)
-        if(testPrecision(attacker)){
+        if(testPrecision(attacker, skill)){
             applyDamage(damage, target)
             if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker)
         }

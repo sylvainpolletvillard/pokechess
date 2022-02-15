@@ -125,9 +125,9 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     })
 }
 
-export function testPrecision(attacker: PokemonOnBoard){
+export function testPrecision(attacker: PokemonOnBoard, skill: Skill){
     if(attacker.precision === 1) return true
-    else return Math.random() <= attacker.precision
+    else return Math.random() <= attacker.precision * (skill.precision ?? 1)
 }
 
 export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=false, noWakeup = false){

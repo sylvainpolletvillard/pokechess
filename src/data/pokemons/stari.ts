@@ -7,7 +7,7 @@ export const STARI: PokemonEntry = {
     ref: "stari",
     name: "Stari",
     maxPV: 30,
-    maxPP: 20,
+    maxPP: 2,
     attack: 45,
     defense: 55,
     speed: 85,
@@ -16,5 +16,5 @@ export const STARI: PokemonEntry = {
     evolutionLevel: 40,
     rank: 1,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.LANCE_SOLEIL // météores
+    ppSkill: SKILLS.METEORES
 }

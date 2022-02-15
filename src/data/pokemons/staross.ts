@@ -6,12 +6,12 @@ export const STAROSS: PokemonEntry = {
     ref: "staross",
     name: "Staross",
     maxPV: 60,
-    maxPP: 20,
+    maxPP: 3,
     attack: 75,
     defense: 85,
     speed: 115,
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.PSY],
     rank: 3,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.LANCE_SOLEIL // météores
+    ppSkill: SKILLS.METEORES
 }
