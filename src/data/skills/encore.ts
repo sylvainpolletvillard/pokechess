@@ -7,8 +7,6 @@ export const ENCORE: SpecialSkill = {
     description: "Reproduit la dernière attaque spéciale observée sur le terrain",
     attackRange: 9,
     effect: EFFECTS.ENCORE,
-    effectPosition: "source",
-    effectDelta: 12,
     behavior: SkillBehavior.SPECIAL,
     power: 0,
     type: POKEMON_TYPES.NORMAL,

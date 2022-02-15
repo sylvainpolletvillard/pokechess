@@ -11,7 +11,6 @@ export const HATE: AOESkill = {
     type: POKEMON_TYPES.PSY,
     getTilesImpacted(){ return [] },
     effect: EFFECTS.HATE,
-    effectPosition: "source_ground",
     power: 0,
     hitDelay: 0,
     selfAlteration: {

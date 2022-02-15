@@ -19,8 +19,8 @@ import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
 import { updateAlterations } from "./alteration";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {loadSave, saveState} from "./save";
-import {EVOLI} from "../data/pokemons/evoli";
-import {METAMORPH} from "../data/pokemons/metamorph";
+import {TRIOPIKEUR} from "../data/pokemons/triopikeur";
+import {PORYGON} from "../data/pokemons/porygon";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -112,8 +112,8 @@ export class GameState {
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 */
         gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(EVOLI, 1, 8), 3 ,6),
-            new PokemonOnBoard( new Pokemon(METAMORPH, 1, 8), 5 ,6),
+            new PokemonOnBoard( new Pokemon(PORYGON, 1, 8), 3 ,6),
+            new PokemonOnBoard( new Pokemon(TRIOPIKEUR, 1, 8), 5 ,6),
         ]
 
         if(this.currentRoomIndex >= this.roomOrder.length) {

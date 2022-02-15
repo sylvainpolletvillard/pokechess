@@ -39,33 +39,34 @@ export function makeEffectSprite(effect: Effect, x: number, y: number, game: Gam
 }
 
 export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
-    if(!skill.effect) return;
+    const effect = skill.effect
+    if(!effect) return;
 
-    let [x, y] = target.position, dx=0, dy=0, delta = skill.effectDelta ?? 8;
+    let [x, y] = target.position, dx=0, dy=0, delta = effect.delta ?? 8;
     let angle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
 
-    if(skill.effectPosition === "source" || skill.effectPosition === "parabolic_to_target"){
+    if(effect.position === "source" || effect.position === "parabolic_to_target"){
         [x,y] = attacker.position
         dx = Math.round(Math.cos(angle) * delta)
         dy = Math.round(Math.sin(angle) * delta)
         angle += Math.PI
-    } else if(skill.effectPosition === "target" || skill.effectPosition === "target_to_source"){
+    } else if(effect.position === "target" || effect.position === "target_to_source"){
         dx = Math.round(Math.cos(angle+Math.PI) * delta)
         dy = Math.round(Math.sin(angle+Math.PI) * delta)
-    } else if(skill.effectPosition === "target_ground"){
-        dy= -16 * (skill.effect?.scale ?? 1) + delta
-    } else if(skill.effectPosition === "source_ground"){
+    } else if(effect.position === "target_ground"){
+        dy= -16 * (effect?.scale ?? 1) + delta
+    } else if(effect.position === "source_ground"){
         [x,y] = attacker.position
-        dy= -16 * (skill.effect?.scale ?? 1) + delta
+        dy= -16 * (effect?.scale ?? 1) + delta
     }
 
-    const effectSprite = makeEffectSprite(skill.effect, x + dx, y + dy, game)
+    const effectSprite = makeEffectSprite(effect, x + dx, y + dy, game)
 
     if(skill.rotateSprite){
         effectSprite.rotation = angle + Math.PI/2;
     }
 
-    if(skill.effectPosition === "target_to_source"){
+    if(effect.position === "target_to_source"){
         const [sourceX, sourceY] = attacker.position
         game.tweens.add({
             targets: effectSprite,
@@ -79,7 +80,7 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
         });
     }
 
-    if(skill.effectPosition === "parabolic_to_target"){
+    if(effect.position === "parabolic_to_target"){
         const [sourceX, sourceY] = attacker.position
         const [targetX, targetY] = target.position
         const startPoint = new Phaser.Math.Vector2(sourceX, sourceY);
@@ -109,9 +110,10 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
 
     if(skill.hitEffect){
         wait(skill.hitDelay ?? 0).then(() => {
-            effectSprite.scale = skill.hitEffect?.scale ?? 1
-            effectSprite.play(skill.hitEffect!.key)
-            effectSprite.setDepth(skill.hitEffect!.depth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
+            const hitEffect = skill.hitEffect as Effect
+            effectSprite.scale = hitEffect.scale ?? 1
+            effectSprite.play(hitEffect.key)
+            effectSprite.setDepth(hitEffect.depth ?? Z.SKILL_EFFECT_ABOVE_POKEMON)
             effectSprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
                 effectSprite.destroy()
             })
@@ -119,11 +121,11 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
     }
 }
 
-export function renderDirectHitAttack(skill: HitSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+export function renderDirectHitAttack(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     renderSkillEffect(skill, attacker, target, game)
 
     if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
-    if(skill.chargeDelta) sendPokemonCharge(attacker, target, skill.chargeDelta, game)
+    if((skill as HitSkill).chargeDelta) sendPokemonCharge(attacker, target, (skill as HitSkill).chargeDelta!, game)
 
     wait(skill.hitDelay ?? 0).then(() => {
         const damage = calcDamage(skill, target, attacker)
@@ -174,7 +176,7 @@ export function sendPokemonFlying(pokemon: PokemonOnBoard, stacks: number, game:
     const controlPoint = new Phaser.Math.Vector2(sourceX, sourceY-20);
     const curve = new Phaser.Curves.CubicBezier(startPoint, controlPoint, controlPoint, startPoint);
     const tweenObj = { t: 0 };
-    const duration = 250 + stacks*100
+    const duration = 250 + stacks * game.gameSpeed
 
     game.tweens.add({
         targets: tweenObj,

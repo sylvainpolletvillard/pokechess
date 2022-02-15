@@ -20,8 +20,6 @@ export const DANSE_FLAMMES: AOESkill = {
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.DANSE_FLAMMES,
-    effectPosition: "source_ground",
-    effectDelta: 16,
     power: 50,
     hitDelay: 0,
     hitAlteration: {

@@ -13,6 +13,5 @@ export const RAFALE_PSY: ProjectileSkill = {
     pierceThrough: true,
     rotateProjectile: true,
     power: 100,
-    attackRange: 4,
-    effectDelta: 8
+    attackRange: 4
 }

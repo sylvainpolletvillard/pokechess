@@ -20,8 +20,6 @@ export const RUGISSEMENT: AOESkill = {
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.RUGISSEMENT,
-    effectPosition: "source",
-    effectDelta: 12,
     power: 0,
     hitDelay: 50,
     hitAlteration: { type: AlterationType.RUGISSEMENT, stacks: 100 }

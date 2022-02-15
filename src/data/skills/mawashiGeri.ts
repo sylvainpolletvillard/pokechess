@@ -17,9 +17,7 @@ export const MAWASHI_GERI: AOESkill = {
         if(target.y === attacker.y+1) tiles.push([target.x, target.y-2]) // attack down
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
-    effect: EFFECTS.BROUILLARD,
-    effectPosition: "source",
-    effectDelta: 12,
+    effect: EFFECTS.MAWASHI_GERI,
     power: 100,
     hitDelay: 100,
     rotateSprite: true

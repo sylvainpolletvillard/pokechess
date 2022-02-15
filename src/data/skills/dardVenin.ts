@@ -14,6 +14,5 @@ export const DARD_VENIN: ProjectileSkill = {
     hitEffect: EFFECTS.DARD_VENIN_HIT,
     hitAlteration: { type: AlterationType.POISON, stacks: 20 },
     rotateProjectile: true,
-    attackRange: 2,
-    effectDelta: 8
+    attackRange: 2
 }

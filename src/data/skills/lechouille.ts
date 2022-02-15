@@ -10,8 +10,6 @@ export const LECHOUILLE: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 200,
     hitAlteration: { type: AlterationType.PARALYSIE, stacks: 20 },
-    effectPosition: "source",
-    effectDelta: 12,
     power: 20,
     rotateSprite: true,
     attackRange: 1,

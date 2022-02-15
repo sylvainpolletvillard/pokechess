@@ -20,7 +20,6 @@ export const BOMB_OEUF: AOESkill = {
     },
     power: 150,
     effect: EFFECTS.BOMB_OEUF,
-    effectPosition: "parabolic_to_target",
     hitDelay: 1000,
     hitEffect: EFFECTS.BOMB_OEUF_HIT
 }

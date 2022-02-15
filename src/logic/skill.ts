@@ -8,8 +8,6 @@ export interface Skill {
     name: string
     description?: string
     effect?: Effect;
-    effectDelta?: number;
-    effectPosition?: "source" | "target" | "source_ground" | "target_ground" | "target_to_source" | "parabolic_to_target";
     hitDelay?: number
     hitEffect?: Effect;
     hitAlteration?: Alteration;

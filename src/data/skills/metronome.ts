@@ -7,8 +7,6 @@ export const METRONOME: SpecialSkill = {
     description: "Déclenche une capacité aléatoire parmi toutes celles existantes",
     attackRange: 9,
     effect: EFFECTS.METRONOME,
-    effectPosition: "source",
-    effectDelta: 16,
     behavior: SkillBehavior.SPECIAL,
     power: 0,
     type: POKEMON_TYPES.NORMAL,

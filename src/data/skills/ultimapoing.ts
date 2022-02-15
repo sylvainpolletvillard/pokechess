@@ -9,7 +9,6 @@ export const ULTIMAPOING: HitSkill = {
     effect: EFFECTS.ULTIMAPOING,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
-    effectPosition: "target",
     power: 250,
     rotateSprite: false,
     attackRange: 1,

@@ -7,8 +7,6 @@ export const AMNESIE: SpecialSkill = {
     description: "Soigne toutes les altérations actuelles du lanceur",
     attackRange: 9,
     effect: EFFECTS.AMNESIE,
-    effectPosition: "source_ground",
-    effectDelta: 0,
     behavior: SkillBehavior.SPECIAL,
     power: 0,
     type: POKEMON_TYPES.PSY,

@@ -20,8 +20,6 @@ export const TONNERRE: AOESkill = {
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.TONNERRE,
-    effectPosition: "source_ground",
-    effectDelta: 16,
     power: 95,
     hitDelay: 250,
     triggerAlteration: {

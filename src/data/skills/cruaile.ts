@@ -8,7 +8,6 @@ export const CRUAILE: HitSkill = {
     effect: EFFECTS.CRUAILE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 200,
-    effectPosition: "target",
     power: 60,
     rotateSprite: false,
     attackRange: 1,

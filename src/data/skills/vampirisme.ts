@@ -9,7 +9,6 @@ export const VAMPIRISME: HitSkill = {
     effect: EFFECTS.VAMPIRISME,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 150,
-    effectPosition: "source",
     chargeDelta: 0,
     power: 40,
     rotateSprite: true,

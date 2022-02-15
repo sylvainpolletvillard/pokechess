@@ -7,7 +7,7 @@ export const TAUPIQUEUR: PokemonEntry = {
     ref: "taupiqueur",
     name: "Taupiqueur",
     maxPV: 10,
-    maxPP: 20,
+    maxPP: 10,
     attack: 55,
     defense: 25,
     speed: 95,
@@ -16,5 +16,5 @@ export const TAUPIQUEUR: PokemonEntry = {
     evolutionLevel: 26,
     rank: 1,
     baseSkill: SKILLS.COUD_BOUE,
-    ppSkill: SKILLS.LANCE_SOLEIL // tunnel
+    ppSkill: SKILLS.TUNNEL
 }

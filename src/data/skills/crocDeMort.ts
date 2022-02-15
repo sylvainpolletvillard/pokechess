@@ -11,10 +11,8 @@ export const CROC_DE_MORT: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 200,
     hitAlteration: { type: AlterationType.PEUR, stacks: 30 },
-    effectPosition: "target_ground",
     power: 250,
     rotateSprite: false,
     attackRange: 1,
-    chargeDelta: 0,
-    effectDelta: 16
+    chargeDelta: 0
 }

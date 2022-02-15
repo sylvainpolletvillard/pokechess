@@ -8,7 +8,6 @@ export const TORGNOLES: HitSkill = {
     effect: EFFECTS.TORGNOLES,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 10,
-    effectPosition: "target",
     power: 35,
     rotateSprite: false,
     attackRange: 1,

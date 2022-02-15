@@ -19,7 +19,6 @@ export const BOMB_BEURK: AOESkill = {
     },
     power: 80,
     effect: EFFECTS.BOMB_BEURK,
-    effectPosition: "parabolic_to_target",
     hitDelay: 750,
     hitEffect: EFFECTS.BOMB_BEURK_HIT,
     hitAlteration: { type: AlterationType.POISON, stacks: 80 }

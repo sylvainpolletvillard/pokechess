@@ -9,7 +9,6 @@ export const FURIE: HitSkill = {
     effect: EFFECTS.FURIE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
-    effectPosition: "target_ground",
     power: 80,
     rotateSprite: false,
     attackRange: 1,

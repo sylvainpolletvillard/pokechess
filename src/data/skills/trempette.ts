@@ -9,7 +9,5 @@ export const TREMPETTE: SpecialSkill = {
     type: POKEMON_TYPES.EAU,
     power: 0,
     effect: EFFECTS.TREMPETTE,
-    effectPosition: "source_ground",
-    effectDelta: 16,
     attackRange: 9
 }

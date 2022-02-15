@@ -7,7 +7,6 @@ export const EVOLUTION: SpecialSkill = {
     description: "Evolue temporairement en Pyroli, Voltali ou Aquali selon le type de la cible",
     attackRange: 9,
     effect: EFFECTS.EVOLUTION,
-    effectPosition: "source_ground",
     behavior: SkillBehavior.SPECIAL,
     power: 0,
     type: POKEMON_TYPES.NORMAL,

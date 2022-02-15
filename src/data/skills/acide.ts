@@ -19,7 +19,6 @@ export const ACIDE: AOESkill = {
     },
     power: 40,
     effect: EFFECTS.ACIDE,
-    effectPosition: "parabolic_to_target",
     hitDelay: 500,
     hitEffect: EFFECTS.ACIDE_HIT,
     hitAlteration: { type: AlterationType.ACIDE, stacks: 150 }

@@ -10,8 +10,6 @@ export const EMPAL_KORNE: HitSkill = {
     effect: EFFECTS.EMPAL_KORNE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 400,
-    effectPosition: "target_ground",
-    effectDelta: 16,
     power: 150,
     rotateSprite: false, 
     triggerAlteration: { type: AlterationType.TOURBILLON, stacks: 14 },

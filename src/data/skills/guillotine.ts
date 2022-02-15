@@ -11,7 +11,6 @@ export const GUILLOTINE: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 250,
     hitAlteration: { type: AlterationType.EXECUTION, stacks: 1 },
-    effectPosition: "target",
     power: 250,
     rotateSprite: false,
     attackRange: 1,

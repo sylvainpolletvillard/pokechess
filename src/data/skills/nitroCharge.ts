@@ -11,7 +11,6 @@ export const NITROCHARGE: HitSkill = {
     hitDelay: 150,
     hitEffect: EFFECTS.NITROCHARGE_HIT,
     hitAlteration: { type: AlterationType.BRULURE, stacks: 30 },
-    effectPosition: "target",
     chargeDelta: 12,
     power: 100,
     selfDamage: 30,

@@ -10,7 +10,6 @@ export const DOUBLE_PIED: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 150,
     hitAlteration: { type: AlterationType.DAMAGE_OVER_TIME, stacks: 10 },
-    effectPosition: "target",
     power: 30,
     rotateSprite: false,
     attackRange: 1,

@@ -8,8 +8,7 @@ export const JACKPOT: SpecialSkill = {
     attackRange: 1,
     behavior: SkillBehavior.SPECIAL,
     type: POKEMON_TYPES.NORMAL,
-    effect: EFFECTS.JACKPOT,
-    effectPosition: "target_to_source",
+    effect: EFFECTS.JACKPOT_START,
     power: 0,
     triggerSpecial: "jackpot",
     triggerSpecialDelay: 250

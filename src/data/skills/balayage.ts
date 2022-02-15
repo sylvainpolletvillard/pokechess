@@ -19,8 +19,6 @@ export const BALAYAGE: AOESkill = {
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.BROUILLARD,
-    effectPosition: "source",
-    effectDelta: 12,
     power: 100,
     hitDelay: 100,
     rotateSprite: true

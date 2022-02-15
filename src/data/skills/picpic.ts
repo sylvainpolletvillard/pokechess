@@ -8,7 +8,6 @@ export const PICPIC: HitSkill = {
     effect: EFFECTS.PICPIC,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
-    effectPosition: "target",
     power: 35,
     rotateSprite: true,
     attackRange: 1,

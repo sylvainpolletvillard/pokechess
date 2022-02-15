@@ -25,7 +25,7 @@ import {VIVE_ATTAQUE} from "./skills/vive attaque";
 import {ECLAIR} from "./skills/eclair";
 import {RAFALE_PSY} from "./skills/rafalePsy";
 import {CROCS_FEU} from "./skills/crocsFeu";
-import {CROC_DE_MORT} from "./skills/croc_de_mort";
+import {CROC_DE_MORT} from "./skills/crocDeMort";
 import {VAMPIRISME} from "./skills/vampirisme";
 import {REPOS} from "./skills/repos";
 import {PROVOC} from "./skills/provoc";
@@ -77,13 +77,15 @@ import {ABRI} from "./skills/abri";
 import {AMNESIE} from "./skills/amnesie";
 import {BOMB_OEUF} from "./skills/bombOeuf";
 import {ULTRALASER} from "./skills/ultralaser";
-import {LASER_GLACE} from "./skills/laser_glace";
+import {LASER_GLACE} from "./skills/laserGlace";
 import {JACKPOT} from "./skills/jackpot";
 import {GROBISOU} from "./skills/grobisou";
 import {METEORES} from "./skills/meteores";
 import {POUVOIR_LUNAIRE} from "./skills/pouvoirLunaire";
 import {MORPHING} from "./skills/morphing";
 import {EVOLUTION} from "./skills/evolution";
+import {ADAPTATION} from "./skills/adaptation";
+import {TUNNEL} from "./skills/tunnel";
 
 export const SKILLS = {
     CHARGE,
@@ -171,10 +173,10 @@ export const SKILLS = {
     METEORES,
     POUVOIR_LUNAIRE,
     MORPHING,
-    EVOLUTION
+    EVOLUTION,
+    ADAPTATION,
+    TUNNEL,
 
-    // adaptation
-    // tunnel
     // psyko
     // déflagration
     // blizzard

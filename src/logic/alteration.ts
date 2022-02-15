@@ -36,7 +36,7 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
             case Direction.LEFT: default: pokemon.facingDirection = Direction.UP; break;
         }
 
-        sprite?.play(`${pokemon.ref}_${pokemon.facingDirection}`)
+        sprite?.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
     } else if(alteration.type === AlterationType.POISON){
         let poisonDamage = Math.min(500, alteration.stacks) * perSecond * (1 / 10000) * pokemon.maxPV // 0.01% max HP per stack per second
         if(pokemon.entry.types.includes(POKEMON_TYPES.POISON)){
@@ -70,10 +70,6 @@ export function hasBlockingAlteration(pokemon: PokemonOnBoard){
         || pokemon.hasAlteration(AlterationType.SOMMEIL)
 }
 
-export function canPokemonBeTargeted(pokemon: PokemonOnBoard){
-    return !pokemon.hasAlteration(AlterationType.TOURBILLON)
-}
-
 export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, game: GameScene){
     const alterationToStack = pokemon.alterations.find(alt => alt.type === alteration.type)
     if(alterationToStack){        
@@ -88,6 +84,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
         switch(alteration.type){
             case AlterationType.TOURBILLON:
                 pokemon.resetAction()
+                pokemon.makeUntargettable(alteration.stacks * game.gameSpeed)
                 sendPokemonFlying(pokemon, alteration.stacks, game)
                 break;
             
@@ -98,6 +95,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
 
             case AlterationType.GEL:
                 alteration.effectSprite = makeEffectSprite(EFFECTS.FROZEN, targetSprite.x, targetSprite.y, game)
+                pokemon.makeUntargettable(alteration.stacks * game.gameSpeed)
                 //game.tweens.add({ targets: alteration.effectSprite, alpha: EFFECTS.FROZEN.opacity, duration: 250, easing: "Linear" })
                 break;
 

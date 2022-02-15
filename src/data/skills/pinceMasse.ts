@@ -8,8 +8,6 @@ export const PINCE_MASSE: HitSkill = {
     effect: EFFECTS.PINCE_MASSE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
-    effectPosition: "target",
-    effectDelta: 8,
     power: 40,
     rotateSprite: false,
     attackRange: 1,

@@ -20,8 +20,6 @@ export const BROUILLARD: AOESkill = {
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.BROUILLARD,
-    effectPosition: "source_ground",
-    effectDelta: 16,
     power: 0,
     hitDelay: 200,
     hitAlteration: {

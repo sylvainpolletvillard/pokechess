@@ -10,7 +10,6 @@ export const ARMURE: SpecialSkill = {
     behavior: SkillBehavior.SPECIAL,
     type: POKEMON_TYPES.ROCHE,
     effect: EFFECTS.ARMURE,
-    effectPosition: "source_ground",
     power: 0,
     hitDelay: 0,
     selfAlteration: {

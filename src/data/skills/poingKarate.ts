@@ -8,7 +8,6 @@ export const POING_KARATE: HitSkill = {
     effect: EFFECTS.POING_KARATE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 10,
-    effectPosition: "target",
     power: 50,
     rotateSprite: false,
     attackRange: 1,

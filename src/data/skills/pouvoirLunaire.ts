@@ -9,8 +9,6 @@ export const POUVOIR_LUNAIRE: HitSkill = {
     effect: EFFECTS.POUVOIR_LUNAIRE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 200,
-    effectPosition: "target_ground",
-    effectDelta: 16,
     power: 120,
     rotateSprite: false,
     attackRange: 4

@@ -3,7 +3,7 @@ import {AlterationType} from "../data/alterations";
 import {EFFECTS} from "../data/effects";
 import {POKEMONS} from "../data/pokemons";
 import {SKILLS} from "../data/skills";
-import {makePokemonSprite, PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
+import {makePokemonSprite, movePokemonSprite, PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
 import {pickRandomIn, randomInt, wait} from "../utils/helpers";
 import {addAlteration, removeAlteration} from "./alteration";
@@ -41,7 +41,8 @@ import {VOLTALI} from "../data/pokemons/voltali";
 
 export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     switch(specialMoveName){
-        case "teleport": return teleport(attacker)
+        case "teleport": return teleport(attacker, game)
+        case "tunnel": return tunnel(attacker, target, game)
         case "eclair": return renderEclair(attacker, game)
         case "provoc": return provoc(attacker, game)
         case "encore": return encore(attacker, target, game)
@@ -56,22 +57,48 @@ export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard
     }
 }
 
-export function teleport(pokemon: PokemonOnBoard){
-    const game = gameState.activeScene as GameScene;
+export function teleport(pokemon: PokemonOnBoard, game: GameScene){
     let { x: originX, y: originY } = pokemon
     let x: number , y: number;
     do { // find random empty tile
         x = randomInt(0, 6)
         y = randomInt(0, 7)
-    } while (x === originX || y === originY || getPokemonOnTile(x,y) != null)    
+    } while (x === originX || y === originY || getPokemonOnTile(x,y) != null)
+
+    pokemon.makeUntargettable(150)
 
     const [sceneX, sceneY] = getPositionFromCoords(x,y);
     const sprite = makeEffectSprite(EFFECTS.TELEPORT, sceneX, sceneY, game)
     sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
         sprite.destroy()
-        pokemon.x = x
-        pokemon.y = y
-        game.sprites.get(pokemon.uid)?.setPosition(sceneX, sceneY)
+        movePokemonSprite(pokemon, x, y, game)
+    })
+}
+
+export function tunnel(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+    let { x: originX, y: originY } = pokemon
+    let x: number , y: number;
+    do { // find random empty tile
+        x = randomInt(0, 6)
+        y = randomInt(0, 7)
+    } while (x === originX || y === originY || getPokemonOnTile(x,y) != null)
+
+    const pokemonSprite = game.sprites.get(pokemon.uid) as Phaser.GameObjects.Sprite;
+    game.tweens.add({ targets: pokemonSprite, scale: 0, duration: 250, easing: "Linear" })
+
+    wait(150).then(() => pokemon.makeUntargettable(850))
+
+    wait(450).then(() => {
+        const targetSprite = game.sprites.get(target.uid) as Phaser.GameObjects.Sprite;
+        if(targetSprite) makeEffectSprite(EFFECTS.TUNNEL, targetSprite.x, targetSprite.y + 8, game)
+    })
+
+    wait(850).then(() => {
+        if(pokemon.pv <= 0) return // too late im dead
+        const [sceneX, sceneY] = getPositionFromCoords(x,y);
+        makeEffectSprite(EFFECTS.TUNNEL, sceneX, sceneY, game)
+        movePokemonSprite(pokemon, x, y, game)
+        game.tweens.add({ targets: pokemonSprite, scale: 1, duration: 250, easing: "Linear" })
     })
 }
 

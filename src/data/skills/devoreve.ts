@@ -10,8 +10,6 @@ export const DEVOREVE: HitSkill = {
     effect: EFFECTS.DEVOREVE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 350,
-    effectPosition: "target_ground",
-    effectDelta: 8,
     power: 100,
     rotateSprite: false,
     attackRange: 4,

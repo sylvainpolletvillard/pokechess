@@ -7,8 +7,6 @@ export const PROVOC: SpecialSkill = {
     description: "Provoque tous les adversaires dans un rayon de 2 cases",
     attackRange: 9,
     effect: EFFECTS.PROVOCATION,
-    effectPosition: "source_ground",
-    effectDelta: -8,
     behavior: SkillBehavior.SPECIAL,
     power: 0,
     type: POKEMON_TYPES.COMBAT,

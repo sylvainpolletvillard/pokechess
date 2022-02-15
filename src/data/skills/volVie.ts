@@ -9,7 +9,6 @@ export const VOL_VIE: HitSkill = {
     effect: EFFECTS.VOL_VIE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 400,
-    effectPosition: "target_to_source",
     chargeDelta: 0,
     power: 20,
     rotateSprite: true,

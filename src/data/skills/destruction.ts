@@ -19,8 +19,6 @@ export const DESTRUCTION: AOESkill = {
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.DESTRUCTION,
-    effectPosition: "source_ground",
-    effectDelta: 16,
     power: 300,
     selfDamage: 99999,
     hitDelay: 50

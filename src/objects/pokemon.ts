@@ -12,6 +12,8 @@ import {displayPokemonReleaseBox, hidePokemonReleaseInfo} from "./pokemonRelease
 import {hidePokemonInfo} from "./pokemonInfoBox";
 import {Alteration, AlterationType} from "../data/alterations";
 import {Z} from "../data/depths";
+import {OWNER_PLAYER} from "../data/owners";
+import {updatePokemonBars} from "./pokemonBar";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -22,6 +24,7 @@ export class PokemonOnBoard extends Pokemon {
     nextAction: PokemonAction;
     alterations: Alteration[];
     initialEntry?: PokemonEntry;
+    untargettable: boolean;
 
     constructor(pokemon: Pokemon, x:number, y:number) {
         super(pokemon, pokemon.owner, pokemon.level);
@@ -34,6 +37,7 @@ export class PokemonOnBoard extends Pokemon {
         this.pv = this.maxPV
         this.pp = 0
         this.alterations = []
+        this.untargettable = false;
     }
 
     reset(): PokemonOnBoard {
@@ -115,6 +119,14 @@ export class PokemonOnBoard extends Pokemon {
         this.nextAction = { type: PokemonTypeAction.IDLE, target }
     }
 
+    makeUntargettable(durationInMs: number){ // clean up targets
+        const board = gameState.board
+        const otherTeam = this.owner === OWNER_PLAYER ? board.otherTeam : board.playerTeam
+        otherTeam.filter(p => p.nextAction.target === this).forEach(p => p.resetTarget())
+        this.untargettable = true;
+        wait(durationInMs).then(() => { this.untargettable = false; })
+    }
+
     resetAction(){
         this.nextAction.timer?.remove()
         this.nextAction = { type: PokemonTypeAction.IDLE }
@@ -123,7 +135,8 @@ export class PokemonOnBoard extends Pokemon {
     resetAfterFight(){
         this.x = this.placementX
         this.y = this.placementY
-        if(this.initialEntry) this.entry = this.initialEntry
+        this.untargettable = false
+        if(this.initialEntry) this.entry = this.initialEntry // revert morphing/evolution
     }
 }
 
@@ -176,6 +189,14 @@ export function makePokemonSprite(
     })
     
     return sprite;
+}
+
+export function movePokemonSprite(pokemon: PokemonOnBoard, x: number, y:number, game: GameScene){
+    pokemon.x = x
+    pokemon.y = y
+    const [sceneX, sceneY] = getPositionFromCoords(x,y);
+    game.sprites.get(pokemon.uid)?.setPosition(sceneX, sceneY)
+    updatePokemonBars(pokemon, game)
 }
 
 export function removePokemonSprite(pokemon: PokemonOnBoard, game: GameScene){

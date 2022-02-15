@@ -7,7 +7,6 @@ export const MORPHING: SpecialSkill = {
     description: "Se transforme en une copie du Pokémon cible - Garde le même niveau et objet",
     attackRange: 9,
     effect: EFFECTS.EVOLUTION,
-    effectPosition: "source_ground",
     behavior: SkillBehavior.SPECIAL,
     power: 0,
     type: POKEMON_TYPES.NORMAL,

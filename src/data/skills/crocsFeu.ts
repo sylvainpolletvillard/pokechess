@@ -9,7 +9,6 @@ export const CROCS_FEU: HitSkill = {
     type: POKEMON_TYPES.FEU,
     effect: EFFECTS.CROCS_FEU,
     behavior: SkillBehavior.DIRECT_HIT,
-    effectPosition: "target",
     power: 100,
     hitDelay: 200,
     hitAlteration: { type: AlterationType.BRULURE, stacks: 100 },

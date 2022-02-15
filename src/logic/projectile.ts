@@ -90,6 +90,7 @@ export function checkProjectilesImpact(game: GameScene){
                 projectile.impactedPokemonIds.push(target.uid)
                 let damage = calcDamage(projectile.skill, target, projectile.attacker)
                 applyDamage(damage, target)
+                console.log(`Projectile from ${projectile.attacker.entry.name} ; ${target.entry.name} receives ${damage} damage !`)
                 if(projectile.skill.hitAlteration) addAlteration(target, projectile.skill.hitAlteration, game)
                 if(!projectile.skill.pierceThrough) destroyProjectile(projectile)
             }

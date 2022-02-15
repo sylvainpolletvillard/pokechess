@@ -20,7 +20,6 @@ export const BERCEUSE: AOESkill = {
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.BERCEUSE,
-    effectPosition: "source_ground",    
     power: 0,
     hitDelay: 1000,
     hitAlteration: {

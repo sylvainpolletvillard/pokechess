@@ -20,8 +20,6 @@ export const POUVOIR_ANTIQUE: AOESkill = {
         return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.POUVOIR_ANTIQUE,
-    effectPosition: "source_ground",
-    effectDelta: 16,
     power: 60,
     hitDelay: 200,
     selfAlteration: {

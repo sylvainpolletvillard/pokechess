@@ -11,8 +11,6 @@ export const GROBISOU: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 200,
     hitAlteration: { type: AlterationType.GEL, stacks: 80 },
-    effectPosition: "source",
-    effectDelta: 16,
     power: 0,
     rotateSprite: false,
     attackRange: 2

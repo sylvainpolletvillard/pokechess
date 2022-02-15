@@ -10,7 +10,6 @@ export const ADAPTATION: SpecialSkill = {
     behavior: SkillBehavior.SPECIAL,
     type: POKEMON_TYPES.NORMAL,
     effect: EFFECTS.ADAPTATION,
-    effectPosition: "source_ground",
     power: 0,
     hitDelay: 0,
     selfAlteration: {

@@ -8,7 +8,6 @@ export const KOUD_KORNE: HitSkill = {
     effect: EFFECTS.KOUD_KORNE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
-    effectPosition: "target_ground",
     power: 65,
     rotateSprite: true,
     attackRange: 1,

@@ -9,7 +9,6 @@ export const BELIER: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 150,
     hitEffect: EFFECTS.CHARGE_HIT,
-    effectPosition: "target",
     chargeDelta: 12,
     power: 120,
     selfDamage: 30,

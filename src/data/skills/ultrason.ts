@@ -15,6 +15,5 @@ export const ULTRASON: ProjectileSkill = {
     rotateProjectile: true,
     power: 0,
     hitAlteration: { type: AlterationType.CONFUSION, stacks: 30 },
-    attackRange: 2,
-    effectDelta: 8
+    attackRange: 2
 }

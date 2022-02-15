@@ -10,7 +10,6 @@ export const CROCHET_VENIN: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 150,
     hitAlteration: { type: AlterationType.POISON, stacks: 10 },
-    effectPosition: "target",
     power: 50,
     rotateSprite: false,
     attackRange: 1,

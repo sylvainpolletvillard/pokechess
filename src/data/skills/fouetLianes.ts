@@ -8,7 +8,6 @@ export const FOUET_LIANES: HitSkill = {
     effect: EFFECTS.FOUET_LIANES,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 250,
-    effectPosition: "source",
     power: 45,
     rotateSprite: true,
     attackRange: 1

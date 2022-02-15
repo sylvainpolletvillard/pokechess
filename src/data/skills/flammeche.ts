@@ -10,7 +10,6 @@ export const FLAMMECHE: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
     triggerAlteration: { type: AlterationType.BRULURE, stacks: 12 },
-    effectPosition: "target",
     power: 40,
     rotateSprite: true,
     attackRange: 1

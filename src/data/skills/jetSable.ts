@@ -10,7 +10,6 @@ export const JET_DE_SABLE: HitSkill = {
     effect: EFFECTS.JET_DE_SABLE,
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 100,
-    effectPosition: "target",
     power: 10,
     rotateSprite: false,
     attackRange: 1,
