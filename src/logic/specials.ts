@@ -43,7 +43,7 @@ export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard
     switch(specialMoveName){
         case "teleport": return teleport(attacker, game)
         case "tunnel": return tunnel(attacker, target, game)
-        case "eclair": return renderEclair(attacker, game)
+        case "eclair": return eclair(attacker, game)
         case "provoc": return provoc(attacker, game)
         case "encore": return encore(attacker, target, game)
         case "metronome": return metronome(attacker, target, game)
@@ -54,6 +54,10 @@ export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard
         case "jackpot": return jackpot(attacker, game)
         case "morphing": return morphing(attacker, target, game)
         case "evolution": return evolution(attacker, target, game)
+        case "psyko": return psyko(attacker, game)
+        case "deflagration": return deflagration(attacker, game)
+        case "blizzard": return blizzard(attacker, game)
+        case "fatal_foudre": return fatalFoudre(attacker, game)
     }
 }
 
@@ -102,20 +106,27 @@ export function tunnel(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: Ga
     })
 }
 
-export function renderEclair(attacker: PokemonOnBoard, game: GameScene){
-    const randomTarget = pickRandomIn(gameState.board.otherTeam)    
-
+export function eclair(attacker: PokemonOnBoard, game: GameScene) {
+    const randomTarget = pickRandomIn(gameState.board.otherTeam)
     let [x, y] = randomTarget.position;
+    return renderEclair(attacker, x, y, game)
+}
+
+export function renderEclair(attacker: PokemonOnBoard,x: number, y: number, game: GameScene){
     y-= 16;
     while(y >= 0){
         makeEffectSprite(EFFECTS.ECLAIR, x, y, game)
         y -= 32
     }
 
-    const damage = calcDamage(SKILLS.ECLAIR, randomTarget, attacker)
-    //console.log(`Eclair sur ${randomTarget.name} ; ${randomTarget.name} receives ${damage} damage !`)
-    applyDamage(damage, randomTarget)
-    addAlteration(randomTarget, { type: AlterationType.PARALYSIE, stacks: 50 }, game)
+    const [i,j] = getCoordsFromPosition(x,y)
+    const pokemonOnTile = getPokemonOnTile(i,j)
+    if(pokemonOnTile){
+        const damage = calcDamage(SKILLS.ECLAIR, pokemonOnTile, attacker)
+        console.log(`Eclair sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
+        applyDamage(damage, pokemonOnTile)
+        addAlteration(pokemonOnTile, { type: AlterationType.PARALYSIE, stacks: 50 }, game)
+    }
 }
 
 export function provoc(attacker: PokemonOnBoard, game: GameScene){
@@ -264,4 +275,105 @@ export function evolution(attacker: PokemonOnBoard, target: PokemonOnBoard, game
     const newSprite = makePokemonSprite(attacker, game)
     newSprite.play(`${attacker.entry.ref}_${attacker.facingDirection}`)
     game.sprites.set(attacker.uid, newSprite)
+}
+
+export function psyko(attacker: PokemonOnBoard, game: GameScene){
+    const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
+    otherTeam.forEach(target => {
+        game.cameras.main.flash(100, 255, 0, 255)
+        addAlteration(target, { type: AlterationType.CONFUSION, stacks: 40 }, game)
+        wait(SKILLS.PSYKO.hitDelay).then(() => {
+            const damage = calcDamage(SKILLS.PSYKO, target, attacker)
+            console.log(`Psyko sur ${target.entry.name} ; ${target.entry.name} receives ${damage} damage !`)
+            applyDamage(damage, target)
+        })
+    })
+}
+
+export function deflagration(attacker: PokemonOnBoard, game: GameScene){
+    const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
+    otherTeam.forEach(target => {
+        addAlteration(target, { type: AlterationType.BRULURE, stacks: 60 }, game)
+    })
+    const NUMBER_ERUPTIONS = 8
+    const eruptionsCoords: [number, number][] = []
+    while(eruptionsCoords.length < NUMBER_ERUPTIONS){
+        let randomX = randomInt(0, 6)
+        let randomY = randomInt(0, 7)
+        if(!eruptionsCoords.some(([x,y]) => x === randomX && y === randomY)){
+            eruptionsCoords.push([randomX, randomY])
+        }
+    }
+
+    eruptionsCoords.reduce((promise: Promise<void>, [i,j], ) => {
+        let [x,y] = getPositionFromCoords(i,j)
+        makeEffectSprite(EFFECTS.ERUPTION, x, y, game)
+        return promise
+            .then(() => wait(SKILLS.DEFLAGRATION.hitDelay))
+            .then(() => {
+                const pokemonOnTile = getPokemonOnTile(i,j)
+                if(pokemonOnTile){
+                    const damage = calcDamage(SKILLS.DEFLAGRATION, pokemonOnTile, attacker)
+                    console.log(`Eruption sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
+                    applyDamage(damage, pokemonOnTile)
+                }
+            })
+    }, wait(10))
+
+}
+
+export function blizzard(attacker: PokemonOnBoard, game: GameScene){
+    const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
+    otherTeam.forEach(target => {
+        addAlteration(target, { type: AlterationType.GEL, stacks: 40 }, game)
+    })
+    const NUMBER_GRELONS = 8
+    const grelonsCoords: [number, number][] = []
+    while(grelonsCoords.length < NUMBER_GRELONS){
+        let randomX = randomInt(0, 6)
+        let randomY = randomInt(0, 7)
+        if(!grelonsCoords.some(([x,y]) => x === randomX && y === randomY)){
+            grelonsCoords.push([randomX, randomY])
+        }
+    }
+
+    return grelonsCoords.reduce((promise: Promise<void>, [i,j], ) => {
+        let [x,y] = getPositionFromCoords(i,j)
+        makeEffectSprite(EFFECTS.ECLATS_GLACE, x, y, game)
+        return promise
+            .then(() => wait(SKILLS.BLIZZARD.hitDelay))
+            .then(() => {
+                const pokemonOnTile = getPokemonOnTile(i,j)
+                if(pokemonOnTile){
+                    const damage = calcDamage(SKILLS.BLIZZARD, pokemonOnTile, attacker)
+                    console.log(`Eclat glace sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
+                    applyDamage(damage, pokemonOnTile)
+                }
+            })
+    }, wait(10))
+
+}
+
+export function fatalFoudre(attacker: PokemonOnBoard, game: GameScene){
+    const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
+    otherTeam.forEach(target => {
+        addAlteration(target, { type: AlterationType.PARALYSIE, stacks: 40 }, game)
+    })
+    const NUMBER_ECLAIRS = 8
+    const eclairsCoords: [number, number][] = []
+    while(eclairsCoords.length < NUMBER_ECLAIRS){
+        let randomX = randomInt(0, 6)
+        let randomY = randomInt(0, 7)
+        if(!eclairsCoords.some(([x,y]) => x === randomX && y === randomY)){
+            eclairsCoords.push([randomX, randomY])
+        }
+    }
+
+    return eclairsCoords.reduce((promise: Promise<void>, [i,j], ) => {
+        let [x,y] = getPositionFromCoords(i,j)
+        return promise
+            .then(() => renderEclair(attacker, x, y, game))
+            .then(() => wait(SKILLS.FATAL_FOUDRE.hitDelay))
+
+    }, wait(10))
 }

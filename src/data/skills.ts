@@ -86,6 +86,10 @@ import {MORPHING} from "./skills/morphing";
 import {EVOLUTION} from "./skills/evolution";
 import {ADAPTATION} from "./skills/adaptation";
 import {TUNNEL} from "./skills/tunnel";
+import {PSYKO} from "./skills/psyko";
+import {DEFLAGRATION} from "./skills/deflagration";
+import {BLIZZARD} from "./skills/blizzard";
+import {FATAL_FOUDRE} from "./skills/fatalFoudre";
 
 export const SKILLS = {
     CHARGE,
@@ -176,9 +180,8 @@ export const SKILLS = {
     EVOLUTION,
     ADAPTATION,
     TUNNEL,
-
-    // psyko
-    // déflagration
-    // blizzard
-    // fatal foudre
+    PSYKO,
+    DEFLAGRATION,
+    BLIZZARD,
+    FATAL_FOUDRE
 }

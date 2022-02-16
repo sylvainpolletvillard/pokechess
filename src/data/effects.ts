@@ -529,6 +529,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 12,
         repeat: 3,
         depth: Z.SKILL_EFFECT_BELOW_POKEMON,
+        position: "target_ground",
+        tint: 0xaaddff
+    },
+    BLIZZARD: {
+        key: "blizzard",
+        frames: [294,295,296,297],
+        frameRate: 12,
+        repeat: 3,
+        depth: Z.SKILL_EFFECT_BELOW_POKEMON,
         position: "target_ground"
     },
     DRACOCHARGE: {

@@ -6,12 +6,12 @@ export const ELECTHOR: PokemonEntry = {
     ref: "electhor",
     name: "Electhor",
     maxPV: 90,
-    maxPP: 20,
+    maxPP: 30,
     attack: 90,
     defense: 85,
     speed: 100,
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.ELECTRIQUE],
     rank: 5,
     baseSkill: SKILLS.ETINCELLE,
-    ppSkill: SKILLS.LANCE_SOLEIL // fatal foudre
+    ppSkill: SKILLS.FATAL_FOUDRE
 }
