@@ -104,6 +104,11 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 alteration.effectSprite = makeEffectSprite(EFFECTS.SOMMEIL, targetSprite.x, targetSprite.y, game)
                 break;
 
+            case AlterationType.CONFUSION:
+                pokemon.resetTarget()
+                alteration.effectSprite = makeEffectSprite(EFFECTS.CONFUSION, targetSprite.x, targetSprite.y, game)
+                break;
+
             case AlterationType.PARALYSIE:
                 alteration.effectSprite = makeEffectSprite(EFFECTS.PARALYSIE, targetSprite.x, targetSprite.y, game)
                 break;
@@ -142,5 +147,9 @@ export function removeAlteration(pokemon: PokemonOnBoard, alt: Alteration){
         sprite?.anims.resume()
         const repos = pokemon.alterations.find(alt => alt.type === AlterationType.REPOS)
         if(repos) removeAlteration(pokemon, repos)
+    }
+
+    if(alt.type === AlterationType.CONFUSION){
+        pokemon.resetTarget()
     }
 }

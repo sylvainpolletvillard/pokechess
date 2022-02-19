@@ -280,7 +280,7 @@ export function evolution(attacker: PokemonOnBoard, target: PokemonOnBoard, game
 export function psyko(attacker: PokemonOnBoard, game: GameScene){
     const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
     otherTeam.forEach(target => {
-        game.cameras.main.flash(100, 255, 0, 255)
+        game.cameras.main.flash(250, 255, 0, 255)
         addAlteration(target, { type: AlterationType.CONFUSION, stacks: 40 }, game)
         wait(SKILLS.PSYKO.hitDelay).then(() => {
             const damage = calcDamage(SKILLS.PSYKO, target, attacker)
@@ -305,6 +305,7 @@ export function deflagration(attacker: PokemonOnBoard, game: GameScene){
         }
     }
 
+    game.cameras.main.flash(250, 255, 0, 0)
     eruptionsCoords.reduce((promise: Promise<void>, [i,j], ) => {
         let [x,y] = getPositionFromCoords(i,j)
         makeEffectSprite(EFFECTS.ERUPTION, x, y, game)
@@ -337,6 +338,7 @@ export function blizzard(attacker: PokemonOnBoard, game: GameScene){
         }
     }
 
+    game.cameras.main.flash(250, 64, 128, 255)
     return grelonsCoords.reduce((promise: Promise<void>, [i,j], ) => {
         let [x,y] = getPositionFromCoords(i,j)
         makeEffectSprite(EFFECTS.ECLATS_GLACE, x, y, game)
@@ -369,6 +371,7 @@ export function fatalFoudre(attacker: PokemonOnBoard, game: GameScene){
         }
     }
 
+    game.cameras.main.flash(250, 255, 255, 192)
     return eclairsCoords.reduce((promise: Promise<void>, [i,j], ) => {
         let [x,y] = getPositionFromCoords(i,j)
         return promise

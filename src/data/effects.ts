@@ -367,7 +367,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [189,190,191,190],
         frameRate: 4,
         repeat: Infinity,
-        position: "target_ground"
+        position: "source_ground"
     },
     GRIFFE: {
         key: "griffe",
@@ -747,5 +747,47 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         depth: Z.SKILL_EFFECT_BELOW_POKEMON,
         position: "source_ground"
-    }
+    },
+    PSYKO: {
+        key: "psyko",
+        frames: [470,471,472,473],
+        frameRate: 8,
+        depth: Z.SKILL_EFFECT_BELOW_POKEMON,
+        position: "source_ground",
+        repeat: 6,
+        delta: 16
+    },
+    DEFLAGRATION: {
+        key: "deflagration",
+        frames: [474,475,476,477],
+        frameRate: 8,
+        depth: Z.SKILL_EFFECT_BELOW_POKEMON,
+        position: "source_ground",
+        repeat: 6
+    },
+    ERUPTION: {
+        key: "eruption",
+        frames: [478,479,480,481,482,483,484,483,482,481,480,479,478],
+        frameRate: 8,
+        depth: Z.SKILL_EFFECT_ABOVE_POKEMON,
+        position: "source_ground",
+        delta: 8
+    },
+    FATAL_FOUDRE: {
+        key: "fatal_foudre",
+        frames: [485,486,487],
+        frameRate: 8,
+        depth: Z.SKILL_EFFECT_ABOVE_POKEMON,
+        position: "source_ground",
+        delta: -8,
+        repeat: 8
+    },
+    CONFUSION: {
+        key: "confusion",
+        frames: [488,489,490,491],
+        frameRate: 8,
+        depth: Z.SKILL_EFFECT_ABOVE_POKEMON,
+        position: "source_ground",        
+        repeat: Infinity
+    },
 }

@@ -21,6 +21,8 @@ import {PokemonOnBoard} from "../objects/pokemon";
 import {loadSave, saveState} from "./save";
 import {TRIOPIKEUR} from "../data/pokemons/triopikeur";
 import {PORYGON} from "../data/pokemons/porygon";
+import {MEWTWO} from "../data/pokemons/mewtwo";
+import {CHENIPAN} from "../data/pokemons/chenipan";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -112,8 +114,9 @@ export class GameState {
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 */
         gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(PORYGON, 1, 8), 3 ,6),
-            new PokemonOnBoard( new Pokemon(TRIOPIKEUR, 1, 8), 5 ,6),
+            new PokemonOnBoard( new Pokemon(MEWTWO, 1, 8), 3 ,6),
+            new PokemonOnBoard( new Pokemon(CHENIPAN, 1, 1), 5 ,7),
+            new PokemonOnBoard( new Pokemon(CHENIPAN, 1, 1), 3 ,7),
         ]
 
         if(this.currentRoomIndex >= this.roomOrder.length) {
