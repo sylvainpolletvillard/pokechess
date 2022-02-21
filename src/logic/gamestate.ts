@@ -23,6 +23,10 @@ import {TRIOPIKEUR} from "../data/pokemons/triopikeur";
 import {PORYGON} from "../data/pokemons/porygon";
 import {MEWTWO} from "../data/pokemons/mewtwo";
 import {CHENIPAN} from "../data/pokemons/chenipan";
+import { ARTIKODIN } from "../data/pokemons/artikodin";
+import { MAGICARPE } from "../data/pokemons/magicarpe";
+import { SULFURA } from "../data/pokemons/sulfura";
+import { ELECTHOR } from "../data/pokemons/electhor";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -114,9 +118,12 @@ export class GameState {
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 */
         gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(MEWTWO, 1, 8), 3 ,6),
-            new PokemonOnBoard( new Pokemon(CHENIPAN, 1, 1), 5 ,7),
-            new PokemonOnBoard( new Pokemon(CHENIPAN, 1, 1), 3 ,7),
+            new PokemonOnBoard( new Pokemon(ELECTHOR, 1, 8), 3 ,6),
+            new PokemonOnBoard( new Pokemon(MAGICARPE, 1, 1), 2 ,7),
+            new PokemonOnBoard( new Pokemon(MAGICARPE, 1, 1), 1 ,7),
+            new PokemonOnBoard( new Pokemon(MAGICARPE, 1, 1), 5 ,7),
+            new PokemonOnBoard( new Pokemon(MAGICARPE, 1, 1), 4 ,7),
+            new PokemonOnBoard( new Pokemon(MAGICARPE, 1, 1), 3 ,7),
         ]
 
         if(this.currentRoomIndex >= this.roomOrder.length) {

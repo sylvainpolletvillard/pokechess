@@ -33,15 +33,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 2,
         scale: 1,
-        position: "target_ground"
+        position: "target_ground",
+        delta: +16
     },
     TREMPETTE: {
         key: "trempette",
         frames: [7,8,9,10,11,12,13,14],
         frameRate: 8,
         scale: 1,
-        position: "source_ground",
-        delta: 16
+        position: "source_ground"
     },
     BULLES_D_O: {
         key: "bulles_d_o",
@@ -74,14 +74,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         scale: 1,
         position: "source"
     },
-    ECLATS_GLACE: {
-        key: "eclats_glace",
+    GRELON: {
+        key: "grelon",
         frames: [32],
         frameRate: 8,
-        scale: 1
+        scale: 1,
+        depth: Z.SKILL_EFFECT_ABOVE_POKEMON
     },
-    ECLATS_GLACE_HIT: {
-        key: "eclats_glace_hit",
+    GRELON_HIT: {
+        key: "grelon_hit",
         frames: [33,34,35],
         frameRate: 8,
     },
@@ -92,7 +93,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         repeat: 2,
         scale: 0.5,
         position: "target_ground",
-        delta: 8
+        delta: -4
     },
     CHARGE_HIT: {
         key: "charge_hit",
@@ -132,7 +133,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 16,
         repeat: 3,
         position: "target_ground",
-        delta: 8
+        delta: -4
     },
     FLAMMECHE: {
         key: "flammeche",
@@ -168,23 +169,20 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "croc_de_mort",
         frames: [70,71,72,73],
         frameRate: 8,
-        position: "target_ground",
-        delta: 16
+        position: "target_ground"
     },
     POUVOIR_ANTIQUE: {
         key: "pouvoir_antique",
         frames: [74,75,76,77,78,79],
         frameRate: 8,
-        position: "source_ground",
-        delta: 16
+        position: "source_ground"
     },
     DESTRUCTION: {
         key: "destruction",
         frames: [80,81,82,83],
         frameRate: 8,
         scale: 2,
-        position: "source_ground",
-        delta: 16
+        position: "source_ground"
     },
     NITROCHARGE_HIT: {
         key: "nitrocharge_hit",
@@ -265,8 +263,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [130,131,132,133,134,135],
         frameRate: 8,
         repeat: 2,
-        position: "source_ground",
-        delta: 16
+        position: "source_ground"
     },
     VIVE_ATTAQUE: {
         key: "vive_attaque",
@@ -310,7 +307,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         scale: 1,
         position: "source_ground",
-        delta: -8
+        delta: -24
     },
     FURIE: {
         key: "furie",
@@ -495,8 +492,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [269,270,271,272],
         frameRate: 8,
         repeat: 5,
-        position: "source_ground",
-        delta: 16
+        position: "source_ground"
     },
     ARMURE: {
         key: "armure",
@@ -514,8 +510,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "danse_lames",
         frames: [283,284,285,286,287,288],
         frameRate: 8,
-        position: "source_ground",
-        delta: 16
+        position: "source_ground"
     },
     PICPIC: {
         key: "picpic",
@@ -573,8 +568,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "tonnerre",
         frames: [309,310,311,312,313,314],
         frameRate: 8,
-        position: "source_ground",
-        delta: 16
+        position: "source_ground"
     },
     ULTIMAPOING: {
         key: "ultimapoing",
@@ -586,8 +580,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "brouillard",
         frames: [318,319,320,321,322,323,324],
         frameRate: 8,
-        position: "source_ground",
-        delta: 16
+        position: "source_ground"
     },
     BALAYAGE: {
         key: "balayage",
@@ -632,8 +625,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "empal_korne",
         frames: [359,360,361,362,363,364,365,366,367,367,367],
         frameRate: 8,
-        position: "target_ground",
-        delta: 16
+        position: "target_ground"
     },
     ABRI: {
         key: "abri",
@@ -641,15 +633,14 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         repeat: 2,
         opacity: 0.3,
-        position: "source_ground",
-        delta: 16
+        position: "source_ground"
     },
     AMNESIE: {
         key: "amnesie",
         frames: [373,374,375,376,377,378,379,379,379],
         frameRate: 8,
         position: "source_ground",
-        delta: 0
+        delta: -16
     },
     BOMB_OEUF: {
         key: "bomb_oeuf",
@@ -723,8 +714,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "pouvoir_lunaire",
         frames: [428,429,430,431,432,433,434,435,436],
         frameRate: 8,
-        position: "target_ground",
-        delta: 16
+        position: "target_ground"
     },
     EVOLUTION: {
         key: "evolution",
@@ -738,8 +728,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [452,453,454,455,456,457,458,459,460,461,462,463],
         frameRate: 8,
         depth: Z.SKILL_EFFECT_BELOW_POKEMON,
-        position: "source_ground",
-        delta: 16
+        position: "source_ground"
     },
     TUNNEL: {
         key: "tunnel",
@@ -754,8 +743,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         depth: Z.SKILL_EFFECT_BELOW_POKEMON,
         position: "source_ground",
-        repeat: 6,
-        delta: 16
+        repeat: 6
     },
     DEFLAGRATION: {
         key: "deflagration",
@@ -763,15 +751,22 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         depth: Z.SKILL_EFFECT_BELOW_POKEMON,
         position: "source_ground",
-        repeat: 6
+        repeat: 4
+    },
+    ERUPTION_PENDING: {
+        key: "eruption_pending",
+        frames: [478,479],
+        frameRate: 8,
+        depth: Z.SKILL_EFFECT_BELOW_POKEMON,
+        position: "source_ground",
+        repeat: Infinity,
     },
     ERUPTION: {
         key: "eruption",
-        frames: [478,479,480,481,482,483,484,483,482,481,480,479,478],
+        frames: [480,481,482,483,484,483,482,481,480],
         frameRate: 8,
-        depth: Z.SKILL_EFFECT_ABOVE_POKEMON,
-        position: "source_ground",
-        delta: 8
+        depth: Z.SKILL_EFFECT_BELOW_POKEMON,
+        position: "source_ground"
     },
     FATAL_FOUDRE: {
         key: "fatal_foudre",
@@ -779,7 +774,6 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         depth: Z.SKILL_EFFECT_ABOVE_POKEMON,
         position: "source_ground",
-        delta: -8,
         repeat: 8
     },
     CONFUSION: {

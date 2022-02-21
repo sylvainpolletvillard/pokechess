@@ -20,31 +20,44 @@ export const projectiles: Set<Projectile> = new Set()
 
 export function launchProjectile(
     skill: ProjectileSkill,
-    origin: PokemonOnBoard,
+    attacker: PokemonOnBoard,
     target: PokemonOnBoard,
     game: GameScene
 ) {
     if(!skill.effect) return console.error(`Missing projectile effect`, skill)
-    let [x,y] = origin.position
-    const angle = Math.atan2(target.y - origin.y, target.x - origin.x)
+    let [originX, originY] = attacker.position
+    const angle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
     // cible dans la direction de la cible, mais suffisamment loin pour sortir de l'écran
-    let targetX = Math.round(x + Math.cos(angle) * 12 * 32)
-    let targetY = Math.round(y + Math.sin(angle) * 12 * 32)
-    let travelTime = 1000 * 12 / skill.travelSpeed
+    let targetX = Math.round(originX + Math.cos(angle) * 12 * 32)
+    let targetY = Math.round(originY + Math.sin(angle) * 12 * 32)
 
+    renderProjectile(skill, attacker, originX, originY, targetX, targetY, game)
+}
+
+export function renderProjectile(
+    skill: ProjectileSkill,
+    attacker: PokemonOnBoard,
+    originX: number,
+    originY: number,
+    targetX: number,
+    targetY: number,
+    game: GameScene
+){
     const projectile: Projectile = {
-        sprite: makeEffectSprite(skill.effect, x, y, game, true),
+        sprite: makeEffectSprite(skill.effect, originX, originY, game, true),
         skill,
-        attacker: origin,
+        attacker,
         impactedPokemonIds: []        
     }
 
     projectiles.add(projectile)
 
-    if(skill.rotateProjectile){  
+    if(skill.rotateProjectile){
+        const angle = Math.atan2(targetY - originY, targetX - originX)
         projectile.sprite.rotation = angle;
     }
 
+    const travelTime = 1000 * 12 / skill.travelSpeed
     projectile.tween = game.tweens.add({
         targets: projectile.sprite,
         x: targetX,
@@ -55,6 +68,8 @@ export function launchProjectile(
             if(projectiles.has(projectile)) destroyProjectile(projectile)
         }
     });
+
+    return projectile
 }
 
 export function destroyProjectile(projectile: Projectile){

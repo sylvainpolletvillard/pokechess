@@ -1,11 +1,11 @@
 import Phaser from "phaser";
 import {AlterationType} from "../data/alterations";
 import {EFFECTS} from "../data/effects";
-import {POKEMONS} from "../data/pokemons";
+import {Pokemon, POKEMONS} from "../data/pokemons";
 import {SKILLS} from "../data/skills";
 import {makePokemonSprite, movePokemonSprite, PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
-import {pickRandomIn, randomInt, wait} from "../utils/helpers";
+import {clamp, pickNRandomIn, pickRandomIn, randomInt, wait} from "../utils/helpers";
 import {addAlteration, removeAlteration} from "./alteration";
 import {getCoordsFromPosition, getPokemonOnTile, getPositionFromCoords} from "./board";
 import {applyDamage, calcDamage} from "./fight";
@@ -38,6 +38,8 @@ import {
 import {PYROLI} from "../data/pokemons/pyroli";
 import {AQUALI} from "../data/pokemons/aquali";
 import {VOLTALI} from "../data/pokemons/voltali";
+import { renderProjectile } from "./projectile";
+import { BLIZZARD_GRELON } from "../data/skills/blizzard";
 
 export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     switch(specialMoveName){
@@ -109,7 +111,11 @@ export function tunnel(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: Ga
 export function eclair(attacker: PokemonOnBoard, game: GameScene) {
     const randomTarget = pickRandomIn(gameState.board.otherTeam)
     let [x, y] = randomTarget.position;
-    return renderEclair(attacker, x, y, game)
+    renderEclair(attacker, x, y, game)    
+    const damage = calcDamage(SKILLS.ECLAIR, randomTarget, attacker)
+    applyDamage(damage, randomTarget)
+    addAlteration(randomTarget, { type: AlterationType.PARALYSIE, stacks: 50 }, game)
+    console.log(`Eclair sur ${randomTarget.entry.name} ; ${randomTarget.entry.name} receives ${damage} damage !`)
 }
 
 export function renderEclair(attacker: PokemonOnBoard,x: number, y: number, game: GameScene){
@@ -117,15 +123,6 @@ export function renderEclair(attacker: PokemonOnBoard,x: number, y: number, game
     while(y >= 0){
         makeEffectSprite(EFFECTS.ECLAIR, x, y, game)
         y -= 32
-    }
-
-    const [i,j] = getCoordsFromPosition(x,y)
-    const pokemonOnTile = getPokemonOnTile(i,j)
-    if(pokemonOnTile){
-        const damage = calcDamage(SKILLS.ECLAIR, pokemonOnTile, attacker)
-        console.log(`Eclair sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
-        applyDamage(damage, pokemonOnTile)
-        addAlteration(pokemonOnTile, { type: AlterationType.PARALYSIE, stacks: 50 }, game)
     }
 }
 
@@ -291,92 +288,96 @@ export function psyko(attacker: PokemonOnBoard, game: GameScene){
 }
 
 export function deflagration(attacker: PokemonOnBoard, game: GameScene){
+    const eruptionsCoords: [number, number][] = []
     const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
     otherTeam.forEach(target => {
         addAlteration(target, { type: AlterationType.BRULURE, stacks: 60 }, game)
+        eruptionsCoords.push([target.x, target.y])
     })
-    const NUMBER_ERUPTIONS = 8
-    const eruptionsCoords: [number, number][] = []
-    while(eruptionsCoords.length < NUMBER_ERUPTIONS){
-        let randomX = randomInt(0, 6)
-        let randomY = randomInt(0, 7)
-        if(!eruptionsCoords.some(([x,y]) => x === randomX && y === randomY)){
-            eruptionsCoords.push([randomX, randomY])
-        }
-    }
 
     game.cameras.main.flash(250, 255, 0, 0)
-    eruptionsCoords.reduce((promise: Promise<void>, [i,j], ) => {
-        let [x,y] = getPositionFromCoords(i,j)
-        makeEffectSprite(EFFECTS.ERUPTION, x, y, game)
-        return promise
-            .then(() => wait(SKILLS.DEFLAGRATION.hitDelay))
-            .then(() => {
-                const pokemonOnTile = getPokemonOnTile(i,j)
-                if(pokemonOnTile){
-                    const damage = calcDamage(SKILLS.DEFLAGRATION, pokemonOnTile, attacker)
-                    console.log(`Eruption sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
-                    applyDamage(damage, pokemonOnTile)
-                }
-            })
-    }, wait(10))
+    eruptionsCoords.reduce((promise: Promise<void>, [i,j], ) => {        
+        return promise.then(() => {
+            let [x,y] = getPositionFromCoords(i,j)
+            let effectSprite = makeEffectSprite(EFFECTS.ERUPTION_PENDING, x, y-16, game)
+            wait(1500)
+                .then(() => { effectSprite.play(EFFECTS.ERUPTION) })
+                .then(() => wait(100))
+                .then(() => {
+                    const pokemonOnTile = getPokemonOnTile(i,j)
+                    if(pokemonOnTile){
+                        const damage = calcDamage(SKILLS.DEFLAGRATION, pokemonOnTile, attacker)
+                        console.log(`Eruption sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
+                        applyDamage(damage, pokemonOnTile)
+                    }
+                })
 
+            return wait(100)
+        })
+    }, wait(10))
 }
 
 export function blizzard(attacker: PokemonOnBoard, game: GameScene){
+    const grelonsCoords: [number, number][] = []
     const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
     otherTeam.forEach(target => {
-        addAlteration(target, { type: AlterationType.GEL, stacks: 40 }, game)
+        addAlteration(target, { type: AlterationType.GEL, stacks: clamp(80-target.speed, 20, 60) }, game)
+        grelonsCoords.push([target.x, target.y])
     })
-    const NUMBER_GRELONS = 8
-    const grelonsCoords: [number, number][] = []
-    while(grelonsCoords.length < NUMBER_GRELONS){
-        let randomX = randomInt(0, 6)
-        let randomY = randomInt(0, 7)
-        if(!grelonsCoords.some(([x,y]) => x === randomX && y === randomY)){
-            grelonsCoords.push([randomX, randomY])
-        }
-    }
 
     game.cameras.main.flash(250, 64, 128, 255)
-    return grelonsCoords.reduce((promise: Promise<void>, [i,j], ) => {
-        let [x,y] = getPositionFromCoords(i,j)
-        makeEffectSprite(EFFECTS.ECLATS_GLACE, x, y, game)
+    return grelonsCoords.reduce((promise: Promise<void>, [i,j]) => {
+        let [targetX, targetY] = getPositionFromCoords(i,j)   
+        const originX = targetX - game.scale.width / 2
+        const originY = targetY - game.scale.height
+        
         return promise
-            .then(() => wait(SKILLS.BLIZZARD.hitDelay))
+            .then(() => wait(100))
             .then(() => {
-                const pokemonOnTile = getPokemonOnTile(i,j)
-                if(pokemonOnTile){
-                    const damage = calcDamage(SKILLS.BLIZZARD, pokemonOnTile, attacker)
-                    console.log(`Eclat glace sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
-                    applyDamage(damage, pokemonOnTile)
-                }
+                const grelonSprite = makeEffectSprite(EFFECTS.GRELON, originX, originY, game, true)                
+                const tween = game.tweens.add({
+                    targets: grelonSprite,
+                    x: targetX,
+                    y: targetY,
+                    duration: 1500,
+                    ease: 'Linear',
+                    onComplete(){
+                        game.tweens.remove(tween)
+                        if(BLIZZARD_GRELON.hitEffect){
+                            grelonSprite.play(BLIZZARD_GRELON.hitEffect.key)
+                            grelonSprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => grelonSprite.destroy())
+                        }
+
+                        const pokemonOnTile = getPokemonOnTile(i,j)
+                        if(pokemonOnTile){
+                            const damage = calcDamage(SKILLS.BLIZZARD, pokemonOnTile, attacker)
+                            console.log(`Grelon sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
+                            applyDamage(damage, pokemonOnTile)
+                        }
+                    }
+                });
             })
     }, wait(10))
-
 }
 
 export function fatalFoudre(attacker: PokemonOnBoard, game: GameScene){
-    const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
+    const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam    
     otherTeam.forEach(target => {
         addAlteration(target, { type: AlterationType.PARALYSIE, stacks: 40 }, game)
     })
-    const NUMBER_ECLAIRS = 8
-    const eclairsCoords: [number, number][] = []
-    while(eclairsCoords.length < NUMBER_ECLAIRS){
-        let randomX = randomInt(0, 6)
-        let randomY = randomInt(0, 7)
-        if(!eclairsCoords.some(([x,y]) => x === randomX && y === randomY)){
-            eclairsCoords.push([randomX, randomY])
-        }
-    }
+    const NUMBER_ECLAIRS = 3
+    const randomTargets = pickNRandomIn(otherTeam, NUMBER_ECLAIRS)
 
-    game.cameras.main.flash(250, 255, 255, 192)
-    return eclairsCoords.reduce((promise: Promise<void>, [i,j], ) => {
-        let [x,y] = getPositionFromCoords(i,j)
+    game.cameras.main.flash(255, 255, 192, 192)
+    return randomTargets.reduce((promise: Promise<void>, randomTarget, ) => {
+        let [x,y] = randomTarget.position
         return promise
-            .then(() => renderEclair(attacker, x, y, game))
-            .then(() => wait(SKILLS.FATAL_FOUDRE.hitDelay))
-
-    }, wait(10))
+            .then(() => {
+                renderEclair(attacker, x, y, game)
+                const damage = calcDamage(SKILLS.FATAL_FOUDRE, randomTarget, attacker)
+                applyDamage(damage, randomTarget)
+                console.log(`Fatal-foudre sur ${randomTarget.entry.name} ; ${randomTarget.entry.name} receives ${damage} damage !`)
+            })
+            .then(() => wait(randomInt(300,500)))
+    }, wait(250))
 }

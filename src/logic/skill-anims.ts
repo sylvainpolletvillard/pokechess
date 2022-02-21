@@ -42,22 +42,22 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
     const effect = skill.effect
     if(!effect) return;
 
-    let [x, y] = target.position, dx=0, dy=0, delta = effect.delta ?? 8;
+    let [x, y] = target.position, dx=0, dy=0;
     let angle = Math.atan2(target.y - attacker.y, target.x - attacker.x)
 
     if(effect.position === "source" || effect.position === "parabolic_to_target"){
         [x,y] = attacker.position
-        dx = Math.round(Math.cos(angle) * delta)
-        dy = Math.round(Math.sin(angle) * delta)
+        dx = Math.round(Math.cos(angle) * (effect.delta ?? 8))
+        dy = Math.round(Math.sin(angle) * (effect.delta ?? 8))
         angle += Math.PI
     } else if(effect.position === "target" || effect.position === "target_to_source"){
-        dx = Math.round(Math.cos(angle+Math.PI) * delta)
-        dy = Math.round(Math.sin(angle+Math.PI) * delta)
+        dx = Math.round(Math.cos(angle+Math.PI) * (effect.delta ?? 8))
+        dy = Math.round(Math.sin(angle+Math.PI) * (effect.delta ?? 8))
     } else if(effect.position === "target_ground"){
-        dy= -16 * (effect?.scale ?? 1) + delta
+        dy= effect.delta ?? 0
     } else if(effect.position === "source_ground"){
         [x,y] = attacker.position
-        dy= -16 * (effect?.scale ?? 1) + delta
+        dy= effect.delta ?? 0
     }
 
     const effectSprite = makeEffectSprite(effect, x + dx, y + dy, game)

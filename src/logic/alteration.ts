@@ -10,6 +10,7 @@ import {gameState} from "./gamestate"
 import {makeEffectSprite, sendPokemonFlying} from "./skill-anims"
 
 export function updateAlterations(pokemons: PokemonOnBoard[]){
+    const game = gameState.activeScene as GameScene;
     pokemons.forEach((pokemon: PokemonOnBoard) => {
         pokemon.alterations.forEach(alt => {
             applyAlterationEffect(pokemon, alt)
@@ -17,8 +18,12 @@ export function updateAlterations(pokemons: PokemonOnBoard[]){
             if(alt.stacks <= 0){
                 removeAlteration(pokemon, alt)                
             } else if(alt.effectSprite){
-                const [x,y] = pokemon.position
-                alt.effectSprite.setPosition(x, y+(alt.effectDelta ?? 0))
+                const pokemonSprite = game.sprites.get(pokemon.uid)
+                if(pokemonSprite){
+                    alt.effectSprite.setPosition(pokemonSprite.x, pokemonSprite.y+(alt.effectDelta ?? 0))
+                } else {
+                    alt.effectSprite.destroy()
+                }                
             }
         })
     })

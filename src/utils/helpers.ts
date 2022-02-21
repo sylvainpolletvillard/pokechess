@@ -44,7 +44,7 @@ export function pickRandomIn<T>(array: Array<T>): T {
 
 export function pickNRandomIn<T>(array: Array<T>, number=1): Array<T> {
     let selection = [], options = [...array], nbSelected = 0;
-    while(nbSelected < number){
+    while(nbSelected < number && options.length > 0){
         let rand = Math.floor(Math.random() * options.length)
         selection.push(options[rand])
         options.splice(rand, 1)

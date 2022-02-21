@@ -8,8 +8,8 @@ export const DEFLAGRATION: SpecialSkill = {
     attackRange: 9,
     effect: EFFECTS.DEFLAGRATION,
     behavior: SkillBehavior.SPECIAL,
-    power: 200,
+    power: 300,
     type: POKEMON_TYPES.FEU,
     triggerSpecial: "deflagration",
-    hitDelay: 100
+    hitDelay: 200
 }

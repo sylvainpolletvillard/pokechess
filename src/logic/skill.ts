@@ -34,10 +34,11 @@ export interface SpecialSkill extends Skill {
 
 export interface ProjectileSkill extends Skill {
     behavior: SkillBehavior.PROJECTILE
+    effect: Effect;
     travelSpeed: number;
     rotateProjectile: boolean;
     pierceThrough?: boolean;
-    projectileRadius: number;
+    projectileRadius: number;    
 }
 
 export interface AOESkill extends Skill {
