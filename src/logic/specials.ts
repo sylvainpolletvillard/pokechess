@@ -232,7 +232,7 @@ export function jackpot(attacker: PokemonOnBoard, game: GameScene){
 
     if(coinFlip){
         gameState.player.inventory.pokeball += 1
-        drawPokeballsCounter(gameState.activeScene as MyScene)
+        drawPokeballsCounter()
     }
 }
 

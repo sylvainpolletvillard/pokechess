@@ -147,7 +147,7 @@ export function makePokemonSprite(
     const [x,y] = pokemon instanceof PokemonOnBoard ? pokemon.position : [0,0]
     const sprite = game.add.sprite(x, y, "pokemon")
     game.sprites.set(pokemon.uid, sprite)
-    game.graphics.set(pokemon.uid, game.add.graphics()) // hp bar
+    game.objects.set("bars_"+pokemon.uid, game.add.graphics()) // hp & pp bars
     sprite.setData("pokemon", pokemon)
     sprite.setData("type", "pokemon")
     sprite.play(`${pokemon.entry.ref}_DOWN`)
@@ -204,9 +204,9 @@ export function removePokemonSprite(pokemon: PokemonOnBoard, game: GameScene){
     sprite?.destroy();
     game.sprites.delete(pokemon.uid)
 
-    const bars = game.graphics.get(pokemon.uid)
+    const bars = game.objects.get("bars_"+pokemon.uid)
     if(bars != null){
         bars.destroy();
-        game.graphics.delete(pokemon.uid);
+        game.objects.delete(pokemon.uid);
     }
 }

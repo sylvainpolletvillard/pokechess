@@ -86,5 +86,6 @@ export const SAFRANIA: Destination = {
             music: "music_shop",
             level: SHOP_JADIELLE
         }
-    }
+    },
+    shopId: 5
 }

@@ -84,7 +84,7 @@ export default class MapScene extends MyScene {
         showDestinationPanel(this.origin, this)
         drawTourCounter();
         //this.debugIntersections(); // DEBUG
-        drawCursor(this)
+        drawCursor()
         startMusic("music_overworld")
     }
 

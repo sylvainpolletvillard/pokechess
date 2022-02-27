@@ -6,7 +6,8 @@ import { addText } from "../utils/text";
 
 let pokeballsCounterGroup: Phaser.GameObjects.Group;
 
-export function drawPokeballsCounter(scene: MyScene){
+export function drawPokeballsCounter(){
+    const scene = gameState.activeScene as MyScene
     if(pokeballsCounterGroup != null) pokeballsCounterGroup.destroy(true, true)
 
     let ox = game.scale.width - 64
@@ -20,12 +21,13 @@ export function drawPokeballsCounter(scene: MyScene){
 
     if(scene instanceof RoomScene){
       counterPos = [28, 8];
-      pokeballPos = [32, 48];
+      pokeballPos = [-16, -16];
     }
     const pokeball = scene.add.sprite(pokeballPos[0], pokeballPos[1], "pokeball", 0)
     pokeball.play(`POKEBALL_${pokeballsCounterGroup ? 'jiggle_once' : 'in'}`)
         .once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => pokeball.play(`POKEBALL_idle`))
         .setOrigin(0,0)
+        .setScrollFactor(0);
 
     scene.sprites.set("pokeball", pokeball)
     const pokeballCount = addText(counterPos[0], counterPos[1], gameState.player.inventory.pokeball.toString(), {

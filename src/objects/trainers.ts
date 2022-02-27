@@ -4,6 +4,7 @@ import { Trainer } from "../data/trainers";
 import { RoomType, RoomArena } from "../logic/destination";
 import { tweenFade } from "../utils/tweens";
 import { drawAlliancesInfo } from "./alliancesInfo";
+import { gameState } from "../logic/gamestate";
 
 export function drawTrainers(game: GameScene){
     const player = game.add.sprite(32,game.scale.height - 32, "player").setDepth(Z.PLAYER)
@@ -29,10 +30,11 @@ export function drawTrainers(game: GameScene){
     //drawAlliancesInfo(1, game)
 }
 
-export function showTrainerIntro(trainer: Trainer, game: GameScene){
+export function showTrainerIntro(trainer: Trainer){
+    const scene = gameState.activeScene as GameScene
     if(trainer.introFrameIndex === null) return Promise.resolve(); // no intro
-    const portrait = game.add.sprite(game.scale.width/2, game.scale.height/2, "trainers_intros")
+    const portrait = scene.add.sprite(scene.scale.width/2, scene.scale.height/2, "trainers_intros")
     portrait.setDepth(Z.CENTER_TEXT).setFrame(trainer.introFrameIndex)
-    game.sprites.set("centerIntro", portrait)
-    return tweenFade(game, portrait, 2000);
+    scene.sprites.set("centerIntro", portrait)
+    return tweenFade(scene, portrait, 2000);
 }

@@ -10,38 +10,9 @@ import {endDialog, startDialog, waitBeforeNextLine} from "../logic/dialog";
 import {receiveItem} from "../data/dialogs/descriptions";
 import {hideItemDescription, showItemDescription} from "./itemDescriptionBox";
 
-// veut-on pouvoir vendre les objets ????
-export function openShop(seller: string){
-    let ox = 320 - 64 - 8;
-    let oy = 8;
-    return openMenu({
-        ref: "shop_buy_or_sell",
-        x: ox,
-        y: oy,
-        width: 64,
-        height: 70,
-        background: "box1",
-        offset: 8,
-        entries: ["Acheter","Vendre","Quitter"].map((label,i) => ({
-            x: 4,
-            y: 4+i*20,
-            label,
-            value: label
-        })),
-        handleChoice(choice){
-            if(choice.label === "Acheter") return openBuyMenu(seller)
-            else if(choice.label === "Vendre") return openSellMenu(seller)
-        },
-        handleCancel(){
-
-        },
-    })
-}
-
-
 export function openBuyMenu(seller: string){
     if(!gameState.currentDestination.shopId) return console.error(`Missing shopId`)
-    drawPokeballsCounter(gameState.activeScene as RoomScene)
+    drawPokeballsCounter()
     const rowHeight = 20
     const width = 144, height = 6 * rowHeight + 8
     let ox = 320 - width - 8;

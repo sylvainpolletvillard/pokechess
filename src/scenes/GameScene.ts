@@ -4,15 +4,20 @@ import {handleCursor, setupInputs} from "../logic/inputs";
 import {loadSpritesheets} from "../data/spritesheets";
 import {loadTilemaps} from "../data/tilemaps";
 import {loadSprites} from "../data/sprites";
-import {drawIntro, showCenterText, updateGUI} from "../objects/gui";
-import {drawMenuButtons} from "../objects/menuButtons";
+import { showCenterText, updateGUI} from "../objects/gui";
+import {drawMenuButtons, hideMenuButtons} from "../objects/menuButtons";
 import {handleClick} from "../objects/cursor";
 import {clickEntry, closeMenu} from "../objects/menu";
 import {MyScene} from "./MyScene";
 import {loadFonts} from "../data/fonts";
-import {initPlacement, setupRoomBoard} from "../logic/board";
-import {RoomArena, RoomWild} from "../logic/destination";
+import {getNumberMaxAllowedOnBoard, initPlacement, setupRoomBoard} from "../logic/board";
+import {RoomArena, RoomType, RoomWild} from "../logic/destination";
 import {startMusic} from "../logic/audio";
+import { drawPokeballsCounter } from '../objects/pokeballsCounter';
+import { drawRoomNamePanel } from '../objects/roomNamePanel';
+import { drawTrainers, showTrainerIntro } from '../objects/trainers';
+import { startDialog } from "../logic/dialog";
+import { wait } from "../utils/helpers";
 
 export default class GameScene extends MyScene {
   gameSpeed: number = 100;
@@ -37,10 +42,12 @@ export default class GameScene extends MyScene {
     setupInputs(this)
     setupAnims(this.anims)
     this.drawMap();
-    drawIntro(this).then(() => drawMenuButtons(this));
+    this.drawIntro().then(() => {
+      drawMenuButtons(this)
+      initPlacement(this)
+    });
     gameState.board = setupRoomBoard(gameState.player, gameState.currentRoom as RoomWild)
-
-    initPlacement(this)
+    
     startMusic(gameState.currentRoom.music)
   }
 
@@ -57,14 +64,40 @@ export default class GameScene extends MyScene {
     const ground1 = map.createLayer("ground1", tileset);
     const top0 = map.createLayer("top0", tileset);
   }
+  
+  drawIntro(): Promise<any>{
+    drawRoomNamePanel()
+    drawTrainers(this)
+
+    if(gameState.currentRoom.type === RoomType.WILD){
+        return wait(1000).then(() => {
+            drawPokeballsCounter()
+            return showCenterText("text_capture", this)
+        })
+    }
+
+    if(gameState.currentRoom.type === RoomType.ARENA || gameState.currentRoom.type === RoomType.TUTORIAL){
+        const arena = gameState.currentRoom as RoomArena
+        showTrainerIntro(arena.trainer).then(() => {})
+        return wait(2000).then(() => startDialog(arena.trainer.dialogs.start, { speaker: arena.trainer.name }))
+    }
+
+    return Promise.resolve()
+  }
 
   hideCenterText(){
     this.sprites.get("centerText")?.destroy(true);
     this.sprites.delete("centerText")
   }
 
+  canLaunchFight(){
+    return gameState.stage === GameStage.PLACEMENT 
+    && gameState.board.playerTeam.length <= getNumberMaxAllowedOnBoard()
+  }
+
   launchFight(){
-    if(gameState.stage === GameStage.PLACEMENT){
+    if(this.canLaunchFight()){
+      hideMenuButtons()
       gameState.initFight(this)
       const player = this.sprites.get("player")
       player && player.play("trainer_launch");

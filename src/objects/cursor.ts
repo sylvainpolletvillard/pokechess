@@ -15,7 +15,8 @@ export interface DragState {
 
 export const dragState: DragState = { draggedElem: null }
 
-export function drawCursor(scene: MyScene){
+export function drawCursor(){
+    const scene = gameState.activeScene as MyScene
     const [x, y] = getPositionFromCoords(1,6)
     const cursor = scene.add.sprite(x,y, "cursor")
     cursor.setDepth(Z.CURSOR);

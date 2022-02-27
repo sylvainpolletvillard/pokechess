@@ -60,8 +60,10 @@ export function setupRoomBoard(p1: Player, room: RoomArena | RoomWild){
 
 export function initPlacement(game: GameScene){
     gameState.stage = GameStage.PLACEMENT
-    drawGrid(game)
-    drawCursor(game)
+    drawGrid()
+    drawCursor()
+    drawTeamSizeCounter()
+
     for (let pokemon of gameState.player.team) {
         const sprite = makePokemonSprite(pokemon, game)
         sprite.setAlpha(0.5)
@@ -82,7 +84,7 @@ export function clearPlacement(game: GameScene){
             game.sprites.get(pokemon.uid)?.destroy(true)
         }
     }
-    game.graphics.get("grid")?.destroy();
+    game.objects.get("grid")?.destroy();
     hidePokemonReleaseInfo();
 }
 
@@ -211,9 +213,10 @@ export async function capturePokemon(
     })
 }
 
-export function drawGrid(game: GameScene){
+export function drawGrid(){
+    const game = gameState.activeScene as GameScene
     const grid = game.add.graphics();
-    game.graphics.set("grid", grid);
+    game.objects.set("grid", grid);
     grid.setDepth(Z.GRID);
     grid.lineStyle(1, 0x000000, 0.1);
     for(let x=1; x <= BOARD_WIDTH+1; x++) {
@@ -226,7 +229,7 @@ export function drawGrid(game: GameScene){
     grid.lineBetween(48, 4*32 + 31, 272, 4*32 + 31)*/
 
     const gridActiveTile = game.add.graphics();
-    game.graphics.set("gridActiveTile", gridActiveTile);
+    game.objects.set("gridActiveTile", gridActiveTile);
     grid.setDepth(Z.GRID_ACTIVE_TILE);
     grid.lineStyle(1, 0xffffff, 0.25);
 
@@ -270,7 +273,7 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: GameScene){
     }
     gameState.board.activeTile = [i,j]
 
-    const gridActiveTile = game.graphics.get("gridActiveTile")
+    const gridActiveTile = game.objects.get("gridActiveTile") as Phaser.GameObjects.Graphics;
     if(gameState.stage === GameStage.PLACEMENT && gridActiveTile != null){
         gridActiveTile
             .lineStyle(2, 0x000000, 0.1)
@@ -303,7 +306,7 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: GameScene){
 
 export function clearActiveTile(game: GameScene){
     if(gameState.board.activeTile == null) return;
-    const gridActiveTile = game.graphics.get("gridActiveTile")
+    const gridActiveTile = game.objects.get("gridActiveTile") as Phaser.GameObjects.Graphics
     gridActiveTile?.clear()
     hidePokemonInfo();
     hidePokemonCaptureInfo(game)
@@ -339,6 +342,7 @@ export function dropPokemonOnBoard(sprite: Phaser.GameObjects.Sprite, x:number, 
     sprite.setData("pokemon", pokemonOnBoard)
     sprite.setPosition(...pokemonOnBoard.position)
     displayPokemonInfo(pokemonOnBoard)
+    drawTeamSizeCounter()
 }
 
 export function cancelPokemonDrag(){
@@ -361,4 +365,45 @@ export function calcXpBoard(){
     return gameState.board.otherTeam.reduce((total, pokemon) => {
         return total + calcXpEarnedOnDefeat(pokemon)
     }, 0)
+}
+
+export function getNumberMaxAllowedOnBoard(){
+    return 2 + gameState.player.badges.length
+}
+
+export function drawTeamSizeCounter(){
+    const scene = gameState.activeScene as GameScene
+    let text = scene.objects.get("teamSizeCounter") as Phaser.GameObjects.Text
+    if(!text){
+        text = scene.add.text(scene.scale.width/2, scene.scale.height * 2/3, "", {
+            align: "center",
+            color: "white",
+            stroke: "black",
+            fontSize: "64px",
+            fontFamily: 'Pokemon',
+            fontStyle: "italic",
+            strokeThickness: 4,
+        })
+        text.setScrollFactor(0)
+        text.setDepth(Z.TEAM_SIZE_COUNTER)
+        text.setOrigin(0.5)
+        text.setAlpha(0.15)
+        scene.objects.set("teamSizeCounter", text)
+    }
+
+    const numberOnBoard = gameState.board.playerTeam.length;
+    const max = getNumberMaxAllowedOnBoard()
+    text.setText(` ${numberOnBoard} / ${max} `)
+
+    if(numberOnBoard > max){
+        text.setAlpha(0.3)
+        text.setTint(0xff0000)
+        scene.sprites.get("fightButton")?.setVisible(false)
+    } else {
+        text.setTint(0xffffff)
+        scene.sprites.get("fightButton")?.setVisible(true)
+
+        if(numberOnBoard === max){ text.setAlpha(0) }
+        else { text.setAlpha(0.15) }
+    }
 }

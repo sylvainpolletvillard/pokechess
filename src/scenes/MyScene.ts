@@ -2,12 +2,12 @@ import Phaser from "phaser";
 
 export class MyScene extends Phaser.Scene {
     sprites: Map<string, Phaser.GameObjects.Sprite>;
-    graphics: Map<string, Phaser.GameObjects.Graphics>;
+    objects: Map<string, Phaser.GameObjects.GameObject>;
 
     constructor(ref: string) {
         super(ref);
         this.sprites = new Map();
-        this.graphics = new Map();
+        this.objects = new Map();
     }
 
     onPressA(){}

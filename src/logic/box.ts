@@ -72,6 +72,6 @@ export function releasePokemon(pokemon: Pokemon){
     }
     gameState.player.inventory[ITEM_POKEBALL.ref] += pokemon.cost;
     if(gameState.currentRoom.type === RoomType.WILD || gameState.currentRoom.type === RoomType.FREEWALK){
-        drawPokeballsCounter(gameState.activeScene as MyScene)
+        drawPokeballsCounter()
     }
 }

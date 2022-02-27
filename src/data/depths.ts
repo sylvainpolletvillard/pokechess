@@ -8,14 +8,14 @@ export const Z ={
 
     POKEMON_BARS: 20,
 
-    CENTER_TEXT: 30,
-
     MAP_HIGHLIGHT: 30,
 
     TRAINER: 35,
-
-
+    
     GUI_BUTTON: 41,
+    TEAM_SIZE_COUNTER: 42,
+    CENTER_TEXT: 43,
+
 
     DIALOG: 45,
     MENU: 50,

@@ -87,4 +87,5 @@ export const CRAMOISILE: Destination = {
             level: SHOP_JADIELLE
         }
     },
+    shopId: 9
 }

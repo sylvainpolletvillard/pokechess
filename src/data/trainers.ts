@@ -347,7 +347,7 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Tiens, voilà 5 Pokéballs pour capturer tes premiers Pokémons.`,
             () => {
                 gameState.player.inventory[ITEM_POKEBALL.ref] += 5;
-                drawPokeballsCounter(gameState.activeScene as MyScene)
+                drawPokeballsCounter()
                 gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.BEFORE_WILD
                 return `Sais-tu comment on s'en sert ?`
             },

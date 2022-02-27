@@ -5,7 +5,7 @@ import {MyScene} from "../scenes/MyScene";
 
 export function spend(amount: number){
     gameState.player.inventory.pokeball -= amount
-    drawPokeballsCounter(gameState.activeScene as MyScene)    
+    drawPokeballsCounter()    
 }
 
 export function canAfford(amount: number): boolean {
@@ -24,7 +24,7 @@ export function getShopContent(shopId: number): { [itemRef: string]: number } {
     const itemT2 = itemsT2[(gameState.seed >> 2 + shopId) % itemsT2.length]
 
     const itemsT3 = getItemsByCost(3)
-    const itemT3 = itemsT3[(gameState.seed >> 4 + shopId)%itemsT3.length]
+    const itemT3 = itemsT3[(gameState.seed >> 4 + shopId) % itemsT3.length]
 
     const itemsT4 = getItemsByCost(4)
     const itemT4 = itemsT4[(gameState.seed >> 6 + shopId) % itemsT4.length]

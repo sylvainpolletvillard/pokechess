@@ -1,7 +1,7 @@
 import { addInteractiveElem, dragState, handleDragEnd } from './cursor';
 import { addText } from '../utils/text';
 import { addToBox, removeFromTeam } from '../logic/box';
-import { cancelPokemonDrag } from '../logic/board';
+import { cancelPokemonDrag, drawTeamSizeCounter } from '../logic/board';
 import { closeMenu } from './menu';
 import GameScene from '../scenes/GameScene';
 import { gameState } from '../logic/gamestate';
@@ -103,6 +103,7 @@ export function drawMenuButtons(game: GameScene){
                 boxButtonText?.destroy()
                 removeFromTeam(pokemon)
                 addToBox(pokemon)
+                drawTeamSizeCounter()
             }
         })
     addInteractiveElem(boxButton)
@@ -172,13 +173,12 @@ export function drawMenuButtons(game: GameScene){
         .on("out", () => {
             fightButton.setFrame(0)
         })
-        .on("click", () => {
-            hideMenuButtons()
+        .on("click", () => {            
             game.launchFight()
         })
     addInteractiveElem(fightButton)
+    game.sprites.set("fightButton", fightButton)
     menuButtonsGroup.add(fightButton)
-    
     menuButtonsGroup.setDepth(Z.GUI_BUTTON);
 }
 

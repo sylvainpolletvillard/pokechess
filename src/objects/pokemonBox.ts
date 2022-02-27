@@ -13,6 +13,7 @@ import {displayPokemonInfo, hidePokemonInfo} from "./pokemonInfoBox";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
 import {gameState} from "../logic/gamestate";
+import { drawTeamSizeCounter } from "../logic/board";
 
 let interactiveElems: InteractiveElem[] = [];
 const ox = 20, oy = 100,  WIDTH = 248, HEIGHT = 24;
@@ -59,8 +60,8 @@ function draw(game: GameScene, container: Phaser.GameObjects.Container) {
             const boxZone = game.add.zone(x+i*L+CASE_SIZE/2, y+j*L+CASE_SIZE/2, CASE_SIZE, CASE_SIZE)
             boxZone.setData("type", "boxTile")
             addInteractiveElem(boxZone);
-            boxZone.on("dropReceived", (droppedSprite: Phaser.GameObjects.Sprite) => {
-                dropPokemonInBox(droppedSprite, caseIndex, game)
+            boxZone.on("dropReceived", () => {
+                dropPokemonInBox(caseIndex, game)
             })
             boxZone.on("click", () => {
                 if(dragState.draggedElem != null){ handleDragEnd(game) }
@@ -85,7 +86,7 @@ function draw(game: GameScene, container: Phaser.GameObjects.Container) {
     })
 }
 
-export function dropPokemonInBox(pokemonSprite: Phaser.GameObjects.Sprite, caseIndex:number, game: GameScene){
+export function dropPokemonInBox(caseIndex:number, game: GameScene){
     const droppedPokemon = dragState.draggedElem?.getData("pokemon")
     if(droppedPokemon == null) return;
 
@@ -99,6 +100,7 @@ export function dropPokemonInBox(pokemonSprite: Phaser.GameObjects.Sprite, caseI
 
     removeFromTeam(droppedPokemon)
     addToBox(droppedPokemon, caseIndex)
+    drawTeamSizeCounter()
 }
 
 export function addToBoxPanel(
