@@ -10,7 +10,7 @@ export const DRACAUFEU: PokemonEntry = {
     attack: 84,
     defense: 78,
     speed: 100,
-    types: [POKEMON_TYPES.FEU, POKEMON_TYPES.VOL],
+    types: [POKEMON_TYPES.FEU, POKEMON_TYPES.DRAGON],
     rank: 3,
     baseSkill: SKILLS.FLAMMECHE,
     ppSkill: SKILLS.LANCE_FLAMMES

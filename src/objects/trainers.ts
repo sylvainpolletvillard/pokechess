@@ -7,7 +7,7 @@ import { drawAlliancesInfo } from "./alliancesInfo";
 import { gameState } from "../logic/gamestate";
 
 export function drawTrainers(game: GameScene){
-    const player = game.add.sprite(32,game.scale.height - 32, "player").setDepth(Z.PLAYER)
+    const player = game.add.sprite(32, game.scale.height - 32, "player").setDepth(Z.PLAYER)
     game.sprites.set("player", player)
     player.play("trainer_idle");
 
@@ -26,8 +26,8 @@ export function drawTrainers(game: GameScene){
         game.sprites.set("opponent", trainer)
     }
 
-    drawAlliancesInfo(0)
-    //drawAlliancesInfo(1, game)
+    drawAlliancesInfo(gameState.board.playerTeam)
+    drawAlliancesInfo(gameState.board.otherTeam)
 }
 
 export function showTrainerIntro(trainer: Trainer){

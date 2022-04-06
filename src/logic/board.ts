@@ -23,6 +23,7 @@ import {spend} from "./shop";
 import { calcXpEarnedOnDefeat } from "./xp";
 import { startDialog } from "./dialog";
 import { hidePokemonReleaseInfo } from "../objects/pokemonReleaseBox";
+import { drawAlliancesInfo } from "../objects/alliancesInfo";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -63,6 +64,7 @@ export function initPlacement(game: GameScene){
     drawGrid()
     drawCursor()
     drawTeamSizeCounter()
+    drawAlliancesInfo(gameState.board.otherTeam)
 
     for (let pokemon of gameState.player.team) {
         const sprite = makePokemonSprite(pokemon, game)

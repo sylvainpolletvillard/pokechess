@@ -130,7 +130,7 @@ export function provoc(attacker: PokemonOnBoard, game: GameScene){
     const pokemonsProvocated = gameState.board.otherTeam.filter(p => distanceBetweenPokemon(attacker, p) <= Math.sqrt(8))
     //console.log("PROVOC", { pokemonsProvocated })
     pokemonsProvocated.forEach(pokemon => {
-        const provocatedSprite = makeEffectSprite(EFFECTS.PROVOCARED, pokemon.x+8, pokemon.y, game)
+        const provocatedSprite = makeEffectSprite(EFFECTS.PROVOCATED, pokemon.x+8, pokemon.y, game)
         wait(500).then(() => provocatedSprite.destroy())
         if(pokemon.nextAction.timer){
             wait(pokemon.nextAction.timer.getRemaining()).then(() => {

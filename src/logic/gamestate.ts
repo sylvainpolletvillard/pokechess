@@ -106,9 +106,9 @@ export class GameState {
             this.roomOrder = ["labo", "tuto"]
         }
 
-        // QUICK TESTING
-
-        /*gameState.currentDestination = FORET_JADE
+        // QUICK TESTING        
+        /*
+        gameState.currentDestination = FORET_JADE
         gameState.player.team.push(
             new PokemonOnBoard( new Pokemon(MYSTHERBE, 1, 20), 4 ,6)
         )

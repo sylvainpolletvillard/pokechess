@@ -120,6 +120,8 @@ export const POKEMON_TYPES = {
     [TYPE_VOL.ref]: TYPE_VOL
 }
 
+export type PokemonTypeRef = keyof typeof POKEMON_TYPES
+
 export const TABLE_TYPES = new Map([
     [TYPE_NORMAL, new Map([
         [TYPE_NORMAL, 1],

@@ -1,59 +1,48 @@
 import GameScene from "../scenes/GameScene";
-import {POKEMON_TYPES} from "../data/types";
-import {PokemonOnBoard} from "./pokemon";
 import {gameState} from "../logic/gamestate";
+import { addInteractiveElem } from "./cursor";
+import { displayAllianceInfo, hideAllianceInfo } from "./allianceInfoBox";
+import { PokemonOnBoard } from "./pokemon";
+import { getAlliancesState } from "../logic/player";
 
-type AllianceCount = { [type: string]: number }
-let alliancesInfoGroup: Phaser.GameObjects.Group | null = null;
+let leftGroup: Phaser.GameObjects.Group | null = null
+let rightGroup: Phaser.GameObjects.Group | null = null
 
-export function countByType(team: PokemonOnBoard[]): AllianceCount {
-    return team.reduce((count: AllianceCount, pokemon: PokemonOnBoard) => {
-        return Object.assign(count, ...pokemon.entry.types.map(type => ({ [type.ref]: (count[type.ref] ?? 0) + 1})))
-    }, {})
-}
-
-export function drawAlliancesInfo(playerIndex: number){
+export function drawAlliancesInfo(team: PokemonOnBoard[]){
     const game = gameState.activeScene as GameScene;
-    const team: PokemonOnBoard[] = gameState.players[playerIndex].team;
-    const alliances = countByType(team)
-    if(alliancesInfoGroup != null){
-        alliancesInfoGroup.destroy(true, true)
-    }
+    const left = (team === gameState.board.playerTeam)
+    const alliances = getAlliancesState(team)
 
-    alliancesInfoGroup = game.add.group()
-    Object.entries(alliances).forEach(([type , count], index) => {
+    if(left && leftGroup) leftGroup.destroy(true, true)         
+    else if(!left && rightGroup) rightGroup.destroy(true, true)         
+
+    const group = game.add.group()
+    if(left) leftGroup = group
+    else rightGroup = group
+
+    alliances.forEach((allianceState, index) => {
+        let x = left ? 14 : game.scale.width - 14
+        let y = left ? game.scale.height - 74 - index*24 : 74 + index*24
+        let d = left ? +1 : -1
         const counterGraphics = game.add.graphics()
-        counterGraphics
-            .fillStyle(0x000000, 0.5)
-            .fillCircle(14, game.scale.height - 70 - index*24, 9)
+                
+        counterGraphics.fillStyle(0x000000, 0.5).fillCircle(x, y+4, 9)
 
-        for(let c=0; c<6; c++){
-            counterGraphics.fillStyle(0x000000,0.8).fillRect(
-                26+(c%3)*4,
-                game.scale.height - 75 - index*24 + Math.floor(c/3)*7,
-                4,
-                4
-            )
-            counterGraphics.fillStyle(0x666666, 1).fillRect(
-                26+(c%3)*4+1,
-                game.scale.height - 74 - index*24 + Math.floor(c/3)*7,
-                3,
-                3
-            )
-        }
-        for(let c=0; c<count; c++){
-            counterGraphics.fillStyle(0xffffff, 1).fillRect(
-                26+(c%3)*4+1,
-                game.scale.height - 74 - index*24 + Math.floor(c/3)*7,
-                3,
-                3
-            )
+        let cx = left ? x+8 : x - 23
+        counterGraphics.fillStyle(0x000000,1).fillRoundedRect(cx, y, 15, 8, 3)
+        counterGraphics.lineStyle(0x000000,0.8).strokeRect(cx+5, y, 5, 8)
+        for(let c=0; c<3; c++){            
+            counterGraphics.fillStyle(c < allianceState.stepReached ? 0xffffff : 0x666666, 1).fillRoundedRect(cx+(left?0:12)+(c*5+1)*d, y+1, 3, 6, 2)
         }
 
+        group.add(counterGraphics)
 
-        alliancesInfoGroup?.add(counterGraphics)
+        const typeSprite = game.add.sprite(x, y+4, "icons16x16", allianceState.type.frameIndex)
+        group.add(typeSprite)
 
-        const typeSprite = game.add.sprite(14, game.scale.height - 70 - index*24, "icons16x16", POKEMON_TYPES[type].frameIndex)
-        alliancesInfoGroup?.add(typeSprite)
+        addInteractiveElem(typeSprite)
+        typeSprite
+            .on("over", () => displayAllianceInfo(allianceState.type, left ? 0 : 1))
+            .on("out", () => hideAllianceInfo())
     })
 }
