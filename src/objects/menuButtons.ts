@@ -185,3 +185,8 @@ export function drawMenuButtons(game: GameScene){
 export function hideMenuButtons(){
     menuButtonsGroup.destroy(true)
 }
+
+export function updateFightButton(){
+    const scene = gameState.activeScene as GameScene
+    scene.sprites.get("fightButton")?.setVisible(scene.canLaunchFight)
+}

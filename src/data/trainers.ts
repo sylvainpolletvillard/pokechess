@@ -9,6 +9,7 @@ import { sendBackToPokeball } from "../logic/fight";
 import GameScene from "../scenes/GameScene";
 import { receiveItem } from "./dialogs/descriptions";
 import {wait} from "../utils/helpers";
+import { updateFightButton } from "../objects/menuButtons";
 
 export interface Trainer {
     name: string;
@@ -380,14 +381,16 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Il suffit de capturer un Pokémon sauvage de la même espèce.`,
             `Il partagera son expérience avec ton Pokémon avant d'être relâché.`,
             () => {
+                let playerPokemon = gameState.player.team[0].entry
                 gameState.board.playerTeam.forEach(pokemon => sendBackToPokeball(pokemon))
                 gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD
                 wait(500).then(() => {
-                    gameState.stage = GameStage.PLACEMENT
-                    gameState.board.otherTeam = spawnTutoCaptureTeamStep2();
-                    spawnPokemon(gameState.board.otherTeam[0], gameState.activeScene as GameScene)
+                    const game = gameState.activeScene as GameScene
+                    gameState.stage = GameStage.TUTO_CAPTURE                    
+                    gameState.board.otherTeam = spawnTutoCaptureTeamStep2(playerPokemon);                    
+                    spawnPokemon(gameState.board.otherTeam[0], game)
                 })
-                return `Tiens, essaie tout de suite. Essaie de capturer mon ${gameState.player.team[0].name}.`
+                return `Tiens, essaie tout de suite. Essaie de capturer mon ${playerPokemon.name}.`
             }            
         ],
         step3: [

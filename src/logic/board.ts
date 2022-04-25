@@ -1,7 +1,7 @@
 import {Player} from "./player";
 import {addToBox, addToTeam, removeFromTeam} from "./box";
 import GameScene from "../scenes/GameScene";
-import Phaser from "phaser";
+import Phaser, { Game } from "phaser";
 import {displayPokemonInfo, getCurrentPokemonInfoDisplayed, hidePokemonInfo} from "../objects/pokemonInfoBox";
 import {GameStage, gameState} from "./gamestate";
 import {
@@ -24,6 +24,7 @@ import { calcXpEarnedOnDefeat } from "./xp";
 import { startDialog } from "./dialog";
 import { hidePokemonReleaseInfo } from "../objects/pokemonReleaseBox";
 import { drawAlliancesInfo } from "../objects/alliancesInfo";
+import { updateFightButton } from "../objects/menuButtons";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -300,7 +301,7 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: GameScene){
         if([RoomType.WILD, RoomType.TUTORIAL].includes(gameState.currentRoom.type)
         && pokemonOnTile.owner === NO_OWNER
         && gameState.activeMenu == null
-        && gameState.stage === GameStage.PLACEMENT){
+        && (gameState.stage === GameStage.PLACEMENT || gameState.stage === GameStage.TUTO_CAPTURE)){
             displayPokemonCaptureInfo(pokemonOnTile, game)
         }
     }
@@ -400,12 +401,11 @@ export function drawTeamSizeCounter(){
     if(numberOnBoard > max){
         text.setAlpha(0.3)
         text.setTint(0xff0000)
-        scene.sprites.get("fightButton")?.setVisible(false)
     } else {
         text.setTint(0xffffff)
-        scene.sprites.get("fightButton")?.setVisible(true)
 
         if(numberOnBoard === max){ text.setAlpha(0) }
         else { text.setAlpha(0.15) }
     }
+    updateFightButton()
 }

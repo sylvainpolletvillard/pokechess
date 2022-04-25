@@ -17,20 +17,13 @@ import { SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 import { checkProjectilesImpact } from "./projectile";
 import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
 import { updateAlterations } from "./alteration";
-import {PokemonOnBoard} from "../objects/pokemon";
 import {loadSave, saveState} from "./save";
-import {TRIOPIKEUR} from "../data/pokemons/triopikeur";
-import {PORYGON} from "../data/pokemons/porygon";
-import {MEWTWO} from "../data/pokemons/mewtwo";
-import {CHENIPAN} from "../data/pokemons/chenipan";
-import { ARTIKODIN } from "../data/pokemons/artikodin";
-import { MAGICARPE } from "../data/pokemons/magicarpe";
-import { SULFURA } from "../data/pokemons/sulfura";
-import { ELECTHOR } from "../data/pokemons/electhor";
+import { updateFightButton } from "../objects/menuButtons";
 
 export enum GameStage {
     CREATION = "CREATION",
     PLACEMENT = "PLACEMENT",
+    TUTO_CAPTURE = "TUTO_CAPTURE",
     LAUNCH = "LAUNCH",
     FIGHT = "FIGHT",
     ENDED = "ENDED"
@@ -257,6 +250,7 @@ export class GameState {
         this.stage = GameStage.ENDED;
         const player = game.sprites.get("player")
         player && player.play("trainer_victory")
+        updateFightButton()
 
         return wait(100).then(() => {
             if(gameState.currentRoom.type === RoomType.TUTORIAL){

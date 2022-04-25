@@ -2,7 +2,7 @@ import {handleCursor, setupInputs} from "../logic/inputs";
 import {gameState} from "../logic/gamestate";
 import {MyScene} from "./MyScene";
 import {Level} from "../logic/level";
-import {PlayerCharacter} from "../objects/character_player";
+import {PlayerCharacter} from "../objects/playerCharacter";
 import {loadFonts} from "../data/fonts";
 import {loadSprites} from "../data/sprites";
 import {loadSpritesheets} from "../data/spritesheets";

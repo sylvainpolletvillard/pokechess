@@ -17,7 +17,7 @@ auraEffects (recalculé toutes les X ms ?, custom function)
 - alliance glace => malus vitesse
 
 clockEffects (relancé 1 fois par seconde)
-- allaince fée +1 pp
+- alliance fée +1 pp
 - alliance plante regen hp
 
 

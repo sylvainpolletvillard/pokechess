@@ -133,8 +133,8 @@ export function spawnTutoCaptureTeam(){
     return team
 }
 
-export function spawnTutoCaptureTeamStep2(){
-    const cloneStarter = new PokemonOnBoard(new Pokemon(gameState.player.team[0].entry, NO_OWNER, 4), 3, 3)
+export function spawnTutoCaptureTeamStep2(entry: PokemonEntry){
+    const cloneStarter = new PokemonOnBoard(new Pokemon(entry, NO_OWNER, 4), 3, 3)
     const team: PokemonOnBoard[] = [ cloneStarter ]
     return team
 }

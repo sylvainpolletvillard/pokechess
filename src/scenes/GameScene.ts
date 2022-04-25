@@ -90,18 +90,18 @@ export default class GameScene extends MyScene {
     this.sprites.delete("centerText")
   }
 
-  canLaunchFight(){
+  get canLaunchFight(){
     return gameState.stage === GameStage.PLACEMENT 
     && gameState.board.playerTeam.length <= getNumberMaxAllowedOnBoard()
   }
 
   launchFight(){
-    if(this.canLaunchFight()){
+    if(this.canLaunchFight){
       hideMenuButtons()
       gameState.initFight(this)
       const player = this.sprites.get("player")
       player && player.play("trainer_launch");
-      showCenterText("text_fight", this).then()
+      showCenterText("text_fight", this)
     }
   }
 
