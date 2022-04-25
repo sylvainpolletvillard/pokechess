@@ -95,11 +95,13 @@ export function getAlliancesState(team: PokemonOnBoard[]): AllianceState[] {
     return [...teamTypes].map(type => {
         const alliance = ALLIANCES[type.ref]
         const numberOfThatTypeInTeam = team.filter((p: PokemonOnBoard) => p.entry.types.includes(type)).length
-        const stepReached = [...alliance.steps].reverse().find(step => step.numberRequired <= numberOfThatTypeInTeam)
+        const stepReached = [...alliance.steps].reverse().find(step => step.numberRequired <= numberOfThatTypeInTeam) || null
         return {
             type,
             ref: stepReached?.ref,
-            stepReached: stepReached ? alliance.steps.indexOf(stepReached) + 1 : 0,
+            steps: alliance.steps,
+            stepReached: stepReached,
+            stepReachedN: stepReached ? alliance.steps.indexOf(stepReached) + 1 : 0,
             numberOfThatTypeInTeam
         }
     })

@@ -14,7 +14,9 @@ export type AllianceBonusStep = {
 export type AllianceState = {
     ref?: string;
     type: PokemonType;    
-    stepReached: number;
+    steps: AllianceBonusStep[];
+    stepReached: AllianceBonusStep | null;
+    stepReachedN: number;
     numberOfThatTypeInTeam: number;
 }
 
