@@ -25,6 +25,7 @@ import { startDialog } from "./dialog";
 import { hidePokemonReleaseInfo } from "../objects/pokemonReleaseBox";
 import { drawAlliancesInfo } from "../objects/alliancesInfo";
 import { updateFightButton } from "../objects/menuButtons";
+import { applyBuffs } from "./buffs";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -65,8 +66,10 @@ export function initPlacement(game: GameScene){
     drawGrid()
     drawCursor()
     drawTeamSizeCounter()
-    drawAlliancesInfo(gameState.board.otherTeam)
-
+    if(gameState.currentRoom.type === RoomType.ARENA){
+        drawAlliancesInfo(gameState.board.otherTeam)
+    }
+    
     for (let pokemon of gameState.player.team) {
         const sprite = makePokemonSprite(pokemon, game)
         sprite.setAlpha(0.5)
@@ -134,6 +137,7 @@ export function launchPokeball(player: number, pokeballType: string, x:number, y
 
 export function spawnPokemon(pokemon: PokemonOnBoard, game: GameScene){
     const [x,y] = pokemon.position;
+    applyBuffs(pokemon)
     launchPokeball(pokemon.owner, pokemon.pokeball, x, y, game)
         .then((pokeball) => {
             pokeball.play(`${pokemon.pokeball}_out`)
