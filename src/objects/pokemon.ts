@@ -14,6 +14,7 @@ import {Alteration, AlterationType} from "../data/alterations";
 import {Z} from "../data/depths";
 import {OWNER_PLAYER} from "../data/owners";
 import {updatePokemonBars} from "./pokemonBar";
+import { OnHitEffect, OnHitReceivedEffect, AuraEffect, ClockEffect } from "../logic/buffs";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -25,6 +26,12 @@ export class PokemonOnBoard extends Pokemon {
     alterations: Alteration[];
     initialEntry?: PokemonEntry;
     untargettable: boolean;
+    buffs: {
+        onHit: OnHitEffect[],
+        onHitReceived: OnHitReceivedEffect[],
+        auras: AuraEffect[],
+        clock: ClockEffect[]
+    }
 
     constructor(pokemon: Pokemon, x:number, y:number) {
         super(pokemon, pokemon.owner, pokemon.level);
@@ -38,6 +45,12 @@ export class PokemonOnBoard extends Pokemon {
         this.pp = 0
         this.alterations = []
         this.untargettable = false;
+        this.buffs = {
+            onHit: [],
+            onHitReceived: [],
+            auras: [],
+            clock: []
+        }
     }
 
     reset(): PokemonOnBoard {
@@ -48,6 +61,12 @@ export class PokemonOnBoard extends Pokemon {
         this.pv = this.maxPV
         this.pp = 0
         this.alterations = []
+        this.buffs = {
+            onHit: [],
+            onHitReceived: [],
+            auras: [],
+            clock: []
+        }
         return this
     }
 

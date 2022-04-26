@@ -192,5 +192,6 @@ export function sendBackToPokeball(pokemon: PokemonOnBoard){
 }
 
 export function healPokemon(pokemon: PokemonOnBoard, healAmount: number){
+    if(pokemon.hasAlteration(AlterationType.BRULURE)) healAmount *= 0.5 // les brûlures réduisent de 50% l'efficacité des soins
     pokemon.pv = Math.min(pokemon.maxPV, pokemon.pv + healAmount)
 }

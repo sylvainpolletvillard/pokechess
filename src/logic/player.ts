@@ -8,6 +8,7 @@ import {REPTINCEL} from "../data/pokemons/reptincel";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {ITEM_POKEBALL} from "../data/items";
 import { ALLIANCES, AllianceState } from "../data/alliances";
+import { PokemonType } from "../data/types";
 
 export class Player {
     ref: number;
@@ -92,17 +93,19 @@ export class Player {
 
 export function getAlliancesState(team: PokemonOnBoard[]): AllianceState[] {
     const teamTypes = new Set(team.map(pokemon => pokemon.entry.types).flat())
-    return [...teamTypes].map(type => {
-        const alliance = ALLIANCES[type.ref]
-        const numberOfThatTypeInTeam = team.filter((p: PokemonOnBoard) => p.entry.types.includes(type)).length
-        const stepReached = [...alliance.steps].reverse().find(step => step.numberRequired <= numberOfThatTypeInTeam) || null
-        return {
-            type,
-            ref: stepReached?.ref,
-            steps: alliance.steps,
-            stepReached: stepReached,
-            stepReachedN: stepReached ? alliance.steps.indexOf(stepReached) + 1 : 0,
-            numberOfThatTypeInTeam
-        }
-    })
+    return [...teamTypes].map(type => getAllianceState(team, type))
+}
+
+export function getAllianceState(team: PokemonOnBoard[], type: PokemonType){
+    const alliance = ALLIANCES[type.ref]
+    const numberOfThatTypeInTeam = team.filter((p: PokemonOnBoard) => p.entry.types.includes(type)).length
+    const stepReached = [...alliance.steps].reverse().find(step => step.numberRequired <= numberOfThatTypeInTeam) || null
+    return {
+        type,
+        ref: stepReached?.ref,
+        steps: alliance.steps,
+        stepReached: stepReached,
+        stepReachedN: stepReached ? alliance.steps.indexOf(stepReached) + 1 : 0,
+        numberOfThatTypeInTeam
+    }
 }
