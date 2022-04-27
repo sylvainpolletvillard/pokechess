@@ -1,12 +1,14 @@
 import {Alteration, AlterationType} from "../data/alterations"
 import {EFFECTS} from "../data/effects"
-import {POKEMON_TYPES} from "../data/types"
+import { OWNER_PLAYER } from "../data/owners"
+import { TYPE_POISON} from "../data/types"
 import {PokemonOnBoard} from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import {Direction} from "../utils/directions"
 import {removeInArray} from "../utils/helpers"
 import {applyDamage, healPokemon, killPokemon} from "./fight"
 import {gameState} from "./gamestate"
+import { getAllianceState } from "./player"
 import {makeEffectSprite, sendPokemonFlying} from "./skill-anims"
 
 export function updateAlterations(pokemons: PokemonOnBoard[]){
@@ -32,7 +34,8 @@ export function updateAlterations(pokemons: PokemonOnBoard[]){
 export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alteration){
     const game = gameState.activeScene as GameScene;
     const sprite = game.sprites.get(pokemon.uid)
-    const perSecond = game.gameSpeed / 1000
+    const perSecond = game.gameSpeed / 1000    
+
     if(alteration.type === AlterationType.TOURBILLON){
         switch(pokemon.facingDirection){
             case Direction.UP: pokemon.facingDirection = Direction.RIGHT; break;
@@ -43,11 +46,17 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
 
         sprite?.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
     } else if(alteration.type === AlterationType.POISON){
-        let poisonDamage = Math.min(500, alteration.stacks) * perSecond * (1 / 10000) * pokemon.maxPV // 0.01% max HP per stack per second
-        if(pokemon.entry.types.includes(POKEMON_TYPES.POISON)){
-            poisonDamage *= 0.5
-            // type poison = 50% résistance au poison //TODO: bonus alliance à prendre en compte
+        let poisonDamage = Math.min(500, alteration.stacks) * perSecond * (1 / 10000) * pokemon.maxPV // 0.01% max HP per stack per seconde
+        let buffFactor = 1        
+        const opponentTeam = pokemon.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
+        const opponentPoisonBonus = getAllianceState(opponentTeam, TYPE_POISON)
+        if(pokemon.entry.types.includes(TYPE_POISON)){
+            buffFactor -= 0.5 // type poison = 50% résistance au poison             
         }
+        if(opponentPoisonBonus.stepReachedN > 0){
+            buffFactor += 0.4 * opponentPoisonBonus.stepReachedN
+        }
+        poisonDamage *= buffFactor
         applyDamage(poisonDamage, pokemon, true, true)
     } else if(alteration.type === AlterationType.BRULURE){
         const burnDamage = 0.1 * perSecond * pokemon.level; // 0.1 HP per second per level

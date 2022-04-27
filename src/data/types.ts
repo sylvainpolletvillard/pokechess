@@ -358,7 +358,7 @@ export const TABLE_TYPES = new Map([
         [TYPE_FEE, 1]
     ])],
     [TYPE_SPECTRE, new Map([
-        [TYPE_NORMAL, 0.5], // supposed to be zero but ends up with never ending fights
+        [TYPE_NORMAL, 0.25], // supposed to be zero but ends up with never ending fights
         [TYPE_FEU, 1],
         [TYPE_EAU, 1],
         [TYPE_PLANTE, 1],

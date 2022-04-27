@@ -113,9 +113,9 @@ const BONUS_ALLIANCE_PLANTE: AllianceBonus =  {
 const BONUS_ALLIANCE_POISON: AllianceBonus =  {
     description: "Les Pokémons Poison empoisonnent leurs cibles, infligeant des dégâts sur la durée proportionnels à leurs PV max.",
     steps: [
-        { numberRequired: 2, ref: "POISON2", description: "Dégâts de poison reçus -50%" },
-        { numberRequired: 4, ref: "POISON4", description: "Dégâts de poison infligés +50%" },
-        { numberRequired: 6, ref: "POISON6", description: "Dégâts de poison infligés +100%" }
+        { numberRequired: 2, ref: "POISON2", description: "Dégâts de poison infligés +40%" },
+        { numberRequired: 4, ref: "POISON4", description: "Dégâts de poison infligés +80%" },
+        { numberRequired: 6, ref: "POISON6", description: "Dégâts de poison infligés +120%" }
     ]
 }
 
