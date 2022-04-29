@@ -3,16 +3,18 @@ import {findClosestReachableTarget, findPathToTarget} from "./pathfinding";
 import {Board, getPositionFromCoords} from "./board";
 import GameScene from "../scenes/GameScene";
 import {getDirection} from "./anims";
-import Phaser from "phaser";
+import Phaser, { Game } from "phaser";
 import {PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
 import {Skill} from "./skill";
 import {hasBlockingAlteration} from "./alteration";
 import {triggerSkill} from "./skill-anims";
-import {AlterationType} from "../data/alterations";
+import {Alteration, AlterationType} from "../data/alterations";
 import {clamp} from "../utils/helpers";
 import {recordLastSkillSeen} from "./specials";
-import {TABLE_TYPES} from "../data/types";
+import {TABLE_TYPES, TYPE_NORMAL, TYPE_POISON, TYPE_ROCHE} from "../data/types";
+import { OWNER_PLAYER } from "../data/owners";
+import { getAlliancesState, getAllianceState } from "./player";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
@@ -126,9 +128,10 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     })
 }
 
-export function testPrecision(attacker: PokemonOnBoard, skill: Skill){
-    if(attacker.precision === 1) return true
-    else return Math.random() <= attacker.precision * (skill.precision ?? 1)
+export function testPrecision(attacker: PokemonOnBoard, target: PokemonOnBoard, skill: Skill){    
+    const precisionScore = (attacker.precision - (target.dodge ?? 0)) * (skill.precision ?? 1)
+    if(precisionScore >= 1) return true
+    else return Math.random() <= precisionScore
 }
 
 export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=false, noWakeup = false){
@@ -145,18 +148,68 @@ export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=fal
     }
 }
 
-export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard){
+export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard): number {
     let targetTypes = target.entry.types
     if(target.hasAlteration(AlterationType.ADAPTATION)) targetTypes = [skill.type]
-    const typeFactor = targetTypes
+    let typeFactor = targetTypes
         .map(type => TABLE_TYPES.get(skill.type)?.get(type) ?? 1)
         .reduce((a,b) => a*b)
+    
+    if(typeFactor > 1){
+        const team = target.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
+        const normalAllianceBonus = getAllianceState(team, TYPE_NORMAL)
+        if(normalAllianceBonus.stepReached){
+            typeFactor = Math.max(1, typeFactor - 0.3 * normalAllianceBonus.stepReachedN)
+        }
+    }
 
     return attacker.attack * (1+skill.power/100) * typeFactor / target.defense
 }
 
-export function calcSelfDamage(skill: Skill, attacker: PokemonOnBoard){
+export function calcSelfDamage(skill: Skill, attacker: PokemonOnBoard): number {
     return attacker.attack * (1+(skill.selfDamage??0)/100) / attacker.defense
+}
+
+export function calcPoisonDamage(target: PokemonOnBoard, alteration: Alteration, game: GameScene): number {
+    const perSecond = game.gameSpeed / 1000    
+
+    let poisonDamage = Math.min(500, alteration.stacks) * perSecond * (1 / 10000) * target.maxPV // 0.01% max HP per stack per seconde
+    
+    const team = target.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
+    const teamRocheBonus = getAllianceState(team, TYPE_ROCHE)
+
+    const opponentTeam = target.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
+    const opponentPoisonBonus = getAllianceState(opponentTeam, TYPE_POISON)
+
+    let buffFactor = 1
+    if(target.hasType(TYPE_POISON)){
+        buffFactor -= 0.5 // type poison = 50% résistance au poison             
+    }
+    if(opponentPoisonBonus.stepReachedN > 0){
+        buffFactor += 0.4 * opponentPoisonBonus.stepReachedN
+    }
+    if(teamRocheBonus.stepReachedN > 0){
+        buffFactor -= 0.2 * teamRocheBonus.stepReachedN
+    }
+
+    poisonDamage *= buffFactor
+    return poisonDamage
+}
+
+export function calcBurnDamage(target: PokemonOnBoard, game: GameScene): number {
+    const perSecond = game.gameSpeed / 1000  
+
+    let burnDamage = 0.1 * perSecond * target.level; // 0.1 HP per second per level
+    let buffFactor = 1
+
+    const team = target.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
+    const teamRocheBonus = getAllianceState(team, TYPE_ROCHE)
+    if(teamRocheBonus.stepReachedN > 0){
+        buffFactor -= 0.2 * teamRocheBonus.stepReachedN
+    }
+
+    burnDamage *= buffFactor
+    return burnDamage
 }
 
 export function killPokemon(pokemon: PokemonOnBoard){

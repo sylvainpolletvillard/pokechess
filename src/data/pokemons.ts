@@ -239,6 +239,10 @@ export class Pokemon {
         this.level = xpToLevel(this.xp);
         return this.level
     }
+
+    hasType(type: PokemonType){
+        return this.entry.types.includes(type)
+    }
 }
 
 export enum PokemonTypeAction { 

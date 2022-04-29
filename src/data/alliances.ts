@@ -48,11 +48,11 @@ const BONUS_ALLIANCE_EAU: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_ELECTRIQUE: AllianceBonus =  {
-    description: "Les Pokémons Electrique gagnent en Vitesse. Ils infligent des dégats électriques de choc à chaque coup reçu.",
+    description: "Les Pokémons Electrique gagnent en Vitesse. Ils infligent des dégats électriques de choc à chaque coup reçu au contact.",
     steps: [
-        { numberRequired: 2, ref: "ELEC2", description: "+20% Vitesse ; 5 dégats de choc par coup reçu" },
-        { numberRequired: 4, ref: "ELEC4", description: "+40% Vitesse ; 10 dégats de choc par coup reçu" },
-        { numberRequired: 6, ref: "ELEC6", description: "+60% Vitesse ; 20 dégats de choc par coup reçu" }
+        { numberRequired: 2, ref: "ELEC2", description: "+20% Vitesse ; 2 dégats de choc par coup reçu" },
+        { numberRequired: 4, ref: "ELEC4", description: "+40% Vitesse ; 4 dégats de choc par coup reçu" },
+        { numberRequired: 6, ref: "ELEC6", description: "+60% Vitesse ; 6 dégats de choc par coup reçu" }
     ]
 }
 
@@ -96,8 +96,8 @@ const BONUS_ALLIANCE_NORMAL: AllianceBonus =  {
     description: "Les Pokémons normaux réduisent les pénalités de dégâts reçus liés aux faiblesses de types.",
     steps: [
         { numberRequired: 2, ref: "NORMAL2", description: "-30% de dégâts de faiblesse reçus" },
-        { numberRequired: 4, ref: "NORMAL4", description: "-50% de dégâts de faiblesse reçus" },
-        { numberRequired: 6, ref: "NORMAL6", description: "-80% de dégâts de faiblesse reçus" }
+        { numberRequired: 4, ref: "NORMAL4", description: "-60% de dégâts de faiblesse reçus" },
+        { numberRequired: 6, ref: "NORMAL6", description: "-90% de dégâts de faiblesse reçus" }
     ]
 }
 
@@ -129,11 +129,11 @@ const BONUS_ALLIANCE_PSY: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_ROCHE: AllianceBonus =  {
-    description: "Les Pokémons Roche ont une grosse défense, et peuvent devenir insensibles à certains types de dégâts.",
+    description: "Les Pokémons Roche ont une grosse défense et réduisent les dégâts reçus liés aux altérations (poison, brûlure).",
     steps: [
-        { numberRequired: 2, ref: "ROCHE2", description: "Insensible au poison" },
-        { numberRequired: 4, ref: "ROCHE4", description: "Insensible aux dégâts de choc" },
-        { numberRequired: 6, ref: "ROCHE6", description: "Insensible aux brûlures" }
+        { numberRequired: 2, ref: "ROCHE2", description: "+20% défense ; -20% dégâts d'altération reçus" },
+        { numberRequired: 4, ref: "ROCHE4", description: "+40% défense ; -40% dégâts d'altération reçus" },
+        { numberRequired: 6, ref: "ROCHE6", description: "+60% défense ; -60% dégâts d'altération reçus" }
     ]
 }
 

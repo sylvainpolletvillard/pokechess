@@ -48,7 +48,7 @@ export function displayAllianceInfo(type: PokemonType, player: number){
     allianceInfoBox.add(allianceDescriptionText)    
 
     const team = player === 0 ? gameState.board.playerTeam : gameState.board.otherTeam
-    const numberOfThatTypeInTeam = team.filter((p: PokemonOnBoard) => p.entry.types.includes(type)).length
+    const numberOfThatTypeInTeam = team.filter((p: PokemonOnBoard) => p.hasType(type)).length
     const stepReached = [...alliance.steps].reverse().find(step => step.numberRequired <= numberOfThatTypeInTeam)
     y += allianceDescriptionText.height + 10
     alliance.steps.forEach((step, i) => {

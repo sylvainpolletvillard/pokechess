@@ -98,7 +98,7 @@ export function getAlliancesState(team: PokemonOnBoard[]): AllianceState[] {
 
 export function getAllianceState(team: PokemonOnBoard[], type: PokemonType){
     const alliance = ALLIANCES[type.ref]
-    const numberOfThatTypeInTeam = team.filter((p: PokemonOnBoard) => p.entry.types.includes(type)).length
+    const numberOfThatTypeInTeam = team.filter((p: PokemonOnBoard) => p.hasType(type)).length
     const stepReached = [...alliance.steps].reverse().find(step => step.numberRequired <= numberOfThatTypeInTeam) || null
     return {
         type,

@@ -14,7 +14,7 @@ import {Alteration, AlterationType} from "../data/alterations";
 import {Z} from "../data/depths";
 import {OWNER_PLAYER} from "../data/owners";
 import {updatePokemonBars} from "./pokemonBar";
-import { OnHitEffect, OnHitReceivedEffect, AuraEffect, ClockEffect } from "../logic/buffs";
+import {Buffs, resetBuffs} from "../logic/buffs";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -26,12 +26,7 @@ export class PokemonOnBoard extends Pokemon {
     alterations: Alteration[];
     initialEntry?: PokemonEntry;
     untargettable: boolean;
-    buffs: {
-        onHit: OnHitEffect[],
-        onHitReceived: OnHitReceivedEffect[],
-        auras: AuraEffect[],
-        clock: ClockEffect[]
-    }
+    buffs: Buffs;
 
     constructor(pokemon: Pokemon, x:number, y:number) {
         super(pokemon, pokemon.owner, pokemon.level);
@@ -39,18 +34,7 @@ export class PokemonOnBoard extends Pokemon {
         this.y = y
         this.placementX = x
         this.placementY = y
-        this.facingDirection = this.owner === 1 ? Direction.UP : Direction.DOWN
-        this.nextAction = { type: PokemonTypeAction.IDLE }
-        this.pv = this.maxPV
-        this.pp = 0
-        this.alterations = []
-        this.untargettable = false;
-        this.buffs = {
-            onHit: [],
-            onHitReceived: [],
-            auras: [],
-            clock: []
-        }
+        this.reset()
     }
 
     reset(): PokemonOnBoard {
@@ -61,12 +45,8 @@ export class PokemonOnBoard extends Pokemon {
         this.pv = this.maxPV
         this.pp = 0
         this.alterations = []
-        this.buffs = {
-            onHit: [],
-            onHitReceived: [],
-            auras: [],
-            clock: []
-        }
+        this.untargettable = false;
+        this.buffs = resetBuffs()
         return this
     }
 
@@ -79,7 +59,7 @@ export class PokemonOnBoard extends Pokemon {
     }
 
     get attack(): number {
-        let buffFactor = 1
+        let buffFactor = this.buffs.attack.reduce((factor, buff) => factor + buff(), 1)
 
         const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
         if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
@@ -88,7 +68,7 @@ export class PokemonOnBoard extends Pokemon {
     }
 
     get defense(): number {
-        let buffFactor = 1
+        let buffFactor = this.buffs.defense.reduce((factor, buff) => factor + buff(), 1)
 
         if(this.hasAlteration(AlterationType.ACIDE)) buffFactor -= 0.5
 
@@ -98,11 +78,11 @@ export class PokemonOnBoard extends Pokemon {
         const armure = this.alterations.find(alt => alt.type === AlterationType.ARMURE)
         if(armure){ buffFactor += 0.2 * armure.stacks }
 
-        return clamp(super.defense * buffFactor, 1, 500)
+        return Math.max(1, super.defense * buffFactor)
     }
 
     get speed(): number {
-        let buffFactor = 1;
+        let buffFactor = this.buffs.speed.reduce((factor, buff) => factor + buff(), 1)
 
         const paralysie = this.alterations.find(alt => alt.type === AlterationType.PARALYSIE)
         if(paralysie){ buffFactor -= clamp(0.01 * paralysie.stacks, 0, 0.5) }
@@ -113,7 +93,7 @@ export class PokemonOnBoard extends Pokemon {
         if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
 
         const hate = this.alterations.find(alt => alt.type === AlterationType.HATE)
-        if(hate){ buffFactor += 0.2 * hate.stacks }
+        if(hate){ buffFactor += 0.2 * hate.stacks }        
 
         return clamp(super.speed * buffFactor, 1, 500)
     }
@@ -121,6 +101,10 @@ export class PokemonOnBoard extends Pokemon {
     get precision(): number {
         if(this.hasAlteration(AlterationType.AVEUGLE)) return 0.5
         return 1
+    }
+
+    get dodge(){
+        return clamp(this.buffs.dodge.reduce((factor, buff) => factor + buff(), 0), 0, 1)
     }
 
     toBoxPokemon(game: GameScene){

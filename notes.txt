@@ -1,15 +1,6 @@
-onHitEffects
-- alliance feu stacks brulure
-- alliance poison
-- alliance psy -pp
-- alliance spectre stacks peur
-
-onHitReceivedEffects
-- alliance elec
-- alliance normal => impact damage Calculation
-- alliance poison
+TODO:
 - alliance sol (trigger  seuil hp)
-- alliance vol (esquive)
+- alliance vol (envol assassin)
 
 auraEffects (recalculé toutes les X ms ?, custom function)
 - alliance combat => bonus attaque défense
@@ -20,10 +11,7 @@ clockEffects (relancé 1 fois par seconde)
 - alliance fée +1 pp
 - alliance plante regen hp
 
-
 xpGainEffects
 - alliance insecte
 
-
-???
-- alliance eau dégats heurt
+- alliance eau dégats heurt et repoussement
