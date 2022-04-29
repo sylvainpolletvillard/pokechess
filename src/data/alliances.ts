@@ -86,9 +86,9 @@ const BONUS_ALLIANCE_GLACE: AllianceBonus =  {
 const BONUS_ALLIANCE_INSECTE: AllianceBonus =  {
     description: "Les Pokémons Insecte grandissent et évoluent plus rapidement. Ils gagnent un bonus d'expérience à chaque combat.",
     steps: [
-        { numberRequired: 2, ref: "INSECTE2", description: "+5% XP ; +20% XP si Insecte" },
-        { numberRequired: 4, ref: "INSECTE4", description: "+10% XP ; +40% XP si Insecte" },
-        { numberRequired: 6, ref: "INSECTE6", description: "+20% XP ; +50% XP si Insecte" }
+        { numberRequired: 2, ref: "INSECTE2", description: "+20% aux gains d'expérience" },
+        { numberRequired: 4, ref: "INSECTE4", description: "+40% aux gains d'expérience" },
+        { numberRequired: 6, ref: "INSECTE6", description: "+60% aux gains d'expérience" }
     ]
 }
 

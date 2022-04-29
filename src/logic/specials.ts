@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import {AlterationType} from "../data/alterations";
 import {EFFECTS} from "../data/effects";
-import {Pokemon, POKEMONS} from "../data/pokemons";
+import {POKEMONS} from "../data/pokemons";
 import {SKILLS} from "../data/skills";
 import {makePokemonSprite, movePokemonSprite, PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
@@ -13,10 +13,8 @@ import {gameState} from "./gamestate";
 import {distanceBetweenPokemon} from "./pathfinding";
 import {makeEffectSprite, triggerSkill} from "./skill-anims";
 import {Skill} from "./skill";
-import {OWNER_PLAYER} from "../data/owners";
 import {Direction, getDeltaFromDirection, getDirectionFromDelta, getRotationAngle} from "../utils/directions";
 import {drawPokeballsCounter} from "../objects/pokeballsCounter";
-import {MyScene} from "../scenes/MyScene";
 import {
     TYPE_COMBAT,
     TYPE_DRAGON,
@@ -38,7 +36,6 @@ import {
 import {PYROLI} from "../data/pokemons/pyroli";
 import {AQUALI} from "../data/pokemons/aquali";
 import {VOLTALI} from "../data/pokemons/voltali";
-import { renderProjectile } from "./projectile";
 import { BLIZZARD_GRELON } from "../data/skills/blizzard";
 
 export function triggerSpecial(specialMoveName: string, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
@@ -164,9 +161,8 @@ export function metronome(attacker: PokemonOnBoard, target: PokemonOnBoard, game
     return triggerSkill(randomSkill, attacker, target, game)
 }
 
-export function eCoque(attacker: PokemonOnBoard, game: GameScene){
-    const team = attacker.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
-    team.forEach(pokemon => addAlteration(pokemon, { type: AlterationType.SOIN, stacks: 60 }, game))
+export function eCoque(attacker: PokemonOnBoard, game: GameScene){    
+    attacker.team.forEach(pokemon => addAlteration(pokemon, { type: AlterationType.SOIN, stacks: 60 }, game))
 }
 
 export function amnesie(pokemon: PokemonOnBoard){
@@ -274,9 +270,8 @@ export function evolution(attacker: PokemonOnBoard, target: PokemonOnBoard, game
     game.sprites.set(attacker.uid, newSprite)
 }
 
-export function psyko(attacker: PokemonOnBoard, game: GameScene){
-    const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
-    otherTeam.forEach(target => {
+export function psyko(attacker: PokemonOnBoard, game: GameScene){    
+    attacker.opponents.forEach(target => {
         game.cameras.main.flash(250, 255, 0, 255)
         addAlteration(target, { type: AlterationType.CONFUSION, stacks: 40 }, game)
         wait(SKILLS.PSYKO.hitDelay).then(() => {
@@ -288,9 +283,8 @@ export function psyko(attacker: PokemonOnBoard, game: GameScene){
 }
 
 export function deflagration(attacker: PokemonOnBoard, game: GameScene){
-    const eruptionsCoords: [number, number][] = []
-    const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
-    otherTeam.forEach(target => {
+    const eruptionsCoords: [number, number][] = []    
+    attacker.opponents.forEach(target => {
         addAlteration(target, { type: AlterationType.BRULURE, stacks: 60 }, game)
         eruptionsCoords.push([target.x, target.y])
     })
@@ -318,9 +312,8 @@ export function deflagration(attacker: PokemonOnBoard, game: GameScene){
 }
 
 export function blizzard(attacker: PokemonOnBoard, game: GameScene){
-    const grelonsCoords: [number, number][] = []
-    const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
-    otherTeam.forEach(target => {
+    const grelonsCoords: [number, number][] = []    
+    attacker.opponents.forEach(target => {
         addAlteration(target, { type: AlterationType.GEL, stacks: clamp(80-target.speed, 20, 60) }, game)
         grelonsCoords.push([target.x, target.y])
     })
@@ -360,13 +353,12 @@ export function blizzard(attacker: PokemonOnBoard, game: GameScene){
     }, wait(10))
 }
 
-export function fatalFoudre(attacker: PokemonOnBoard, game: GameScene){
-    const otherTeam = attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam    
-    otherTeam.forEach(target => {
+export function fatalFoudre(attacker: PokemonOnBoard, game: GameScene){    
+    attacker.opponents.forEach(target => {
         addAlteration(target, { type: AlterationType.PARALYSIE, stacks: 40 }, game)
     })
     const NUMBER_ECLAIRS = 3
-    const randomTargets = pickNRandomIn(otherTeam, NUMBER_ECLAIRS)
+    const randomTargets = pickNRandomIn(attacker.opponents, NUMBER_ECLAIRS)
 
     game.cameras.main.flash(255, 255, 192, 192)
     return randomTargets.reduce((promise: Promise<void>, randomTarget, ) => {

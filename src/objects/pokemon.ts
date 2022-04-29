@@ -15,6 +15,9 @@ import {Z} from "../data/depths";
 import {OWNER_PLAYER} from "../data/owners";
 import {updatePokemonBars} from "./pokemonBar";
 import {Buffs, resetBuffs} from "../logic/buffs";
+import { TYPE_INSECTE } from "../data/types";
+import { getAllianceState } from "../logic/player";
+import { xpToLevel } from "../logic/xp";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -107,6 +110,14 @@ export class PokemonOnBoard extends Pokemon {
         return clamp(this.buffs.dodge.reduce((factor, buff) => factor + buff(), 0), 0, 1)
     }
 
+    get team(): PokemonOnBoard[] {
+        return this.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
+    }
+
+    get opponents(): PokemonOnBoard[] {
+        return this.owner === OWNER_PLAYER ?  gameState.board.otherTeam : gameState.board.playerTeam
+    }
+
     toBoxPokemon(game: GameScene){
         const pokemon = new Pokemon(this, this.owner, this.level)
         game.sprites.get(pokemon.uid)?.setData("pokemon", pokemon);
@@ -140,6 +151,17 @@ export class PokemonOnBoard extends Pokemon {
         this.y = this.placementY
         this.untargettable = false
         if(this.initialEntry) this.entry = this.initialEntry // revert morphing/evolution
+    }
+
+    gainXP(amount: number){
+        let buffFactor = 1
+        const bonusInsecte = getAllianceState(this.team, TYPE_INSECTE)
+        if(this.hasType(TYPE_INSECTE) && bonusInsecte.stepReached){
+            buffFactor += 0.2 * bonusInsecte.stepReachedN
+        }
+        this.xp += amount * buffFactor;
+        this.level = xpToLevel(this.xp);
+        return this.level
     }
 }
 

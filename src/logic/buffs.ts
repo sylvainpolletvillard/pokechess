@@ -1,5 +1,4 @@
 import { Alteration, AlterationType } from "../data/alterations"
-import { OWNER_PLAYER } from "../data/owners"
 import { TYPE_ELECTRIQUE, TYPE_FEU, TYPE_PSY, TYPE_ROCHE, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
@@ -41,9 +40,8 @@ export function resetBuffs(): Buffs {
 }
 
 export function applyBuffs(pokemon: PokemonOnBoard){
-    const game = gameState.activeScene as GameScene
-    const team = pokemon.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
-    const alliances = getAlliancesState(team)
+    const game = gameState.activeScene as GameScene    
+    const alliances = getAlliancesState(pokemon.team)
     pokemon.buffs = {
         onHit: [],
         onHitReceived: [],

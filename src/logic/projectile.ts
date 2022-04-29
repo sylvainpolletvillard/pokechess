@@ -1,7 +1,6 @@
 import {ProjectileSkill} from "./skill";
 import {PokemonOnBoard} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
-import {OWNER_PLAYER} from "../data/owners";
 import { applyDamage, calcDamage } from "./fight";
 import { gameState } from "./gamestate";
 import { Z } from "../data/depths";
@@ -93,7 +92,7 @@ export function checkProjectilesImpact(game: GameScene){
         let {x,y} = projectile.sprite
         x+=8; y+=8; // try to better center for collision detection
         const r = projectile.skill.projectileRadius
-        const targets = projectile.attacker.owner === OWNER_PLAYER ? gameState.board.otherTeam : gameState.board.playerTeam
+        const targets = projectile.attacker.opponents
         const targetsTouched = targets.filter(p => {
             let [px, py] = p.position
             let distance = Math.sqrt((px - x) ** 2 + (py - y) ** 2)

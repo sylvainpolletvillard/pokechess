@@ -1,6 +1,6 @@
 import {nanoid} from "nanoid";
 
-import {PokemonType} from "./types";
+import {PokemonType, TYPE_INSECTE} from "./types";
 import {Skill} from "../logic/skill";
 import {POKEBALLS, POKEBALL_COSTS} from "./pokeballs";
 
@@ -157,6 +157,9 @@ import { MEWTWO } from "./pokemons/mewtwo";
 import { MEW } from "./pokemons/mew";
 import { levelToXP, xpToLevel } from "../logic/xp";
 import { PokemonOnBoard } from "../objects/pokemon";
+import { OWNER_PLAYER } from "./owners";
+import { gameState } from "../logic/gamestate";
+import { getAllianceState } from "../logic/player";
 
 
 export interface HoldableItem {
@@ -232,12 +235,6 @@ export class Pokemon {
 
     get cost(){
         return POKEBALL_COSTS[this.pokeball]
-    }
-
-    gainXP(amount: number){
-        this.xp += amount;
-        this.level = xpToLevel(this.xp);
-        return this.level
     }
 
     hasType(type: PokemonType){

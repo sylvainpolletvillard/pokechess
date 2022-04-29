@@ -7,8 +7,8 @@ import {SALAMECHE} from "../data/pokemons/salameche";
 import {REPTINCEL} from "../data/pokemons/reptincel";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {ITEM_POKEBALL} from "../data/items";
-import { ALLIANCES, AllianceState } from "../data/alliances";
-import { PokemonType } from "../data/types";
+import {ALLIANCES, AllianceState} from "../data/alliances";
+import {PokemonType} from "../data/types";
 
 export class Player {
     ref: number;
@@ -91,14 +91,14 @@ export class Player {
     }
 }
 
-export function getAlliancesState(team: PokemonOnBoard[]): AllianceState[] {
+export function getAlliancesState(team: Pokemon[]): AllianceState[] {
     const teamTypes = new Set(team.map(pokemon => pokemon.entry.types).flat())
     return [...teamTypes].map(type => getAllianceState(team, type))
 }
 
-export function getAllianceState(team: PokemonOnBoard[], type: PokemonType){
+export function getAllianceState(team: Pokemon[], type: PokemonType){
     const alliance = ALLIANCES[type.ref]
-    const numberOfThatTypeInTeam = team.filter((p: PokemonOnBoard) => p.hasType(type)).length
+    const numberOfThatTypeInTeam = team.filter((p: Pokemon) => p.hasType(type)).length
     const stepReached = [...alliance.steps].reverse().find(step => step.numberRequired <= numberOfThatTypeInTeam) || null
     return {
         type,
