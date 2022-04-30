@@ -1,15 +1,19 @@
 import { Alteration, AlterationType } from "../data/alterations"
-import { TYPE_ELECTRIQUE, TYPE_FEU, TYPE_INSECTE, TYPE_PSY, TYPE_ROCHE, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
+import { TYPE_ELECTRIQUE, TYPE_FEU, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import { addAlteration } from "./alteration"
 import { applyDamage } from "./fight"
 import { gameState } from "./gamestate"
 import { getAlliancesState } from "./player"
+import { tunnel } from "./specials"
 
 export type OnHitEffect = (params: { attacker: PokemonOnBoard, target: PokemonOnBoard }) => void
 
-export type OnHitReceivedEffect = (params: { damage: number , attacker: PokemonOnBoard}) => ({ damage: number })
+export type OnHitReceivedEffect = {
+    (params: { damage: number , attacker: PokemonOnBoard}): void
+    count?: number;
+}
         
 export type AuraEffect = () => {}
 
@@ -76,10 +80,9 @@ export function applyBuffs(pokemon: PokemonOnBoard){
 
         // BONUS ALLIANCE ELEC
         if(pokemon.hasType(TYPE_ELECTRIQUE) && allianceState.type === TYPE_ELECTRIQUE && allianceState.stepReached){
-            const effect: OnHitReceivedEffect = ({ attacker, damage }) => {
+            const effect: OnHitReceivedEffect = ({ attacker }) => {
                 applyDamage(allianceState.stepReachedN * 2, attacker)
                 console.log(`Choc ELEC sur ${attacker.entry.name}: ${allianceState.stepReachedN*2} dégats`)
-                return { damage }
             }
             pokemon.buffs.onHitReceived.push(effect)
             pokemon.buffs.speed.push(() => 0.2 * allianceState.stepReachedN)
@@ -93,6 +96,21 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         // BONUS ALLIANCE ROCHE
         if(pokemon.hasType(TYPE_ROCHE) && allianceState.type === TYPE_ROCHE && allianceState.stepReached){
             pokemon.buffs.defense.push(() =>  0.2 * allianceState.stepReachedN)
+        }
+
+        // BONUS ALLIANCE SOL
+        if(pokemon.hasType(TYPE_SOL) && allianceState.type === TYPE_SOL && allianceState.stepReached){
+            const buffTunnel:OnHitReceivedEffect = ({ damage }) => {
+                if(!buffTunnel.count || buffTunnel.count <= 0) return;
+                const triggerPoint = [0.2,0.5,0.8][buffTunnel.count-1]                
+                if((pokemon.pv - damage) / pokemon.maxPV < triggerPoint){
+                    tunnel(pokemon, null, game)
+                    buffTunnel.count--;
+                    console.log(`Buff SOL sur ${pokemon.entry.name}, plus que ${buffTunnel.count} tunnel`)
+                }
+            }
+            buffTunnel.count = allianceState.stepReachedN
+            pokemon.buffs.onHitReceived.push(buffTunnel)
         }
 
     })

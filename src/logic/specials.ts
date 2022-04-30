@@ -78,7 +78,7 @@ export function teleport(pokemon: PokemonOnBoard, game: GameScene){
     })
 }
 
-export function tunnel(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+export function tunnel(pokemon: PokemonOnBoard, target: PokemonOnBoard | null, game: GameScene){
     let { x: originX, y: originY } = pokemon
     let x: number , y: number;
     do { // find random empty tile
@@ -88,13 +88,16 @@ export function tunnel(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: Ga
 
     const pokemonSprite = game.sprites.get(pokemon.uid) as Phaser.GameObjects.Sprite;
     game.tweens.add({ targets: pokemonSprite, scale: 0, duration: 250, easing: "Linear" })
+    makeEffectSprite(EFFECTS.TUNNEL, pokemonSprite.x, pokemonSprite.y+8, game)
 
     wait(150).then(() => pokemon.makeUntargettable(850))
 
-    wait(450).then(() => {
-        const targetSprite = game.sprites.get(target.uid) as Phaser.GameObjects.Sprite;
-        if(targetSprite) makeEffectSprite(EFFECTS.TUNNEL, targetSprite.x, targetSprite.y + 8, game)
-    })
+    if(target){
+        wait(450).then(() => {
+            const targetSprite = game.sprites.get(target.uid) as Phaser.GameObjects.Sprite;
+            if(targetSprite) makeEffectSprite(EFFECTS.TUNNEL, targetSprite.x, targetSprite.y + 8, game)
+        })
+    }    
 
     wait(850).then(() => {
         if(pokemon.pv <= 0) return // too late im dead
