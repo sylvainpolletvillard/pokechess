@@ -43,12 +43,12 @@ export function updatePokemonAction(pokemon: PokemonOnBoard, game: GameScene){
     if(pokemon.nextAction.type === PokemonTypeAction.JUMP) return jump(pokemon, game)
 
     // update Pokémon action only when Pokémon is idle
-    if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || pokemon.pv <= 0) return;
+    if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || !pokemon.alive) return;
 
     if(hasBlockingAlteration(pokemon)) return;    
     
     const target = pokemon.nextAction.target || findClosestReachableTarget(pokemon)
-    if(target == null || target.pv <= 0){
+    if(target == null || !target.alive){
         pokemon.resetAction()
     } else {
         if(canPokemonAttack(pokemon, target)){
@@ -114,7 +114,7 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
         loop: true,
         callback: () => {
             if(pokemon.pv === 0) return // Pokémon died while preparing attack
-            if(target.pv <= 0) return pokemon.resetAction() //target already dead by another attack
+            if(!target.alive) return pokemon.resetAction() //target already dead by another attack
             if(!canPokemonAttack(pokemon, target)) return pokemon.resetAction() // target moved away or blocking alteration
 
             pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
@@ -230,7 +230,7 @@ export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: Pokem
         }
     }
 
-    return attacker.attack * (1+skill.power/100) * typeFactor / target.defense
+    return attacker.attack * (1+skill.power/80) * typeFactor / target.defense
 }
 
 export function calcSelfDamage(skill: Skill, attacker: PokemonOnBoard): number {

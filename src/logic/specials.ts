@@ -100,7 +100,7 @@ export function tunnel(pokemon: PokemonOnBoard, target: PokemonOnBoard | null, g
     }    
 
     wait(850).then(() => {
-        if(pokemon.pv <= 0) return // too late im dead
+        if(!pokemon.alive) return // too late im dead
         const [sceneX, sceneY] = getPositionFromCoords(x,y);
         makeEffectSprite(EFFECTS.TUNNEL, sceneX, sceneY, game)
         movePokemonSprite(pokemon, x, y, game)

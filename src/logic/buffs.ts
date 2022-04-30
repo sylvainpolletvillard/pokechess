@@ -103,7 +103,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             const buffTunnel:OnHitReceivedEffect = ({ damage }) => {
                 if(!buffTunnel.count || buffTunnel.count <= 0) return;
                 const triggerPoint = [0.2,0.5,0.8][buffTunnel.count-1]                
-                if((pokemon.pv - damage) / pokemon.maxPV < triggerPoint){
+                if((pokemon.pv - damage) > 0 && (pokemon.pv - damage) / pokemon.maxPV < triggerPoint){
                     tunnel(pokemon, null, game)
                     buffTunnel.count--;
                     console.log(`Buff SOL sur ${pokemon.entry.name}, plus que ${buffTunnel.count} tunnel`)

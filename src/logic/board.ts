@@ -380,22 +380,22 @@ export function getNumberMaxAllowedOnBoard(){
 export function drawTeamSizeCounter(){
     const scene = gameState.activeScene as GameScene
     let text = scene.objects.get("teamSizeCounter") as Phaser.GameObjects.Text
-    if(!text){
-        text = scene.add.text(scene.scale.width/2, scene.scale.height * 2/3, "", {
-            align: "center",
-            color: "white",
-            stroke: "black",
-            fontSize: "64px",
-            fontFamily: 'Pokemon',
-            fontStyle: "italic",
-            strokeThickness: 4,
-        })
-        text.setScrollFactor(0)
-        text.setDepth(Z.TEAM_SIZE_COUNTER)
-        text.setOrigin(0.5)
-        text.setAlpha(0.15)
-        scene.objects.set("teamSizeCounter", text)
-    }
+    if(text) text.destroy()
+    
+    text = scene.add.text(scene.scale.width/2, scene.scale.height * 2/3, "", {
+        align: "center",
+        color: "white",
+        stroke: "black",
+        fontSize: "64px",
+        fontFamily: 'Pokemon',
+        fontStyle: "italic",
+        strokeThickness: 4,
+    })
+    text.setScrollFactor(0)
+    text.setDepth(Z.TEAM_SIZE_COUNTER)
+    text.setOrigin(0.5)
+    text.setAlpha(0.15)
+    scene.objects.set("teamSizeCounter", text)
 
     const numberOnBoard = gameState.board.playerTeam.length;
     const max = getNumberMaxAllowedOnBoard()

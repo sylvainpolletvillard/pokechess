@@ -50,6 +50,7 @@ const ROOM_TAUPIQUEUR_TRAINER: RoomArena = {
 export const CAVE_TAUPIQUEUR_OUEST: Destination = {
     ref: "CAVE_TAUPIQUEUR_OUEST",
     name: "Cave Taupiqueur (Entrée Ouest)",
+    subtext: "Voyage rapide",
     nextDestinations: {
         JADIELLE: [[0,1.5],[-2,0]],
     },
@@ -65,6 +66,7 @@ export const CAVE_TAUPIQUEUR_OUEST: Destination = {
 export const CAVE_TAUPIQUEUR_EST: Destination = {
     ref: "CAVE_TAUPIQUEUR_EST",
     name: "Cave Taupiqueur (Entrée Est)",
+    subtext: "Voyage rapide",
     nextDestinations: {
         CARMIN: [[0,1],[-3,0]],
         FALAISES: [[0,1],[2,0]]

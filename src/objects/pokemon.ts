@@ -103,8 +103,12 @@ export class PokemonOnBoard extends Pokemon {
         return 1
     }
 
-    get dodge(){
+    get dodge(): number {
         return clamp(this.buffs.dodge.reduce((factor, buff) => factor + buff(), 0), 0, 1)
+    }
+
+    get alive(): boolean {
+        return this.pv > 0
     }
 
     get team(): PokemonOnBoard[] {

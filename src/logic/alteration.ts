@@ -88,6 +88,7 @@ export function hasBlockingAlteration(pokemon: PokemonOnBoard){
 }
 
 export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, game: GameScene){
+    if(!pokemon.alive) return;
     const alterationToStack = pokemon.alterations.find(alt => alt.type === alteration.type)
     if(alterationToStack){        
         alterationToStack.stacks += alteration.stacks
