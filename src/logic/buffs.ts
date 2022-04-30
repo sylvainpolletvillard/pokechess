@@ -1,5 +1,5 @@
 import { Alteration, AlterationType } from "../data/alterations"
-import { TYPE_ELECTRIQUE, TYPE_FEU, TYPE_PSY, TYPE_ROCHE, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
+import { TYPE_ELECTRIQUE, TYPE_FEU, TYPE_INSECTE, TYPE_PSY, TYPE_ROCHE, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import { addAlteration } from "./alteration"
@@ -42,16 +42,7 @@ export function resetBuffs(): Buffs {
 export function applyBuffs(pokemon: PokemonOnBoard){
     const game = gameState.activeScene as GameScene    
     const alliances = getAlliancesState(pokemon.team)
-    pokemon.buffs = {
-        onHit: [],
-        onHitReceived: [],
-        auras: [],
-        clock: [],
-        attack: [],
-        defense: [],
-        speed: [],
-        dodge: []
-    }
+    pokemon.buffs = resetBuffs()
     
     alliances.forEach(allianceState => {
         // BONUS ALLIANCE FEU
@@ -103,7 +94,6 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         if(pokemon.hasType(TYPE_ROCHE) && allianceState.type === TYPE_ROCHE && allianceState.stepReached){
             pokemon.buffs.defense.push(() =>  0.2 * allianceState.stepReachedN)
         }
-
 
     })
 }

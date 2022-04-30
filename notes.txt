@@ -1,6 +1,5 @@
 TODO:
 - alliance sol (trigger  seuil hp)
-- alliance vol (envol assassin)
 
 auraEffects (recalculé toutes les X ms ?, custom function)
 - alliance combat => bonus attaque défense
@@ -10,8 +9,5 @@ auraEffects (recalculé toutes les X ms ?, custom function)
 clockEffects (relancé 1 fois par seconde)
 - alliance fée +1 pp
 - alliance plante regen hp
-
-xpGainEffects
-- alliance insecte
 
 - alliance eau dégats heurt et repoussement

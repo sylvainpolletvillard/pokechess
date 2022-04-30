@@ -15,9 +15,6 @@ import {Z} from "../data/depths";
 import {OWNER_PLAYER} from "../data/owners";
 import {updatePokemonBars} from "./pokemonBar";
 import {Buffs, resetBuffs} from "../logic/buffs";
-import { TYPE_INSECTE } from "../data/types";
-import { getAllianceState } from "../logic/player";
-import { xpToLevel } from "../logic/xp";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -44,7 +41,7 @@ export class PokemonOnBoard extends Pokemon {
         this.x = this.placementX
         this.y = this.placementY
         this.facingDirection = this.owner === 1 ? Direction.UP : Direction.DOWN
-        this.nextAction = { type: PokemonTypeAction.IDLE }        
+        this.nextAction = { type: PokemonTypeAction.IDLE }
         this.pv = this.maxPV
         this.pp = 0
         this.alterations = []
@@ -151,18 +148,7 @@ export class PokemonOnBoard extends Pokemon {
         this.y = this.placementY
         this.untargettable = false
         if(this.initialEntry) this.entry = this.initialEntry // revert morphing/evolution
-    }
-
-    gainXP(amount: number){
-        let buffFactor = 1
-        const bonusInsecte = getAllianceState(this.team, TYPE_INSECTE)
-        if(this.hasType(TYPE_INSECTE) && bonusInsecte.stepReached){
-            buffFactor += 0.2 * bonusInsecte.stepReachedN
-        }
-        this.xp += amount * buffFactor;
-        this.level = xpToLevel(this.xp);
-        return this.level
-    }
+    }    
 }
 
 export function makePokemonSprite(

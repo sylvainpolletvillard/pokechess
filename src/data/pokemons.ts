@@ -1,6 +1,6 @@
 import {nanoid} from "nanoid";
 
-import {PokemonType, TYPE_INSECTE} from "./types";
+import {PokemonType} from "./types";
 import {Skill} from "../logic/skill";
 import {POKEBALLS, POKEBALL_COSTS} from "./pokeballs";
 
@@ -157,9 +157,6 @@ import { MEWTWO } from "./pokemons/mewtwo";
 import { MEW } from "./pokemons/mew";
 import { levelToXP, xpToLevel } from "../logic/xp";
 import { PokemonOnBoard } from "../objects/pokemon";
-import { OWNER_PLAYER } from "./owners";
-import { gameState } from "../logic/gamestate";
-import { getAllianceState } from "../logic/player";
 
 
 export interface HoldableItem {
@@ -245,7 +242,8 @@ export class Pokemon {
 export enum PokemonTypeAction { 
     MOVE = "MOVE", 
     ATTACK = "ATTACK",
-    IDLE = "IDLE"
+    IDLE = "IDLE",
+    JUMP = "JUMP"
 }
 
 export interface PokemonAction {

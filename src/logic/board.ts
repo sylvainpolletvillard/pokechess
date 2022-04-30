@@ -1,7 +1,6 @@
 import {Player} from "./player";
 import {addToBox, addToTeam, removeFromTeam} from "./box";
 import GameScene from "../scenes/GameScene";
-import Phaser, { Game } from "phaser";
 import {displayPokemonInfo, getCurrentPokemonInfoDisplayed, hidePokemonInfo} from "../objects/pokemonInfoBox";
 import {GameStage, gameState} from "./gamestate";
 import {
@@ -26,6 +25,7 @@ import { hidePokemonReleaseInfo } from "../objects/pokemonReleaseBox";
 import { drawAlliancesInfo } from "../objects/alliancesInfo";
 import { updateFightButton } from "../objects/menuButtons";
 import { applyBuffs } from "./buffs";
+import { gainXP } from "./fight";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -102,10 +102,8 @@ export function getCoordsFromPosition(x: number, y:number): [number, number]{
     return [ Math.floor((x-64)/32), Math.floor((y-48)/32) ]
 }
 
-export function getPokemonOnTile(i: number, j:number){
-    const board = gameState.board
-    return [ ...board.playerTeam, ...board.otherTeam]
-        .find(pokemon => pokemon.x === i && pokemon.y === j)
+export function getPokemonOnTile(i: number, j:number){    
+    return gameState.allPokemonsOnBoard.find(pokemon => pokemon.x === i && pokemon.y === j)
 }
 
 export function launchPokeball(player: number, pokeballType: string, x:number, y:number, game: GameScene){
@@ -137,7 +135,8 @@ export function launchPokeball(player: number, pokeballType: string, x:number, y
 
 export function spawnPokemon(pokemon: PokemonOnBoard, game: GameScene){
     const [x,y] = pokemon.position;
-    applyBuffs(pokemon)
+    applyBuffs(pokemon)    
+
     launchPokeball(pokemon.owner, pokemon.pokeball, x, y, game)
         .then((pokeball) => {
             pokeball.play(`${pokemon.pokeball}_out`)
@@ -207,7 +206,7 @@ export async function capturePokemon(
                 `Votre ${myPokemon.entry.name} gagne ${pokemon.xp} XP`
             ])).then(() => {
                 const oldLvl = myPokemon.level
-                myPokemon.gainXP(pokemon.xp)
+                gainXP(myPokemon, pokemon.xp)
                 if(oldLvl !== myPokemon.level){
                     return startDialog([`${myPokemon.entry.name} passe au niveau ${myPokemon.level}`])
                 }

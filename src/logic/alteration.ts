@@ -9,23 +9,20 @@ import {applyDamage, calcBurnDamage, calcPoisonDamage, healPokemon, killPokemon}
 import {gameState} from "./gamestate"
 import {makeEffectSprite, sendPokemonFlying} from "./skill-anims"
 
-export function updateAlterations(pokemons: PokemonOnBoard[]){
-    const game = gameState.activeScene as GameScene;
-    pokemons.forEach((pokemon: PokemonOnBoard) => {
-        pokemon.alterations.forEach(alt => {
-            applyAlterationEffect(pokemon, alt)
-            if(!alt.keepStacks) alt.stacks--;
-            if(alt.stacks <= 0){
-                removeAlteration(pokemon, alt)                
-            } else if(alt.effectSprite){
-                const pokemonSprite = game.sprites.get(pokemon.uid)
-                if(pokemonSprite){
-                    alt.effectSprite.setPosition(pokemonSprite.x, pokemonSprite.y+(alt.effectDelta ?? 0))
-                } else {
-                    alt.effectSprite.destroy()
-                }                
-            }
-        })
+export function updateAlterations(pokemon: PokemonOnBoard, game: GameScene){
+    pokemon.alterations.forEach(alt => {
+        applyAlterationEffect(pokemon, alt)
+        if(!alt.keepStacks) alt.stacks--;
+        if(alt.stacks <= 0){
+            removeAlteration(pokemon, alt)                
+        } else if(alt.effectSprite){
+            const pokemonSprite = game.sprites.get(pokemon.uid)
+            if(pokemonSprite){
+                alt.effectSprite.setPosition(pokemonSprite.x, pokemonSprite.y+(alt.effectDelta ?? 0))
+            } else {
+                alt.effectSprite.destroy()
+            }                
+        }
     })
 }
 

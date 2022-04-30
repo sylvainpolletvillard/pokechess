@@ -1,6 +1,6 @@
-import {PokemonTypeAction} from "../data/pokemons";
+import {Pokemon, PokemonTypeAction} from "../data/pokemons";
 import {findClosestReachableTarget, findPathToTarget} from "./pathfinding";
-import {Board, getPositionFromCoords} from "./board";
+import {getPokemonOnTile, getPositionFromCoords} from "./board";
 import GameScene from "../scenes/GameScene";
 import {getDirection} from "./anims";
 import Phaser from "phaser";
@@ -12,8 +12,10 @@ import {triggerSkill} from "./skill-anims";
 import {Alteration, AlterationType} from "../data/alterations";
 import {clamp} from "../utils/helpers";
 import {recordLastSkillSeen} from "./specials";
-import {TABLE_TYPES, TYPE_NORMAL, TYPE_POISON, TYPE_ROCHE} from "../data/types";
+import {TABLE_TYPES, TYPE_INSECTE, TYPE_NORMAL, TYPE_POISON, TYPE_ROCHE, TYPE_VOL} from "../data/types";
 import {getAllianceState} from "./player";
+import { OWNER_PLAYER } from "../data/owners";
+import { xpToLevel } from "./xp";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
@@ -35,20 +37,24 @@ export function canPokemonMove(pokemon: PokemonOnBoard){
     )
 }
 
-export function updatePokemonAction(pokemon: PokemonOnBoard, board: Board, game: GameScene){
+export function updatePokemonAction(pokemon: PokemonOnBoard, game: GameScene){
+    if(pokemon.nextAction.timer) return; // waiting for end of previous move
+    
+    if(pokemon.nextAction.type === PokemonTypeAction.JUMP) return jump(pokemon, game)
+
     // update Pokémon action only when Pokémon is idle
     if(pokemon.nextAction.type !== PokemonTypeAction.IDLE || pokemon.pv <= 0) return;
 
-    if(hasBlockingAlteration(pokemon)) return;
+    if(hasBlockingAlteration(pokemon)) return;    
     
     const target = pokemon.nextAction.target || findClosestReachableTarget(pokemon)
     if(target == null || target.pv <= 0){
         pokemon.resetAction()
     } else {
         if(canPokemonAttack(pokemon, target)){
-            attackTarget(pokemon, target, board, game)
+            attackTarget(pokemon, target, game)
         } else if(canPokemonMove(pokemon)) {
-            moveToTarget(pokemon, target, board, game)
+            moveToTarget(pokemon, target, game)
         }
     }
 }
@@ -61,7 +67,7 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
     sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
 }
 
-export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, board: Board, game: GameScene){
+export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     const sprite = game.sprites.get(pokemon.uid)
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
@@ -96,11 +102,11 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
     }
 }
 
-export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, board: Board, game: GameScene){
+export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     const sprite = game.sprites.get(pokemon.uid)
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
-    const attackSpeed = 100 + (10000000 / (pokemon.speed+50)) / game.gameSpeed
+    const attackSpeed = 100 + (10000000 / (pokemon.speed+50)) / game.gameSpeed    
     pokemon.nextAction = { type: PokemonTypeAction.ATTACK, target }; // prevent changing target
     faceTarget(pokemon, target, game);
     pokemon.nextAction.timer = game.time.addEvent({
@@ -125,6 +131,66 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, bo
             triggerSkill(skill, pokemon, target, game)
         }
     })
+}
+
+export function initJumps(){
+    const reservedTiles = new Set()
+    for (let pokemon of gameState.allPokemonsOnBoard) {
+        if(!pokemon.hasType(TYPE_VOL)) continue;
+         // find coordinates where to jump
+        let i = pokemon.placementX, j = pokemon.owner === OWNER_PLAYER ? 0 : 7; // ideal tile to jump
+        let dx = 1 
+        let dy = 0
+        while(getPokemonOnTile(i,j) != null || reservedTiles.has([i,j].join(","))){
+            i += dx;
+            dx = -1 * (dx+1) // +1 , -2, +3, -4 ...
+            if(Math.abs(dx) > 8){ // row is full, try another row              
+                j = pokemon.owner === OWNER_PLAYER ? dy : 7 - dy
+                i = pokemon.placementX
+                dx = 1
+                dy++;
+            }
+            if(dy > 4){
+                // everything is full, cancel jump
+                return;
+            }        
+        }
+
+        console.log(`Init jump of ${pokemon.entry.name} on ${[i,j]}`)
+        pokemon.nextAction = { type: PokemonTypeAction.JUMP, path: [[i,j]] };
+        reservedTiles.add([i,j].join(","))
+    }
+}
+
+export function jump(pokemon: PokemonOnBoard, game: GameScene){
+    if(!pokemon.nextAction || !pokemon.nextAction.path) return;
+    const sprite = game.sprites.get(pokemon.uid)
+    if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
+
+    const [nextX,nextY] = pokemon.nextAction.path[0]
+    const [sceneX,sceneY] = getPositionFromCoords(nextX,nextY);
+    pokemon.facingDirection = getDirection(nextX - pokemon.x, nextY - pokemon.y)
+    sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
+    pokemon.untargettable = true;
+    pokemon.x = nextX;
+    pokemon.y = nextY;
+    const duration = 1000        
+    game.tweens.add({
+        targets: sprite,
+        x: { value: sceneX, duration, ease: Phaser.Math.Easing.Circular.Out },
+        y: { value: sceneY, duration, ease: Phaser.Math.Easing.Circular.Out },
+        scale: { value: 1.4, duration: duration/2, ease: Phaser.Math.Easing.Circular.Out, yoyo: true }
+    });
+    pokemon.nextAction = { 
+        type: PokemonTypeAction.IDLE,
+        timer: game.time.addEvent({
+            delay: duration,
+            callback: () => {             
+                pokemon.untargettable = false
+                pokemon.resetAction()
+            }
+        })
+    }
 }
 
 export function testPrecision(attacker: PokemonOnBoard, target: PokemonOnBoard, skill: Skill){    
@@ -241,4 +307,17 @@ export function sendBackToPokeball(pokemon: PokemonOnBoard){
 export function healPokemon(pokemon: PokemonOnBoard, healAmount: number){
     if(pokemon.hasAlteration(AlterationType.BRULURE)) healAmount *= 0.5 // les brûlures réduisent de 50% l'efficacité des soins
     pokemon.pv = Math.min(pokemon.maxPV, pokemon.pv + healAmount)
+}
+
+export function gainXP(pokemon: Pokemon, amount: number){    
+    let buffFactor = 1
+    const team = pokemon.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
+    const bonusInsecte = getAllianceState(team, TYPE_INSECTE)
+    if(pokemon.hasType(TYPE_INSECTE) && bonusInsecte.stepReached){
+        buffFactor += 0.2 * bonusInsecte.stepReachedN
+    }
+
+    pokemon.xp += amount * buffFactor;
+    pokemon.level = xpToLevel(pokemon.xp);
+    return pokemon.level
 }

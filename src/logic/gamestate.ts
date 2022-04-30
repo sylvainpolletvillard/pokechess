@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import {Destination, RoomArena, RoomTutorial, RoomType} from "./destination";
 import {Player} from "./player";
 import {Board, calcXpBoard, clearPlacement, setupPlayerIdleBoard, spawnPokemon} from "./board";
-import {updatePokemonAction} from "./fight";
+import {gainXP, initJumps, updatePokemonAction} from "./fight";
 import GameScene from "../scenes/GameScene";
 import {closeMenu, Menu} from "../objects/menu";
 import {Dialog, DialogLine, startDialog} from "./dialog";
@@ -19,6 +19,7 @@ import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
 import { updateAlterations } from "./alteration";
 import {loadSave, saveState} from "./save";
 import { updateFightButton } from "../objects/menuButtons";
+import { PokemonOnBoard } from "../objects/pokemon";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -80,6 +81,10 @@ export class GameState {
     get worldLevel(): number {
         // should be between 0 and 200, with max world level reached at 100
         return this.player.badges.length*10 + this.player.averagePokemonLevel 
+    }
+
+    get allPokemonsOnBoard(): PokemonOnBoard[] {
+        return [...gameState.board.playerTeam, ...gameState.board.otherTeam]
     }
 
     hasBadge(badge: Badge){
@@ -152,6 +157,9 @@ export class GameState {
         clearPlacement(game)
         gameState.board.xpEarned = calcXpBoard()
         this.stage = GameStage.LAUNCH
+
+        initJumps()        
+
         game.time.addEvent({
             delay: 400,
             callback: () => {
@@ -185,14 +193,11 @@ export class GameState {
     loopFight(){
         const game = gameState.activeScene as GameScene;
         if(this.stage === GameStage.FIGHT){
-            for (let pokemon of this.board.playerTeam) {
-                updatePokemonAction(pokemon, this.board, game)
-            }
-            for (let pokemon of this.board.otherTeam) {
-                updatePokemonAction(pokemon, this.board, game)
-            }
+            gameState.allPokemonsOnBoard.forEach(pokemon => {
+                updatePokemonAction(pokemon, game)
+                updateAlterations(pokemon, game);
+            })
             checkProjectilesImpact(game)
-            updateAlterations([...gameState.board.playerTeam, ...gameState.board.otherTeam]);
             updatePokemonInfoBox()
         }
     }
@@ -223,11 +228,11 @@ export class GameState {
             )
         }
 
-        [...gameState.board.playerTeam, ...gameState.board.otherTeam].forEach(pokemon => pokemon.resetAfterFight())
+        gameState.allPokemonsOnBoard.forEach(pokemon => pokemon.resetAfterFight())
 
         gameState.board.playerTeam.forEach(pokemon => {
             const oldLvl = pokemon.level
-            pokemon.gainXP(xpPerPokemon)
+            gainXP(pokemon, xpPerPokemon)
             if(oldLvl !== pokemon.level) lines.push(`${pokemon.entry.name} passe au niveau ${pokemon.level}`)
         })
 

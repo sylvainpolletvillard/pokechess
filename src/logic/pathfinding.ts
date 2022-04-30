@@ -24,7 +24,7 @@ export function findClosestReachableTarget(pkm: PokemonOnBoard): PokemonOnBoard 
 export function findPathToTarget(pkm: PokemonOnBoard, target: PokemonOnBoard, board: Board): PF.path {
     //Walkability matrix. Zero is walkable, One is not
     const grid = new PF.Grid(BOARD_WIDTH, BOARD_HEIGHT);
-    const solidEntities = [ ...board.playerTeam, ...board.otherTeam ]
+    const solidEntities = gameState.allPokemonsOnBoard
     for(let entity of solidEntities){
         if(entity !== pkm && entity !== target){
             grid.setWalkableAt(entity.x, entity.y, false);
