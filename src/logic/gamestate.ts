@@ -79,8 +79,8 @@ export class GameState {
     }
 
     get worldLevel(): number {
-        // should be between 0 and 200, with max world level reached at 100
-        return this.player.badges.length*10 + this.player.averagePokemonLevel 
+        // should be between 0 and 150, with max world level reached at 100
+        return this.player.badges.length*5 + this.player.averagePokemonLevel 
     }
 
     get allPokemonsOnBoard(): PokemonOnBoard[] {
@@ -107,22 +107,22 @@ export class GameState {
         // QUICK TESTING        
         /*
         gameState.currentDestination = FORET_JADE
-        gameState.player.team.push(
-            new PokemonOnBoard( new Pokemon(MYSTHERBE, 1, 20), 4 ,6)
-        )
+        gameState.player.badges = [BADGE_AME.ref,BADGE_AME.ref,BADGE_AME.ref,BADGE_AME.ref]
+ 
         gameState.player.inventory[ITEM_POKEBALL.ref] = 20
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 
         gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(ELECTHOR, 1, 8), 3 ,6),
-            new PokemonOnBoard( new Pokemon(MAGICARPE, 1, 1), 2 ,7),
-            new PokemonOnBoard( new Pokemon(MAGICARPE, 1, 1), 1 ,7),
-            new PokemonOnBoard( new Pokemon(MAGICARPE, 1, 1), 5 ,7),
-            new PokemonOnBoard( new Pokemon(MAGICARPE, 1, 1), 4 ,7),
-            new PokemonOnBoard( new Pokemon(MAGICARPE, 1, 1), 3 ,7),
-        ]*/
+            new PokemonOnBoard( new Pokemon(RACAILLOU, 1, 32), 3 ,6),
+            new PokemonOnBoard( new Pokemon(TRIOPIKEUR, 1, 32), 2 ,7),
+            new PokemonOnBoard( new Pokemon(GRAVALANCH, 1, 32), 1 ,7),
+            new PokemonOnBoard( new Pokemon(SABELETTE, 1, 32), 5 ,7),
+            new PokemonOnBoard( new Pokemon(TAUPIQUEUR, 1, 32), 4 ,7),
+            new PokemonOnBoard( new Pokemon(RHINOCORNE, 1, 32), 3 ,7),
+        ]
+        */
 
         if(this.currentRoomIndex >= this.roomOrder.length) {
             this.activeScene!.scene.start("MapScene")

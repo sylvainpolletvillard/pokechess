@@ -18,7 +18,7 @@ import { NOSFERAPTI } from "../data/pokemons/nosferapti";
 export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }){
     const types = Object.keys(typesFactors)
 
-    const numberToSpawn = Math.min(8, gameState.player.teamSize + 1)
+    const numberToSpawn = clamp(gameState.player.teamSize, 3, 8)
     
     const sumFactors = Object.values(typesFactors).reduce((a,b) => a+b, 0)
 
@@ -55,7 +55,7 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
     const team: PokemonOnBoard[] = []
 
     const numberToSpawn = Math.min( 
-        clamp(Math.floor(gameState.worldLevel / 12), 3, 8 ),
+        clamp(Math.floor(gameState.worldLevel / 15), 3, 8 ),
         positions.length,
         pokemons.length
     )

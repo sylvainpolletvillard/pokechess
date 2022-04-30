@@ -139,11 +139,14 @@ export function initJumps(){
         if(!pokemon.hasType(TYPE_VOL)) continue;
          // find coordinates where to jump
         let i = pokemon.placementX, j = pokemon.owner === OWNER_PLAYER ? 0 : 7; // ideal tile to jump
-        let dx = 1 
+        let dx = 1
         let dy = 0
         while(getPokemonOnTile(i,j) != null || reservedTiles.has([i,j].join(","))){
-            i += dx;
-            dx = -1 * (dx+1) // +1 , -2, +3, -4 ...
+            do {
+                i += dx;
+                dx = -1 * (Math.abs(dx)+1) * Math.sign(dx) // +1 , -2, +3, -4 ...
+            } while((i<0 || i>=8) && Math.abs(dx) <= 8)
+            
             if(Math.abs(dx) > 8){ // row is full, try another row              
                 j = pokemon.owner === OWNER_PLAYER ? dy : 7 - dy
                 i = pokemon.placementX

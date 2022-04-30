@@ -131,9 +131,9 @@ const BONUS_ALLIANCE_PSY: AllianceBonus =  {
 const BONUS_ALLIANCE_ROCHE: AllianceBonus =  {
     description: "Les Pokémons Roche ont une grosse défense et réduisent les dégâts reçus liés aux altérations (poison, brûlure).",
     steps: [
-        { numberRequired: 2, ref: "ROCHE2", description: "+20% défense ; -20% dégâts d'altération reçus" },
-        { numberRequired: 4, ref: "ROCHE4", description: "+40% défense ; -40% dégâts d'altération reçus" },
-        { numberRequired: 6, ref: "ROCHE6", description: "+60% défense ; -60% dégâts d'altération reçus" }
+        { numberRequired: 2, ref: "ROCHE2", description: "+20% défense ; -20% altérations" },
+        { numberRequired: 4, ref: "ROCHE4", description: "+40% défense ; -40% altérations" },
+        { numberRequired: 6, ref: "ROCHE6", description: "+60% défense ; -60% altérations" }
     ]
 }
 
