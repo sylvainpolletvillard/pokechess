@@ -48,8 +48,7 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
     if(effect.position === "source" || effect.position === "parabolic_to_target"){
         [x,y] = attacker.position
         dx = Math.round(Math.cos(angle) * (effect.delta ?? 8))
-        dy = Math.round(Math.sin(angle) * (effect.delta ?? 8))
-        angle += Math.PI
+        dy = Math.round(Math.sin(angle) * (effect.delta ?? 8))        
     } else if(effect.position === "target" || effect.position === "target_to_source"){
         dx = Math.round(Math.cos(angle+Math.PI) * (effect.delta ?? 8))
         dy = Math.round(Math.sin(angle+Math.PI) * (effect.delta ?? 8))
@@ -63,7 +62,7 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
     const effectSprite = makeEffectSprite(effect, x + dx, y + dy, game)
 
     if(skill.rotateSprite){
-        effectSprite.rotation = angle + Math.PI/2;
+        effectSprite.rotation = angle;
     }
 
     if(effect.position === "target_to_source"){

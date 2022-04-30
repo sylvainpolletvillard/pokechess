@@ -177,9 +177,9 @@ export function jump(pokemon: PokemonOnBoard, game: GameScene){
     const duration = 1000        
     game.tweens.add({
         targets: sprite,
-        x: { value: sceneX, duration, ease: Phaser.Math.Easing.Circular.Out },
-        y: { value: sceneY, duration, ease: Phaser.Math.Easing.Circular.Out },
-        scale: { value: 1.4, duration: duration/2, ease: Phaser.Math.Easing.Circular.Out, yoyo: true }
+        x: { value: sceneX, duration, ease: Phaser.Math.Easing.Circular.InOut },
+        y: { value: sceneY, duration, ease: Phaser.Math.Easing.Circular.InOut },
+        scale: { value: 1.25, duration: duration/2, ease: Phaser.Math.Easing.Circular.InOut, yoyo: true }
     });
     pokemon.nextAction = { 
         type: PokemonTypeAction.IDLE,
