@@ -1,9 +1,9 @@
 import { Alteration, AlterationType } from "../data/alterations"
-import { TYPE_ELECTRIQUE, TYPE_FEU, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
+import { TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import { addAlteration } from "./alteration"
-import { applyDamage } from "./fight"
+import { applyDamage, healPokemon } from "./fight"
 import { gameState } from "./gamestate"
 import { getAlliancesState } from "./player"
 import { tunnel } from "./specials"
@@ -15,9 +15,9 @@ export type OnHitReceivedEffect = {
     count?: number;
 }
         
-export type AuraEffect = () => {}
+export type AuraEffect = () => void
 
-export type ClockEffect = () => {}
+export type ClockEffect = () => void
 
 export interface Buffs {    
     attack: (() => number)[],
@@ -111,6 +111,22 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             }
             buffTunnel.count = allianceState.stepReachedN
             pokemon.buffs.onHitReceived.push(buffTunnel)
+        }
+
+        // BONUS ALLIANCE FEE
+        if(allianceState.type === TYPE_FEE && allianceState.stepReached){
+            pokemon.buffs.clock.push(() => {
+                pokemon.pp = Math.min(pokemon.entry.maxPP, pokemon.pp + allianceState.stepReachedN)
+                //console.log(`Buff FEE: +${allianceState.stepReachedN}PP sur ${pokemon.entry.name}`)
+            })
+        }
+
+        // BONUS ALLIANCE PLANTE
+        if(pokemon.hasType(TYPE_PLANTE) && allianceState.type === TYPE_PLANTE && allianceState.stepReached){
+            pokemon.buffs.clock.push(() => {
+                healPokemon(pokemon, (2/100)*allianceState.stepReachedN*pokemon.maxPV)
+                //console.log(`Buff PLANTE: +${(2/100)*allianceState.stepReachedN*pokemon.maxPV}PV sur ${pokemon.entry.name}`)
+            })
         }
 
     })

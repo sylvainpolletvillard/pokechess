@@ -55,7 +55,7 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
     const team: PokemonOnBoard[] = []
 
     const numberToSpawn = Math.min( 
-        clamp(Math.floor(gameState.worldLevel / 15), 3, 8 ),
+        clamp(Math.floor(gameState.worldLevel / 12), 3, 8 ),
         positions.length,
         pokemons.length
     )
@@ -85,7 +85,7 @@ export function spawnTrainerTeam(pokemons: PokemonEntry[]) {
     const team: PokemonOnBoard[] = []
 
     const numberToSpawn = Math.min(
-        clamp(Math.floor(gameState.worldLevel / 15), 2, 8 ),
+        clamp(Math.floor(gameState.worldLevel / 12), 2, 8 ),
         pokemons.length
     )
 

@@ -39,6 +39,7 @@ export class GameState {
     board: Board;
     stage: GameStage;
     fightTimer?: Phaser.Time.TimerEvent;
+    fightClock?: Phaser.Time.TimerEvent;
     activeScene: MyScene | null;
     activeMenu: Menu | null;
     activeDialog: Dialog | null;
@@ -106,7 +107,7 @@ export class GameState {
 
         // QUICK TESTING        
         /*
-        gameState.currentDestination = FORET_JADE
+        gameState.currentDestination = AZURIA
         gameState.player.badges = [BADGE_AME.ref,BADGE_AME.ref,BADGE_AME.ref,BADGE_AME.ref]
  
         gameState.player.inventory[ITEM_POKEBALL.ref] = 20
@@ -115,12 +116,11 @@ export class GameState {
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 
         gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(RACAILLOU, 1, 32), 3 ,6),
-            new PokemonOnBoard( new Pokemon(TRIOPIKEUR, 1, 32), 2 ,7),
-            new PokemonOnBoard( new Pokemon(GRAVALANCH, 1, 32), 1 ,7),
-            new PokemonOnBoard( new Pokemon(SABELETTE, 1, 32), 5 ,7),
-            new PokemonOnBoard( new Pokemon(TAUPIQUEUR, 1, 32), 4 ,7),
-            new PokemonOnBoard( new Pokemon(RHINOCORNE, 1, 32), 3 ,7),
+            new PokemonOnBoard( new Pokemon(HERBIZARRE, 1, 22), 3 ,6),
+            new PokemonOnBoard( new Pokemon(MELODELFE, 1, 22), 2 ,7),
+            new PokemonOnBoard( new Pokemon(ORTIDE, 1, 22), 1 ,7),
+            new PokemonOnBoard( new Pokemon(BOUSTIFLOR, 1, 22), 5 ,7),
+            new PokemonOnBoard( new Pokemon(NOADKOKO, 1, 22), 4 ,7),
         ]
         */
 
@@ -186,6 +186,12 @@ export class GameState {
                     callbackScope: this,
                     loop: true
                 });
+                this.fightClock = game.time.addEvent({
+                    delay: 1000,
+                    callback: this.onClockTick,
+                    callbackScope: this,
+                    loop: true
+                });
             }
         })
     }
@@ -205,6 +211,9 @@ export class GameState {
     endFight(loser: number){        
         const game = gameState.activeScene as GameScene;
         this.stage = GameStage.ENDED;
+        game.time.removeEvent(this.fightTimer!)
+        game.time.removeEvent(this.fightClock!)
+
         const player = game.sprites.get("player")
         const hasWon = (loser !== 1)
         if(hasWon) {
@@ -253,6 +262,9 @@ export class GameState {
     endCapture(){
         const game = gameState.activeScene as GameScene;
         this.stage = GameStage.ENDED;
+        game.time.removeEvent(this.fightTimer!)
+        game.time.removeEvent(this.fightClock!)
+
         const player = game.sprites.get("player")
         player && player.play("trainer_victory")
         updateFightButton()
@@ -281,6 +293,12 @@ export class GameState {
         } else {
             gameState.goToNextRoom()
         }
+    }
+
+    onClockTick(){
+        gameState.allPokemonsOnBoard.forEach(pokemon => {
+            pokemon.buffs.clock.forEach(buff => buff())
+        })
     }
 }
 
