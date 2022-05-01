@@ -1,6 +1,6 @@
 import {Alteration, AlterationType} from "../data/alterations"
 import {EFFECTS} from "../data/effects"
-import { TYPE_EAU } from "../data/types"
+import { TYPE_COMBAT, TYPE_EAU, TYPE_FEU, TYPE_PSY, TYPE_SPECTRE } from "../data/types"
 import {PokemonOnBoard} from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import {Direction} from "../utils/directions"
@@ -113,17 +113,20 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 break;
 
             case AlterationType.GEL:
+                if(pokemon.hasType(TYPE_FEU)) break; // Pokémon Feu insensible au Gel
                 alteration.effectSprite = makeEffectSprite(EFFECTS.FROZEN, targetSprite.x, targetSprite.y, game)
                 pokemon.makeUntargettable(alteration.stacks * game.gameSpeed)
                 //game.tweens.add({ targets: alteration.effectSprite, alpha: EFFECTS.FROZEN.opacity, duration: 250, easing: "Linear" })
                 break;
 
             case AlterationType.SOMMEIL:
+                if(pokemon.hasType(TYPE_SPECTRE)) break; // Pokémon Spectre insensible au sommeil
                 pokemon.resetAction()
                 alteration.effectSprite = makeEffectSprite(EFFECTS.SOMMEIL, targetSprite.x, targetSprite.y, game)
                 break;
 
             case AlterationType.CONFUSION:
+                if(pokemon.hasType(TYPE_PSY)) break; // Pokémon Psy insensible à la confusion
                 pokemon.resetTarget()
                 alteration.effectSprite = makeEffectSprite(EFFECTS.CONFUSION, targetSprite.x, targetSprite.y, game)
                 break;
@@ -133,6 +136,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 break;
 
             case AlterationType.PEUR:
+                if(pokemon.hasType(TYPE_COMBAT)) break; // Pokémon Combat insensible à la peur
                 pokemon.resetAction()
                 alteration.effectSprite = makeEffectSprite(EFFECTS.PEUR, targetSprite.x, targetSprite.y, game)
                 break;

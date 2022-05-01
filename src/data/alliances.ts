@@ -21,11 +21,11 @@ export type AllianceState = {
 }
 
 const BONUS_ALLIANCE_COMBAT: AllianceBonus =  {
-    description: "Les Pokémon Combat voient leur attaque et défense augmenter en fonction du nombre d'adversaires les ciblant.",
+    description: "Les Pokémon Combat ne connaissent pas la peur et ont leur stats augmentées avec le nombre d'adversaires les ciblant.",
     steps: [
         { numberRequired: 2, ref: "COMBAT2", description: "+2 attaque et défense par adversaire" },
         { numberRequired: 4, ref: "COMBAT4", description: "+5 attaque et défense par adversaire" },
-        { numberRequired: 6, ref: "COMBAT6", description: "+10 attaque et défense par adversaire" }
+        { numberRequired: 6, ref: "COMBAT6", description: "+8 attaque et défense par adversaire" }
     ]
 }
 
@@ -75,11 +75,11 @@ const BONUS_ALLIANCE_FEU: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_GLACE: AllianceBonus =  {
-    description: "Les Pokémons Glace sont entourés d'une aura de gel qui ralentit les adversaires au contact.",
+    description: "Les Pokémons Glace sont entourés d'une aura de gel qui ralentit les adversaires des cases adjacentes.",
     steps: [
-        { numberRequired: 2, ref: "GLACE2", description: "-20% de vitesse aux adversaires adjacents" },
-        { numberRequired: 3, ref: "GLACE3", description: "-30% de vitesse aux adversaires adjacents" },
-        { numberRequired: 4, ref: "GLACE4", description: "-40% de vitesse aux adversaires adjacents" }
+        { numberRequired: 2, ref: "GLACE2", description: "-20% vitesse" },
+        { numberRequired: 3, ref: "GLACE3", description: "-30% vitesse" },
+        { numberRequired: 4, ref: "GLACE4", description: "-40% vitesse" }
     ]
 }
 
@@ -147,7 +147,7 @@ const BONUS_ALLIANCE_SOL: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_SPECTRE: AllianceBonus =  {
-    description: "Les Pokémons Spectre sont insensibles aux attaques de type Normal et à l'altération Sommeil. Leurs attaques effrayent leur cible, réduisant leur attaque temporairement.",
+    description: "Les Pokémons Spectre ne peuvent pas être endormis et leurs attaques effrayent leur cible, réduisant leur attaque.",
     steps: [
         { numberRequired: 2, ref: "SPECTRE2", description: "2 stacks de Peur par attaque" },
         { numberRequired: 4, ref: "SPECTRE4", description: "4 stacks de Peur par attaque" },

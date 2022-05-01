@@ -1,8 +1,11 @@
 import { Alteration, AlterationType } from "../data/alterations"
-import { TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
+import { OWNER_PLAYER } from "../data/owners"
+import { TYPE_COMBAT, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
+import { removeInArray } from "../utils/helpers"
 import { addAlteration } from "./alteration"
+import { getPokemonOnTile } from "./board"
 import { applyDamage, healPokemon } from "./fight"
 import { gameState } from "./gamestate"
 import { getAlliancesState } from "./player"
@@ -14,9 +17,6 @@ export type OnHitReceivedEffect = {
     (params: { damage: number , attacker: PokemonOnBoard}): void
     count?: number;
 }
-        
-export type AuraEffect = () => void
-
 export type ClockEffect = () => void
 
 export interface Buffs {    
@@ -26,7 +26,6 @@ export interface Buffs {
     dodge: (() => number)[],
     onHit: OnHitEffect[],
     onHitReceived: OnHitReceivedEffect[],
-    auras: AuraEffect[],
     clock: ClockEffect[]
 }
 
@@ -34,7 +33,6 @@ export function resetBuffs(): Buffs {
     return {
         onHit: [],
         onHitReceived: [],
-        auras: [],
         clock: [],
         attack: [],
         defense: [],
@@ -126,6 +124,35 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             pokemon.buffs.clock.push(() => {
                 healPokemon(pokemon, (2/100)*allianceState.stepReachedN*pokemon.maxPV)
                 //console.log(`Buff PLANTE: +${(2/100)*allianceState.stepReachedN*pokemon.maxPV}PV sur ${pokemon.entry.name}`)
+            })
+        }
+
+        // BONUS ALLIANCE COMBAT
+        if(pokemon.hasType(TYPE_COMBAT) && allianceState.type === TYPE_COMBAT && allianceState.stepReached){
+            function getNumberOfOpponentsTargetingMe(){                
+                return pokemon.opponents.filter(p => p.nextAction.target === pokemon).length                
+            }
+            const factors = [2,5,8]
+            pokemon.buffs.attack.push(() => getNumberOfOpponentsTargetingMe() * factors[allianceState.stepReachedN-1])
+            pokemon.buffs.defense.push(() => getNumberOfOpponentsTargetingMe() * factors[allianceState.stepReachedN-1])
+        }
+
+        // BONUS ALLIANCE GLACE
+        if(pokemon.hasType(TYPE_GLACE) && allianceState.type === TYPE_GLACE && allianceState.stepReached){
+            pokemon.buffs.clock.push(() => {
+                let [i,j] = [pokemon.x, pokemon.y]
+                const tiles = [
+                    [i-1, j-1], [i, j-1], [i+1, j-1],
+                    [i-1, j], [i+1, j],
+                    [i-1, j+1], [i, j+1], [i+1, j+1]
+                ].filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
+                const affected = tiles.map(([i,j]) => getPokemonOnTile(i,j)).filter(p => p != null && p.owner !== OWNER_PLAYER) as PokemonOnBoard[]
+                affected.forEach(opponent => {
+                    const factor = [-0.2, -0.3, -0.4]
+                    const buff = () => factor[allianceState.stepReachedN] * pokemon.speed
+                    opponent.buffs.speed.push(buff)
+                    setTimeout(() => removeInArray(opponent.buffs.speed, buff), 1000)
+                })
             })
         }
 

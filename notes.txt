@@ -1,13 +1,4 @@
 TODO:
-- alliance sol (trigger  seuil hp)
-
 auraEffects (recalculé toutes les X ms ?, custom function)
-- alliance combat => bonus attaque défense
 - alliance dragon => bonus hp atatque def vitesse
-- alliance glace => malus vitesse
-
-clockEffects (relancé 1 fois par seconde)
-- alliance fée +1 pp
-- alliance plante regen hp
-
 - alliance eau dégats heurt et repoussement
