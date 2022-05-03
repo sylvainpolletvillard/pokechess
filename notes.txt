@@ -1,4 +1,2 @@
 TODO:
-auraEffects (recalculé toutes les X ms ?, custom function)
-- alliance dragon => bonus hp atatque def vitesse
 - alliance eau dégats heurt et repoussement

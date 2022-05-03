@@ -1,6 +1,6 @@
 import { Alteration, AlterationType } from "../data/alterations"
 import { OWNER_PLAYER } from "../data/owners"
-import { TYPE_COMBAT, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
+import { TYPE_COMBAT, TYPE_DRAGON, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import { removeInArray } from "../utils/helpers"
@@ -154,6 +154,14 @@ export function applyBuffs(pokemon: PokemonOnBoard){
                     setTimeout(() => removeInArray(opponent.buffs.speed, buff), 1000)
                 })
             })
+        }
+
+        // BONUS ALLIANCE DRAGON
+        if(pokemon.hasType(TYPE_DRAGON) && allianceState.type === TYPE_DRAGON && allianceState.stepReached){
+            const isLastDragon = () => pokemon.team.length === 1;
+            pokemon.buffs.attack.push(() => isLastDragon() ? 0.2 * allianceState.stepReachedN * pokemon.attack : 0);
+            pokemon.buffs.defense.push(() => isLastDragon() ? 0.2 * allianceState.stepReachedN * pokemon.defense : 0);
+            pokemon.buffs.speed.push(() => isLastDragon() ? 0.2 * allianceState.stepReachedN * pokemon.speed : 0);            
         }
 
     })

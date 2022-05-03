@@ -32,9 +32,9 @@ const BONUS_ALLIANCE_COMBAT: AllianceBonus =  {
 const BONUS_ALLIANCE_DRAGON: AllianceBonus =  {
     description: "Quand un Pokémon Dragon est le dernier Pokémon de l'équipe sur le plateau, il gagne de gros bonus à toutes ses statistiques.",
     steps: [
-        { numberRequired: 1, ref: "DRAGON1", description: "+10% de HP ; +20% aux stats du dernier dragon" },
-        { numberRequired: 2, ref: "DRAGON2", description: "+20% de HP ; +40% aux stats du dernier dragon" },
-        { numberRequired: 3, ref: "DRAGON3", description: "+30% de HP ; +50% aux stats du dernier dragon" }
+        { numberRequired: 1, ref: "DRAGON1", description: "+20% aux stats du dernier dragon" },
+        { numberRequired: 2, ref: "DRAGON2", description: "+40% aux stats du dernier dragon" },
+        { numberRequired: 3, ref: "DRAGON3", description: "+60% aux stats du dernier dragon" }
     ]
 }
 
