@@ -3,12 +3,16 @@ import {PokemonOnBoard} from "../objects/pokemon";
 import GameScene from "../scenes/GameScene";
 import {wait} from "../utils/helpers";
 import {addAlteration} from "./alteration";
-import {getPokemonOnTile} from "./board";
+import {getPokemonOnTile, getPositionFromCoords, isOnBoard} from "./board";
 import {applyDamage, calcDamage, calcSelfDamage, testPrecision} from "./fight";
 import {launchProjectile} from "./projectile";
 import {AOESkill, HitSkill, ProjectileSkill, Skill, SkillBehavior, SpecialSkill} from "./skill";
 import {triggerSpecial} from "./specials";
 import {Effect} from "../data/effects";
+import { getDeltaFromDirection, getDirectionFromAngle, getDirectionFromVector } from "../utils/directions";
+import { getAllianceState } from "./player";
+import { TYPE_EAU } from "../data/types";
+import { PokemonTypeAction } from "../data/pokemons";
 
 export function triggerSkill(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     if(skill.behavior === SkillBehavior.DIRECT_HIT){
@@ -118,6 +122,11 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
             })
         })
     }
+
+    if(skill.knockback){
+        let knockbackAngle = Math.atan2(attacker.y - target.y, target.x - attacker.x)
+        knockback(target, knockbackAngle, game)
+    }
 }
 
 export function renderDirectHitAttack(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
@@ -151,7 +160,8 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
     renderSkillEffect(skill, attacker, target, game)
     if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)
 
-    const tiles = skill.getTilesImpacted(attacker, target) // important: retrieve the impacted tiles at the BEGINNING of the anim
+     // important: retrieve the impacted tiles at the BEGINNING of the anim
+    const tiles = skill.getTilesImpacted(attacker, target).filter(([i,j]) => isOnBoard(i,j))
     
     wait(skill.hitDelay ?? 0).then(() => {
         tiles.forEach(([i,j]) => {
@@ -215,4 +225,55 @@ export function sendPokemonCharge(attacker: PokemonOnBoard, target: PokemonOnBoa
             })
         }
     });
+}
+
+export function knockback(pokemon: PokemonOnBoard, angle: number, game: GameScene){    
+    const sprite = game.sprites.get(pokemon.uid)
+    let knockbackStrength = getAllianceState(pokemon.team, TYPE_EAU).stepReachedN
+
+    if(!sprite || knockbackStrength === 0 || pokemon.untargettable) return;
+
+    const direction = getDirectionFromAngle(angle)
+    const [dx,dy] = getDeltaFromDirection(direction)
+    let { x, y } = pokemon
+    let numberTilesTravelled = 0
+    
+    while(isOnBoard(x+dx, y+dy) && getPokemonOnTile(x+dx, y+dy) == null && knockbackStrength > 0){
+        x += dx;
+        y += dy;
+        knockbackStrength--;
+        numberTilesTravelled++;
+    }
+    console.log(`Knockback on ${pokemon.entry.name}: ${numberTilesTravelled}`)
+    if(numberTilesTravelled === 0) return;
+
+    const knockbackDuration = numberTilesTravelled * 500
+    pokemon.makeUntargettable(knockbackDuration);
+    freezePokemonDuringMs(pokemon, knockbackDuration, game);
+    pokemon.x = x;
+    pokemon.y = y;
+
+    let [spriteX,spriteY] = getPositionFromCoords(x,y)
+    game.tweens.add({
+        targets: sprite, 
+        x: spriteX,
+        y: spriteY,
+        duration: knockbackDuration,
+        ease: Phaser.Math.Easing.Expo.Out,        
+        onComplete(){
+            if(pokemon.alive){                
+                pokemon.resetAction()
+            }            
+        }
+    });
+}
+
+export function freezePokemonDuringMs(pokemon: PokemonOnBoard, durationInMs: number, game: GameScene){    
+    pokemon.resetAction({ 
+        type: PokemonTypeAction.IDLE,
+        timer: game.time.addEvent({
+            delay: durationInMs,
+            callback: () => pokemon.resetAction()
+        })
+    })
 }

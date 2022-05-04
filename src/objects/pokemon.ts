@@ -41,7 +41,7 @@ export class PokemonOnBoard extends Pokemon {
         this.x = this.placementX
         this.y = this.placementY
         this.facingDirection = this.owner === 1 ? Direction.UP : Direction.DOWN
-        this.nextAction = { type: PokemonTypeAction.IDLE }
+        this.resetAction({ type: PokemonTypeAction.IDLE })
         this.pv = this.maxPV
         this.pp = 0
         this.alterations = []
@@ -130,21 +130,21 @@ export class PokemonOnBoard extends Pokemon {
         return this.alterations.some(alt => alt.type === type)
     }
 
-    resetTarget(target?: PokemonOnBoard){
-        this.nextAction = { type: PokemonTypeAction.IDLE, target }
-    }
-
     makeUntargettable(durationInMs: number){ // clean up targets
         const board = gameState.board
         const otherTeam = this.owner === OWNER_PLAYER ? board.otherTeam : board.playerTeam
-        otherTeam.filter(p => p.nextAction.target === this).forEach(p => p.resetTarget())
+        otherTeam.filter(p => p.nextAction.target === this).forEach(p => p.resetAction())
         this.untargettable = true;
         wait(durationInMs).then(() => { this.untargettable = false; })
+    }    
+
+    resetAction(action: PokemonAction = { type: PokemonTypeAction.IDLE }){
+        this.nextAction?.timer?.remove()
+        this.nextAction = action
     }
 
-    resetAction(){
-        this.nextAction.timer?.remove()
-        this.nextAction = { type: PokemonTypeAction.IDLE }
+    resetTarget(target: PokemonOnBoard){                
+        this.resetAction({ type: PokemonTypeAction.IDLE, target })
     }
 
     resetAfterFight(){

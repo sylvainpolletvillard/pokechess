@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import {Destination, RoomArena, RoomTutorial, RoomType} from "./destination";
+import {Destination, enterDestination, RoomArena, RoomTutorial, RoomType} from "./destination";
 import {Player} from "./player";
 import {Board, calcXpBoard, clearPlacement, setupPlayerIdleBoard, spawnPokemon} from "./board";
 import {gainXP, initJumps, updatePokemonAction} from "./fight";
@@ -20,6 +20,10 @@ import { updateAlterations } from "./alteration";
 import {loadSave, saveState} from "./save";
 import { updateFightButton } from "../objects/menuButtons";
 import { PokemonOnBoard } from "../objects/pokemon";
+import { LOKHLASS } from "../data/pokemons/lokhlass";
+import { TEST_ROOM } from "../data/destinations/test_room";
+import { CARABAFFE } from "../data/pokemons/carabaffe";
+import { POISSIRENE } from "../data/pokemons/poissirene";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -105,30 +109,35 @@ export class GameState {
             this.roomOrder = ["labo", "tuto"]
         }
 
-        // QUICK TESTING        
+        // QUICK TESTING         
         /*
-        gameState.currentDestination = AZURIA
-        gameState.player.badges = [BADGE_AME.ref,BADGE_AME.ref,BADGE_AME.ref,BADGE_AME.ref]
- 
+        gameState.player.badges = [BADGE_AME.ref,BADGE_AME.ref]
+
         gameState.player.inventory[ITEM_POKEBALL.ref] = 20
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
+        */
 
         gameState.player.team = [
-            new PokemonOnBoard( new Pokemon(HERBIZARRE, 1, 22), 3 ,6),
-            new PokemonOnBoard( new Pokemon(MELODELFE, 1, 22), 2 ,7),
-            new PokemonOnBoard( new Pokemon(ORTIDE, 1, 22), 1 ,7),
-            new PokemonOnBoard( new Pokemon(BOUSTIFLOR, 1, 22), 5 ,7),
-            new PokemonOnBoard( new Pokemon(NOADKOKO, 1, 22), 4 ,7),
+            //new PokemonOnBoard( new Pokemon(POISSIRENE, 1, 24), 3 ,6),
+            //new PokemonOnBoard( new Pokemon(POISSOROY, 1, 24), 2 ,7),
+            new PokemonOnBoard( new Pokemon(CARABAFFE, 1, 24), 1 ,7),
+            new PokemonOnBoard( new Pokemon(POISSIRENE, 1, 24), 5 ,7),
+            //new PokemonOnBoard( new Pokemon(CARABAFFE, 1, 24), 4 ,7),
+            //new PokemonOnBoard( new Pokemon(AKWAKWAK, 1, 24), 2 ,7),
         ]
-        */
+        enterDestination(TEST_ROOM([
+            new PokemonOnBoard( new Pokemon(POISSIRENE, 2, 22), 1 ,2),
+            new PokemonOnBoard( new Pokemon(CARABAFFE, 2, 22), 5 ,2),
+        ]))
+        /*
 
         if(this.currentRoomIndex >= this.roomOrder.length) {
             this.activeScene!.scene.start("MapScene")
         } else {
             gameState.initRoom()
-        }
+        }*/
     }
 
     goToNextRoom(){

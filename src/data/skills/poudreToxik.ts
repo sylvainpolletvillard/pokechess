@@ -12,12 +12,11 @@ export const POUDRE_TOXIK: AOESkill = {
     type: POKEMON_TYPES.PLANTE,
     getTilesImpacted(attacker: PokemonOnBoard){
         let [i,j] = [attacker.x, attacker.y]
-        const tiles: [number, number][] = [
+        return [
             [i-1, j-1], [i, j-1], [i+1, j-1],
             [i-1, j], [i+1, j],
             [i-1, j+1], [i, j+1], [i+1, j+1]
-        ]        
-        return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
+        ]
     },
     effect: EFFECTS.POUDRE_TOXIK,
     power: 0,

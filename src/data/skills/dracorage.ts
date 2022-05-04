@@ -12,12 +12,11 @@ export const DRACORAGE: AOESkill = {
     type: POKEMON_TYPES.DRAGON,
     getTilesImpacted(attacker: PokemonOnBoard, target){
         let [i,j] = [target.x, target.y]
-        const tiles: [number, number][] = [
+        return [
             [i-1, j-1], [i, j-1], [i+1, j-1],
             [i-1, j], [i, j], [i+1, j],
             [i-1, j+1], [i, j+1], [i+1, j+1]
         ]
-        return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.DRACORAGE,
     power: 0,

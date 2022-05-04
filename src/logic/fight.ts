@@ -73,7 +73,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
 
     const path = findPathToTarget(pokemon, target, gameState.board)
     //console.log(`${pokemon.entry.name} va vers ${target.name}`, path)
-    pokemon.nextAction = { type: PokemonTypeAction.MOVE, path, target }
+    pokemon.resetAction({ type: PokemonTypeAction.MOVE, path, target })
 
     // PATH >= 3 → pokemon tile + target tile + at least one free tile to move
     if(pokemon.nextAction.path && pokemon.nextAction.path.length >= 3){
@@ -107,7 +107,7 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
     const attackSpeed = 100 + (10000000 / (pokemon.speed+50)) / game.gameSpeed    
-    pokemon.nextAction = { type: PokemonTypeAction.ATTACK, target }; // prevent changing target
+    pokemon.resetAction({ type: PokemonTypeAction.ATTACK, target }); // prevent changing target
     faceTarget(pokemon, target, game);
     pokemon.nextAction.timer = game.time.addEvent({
         delay: attackSpeed,
@@ -160,7 +160,7 @@ export function initJumps(){
         }
 
         console.log(`Init jump of ${pokemon.entry.name} on ${[i,j]}`)
-        pokemon.nextAction = { type: PokemonTypeAction.JUMP, path: [[i,j]] };
+        pokemon.resetAction({ type: PokemonTypeAction.JUMP, path: [[i,j]] });
         reservedTiles.add([i,j].join(","))
     }
 }
@@ -173,27 +173,24 @@ export function jump(pokemon: PokemonOnBoard, game: GameScene){
     const [nextX,nextY] = pokemon.nextAction.path[0]
     const [sceneX,sceneY] = getPositionFromCoords(nextX,nextY);
     pokemon.facingDirection = getDirection(nextX - pokemon.x, nextY - pokemon.y)
-    sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
-    pokemon.untargettable = true;
+    sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)    
     pokemon.x = nextX;
     pokemon.y = nextY;
-    const duration = 1000        
+    const duration = 1000
+    pokemon.makeUntargettable(duration)    
     game.tweens.add({
         targets: sprite,
         x: { value: sceneX, duration, ease: Phaser.Math.Easing.Circular.InOut },
         y: { value: sceneY, duration, ease: Phaser.Math.Easing.Circular.InOut },
         scale: { value: 1.25, duration: duration/2, ease: Phaser.Math.Easing.Circular.InOut, yoyo: true }
-    });
-    pokemon.nextAction = { 
+    });    
+    pokemon.resetAction({ 
         type: PokemonTypeAction.IDLE,
         timer: game.time.addEvent({
             delay: duration,
-            callback: () => {             
-                pokemon.untargettable = false
-                pokemon.resetAction()
-            }
+            callback: () => pokemon.resetAction()
         })
-    }
+    })
 }
 
 export function testPrecision(attacker: PokemonOnBoard, target: PokemonOnBoard, skill: Skill){    

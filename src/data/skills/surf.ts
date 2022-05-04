@@ -13,5 +13,6 @@ export const SURF: ProjectileSkill = {
     pierceThrough: true,
     rotateProjectile: true,
     power: 100,
-    attackRange: 9    
+    attackRange: 9,
+    knockback: true
 }

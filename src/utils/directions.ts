@@ -36,6 +36,16 @@ export function getDirectionFromVector(vec: Phaser.Math.Vector2): Direction | nu
   return getDirectionFromDelta(vec.x, vec.y)
 }
 
+export function getDirectionFromAngle(angle: number): Direction {
+    let tour = Math.PI * 2, eight = Math.PI/4;
+    angle = (angle + tour) % tour;
+
+    if(angle > eight && angle < 3 * eight) return Direction.UP
+    if(angle > 3* eight && angle < 5 * eight) return Direction.LEFT
+    if(angle > 5 * eight && angle < 7 * eight) return Direction.DOWN
+    return Direction.RIGHT    
+}
+
 export function getDeltaFromDirection(dir: Direction): [number, number] {
     return dir === Direction.UP ? [0,-1]
         : dir === Direction.DOWN ? [0, 1]

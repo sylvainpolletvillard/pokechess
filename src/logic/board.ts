@@ -106,6 +106,10 @@ export function getPokemonOnTile(i: number, j:number){
     return gameState.allPokemonsOnBoard.find(pokemon => pokemon.x === i && pokemon.y === j)
 }
 
+export function isOnBoard(i: number, j: number): boolean {
+    return i >= 0 && i < 7 && j >= 0 && j < 8
+}
+
 export function launchPokeball(player: number, pokeballType: string, x:number, y:number, game: GameScene){
     return new Promise<Phaser.GameObjects.Sprite>(resolve => {
         let playerX, playerY;

@@ -41,9 +41,9 @@ const BONUS_ALLIANCE_DRAGON: AllianceBonus =  {
 const BONUS_ALLIANCE_EAU: AllianceBonus =  {    
     description: "Les Pokémons Eau sont insensibles aux Brûlures. Les compétences Eau peuvent repousser la cible d'une ou plusieurs cases.",
     steps: [
-        { numberRequired: 2, ref: "EAU2", description: "Repousse d'une case la cible" },
-        { numberRequired: 4, ref: "EAU4", description: "Repousse de 2 cases la cible" },
-        { numberRequired: 6, ref: "EAU6", description: "Repousse de 3 cases la cible" }
+        { numberRequired: 2, ref: "EAU2", description: "Repousse d'une case" },
+        { numberRequired: 4, ref: "EAU4", description: "Repousse de 2 cases" },
+        { numberRequired: 6, ref: "EAU6", description: "Repousse de 3 cases" }
     ]
 }
 

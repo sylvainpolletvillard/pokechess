@@ -5,7 +5,7 @@ import { PokemonOnBoard } from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import { removeInArray } from "../utils/helpers"
 import { addAlteration } from "./alteration"
-import { getPokemonOnTile } from "./board"
+import { getPokemonOnTile, isOnBoard } from "./board"
 import { applyDamage, healPokemon } from "./fight"
 import { gameState } from "./gamestate"
 import { getAlliancesState } from "./player"
@@ -145,7 +145,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
                     [i-1, j-1], [i, j-1], [i+1, j-1],
                     [i-1, j], [i+1, j],
                     [i-1, j+1], [i, j+1], [i+1, j+1]
-                ].filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
+                ].filter(([i,j]) => isOnBoard(i,j))
                 const affected = tiles.map(([i,j]) => getPokemonOnTile(i,j)).filter(p => p != null && p.owner !== OWNER_PLAYER) as PokemonOnBoard[]
                 affected.forEach(opponent => {
                     const factor = [-0.2, -0.3, -0.4]

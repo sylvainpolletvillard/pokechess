@@ -30,6 +30,7 @@ import {VAMPIRISME} from "./skills/vampirisme";
 import {REPOS} from "./skills/repos";
 import {PROVOC} from "./skills/provoc";
 import {SURF} from "./skills/surf";
+import {CASCADE} from "./skills/cascade";
 import {POUVOIR_ANTIQUE} from "./skills/pouvoirAntique";
 import {DARD_VENIN} from "./skills/dardVenin";
 import {ACIDE} from "./skills/acide";
@@ -125,6 +126,7 @@ export const SKILLS = {
     REPOS,
     PROVOC,
     SURF,
+    CASCADE,
     POUVOIR_ANTIQUE,
     DARD_VENIN,
     ACIDE,

@@ -5,7 +5,7 @@ import { applyDamage, calcDamage } from "./fight";
 import { gameState } from "./gamestate";
 import { Z } from "../data/depths";
 import { addAlteration } from "./alteration";
-import {makeEffectSprite} from "./skill-anims";
+import {knockback, makeEffectSprite} from "./skill-anims";
 
 export interface Projectile {
     sprite: Phaser.GameObjects.Sprite
@@ -96,7 +96,7 @@ export function checkProjectilesImpact(game: GameScene){
         const targetsTouched = targets.filter(p => {
             let [px, py] = p.position
             let distance = Math.sqrt((px - x) ** 2 + (py - y) ** 2)
-            return distance < r + 10
+            return distance < r + 10 && !p.untargettable
         })
 
         targetsTouched.forEach(target => {
@@ -107,6 +107,10 @@ export function checkProjectilesImpact(game: GameScene){
                 console.log(`Projectile from ${projectile.attacker.entry.name} ; ${target.entry.name} receives ${damage} damage !`)
                 if(projectile.skill.hitAlteration) addAlteration(target, projectile.skill.hitAlteration, game)
                 if(!projectile.skill.pierceThrough) destroyProjectile(projectile)
+                if(projectile.skill.knockback){ 
+                    const angle = Math.atan2(projectile.attacker.y - target.y, target.x - projectile.attacker.x)
+                    knockback(target, angle, game) 
+                }
             }
         })
     })

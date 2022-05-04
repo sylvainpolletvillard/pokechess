@@ -11,12 +11,9 @@ export const BALAYAGE: AOESkill = {
     type: POKEMON_TYPES.COMBAT,
     getTilesImpacted(attacker: PokemonOnBoard, target: PokemonOnBoard){
         let [i,j] = [target.x, target.y]
-        const tiles: [number, number][] =
-            target.x === attacker.x
+        return target.x === attacker.x
                 ? [ [i-1, j], [i, j], [i+1, j] ] // horizontal slash
                 : [ [i, j-1], [i, j], [i, j+1] ] // vertical slash
-
-        return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
     },
     effect: EFFECTS.BROUILLARD,
     power: 100,

@@ -15,7 +15,7 @@ export const MAWASHI_GERI: AOESkill = {
         if(target.x === attacker.x+1) tiles.push([target.x-2, target.y]) // attack right
         if(target.y === attacker.y-1) tiles.push([target.x, target.y+2]) // attack up
         if(target.y === attacker.y+1) tiles.push([target.x, target.y-2]) // attack down
-        return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
+        return tiles
     },
     effect: EFFECTS.MAWASHI_GERI,
     power: 100,

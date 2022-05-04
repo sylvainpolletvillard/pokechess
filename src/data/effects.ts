@@ -31,10 +31,10 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "hydrocanon",
         frames: [3,4,5,6],
         frameRate: 8,
-        repeat: 2,
+        repeat: 3,
         scale: 1,
         position: "target_ground",
-        delta: +16
+        delta: 0
     },
     TREMPETTE: {
         key: "trempette",
@@ -784,4 +784,11 @@ export const EFFECTS: { [name: string] : Effect} = {
         position: "source_ground",        
         repeat: Infinity
     },
+    CASCADE: {
+        key: "cascade_skill",
+        frames: [493,492,493,494,495,496,497,498,499],
+        frameRate: 8,
+        depth: Z.SKILL_EFFECT_ABOVE_POKEMON,
+        position: "target_ground"        
+    }
 }

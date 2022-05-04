@@ -7,7 +7,7 @@ import {Direction} from "../utils/directions"
 import {removeInArray} from "../utils/helpers"
 import {applyDamage, calcBurnDamage, calcPoisonDamage, healPokemon, killPokemon} from "./fight"
 import {gameState} from "./gamestate"
-import {makeEffectSprite, sendPokemonFlying} from "./skill-anims"
+import {freezePokemonDuringMs, makeEffectSprite, sendPokemonFlying} from "./skill-anims"
 
 export function updateAlterations(pokemon: PokemonOnBoard, game: GameScene){
     pokemon.alterations.forEach(alt => {
@@ -102,7 +102,9 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
         switch(alteration.type){
             case AlterationType.TOURBILLON:
                 pokemon.resetAction()
-                pokemon.makeUntargettable(alteration.stacks * game.gameSpeed)
+                let duration = alteration.stacks * game.gameSpeed
+                pokemon.makeUntargettable(duration)
+                freezePokemonDuringMs(pokemon, duration, game)
                 sendPokemonFlying(pokemon, alteration.stacks, game)
                 break;
             
@@ -127,7 +129,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
 
             case AlterationType.CONFUSION:
                 if(pokemon.hasType(TYPE_PSY)) break; // Pokémon Psy insensible à la confusion
-                pokemon.resetTarget()
+                pokemon.resetAction()
                 alteration.effectSprite = makeEffectSprite(EFFECTS.CONFUSION, targetSprite.x, targetSprite.y, game)
                 break;
 
@@ -173,6 +175,6 @@ export function removeAlteration(pokemon: PokemonOnBoard, alt: Alteration){
     }
 
     if(alt.type === AlterationType.CONFUSION){
-        pokemon.resetTarget()
+        pokemon.resetAction()
     }
 }

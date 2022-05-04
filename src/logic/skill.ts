@@ -19,6 +19,7 @@ export interface Skill {
     selfAlteration?: Alteration;
     attackRange: number;
     precision?: number;
+    knockback?: boolean;
 }
 
 export interface HitSkill extends Skill {

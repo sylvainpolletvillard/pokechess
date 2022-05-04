@@ -12,10 +12,9 @@ export const BOMB_BEURK: AOESkill = {
     behavior: SkillBehavior.AREA_OF_EFFECT,
     getTilesImpacted(attacker: PokemonOnBoard, target: PokemonOnBoard){
         let [i,j] = [target.x, target.y]
-        const tiles: [number, number][] = [
+        return [
             [i-1, j], [i,j], [i+1, j],
-        ]
-        return tiles.filter(([i,j]) => i>=0 && j>=0 && i<7 && j<8)
+        ]        
     },
     power: 80,
     effect: EFFECTS.BOMB_BEURK,

@@ -41,13 +41,3 @@ export const BOURG_PALETTE: Destination = {
     icons: ["gift"],
     subtext: "Maman",
 }
-
-export const TEST_ROOM: RoomWild = {
-    type: RoomType.WILD,
-    name: "testing Room",
-    map: "foret_de_jade",
-    music: "music_foret_jade",
-    spawnOtherTeam() {
-        return spawnTutoCaptureTeam()
-    }
-}
