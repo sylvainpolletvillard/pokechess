@@ -612,7 +612,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "koud_korne",
         frames: [351,352,353,354],
         frameRate: 8,
-        position: "target_ground"
+        position: "target"
     },
     MAWASHI_GERI: {
         key: "mawashi_geri",

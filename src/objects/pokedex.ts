@@ -82,7 +82,7 @@ export function showPokedex(game: GameScene, pokemonToShow?: Pokemon){
         draw(container){
             list.selectedIndex = 0;
             if(pokemonToShow != null){
-                list.selectedIndex = list.filtered.findIndex((p => p.ref === pokemonToShow.ref))
+                list.selectedIndex = list.filtered.findIndex((p => p.ref === pokemonToShow.entry.ref))
                 list.pageStartIndex = list.selectedIndex
             }
             pokedexContainer = game.add.container(ox,oy)

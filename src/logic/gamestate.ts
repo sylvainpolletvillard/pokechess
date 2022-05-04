@@ -117,7 +117,7 @@ export class GameState {
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
-        */
+        
 
         gameState.player.team = [
             //new PokemonOnBoard( new Pokemon(POISSIRENE, 1, 24), 3 ,6),
@@ -131,13 +131,13 @@ export class GameState {
             new PokemonOnBoard( new Pokemon(POISSIRENE, 2, 22), 1 ,2),
             new PokemonOnBoard( new Pokemon(CARABAFFE, 2, 22), 5 ,2),
         ]))
-        /*
+        */
 
         if(this.currentRoomIndex >= this.roomOrder.length) {
             this.activeScene!.scene.start("MapScene")
         } else {
             gameState.initRoom()
-        }*/
+        }
     }
 
     goToNextRoom(){

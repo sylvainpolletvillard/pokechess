@@ -51,7 +51,9 @@ export function addToTeam(pokemon: PokemonOnBoard){
     pokemon.owner = 1;
     gameState.board.playerTeam.push(pokemon)
     gameState.player.team.push(pokemon)
-    drawAlliancesInfo(gameState.board.playerTeam)
+    if(gameState.activeScene instanceof GameScene){
+        drawAlliancesInfo(gameState.board.playerTeam)
+    }    
 }
 
 export function removeFromTeam(pokemon: PokemonOnBoard){

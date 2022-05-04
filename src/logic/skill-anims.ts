@@ -111,8 +111,8 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
         });
     }
 
-    if(skill.hitEffect){
-        wait(skill.hitDelay ?? 0).then(() => {
+    wait(skill.hitDelay ?? 0).then(() => {
+        if(skill.hitEffect){
             const hitEffect = skill.hitEffect as Effect
             effectSprite.scale = hitEffect.scale ?? 1
             effectSprite.play(hitEffect.key)
@@ -120,13 +120,12 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
             effectSprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
                 effectSprite.destroy()
             })
-        })
-    }
-
-    if(skill.knockback){
-        let knockbackAngle = Math.atan2(attacker.y - target.y, target.x - attacker.x)
-        knockback(target, knockbackAngle, game)
-    }
+        }
+        if(skill.knockback){
+            let knockbackAngle = Math.atan2(attacker.y - target.y, target.x - attacker.x)
+            knockback(target, knockbackAngle, game)
+        }
+    })
 }
 
 export function renderDirectHitAttack(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){

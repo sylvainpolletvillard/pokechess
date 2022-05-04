@@ -8,7 +8,7 @@ export const CASCADE: HitSkill = {
     type: POKEMON_TYPES.EAU,
     effect: EFFECTS.CASCADE,
     behavior: SkillBehavior.DIRECT_HIT,    
-    hitDelay: 300,
+    hitDelay: 500,
     power: 220,
     rotateSprite: false,    
     attackRange: 1,

@@ -1,2 +1,4 @@
 TODO:
-- alliance eau dégats heurt et repoussement
+- items
+- maps
+- debug evoli evolution
