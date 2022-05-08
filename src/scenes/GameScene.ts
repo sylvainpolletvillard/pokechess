@@ -18,6 +18,7 @@ import { drawRoomNamePanel } from '../objects/roomNamePanel';
 import { drawTrainers, showTrainerIntro } from '../objects/trainers';
 import { startDialog } from "../logic/dialog";
 import { wait } from "../utils/helpers";
+import { CHAMPIONS } from "../data/trainers";
 
 export default class GameScene extends MyScene {
   gameSpeed: number = 100;
@@ -102,6 +103,9 @@ export default class GameScene extends MyScene {
       const player = this.sprites.get("player")
       player && player.play("trainer_launch");
       showCenterText("text_fight", this)
+      if(gameState.currentRoom.type === RoomType.WILD) startMusic("music_battle_wild")
+      else if(CHAMPIONS.includes((gameState.currentRoom as RoomArena).trainer)) startMusic("music_battle_champion")
+      else startMusic("music_battle_trainer")
     }
   }
 

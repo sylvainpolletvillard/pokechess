@@ -13,7 +13,7 @@ import {pickStarters} from "./starters";
 import {BOURG_PALETTE} from "../data/destinations/bourg_palette";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
 import { Badge } from "../data/badges";
-import { SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
+import { CHAMPIONS, SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 import { checkProjectilesImpact } from "./projectile";
 import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
 import { updateAlterations } from "./alteration";
@@ -24,6 +24,7 @@ import { LOKHLASS } from "../data/pokemons/lokhlass";
 import { TEST_ROOM } from "../data/destinations/test_room";
 import { CARABAFFE } from "../data/pokemons/carabaffe";
 import { POISSIRENE } from "../data/pokemons/poissirene";
+import { startMusic } from "./audio";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -227,10 +228,13 @@ export class GameState {
         const hasWon = (loser !== 1)
         if(hasWon) {
             player && player.play("trainer_victory")
-            showCenterText("text_victoire", game).then(() => {})
+            showCenterText("text_victoire", game)
+            if(gameState.currentRoom.type === RoomType.WILD) startMusic("music_victory_wild")
+            else if(CHAMPIONS.includes((gameState.currentRoom as RoomArena).trainer)) startMusic("music_victory_champion")
+            else startMusic("music_victory_trainer")
         } else {
             player && player.play("trainer_defeat")
-            showCenterText("text_defaite", game).then(() => {})
+            showCenterText("text_defaite", game)            
         }
 
         let xpPerPokemon = (gameState.board.xpEarned || 0) / gameState.player.team.length

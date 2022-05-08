@@ -132,7 +132,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             function getNumberOfOpponentsTargetingMe(){                
                 return pokemon.opponents.filter(p => p.nextAction.target === pokemon).length                
             }
-            const factors = [2,5,8]
+            const factors = [0.02, 0.05, 0.08]
             pokemon.buffs.attack.push(() => getNumberOfOpponentsTargetingMe() * factors[allianceState.stepReachedN-1])
             pokemon.buffs.defense.push(() => getNumberOfOpponentsTargetingMe() * factors[allianceState.stepReachedN-1])
         }
@@ -149,7 +149,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
                 const affected = tiles.map(([i,j]) => getPokemonOnTile(i,j)).filter(p => p != null && p.owner !== OWNER_PLAYER) as PokemonOnBoard[]
                 affected.forEach(opponent => {
                     const factor = [-0.2, -0.3, -0.4]
-                    const buff = () => factor[allianceState.stepReachedN] * pokemon.speed
+                    const buff = () => factor[allianceState.stepReachedN] ?? 0
                     opponent.buffs.speed.push(buff)
                     setTimeout(() => removeInArray(opponent.buffs.speed, buff), 1000)
                 })
@@ -159,9 +159,9 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         // BONUS ALLIANCE DRAGON
         if(pokemon.hasType(TYPE_DRAGON) && allianceState.type === TYPE_DRAGON && allianceState.stepReached){
             const isLastDragon = () => pokemon.team.length === 1;
-            pokemon.buffs.attack.push(() => isLastDragon() ? 0.2 * allianceState.stepReachedN * pokemon.attack : 0);
-            pokemon.buffs.defense.push(() => isLastDragon() ? 0.2 * allianceState.stepReachedN * pokemon.defense : 0);
-            pokemon.buffs.speed.push(() => isLastDragon() ? 0.2 * allianceState.stepReachedN * pokemon.speed : 0);            
+            pokemon.buffs.attack.push(() => isLastDragon() ? 0.1 * allianceState.stepReachedN : 0);
+            pokemon.buffs.defense.push(() => isLastDragon() ? 0.1 * allianceState.stepReachedN : 0);
+            pokemon.buffs.speed.push(() => isLastDragon() ? 0.1 * allianceState.stepReachedN : 0);            
         }
 
     })

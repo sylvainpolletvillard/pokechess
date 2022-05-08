@@ -26,7 +26,7 @@ export const CHAMPS_VERDOYANTS: Destination = {
             type: RoomType.WILD,
             name: "Champs verdoyants",
             map: "champs_verdoyants",
-            music: "music_champs_verdoyants",
+            music: "music_battle_wild",
             spawnOtherTeam(){
                 return spawnTeamByTypeFactor({
                     [TYPE_PLANTE.ref]: 1,
@@ -41,7 +41,7 @@ export const CHAMPS_VERDOYANTS: Destination = {
             type: RoomType.ARENA,
             name: "Champs verdoyants",
             map: "champs_verdoyants",
-            music: "music_champs_verdoyants",
+            music: "music_battle_trainer",
             trainer: DRESSEUR_CHAMPS_VERDOYANTS,
             spawnOtherTeam(){
                 return spawnTrainerTeam([

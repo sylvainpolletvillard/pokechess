@@ -23,9 +23,9 @@ export type AllianceState = {
 const BONUS_ALLIANCE_COMBAT: AllianceBonus =  {
     description: "Les Pokémon Combat ne connaissent pas la peur et ont leur stats augmentées avec le nombre d'adversaires les ciblant.",
     steps: [
-        { numberRequired: 2, ref: "COMBAT2", description: "+2 attaque et défense par adversaire" },
-        { numberRequired: 4, ref: "COMBAT4", description: "+5 attaque et défense par adversaire" },
-        { numberRequired: 6, ref: "COMBAT6", description: "+8 attaque et défense par adversaire" }
+        { numberRequired: 2, ref: "COMBAT2", description: "+2% attaque et défense par adversaire" },
+        { numberRequired: 4, ref: "COMBAT4", description: "+5% attaque et défense par adversaire" },
+        { numberRequired: 6, ref: "COMBAT6", description: "+8% attaque et défense par adversaire" }
     ]
 }
 
