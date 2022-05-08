@@ -28,7 +28,7 @@ export const PARMANIE: Destination = {
         arena: {
             type: RoomType.ARENA,
             name: "Arène de Parmanie",
-            map: "parmanie",
+            map: "arene_parmanie",
             music: "music_parmanie",
             trainer: KOGA,
             spawnOtherTeam() {

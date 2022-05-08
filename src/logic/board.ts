@@ -92,6 +92,7 @@ export function clearPlacement(game: GameScene){
     }
     game.objects.get("grid")?.destroy();
     hidePokemonReleaseInfo();
+    hideTeamSizeCounter();
 }
 
 export function getPositionFromCoords(i: number, j:number): [number, number]{
@@ -284,7 +285,7 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: GameScene){
     gameState.board.activeTile = [i,j]
 
     const gridActiveTile = game.objects.get("gridActiveTile") as Phaser.GameObjects.Graphics;
-    if(gameState.stage === GameStage.PLACEMENT && gridActiveTile != null){
+    if(gameState.stage === GameStage.PLACEMENT && gridActiveTile != null && j>=4){
         gridActiveTile
             .lineStyle(2, 0x000000, 0.1)
             .moveTo(x-16,y-16).lineTo(x+16, y-16).lineTo(x+16, y+16).lineTo(x-16, y+16).lineTo(x-16,y-16)
@@ -353,6 +354,7 @@ export function dropPokemonOnBoard(sprite: Phaser.GameObjects.Sprite, x:number, 
     sprite.setPosition(...pokemonOnBoard.position)
     displayPokemonInfo(pokemonOnBoard)
     drawTeamSizeCounter()
+    hidePokemonReleaseInfo()
 }
 
 export function cancelPokemonDrag(){
@@ -415,4 +417,9 @@ export function drawTeamSizeCounter(){
         else { text.setAlpha(0.15) }
     }
     updateFightButton()
+}
+
+export function hideTeamSizeCounter(){
+    const scene = gameState.activeScene as GameScene
+    scene.objects.get("teamSizeCounter")?.destroy()
 }

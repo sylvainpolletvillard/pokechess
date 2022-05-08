@@ -32,7 +32,7 @@ export const CAMP_NOMADE: Destination = {
         arena: {
             type: RoomType.ARENA,
             name: "Arène sauvage",
-            map: "arene_camp_nomade",
+            map: "camp_nomade",
             music: "music_camp_nomade",
             trainer: HECTOR,
             spawnOtherTeam() {
@@ -61,7 +61,7 @@ export const CAMP_NOMADE: Destination = {
         trainer: {
             type: RoomType.ARENA,
             name: "Arène sauvage",
-            map: "arene_camp_nomade",
+            map: "camp_nomade",
             music: "music_foret_jade",
             trainer: DRESSEUR_CAMP_NOMADE,
             spawnOtherTeam(){
