@@ -125,7 +125,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [49,50,51,52,51,50],
         frameRate: 8,
         position: "source",
-        delta: 12
+        delta: 10
     },
     DEVOREVE: {
         key: "devoreve",

@@ -2,3 +2,5 @@ TODO:
 - items
 - maps
 - debug evoli evolution
+- parc safari
+- pension

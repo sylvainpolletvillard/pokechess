@@ -26,7 +26,7 @@ export const COL_DE_MONTAGNE: Destination = {
         wild: {
             type: RoomType.WILD,
             name: "Col de Montagne",
-            music: "music_battle_wild",
+            music: "music_col_montagne",
             map: "col_de_montagne",
             spawnOtherTeam(){
                 return spawnTeamByTypeFactor({
@@ -42,7 +42,7 @@ export const COL_DE_MONTAGNE: Destination = {
             type: RoomType.ARENA,
             name: "Col de Montagne",
             map: "col_de_montagne",
-            music: "music_battle_wild",
+            music: "music_col_montagne",
             trainer: DRESSEUR_COL_DE_MONTAGNE,
             spawnOtherTeam(){
                 return spawnTrainerTeam([
