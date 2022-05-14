@@ -17,6 +17,7 @@ import {KOKIYAS} from "../pokemons/kokiyas";
 import {KRABBY} from "../pokemons/krabby";
 import {MACHOC} from "../pokemons/machoc";
 import {SHOP_JADIELLE} from "../levels/shops";
+import { preloadMusic } from "../../logic/audio";
 
 export const ARGENTA: Destination = {
     ref: "ARGENTA",
@@ -87,5 +88,8 @@ export const ARGENTA: Destination = {
             level: SHOP_JADIELLE
         }
     },
-    shopId: 2
+    shopId: 2,
+    preload(){
+        preloadMusic("music_argenta_safrania", "assets/audio/music/07 Pewter City's Theme.mp3");
+    }
 }

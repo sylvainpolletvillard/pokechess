@@ -18,7 +18,7 @@ export const DESTRUCTION: AOESkill = {
         ]
     },
     effect: EFFECTS.DESTRUCTION,
-    power: 300,
+    power: 500,
     selfDamage: 99999,
     hitDelay: 50
 }

@@ -171,7 +171,7 @@ export class GameState {
         initJumps()        
 
         game.time.addEvent({
-            delay: 400,
+            delay: 900,
             callback: () => {
                 game.hideCenterText();
                 for (let pokemon of this.board.playerTeam) {
@@ -187,7 +187,7 @@ export class GameState {
         })
 
         game.time.addEvent({
-            delay: 2000,
+            delay: 2600,
             callback: () => {
                 this.stage = GameStage.FIGHT
                 this.fightTimer = game.time.addEvent({

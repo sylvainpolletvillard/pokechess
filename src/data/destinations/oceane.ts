@@ -13,6 +13,7 @@ import {KRABBY} from "../pokemons/krabby";
 import {OTARIA} from "../pokemons/otaria";
 import {KOKIYAS} from "../pokemons/kokiyas";
 import {TADMORV} from "../pokemons/tadmorv";
+import { preloadMusic } from "../../logic/audio";
 
 export const OCEANE_WILD: RoomWild = {
     type: RoomType.WILD,
@@ -25,6 +26,10 @@ export const OCEANE_WILD: RoomWild = {
             [TYPE_VOL.ref]: 0.2,
         })
     }
+}
+
+function preload(){
+    preloadMusic("music_oceane", "assets/audio/music/13 St. Anne.mp3");
 }
 
 export const OCEANE_TRAINER: RoomArena = {
@@ -63,7 +68,8 @@ export const OCEANE_CARMIN: Destination = {
     rooms: {
         wild: OCEANE_WILD,
         trainer: OCEANE_TRAINER
-    }
+    },
+    preload
 }
 
 export const OCEANE_CRAMOISILE: Destination = {
@@ -79,7 +85,8 @@ export const OCEANE_CRAMOISILE: Destination = {
     rooms: {
         wild: OCEANE_WILD,
         trainer: OCEANE_TRAINER
-    }
+    },
+    preload
 }
 
 export const OCEANE_AZURIA: Destination = {
@@ -96,5 +103,6 @@ export const OCEANE_AZURIA: Destination = {
     rooms: {
         wild: OCEANE_WILD,
         trainer: OCEANE_TRAINER
-    }
+    },
+    preload
 }

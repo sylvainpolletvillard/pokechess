@@ -21,6 +21,7 @@ import {OSSELAIT} from "../pokemons/osselait";
 import {SABELETTE} from "../pokemons/sabelette";
 import {RACAILLOU} from "../pokemons/racaillou";
 import {BADGE_TERRE} from "../badges";
+import { preloadMusic } from "../../logic/audio";
 
 const ARENA_GIOVANNI: RoomArena = {
     type: RoomType.ARENA,
@@ -97,5 +98,8 @@ export const JADIELLE: Destination = {
             level: SHOP_JADIELLE
         }
     },
-    shopId: 1
+    shopId: 1,
+    preload(){
+        preloadMusic("music_jadielle", "assets/audio/music/06 Pokemon Gym.mp3");
+    }
 }

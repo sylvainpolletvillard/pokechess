@@ -17,6 +17,7 @@ import {PARAS} from "../pokemons/paras";
 import {PAPILUSION} from "../pokemons/papilusion";
 import {TAUPIQUEUR} from "../pokemons/taupiqueur";
 import {SHOP_JADIELLE} from "../levels/shops";
+import { preloadMusic } from "../../logic/audio";
 
 export const CELADOPOLE: Destination = {
     ref: "CELADOPOLE",
@@ -87,5 +88,8 @@ export const CELADOPOLE: Destination = {
             level: SHOP_JADIELLE
         }
     },
-    shopId: 6
+    shopId: 6,
+    preload(){
+        preloadMusic("music_celadopole", "assets/audio/music/09 Celadon City's Theme.mp3");        
+    }
 }

@@ -10,11 +10,12 @@ import {TADMORV} from "../pokemons/tadmorv";
 import {SABELETTE} from "../pokemons/sabelette";
 import {RACAILLOU} from "../pokemons/racaillou";
 import {MIAOUSS} from "../pokemons/miaouss";
+import { preloadMusic } from "../../logic/audio";
 
 const ROOM_TAUPIQUEUR_WILD: RoomWild = {
     type: RoomType.WILD,
     name: "Cave taupiqueur",
-    music: "music_cave_taupiqueur",
+    music: "music_cave",
     map: "cave_taupiqueur",
     spawnOtherTeam(){
         return spawnTeamByTypeFactor({
@@ -29,7 +30,7 @@ const ROOM_TAUPIQUEUR_WILD: RoomWild = {
 const ROOM_TAUPIQUEUR_TRAINER: RoomArena = {
     type: RoomType.ARENA,
     name: "Cave taupiqueur",
-    music: "music_cave_taupiqueur",
+    music: "music_cave",
     map: "cave_taupiqueur",
     trainer: DRESSEUR_CAVE_TAUPIQUEUR,
     spawnOtherTeam(){
@@ -47,6 +48,10 @@ const ROOM_TAUPIQUEUR_TRAINER: RoomArena = {
     }
 }
 
+function preload(){    
+    preloadMusic("music_cave", "assets/audio/music/39 Mt. Moon Cave.mp3");    
+}
+
 export const CAVE_TAUPIQUEUR_OUEST: Destination = {
     ref: "CAVE_TAUPIQUEUR_OUEST",
     name: "Cave Taupiqueur (Entrée Ouest)",
@@ -60,7 +65,8 @@ export const CAVE_TAUPIQUEUR_OUEST: Destination = {
     rooms: {
         wild: ROOM_TAUPIQUEUR_WILD,
         arena: ROOM_TAUPIQUEUR_TRAINER
-    }
+    },
+    preload
 }
 
 export const CAVE_TAUPIQUEUR_EST: Destination = {
@@ -77,5 +83,6 @@ export const CAVE_TAUPIQUEUR_EST: Destination = {
     rooms: {
         wild: ROOM_TAUPIQUEUR_WILD,
         arena: ROOM_TAUPIQUEUR_TRAINER
-    }
+    },
+    preload
 }

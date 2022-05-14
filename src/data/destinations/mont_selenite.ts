@@ -11,6 +11,7 @@ import {EVOLI} from "../pokemons/evoli";
 import {TAUPIQUEUR} from "../pokemons/taupiqueur";
 import {OSSELAIT} from "../pokemons/osselait";
 import {DRESSEUR_MONT_SELENITE} from "../trainers";
+import { preloadMusic } from "../../logic/audio";
 
 export const MONT_SELENITE: Destination = {
     ref: "MONT_SELENITE",
@@ -29,7 +30,7 @@ export const MONT_SELENITE: Destination = {
             type: RoomType.WILD,
             name: "Mont Sélénite",
             map: "mont_selenite",
-            music: "music_mont_selenite",
+            music: "music_cave",
             spawnOtherTeam(){
                 return spawnTeamByTypeFactor({
                     [TYPE_FEE.ref]: 1,
@@ -44,7 +45,7 @@ export const MONT_SELENITE: Destination = {
             type: RoomType.ARENA,
             name: "Mont Sélénite",
             map: "mont_selenite",
-            music: "music_mont_selenite",
+            music: "music_cave",
             trainer: DRESSEUR_MONT_SELENITE,
             spawnOtherTeam(){
                 return spawnTrainerTeam([
@@ -60,5 +61,8 @@ export const MONT_SELENITE: Destination = {
                 ])
             }
         }
+    },
+    preload(){
+        preloadMusic("music_cave", "assets/audio/music/39 Mt. Moon Cave.mp3");
     }
 }

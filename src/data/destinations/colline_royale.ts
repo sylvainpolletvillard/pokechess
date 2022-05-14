@@ -4,6 +4,7 @@ import { TYPE_DRAGON, TYPE_VOL, TYPE_COMBAT } from "../types";
 import { DRESSEUR_COLLINE_ROYALE} from "../trainers";
 import {MINIDRACO} from "../pokemons/minidraco";
 import {REPTINCEL} from "../pokemons/reptincel";
+import { preloadMusic } from "../../logic/audio";
 
 export const COLLINE_ROYALE: Destination = {
     ref: "COLLINE_ROYALE",
@@ -43,5 +44,8 @@ export const COLLINE_ROYALE: Destination = {
                 ])
             }
         }
+    },
+    preload(){
+        preloadMusic("music_colline_royale", "assets/audio/music/03 To Bill's Origin ~ From Cerulean.mp3");
     }
 }

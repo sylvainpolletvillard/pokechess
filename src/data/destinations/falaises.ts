@@ -10,6 +10,7 @@ import {SALAMECHE} from "../pokemons/salameche";
 import {SAQUEDENEU} from "../pokemons/saquedeneu";
 import {SABELETTE} from "../pokemons/sabelette";
 import {DRESSEUR_FALAISES} from "../trainers";
+import { preloadMusic } from "../../logic/audio";
 
 export const FALAISES: Destination = {
     ref: "FALAISES",
@@ -57,5 +58,8 @@ export const FALAISES: Destination = {
                 ])
             }
         }
+    },
+    preload(){
+        preloadMusic("music_falaises", "assets/audio/music/21 The Road to Lavender Town from Vermilion.mp3");
     }
 }

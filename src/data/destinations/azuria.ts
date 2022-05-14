@@ -18,6 +18,7 @@ import {KRABBY} from "../pokemons/krabby";
 import {HYPOTREMPE} from "../pokemons/hypotrempe";
 import {POISSIRENE} from "../pokemons/poissirene";
 import {SHOP_JADIELLE} from "../levels/shops";
+import { preloadMusic } from "../../logic/audio";
 
 export const AZURIA: Destination = {
     ref: "AZURIA",
@@ -92,5 +93,8 @@ export const AZURIA: Destination = {
             level: SHOP_JADIELLE
         }
     },
-    shopId: 3
+    shopId: 3,
+    preload(){
+        preloadMusic("music_azuria", "assets/audio/music/08 Cerulean City's Theme.mp3");
+    }
 }

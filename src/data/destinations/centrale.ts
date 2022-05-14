@@ -15,6 +15,7 @@ import {VOLTORBE} from "../pokemons/voltorbe";
 import {PORYGON} from "../pokemons/porygon";
 import {MACHOC} from "../pokemons/machoc";
 import {METAMORPH} from "../pokemons/metamorph";
+import { preloadMusic } from "../../logic/audio";
 
 export const CENTRALE: Destination = {
     ref: "CENTRALE",
@@ -61,5 +62,8 @@ export const CENTRALE: Destination = {
                 ])
             }
         }
+    },
+    preload(){
+        preloadMusic("music_centrale", "assets/audio/music/37 Team Rocket Hideout.mp3");
     }
 }

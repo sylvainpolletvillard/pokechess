@@ -10,6 +10,7 @@ import { TADMORV } from "../pokemons/tadmorv";
 import { TENTACRUEL } from "../pokemons/tentacruel";
 import { GROTADMORV } from "../pokemons/grotadmorv";
 import {SHOP_JADIELLE} from "../levels/shops";
+import { preloadMusic } from "../../logic/audio";
 
 export const PARMANIE: Destination = {
     ref: "PARMANIE",
@@ -80,5 +81,8 @@ export const PARMANIE: Destination = {
             level: SHOP_JADIELLE
         }
     },
-    shopId: 8
+    shopId: 8,
+    preload(){
+        preloadMusic("music_parmanie", "assets/audio/music/40 Pokemon Mansion.mp3");
+    }
 }

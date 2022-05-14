@@ -10,6 +10,7 @@ import {PARAS} from "../pokemons/paras";
 import {PAPILUSION} from "../pokemons/papilusion";
 import {SAQUEDENEU} from "../pokemons/saquedeneu";
 import {TAUPIQUEUR} from "../pokemons/taupiqueur";
+import { preloadMusic } from "../../logic/audio";
 
 export const CHAMPS_VERDOYANTS: Destination = {
     ref: "CHAMPS_VERDOYANTS",
@@ -57,5 +58,8 @@ export const CHAMPS_VERDOYANTS: Destination = {
                 ])
             }
         }
+    },
+    preload(){
+        preloadMusic("music_champs_verdoyants", "assets/audio/music/19 The Road to Viridian City ~ from Pallet.mp3");
     }
 }

@@ -15,6 +15,7 @@ import {CANINOS} from "../pokemons/caninos";
 import {TAUROS} from "../pokemons/tauros";
 import {EVOLI} from "../pokemons/evoli";
 import {SHOP_JADIELLE} from "../levels/shops";
+import { preloadMusic } from "../../logic/audio";
 
 export const LAVANVILLE: Destination = {
     ref: "LAVANVILLE",
@@ -83,5 +84,8 @@ export const LAVANVILLE: Destination = {
             level: SHOP_JADIELLE
         }
     },
-    shopId: 4
+    shopId: 4,
+    preload(){
+        preloadMusic("music_lavanville", "assets/audio/music/12 Lavender Town's Theme.mp3");
+    }
 }

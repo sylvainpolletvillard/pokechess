@@ -14,7 +14,8 @@ this.addEventListener('fetch', function (event) {
             .then((cache) => cache.match(event.request)
                 .then((cachedResponse) => cachedResponse || fetch(event.request.url)
                     .then((fetchedResponse) => {
-                        if (EXTENSIONS_SAVED.some(ext => event.request.url.endsWith(ext))) {
+                        if (fetchedResponse.status === 200 
+                        && EXTENSIONS_SAVED.some(ext => event.request.url.endsWith(ext))) {
                             // Store the response in the cache for future calls
                             cache.put(event.request, fetchedResponse.clone());
                         }

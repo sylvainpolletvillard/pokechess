@@ -10,6 +10,7 @@ import {DODUO} from "../pokemons/doduo";
 import {SALAMECHE} from "../pokemons/salameche";
 import {MIMITOSS} from "../pokemons/mimitoss";
 import {CANARTICHO} from "../pokemons/canarticho";
+import { preloadMusic } from "../../logic/audio";
 
 export const COL_DE_MONTAGNE: Destination = {
     ref: "COL_DE_MONTAGNE",
@@ -57,5 +58,8 @@ export const COL_DE_MONTAGNE: Destination = {
                 ])
             }
         }
+    },
+    preload(){
+        preloadMusic("music_col_montagne", "assets/audio/music/20 The Road to Cerulean ~ from Mt. Moon.mp3");
     }
 }

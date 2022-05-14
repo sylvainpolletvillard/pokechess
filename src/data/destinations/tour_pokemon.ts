@@ -9,6 +9,7 @@ import {MELOFEE} from "../pokemons/melofee";
 import {GOUPIX} from "../pokemons/goupix";
 import {ABRA} from "../pokemons/abra";
 import {RATTATA} from "../pokemons/rattata";
+import { preloadMusic } from "../../logic/audio";
 
 export const TOUR_POKEMON: Destination = {
     ref: "TOUR_POKEMON",
@@ -54,5 +55,8 @@ export const TOUR_POKEMON: Destination = {
                 ])
             }
         }
+    },
+    preload(){
+        preloadMusic("music_tour_pokemon", "assets/audio/music/41 Pokemon Tower.mp3");    
     }
 }

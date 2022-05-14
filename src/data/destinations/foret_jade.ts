@@ -12,6 +12,7 @@ import {CHENIPAN} from "../pokemons/chenipan";
 import {INSECATEUR} from "../pokemons/insecateur";
 import {ASPICOT} from "../pokemons/aspicot";
 import {DRESSEUR_FORET_JADE} from "../trainers";
+import { preloadMusic } from "../../logic/audio";
 
 export const FORET_JADE: Destination = {
     ref: "FORET_JADE",
@@ -59,5 +60,8 @@ export const FORET_JADE: Destination = {
                 ])
             }
         }
+    },
+    preload(){
+        preloadMusic("music_foret_jade", "assets/audio/music/38 Viridian Forest.mp3");
     }
 }

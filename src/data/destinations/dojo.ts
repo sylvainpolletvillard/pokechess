@@ -8,6 +8,7 @@ import {KANGOUREX} from "../pokemons/kangourex";
 import {MACHOPEUR} from "../pokemons/machopeur";
 import {FEROSINGE} from "../pokemons/ferosinge";
 import {TARTARD} from "../pokemons/tartard";
+import { preloadMusic } from "../../logic/audio";
 
 export const DOJO: Destination = {
     ref: "DOJO",
@@ -54,5 +55,8 @@ export const DOJO: Destination = {
                 ])
             }
         }
+    },
+    preload(){
+        preloadMusic("music_dojo", "assets/audio/music/15 Rival Appears.mp3");
     }
 }

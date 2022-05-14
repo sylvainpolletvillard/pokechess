@@ -14,6 +14,7 @@ import {FANTOMINUS} from "../pokemons/fantominus";
 import {MAGMAR} from "../pokemons/magmar";
 import {STARI} from "../pokemons/stari";
 import {SHOP_JADIELLE} from "../levels/shops";
+import { preloadMusic } from "../../logic/audio";
 
 export const CARMIN: Destination = {
     ref: "CARMIN",
@@ -85,5 +86,8 @@ export const CARMIN: Destination = {
             level: SHOP_JADIELLE
         }
     },
-    shopId: 7
+    shopId: 7,
+    preload(){
+        preloadMusic("music_carmin", "assets/audio/music/11 Vermilion City's Theme.mp3");
+    }
 }

@@ -18,6 +18,7 @@ import {PIAFABEC} from "../pokemons/piafabec";
 import {SAQUEDENEU} from "../pokemons/saquedeneu";
 import {SABELETTE} from "../pokemons/sabelette";
 import {SHOP_JADIELLE} from "../levels/shops";
+import { preloadMusic } from "../../logic/audio";
 
 export const SAFRANIA: Destination = {
     ref: "SAFRANIA",
@@ -36,7 +37,7 @@ export const SAFRANIA: Destination = {
             name: "Arène de Safrania",
             type: RoomType.ARENA,
             map: "safrania",
-            music: "music_argenta", // meme musique que argenta
+            music: "music_argenta_safrania", // meme musique que argenta
             trainer: MORGANE,
             spawnOtherTeam(){
                 return spawnChampionTeam([
@@ -65,7 +66,7 @@ export const SAFRANIA: Destination = {
             type: RoomType.ARENA,
             name: "Arène de Safrania",
             map: "safrania",
-            music: "music_argenta", // meme musique que argenta
+            music: "music_argenta_safrania", // meme musique que argenta
             trainer: DRESSEUR_SAFRANIA,
             spawnOtherTeam(){
                 return spawnTrainerTeam([
@@ -87,5 +88,8 @@ export const SAFRANIA: Destination = {
             level: SHOP_JADIELLE
         }
     },
-    shopId: 5
+    shopId: 5,
+    preload(){
+        preloadMusic("music_argenta_safrania", "assets/audio/music/07 Pewter City's Theme.mp3");
+    }
 }

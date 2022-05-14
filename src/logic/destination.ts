@@ -37,6 +37,7 @@ export interface Destination {
     subtext?: string
     rooms: { [ref: string]: Room }
     shopId?: number
+    preload?: () => void
 }
 
 export interface RoomConfig {

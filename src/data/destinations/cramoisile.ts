@@ -18,6 +18,7 @@ import {AEROMITE} from "../pokemons/aeromite";
 import {TENTACRUEL} from "../pokemons/tentacruel";
 import {RAFFLESIA} from "../pokemons/rafflesia";
 import {SHOP_JADIELLE} from "../levels/shops";
+import { preloadMusic } from "../../logic/audio";
 
 export const CRAMOISILE: Destination = {
     ref: "CRAMOISILE",
@@ -87,5 +88,8 @@ export const CRAMOISILE: Destination = {
             level: SHOP_JADIELLE
         }
     },
-    shopId: 9
+    shopId: 9,
+    preload(){
+        preloadMusic("music_cramoisile", "assets/audio/music/10 Cinnabar Island's Theme.mp3");
+    }
 }

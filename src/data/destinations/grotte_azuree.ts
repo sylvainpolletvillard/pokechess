@@ -13,6 +13,7 @@ import {HYPOTREMPE} from "../pokemons/hypotrempe";
 import {POISSIRENE} from "../pokemons/poissirene";
 import {AQUALI} from "../pokemons/aquali";
 import {LOKHLASS} from "../pokemons/lokhlass";
+import { preloadMusic } from "../../logic/audio";
 
 export const GROTTE_AZUREE: Destination = {
     ref: "GROTTE_AZUREE",
@@ -61,5 +62,8 @@ export const GROTTE_AZUREE: Destination = {
                 ])
             }
         }
+    },
+    preload(){
+        preloadMusic("music_grotte_azuree", "assets/audio/music/40 Pokemon Mansion.mp3");
     }
 }

@@ -101,7 +101,7 @@ export default class GameScene extends MyScene {
       hideMenuButtons()
       gameState.initFight(this)
       const player = this.sprites.get("player")
-      player && player.play("trainer_launch");
+      wait(500).then(() => player && player.play("trainer_launch"));
       showCenterText("text_fight", this)
       if(gameState.currentRoom.type === RoomType.WILD) startMusic("music_battle_wild")
       else if(CHAMPIONS.includes((gameState.currentRoom as RoomArena).trainer)) startMusic("music_battle_champion")
