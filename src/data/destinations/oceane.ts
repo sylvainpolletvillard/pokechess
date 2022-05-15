@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomArena, RoomType, RoomWild} from "../../logic/destination";
 import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
-import {TYPE_EAU, TYPE_VOL} from "../types";
+import {TYPE_COMBAT, TYPE_EAU, TYPE_NORMAL, TYPE_VOL} from "../types";
 import {DRESSEUR_OCEANE} from "../trainers";
 import {POISSIRENE} from "../pokemons/poissirene";
 import {MACHOC} from "../pokemons/machoc";
@@ -25,6 +25,8 @@ export const OCEANE_WILD: RoomWild = {
         return spawnTeamByTypeFactor({
             [TYPE_EAU.ref]: 1,
             [TYPE_VOL.ref]: 0.2,
+            [TYPE_NORMAL.ref]: 0.1,
+            [TYPE_COMBAT.ref]: 0.1,
         })
     }
 }
