@@ -16,6 +16,7 @@ import {PORYGON} from "../pokemons/porygon";
 import {MACHOC} from "../pokemons/machoc";
 import {METAMORPH} from "../pokemons/metamorph";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const CENTRALE: Destination = {
     ref: "CENTRALE",
@@ -63,7 +64,8 @@ export const CENTRALE: Destination = {
             }
         }
     },
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('centrale', 'assets/maps/centrale.json');
         preloadMusic("music_centrale", "assets/audio/music/37 Team Rocket Hideout.mp3");
     }
 }

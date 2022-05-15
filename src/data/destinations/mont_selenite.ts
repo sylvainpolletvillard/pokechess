@@ -12,6 +12,7 @@ import {TAUPIQUEUR} from "../pokemons/taupiqueur";
 import {OSSELAIT} from "../pokemons/osselait";
 import {DRESSEUR_MONT_SELENITE} from "../trainers";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const MONT_SELENITE: Destination = {
     ref: "MONT_SELENITE",
@@ -62,7 +63,8 @@ export const MONT_SELENITE: Destination = {
             }
         }
     },
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('mont_selenite', 'assets/maps/mont_selenite.json');
         preloadMusic("music_cave", "assets/audio/music/39 Mt. Moon Cave.mp3");
     }
 }

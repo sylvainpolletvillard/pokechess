@@ -11,6 +11,7 @@ import {SABELETTE} from "../pokemons/sabelette";
 import {RACAILLOU} from "../pokemons/racaillou";
 import {MIAOUSS} from "../pokemons/miaouss";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 const ROOM_TAUPIQUEUR_WILD: RoomWild = {
     type: RoomType.WILD,
@@ -48,8 +49,9 @@ const ROOM_TAUPIQUEUR_TRAINER: RoomArena = {
     }
 }
 
-function preload(){    
+function preload(scene: MyScene){    
     preloadMusic("music_cave", "assets/audio/music/39 Mt. Moon Cave.mp3");    
+    scene.load.tilemapTiledJSON('cave_taupiqueur', 'assets/maps/cave_taupiqueur.json');
 }
 
 export const CAVE_TAUPIQUEUR_OUEST: Destination = {

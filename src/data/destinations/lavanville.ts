@@ -16,6 +16,7 @@ import {TAUROS} from "../pokemons/tauros";
 import {EVOLI} from "../pokemons/evoli";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const LAVANVILLE: Destination = {
     ref: "LAVANVILLE",
@@ -85,7 +86,8 @@ export const LAVANVILLE: Destination = {
         }
     },
     shopId: 4,
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('arene_lavanville', 'assets/maps/arene_lavanville.json');
         preloadMusic("music_lavanville", "assets/audio/music/12 Lavender Town's Theme.mp3");
     }
 }

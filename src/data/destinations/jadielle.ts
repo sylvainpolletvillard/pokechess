@@ -22,6 +22,7 @@ import {SABELETTE} from "../pokemons/sabelette";
 import {RACAILLOU} from "../pokemons/racaillou";
 import {BADGE_TERRE} from "../badges";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 const ARENA_GIOVANNI: RoomArena = {
     type: RoomType.ARENA,
@@ -99,7 +100,8 @@ export const JADIELLE: Destination = {
         }
     },
     shopId: 1,
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('arene_jadielle', 'assets/maps/arene_jadielle.json');
         preloadMusic("music_jadielle", "assets/audio/music/06 Pokemon Gym.mp3");
     }
 }

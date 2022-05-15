@@ -11,6 +11,7 @@ import {PAPILUSION} from "../pokemons/papilusion";
 import {SAQUEDENEU} from "../pokemons/saquedeneu";
 import {TAUPIQUEUR} from "../pokemons/taupiqueur";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const CHAMPS_VERDOYANTS: Destination = {
     ref: "CHAMPS_VERDOYANTS",
@@ -59,7 +60,8 @@ export const CHAMPS_VERDOYANTS: Destination = {
             }
         }
     },
-    preload(){
-        preloadMusic("music_champs_verdoyants", "assets/audio/music/19 The Road to Viridian City ~ from Pallet.mp3");
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('champs_verdoyants', 'assets/maps/champs_verdoyants.json');
+        preloadMusic("music_champs_verdoyants", "assets/audio/music/19 The Road to Viridian City from Pallet.mp3");
     }
 }

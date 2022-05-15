@@ -14,6 +14,7 @@ import {OTARIA} from "../pokemons/otaria";
 import {KOKIYAS} from "../pokemons/kokiyas";
 import {TADMORV} from "../pokemons/tadmorv";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const OCEANE_WILD: RoomWild = {
     type: RoomType.WILD,
@@ -28,7 +29,8 @@ export const OCEANE_WILD: RoomWild = {
     }
 }
 
-function preload(){
+function preload(scene: MyScene){
+    scene.load.tilemapTiledJSON('oceane', 'assets/maps/oceane.json');
     preloadMusic("music_oceane", "assets/audio/music/13 St. Anne.mp3");
 }
 

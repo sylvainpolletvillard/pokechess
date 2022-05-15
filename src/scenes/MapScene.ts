@@ -234,7 +234,7 @@ export default class MapScene extends MyScene {
 
             this.sprites.set(`${destination.ref}_highlight`, destinationHighlight)
             this.registerDestination(destination, destinationHighlight)
-            if(destination.preload) destination.preload()
+            if(destination.preload) destination.preload(gameState.activeScene as MyScene)
         }
     }
 

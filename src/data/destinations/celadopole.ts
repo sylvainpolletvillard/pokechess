@@ -18,6 +18,7 @@ import {PAPILUSION} from "../pokemons/papilusion";
 import {TAUPIQUEUR} from "../pokemons/taupiqueur";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const CELADOPOLE: Destination = {
     ref: "CELADOPOLE",
@@ -89,7 +90,8 @@ export const CELADOPOLE: Destination = {
         }
     },
     shopId: 6,
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('arene_celadopole', 'assets/maps/arene_celadopole.json');
         preloadMusic("music_celadopole", "assets/audio/music/09 Celadon City's Theme.mp3");        
     }
 }

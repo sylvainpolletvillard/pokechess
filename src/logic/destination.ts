@@ -4,6 +4,7 @@ import {LevelConfig} from "./level";
 import {Badge} from "../data/badges";
 import {gameState} from "./gamestate";
 import { playSound } from "./audio";
+import { MyScene } from "../scenes/MyScene";
 
 export type Path = [dx:number, dy:number][];
 
@@ -38,7 +39,7 @@ export interface Destination {
     subtext?: string
     rooms: { [ref: string]: Room }
     shopId?: number
-    preload?: () => void
+    preload?: (scene: MyScene) => void
 }
 
 export interface RoomConfig {

@@ -252,7 +252,9 @@ export class GameState {
 
         gameState.allPokemonsOnBoard.forEach(pokemon => pokemon.resetAfterFight())
 
-        await Promise.all(gameState.board.playerTeam.map(pokemon => gainXP(pokemon, xpPerPokemon)))
+        for(let pokemon of gameState.board.playerTeam){
+            await gainXP(pokemon, xpPerPokemon)
+        }        
 
         startDialog(lines).then(() => {
             if([RoomType.ARENA, RoomType.TUTORIAL].includes(gameState.currentRoom.type)){

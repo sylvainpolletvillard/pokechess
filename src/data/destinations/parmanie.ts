@@ -11,6 +11,7 @@ import { TENTACRUEL } from "../pokemons/tentacruel";
 import { GROTADMORV } from "../pokemons/grotadmorv";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const PARMANIE: Destination = {
     ref: "PARMANIE",
@@ -58,8 +59,8 @@ export const PARMANIE: Destination = {
         trainer: {
             type: RoomType.ARENA,
             name: "Arène de Parmanie",
-            map: "parmanie",
-            music: "music_battle_wild",
+            map: "arene_parmanie",
+            music: "music_parmanie",
             trainer: DRESSEUR_PARMANIE,
             spawnOtherTeam(){
                 return spawnTrainerTeam([
@@ -82,7 +83,8 @@ export const PARMANIE: Destination = {
         }
     },
     shopId: 8,
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('arene_parmanie', 'assets/maps/arene_parmanie.json');
         preloadMusic("music_parmanie", "assets/audio/music/40 Pokemon Mansion.mp3");
     }
 }

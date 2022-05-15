@@ -10,6 +10,8 @@ import {PYROLI} from "../pokemons/pyroli";
 import {GOUPIX} from "../pokemons/goupix";
 import {MACHOC} from "../pokemons/machoc";
 import {TAUROS} from "../pokemons/tauros";
+import { MyScene } from "../../scenes/MyScene";
+import { preloadMusic } from "../../logic/audio";
 
 export const MONT_BRAISE: Destination = {
     ref: "MONT_BRAISE",
@@ -55,5 +57,9 @@ export const MONT_BRAISE: Destination = {
                 ])
             }
         }
+    },
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('mont_braise', 'assets/maps/mont_braise.json');
+        preloadMusic("music_mont_braise", "assets/audio/music/49 Unknown Song.mp3");
     }
 }

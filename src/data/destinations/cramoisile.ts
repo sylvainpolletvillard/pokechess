@@ -19,6 +19,7 @@ import {TENTACRUEL} from "../pokemons/tentacruel";
 import {RAFFLESIA} from "../pokemons/rafflesia";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const CRAMOISILE: Destination = {
     ref: "CRAMOISILE",
@@ -89,7 +90,8 @@ export const CRAMOISILE: Destination = {
         }
     },
     shopId: 9,
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('cramoisile', 'assets/maps/cramoisile.json');
         preloadMusic("music_cramoisile", "assets/audio/music/10 Cinnabar Island's Theme.mp3");
     }
 }

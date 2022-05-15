@@ -13,6 +13,7 @@ import {INSECATEUR} from "../pokemons/insecateur";
 import {ASPICOT} from "../pokemons/aspicot";
 import {DRESSEUR_FORET_JADE} from "../trainers";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const FORET_JADE: Destination = {
     ref: "FORET_JADE",
@@ -61,7 +62,8 @@ export const FORET_JADE: Destination = {
             }
         }
     },
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('foret_de_jade', 'assets/maps/foret_de_jade.json');
         preloadMusic("music_foret_jade", "assets/audio/music/38 Viridian Forest.mp3");
     }
 }

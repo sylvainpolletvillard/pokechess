@@ -10,6 +10,7 @@ import {GOUPIX} from "../pokemons/goupix";
 import {ABRA} from "../pokemons/abra";
 import {RATTATA} from "../pokemons/rattata";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const TOUR_POKEMON: Destination = {
     ref: "TOUR_POKEMON",
@@ -56,7 +57,8 @@ export const TOUR_POKEMON: Destination = {
             }
         }
     },
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('tour_pokemon', 'assets/maps/tour_pokemon.json');
         preloadMusic("music_tour_pokemon", "assets/audio/music/41 Pokemon Tower.mp3");    
     }
 }

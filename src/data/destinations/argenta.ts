@@ -18,6 +18,8 @@ import {KRABBY} from "../pokemons/krabby";
 import {MACHOC} from "../pokemons/machoc";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
+import { gameState } from "../../logic/gamestate";
+import { MyScene } from "../../scenes/MyScene";
 
 export const ARGENTA: Destination = {
     ref: "ARGENTA",
@@ -37,7 +39,7 @@ export const ARGENTA: Destination = {
             type: RoomType.ARENA,
             trainer: PIERRE,
             map: "arene_argenta",
-            music: "music_argenta",
+            music: "music_argenta_safrania",
             spawnOtherTeam(){
                 return spawnChampionTeam([
                         RACAILLOU,
@@ -65,7 +67,7 @@ export const ARGENTA: Destination = {
             type: RoomType.ARENA,
             name: "Arène d'Argenta",
             map: "arene_argenta",
-            music: "music_argenta",
+            music: "music_argenta_safrania",
             trainer: DRESSEUR_ARGENTA,
             spawnOtherTeam(){
                 return spawnTrainerTeam([
@@ -89,7 +91,8 @@ export const ARGENTA: Destination = {
         }
     },
     shopId: 2,
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('arene_argenta', 'assets/maps/arene_argenta.json');
         preloadMusic("music_argenta_safrania", "assets/audio/music/07 Pewter City's Theme.mp3");
     }
 }

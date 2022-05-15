@@ -11,6 +11,8 @@ import {KRABBY} from "../pokemons/krabby";
 import {PSYKOKWAK} from "../pokemons/psykokwak";
 import {CARAPUCE} from "../pokemons/carapuce";
 import {AQUALI} from "../pokemons/aquali";
+import { MyScene } from "../../scenes/MyScene";
+import { preloadMusic } from "../../logic/audio";
 
 export const ILES_ECUME: Destination = {
     ref: "ILES_ECUME",
@@ -56,5 +58,9 @@ export const ILES_ECUME: Destination = {
                 ])
             }
         }
+    },
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('iles_ecume', 'assets/maps/iles_ecume.json');
+        preloadMusic("music_iles_ecume", "assets/audio/music/35 Ocean.mp3.mp3");
     }
 }

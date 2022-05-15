@@ -17,6 +17,8 @@ import {NOADKOKO} from "../pokemons/noadkoko";
 import {ABO} from "../pokemons/abo";
 import {PIKACHU} from "../pokemons/pikachu";
 import {SHOP_JADIELLE} from "../levels/shops";
+import { MyScene } from "../../scenes/MyScene";
+import { preloadMusic } from "../../logic/audio";
 
 export const CAMP_NOMADE: Destination = {
     ref: "CAMP_NOMADE",
@@ -33,7 +35,7 @@ export const CAMP_NOMADE: Destination = {
             type: RoomType.ARENA,
             name: "Arène sauvage",
             map: "camp_nomade",
-            music: "music_camp_nomade",
+            music: "music_pension_et_camp_nomade",
             trainer: HECTOR,
             spawnOtherTeam() {
                 return spawnChampionTeam([
@@ -62,7 +64,7 @@ export const CAMP_NOMADE: Destination = {
             type: RoomType.ARENA,
             name: "Arène sauvage",
             map: "camp_nomade",
-            music: "music_foret_jade",
+            music: "music_pension_et_camp_nomade",
             trainer: DRESSEUR_CAMP_NOMADE,
             spawnOtherTeam(){
                 return spawnTrainerTeam([
@@ -89,5 +91,9 @@ export const CAMP_NOMADE: Destination = {
             music: "music_shop",
             level: SHOP_JADIELLE
         }
+    },
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('camp_nomade', 'assets/maps/camp_nomade.json');
+        preloadMusic("music_pension_et_camp_nomade", "assets/audio/music/47 Pikachu's Beach.mp3")
     }
 }

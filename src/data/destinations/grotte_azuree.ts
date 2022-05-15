@@ -14,6 +14,7 @@ import {POISSIRENE} from "../pokemons/poissirene";
 import {AQUALI} from "../pokemons/aquali";
 import {LOKHLASS} from "../pokemons/lokhlass";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const GROTTE_AZUREE: Destination = {
     ref: "GROTTE_AZUREE",
@@ -63,7 +64,8 @@ export const GROTTE_AZUREE: Destination = {
             }
         }
     },
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('grotte_azuree', 'assets/maps/grotte_azuree.json');
         preloadMusic("music_grotte_azuree", "assets/audio/music/40 Pokemon Mansion.mp3");
     }
 }

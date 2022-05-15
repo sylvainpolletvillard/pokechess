@@ -19,6 +19,7 @@ import {HYPOTREMPE} from "../pokemons/hypotrempe";
 import {POISSIRENE} from "../pokemons/poissirene";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const AZURIA: Destination = {
     ref: "AZURIA",
@@ -94,7 +95,8 @@ export const AZURIA: Destination = {
         }
     },
     shopId: 3,
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('arene_azuria', 'assets/maps/arene_azuria.json');
         preloadMusic("music_azuria", "assets/audio/music/08 Cerulean City's Theme.mp3");
     }
 }

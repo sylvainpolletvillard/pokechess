@@ -32,7 +32,6 @@ export function loadAudio(scene: Phaser.Scene) {
     /* UNUSED */
 
     //scene.load.audio("music_parc_safari", ["assets/audio/music/36 Casino.mp3"]);    
-    //scene.load.audio("music_pension", ["assets/audio/music/47 Pikachu's Beach.mp3"]);
     //scene.load.audio("purchase", ["assets/audio/sounds/purchase.ogg"]);
 }
 

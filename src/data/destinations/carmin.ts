@@ -15,6 +15,7 @@ import {MAGMAR} from "../pokemons/magmar";
 import {STARI} from "../pokemons/stari";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const CARMIN: Destination = {
     ref: "CARMIN",
@@ -87,7 +88,8 @@ export const CARMIN: Destination = {
         }
     },
     shopId: 7,
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('arene_carmin', 'assets/maps/arene_carmin.json');
         preloadMusic("music_carmin", "assets/audio/music/11 Vermilion City's Theme.mp3");
     }
 }
