@@ -4,6 +4,7 @@ import {gameState} from "../logic/gamestate";
 import {Item, ITEMS, ITEMS_SPRITES_INDEX, ITEM_POKEBALL} from "../data/items";
 import {hideItemDescription, showItemDescription} from "./itemDescriptionBox";
 import { handleDragStart } from "./cursor";
+import { playSound } from "../logic/audio";
 
 export function makeItemSprite(item: Item){
     const sprite = gameState.activeScene!.add.sprite(0, 0, "items",
@@ -39,7 +40,7 @@ export function openItemMenu(game: GameScene){
         value: item.ref
     }))
 
-    console.log(entries)
+    playSound("menu_open")
 
     return openMenu({
         ref: "items_box",

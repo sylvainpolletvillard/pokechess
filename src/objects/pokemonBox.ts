@@ -14,6 +14,7 @@ import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
 import {gameState} from "../logic/gamestate";
 import { drawTeamSizeCounter } from "../logic/board";
+import { playSound } from "../logic/audio";
 
 let interactiveElems: InteractiveElem[] = [];
 const ox = 20, oy = 100,  WIDTH = 248, HEIGHT = 24;
@@ -21,6 +22,7 @@ const NB_ROWS = 1, NB_COLS = 8;
 const CASE_SIZE = 28, CASE_GAP = 4, L = CASE_SIZE + CASE_GAP;
 
 export function openBox(game: GameScene){
+    playSound("menu_open")
     openMenu({
         ref: "box",
         x: ox,

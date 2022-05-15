@@ -218,7 +218,7 @@ export class GameState {
         }
     }
 
-    endFight(loser: number){        
+    async endFight(loser: number){        
         const game = gameState.activeScene as GameScene;
         this.stage = GameStage.ENDED;
         game.time.removeEvent(this.fightTimer!)
@@ -252,11 +252,7 @@ export class GameState {
 
         gameState.allPokemonsOnBoard.forEach(pokemon => pokemon.resetAfterFight())
 
-        gameState.board.playerTeam.forEach(pokemon => {
-            const oldLvl = pokemon.level
-            gainXP(pokemon, xpPerPokemon)
-            if(oldLvl !== pokemon.level) lines.push(`${pokemon.entry.name} passe au niveau ${pokemon.level}`)
-        })
+        await Promise.all(gameState.board.playerTeam.map(pokemon => gainXP(pokemon, xpPerPokemon)))
 
         startDialog(lines).then(() => {
             if([RoomType.ARENA, RoomType.TUTORIAL].includes(gameState.currentRoom.type)){

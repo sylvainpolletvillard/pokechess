@@ -16,6 +16,8 @@ import {TABLE_TYPES, TYPE_INSECTE, TYPE_NORMAL, TYPE_POISON, TYPE_ROCHE, TYPE_VO
 import {getAllianceState} from "./player";
 import { OWNER_PLAYER } from "../data/owners";
 import { xpToLevel } from "./xp";
+import { startDialog } from "./dialog";
+import { pauseMusicAndPlaySound } from "./audio";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
@@ -310,6 +312,7 @@ export function healPokemon(pokemon: PokemonOnBoard, healAmount: number){
 }
 
 export function gainXP(pokemon: Pokemon, amount: number){    
+    const oldLvl = pokemon.level
     let buffFactor = 1
     const team = pokemon.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
     const bonusInsecte = getAllianceState(team, TYPE_INSECTE)
@@ -319,5 +322,10 @@ export function gainXP(pokemon: Pokemon, amount: number){
 
     pokemon.xp += amount * buffFactor;
     pokemon.level = xpToLevel(pokemon.xp);
-    return pokemon.level
+
+    if(oldLvl !== pokemon.level){
+        pauseMusicAndPlaySound("level_up")
+        return startDialog([`${pokemon.entry.name} passe au niveau ${pokemon.level}`])
+    }
+    return Promise.resolve(pokemon.level)
 }

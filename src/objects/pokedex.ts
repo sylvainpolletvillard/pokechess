@@ -10,6 +10,7 @@ import { EVOLI } from "../data/pokemons/evoli";
 import { AQUALI } from "../data/pokemons/aquali";
 import { VOLTALI } from "../data/pokemons/voltali";
 import { PYROLI } from "../data/pokemons/pyroli";
+import { playSound } from "../logic/audio";
 
 enum CursorZone { TYPES, LIST }
 
@@ -44,6 +45,7 @@ let pokedexContainer: Phaser.GameObjects.Container | null = null;
 let interactiveElems: InteractiveElem[] = [];
 
 export function showPokedex(game: GameScene, pokemonToShow?: Pokemon){
+    playSound("menu_open")
     openMenu({
         ref: "pokedex",
         x: ox,
@@ -53,6 +55,7 @@ export function showPokedex(game: GameScene, pokemonToShow?: Pokemon){
         background: "box1",
         offset: 8,
         handleMove(moveVector){
+            playSound("tick")
             if(cursorZone === CursorZone.LIST && list.selectedIndex != null && pokedexContainer){
                 if(moveVector.y > 0){
                     selectInList(list.selectedIndex+1)
@@ -246,6 +249,7 @@ function activateTypeFilter(type: PokemonType){
     list.selectedIndex = 0;
     list.pageStartIndex = 0
     drawPokedex()
+    playSound("tick")
 }
 
 function drawPokemonInfo(pokemon: PokemonEntry){

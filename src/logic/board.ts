@@ -26,6 +26,7 @@ import { drawAlliancesInfo } from "../objects/alliancesInfo";
 import { updateFightButton } from "../objects/menuButtons";
 import { applyBuffs } from "./buffs";
 import { gainXP } from "./fight";
+import { pauseMusicAndPlaySound } from "./audio";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -209,13 +210,7 @@ export async function capturePokemon(
             await wait(100).then(() => startDialog([
                 `Le ${myPokemon.entry.name} sauvage partage son expérience avant d'être relaché.`,
                 `Votre ${myPokemon.entry.name} gagne ${pokemon.xp} XP`
-            ])).then(() => {
-                const oldLvl = myPokemon.level
-                gainXP(myPokemon, pokemon.xp)
-                if(oldLvl !== myPokemon.level){
-                    return startDialog([`${myPokemon.entry.name} passe au niveau ${myPokemon.level}`])
-                }
-            })
+            ])).then(() => gainXP(myPokemon, pokemon.xp))
         } else {
             addToBox(pokemon)
         }

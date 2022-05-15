@@ -4,11 +4,11 @@ import {Item, ITEMS} from "../data/items";
 import {wait} from "../utils/helpers";
 import {addText} from "../utils/text";
 import {drawPokeballsCounter} from "./pokeballsCounter";
-import RoomScene from "../scenes/RoomScene";
 import {getShopContent, spend} from "../logic/shop";
 import {endDialog, startDialog, waitBeforeNextLine} from "../logic/dialog";
 import {receiveItem} from "../data/dialogs/descriptions";
 import {hideItemDescription, showItemDescription} from "./itemDescriptionBox";
+import { playSound } from "../logic/audio";
 
 export function openBuyMenu(seller: string){
     if(!gameState.currentDestination.shopId) return console.error(`Missing shopId`)
@@ -29,6 +29,8 @@ export function openBuyMenu(seller: string){
         y: 4+entries.length*rowHeight,
         label: "Quitter"
     })
+
+    playSound("menu_open")
     return openMenu({
         ref: "shop_buy",
         x: ox,

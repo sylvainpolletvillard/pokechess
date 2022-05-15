@@ -2,6 +2,7 @@ import {gameState} from "../logic/gamestate";
 import RoomScene from "../scenes/RoomScene";
 import {MAP_SCALING} from "../logic/level";
 import {MapObject} from "../utils/map";
+import { playSound } from "../logic/audio";
 
 export class Door {
     sprite: Phaser.Physics.Arcade.Sprite;
@@ -18,6 +19,7 @@ export class Door {
         this.sprite.body.setSize(door.width*MAP_SCALING, door.height*MAP_SCALING, false)
         this.sprite.setData("type", "door")
         this.sprite.setData("action", () => {
+            playSound("door")
             scene.disableTriggers = true;  // to avoid triggers while changing level
             if(door.properties.to === "exit" && scene.level.canExit() === false){
                 // can't exit, move back

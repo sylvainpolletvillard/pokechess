@@ -3,6 +3,7 @@ import {Trainer} from "../data/trainers";
 import {LevelConfig} from "./level";
 import {Badge} from "../data/badges";
 import {gameState} from "./gamestate";
+import { playSound } from "./audio";
 
 export type Path = [dx:number, dy:number][];
 
@@ -86,6 +87,7 @@ export interface RoomPension extends RoomConfig {
 }
 
 export function enterDestination(destination: Destination){
+    playSound("door")
     gameState.roomOrder = getRoomOrder(destination)
     gameState.currentDestination = destination
     gameState.currentRoomIndex = 0;

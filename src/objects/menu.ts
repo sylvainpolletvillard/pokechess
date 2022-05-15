@@ -3,6 +3,7 @@ import {Z} from "../data/depths";
 import {gameState} from "../logic/gamestate";
 import {MyScene} from "../scenes/MyScene";
 import { addInteractiveElem } from "./cursor";
+import { playSound } from "../logic/audio";
 
 let menuCursorPos: number = 0;
 let cursorSprite: Phaser.GameObjects.Sprite | null = null;
@@ -34,15 +35,16 @@ export interface Menu {
 }
 
 export function selectEntry(index: number){
-    if(gameState.activeMenu === null || !gameState.activeMenu.entries) return
+    if(gameState.activeMenu === null || !gameState.activeMenu.entries) return;
     menuCursorPos = (index + gameState.activeMenu.entries.length) % gameState.activeMenu.entries.length;
     cursorSprite?.setPosition(
         gameState.activeMenu.x+gameState.activeMenu.entries[menuCursorPos].x + 2,
         gameState.activeMenu.y+gameState.activeMenu.entries[menuCursorPos].y + 12
     );
+    playSound("tick")
     if(gameState.activeMenu.onSelect){
         gameState.activeMenu.onSelect(gameState.activeMenu.entries[menuCursorPos])
-    }
+    }    
 }
 
 export function getSelectedMenuEntry(): MenuEntry | null {
@@ -54,6 +56,7 @@ export function clickEntry(){
     if(!gameState.activeMenu?.entries) return false;
     const selectedEntry = gameState.activeMenu.entries[menuCursorPos]
     const menuToBeClosed = gameState.activeMenu
+    playSound(selectedEntry.value ? "press_ab" : "menu_close")
     closeMenu()
     if(menuToBeClosed.handleChoice) menuToBeClosed.handleChoice(selectedEntry);
     return true;
@@ -116,6 +119,7 @@ export function openMenu(menu: Menu){
 
 export function closeMenu(){
     if(!gameState.activeMenu || !gameState.activeMenu.container) return
+    playSound("menu_close")
     gameState.activeMenu.onClose && gameState.activeMenu.onClose()
     gameState.activeMenu.container.destroy(true)
     gameState.activeMenu = null;

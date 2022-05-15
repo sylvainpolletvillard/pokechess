@@ -1,7 +1,7 @@
 /* Offline cache service worker */
 
 const CACHE_VERSION = "v1"
-const EXTENSIONS_SAVED = [".png", ".jpg", ".json", ".mp3"]
+const EXTENSIONS_SAVED = [".png", ".jpg", ".json", ".mp3", ".ogg", ".wav"]
 
 this.addEventListener('install', (event) => {
     event.waitUntil(caches.open(CACHE_VERSION));
