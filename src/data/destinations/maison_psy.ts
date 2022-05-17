@@ -11,6 +11,7 @@ import {LIPPOUTOU} from "../pokemons/lippoutou";
 import {RAMOLOSS} from "../pokemons/ramoloss";
 import {PORYGON} from "../pokemons/porygon";
 import {EVOLI} from "../pokemons/evoli";
+import { MyScene } from "../../scenes/MyScene";
 
 export const MAISON_PSY: Destination = {
     ref: "MAISON_PSY",
@@ -25,7 +26,7 @@ export const MAISON_PSY: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            music: "music_mr_psy",
+            music: "music_labo_chen",
             name: "Maison de Mr Psy",
             map: "maison_mr_psy",
             spawnOtherTeam(){
@@ -39,7 +40,7 @@ export const MAISON_PSY: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            music: "music_mr_psy",
+            music: "music_labo_chen",
             name: "Maison de Mr Psy",
             map: "maison_mr_psy",
             trainer: DRESSEUR_MR_PSY,
@@ -58,5 +59,9 @@ export const MAISON_PSY: Destination = {
                 ])
             }
         }
+    },
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('maison_mr_psy', 'assets/maps/maison_mr_psy.json');
+        //preloadMusic("music_oceane", "assets/audio/music/13 St. Anne.mp3"); // go with music_labo_chen
     }
 }

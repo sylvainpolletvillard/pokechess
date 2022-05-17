@@ -5,5 +5,6 @@ export function loadTilemaps(scene: Phaser.Scene){
 
     scene.load.tilemapTiledJSON('overworld', 'assets/maps/overworld.json')    
     scene.load.tilemapTiledJSON('labo_chen', 'assets/maps/labo_chen.json');
+    scene.load.tilemapTiledJSON('foret_de_jade', 'assets/maps/foret_de_jade.json');
     scene.load.tilemapTiledJSON('shop_jadielle', 'assets/maps/shop_jadielle.json');
 }

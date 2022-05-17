@@ -43,7 +43,7 @@ export const BOURG_PALETTE: Destination = {
     icons: ["gift"],
     subtext: "Maman",
     preload(scene: MyScene){
-        scene.load.tilemapTiledJSON('bourg_palette', 'assets/maps/bourg_palette.json');
+        scene.load.tilemapTiledJSON('bourg_palette', 'assets/maps/bourg_palette.json');        
         preloadMusic("music_labo_chen", "assets/audio/music/32 Oak Research Lab.mp3")
     },
 }
