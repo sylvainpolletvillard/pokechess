@@ -188,6 +188,9 @@ export function sendPokemonFlying(pokemon: PokemonOnBoard, stacks: number, game:
     const tweenObj = { t: 0 };
     const duration = 250 + stacks * game.gameSpeed
 
+    targetSprite.anims.resume()
+    wait(duration).then(() => { if(pokemon.alive) targetSprite.anims.pause() })
+
     game.tweens.add({
         targets: tweenObj,
         t: 1,
@@ -199,7 +202,7 @@ export function sendPokemonFlying(pokemon: PokemonOnBoard, stacks: number, game:
             targetSprite.x = position.x;
             targetSprite.y = position.y;
         }
-    });
+    });    
 }
 
 export function sendPokemonCharge(attacker: PokemonOnBoard, target: PokemonOnBoard, chargeDelta: number, game: GameScene){
@@ -208,6 +211,7 @@ export function sendPokemonCharge(attacker: PokemonOnBoard, target: PokemonOnBoa
     if(!sprite) return;
     let {x, y} = sprite
     const attackSpeed = 5000000 / (attacker.speed+25) / game.gameSpeed
+    sprite.anims.resume()
     game.tweens.add({
         targets: sprite, 
         x: x + chargeDelta * Math.cos(chargeAngle),
@@ -222,6 +226,7 @@ export function sendPokemonCharge(attacker: PokemonOnBoard, target: PokemonOnBoa
                 duration: 250,
                 ease: Phaser.Math.Easing.Linear
             })
+            sprite.anims.pause()
         }
     });
 }

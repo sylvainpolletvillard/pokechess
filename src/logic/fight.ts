@@ -67,6 +67,7 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
 
     pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
     sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
+    sprite.anims.pause()
 }
 
 export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
@@ -84,6 +85,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
 
         pokemon.facingDirection = getDirection(nextX - pokemon.x, nextY - pokemon.y)
         sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
+        sprite.anims.resume()
         pokemon.x = nextX;
         pokemon.y = nextY;
         const duration = 3000000 / (pokemon.speed+20) / game.gameSpeed
@@ -96,7 +98,10 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
         });
         game.time.addEvent({
             delay: duration,
-            callback: () => { pokemon.resetTarget(target) }
+            callback: () => { 
+                sprite.anims.pause()
+                pokemon.resetTarget(target) 
+            }
         })
     } else {
         // Pokémon is already at range to attack
@@ -110,7 +115,7 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
 
     const attackSpeed = 100 + (10000000 / (pokemon.speed+50)) / game.gameSpeed    
     pokemon.resetAction({ type: PokemonTypeAction.ATTACK, target }); // prevent changing target
-    faceTarget(pokemon, target, game);
+    faceTarget(pokemon, target, game);    
     pokemon.nextAction.timer = game.time.addEvent({
         delay: attackSpeed,
         loop: true,
@@ -123,6 +128,7 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
             pokemon.pp = Math.min(pokemon.entry.maxPP, pokemon.pp + 1);
             //console.log(`${pokemon.entry.name} (${pokemon.x},${pokemon.y}) is targeting ${target.name} (${target.x},${target.y}) → ${pokemon.facingDirection}`)
             faceTarget(pokemon, target, game);
+
             let skill = pokemon.entry.baseSkill;
             if(pokemon.entry.ppSkill && pokemon.pp >= pokemon.entry.maxPP){
                 skill = pokemon.entry.ppSkill
@@ -175,7 +181,8 @@ export function jump(pokemon: PokemonOnBoard, game: GameScene){
     const [nextX,nextY] = pokemon.nextAction.path[0]
     const [sceneX,sceneY] = getPositionFromCoords(nextX,nextY);
     pokemon.facingDirection = getDirection(nextX - pokemon.x, nextY - pokemon.y)
-    sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)    
+    sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
+    sprite.anims.pause() 
     pokemon.x = nextX;
     pokemon.y = nextY;
     const duration = 1000
