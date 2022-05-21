@@ -33,7 +33,7 @@ export const SAFRANIA: Destination = {
         arena: {
             name: "Arène de Safrania",
             type: RoomType.ARENA,
-            map: "safrania",
+            map: "arene_safrania",
             music: "music_argenta_safrania", // meme musique que argenta
             trainer: MORGANE,
             spawnOtherTeam(){
@@ -62,7 +62,7 @@ export const SAFRANIA: Destination = {
         trainer: {
             type: RoomType.ARENA,
             name: "Arène de Safrania",
-            map: "safrania",
+            map: "arene_safrania",
             music: "music_argenta_safrania", // meme musique que argenta
             trainer: DRESSEUR_SAFRANIA,
             spawnOtherTeam(){
