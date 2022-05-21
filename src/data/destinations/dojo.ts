@@ -13,7 +13,7 @@ import { MyScene } from "../../scenes/MyScene";
 
 export const DOJO: Destination = {
     ref: "DOJO",
-    name: "DOJO",
+    name: "Dojo",
     nextDestinations: {
         SAFRANIA: [[2,0]],
         CELADOPOLE: [[-3,0]]
@@ -58,7 +58,7 @@ export const DOJO: Destination = {
         }
     },
     preload(scene: MyScene){
-        scene.load.tilemapTiledJSON('dojo', 'assets/maps/dojo.json');
+        scene.load.tilemapTiledJSON("dojo", 'assets/maps/dojo.json');
         preloadMusic("music_dojo", "assets/audio/music/15 Rival Appears.mp3");
     }
 }

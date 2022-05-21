@@ -23,9 +23,9 @@ export type AllianceState = {
 const BONUS_ALLIANCE_COMBAT: AllianceBonus =  {
     description: "Les Pokémon Combat ne connaissent pas la peur et ont leur stats augmentées avec le nombre d'adversaires les ciblant.",
     steps: [
-        { numberRequired: 2, ref: "COMBAT2", description: "+2% attaque et défense par adversaire" },
-        { numberRequired: 4, ref: "COMBAT4", description: "+5% attaque et défense par adversaire" },
-        { numberRequired: 6, ref: "COMBAT6", description: "+8% attaque et défense par adversaire" }
+        { numberRequired: 2, ref: "COMBAT2", description: "+2% ATK et DEF par adversaire" },
+        { numberRequired: 4, ref: "COMBAT4", description: "+5% ATK et DEF par adversaire" },
+        { numberRequired: 6, ref: "COMBAT6", description: "+8% ATK et DEF par adversaire" }
     ]
 }
 
@@ -122,9 +122,9 @@ const BONUS_ALLIANCE_POISON: AllianceBonus =  {
 const BONUS_ALLIANCE_PSY: AllianceBonus =  {
     description: "Les Pokémons Psy sont insensibles à la Confusion, et leurs attaques font perdre des PP à leur cible.",
     steps: [
-        { numberRequired: 2, ref: "PSY2", description: "La cible perd 2PP par attaque" },
-        { numberRequired: 4, ref: "PSY4", description: "La cible perd 4PP par attaque" },
-        { numberRequired: 6, ref: "PSY6", description: "La cible perd 6PP par attaque" }
+        { numberRequired: 2, ref: "PSY2", description: "La cible perd 2 PP par attaque" },
+        { numberRequired: 4, ref: "PSY4", description: "La cible perd 4 PP par attaque" },
+        { numberRequired: 6, ref: "PSY6", description: "La cible perd 6 PP par attaque" }
     ]
 }
 

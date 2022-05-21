@@ -25,9 +25,6 @@ export function drawTrainers(game: GameScene){
         })
         game.sprites.set("opponent", trainer)
     }
-
-    drawAlliancesInfo(gameState.board.playerTeam)
-    drawAlliancesInfo(gameState.board.otherTeam)
 }
 
 export function showTrainerIntro(trainer: Trainer){

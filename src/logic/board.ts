@@ -65,11 +65,7 @@ export function setupRoomBoard(p1: Player, room: RoomArena | RoomWild){
 export function initPlacement(game: GameScene){
     gameState.stage = GameStage.PLACEMENT
     drawGrid()
-    drawCursor()
-    drawTeamSizeCounter()
-    if(gameState.currentRoom.type === RoomType.ARENA){
-        drawAlliancesInfo(gameState.board.otherTeam)
-    }
+    drawCursor()    
     
     for (let pokemon of gameState.player.team) {
         const sprite = makePokemonSprite(pokemon, game)
@@ -80,6 +76,10 @@ export function initPlacement(game: GameScene){
         const sprite = makePokemonSprite(pokemon, game)
         sprite.anims.resume()
     }
+
+    drawTeamSizeCounter()
+    drawAlliancesInfo(gameState.board.playerTeam)
+    drawAlliancesInfo(gameState.board.otherTeam)    
 }
 
 export function clearPlacement(game: GameScene){
