@@ -48,6 +48,6 @@ export const COLLINE_ROYALE: Destination = {
     },
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('colline_royale', 'assets/maps/colline_royale.json');
-        preloadMusic("music_colline_royale", "assets/audio/music/03 To Bill's Origin ~ From Cerulean.mp3");
+        preloadMusic("music_colline_royale", "assets/audio/music/03 To Bill's Origin - From Cerulean.mp3");
     }
 }
