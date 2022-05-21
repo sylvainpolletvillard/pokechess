@@ -12,6 +12,7 @@ import {SCARABRUTE} from "../pokemons/scarabrute";
 import {ELEKTEK} from "../pokemons/elektek";
 import {VOLTORBE} from "../pokemons/voltorbe";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const PISTE_CYCLABLE: Destination = {
     ref: "PISTE_CYCLABLE",
@@ -58,7 +59,8 @@ export const PISTE_CYCLABLE: Destination = {
             }
         }
     },
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('piste_cyclable', 'assets/maps/piste_cyclable.json');
         preloadMusic("music_piste_cyclable", "assets/audio/music/34 Cycling.mp3");
     }
 }

@@ -1,5 +1,8 @@
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
+import { preloadMusic } from "../../logic/audio";
+import {SHOP_JADIELLE} from "../levels/shops";
+import { MyScene } from "../../scenes/MyScene";
 import { DRESSEUR_SAFRANIA, MORGANE} from "../trainers";
 import { KADABRA } from "../pokemons/kadabra";
 import { AEROMITE } from "../pokemons/aeromite";
@@ -9,16 +12,10 @@ import { LIPPOUTOU } from "../pokemons/lippoutou";
 import { HYPNOMADE } from "../pokemons/hypnomade";
 import { NOADKOKO } from "../pokemons/noadkoko";
 import { SOPORIFIK } from "../pokemons/soporifik";
-import {RACAILLOU} from "../pokemons/racaillou";
-import {ONIX} from "../pokemons/onix";
-import {CANINOS} from "../pokemons/caninos";
-import {RHINOCORNE} from "../pokemons/rhinocorne";
-import {SALAMECHE} from "../pokemons/salameche";
-import {PIAFABEC} from "../pokemons/piafabec";
-import {SAQUEDENEU} from "../pokemons/saquedeneu";
-import {SABELETTE} from "../pokemons/sabelette";
-import {SHOP_JADIELLE} from "../levels/shops";
-import { preloadMusic } from "../../logic/audio";
+import { ABRA } from "../pokemons/abra";
+import { NOEUFNOEUF } from "../pokemons/noeufnoeuf";
+import { PSYKOKWAK } from "../pokemons/psykokwak";
+import { AKWAKWAK } from "../pokemons/akwakwak";
 
 export const SAFRANIA: Destination = {
     ref: "SAFRANIA",
@@ -70,14 +67,14 @@ export const SAFRANIA: Destination = {
             trainer: DRESSEUR_SAFRANIA,
             spawnOtherTeam(){
                 return spawnTrainerTeam([
-                    RACAILLOU,
-                    ONIX,
-                    CANINOS,
-                    RHINOCORNE,
-                    SALAMECHE,
-                    PIAFABEC,
-                    SAQUEDENEU,
-                    SABELETTE
+                    ABRA,
+                    SOPORIFIK,
+                    NOEUFNOEUF,
+                    KADABRA,
+                    HYPNOMADE,
+                    PSYKOKWAK,
+                    AKWAKWAK,
+                    MR_MIME
                 ])
             }
         },
@@ -89,7 +86,8 @@ export const SAFRANIA: Destination = {
         }
     },
     shopId: 5,
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('arene_safrania', 'assets/maps/arene_safrania.json');
         preloadMusic("music_argenta_safrania", "assets/audio/music/07 Pewter City's Theme.mp3");
     }
 }

@@ -5,6 +5,7 @@ import { DRESSEUR_COLLINE_ROYALE} from "../trainers";
 import {MINIDRACO} from "../pokemons/minidraco";
 import {REPTINCEL} from "../pokemons/reptincel";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const COLLINE_ROYALE: Destination = {
     ref: "COLLINE_ROYALE",
@@ -45,7 +46,8 @@ export const COLLINE_ROYALE: Destination = {
             }
         }
     },
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('colline_royale', 'assets/maps/colline_royale.json');
         preloadMusic("music_colline_royale", "assets/audio/music/03 To Bill's Origin ~ From Cerulean.mp3");
     }
 }

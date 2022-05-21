@@ -1,5 +1,6 @@
 import { Destination, DestinationType, RoomType } from "../../logic/destination"
 import { PokemonOnBoard } from "../../objects/pokemon"
+import { MyScene } from "../../scenes/MyScene"
 import { Trainer } from "../trainers"
 
 export const TEST_ROOM = (otherTeam: PokemonOnBoard[]): Destination => {
@@ -21,6 +22,9 @@ export const TEST_ROOM = (otherTeam: PokemonOnBoard[]): Destination => {
                     return otherTeam
                 },
             }
+        },
+        preload(scene: MyScene){
+            scene.load.tilemapTiledJSON('foret_de_jade', 'assets/maps/foret_de_jade.json');
         }
     }
 }

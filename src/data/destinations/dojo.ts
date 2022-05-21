@@ -9,6 +9,7 @@ import {MACHOPEUR} from "../pokemons/machopeur";
 import {FEROSINGE} from "../pokemons/ferosinge";
 import {TARTARD} from "../pokemons/tartard";
 import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 
 export const DOJO: Destination = {
     ref: "DOJO",
@@ -56,7 +57,8 @@ export const DOJO: Destination = {
             }
         }
     },
-    preload(){
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('dojo', 'assets/maps/dojo.json');
         preloadMusic("music_dojo", "assets/audio/music/15 Rival Appears.mp3");
     }
 }
