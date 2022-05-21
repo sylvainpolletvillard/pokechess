@@ -418,6 +418,10 @@ export function getPokemonsOfType(type: PokemonType){
     return POKEMONS.filter(p => p.types.includes(type))
 }
 
+export function getNonLegendaryPokemons(){
+    return POKEMONS.filter(p => p.rank < 5)
+}
+
 export function getNonLegendaryPokemonsOfType(type: PokemonType){
     return getPokemonsOfType(type).filter(p => p.rank < 5)
 }

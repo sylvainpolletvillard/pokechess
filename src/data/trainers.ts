@@ -386,7 +386,7 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
                 gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD
                 wait(500).then(() => {
                     const game = gameState.activeScene as GameScene
-                    gameState.stage = GameStage.TUTO_CAPTURE                    
+                    gameState.stage = GameStage.CAPTURE
                     gameState.board.otherTeam = spawnTutoCaptureTeamStep2(playerPokemon);                    
                     spawnPokemon(gameState.board.otherTeam[0], game)
                 })

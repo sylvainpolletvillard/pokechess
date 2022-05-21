@@ -16,17 +16,16 @@ import {Pokemon} from "../data/pokemons";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
 import { NO_OWNER, OWNER_CHANGING, OWNER_PLAYER } from "../data/owners";
-import { RoomArena, RoomType, RoomWild} from "./destination";
+import { RoomBoard, RoomType} from "./destination";
 import {displayPokemonCaptureInfo, hidePokemonCaptureInfo} from "../objects/pokemonCaptureBox";
 import {spend} from "./shop";
 import { calcXpEarnedOnDefeat } from "./xp";
 import { startDialog } from "./dialog";
 import { hidePokemonReleaseInfo } from "../objects/pokemonReleaseBox";
 import { drawAlliancesInfo } from "../objects/alliancesInfo";
-import { updateFightButton } from "../objects/menuButtons";
+import { drawMenuButtons, drawSafariButtons, updateFightButton } from "../objects/menuButtons";
 import { applyBuffs } from "./buffs";
 import { gainXP } from "./fight";
-import { pauseMusicAndPlaySound } from "./audio";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -54,7 +53,7 @@ export function setupPlayerFightBoard(p1: Player, p2: Player){
     }
 }
 
-export function setupRoomBoard(p1: Player, room: RoomArena | RoomWild){
+export function setupRoomBoard(p1: Player, room: RoomBoard){
     return {
         playerTeam: p1.resetTeam(),
         otherTeam: room.spawnOtherTeam(),
@@ -62,10 +61,31 @@ export function setupRoomBoard(p1: Player, room: RoomArena | RoomWild){
     }
 }
 
+export function setupSafariBoard(room: RoomBoard){
+    return {
+        playerTeam: [],
+        otherTeam: room.spawnOtherTeam(),
+        activeTile: null
+    }
+}
+
+export function initSafari(game: GameScene){
+    gameState.stage = GameStage.CAPTURE
+    drawSafariButtons(game)
+    drawGrid(0)
+    drawCursor()
+    
+    for (let pokemon of gameState.board.otherTeam) {
+        const sprite = makePokemonSprite(pokemon, game)
+        sprite.anims.resume()
+    }
+}
+
 export function initPlacement(game: GameScene){
     gameState.stage = GameStage.PLACEMENT
+    drawMenuButtons(game)
     drawGrid()
-    drawCursor()    
+    drawCursor()
     
     for (let pokemon of gameState.player.team) {
         const sprite = makePokemonSprite(pokemon, game)
@@ -219,12 +239,12 @@ export async function capturePokemon(
     })
 }
 
-export function drawGrid(){
+export function drawGrid(opacity=0.1){
     const game = gameState.activeScene as GameScene
     const grid = game.add.graphics();
     game.objects.set("grid", grid);
     grid.setDepth(Z.GRID);
-    grid.lineStyle(1, 0x000000, 0.1);
+    grid.lineStyle(1, 0x000000, opacity);
     for(let x=1; x <= BOARD_WIDTH+1; x++) {
         grid.lineBetween(x*32 + 16, 32, x*32 + 16, 288)
     }
@@ -296,15 +316,15 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: GameScene){
         && (gameState.activeMenu == null || gameState.activeMenu?.ref == "box")){
 
         if(pokemonOnTile.owner === OWNER_PLAYER
-            || [RoomType.WILD, RoomType.ARENA, RoomType.TUTORIAL].includes(gameState.currentRoom.type)            
+            || [RoomType.WILD, RoomType.ARENA, RoomType.TUTORIAL, RoomType.SAFARI].includes(gameState.currentRoom.type)            
             || gameState.stage === GameStage.FIGHT){
             displayPokemonInfo(pokemonOnTile)
         }
 
-        if([RoomType.WILD, RoomType.TUTORIAL].includes(gameState.currentRoom.type)
+        if([RoomType.WILD, RoomType.TUTORIAL, RoomType.SAFARI].includes(gameState.currentRoom.type)
         && pokemonOnTile.owner === NO_OWNER
         && gameState.activeMenu == null
-        && (gameState.stage === GameStage.PLACEMENT || gameState.stage === GameStage.TUTO_CAPTURE)){
+        && (gameState.stage === GameStage.PLACEMENT || gameState.stage === GameStage.CAPTURE)){
             displayPokemonCaptureInfo(pokemonOnTile, game)
         }
     }

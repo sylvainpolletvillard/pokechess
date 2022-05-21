@@ -1,9 +1,9 @@
-import {getNonLegendaryPokemonsOfType, Pokemon, PokemonEntry} from "../data/pokemons";
+import {getNonLegendaryPokemons, getNonLegendaryPokemonsOfType, Pokemon, PokemonEntry} from "../data/pokemons";
 import {POKEMON_TYPES} from "../data/types";
 import {gameState} from "./gamestate";
 import {clamp, pickNRandomIn, pickRandomIn, randomInt} from "../utils/helpers";
 import {PokemonOnBoard} from "../objects/pokemon";
-import {NO_OWNER, OWNER_TRAINER} from "../data/owners";
+import { NO_OWNER, OWNER_TRAINER } from "../data/owners";
 import { RATTATA } from "../data/pokemons/rattata";
 import { NIDORAN_FEMALE } from "../data/pokemons/nidoranf";
 import { CHETIFLOR } from "../data/pokemons/chetiflor";
@@ -15,7 +15,7 @@ import { RONDOUDOU } from "../data/pokemons/rondoudou";
 import { SOPORIFIK } from "../data/pokemons/soporifik";
 import { NOSFERAPTI } from "../data/pokemons/nosferapti";
 
-export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }){
+export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }): PokemonOnBoard[] {
     const types = Object.keys(typesFactors)
 
     const numberToSpawn = clamp(gameState.player.teamSize, 3, 8)
@@ -51,7 +51,7 @@ export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }
     return team;
 }
 
-export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, number][]) {
+export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, number][]): PokemonOnBoard[] {
     const team: PokemonOnBoard[] = []
 
     const numberToSpawn = Math.min( 
@@ -81,7 +81,7 @@ export function autoEvolve(pokemon: Pokemon): Pokemon{
     return pokemon
 }
 
-export function spawnTrainerTeam(pokemons: PokemonEntry[]) {
+export function spawnTrainerTeam(pokemons: PokemonEntry[]): PokemonOnBoard[] {
     const team: PokemonOnBoard[] = []
 
     const numberToSpawn = Math.min(
@@ -109,7 +109,7 @@ export function spawnTrainerTeam(pokemons: PokemonEntry[]) {
     return team
 }
 
-export function spawnTutoCaptureTeam(){
+export function spawnTutoCaptureTeam(): PokemonOnBoard[] {
     const SECONDERS: PokemonEntry[] = [
         RATTATA,
         NIDORAN_FEMALE,
@@ -133,8 +133,35 @@ export function spawnTutoCaptureTeam(){
     return team
 }
 
-export function spawnTutoCaptureTeamStep2(entry: PokemonEntry){
+export function spawnTutoCaptureTeamStep2(entry: PokemonEntry): PokemonOnBoard[] {
     const cloneStarter = new PokemonOnBoard(new Pokemon(entry, NO_OWNER, 4), 3, 3)
     const team: PokemonOnBoard[] = [ cloneStarter ]
     return team
+}
+
+export function spawnSafariTeam(): PokemonOnBoard[] {
+    const NUMBER_TO_SPAWN = 8
+    const selection = pickNRandomIn(getNonLegendaryPokemons(), NUMBER_TO_SPAWN)
+
+    const team: PokemonOnBoard[] = [];
+    for(let i=0; i<NUMBER_TO_SPAWN; i++){
+
+        const pokemonEntry = selection[i]
+        const level = clamp(Math.floor(gameState.worldLevel) + randomInt(-4,1), 1, 50);
+
+        let x: number, y: number;
+        do {
+            x = randomInt(0,6);
+            y = randomInt(0,7);
+        } while(team.some(p => p.x === x && p.y === y))
+
+        team.push(
+            new PokemonOnBoard(
+                autoEvolve(new Pokemon(pokemonEntry, NO_OWNER, level)),
+                x, y
+            )
+        )
+    }
+
+    return team    
 }

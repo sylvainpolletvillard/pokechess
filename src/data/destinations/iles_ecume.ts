@@ -61,6 +61,6 @@ export const ILES_ECUME: Destination = {
     },
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('iles_ecume', 'assets/maps/iles_ecume.json');
-        preloadMusic("music_iles_ecume", "assets/audio/music/35 Ocean.mp3.mp3");
+        preloadMusic("music_iles_ecume", "assets/audio/music/35 Ocean.mp3");
     }
 }

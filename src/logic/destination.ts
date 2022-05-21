@@ -48,43 +48,41 @@ export interface RoomConfig {
     music: string;
 }
 
-export type Room = RoomWild | RoomArena | RoomFreewalk | RoomTutorial | RoomSafari | RoomPension
-
-export interface RoomWild extends RoomConfig {
-    type: RoomType.WILD
-    map: string
-    spawnOtherTeam: () => PokemonOnBoard[]
-}
-
-export interface RoomArena extends RoomConfig {
-    type: RoomType.ARENA
-    map: string
-    spawnOtherTeam: () => PokemonOnBoard[]
-    trainer: Trainer,
-    badge?: Badge
-}
+export type Room = RoomFreewalk | RoomBoard
 
 export interface RoomFreewalk extends RoomConfig {
     type: RoomType.FREEWALK
     level: LevelConfig
 }
 
-export interface RoomTutorial extends RoomConfig {
-    type: RoomType.TUTORIAL
+export interface RoomBoard extends RoomConfig {
     map: string
     spawnOtherTeam: () => PokemonOnBoard[]
-    trainer: Trainer    
 }
 
-export interface RoomSafari extends RoomConfig {
-    type: RoomType.SAFARI
+export interface RoomWild extends RoomBoard {
+    type: RoomType.WILD
 }
 
-export interface RoomPension extends RoomConfig {
-    type: RoomType.PENSION
-    map: string
-    spawnOtherTeam: () => PokemonOnBoard[]
+export interface RoomArena extends RoomBoard {
+    type: RoomType.ARENA
     trainer: Trainer,
+    badge?: Badge
+}
+
+export interface RoomTutorial extends RoomBoard {
+    type: RoomType.TUTORIAL
+    trainer: Trainer
+}
+
+export interface RoomSafari extends RoomBoard {
+    type: RoomType.SAFARI
+    safariMapIndex?: number
+}
+
+export interface RoomPension extends RoomBoard {
+    type: RoomType.PENSION
+    trainer: Trainer
 }
 
 export function enterDestination(destination: Destination){

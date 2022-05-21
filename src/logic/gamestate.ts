@@ -20,16 +20,12 @@ import { updateAlterations } from "./alteration";
 import {loadSave, saveState} from "./save";
 import { updateFightButton } from "../objects/menuButtons";
 import { PokemonOnBoard } from "../objects/pokemon";
-import { LOKHLASS } from "../data/pokemons/lokhlass";
-import { TEST_ROOM } from "../data/destinations/test_room";
-import { CARABAFFE } from "../data/pokemons/carabaffe";
-import { POISSIRENE } from "../data/pokemons/poissirene";
 import { startMusic } from "./audio";
 
 export enum GameStage {
     CREATION = "CREATION",
     PLACEMENT = "PLACEMENT",
-    TUTO_CAPTURE = "TUTO_CAPTURE",
+    CAPTURE = "CAPTURE",
     LAUNCH = "LAUNCH",
     FIGHT = "FIGHT",
     ENDED = "ENDED"

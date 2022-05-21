@@ -13,17 +13,57 @@ import { showPokedex } from './pokedex';
 import { Z } from '../data/depths';
 
 let menuButtonsGroup: Phaser.GameObjects.Group;
-let pokedexButton: Phaser.GameObjects.Sprite;
-let bagButton: Phaser.GameObjects.Sprite;
-let boxButton: Phaser.GameObjects.Sprite;
-let fightButton: Phaser.GameObjects.Sprite;
 
 export function drawMenuButtons(game: GameScene){
     menuButtonsGroup = game.add.group();
-    let dyText = 30
 
+    drawPokedexButton(game)
+    drawBoxButton(game)
+    drawBagButton(game)
+
+    const fightButton = game.add.sprite(295, game.scale.height - 12, "buttons_big",0)
+    fightButton
+        .on("over", () => {
+            fightButton.setFrame(1)
+        })
+        .on("out", () => {
+            fightButton.setFrame(0)
+        })
+        .on("click", () => {            
+            game.launchFight()
+        })
+    addInteractiveElem(fightButton)
+    game.sprites.set("fightButton", fightButton)
+    menuButtonsGroup.add(fightButton)
+    menuButtonsGroup.setDepth(Z.GUI_BUTTON);
+}
+
+export function drawSafariButtons(game: GameScene){
+    menuButtonsGroup = game.add.group();
+
+    drawBoxButton(game)
+    drawRefreshButton(game)
+ 
+    const quitButton = game.add.sprite(295, game.scale.height - 12, "buttons_big",2)
+    quitButton
+        .on("over", () => {
+            quitButton.setFrame(3)
+        })
+        .on("out", () => {
+            quitButton.setFrame(2)
+        })
+        .on("click", () => {            
+            //TODO: EXIT
+        })
+    addInteractiveElem(quitButton)
+    game.sprites.set("quitButton", quitButton)
+    menuButtonsGroup.add(quitButton)
+    menuButtonsGroup.setDepth(Z.GUI_BUTTON);
+}
+
+export function drawPokedexButton(game: GameScene){
     let pokedexButtonX = 100
-    pokedexButton = game.add.sprite(pokedexButtonX, game.scale.height - 12, "buttons",2)
+    const pokedexButton = game.add.sprite(pokedexButtonX, game.scale.height - 12, "buttons",2)
     pokedexButton.setData("type", "pokedexButton")
     let pokedexButtonText: Phaser.GameObjects.Text | null;
     pokedexButton
@@ -37,6 +77,7 @@ export function drawMenuButtons(game: GameScene){
             else showPokedex(game)
         })
         .on("over", () => {
+            let dyText = 30
             pokedexButton.setTint(0xffdddd)
             if(dragState.draggedElem != null){
                 const pokemon = dragState.draggedElem.getData("pokemon")
@@ -63,10 +104,11 @@ export function drawMenuButtons(game: GameScene){
         })
     addInteractiveElem(pokedexButton)
     menuButtonsGroup.add(pokedexButton)
+}
 
-
+export function drawBoxButton(game: GameScene){
     let boxButtonX = game.scale.width/2
-    boxButton = game.add.sprite(boxButtonX, game.scale.height - 12, "buttons", 0)
+    const boxButton = game.add.sprite(boxButtonX, game.scale.height - 12, "buttons", 0)
     boxButton.setData("type", "boxButton")
     let boxButtonText: Phaser.GameObjects.Text | null;
     boxButton
@@ -80,6 +122,7 @@ export function drawMenuButtons(game: GameScene){
             }
         })
         .on("over", () => {
+            let dyText = 30
             boxButton.setTint(0xccffcc)
             if(dragState.draggedElem != null){
                 const pokemon = dragState.draggedElem.getData("pokemon")
@@ -108,10 +151,11 @@ export function drawMenuButtons(game: GameScene){
         })
     addInteractiveElem(boxButton)
     menuButtonsGroup.add(boxButton)
+}
 
-
+export function drawBagButton(game: GameScene){    
     let bagButtonX = 220
-    bagButton = game.add.sprite(bagButtonX, game.scale.height - 12, "buttons", 1)
+    const bagButton = game.add.sprite(bagButtonX, game.scale.height - 12, "buttons", 1)
     bagButton.setData("type", "bagButton")
     let bagButtonText: Phaser.GameObjects.Text | null;
     bagButton
@@ -125,6 +169,7 @@ export function drawMenuButtons(game: GameScene){
             }
         })
         .on("over", () => {
+            let dyText = 30
             bagButton.setTint(0xffffcc)
             if(dragState.draggedElem != null){
                 const pokemon: Pokemon = dragState.draggedElem.getData("pokemon")
@@ -164,22 +209,30 @@ export function drawMenuButtons(game: GameScene){
         
     addInteractiveElem(bagButton)
     menuButtonsGroup.add(bagButton)
+}
 
-    fightButton = game.add.sprite(295, game.scale.height - 12, "buttons_big",0)
-    fightButton
+export function drawRefreshButton(game: GameScene){    
+    let refreshButtonX = 100
+    const refreshButton = game.add.sprite(refreshButtonX, game.scale.height - 12, "buttons", 3)
+    refreshButton.setData("type", "refreshButton")
+    let refreshButtonText: Phaser.GameObjects.Text | null;
+    refreshButton
+        .on("click", () => {
+            //TODO: refresh
+        })
         .on("over", () => {
-            fightButton.setFrame(1)
+            let dyText = 30
+            refreshButton.setTint(0xffffcc)
+            refreshButtonText = addText(refreshButtonX, game.scale.height - dyText, "Changer d'endroit",
+                { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)
         })
         .on("out", () => {
-            fightButton.setFrame(0)
+            refreshButton.setTint(0xffffff)
+            refreshButtonText?.destroy()
         })
-        .on("click", () => {            
-            game.launchFight()
-        })
-    addInteractiveElem(fightButton)
-    game.sprites.set("fightButton", fightButton)
-    menuButtonsGroup.add(fightButton)
-    menuButtonsGroup.setDepth(Z.GUI_BUTTON);
+        
+    addInteractiveElem(refreshButton)
+    menuButtonsGroup.add(refreshButton)
 }
 
 export function hideMenuButtons(){
