@@ -1,4 +1,4 @@
-import {DialogLine} from "../logic/dialog";
+import {DialogLine} from "./dialog";
 
 export interface Trainer {
     ref: string;

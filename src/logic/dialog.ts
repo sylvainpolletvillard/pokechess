@@ -4,37 +4,14 @@ import {gameState} from "./gamestate";
 import {Z} from "../data/depths";
 import {Character, CHARACTER_STATE} from "../objects/character";
 import {DIALOGS} from "../data/dialogs";
-import {DEFAULT_VOICE, VoiceConfig, voicesByActor} from "../data/voices";
+import {DEFAULT_VOICE, voicesByActor} from "../data/voices";
 import {MyScene} from "../scenes/MyScene";
-import {closeMenu, Menu, openMenu} from "../objects/menu";
+import {closeMenu, openMenu} from "../objects/menu";
 import { wait } from "../utils/helpers";
 import { RoomType } from "../types/destination";
+import {DialogChoice, DialogLine, DialogParams} from "../types/dialog";
 
-export type DialogLine = string | DialogChoice | DialogLine[] | null | Promise<DialogLine> | (() => DialogLine);
-
-export interface Dialog {
-    lines: DialogLine[];
-    speaker: string;
-    voice: VoiceConfig;
-    params: DialogParams;
-    dialogGroup: Phaser.GameObjects.Group;
-    textSprite: Phaser.GameObjects.Text;
-    bgSprite: Phaser.GameObjects.RenderTexture;
-    speech?: any;
-    choice?: Menu;
-    selectedChoice?: any;
-    onEnd?: () => any;
-    waitBeforeNextLine?: boolean;
-}
-
-export interface DialogParams {
-    speaker?: string;
-    wait?: number;
-}
-
-export type DialogChoice = { [option: string]: () => any }
-
-export function startDialog(lines: DialogLine[], params: DialogParams = {}): Promise<null>{
+export function startDialog(lines: DialogLine[], params: DialogParams = {}): Promise<void>{
     const scene = gameState.activeScene
     if(!scene) return Promise.reject("No scene");
 
@@ -64,16 +41,11 @@ export function startDialog(lines: DialogLine[], params: DialogParams = {}): Pro
 
     gameState.activeDialog = { lines: [...lines], speaker, voice, dialogGroup, textSprite, bgSprite }
 
-    const dialogPromise = new Promise((resolve) => {
-        gameState.activeDialog!.onEnd = () => wait(0).then(() => resolve(null))
+    const dialogPromise: Promise<void> = new Promise((resolve) => {
+        gameState.activeDialog!.onEnd = () => wait(0).then(resolve)
     })
 
     showNextLine()
-
-    if(params.wait && gameState.activeDialog){
-        
-    }
-
     return dialogPromise
 }
 

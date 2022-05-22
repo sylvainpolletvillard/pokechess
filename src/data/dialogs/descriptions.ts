@@ -1,10 +1,12 @@
-import {DialogLine, startDialog, waitBeforeNextLine} from "../../logic/dialog";
+
+import {startDialog, waitBeforeNextLine} from "../../logic/dialog";
 import {pickRandomIn} from "../../utils/helpers";
 import {pickStarter} from "../../logic/starters";
 import {Description} from "../../objects/description";
 import {pauseMusicAndPlaySound} from "../../logic/audio";
 import {gameState} from "../../logic/gamestate";
 import {Item, ITEMS} from "../items";
+import {DialogLine} from "../../types/dialog";
 
 export function receiveItem(item: Item, quantity: number = 1){
     pauseMusicAndPlaySound("item_received").then(() => {})

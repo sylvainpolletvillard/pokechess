@@ -2,6 +2,7 @@ import {LevelConfig} from "./level";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {Trainer} from "./trainer";
 import {Badge} from "./badge";
+import {MyScene} from "../scenes/MyScene";
 
 export type Path = [dx:number, dy:number][];
 

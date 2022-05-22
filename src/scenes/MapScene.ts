@@ -1,6 +1,6 @@
 import { addInteractiveElem, drawCursor, handleClick } from '../objects/cursor';
 import { ALL_BADGES } from '../data/badges';
-import { Destination, Intersection, Path } from '../logic/destination';
+import { Destination, Intersection, Path } from '../types/destination';
 import { DESTINATIONS, DestinationTypeHighlightTint, INTERSECTIONS } from '../data/destinations';
 import {
     Direction,

@@ -1,7 +1,6 @@
 import {GameStage, gameState} from "../logic/gamestate";
 import { BADGE_AME, BADGE_CASCADE, BADGE_FOUDRE, BADGE_MARAIS, BADGE_PRISME, BADGE_ROCHE, BADGE_TERRE, BADGE_VOLCAN } from "./badges";
 import {ITEM_FILET, ITEM_PARAPLUIE, ITEM_POKEBALL} from "./items";
-import {DialogLine} from "../logic/dialog";
 import { spawnTutoCaptureTeamStep2 } from "../logic/spawns";
 import { drawPokeballsCounter } from "../objects/pokeballsCounter";
 import { spawnPokemon } from "../logic/board";
@@ -9,6 +8,7 @@ import { sendBackToPokeball } from "../logic/fight";
 import GameScene from "../scenes/GameScene";
 import { receiveItem } from "./dialogs/descriptions";
 import {wait} from "../utils/helpers";
+import {Trainer} from "../types/trainer";
 
 
 export const PIERRE: Trainer = {

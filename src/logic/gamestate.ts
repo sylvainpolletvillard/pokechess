@@ -5,7 +5,8 @@ import {Board, calcXpBoard, clearPlacement, setupPlayerIdleBoard, spawnPokemon} 
 import {gainXP, initJumps, updatePokemonAction} from "./fight";
 import GameScene from "../scenes/GameScene";
 import {closeMenu, Menu} from "../objects/menu";
-import {Dialog, DialogLine, startDialog} from "./dialog";
+import {Dialog, DialogLine} from "../types/dialog";
+import { startDialog} from "./dialog";
 import {showCenterText} from "../objects/gui";
 import { MyScene } from "../scenes/MyScene"
 import {Pokemon} from "../data/pokemons";

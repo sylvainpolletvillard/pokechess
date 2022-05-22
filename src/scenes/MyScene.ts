@@ -17,5 +17,7 @@ export class MyScene extends Phaser.Scene {
 
     onClick(e: PointerEvent){}
 
+    preload(){ }
+    create(){ }
 
 }
