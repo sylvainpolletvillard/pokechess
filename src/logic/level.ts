@@ -119,6 +119,7 @@ export class Level {
 
     exit() {
         this.clearTileMap();
+        gameState.activeScene!.physics.world.colliders.destroy();
         this.config.exit?.call(this)
         gameState.afterEnd()
     }

@@ -32,10 +32,10 @@ export class Door {
             }
 
             fadeOut(250).then(() => {
-                fadeIn(250)
                 if(door.properties.to === "exit"){
                     scene.level.exit()
                 } else {
+                    fadeIn(250)
                     scene.player!.goToDoor(door.properties.to)
                 }
             })
