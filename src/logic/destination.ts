@@ -109,6 +109,7 @@ export function getRoomOrder(destination: Destination): string[] {
             gameState.lastCaptureDestination = null;
             return ["trainer"]
         }
+        gameState.lastCaptureDestination = destination
         return ["wild"]
     }
     else {

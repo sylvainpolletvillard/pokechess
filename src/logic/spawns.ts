@@ -14,11 +14,12 @@ import { MAGNETI } from "../data/pokemons/magneti";
 import { RONDOUDOU } from "../data/pokemons/rondoudou";
 import { SOPORIFIK } from "../data/pokemons/soporifik";
 import { NOSFERAPTI } from "../data/pokemons/nosferapti";
+import { getNumberMaxAllowedOnBoard } from "./board";
 
 export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }): PokemonOnBoard[] {
     const types = Object.keys(typesFactors)
 
-    const numberToSpawn = clamp(gameState.player.teamSize, 3, 8)
+    const numberToSpawn = clamp(getNumberMaxAllowedOnBoard(), 3, 8)
     
     const sumFactors = Object.values(typesFactors).reduce((a,b) => a+b, 0)
 

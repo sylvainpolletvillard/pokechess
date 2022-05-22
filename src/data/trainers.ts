@@ -929,13 +929,15 @@ export const DRESSEUR_PARMANIE: Trainer = {
     introFrameIndex: null,
     dialogs: {
         start: [
-            `...`,
+            `Dégage sale morveux !`,
+            `La Team Rocket mène des opérations secrètes ici !`
         ],
         victory: [
-            `...`
+            `La team Rocket s'envole vers d'autres cieux !`
         ],
         defeat: [
-            `...`
+            `Nous sommes de retour...`,
+            `Pour vous jouer un mauvais tour...`
         ]
     }
 }

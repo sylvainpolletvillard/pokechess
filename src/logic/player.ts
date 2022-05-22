@@ -66,14 +66,6 @@ export class Player {
         return Math.max(1, Math.floor(sumOfBest / top8.length))
     }
 
-    get teamSize(): number {
-        return [...this.team, ...this.box]
-            .reduce((total, p) => { 
-                if(!p) return total
-                return total + 1
-            }, 0)
-    }
-
     get boxScore(): number {
         return [...this.team, ...this.box]
             .reduce((total, p) => { 
