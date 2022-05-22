@@ -20,6 +20,7 @@ import { SALAMECHE } from "../data/pokemons/salameche";
 import { Description } from "../objects/description";
 import { PokemonOnBoard } from "../objects/pokemon";
 import { displayPokemonInfo, hidePokemonInfo } from "../objects/pokemonInfoBox";
+import { pickNRandomIn } from "../utils/helpers";
 import { pauseMusicAndPlaySound } from "./audio";
 import { addToTeam } from "./box";
 import { waitBeforeNextLine } from "./dialog";
@@ -43,13 +44,8 @@ const STARTERS = [
     RACAILLOU
 ]
 
-export function pickStarters(): Pokemon[] {
-    //TODO: pick 3 starters
-    return [
-        BULBIZARRE,
-        SALAMECHE,
-        CARAPUCE
-    ].map(entry => new Pokemon(entry, OWNER_CHEN, 5))
+export function pickStarters(): Pokemon[] {    
+    return pickNRandomIn(STARTERS, 3).map(entry => new Pokemon(entry, OWNER_CHEN, 5))
 }
 
 export const pickStarter = (index: number) => (desc: Description) => {
