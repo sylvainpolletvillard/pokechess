@@ -17,17 +17,18 @@ export function loadAudio(scene: Phaser.Scene) {
 
     /* SOUND EFFECTS */
 
-    scene.load.audio("success", ["assets/audio/sounds/success.mp3"]);
-    scene.load.audio("item_received", ["assets/audio/sounds/item_received.mp3"]);
-    scene.load.audio("pokemon_received", ["assets/audio/sounds/pokemon_received.mp3"]);
-    scene.load.audio("level_up", ["assets/audio/sounds/level_up.mp3"]);
+    scene.load.audio("success", ["assets/audio/sounds/success.ogg"]);
+    scene.load.audio("item_received", ["assets/audio/sounds/item_received.ogg"]);
+    scene.load.audio("pokemon_received", ["assets/audio/sounds/pokemon_received.ogg"]);
+    scene.load.audio("level_up", ["assets/audio/sounds/level_up.ogg"]);
     
     scene.load.audio("press_ab", ["assets/audio/sounds/press_ab.ogg"]);
-    scene.load.audio("tick", ["assets/audio/sounds/tick.wav"]);
-    scene.load.audio("menu_open", ["assets/audio/sounds/menu_open.wav"]);
-    scene.load.audio("menu_close", ["assets/audio/sounds/menu_close.wav"]);
+    scene.load.audio("tick", ["assets/audio/sounds/tick.ogg"]);
+    scene.load.audio("menu_open", ["assets/audio/sounds/menu_open.ogg"]);
+    scene.load.audio("menu_close", ["assets/audio/sounds/menu_close.ogg"]);
 
     scene.load.audio("door", ["assets/audio/sounds/door.ogg"]);
+    scene.load.audio("run", ["assets/audio/sounds/run.ogg"]);
     
     /* UNUSED */
 
