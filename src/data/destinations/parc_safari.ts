@@ -1,7 +1,6 @@
 import { preloadMusic } from "../../logic/audio";
 import {Destination, DestinationType, RoomType} from "../../logic/destination";
-import { spawnSafariTeam, spawnTeamByTypeFactor } from "../../logic/spawns";
-import { PokemonOnBoard } from "../../objects/pokemon";
+import { spawnSafariTeam } from "../../logic/spawns";
 import { MyScene } from "../../scenes/MyScene";
 
 export const PARC_SAFARI: Destination = {
@@ -20,6 +19,7 @@ export const PARC_SAFARI: Destination = {
             name: "Parc Safari",            
             music: "music_safari",
             map: "safari1",
+            maps: ["safari1","safari2","safari3"],
             spawnOtherTeam: spawnSafariTeam
         }
     },

@@ -98,9 +98,11 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
         });
         game.time.addEvent({
             delay: duration,
-            callback: () => { 
-                sprite.anims.pause()
-                pokemon.resetTarget(target) 
+            callback: () => {
+                if(pokemon.alive){
+                    sprite.anims.pause()
+                    pokemon.resetTarget(target)
+                }
             }
         })
     } else {

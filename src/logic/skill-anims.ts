@@ -226,7 +226,7 @@ export function sendPokemonCharge(attacker: PokemonOnBoard, target: PokemonOnBoa
                 duration: 250,
                 ease: Phaser.Math.Easing.Linear
             })
-            sprite.anims.pause()
+            if(attacker.alive) sprite.anims.pause()
         }
     });
 }

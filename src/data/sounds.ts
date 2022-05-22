@@ -24,6 +24,7 @@ export function loadAudio(scene: Phaser.Scene) {
     
     scene.load.audio("press_ab", ["assets/audio/sounds/press_ab.ogg"]);
     scene.load.audio("tick", ["assets/audio/sounds/tick.ogg"]);
+    scene.load.audio("refresh", ["assets/audio/sounds/refresh.ogg"]);
     scene.load.audio("menu_open", ["assets/audio/sounds/menu_open.ogg"]);
     scene.load.audio("menu_close", ["assets/audio/sounds/menu_close.ogg"]);
 

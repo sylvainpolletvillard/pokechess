@@ -23,7 +23,7 @@ import { calcXpEarnedOnDefeat } from "./xp";
 import { startDialog } from "./dialog";
 import { hidePokemonReleaseInfo } from "../objects/pokemonReleaseBox";
 import { drawAlliancesInfo } from "../objects/alliancesInfo";
-import { drawMenuButtons, drawSafariButtons, updateFightButton } from "../objects/menuButtons";
+import { drawMenuButtons, updateFightButton } from "../objects/menuButtons";
 import { applyBuffs } from "./buffs";
 import { gainXP } from "./fight";
 
@@ -69,48 +69,44 @@ export function setupSafariBoard(room: RoomBoard){
     }
 }
 
-export function initSafari(game: GameScene){
-    gameState.stage = GameStage.CAPTURE
-    drawSafariButtons(game)
-    drawGrid(0)
-    drawCursor()
-    
-    for (let pokemon of gameState.board.otherTeam) {
-        const sprite = makePokemonSprite(pokemon, game)
-        sprite.anims.resume()
-    }
-}
-
-export function initPlacement(game: GameScene){
-    gameState.stage = GameStage.PLACEMENT
+export function drawGUI(game: GameScene){
     drawMenuButtons(game)
     drawGrid()
     drawCursor()
-    
-    for (let pokemon of gameState.player.team) {
-        const sprite = makePokemonSprite(pokemon, game)
-        sprite.setAlpha(0.5)
+    drawTeamSizeCounter()
+    if([RoomType.ARENA, RoomType.WILD].includes(gameState.currentRoom.type)){
+        drawAlliancesInfo(gameState.board.playerTeam)
+        drawAlliancesInfo(gameState.board.otherTeam)
+    }
+}
+
+export function drawPokemonsOnBoard(game: GameScene){
+    if([RoomType.ARENA, RoomType.WILD, RoomType.TUTORIAL].includes(gameState.currentRoom.type)){
+        for (let pokemon of gameState.player.team) {
+            const sprite = makePokemonSprite(pokemon, game)
+            sprite.setAlpha(0.5)
+        }
     }
 
     for (let pokemon of gameState.board.otherTeam) {
         const sprite = makePokemonSprite(pokemon, game)
         sprite.anims.resume()
     }
-
-    drawTeamSizeCounter()
-    drawAlliancesInfo(gameState.board.playerTeam)
-    drawAlliancesInfo(gameState.board.otherTeam)    
 }
 
-export function clearPlacement(game: GameScene){
+export function clearPokemonsOnBoard(game: GameScene){
     for (let pokemon of gameState.player.team) {
         game.sprites.get(pokemon.uid)?.destroy()
     }
-    if(gameState.currentRoom.type === RoomType.ARENA) {
+    if(gameState.currentRoom.type === RoomType.ARENA || gameState.currentRoom.type === RoomType.SAFARI) {
         for (let pokemon of gameState.board.otherTeam) {
             game.sprites.get(pokemon.uid)?.destroy(true)
         }
     }
+}
+
+export function clearPlacement(game: GameScene){
+    clearPokemonsOnBoard(game)
     game.objects.get("grid")?.destroy();
     hidePokemonReleaseInfo();
     hideTeamSizeCounter();
@@ -239,9 +235,10 @@ export async function capturePokemon(
     })
 }
 
-export function drawGrid(opacity=0.1){
+export function drawGrid(){
     const game = gameState.activeScene as GameScene
     const grid = game.add.graphics();
+    let opacity = gameState.currentRoom.type === RoomType.SAFARI ? 0 : 0.1
     game.objects.set("grid", grid);
     grid.setDepth(Z.GRID);
     grid.lineStyle(1, 0x000000, opacity);

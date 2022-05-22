@@ -67,13 +67,15 @@ export function removeFromTeam(pokemon: PokemonOnBoard){
 }
 
 export function releasePokemon(pokemon: Pokemon){
+    const game = gameState.activeScene as GameScene
     if(pokemon instanceof PokemonOnBoard){
         removeFromTeam(pokemon)
     } else {
         removeFromBox(pokemon)
     }
+    game.sprites.get(pokemon.uid)?.destroy()
     gameState.player.inventory[ITEM_POKEBALL.ref] += pokemon.cost;
-    if(gameState.currentRoom.type === RoomType.WILD || gameState.currentRoom.type === RoomType.FREEWALK){
+    if([RoomType.WILD, RoomType.FREEWALK, RoomType.SAFARI].includes(gameState.currentRoom.type)){
         drawPokeballsCounter()
     }
 }

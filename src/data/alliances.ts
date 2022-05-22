@@ -48,11 +48,11 @@ const BONUS_ALLIANCE_EAU: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_ELECTRIQUE: AllianceBonus =  {
-    description: "Les Pokémons Electrique gagnent en Vitesse. Ils infligent des dégats électriques de choc à chaque coup reçu au contact.",
+    description: "Les Pokémons Electrique gagnent en Vitesse et infligent des dégats électriques à chaque coup reçu au contact.",
     steps: [
-        { numberRequired: 2, ref: "ELEC2", description: "+20% Vitesse ; 2 dégats de choc par coup reçu" },
-        { numberRequired: 4, ref: "ELEC4", description: "+40% Vitesse ; 4 dégats de choc par coup reçu" },
-        { numberRequired: 6, ref: "ELEC6", description: "+60% Vitesse ; 6 dégats de choc par coup reçu" }
+        { numberRequired: 2, ref: "ELEC2", description: "+20% VIT ; 2 dégats par coup reçu" },
+        { numberRequired: 4, ref: "ELEC4", description: "+40% VIT ; 4 dégats par coup reçu" },
+        { numberRequired: 6, ref: "ELEC6", description: "+60% VIT ; 6 dégats par coup reçu" }
     ]
 }
 

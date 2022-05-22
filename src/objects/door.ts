@@ -30,7 +30,7 @@ export class Door {
                 return;
             }
 
-            scene.cameras.main.fadeOut(250)
+            scene.cameras.main.fadeOut(250, 202, 205, 184)
             setTimeout(() => {
                 scene.cameras.main.fadeIn(250)
                 if(door.properties.to === "exit"){

@@ -13,6 +13,13 @@ let dropZone: Phaser.GameObjects.Zone;
 const WIDTH = 120, HEIGHT = 64;
 
 export function displayPokemonReleaseBox(pokemon: PokemonOnBoard){
+    if(pokemonReleaseBox != null){
+        removeInteractiveElem(dropZone)
+        dropZone.destroy()
+        pokemonReleaseBox?.destroy(true)
+        pokemonReleaseBox = null;
+    }
+
     const scene = gameState.activeScene as MyScene;
 
     pokemonReleaseBox = scene.add.container(
@@ -59,7 +66,7 @@ export function displayPokemonReleaseBox(pokemon: PokemonOnBoard){
         })
         .on("over", () => {
             if(dragState.draggedElem != null){
-            dragState.draggedElem.setAlpha(0.5)
+            dragState.draggedElem.setAlpha(0.3)
             }
         })
         .on("out", () => {

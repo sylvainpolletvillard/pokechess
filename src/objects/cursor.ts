@@ -4,6 +4,7 @@ import {GameStage, gameState} from "../logic/gamestate";
 import {Z} from "../data/depths";
 import {MyScene} from "../scenes/MyScene";
 import {showNextLine} from "../logic/dialog";
+import { RoomType } from "../logic/destination";
 
 export type InteractiveElem = Phaser.GameObjects.Sprite | Phaser.GameObjects.Zone | Phaser.GameObjects.Rectangle | Phaser.GameObjects.Text
 const interactiveElems: Set<InteractiveElem> = new Set();
@@ -122,15 +123,20 @@ export function handleDragMove(scene: MyScene){
 
 export function testIfCanBeDragged(sprite: Phaser.GameObjects.Sprite){
     if(sprite.getData("pokemon") != null){
-        return sprite.getData("pokemon").owner === 1 && gameState.stage === GameStage.PLACEMENT
+        return sprite.getData("pokemon").owner === 1 
+        && (gameState.stage === GameStage.PLACEMENT || gameState.currentRoom.type === RoomType.SAFARI)
     }
     return true;
 }
 
-export function testIfCanBeDroppedOn(elem: InteractiveElem){
-    if(gameState.stage !== GameStage.PLACEMENT) return false;
+export function testIfCanBeDroppedOn(elem: InteractiveElem){    
     const dropZoneType = elem.getData("type");
     const draggedType = dragState.draggedElem?.getData("type")
+
+    if(gameState.currentRoom.type === RoomType.SAFARI){
+        return dropZoneType === "boxTile" || dropZoneType === "releaseZone"
+    }
+    if(gameState.stage !== GameStage.PLACEMENT) return false;
 
     switch(dropZoneType){
         case "gridTile":            
@@ -143,6 +149,7 @@ export function testIfCanBeDroppedOn(elem: InteractiveElem){
         case "boxTile":
         case "pokedexButton":
         case "boxButton":
+        case "releaseZone":
             return draggedType === "pokemon"
         case "bagButton":
             return draggedType === "pokemon" || draggedType === "item"

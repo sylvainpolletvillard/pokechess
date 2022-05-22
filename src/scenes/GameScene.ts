@@ -10,8 +10,8 @@ import {handleClick} from "../objects/cursor";
 import {clickEntry, closeMenu} from "../objects/menu";
 import {MyScene} from "./MyScene";
 import {loadFonts} from "../data/fonts";
-import {getNumberMaxAllowedOnBoard, initPlacement, initSafari, setupRoomBoard, setupSafariBoard} from "../logic/board";
-import {RoomArena, RoomBoard, RoomSafari, RoomType} from "../logic/destination";
+import {drawGUI, drawPokemonsOnBoard, getNumberMaxAllowedOnBoard, setupRoomBoard, setupSafariBoard} from "../logic/board";
+import {RoomArena, RoomBoard, RoomType} from "../logic/destination";
 import {startMusic} from "../logic/audio";
 import { drawPokeballsCounter } from '../objects/pokeballsCounter';
 import { drawRoomNamePanel } from '../objects/roomNamePanel';
@@ -23,6 +23,7 @@ import { CHAMPIONS } from "../data/trainers";
 export default class GameScene extends MyScene {
   gameSpeed: number = 100;
   state: GameState;
+  currentTileMap?: any;
 
   constructor() {
     super('GameScene');
@@ -46,11 +47,12 @@ export default class GameScene extends MyScene {
     this.drawMap();
     this.drawIntro().then(() => {
       if(room.type === RoomType.SAFARI){        
-        initSafari(this)
-      } else {        
-        initPlacement(this)
+        gameState.stage = GameStage.CAPTURE
+      } else {
+        gameState.stage = GameStage.PLACEMENT        
       }
-      
+      drawGUI(this)
+      drawPokemonsOnBoard(this)
     });
 
     if(room.type === RoomType.SAFARI){
@@ -69,11 +71,15 @@ export default class GameScene extends MyScene {
 
   drawMap(){
     const room = gameState.currentRoom as RoomBoard
-    if(room.type === RoomType.SAFARI){
-      (room as RoomSafari).safariMapIndex = randomInt(1,3)
-      room.map = `safari${(room as RoomSafari).safariMapIndex}`
+    if(room.maps){
+      room.mapIndex = room.mapIndex ? (room.mapIndex % 3) + 1 : randomInt(1,room.maps.length)      
+      room.map = room.maps[room.mapIndex-1]
     }
     const map = this.make.tilemap({ key: room.map });
+    if(this.currentTileMap != null){
+      this.currentTileMap.destroy()
+    }
+    this.currentTileMap = map
     const tileset = map.addTilesetImage('ground', 'ground');
     const ground0 = map.createLayer("ground0", tileset);
     const ground1 = map.createLayer("ground1", tileset);
@@ -137,6 +143,11 @@ export default class GameScene extends MyScene {
 
   onClick(){
     handleClick(this)
+  }
+
+  destroy(){
+    this.currentTileMap.destroy()
+    delete this.currentTileMap
   }
 
 }

@@ -1,7 +1,6 @@
 import {gameState} from "./gamestate";
 import {drawPokeballsCounter} from "../objects/pokeballsCounter";
 import {ITEMS} from "../data/items";
-import {MyScene} from "../scenes/MyScene";
 
 export function spend(amount: number){
     gameState.player.inventory.pokeball -= amount

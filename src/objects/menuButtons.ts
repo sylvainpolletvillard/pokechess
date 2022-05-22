@@ -1,7 +1,7 @@
 import { addInteractiveElem, dragState, handleDragEnd } from './cursor';
 import { addText } from '../utils/text';
 import { addToBox, removeFromTeam } from '../logic/box';
-import { cancelPokemonDrag, drawTeamSizeCounter } from '../logic/board';
+import { cancelPokemonDrag, clearPokemonsOnBoard, drawPokemonsOnBoard, drawTeamSizeCounter } from '../logic/board';
 import { closeMenu } from './menu';
 import GameScene from '../scenes/GameScene';
 import { gameState } from '../logic/gamestate';
@@ -11,10 +11,16 @@ import { openItemMenu } from './itemBox';
 import { Pokemon } from '../data/pokemons';
 import { showPokedex } from './pokedex';
 import { Z } from '../data/depths';
+import { playSound } from '../logic/audio';
+import { wait } from '../utils/helpers';
+import { RoomSafari, RoomType } from '../logic/destination';
+import { drawPokeballsCounter } from './pokeballsCounter';
+import { canAfford, spend } from '../logic/shop';
 
 let menuButtonsGroup: Phaser.GameObjects.Group;
 
 export function drawMenuButtons(game: GameScene){
+    if(gameState.currentRoom.type === RoomType.SAFARI) return drawSafariButtons(game)
     menuButtonsGroup = game.add.group();
 
     drawPokedexButton(game)
@@ -42,7 +48,7 @@ export function drawSafariButtons(game: GameScene){
     menuButtonsGroup = game.add.group();
 
     drawBoxButton(game)
-    drawRefreshButton(game)
+    if(canAfford(1)) drawRefreshButton(game)
  
     const quitButton = game.add.sprite(295, game.scale.height - 12, "buttons_big",2)
     quitButton
@@ -52,8 +58,10 @@ export function drawSafariButtons(game: GameScene){
         .on("out", () => {
             quitButton.setFrame(2)
         })
-        .on("click", () => {            
-            //TODO: EXIT
+        .on("click", () => {           
+            playSound("run")
+            game.cameras.main.fadeOut(500, 202, 205, 184);
+            wait(500).then(() => gameState.exitDestination())            
         })
     addInteractiveElem(quitButton)
     game.sprites.set("quitButton", quitButton)
@@ -218,7 +226,15 @@ export function drawRefreshButton(game: GameScene){
     let refreshButtonText: Phaser.GameObjects.Text | null;
     refreshButton
         .on("click", () => {
-            //TODO: refresh
+            if(!canAfford(1)) return;
+            gameState.player.inventory.pokeball -= 1
+            playSound("refresh")
+            game.drawMap();
+            clearPokemonsOnBoard(game)
+            gameState.board.otherTeam = (gameState.currentRoom as RoomSafari).spawnOtherTeam()
+            drawPokemonsOnBoard(game)
+            drawPokeballsCounter()
+            if(gameState.player.inventory.pokeball === 0) refreshButton.destroy();
         })
         .on("over", () => {
             let dyText = 30

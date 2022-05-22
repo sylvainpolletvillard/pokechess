@@ -48,7 +48,7 @@ export interface RoomConfig {
     music: string;
 }
 
-export type Room = RoomFreewalk | RoomBoard
+export type Room = RoomFreewalk | RoomWild | RoomArena | RoomTutorial | RoomSafari | RoomPension
 
 export interface RoomFreewalk extends RoomConfig {
     type: RoomType.FREEWALK
@@ -57,6 +57,8 @@ export interface RoomFreewalk extends RoomConfig {
 
 export interface RoomBoard extends RoomConfig {
     map: string
+    maps?: string[]
+    mapIndex?: number;
     spawnOtherTeam: () => PokemonOnBoard[]
 }
 
@@ -77,7 +79,6 @@ export interface RoomTutorial extends RoomBoard {
 
 export interface RoomSafari extends RoomBoard {
     type: RoomType.SAFARI
-    safariMapIndex?: number
 }
 
 export interface RoomPension extends RoomBoard {

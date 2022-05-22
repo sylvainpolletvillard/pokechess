@@ -130,23 +130,29 @@ export class GameState {
         ]))
         */
 
+        this.activeScene!.scene.start("MapScene")
+        /*
         if(this.currentRoomIndex >= this.roomOrder.length) {
             this.activeScene!.scene.start("MapScene")
         } else {
             gameState.initRoom()
-        }
+        }*/
     }
 
     goToNextRoom(){
         const rooms = this.roomOrder
         this.currentRoomIndex++;
         if(this.currentRoomIndex >= rooms.length){
-            gameState.day++;
-            saveState()
-            gameState.activeScene!.scene.start("MapScene")
+            gameState.exitDestination()
         } else {
             gameState.initRoom()
         }
+    }
+
+    exitDestination(){
+        gameState.day++;
+        saveState()
+        gameState.activeScene!.scene.start("MapScene")
     }
 
     initRoom(){
