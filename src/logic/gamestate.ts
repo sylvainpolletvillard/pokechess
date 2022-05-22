@@ -223,6 +223,7 @@ export class GameState {
 
     async endFight(loser: number){        
         const game = gameState.activeScene as GameScene;
+        const room = gameState.currentRoom
         this.stage = GameStage.ENDED;
         game.time.removeEvent(this.fightTimer!)
         game.time.removeEvent(this.fightClock!)
@@ -232,8 +233,8 @@ export class GameState {
         if(hasWon) {
             player && player.play("trainer_victory")
             showCenterText("text_victoire", game)
-            if(gameState.currentRoom.type === RoomType.WILD) startMusic("music_victory_wild")
-            else if(CHAMPIONS.includes((gameState.currentRoom as RoomArena).trainer)) startMusic("music_victory_champion")
+            if(room.type === RoomType.WILD) startMusic("music_victory_wild")
+            else if(CHAMPIONS.includes((room as RoomArena).trainer)) startMusic("music_victory_champion")
             else startMusic("music_victory_trainer")
         } else {
             player && player.play("trainer_defeat")
@@ -245,8 +246,9 @@ export class GameState {
 
         const lines: DialogLine[] = [];
         if(hasWon){
+            if(room.type === RoomType.ARENA && room.trainer) lines.push(`Vous avez vaincu ${room.trainer.name} !`)
             lines.push(`Vos Pokémon gagnent ${Math.round(xpPerPokemon/10)}xp`)
-        } else if(gameState.currentRoom.type !== RoomType.TUTORIAL){
+        } else if(room.type !== RoomType.TUTORIAL){
             lines.push(
                 `Votre équipe est KO !`,
                 `Vous courrez jusqu'au centre Pokémon le plus proche.`
@@ -255,22 +257,21 @@ export class GameState {
 
         gameState.allPokemonsOnBoard.forEach(pokemon => pokemon.resetAfterFight())
 
+        await startDialog(lines)
+
         for(let pokemon of gameState.board.playerTeam){
             await gainXP(pokemon, xpPerPokemon)
         }        
 
-        startDialog(lines).then(() => {
-            if([RoomType.ARENA, RoomType.TUTORIAL].includes(gameState.currentRoom.type)){
-                const arena = gameState.currentRoom as RoomArena
-                return startDialog(hasWon
-                    ? arena.trainer.dialogs.victory
-                    : arena.trainer.dialogs.defeat
-                , { speaker: arena.trainer.name })
-            }
-            return Promise.resolve()
-        }).then(() => {
-            gameState.afterEnd()
-        })
+        if([RoomType.ARENA, RoomType.TUTORIAL].includes(gameState.currentRoom.type)){
+            const arena = gameState.currentRoom as RoomArena
+            await startDialog(hasWon
+                ? arena.trainer.dialogs.victory
+                : arena.trainer.dialogs.defeat
+            , { speaker: arena.trainer.ref })
+        }
+
+        gameState.afterEnd()        
     }
 
     endCapture(){
@@ -290,7 +291,7 @@ export class GameState {
                 if(gameState.dialogStates["scientifique_tuto"] === SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD){
                     dialog = room.trainer.dialogs.step3
                 }
-                return startDialog(dialog, { speaker: room.trainer.name })
+                return startDialog(dialog, { speaker: room.trainer.ref })
             }
         }).then(() => {
             gameState.afterEnd()
@@ -302,7 +303,7 @@ export class GameState {
         && gameState.dialogStates["scientifique_tuto"] === SCIENTIFIQUE_TUTO_DIALOG_STATE.BEFORE_WILD){
             const room = gameState.currentRoom as RoomTutorial
             startDialog(room.trainer.dialogs.step2, {
-                speaker: room.trainer.name
+                speaker: room.trainer.ref
             })
         } else {
             fadeOut(400).then(() => gameState.goToNextRoom())

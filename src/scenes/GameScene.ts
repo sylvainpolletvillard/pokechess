@@ -100,7 +100,7 @@ export default class GameScene extends MyScene {
     if(gameState.currentRoom.type === RoomType.ARENA || gameState.currentRoom.type === RoomType.TUTORIAL){
         const arena = gameState.currentRoom as RoomArena
         showTrainerIntro(arena.trainer).then(() => {})
-        return wait(2000).then(() => startDialog(arena.trainer.dialogs.start, { speaker: arena.trainer.name }))
+        return wait(2000).then(() => startDialog(arena.trainer.dialogs.start, { speaker: arena.trainer.ref }))
     }
 
     return Promise.resolve()
