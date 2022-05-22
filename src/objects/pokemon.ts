@@ -191,8 +191,7 @@ export function makePokemonSprite(
         sprite.anims.resume()
         sprite.setAlpha(1)
         hidePokemonInfo();
-        displayPokemonReleaseBox(pokemon);
-        playSound(getPokemonCry(pokemon.entry))
+        displayPokemonReleaseBox(pokemon);        
 
         if(gameState.player.box.includes(pokemon)){
             removeFromBox(pokemon)

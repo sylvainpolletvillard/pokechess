@@ -12,7 +12,7 @@ import {
     testIfCanBeDragged
 } from "../objects/cursor";
 import {makePokemonSprite, PokemonOnBoard} from "../objects/pokemon";
-import {Pokemon} from "../data/pokemons";
+import {getPokemonCry, Pokemon} from "../data/pokemons";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
 import { NO_OWNER, OWNER_CHANGING, OWNER_PLAYER } from "../data/owners";
@@ -26,6 +26,7 @@ import { drawAlliancesInfo } from "../objects/alliancesInfo";
 import { drawMenuButtons, updateFightButton } from "../objects/menuButtons";
 import { applyBuffs } from "./buffs";
 import { gainXP } from "./fight";
+import { playSound } from "./audio";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -128,7 +129,7 @@ export function isOnBoard(i: number, j: number): boolean {
     return i >= 0 && i < 7 && j >= 0 && j < 8
 }
 
-export function launchPokeball(player: number, pokeballType: string, x:number, y:number, game: GameScene){
+export function launchPokeball(player: number, pokeballType: string, x:number, y:number, game: GameScene, shouldPlaySound=false){
     return new Promise<Phaser.GameObjects.Sprite>(resolve => {
         let playerX, playerY;
         if(player === 1){
@@ -139,6 +140,7 @@ export function launchPokeball(player: number, pokeballType: string, x:number, y
             playerY = 40;
         }
 
+        shouldPlaySound && playSound("ball_launch")
         const pokeball = game.add.sprite(playerX, playerY, "pokeball");
         pokeball.play(`${pokeballType}_launch`)
         pokeball.setRotation(Math.random() * Math.PI * 2);
@@ -185,8 +187,9 @@ export async function capturePokemon(
     player?.play("trainer_launch");
     await wait(400)
     const [x,y] = pokemon.position;
-    const pokeball = await launchPokeball(1, pokemon.pokeball, x, y, game)
+    const pokeball = await launchPokeball(1, pokemon.pokeball, x, y, game, true)
 
+    playSound("ball_catch")
     pokeball.play(`${pokemon.pokeball}_in`)
     game.add.tween({
         targets: pokemonSprite,
@@ -194,10 +197,11 @@ export async function capturePokemon(
         alpha: 0,
         duration: 1000
     })
-    pokeball.once(Phaser.Animations.Events.ANIMATION_COMPLETE, async () => {
+    pokeball.once(Phaser.Animations.Events.ANIMATION_COMPLETE, async () => {        
         pokeball.play(`${pokemon.pokeball}_jiggle`)
         await wait(1100)
         pokeball.play(`${pokemon.pokeball}_catch`)
+        playSound(getPokemonCry(pokemon.entry))
 
         if(getCurrentPokemonInfoDisplayed() == pokemon){
             hidePokemonInfo()

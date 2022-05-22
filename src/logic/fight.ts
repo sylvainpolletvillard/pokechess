@@ -1,4 +1,4 @@
-import {Pokemon, PokemonTypeAction} from "../data/pokemons";
+import {getPokemonCry, Pokemon, PokemonTypeAction} from "../data/pokemons";
 import {findClosestReachableTarget, findPathToTarget} from "./pathfinding";
 import {getPokemonOnTile, getPositionFromCoords} from "./board";
 import GameScene from "../scenes/GameScene";
@@ -17,7 +17,7 @@ import {getAllianceState} from "./player";
 import { OWNER_PLAYER } from "../data/owners";
 import { xpToLevel } from "./xp";
 import { startDialog } from "./dialog";
-import { pauseMusicAndPlaySound } from "./audio";
+import { pauseMusicAndPlaySound, playSound } from "./audio";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
@@ -290,6 +290,7 @@ export function killPokemon(pokemon: PokemonOnBoard){
 
     if(index === -1) return; // already dead
         
+    playSound(getPokemonCry(pokemon.entry))
     sendBackToPokeball(pokemon)
     team.splice(index, 1)
 

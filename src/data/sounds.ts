@@ -30,6 +30,9 @@ export function loadAudio(scene: Phaser.Scene) {
     scene.load.audio("menu_open", ["assets/audio/sounds/menu_open.ogg"]);
     scene.load.audio("menu_close", ["assets/audio/sounds/menu_close.ogg"]);
 
+    scene.load.audio("ball_launch", ["assets/audio/sounds/ball_launch.ogg"]);
+    scene.load.audio("ball_catch", ["assets/audio/sounds/ball_catch.ogg"]);
+
     scene.load.audio("door", ["assets/audio/sounds/door.ogg"]);
     scene.load.audio("run", ["assets/audio/sounds/run.ogg"]);
 
