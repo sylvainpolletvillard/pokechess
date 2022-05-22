@@ -32,7 +32,7 @@ export const AZURIA: Destination = {
         CENTRALE: [[2,0],[0,1],[1,0],[0,1]],
         PENSION: [[0,2]]
     },
-    coordinates: [216,38],
+    coordinates: [14*16 -8, 3*16 -8],
     type: DestinationType.ARENA,
     icons: ["type_EAU"],
     rooms: {

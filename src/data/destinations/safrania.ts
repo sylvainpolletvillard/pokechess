@@ -26,7 +26,7 @@ export const SAFRANIA: Destination = {
         TOUR_POKEMON: [[2,0]],
         MAISON_PSY: [[0,1.5]]
     },
-    coordinates: [216,104],
+    coordinates: [14*16 -8, 7*16 -8],
     type: DestinationType.ARENA,
     icons: ["type_PSY"],
     rooms: {

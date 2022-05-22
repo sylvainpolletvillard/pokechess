@@ -9,7 +9,7 @@ export const PARC_SAFARI: Destination = {
     nextDestinations: {
         PARMANIE: [[0,2]],
     },
-    coordinates: [200,212],
+    coordinates: [13*16 -8, 14*16 -8],
     type: DestinationType.SPECIAL,
     icons: ["safari"],
     subtext: "Capture à gogo",

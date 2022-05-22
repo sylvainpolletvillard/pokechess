@@ -24,7 +24,7 @@ import { MyScene } from "../../scenes/MyScene";
 export const CRAMOISILE: Destination = {
     ref: "CRAMOISILE",
     name: "Cramois'Île",
-    coordinates: [88,294],
+    coordinates: [6*16 -8, 19*16 -8],
     type: DestinationType.ARENA,
     icons: ["type_FEU"],
     nextDestinations: {

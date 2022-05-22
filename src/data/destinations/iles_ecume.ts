@@ -21,7 +21,7 @@ export const ILES_ECUME: Destination = {
         CRAMOISILE: [[-4,0]],
         PARMANIE: [[3,0],[0,-3]]
     },
-    coordinates: [152,294],
+    coordinates: [10*16 -8, 19*16 -8],
     type: DestinationType.WILD,
     icons: ["type_EAU"],
     rooms: {

@@ -22,7 +22,7 @@ export const GROTTE_AZUREE: Destination = {
     nextDestinations: {
         AZURIA: [[0,2]]
     },
-    coordinates: [216,8],
+    coordinates: [14*16 -8, 8],
     type: DestinationType.WILD,
     icons: ["type_GLACE"],
     rooms: {

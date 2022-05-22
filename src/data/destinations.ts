@@ -65,6 +65,22 @@ export const DESTINATIONS: { [ref: string]: Destination } = {
     MONT_BRAISE,
 }
 
+export const FAST_TRAVEL_DESTINATIONS = [
+    OCEANE_CARMIN,
+    OCEANE_CRAMOISILE,
+    OCEANE_AZURIA,
+    CAVE_TAUPIQUEUR_OUEST,
+    CAVE_TAUPIQUEUR_EST,
+]
+
+export const FAST_TRAVELS: Map<Destination, Destination> = new Map([
+    [OCEANE_AZURIA, OCEANE_CARMIN],
+    [OCEANE_CARMIN, OCEANE_CRAMOISILE],
+    [OCEANE_CRAMOISILE, OCEANE_AZURIA],
+    [CAVE_TAUPIQUEUR_OUEST, CAVE_TAUPIQUEUR_EST],
+    [CAVE_TAUPIQUEUR_EST, CAVE_TAUPIQUEUR_OUEST]
+])
+
 export const INTERSECTIONS: Intersection[] = [
     {
         ref: "i1",

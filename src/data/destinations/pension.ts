@@ -12,7 +12,7 @@ export const PENSION: Destination = {
         AZURIA: [[0,-2]],
         SAFRANIA: [[0,2]]
     },
-    coordinates: [216,74],
+    coordinates: [14*16 -8, 5*16 -8],
     type: DestinationType.SPECIAL,
     icons: ["type_NORMAL"],
     subtext: "Élevage",

@@ -21,7 +21,7 @@ export const PISTE_CYCLABLE: Destination = {
         CELADOPOLE: [[0,-5]],
         PARMANIE: [[0,4],[4,0]]
     },
-    coordinates: [136,184],
+    coordinates: [9*16 -8, 12*16 -8],
     type: DestinationType.WILD,
     icons: ["type_POISON"],
     rooms: {

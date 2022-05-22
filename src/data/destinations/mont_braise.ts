@@ -20,7 +20,7 @@ export const MONT_BRAISE: Destination = {
         BOURG_PALETTE: [[3,-0.5], [0,-1.5], [-1,0]],
         CRAMOISILE: [[3,-0.5],[0,2.5]]
     },
-    coordinates: [3*16-8, 320-3.5*16],
+    coordinates: [3*16 -8, 17*16 -8],
     type: DestinationType.WILD,
     icons: ["type_FEU"],
     rooms: {

@@ -26,7 +26,7 @@ export const LAVANVILLE: Destination = {
         TOUR_POKEMON: [[-3,0]],
         FALAISES: [[0,4]]
     },
-    coordinates: [296,104],
+    coordinates: [19*16 -8, 7*16 -8],
     type: DestinationType.ARENA,
     icons: ["type_FEE"],
     rooms: {

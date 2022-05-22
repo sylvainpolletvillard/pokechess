@@ -14,7 +14,7 @@ export const COLLINE_ROYALE: Destination = {
         ARGENTA: [[-2,0],[-2,0]],
         CELADOPOLE: [[-2,0],[0,2]]
     },
-    coordinates: [168,72],
+    coordinates: [11*16 -8, 5*16 -8],
     type: DestinationType.WILD,
     icons: ["type_DRAGON"],
     rooms: {

@@ -27,7 +27,7 @@ export const CAMP_NOMADE: Destination = {
         CHAMPS_VERDOYANTS: [[-2,0],[0,1]],
         FALAISES: [[0,-3]]
     },
-    coordinates: [296,214],
+    coordinates: [19*16 -8, 14*16 -8],
     type: DestinationType.ARENA,
     icons: ["type_INSECTE"],
     rooms: {

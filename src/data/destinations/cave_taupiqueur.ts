@@ -59,9 +59,9 @@ export const CAVE_TAUPIQUEUR_OUEST: Destination = {
     name: "Cave Taupiqueur (Entrée Ouest)",
     subtext: "Voyage rapide",
     nextDestinations: {
-        JADIELLE: [[0,1.5],[-2,0]],
+        JADIELLE: [[0,2],[-2,0]],
     },
-    coordinates: [104,156],
+    coordinates: [7*16 -8, 10*16 -8],
     type: DestinationType.SPECIAL,
     icons: ["cave_entrance", "type_SOL"],
     rooms: {
@@ -79,7 +79,7 @@ export const CAVE_TAUPIQUEUR_EST: Destination = {
         CARMIN: [[0,1],[-3,0]],
         FALAISES: [[0,1],[2,0]]
     },
-    coordinates: [264,150],
+    coordinates: [17*16 -8, 10*16 -8],
     type: DestinationType.SPECIAL,
     icons: ["cave_entrance","type_SOL"],
     rooms: {

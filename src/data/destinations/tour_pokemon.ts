@@ -19,7 +19,7 @@ export const TOUR_POKEMON: Destination = {
         SAFRANIA: [[-2,0]],
         LAVANVILLE: [[3,0]]
     },
-    coordinates: [248,104],
+    coordinates: [16*16 -8, 7*16 -8],
     type: DestinationType.WILD,
     icons: ["type_SPECTRE"],
     rooms: {

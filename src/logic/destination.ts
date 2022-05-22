@@ -2,6 +2,8 @@ import {gameState} from "./gamestate";
 import { playSound } from "./audio";
 import { Destination, DestinationType, RoomArena } from "../types/destination";
 import { OCEANE_CARMIN, OCEANE_CRAMOISILE, OCEANE_AZURIA } from "../data/destinations/oceane";
+import { fadeOut } from "../utils/camera";
+import { FAST_TRAVEL_DESTINATIONS } from "../data/destinations";
 
 export function enterDestination(destination: Destination){
     if([OCEANE_CARMIN, OCEANE_CRAMOISILE, OCEANE_AZURIA].includes(destination)) playSound("oceane_horn")
@@ -9,7 +11,7 @@ export function enterDestination(destination: Destination){
     gameState.roomOrder = getRoomOrder(destination)
     gameState.currentDestination = destination
     gameState.currentRoomIndex = 0;
-    gameState.initRoom()
+    fadeOut(250).then(() => gameState.initRoom())
 }
 
 export function getRoomOrder(destination: Destination): string[] {
@@ -21,8 +23,8 @@ export function getRoomOrder(destination: Destination): string[] {
         const arena = destination.rooms["arena"] as RoomArena
         if(arena.badge && gameState.player.badges.includes(arena.badge.ref)) return ["shop", "arena"].filter(room => room in destination.rooms)
         else return ["shop", "trainer"].filter(room => room in destination.rooms)
-    }
-    if(destination.type === DestinationType.WILD){
+    }    
+    if(destination.type === DestinationType.WILD || FAST_TRAVEL_DESTINATIONS.includes(destination)){
         if(gameState.lastCaptureDestination === destination){
             gameState.lastCaptureDestination = null;
             return ["trainer"]

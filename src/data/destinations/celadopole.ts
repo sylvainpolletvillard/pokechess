@@ -29,7 +29,7 @@ export const CELADOPOLE: Destination = {
         DOJO: [[3,0]],
         PISTE_CYCLABLE: [[0,5]]
     },
-    coordinates: [136,104],
+    coordinates: [9*16 -8, 7*16 -8],
     type: DestinationType.ARENA,
     icons: ["type_PLANTE"],
     rooms: {

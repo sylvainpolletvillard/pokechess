@@ -129,6 +129,7 @@ export default class MapScene extends MyScene {
 
     changeOrigin(newOrigin: Destination){
         this.origin = newOrigin;
+        this.player?.setPosition(newOrigin.coordinates[0], newOrigin.coordinates[1]-4)
         this.destinationReached = newOrigin;
         this.updateDestinations()
         this.updateDirections(this.origin.nextDestinations);
@@ -334,7 +335,7 @@ export default class MapScene extends MyScene {
             this.destinationSelected = null;
             this.isMoving = false;
             this.player?.play("player_idle")
-            this.updatePlayerPosition()
+            this.updatePlayerPosition()         
         }).catch(e => { if( e!=="STOP") throw e })
 
     }

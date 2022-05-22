@@ -18,7 +18,7 @@ export const DOJO: Destination = {
         SAFRANIA: [[2,0]],
         CELADOPOLE: [[-3,0]]
     },
-    coordinates: [184,104],
+    coordinates: [12*16 -8, 7*16 -8],
     type: DestinationType.WILD,
     icons: ["type_COMBAT"],
     rooms: {

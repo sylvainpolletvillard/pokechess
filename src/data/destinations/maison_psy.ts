@@ -21,7 +21,7 @@ export const MAISON_PSY: Destination = {
         SAFRANIA: [[0,-1.5]],
         CARMIN: [[0,2.5]]
     },
-    coordinates: [216,128],
+    coordinates: [14*16 -8, 8.5*16 -8],
     type: DestinationType.WILD,
     icons: ["type_PSY"],
     rooms: {

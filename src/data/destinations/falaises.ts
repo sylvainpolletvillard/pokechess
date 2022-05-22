@@ -22,7 +22,7 @@ export const FALAISES: Destination = {
         CAMP_NOMADE: [[0,3]],
         CAVE_TAUPIQUEUR_EST: [[-2,0],[0,-1]]
     },
-    coordinates: [296,168],
+    coordinates: [19*16 -8, 11*16 -8],
     type: DestinationType.WILD,
     icons: ["type_ROCHE"],
     rooms: {

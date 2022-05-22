@@ -22,7 +22,7 @@ export const PARMANIE: Destination = {
         ILES_ECUME: [[0,3],[-3,0]],
         CHAMPS_VERDOYANTS: [[3,0],[0,-1],[1,0]]
     },
-    coordinates: [200,248],
+    coordinates: [13*16 -8, 16*16 -8],
     type: DestinationType.ARENA,
     icons: ["type_POISON"],
     subtext: "Arène",

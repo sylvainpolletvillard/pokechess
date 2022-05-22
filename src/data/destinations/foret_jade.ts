@@ -22,7 +22,7 @@ export const FORET_JADE: Destination = {
         JADIELLE: [[0,3]],
         ARGENTA: [[0,-4],[2,0]]
     },
-    coordinates: [72,136],
+    coordinates: [5*16 -8, 9*16 -8],
     type: DestinationType.WILD,
     icons: ["type_INSECTE"],
     rooms: {

@@ -38,7 +38,7 @@ export const BOURG_PALETTE: Destination = {
         CRAMOISILE: [[1,0],[0,1.5],[0,2.5]],
         MONT_BRAISE: [[1,0],[0,1.5],[-3,0.5]]
     },
-    coordinates: [72,230],
+    coordinates: [5*16 -8, 15*16-8],
     type: DestinationType.SPECIAL,
     icons: ["gift"],
     subtext: "Maman",

@@ -21,7 +21,7 @@ export const COL_DE_MONTAGNE: Destination = {
         MONT_SELENITE: [[2,0]],
         AZURIA: [[2,0],[4,0]]
     },
-    coordinates: [122,40],
+    coordinates: [8*16 -8, 3*16 -8],
     type: DestinationType.WILD,
     icons: ["type_VOL"],
     rooms: {

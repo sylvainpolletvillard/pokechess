@@ -18,11 +18,10 @@ export const MONT_SELENITE: Destination = {
     ref: "MONT_SELENITE",
     name: "Mont Selenite",
     nextDestinations: {
-        COL_DE_MONTAGNE: [[0,1],[-2,0]],
-        JADIELLE: [[0,1],[2,0]],
+        COL_DE_MONTAGNE: [[0,1],[-2,0]],        
         AZURIA: [[0,1],[4,0]]
     },
-    coordinates: [152,24],
+    coordinates: [10*16 -8, 2*16 -8],
     type: DestinationType.SPECIAL,
     icons: ["type_FEE"],
     subtext: "Paléontologie et Capture",

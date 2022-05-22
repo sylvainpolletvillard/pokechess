@@ -26,7 +26,7 @@ export const CENTRALE: Destination = {
         OCEANE_AZURIA: [[0,-1],[-1,0],[0,-1],[0,-1],[1,0],[0,-1]],
         LAVANVILLE: [[1,0],[0,1],[1,0],[0,1]]
     },
-    coordinates: [264,70],
+    coordinates: [17*16 -8, 5*16 -8],
     type: DestinationType.WILD,
     icons: ["type_ELECTRIQUE"],
     rooms: {

@@ -23,6 +23,7 @@ import { updateFightButton } from "../objects/menuButtons";
 import { PokemonOnBoard } from "../objects/pokemon";
 import { startMusic } from "./audio";
 import { fadeOut } from "../utils/camera";
+import { FAST_TRAVELS } from "../data/destinations";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -152,6 +153,10 @@ export class GameState {
     }
 
     exitDestination(){
+        if(FAST_TRAVELS.has(gameState.currentDestination)){
+            gameState.currentDestination = FAST_TRAVELS.get(gameState.currentDestination)!
+            if(gameState.lastCaptureDestination != null) gameState.lastCaptureDestination = gameState.currentDestination
+        }
         gameState.day++;
         saveState()
         gameState.activeScene!.scene.start("MapScene")

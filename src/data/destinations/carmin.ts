@@ -26,7 +26,7 @@ export const CARMIN: Destination = {
         OCEANE_CARMIN: [[-2,0]],
         FALAISES: [[3,0],[2,0]]
     },
-    coordinates: [216,168],
+    coordinates: [14*16 -8, 11*16 -8],
     type: DestinationType.ARENA,
     icons: ["type_ELECTRIQUE"],
     rooms: {

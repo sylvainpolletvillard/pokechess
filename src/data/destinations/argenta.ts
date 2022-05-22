@@ -29,7 +29,7 @@ export const ARGENTA: Destination = {
         COLLINE_ROYALE: [[2,0],[2,0]],
         CELADOPOLE: [[2,0],[0,2]]
     },
-    coordinates: [104,72],
+    coordinates: [7*16 -8, 5*16 -8],
     type: DestinationType.ARENA,
     icons: ["type_ROCHE"],
     rooms: {

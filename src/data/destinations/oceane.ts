@@ -65,7 +65,7 @@ export const OCEANE_CARMIN: Destination = {
     nextDestinations: {
         CARMIN: [[2,0]]
     },
-    coordinates: [182,168],
+    coordinates: [12*16 -8, 11*16 -8],
     type: DestinationType.SPECIAL,
     icons: ["boat"],
     subtext: "Voyage rapide vers Cramois'Île",
@@ -82,7 +82,7 @@ export const OCEANE_CRAMOISILE: Destination = {
     nextDestinations: {
         CRAMOISILE: [[2,0]],
     },
-    coordinates: [58,296],
+    coordinates: [4*16 -8, 19*16 -8],
     type: DestinationType.SPECIAL,
     icons: ["boat"],
     subtext: "Voyage rapide vers Azuria",
@@ -100,7 +100,7 @@ export const OCEANE_AZURIA: Destination = {
         AZURIA: [[0,1],[-1,0],[0,1],[-2,0]],
         CENTRALE: [[0,1],[-1,0],[0,2],[1,0],[0,1]]
     },
-    coordinates: [264,8],
+    coordinates: [18*16 -8, 8],
     type: DestinationType.SPECIAL,
     icons: ["boat"],
     subtext: "Voyage rapide vers Carmin",
