@@ -12,10 +12,9 @@ import { Pokemon } from '../data/pokemons';
 import { showPokedex } from './pokedex';
 import { Z } from '../data/depths';
 import { playSound } from '../logic/audio';
-import { wait } from '../utils/helpers';
-import { RoomSafari, RoomType } from '../logic/destination';
+import { RoomSafari, RoomType } from '../types/destination';
 import { drawPokeballsCounter } from './pokeballsCounter';
-import { canAfford, spend } from '../logic/shop';
+import { canAfford } from '../logic/shop';
 import { fadeOut } from '../utils/camera';
 
 let menuButtonsGroup: Phaser.GameObjects.Group;

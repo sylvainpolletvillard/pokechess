@@ -1,4 +1,4 @@
-import {LevelConfig} from "../../logic/level";
+import {LevelConfig} from "../../types/level";
 
 export const SHOP_JADIELLE: LevelConfig = {
     title: "Magasin de Jadielle",

@@ -1,7 +1,7 @@
-import { Destination, DestinationType, RoomType } from "../../logic/destination"
+import { Destination, DestinationType, RoomType } from "../../types/destination"
 import { PokemonOnBoard } from "../../objects/pokemon"
 import { MyScene } from "../../scenes/MyScene"
-import { Trainer } from "../trainers"
+import { Trainer } from "../../types/trainer"
 
 export const TEST_ROOM = (otherTeam: PokemonOnBoard[]): Destination => {
     return {
@@ -30,6 +30,7 @@ export const TEST_ROOM = (otherTeam: PokemonOnBoard[]): Destination => {
 }
 
 export const TEST_TRAINER: Trainer = {
+    ref: "test_trainer",
     name: "test_trainer",
     frameIndex: 8,
     introFrameIndex: 0,

@@ -4,7 +4,7 @@ import {GameStage, gameState} from "../logic/gamestate";
 import {Z} from "../data/depths";
 import {MyScene} from "../scenes/MyScene";
 import {showNextLine} from "../logic/dialog";
-import { RoomType } from "../logic/destination";
+import { RoomType } from "../types/destination";
 
 export type InteractiveElem = Phaser.GameObjects.Sprite | Phaser.GameObjects.Zone | Phaser.GameObjects.Rectangle | Phaser.GameObjects.Text
 const interactiveElems: Set<InteractiveElem> = new Set();

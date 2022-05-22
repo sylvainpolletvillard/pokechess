@@ -1,4 +1,4 @@
-import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import {Destination, DestinationType, RoomType} from "../../types/destination";
 import {DRESSEUR_AZURIA, ONDINE} from "../trainers";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
 

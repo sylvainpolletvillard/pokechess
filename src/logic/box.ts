@@ -1,3 +1,4 @@
+import { RoomType } from '../types/destination';
 import GameScene from '../scenes/GameScene';
 import { addToBoxPanel } from '../objects/pokemonBox';
 import { drawAlliancesInfo } from '../objects/alliancesInfo';
@@ -8,7 +9,7 @@ import { MyScene } from '../scenes/MyScene';
 import { getPokemonCry, Pokemon } from '../data/pokemons';
 import { PokemonOnBoard } from '../objects/pokemon';
 import { removeInArray } from '../utils/helpers';
-import { RoomType } from './destination';
+
 import { playSound } from './audio';
 
 export function removeFromBox(pokemon: Pokemon){

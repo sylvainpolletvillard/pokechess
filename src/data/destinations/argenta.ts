@@ -1,7 +1,9 @@
-import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import {Destination, DestinationType, RoomType} from "../../types/destination";
 import {DRESSEUR_ARGENTA, PIERRE} from "../trainers";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
-
+import {SHOP_JADIELLE} from "../levels/shops";
+import { preloadMusic } from "../../logic/audio";
+import { MyScene } from "../../scenes/MyScene";
 import { AMONISTAR } from "../pokemons/amonistar";
 import { GRAVALANCH } from "../pokemons/gravalanch";
 import { GROLEM } from "../pokemons/grolem";
@@ -16,10 +18,7 @@ import {KABUTO} from "../pokemons/kabuto";
 import {KOKIYAS} from "../pokemons/kokiyas";
 import {KRABBY} from "../pokemons/krabby";
 import {MACHOC} from "../pokemons/machoc";
-import {SHOP_JADIELLE} from "../levels/shops";
-import { preloadMusic } from "../../logic/audio";
-import { gameState } from "../../logic/gamestate";
-import { MyScene } from "../../scenes/MyScene";
+
 
 export const ARGENTA: Destination = {
     ref: "ARGENTA",

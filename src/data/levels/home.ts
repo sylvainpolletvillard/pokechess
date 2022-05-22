@@ -1,4 +1,4 @@
-import {LevelConfig} from "../../logic/level";
+import {LevelConfig} from "../../types/level";
 
 export const homeLevel: LevelConfig = {
     title: "Maison",

@@ -10,16 +10,6 @@ import GameScene from "../scenes/GameScene";
 import { receiveItem } from "./dialogs/descriptions";
 import {wait} from "../utils/helpers";
 
-export interface Trainer {
-    ref: string;
-    name: string;
-    frameIndex: number,
-    introFrameIndex: number | null,
-    dialogs: {
-        start: DialogLine[],
-        [other: string]: DialogLine[]
-    }
-}
 
 export const PIERRE: Trainer = {
     ref: "pierre",

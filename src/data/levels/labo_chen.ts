@@ -1,4 +1,4 @@
-import {LevelConfig} from "../../logic/level";
+import {LevelConfig} from "../../types/level";
 import {gameState} from "../../logic/gamestate";
 import {BOURG_PALETTE} from "../destinations/bourg_palette";
 import {startDialog} from "../../logic/dialog";

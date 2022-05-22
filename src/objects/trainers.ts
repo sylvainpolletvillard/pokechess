@@ -1,9 +1,8 @@
 import GameScene from "../scenes/GameScene";
 import { Z } from "../data/depths";
-import { Trainer } from "../data/trainers";
-import { RoomType, RoomArena } from "../logic/destination";
+import { Trainer } from "../types/trainer";
+import { RoomType, RoomArena } from "../types/destination";
 import { tweenFade } from "../utils/tweens";
-import { drawAlliancesInfo } from "./alliancesInfo";
 import { gameState } from "../logic/gamestate";
 
 export function drawTrainers(game: GameScene){

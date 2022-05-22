@@ -1,7 +1,8 @@
-import {Destination, DestinationType, getSubText} from "../logic/destination";
+import {Destination, DestinationType} from "../types/destination";
 import {addText} from "../utils/text";
 import {Z} from "../data/depths";
 import MapScene from "../scenes/MapScene";
+import { getSubText } from "../logic/destination";
 
 let destinationPanel: Phaser.GameObjects.Container | null = null;
 

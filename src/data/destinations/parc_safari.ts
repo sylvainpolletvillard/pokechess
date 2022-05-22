@@ -1,5 +1,5 @@
 import { preloadMusic } from "../../logic/audio";
-import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import {Destination, DestinationType, RoomType} from "../../types/destination";
 import { spawnSafariTeam } from "../../logic/spawns";
 import { MyScene } from "../../scenes/MyScene";
 

@@ -1,4 +1,4 @@
-import {Destination, DestinationType, RoomType, RoomWild} from "../../logic/destination";
+import {Destination, DestinationType, RoomType} from "../../types/destination";
 import {spawnTutoCaptureTeam} from "../../logic/spawns";
 import {SCIENTIFIQUE_TUTO} from "../trainers";
 import {homeLevel} from "../levels/home";

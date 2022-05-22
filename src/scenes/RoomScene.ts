@@ -9,7 +9,7 @@ import {loadSpritesheets} from "../data/spritesheets";
 import {loadTilemaps} from "../data/tilemaps";
 import {setupAnims} from "../logic/anims";
 import {drawRoomNamePanel} from "../objects/roomNamePanel";
-import {RoomFreewalk} from "../logic/destination";
+import {RoomFreewalk} from "../data/destinations";
 import {homeLevel} from "../data/levels/home";
 import {startMusic} from "../logic/audio";
 import {clickEntry} from "../objects/menu";

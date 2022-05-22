@@ -1,4 +1,4 @@
-import {Destination, DestinationType, Intersection} from "../logic/destination";
+import {Destination, DestinationType, Intersection} from "../types/destination";
 import {BOURG_PALETTE} from "./destinations/bourg_palette";
 import {JADIELLE} from "./destinations/jadielle";
 import {FORET_JADE} from "./destinations/foret_jade";
@@ -28,6 +28,7 @@ import {PARMANIE} from "./destinations/parmanie";
 import {PARC_SAFARI} from "./destinations/parc_safari";
 import {ILES_ECUME} from "./destinations/iles_ecume";
 import {CHAMPS_VERDOYANTS} from "./destinations/champs_verdoyants";
+
 
 export const DESTINATIONS: { [ref: string]: Destination } = {
     BOURG_PALETTE,

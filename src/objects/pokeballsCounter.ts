@@ -1,4 +1,4 @@
-import { RoomType } from "../logic/destination";
+import { RoomType } from "../types/destination";
 import { gameState } from "../logic/gamestate";
 import RoomScene from "../scenes/RoomScene";
 import { MyScene } from "../scenes/MyScene";

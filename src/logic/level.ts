@@ -4,19 +4,10 @@ import {Character, CHARACTER_STATE} from "../objects/character";
 import {gameState} from "./gamestate";
 import {Description} from "../objects/description";
 import {Door} from "../objects/door";
+import {LevelConfig} from "../types/level";
 
 export const MAP_SCALING = 2
 export const TILE_SIZE = 16 * MAP_SCALING
-
-export interface LevelConfig {
-    title: string;
-    tilemap: string;
-    tilesets: string[];
-    startAt: string;
-    init?(): any;
-    exit?(): any;
-    canExit?(): any;
-}
 
 export class Level {
     config: LevelConfig

@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import {Destination, enterDestination, RoomArena, RoomTutorial, RoomType} from "./destination";
+import {Destination, RoomArena, RoomTutorial, RoomType} from "../types/destination";
 import {Player} from "./player";
 import {Board, calcXpBoard, clearPlacement, setupPlayerIdleBoard, spawnPokemon} from "./board";
 import {gainXP, initJumps, updatePokemonAction} from "./fight";
@@ -12,7 +12,7 @@ import {Pokemon} from "../data/pokemons";
 import {pickStarters} from "./starters";
 import {BOURG_PALETTE} from "../data/destinations/bourg_palette";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
-import { Badge } from "../data/badges";
+import { Badge } from "../types/badge";
 import { CHAMPIONS, SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 import { checkProjectilesImpact } from "./projectile";
 import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
@@ -21,7 +21,7 @@ import {loadSave, saveState} from "./save";
 import { updateFightButton } from "../objects/menuButtons";
 import { PokemonOnBoard } from "../objects/pokemon";
 import { startMusic } from "./audio";
-import { fadeIn, fadeOut } from "../utils/camera";
+import { fadeOut } from "../utils/camera";
 
 export enum GameStage {
     CREATION = "CREATION",

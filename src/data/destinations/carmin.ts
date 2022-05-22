@@ -1,5 +1,5 @@
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
-import {Destination, DestinationType, RoomType} from "../../logic/destination";
+import {Destination, DestinationType, RoomType} from "../../types/destination";
 import {DRESSEUR_CARMIN, MAJOR_BOB} from "../trainers";
 import { ELECTRODE } from "../pokemons/electrode";
 import { ELEKTEK } from "../pokemons/elektek";

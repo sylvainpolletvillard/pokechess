@@ -16,7 +16,7 @@ import {getPokemonCry, Pokemon} from "../data/pokemons";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
 import { NO_OWNER, OWNER_CHANGING, OWNER_PLAYER } from "../data/owners";
-import { RoomBoard, RoomType} from "./destination";
+import { RoomBoard, RoomType} from "../types/destination";
 import {displayPokemonCaptureInfo, hidePokemonCaptureInfo} from "../objects/pokemonCaptureBox";
 import {spend} from "./shop";
 import { calcXpEarnedOnDefeat } from "./xp";

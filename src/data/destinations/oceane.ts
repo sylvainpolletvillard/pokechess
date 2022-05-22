@@ -1,4 +1,4 @@
-import {Destination, DestinationType, RoomArena, RoomType, RoomWild} from "../../logic/destination";
+import {Destination, DestinationType, RoomArena, RoomType, RoomWild} from "../../types/destination";
 import {spawnTeamByTypeFactor, spawnTrainerTeam} from "../../logic/spawns";
 import {TYPE_COMBAT, TYPE_EAU, TYPE_NORMAL, TYPE_VOL} from "../types";
 import {DRESSEUR_OCEANE} from "../trainers";

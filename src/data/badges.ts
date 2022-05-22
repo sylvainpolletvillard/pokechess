@@ -1,8 +1,4 @@
-
-export interface Badge {
-    ref: string;
-    frameIndex: number
-}
+import {Badge} from "../types/badge";
 
 export const BADGE_ROCHE: Badge = {
     ref: "badge_roche",

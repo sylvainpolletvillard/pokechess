@@ -8,7 +8,7 @@ import {DEFAULT_VOICE, VoiceConfig, voicesByActor} from "../data/voices";
 import {MyScene} from "../scenes/MyScene";
 import {closeMenu, Menu, openMenu} from "../objects/menu";
 import { wait } from "../utils/helpers";
-import { RoomType } from "./destination";
+import { RoomType } from "../types/destination";
 
 export type DialogLine = string | DialogChoice | DialogLine[] | null | Promise<DialogLine> | (() => DialogLine);
 

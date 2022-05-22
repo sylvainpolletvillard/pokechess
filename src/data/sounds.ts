@@ -35,6 +35,7 @@ export function loadAudio(scene: Phaser.Scene) {
 
     scene.load.audio("door", ["assets/audio/sounds/door.ogg"]);
     scene.load.audio("run", ["assets/audio/sounds/run.ogg"]);
+    scene.load.audio("oceane_horn", ["assets/audio/sounds/oceane_horn.ogg"]);
 
     loadCries(scene)
     
