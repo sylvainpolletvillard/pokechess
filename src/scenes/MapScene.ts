@@ -26,6 +26,7 @@ import { setupAnims } from '../logic/anims';
 import { startMusic } from '../logic/audio';
 import { wait } from '../utils/helpers';
 import { Z } from '../data/depths';
+import { fadeIn } from '../utils/camera';
 
 
 export default class MapScene extends MyScene {
@@ -86,6 +87,7 @@ export default class MapScene extends MyScene {
         //this.debugIntersections(); // DEBUG
         drawCursor()
         startMusic("music_overworld")
+        fadeIn(250)
     }
 
     update(){

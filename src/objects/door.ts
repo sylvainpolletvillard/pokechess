@@ -3,6 +3,7 @@ import RoomScene from "../scenes/RoomScene";
 import {MAP_SCALING} from "../logic/level";
 import {MapObject} from "../utils/map";
 import { playSound } from "../logic/audio";
+import { fadeIn, fadeOut } from "../utils/camera";
 
 export class Door {
     sprite: Phaser.Physics.Arcade.Sprite;
@@ -30,15 +31,14 @@ export class Door {
                 return;
             }
 
-            scene.cameras.main.fadeOut(250, 202, 205, 184)
-            setTimeout(() => {
-                scene.cameras.main.fadeIn(250)
+            fadeOut(250).then(() => {
+                fadeIn(250)
                 if(door.properties.to === "exit"){
                     scene.level.exit()
                 } else {
                     scene.player!.goToDoor(door.properties.to)
                 }
-            }, 250)
+            })
         })
     }
 }

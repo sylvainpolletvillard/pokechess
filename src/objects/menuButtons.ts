@@ -16,6 +16,7 @@ import { wait } from '../utils/helpers';
 import { RoomSafari, RoomType } from '../logic/destination';
 import { drawPokeballsCounter } from './pokeballsCounter';
 import { canAfford, spend } from '../logic/shop';
+import { fadeOut } from '../utils/camera';
 
 let menuButtonsGroup: Phaser.GameObjects.Group;
 
@@ -60,8 +61,7 @@ export function drawSafariButtons(game: GameScene){
         })
         .on("click", () => {           
             playSound("run")
-            game.cameras.main.fadeOut(500, 202, 205, 184);
-            wait(500).then(() => gameState.exitDestination())            
+            fadeOut(400).then(() => gameState.exitDestination())            
         })
     addInteractiveElem(quitButton)
     game.sprites.set("quitButton", quitButton)

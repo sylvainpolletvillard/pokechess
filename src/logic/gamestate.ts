@@ -21,6 +21,7 @@ import {loadSave, saveState} from "./save";
 import { updateFightButton } from "../objects/menuButtons";
 import { PokemonOnBoard } from "../objects/pokemon";
 import { startMusic } from "./audio";
+import { fadeIn, fadeOut } from "../utils/camera";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -156,7 +157,7 @@ export class GameState {
     }
 
     initRoom(){
-        clearTimeouts();
+        clearTimeouts();        
         if(gameState.currentRoom.type === RoomType.FREEWALK){
             gameState.activeScene!.scene.start("RoomScene")
         } else {
@@ -304,7 +305,7 @@ export class GameState {
                 speaker: room.trainer.name
             })
         } else {
-            gameState.goToNextRoom()
+            fadeOut(400).then(() => gameState.goToNextRoom())
         }
     }
 
