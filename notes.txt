@@ -1,6 +1,7 @@
 TODO:
 - items
 - maps
+- océane
+- gain badges
 - debug evoli evolution
-- parc safari
 - pension

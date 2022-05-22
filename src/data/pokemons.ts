@@ -425,3 +425,11 @@ export function getNonLegendaryPokemons(){
 export function getNonLegendaryPokemonsOfType(type: PokemonType){
     return getPokemonsOfType(type).filter(p => p.rank < 5)
 }
+
+export function getPokedexIndex(pokemon: PokemonEntry){
+    return ("00"+(POKEMONS.indexOf(pokemon) + 1)).slice(-3)
+}
+
+export function getPokemonCry(pokemon: PokemonEntry){
+    return `cry${getPokedexIndex(pokemon)}`
+}

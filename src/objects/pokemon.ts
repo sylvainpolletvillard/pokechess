@@ -1,4 +1,4 @@
-import {Pokemon, PokemonAction, PokemonEntry, PokemonTypeAction} from "../data/pokemons";
+import {getPokemonCry, Pokemon, PokemonAction, PokemonEntry, PokemonTypeAction} from "../data/pokemons";
 import GameScene from "../scenes/GameScene";
 import {addInteractiveElem, dragState, handleDragStart, testIfCanBeDragged} from "./cursor";
 import {clamp, wait} from "../utils/helpers";
@@ -15,6 +15,7 @@ import {Z} from "../data/depths";
 import {OWNER_PLAYER} from "../data/owners";
 import {updatePokemonBars} from "./pokemonBar";
 import {Buffs, resetBuffs} from "../logic/buffs";
+import { playSound } from "../logic/audio";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -191,6 +192,7 @@ export function makePokemonSprite(
         sprite.setAlpha(1)
         hidePokemonInfo();
         displayPokemonReleaseBox(pokemon);
+        playSound(getPokemonCry(pokemon.entry))
 
         if(gameState.player.box.includes(pokemon)){
             removeFromBox(pokemon)

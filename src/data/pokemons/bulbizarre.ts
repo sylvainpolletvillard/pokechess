@@ -16,5 +16,5 @@ export const BULBIZARRE: PokemonEntry = {
     evolutionLevel: 10,
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES,
-    ppSkill: SKILLS.LANCE_SOLEIL
+    ppSkill: SKILLS.LANCE_SOLEIL,
 }

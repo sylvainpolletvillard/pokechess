@@ -1,3 +1,5 @@
+import { getPokedexIndex, getPokemonCry, POKEMONS } from "./pokemons";
+
 export const SOUNDS = {}
 
 export function loadAudio(scene: Phaser.Scene) {
@@ -30,11 +32,19 @@ export function loadAudio(scene: Phaser.Scene) {
 
     scene.load.audio("door", ["assets/audio/sounds/door.ogg"]);
     scene.load.audio("run", ["assets/audio/sounds/run.ogg"]);
+
+    loadCries(scene)
     
     /* UNUSED */
 
     //scene.load.audio("music_parc_safari", ["assets/audio/music/36 Casino.mp3"]);    
     //scene.load.audio("purchase", ["assets/audio/sounds/purchase.ogg"]);
+}
+
+function loadCries(scene: Phaser.Scene){
+    POKEMONS.forEach(pokemon => {
+        scene.load.audio(getPokemonCry(pokemon), [`assets/audio/sounds/cries/${getPokedexIndex(pokemon)}.ogg`]);
+    })
 }
 
 export function addSounds() {

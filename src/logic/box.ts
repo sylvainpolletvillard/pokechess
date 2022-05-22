@@ -5,10 +5,11 @@ import { drawPokeballsCounter } from '../objects/pokeballsCounter';
 import { gameState } from './gamestate';
 import { ITEM_POKEBALL } from '../data/items';
 import { MyScene } from '../scenes/MyScene';
-import { Pokemon } from '../data/pokemons';
+import { getPokemonCry, Pokemon } from '../data/pokemons';
 import { PokemonOnBoard } from '../objects/pokemon';
 import { removeInArray } from '../utils/helpers';
 import { RoomType } from './destination';
+import { playSound } from './audio';
 
 export function removeFromBox(pokemon: Pokemon){
     const box = gameState.player.box;
@@ -74,6 +75,7 @@ export function releasePokemon(pokemon: Pokemon){
         removeFromBox(pokemon)
     }
     game.sprites.get(pokemon.uid)?.destroy()
+    playSound(getPokemonCry(pokemon.entry))
     gameState.player.inventory[ITEM_POKEBALL.ref] += pokemon.cost;
     if([RoomType.WILD, RoomType.FREEWALK, RoomType.SAFARI].includes(gameState.currentRoom.type)){
         drawPokeballsCounter()
