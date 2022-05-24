@@ -12,6 +12,7 @@ import { GROTADMORV } from "../pokemons/grotadmorv";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { BADGE_AME } from "../badges";
 
 export const PARMANIE: Destination = {
     ref: "PARMANIE",
@@ -33,6 +34,7 @@ export const PARMANIE: Destination = {
             map: "arene_parmanie",
             music: "music_parmanie",
             trainer: KOGA,
+            badge: BADGE_AME,
             spawnOtherTeam() {
                 return spawnChampionTeam([
                         SMOGO,

@@ -16,6 +16,7 @@ import { ABRA } from "../pokemons/abra";
 import { NOEUFNOEUF } from "../pokemons/noeufnoeuf";
 import { PSYKOKWAK } from "../pokemons/psykokwak";
 import { AKWAKWAK } from "../pokemons/akwakwak";
+import { BADGE_MARAIS } from "../badges";
 
 export const SAFRANIA: Destination = {
     ref: "SAFRANIA",
@@ -36,6 +37,7 @@ export const SAFRANIA: Destination = {
             map: "arene_safrania",
             music: "music_argenta_safrania", // meme musique que argenta
             trainer: MORGANE,
+            badge: BADGE_MARAIS,
             spawnOtherTeam(){
                 return spawnChampionTeam([
                         KADABRA,

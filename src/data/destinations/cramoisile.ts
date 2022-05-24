@@ -20,6 +20,7 @@ import {RAFFLESIA} from "../pokemons/rafflesia";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { BADGE_VOLCAN } from "../badges";
 
 export const CRAMOISILE: Destination = {
     ref: "CRAMOISILE",
@@ -40,6 +41,7 @@ export const CRAMOISILE: Destination = {
             map: "cramoisile",
             music: "music_cramoisile",
             trainer: AUGUSTE,
+            badge: BADGE_VOLCAN,
             spawnOtherTeam(){
                 return spawnChampionTeam([
                         CANINOS,

@@ -16,6 +16,7 @@ import {STARI} from "../pokemons/stari";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { BADGE_FOUDRE } from "../badges";
 
 export const CARMIN: Destination = {
     ref: "CARMIN",
@@ -36,6 +37,7 @@ export const CARMIN: Destination = {
             map: "arene_carmin",
             music: "music_carmin",
             trainer: MAJOR_BOB,
+            badge: BADGE_FOUDRE,
             spawnOtherTeam() {
                 return spawnChampionTeam([
                         VOLTORBE,

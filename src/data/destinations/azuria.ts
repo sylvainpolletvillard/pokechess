@@ -20,6 +20,7 @@ import {POISSIRENE} from "../pokemons/poissirene";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { BADGE_CASCADE } from "../badges";
 
 export const AZURIA: Destination = {
     ref: "AZURIA",
@@ -63,7 +64,8 @@ export const AZURIA: Destination = {
                     ])
             },
             music: "music_azuria",
-            trainer: ONDINE
+            trainer: ONDINE,
+            badge: BADGE_CASCADE
         },
         trainer: {
             type: RoomType.ARENA,

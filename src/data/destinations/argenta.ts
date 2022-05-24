@@ -18,6 +18,7 @@ import {KABUTO} from "../pokemons/kabuto";
 import {KOKIYAS} from "../pokemons/kokiyas";
 import {KRABBY} from "../pokemons/krabby";
 import {MACHOC} from "../pokemons/machoc";
+import { BADGE_ROCHE } from "../badges";
 
 
 export const ARGENTA: Destination = {
@@ -37,6 +38,7 @@ export const ARGENTA: Destination = {
             name: "Arène d'Argenta",
             type: RoomType.ARENA,
             trainer: PIERRE,
+            badge: BADGE_ROCHE,
             map: "arene_argenta",
             music: "music_argenta_safrania",
             spawnOtherTeam(){

@@ -21,8 +21,8 @@ export function getRoomOrder(destination: Destination): string[] {
      */
     if(destination.type === DestinationType.ARENA){
         const arena = destination.rooms["arena"] as RoomArena
-        if(arena.badge && gameState.player.badges.includes(arena.badge.ref)) return ["shop", "arena"].filter(room => room in destination.rooms)
-        else return ["shop", "trainer"].filter(room => room in destination.rooms)
+        if(arena.badge && gameState.player.badges.includes(arena.badge.ref)) return ["shop", "trainer"].filter(room => room in destination.rooms)
+        else return ["shop", "arena"].filter(room => room in destination.rooms)
     }    
     if(destination.type === DestinationType.WILD || FAST_TRAVEL_DESTINATIONS.includes(destination)){
         if(gameState.lastCaptureDestination === destination){
