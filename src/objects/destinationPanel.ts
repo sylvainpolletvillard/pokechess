@@ -61,7 +61,10 @@ export function hideDestinationPanel(scene: MapScene){
         targets: [destinationPanel],
         y: "+=40",
         delay: 100,
-        duration: 100
+        duration: 100,
+        onComplete(){
+            destinationPanel?.destroy(true)
+            destinationPanel = null
+        }
     })
-    destinationPanel = null
 }
