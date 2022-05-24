@@ -137,7 +137,7 @@ export const TABLE_TYPES = new Map([
         [TYPE_PSY, 1],
         [TYPE_INSECTE, 1],
         [TYPE_ROCHE, 0.5],
-        [TYPE_SPECTRE, 0],
+        [TYPE_SPECTRE, 0.2],
         [TYPE_DRAGON, 1],
         [TYPE_FEE, 1]
     ])],
@@ -204,7 +204,7 @@ export const TABLE_TYPES = new Map([
         [TYPE_GLACE, 1],
         [TYPE_COMBAT, 1],
         [TYPE_POISON, 1],
-        [TYPE_SOL, 0],
+        [TYPE_SOL, 0.2],
         [TYPE_VOL, 2],
         [TYPE_PSY, 1],
         [TYPE_INSECTE, 1],
@@ -245,7 +245,7 @@ export const TABLE_TYPES = new Map([
         [TYPE_PSY, 0.5],
         [TYPE_INSECTE, 0.5],
         [TYPE_ROCHE, 2],
-        [TYPE_SPECTRE, 0],
+        [TYPE_SPECTRE, 0.2],
         [TYPE_DRAGON, 1],
         [TYPE_FEE, 0.5]
     ])],
@@ -277,7 +277,7 @@ export const TABLE_TYPES = new Map([
         [TYPE_COMBAT, 1],
         [TYPE_POISON, 2],
         [TYPE_SOL, 1],
-        [TYPE_VOL, 0],
+        [TYPE_VOL, 0.2],
         [TYPE_PSY, 1],
         [TYPE_INSECTE, 0.5],
         [TYPE_ROCHE, 2],
@@ -358,7 +358,7 @@ export const TABLE_TYPES = new Map([
         [TYPE_FEE, 1]
     ])],
     [TYPE_SPECTRE, new Map([
-        [TYPE_NORMAL, 0.25], // supposed to be zero but ends up with never ending fights
+        [TYPE_NORMAL, 0.5],
         [TYPE_FEU, 1],
         [TYPE_EAU, 1],
         [TYPE_PLANTE, 1],
@@ -368,7 +368,7 @@ export const TABLE_TYPES = new Map([
         [TYPE_POISON, 1],
         [TYPE_SOL, 1],
         [TYPE_VOL, 1],
-        [TYPE_PSY, 2],
+        [TYPE_PSY, 0.2],
         [TYPE_INSECTE, 1],
         [TYPE_ROCHE, 1],
         [TYPE_SPECTRE, 2],
