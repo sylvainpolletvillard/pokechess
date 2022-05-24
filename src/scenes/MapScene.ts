@@ -27,6 +27,19 @@ import { startMusic } from '../logic/audio';
 import { wait } from '../utils/helpers';
 import { Z } from '../data/depths';
 import { fadeIn } from '../utils/camera';
+import { BOURG_PALETTE } from '../data/destinations/bourg_palette';
+import { JADIELLE } from '../data/destinations/jadielle';
+import { MONT_BRAISE } from '../data/destinations/mont_braise';
+import { CRAMOISILE } from '../data/destinations/cramoisile';
+import { ILES_ECUME } from '../data/destinations/iles_ecume';
+import { PARMANIE } from '../data/destinations/parmanie';
+import { MONT_SELENITE } from '../data/destinations/mont_selenite';
+import { AZURIA } from '../data/destinations/azuria';
+import { ARGENTA } from '../data/destinations/argenta';
+import { CENTRALE } from '../data/destinations/centrale';
+import { PENSION } from '../data/destinations/pension';
+import { LAVANVILLE } from '../data/destinations/lavanville';
+import { OCEANE_AZURIA, OCEANE_CRAMOISILE } from '../data/destinations/oceane';
 
 
 export default class MapScene extends MyScene {
@@ -204,7 +217,8 @@ export default class MapScene extends MyScene {
         const cascade = this.add.sprite(216,8, "map").play("cascade")
         this.sprites.set("cascade", cascade)
 
-        const boat = this.add.sprite(184,168, "map").play("boat")
+        const [boatX, boatY] = this.getBoatCoordinates()
+        const boat = this.add.sprite(boatX*16-8, boatY*16-8, "map").play("boat")
         this.sprites.set("boat", boat)
 
         const ronflex = this.add.sprite(136,72, "map").play("ronflex")
@@ -338,5 +352,21 @@ export default class MapScene extends MyScene {
             this.updatePlayerPosition()         
         }).catch(e => { if( e!=="STOP") throw e })
 
+    }
+
+    getBoatCoordinates(){
+        if([
+            BOURG_PALETTE, JADIELLE, MONT_BRAISE, 
+            CRAMOISILE, ILES_ECUME, PARMANIE, OCEANE_CRAMOISILE
+        ].includes(gameState.currentDestination)){
+            return [4, 19] // cramoisile
+        }
+        if([
+            MONT_SELENITE, AZURIA, ARGENTA,
+            CENTRALE, PENSION, LAVANVILLE, OCEANE_AZURIA
+        ].includes(gameState.currentDestination)){
+            return [18, 1] // azuria
+        }
+        return [12, 11] // carmin sur mer
     }
 }
