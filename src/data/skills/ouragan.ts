@@ -12,7 +12,7 @@ export const OURAGAN: ProjectileSkill = {
     power: 120,
     travelSpeed: 2,
     pierceThrough: true,
-    projectileRadius: 8,
+    projectileRadius: 12,
     rotateProjectile: false,
     attackRange: 4,
     hitAlteration: { type: AlterationType.TOURBILLON, stacks: 15 }

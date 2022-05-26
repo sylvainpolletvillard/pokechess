@@ -9,7 +9,7 @@ export const DRACOCHARGE: ProjectileSkill = {
     hitEffect: EFFECTS.BULLES_D_O_HIT,
     behavior: SkillBehavior.PROJECTILE,
     travelSpeed: 8,
-    projectileRadius: 4,
+    projectileRadius: 6,
     rotateProjectile: true,
     power: 100,
     attackRange: 3

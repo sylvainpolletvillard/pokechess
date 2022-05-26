@@ -6,7 +6,7 @@ export const STAROSS: PokemonEntry = {
     ref: "staross",
     name: "Staross",
     maxPV: 60,
-    maxPP: 3,
+    maxPP: 20,
     attack: 75,
     defense: 85,
     speed: 115,

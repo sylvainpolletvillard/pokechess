@@ -7,7 +7,7 @@ export const STARI: PokemonEntry = {
     ref: "stari",
     name: "Stari",
     maxPV: 30,
-    maxPP: 2,
+    maxPP: 10,
     attack: 45,
     defense: 55,
     speed: 85,
