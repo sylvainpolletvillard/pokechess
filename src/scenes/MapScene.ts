@@ -1,5 +1,5 @@
 import { addInteractiveElem, drawCursor, handleClick } from '../objects/cursor';
-import { ALL_BADGES } from '../data/badges';
+import { ALL_BADGES, BADGE_CASCADE } from '../data/badges';
 import { Destination, Intersection, Path } from '../types/destination';
 import { DESTINATIONS, DestinationTypeHighlightTint, INTERSECTIONS } from '../data/destinations';
 import {
@@ -214,8 +214,10 @@ export default class MapScene extends MyScene {
         this.player.play("player_idle").setDepth(Z.PLAYER)
         this.sprites.set("player", this.player)
 
-        const cascade = this.add.sprite(216,8, "map").play("cascade")
-        this.sprites.set("cascade", cascade)
+        if(!gameState.hasBadge(BADGE_CASCADE)){
+            const cascade = this.add.sprite(216,8, "map").play("cascade")
+            this.sprites.set("cascade", cascade)
+        }        
 
         const [boatX, boatY] = this.getBoatCoordinates()
         const boat = this.add.sprite(boatX*16-8, boatY*16-8, "map").play("boat")
@@ -239,7 +241,10 @@ export default class MapScene extends MyScene {
         this.destinationsHighLightGroup?.clear(false, true)
         const undeclared = Object.keys(this.origin.nextDestinations).find(ref => !(ref in DESTINATIONS))
         if(undeclared) return console.error(`DESTINATION NOT DECLARED: ${undeclared}`)
-        this.availableDestinations = Object.keys(this.origin.nextDestinations).map(ref => DESTINATIONS[ref]).concat(this.origin)
+        this.availableDestinations = Object.keys(this.origin.nextDestinations)
+            .map(ref => DESTINATIONS[ref])
+            .filter(dest => !dest.locked || !dest.locked())
+            .concat(this.origin)
         for(let destination of this.availableDestinations){
             const [x,y] = destination.coordinates;
             const destinationHighlight = this.add.sprite(x,y, "map")

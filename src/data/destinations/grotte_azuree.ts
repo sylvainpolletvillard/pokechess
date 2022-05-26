@@ -15,6 +15,8 @@ import {AQUALI} from "../pokemons/aquali";
 import {LOKHLASS} from "../pokemons/lokhlass";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { gameState } from "../../logic/gamestate";
+import { BADGE_CASCADE } from "../badges";
 
 export const GROTTE_AZUREE: Destination = {
     ref: "GROTTE_AZUREE",
@@ -25,6 +27,9 @@ export const GROTTE_AZUREE: Destination = {
     coordinates: [14*16 -8, 8],
     type: DestinationType.WILD,
     icons: ["type_GLACE"],
+    locked(){
+        return !gameState.hasBadge(BADGE_CASCADE)
+    },
     rooms: {
         wild: {
             type: RoomType.WILD,
