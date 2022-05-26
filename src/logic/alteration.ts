@@ -91,8 +91,11 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
     if(!pokemon.alive) return;
     const alterationToStack = pokemon.alterations.find(alt => alt.type === alteration.type)
     if(alterationToStack){        
+        // altérations ne pouvant pas se stack:
+        if([ AlterationType.SOMMEIL, AlterationType.PEUR, AlterationType.CONFUSION ].includes(alteration.type)) return;
+            
         alterationToStack.stacks += alteration.stacks
-        //console.log(`More stacks of ${alteration.type} on ${pokemon.entry.name} (stacks: ${alterationToStack.stacks})`)
+        console.log(`More stacks of ${alteration.type} on ${pokemon.entry.name} (stacks: ${alterationToStack.stacks})`)
     } 
     else {
         console.log(`Apply ${alteration.type} on ${pokemon.entry.name} (stacks: ${alteration.stacks})`)
