@@ -333,7 +333,8 @@ export const EFFECTS: { [name: string] : Effect} = {
     TELEPORT: {
         key: "teleport",
         frames: [165,166,167,168,169],
-        frameRate: 8
+        frameRate: 8,
+        position: "source_ground"
     },
     ETINCELLE: {
         key: "etincelle",

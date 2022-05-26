@@ -16,6 +16,8 @@ import {OWNER_PLAYER} from "../data/owners";
 import {updatePokemonBars} from "./pokemonBar";
 import {Buffs, resetBuffs} from "../logic/buffs";
 import { playSound } from "../logic/audio";
+import { PokemonType } from "../data/types";
+import { AllianceState } from "../data/alliances";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -118,6 +120,10 @@ export class PokemonOnBoard extends Pokemon {
 
     get opponents(): PokemonOnBoard[] {
         return this.owner === OWNER_PLAYER ?  gameState.board.otherTeam : gameState.board.playerTeam
+    }
+
+    get alliances(): Map<PokemonType, AllianceState> {
+        return this.owner === OWNER_PLAYER ?  gameState.board.playerAlliances : gameState.board.otherTeamAlliances
     }
 
     toBoxPokemon(game: GameScene){

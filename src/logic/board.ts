@@ -1,4 +1,4 @@
-import {Player} from "./player";
+import {getAlliancesState, Player} from "./player";
 import {addToBox, addToTeam, removeFromTeam} from "./box";
 import GameScene from "../scenes/GameScene";
 import {displayPokemonInfo, getCurrentPokemonInfoDisplayed, hidePokemonInfo} from "../objects/pokemonInfoBox";
@@ -27,6 +27,8 @@ import { drawMenuButtons, updateFightButton } from "../objects/menuButtons";
 import { applyBuffs } from "./buffs";
 import { gainXP } from "./fight";
 import { playSound } from "./audio";
+import { AllianceState } from "../data/alliances";
+import { PokemonType } from "../data/types";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -34,6 +36,8 @@ export const BOARD_HEIGHT = 8
 export interface Board {
     playerTeam: PokemonOnBoard[]
     otherTeam: PokemonOnBoard[]
+    playerAlliances: Map<PokemonType, AllianceState>
+    otherTeamAlliances: Map<PokemonType, AllianceState>
     activeTile: number[] | null
     xpEarned?: number
 }
@@ -41,31 +45,42 @@ export interface Board {
 export function setupPlayerIdleBoard(player: Player): Board {
     return {
         playerTeam: [...player.team],
+        playerAlliances: getAlliancesState(player.team),
         otherTeam: [],
+        otherTeamAlliances: new Map(),
         activeTile: null
     }
 }
 
-export function setupPlayerFightBoard(p1: Player, p2: Player){
+export function setupPlayerFightBoard(p1: Player, p2: Player): Board {
     return {
         playerTeam: [...p1.team],
         otherTeam: [...p2.team],
+        playerAlliances: getAlliancesState(p1.team),
+        otherTeamAlliances: getAlliancesState(p2.team),
         activeTile: null
     }
 }
 
-export function setupRoomBoard(p1: Player, room: RoomBoard){
+export function setupRoomBoard(p1: Player, room: RoomBoard): Board {
+    const playerTeam = p1.resetTeam()
+    const otherTeam = room.spawnOtherTeam()
     return {
-        playerTeam: p1.resetTeam(),
-        otherTeam: room.spawnOtherTeam(),
+        playerTeam, 
+        otherTeam,
+        playerAlliances: getAlliancesState(playerTeam),
+        otherTeamAlliances: getAlliancesState(otherTeam),
         activeTile: null
     }
 }
 
-export function setupSafariBoard(room: RoomBoard){
+export function setupSafariBoard(room: RoomBoard): Board {
+    const otherTeam = room.spawnOtherTeam()
     return {
         playerTeam: [],
-        otherTeam: room.spawnOtherTeam(),
+        otherTeam,
+        playerAlliances: new Map(),
+        otherTeamAlliances: getAlliancesState(otherTeam),
         activeTile: null
     }
 }

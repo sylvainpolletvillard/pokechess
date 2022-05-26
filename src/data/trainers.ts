@@ -673,7 +673,7 @@ export const DRESSEUR_MR_PSY: Trainer = {
     introFrameIndex: null,
     dialogs:{
         start: [
-            `Ah, te revoilà ! Alors, as-tu entraîné tes Pokémon Psy ?`,
+            `Ah, te revoilà ! Alors, as-tu entraîné le mental de tes Pokémon ?`,
             `C'est l'heure de... l'évaluation !`,
         ],
         victory: [

@@ -8,7 +8,6 @@ import { addAlteration } from "./alteration"
 import { getPokemonOnTile, isOnBoard } from "./board"
 import { applyDamage, healPokemon } from "./fight"
 import { gameState } from "./gamestate"
-import { getAlliancesState } from "./player"
 import { tunnel } from "./specials"
 
 export type OnHitEffect = (params: { attacker: PokemonOnBoard, target: PokemonOnBoard }) => void
@@ -43,7 +42,7 @@ export function resetBuffs(): Buffs {
 
 export function applyBuffs(pokemon: PokemonOnBoard){
     const game = gameState.activeScene as GameScene    
-    const alliances = getAlliancesState(pokemon.team)
+    const alliances = pokemon.owner === OWNER_PLAYER ? gameState.board.playerAlliances : gameState.board.otherTeamAlliances
     pokemon.buffs = resetBuffs()
     
     alliances.forEach(allianceState => {

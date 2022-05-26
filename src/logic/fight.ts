@@ -235,8 +235,8 @@ export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: Pokem
         .reduce((a,b) => a*b)
     
     if(typeFactor > 1){        
-        const normalAllianceBonus = getAllianceState(target.team, TYPE_NORMAL)
-        if(normalAllianceBonus.stepReached){
+        const normalAllianceBonus = target.alliances.get(TYPE_NORMAL)
+        if(normalAllianceBonus){
             typeFactor = Math.max(1, typeFactor - 0.3 * normalAllianceBonus.stepReachedN)
         }
     }
@@ -253,17 +253,17 @@ export function calcPoisonDamage(target: PokemonOnBoard, alteration: Alteration,
 
     let poisonDamage = Math.min(500, alteration.stacks) * perSecond * (1 / 10000) * target.maxPV // 0.01% max HP per stack per seconde
         
-    const teamRocheBonus = getAllianceState(target.team, TYPE_ROCHE)    
-    const opponentPoisonBonus = getAllianceState(target.opponents, TYPE_POISON)
+    const teamRocheBonus = target.alliances.get(TYPE_ROCHE)    
+    const opponentPoisonBonus = target.owner === OWNER_PLAYER ? gameState.board.otherTeamAlliances.get(TYPE_POISON) : gameState.board.playerAlliances.get(TYPE_POISON)
 
     let buffFactor = 1
     if(target.hasType(TYPE_POISON)){
         buffFactor -= 0.5 // type poison = 50% résistance au poison             
     }
-    if(opponentPoisonBonus.stepReachedN > 0){
+    if(opponentPoisonBonus){
         buffFactor += 0.4 * opponentPoisonBonus.stepReachedN
     }
-    if(teamRocheBonus.stepReachedN > 0){
+    if(teamRocheBonus){
         buffFactor -= 0.2 * teamRocheBonus.stepReachedN
     }
 
@@ -277,8 +277,8 @@ export function calcBurnDamage(target: PokemonOnBoard, game: GameScene): number 
     let burnDamage = 0.1 * perSecond * target.level; // 0.1 HP per second per level
     let buffFactor = 1
     
-    const teamRocheBonus = getAllianceState(target.team, TYPE_ROCHE)
-    if(teamRocheBonus.stepReachedN > 0){
+    const teamRocheBonus = target.alliances.get(TYPE_ROCHE)
+    if(teamRocheBonus){
         buffFactor -= 0.2 * teamRocheBonus.stepReachedN
     }
 
@@ -327,9 +327,8 @@ export function healPokemon(pokemon: PokemonOnBoard, healAmount: number){
 export function gainXP(pokemon: Pokemon, amount: number){    
     const oldLvl = pokemon.level
     let buffFactor = 1
-    const team = pokemon.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
-    const bonusInsecte = getAllianceState(team, TYPE_INSECTE)
-    if(pokemon.hasType(TYPE_INSECTE) && bonusInsecte.stepReached){
+    const bonusInsecte = pokemon.owner === OWNER_PLAYER ? gameState.board.playerAlliances.get(TYPE_INSECTE) : gameState.board.otherTeamAlliances.get(TYPE_INSECTE)
+    if(pokemon.hasType(TYPE_INSECTE) && bonusInsecte){
         buffFactor += 0.2 * bonusInsecte.stepReachedN
     }
 

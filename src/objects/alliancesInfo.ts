@@ -3,7 +3,6 @@ import {gameState} from "../logic/gamestate";
 import { addInteractiveElem } from "./cursor";
 import { displayAllianceInfo, hideAllianceInfo } from "./allianceInfoBox";
 import { PokemonOnBoard } from "./pokemon";
-import { getAlliancesState } from "../logic/player";
 import { addText } from "../utils/text";
 
 let leftGroup: Phaser.GameObjects.Group | null = null
@@ -12,7 +11,7 @@ let rightGroup: Phaser.GameObjects.Group | null = null
 export function drawAlliancesInfo(team: PokemonOnBoard[]){
     const game = gameState.activeScene as GameScene;
     const left = (team === gameState.board.playerTeam)
-    const alliances = getAlliancesState(team)
+    const alliances = left ? gameState.board.playerAlliances : gameState.board.otherTeamAlliances
 
     if(left && leftGroup) leftGroup.destroy(true, true)         
     else if(!left && rightGroup) rightGroup.destroy(true, true)         

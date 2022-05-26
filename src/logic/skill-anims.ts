@@ -233,7 +233,7 @@ export function sendPokemonCharge(attacker: PokemonOnBoard, target: PokemonOnBoa
 
 export function knockback(pokemon: PokemonOnBoard, angle: number, game: GameScene){    
     const sprite = game.sprites.get(pokemon.uid)
-    let knockbackStrength = getAllianceState(pokemon.team, TYPE_EAU).stepReachedN
+    let knockbackStrength = pokemon.alliances.get(TYPE_EAU)?.stepReachedN ?? 0
 
     if(!sprite || knockbackStrength === 0 || pokemon.untargettable) return;
 

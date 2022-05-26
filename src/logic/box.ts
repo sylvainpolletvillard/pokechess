@@ -11,6 +11,7 @@ import { PokemonOnBoard } from '../objects/pokemon';
 import { removeInArray } from '../utils/helpers';
 
 import { playSound } from './audio';
+import { getAlliancesState } from './player';
 
 export function removeFromBox(pokemon: Pokemon){
     const box = gameState.player.box;
@@ -54,6 +55,7 @@ export function addToTeam(pokemon: PokemonOnBoard){
     gameState.board.playerTeam.push(pokemon)
     gameState.player.team.push(pokemon)
     if(gameState.activeScene instanceof GameScene){
+        gameState.board.playerAlliances = getAlliancesState(gameState.board.playerTeam)
         drawAlliancesInfo(gameState.board.playerTeam)
     }    
 }
@@ -62,6 +64,7 @@ export function removeFromTeam(pokemon: PokemonOnBoard){
     if(pokemon.owner === 1){
         removeInArray(gameState.player.team, pokemon)
         removeInArray(gameState.board.playerTeam, pokemon)
+        gameState.board.playerAlliances = getAlliancesState(gameState.board.playerTeam)
         drawAlliancesInfo(gameState.board.playerTeam)
     } else {
         removeInArray(gameState.board.otherTeam, pokemon)
