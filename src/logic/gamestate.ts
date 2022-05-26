@@ -265,9 +265,11 @@ export class GameState {
 
         await startDialog(lines)
 
-        for(let pokemon of gameState.player.team){
-            await gainXP(pokemon, xpPerPokemon)
-        }        
+        if(hasWon){
+            for(let pokemon of gameState.player.team){
+                await gainXP(pokemon, xpPerPokemon)
+            }
+        }
 
         if([RoomType.ARENA, RoomType.TUTORIAL].includes(gameState.currentRoom.type)){
             const arena = gameState.currentRoom as RoomArena
