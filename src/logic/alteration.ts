@@ -34,12 +34,12 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
     switch(alteration.type){
         case AlterationType.POISON: 
             const poisonDamage = calcPoisonDamage(pokemon, alteration, game)        
-            applyDamage(poisonDamage, pokemon, true, true)
+            applyDamage(poisonDamage, pokemon, alteration.attacker, true, true)
             break;
 
         case AlterationType.BRULURE:
             const burnDamage = calcBurnDamage(pokemon, game)
-            applyDamage(burnDamage, pokemon, true, false)
+            applyDamage(burnDamage, pokemon, alteration.attacker, true, false)
             const gel = pokemon.alterations.find(alt => alt.type === AlterationType.GEL)
             if(gel) gel.stacks -= 3
             break;
@@ -50,7 +50,7 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
 
         case AlterationType.LIGOTAGE:
             let damage = pokemon.maxPV * (2/100) * perSecond // 2% HP max per second        
-            applyDamage(damage, pokemon, true, false)
+            applyDamage(damage, pokemon, alteration.attacker, true, false)
             break;
 
         case AlterationType.SOIN:
@@ -66,7 +66,7 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
             break;
 
         case AlterationType.DAMAGE_OVER_TIME:
-            applyDamage(10 * perSecond, pokemon)
+            applyDamage(10 * perSecond, pokemon, alteration.attacker)
             break;
         
         case AlterationType.TOURBILLON:
@@ -158,7 +158,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
     }
 
     if(alteration.type === AlterationType.REPOS){
-        addAlteration(pokemon, { type: AlterationType.SOMMEIL, stacks: alteration.stacks }, game)
+        addAlteration(pokemon, { type: AlterationType.SOMMEIL, stacks: alteration.stacks, attacker: pokemon }, game)
     }
 }
 

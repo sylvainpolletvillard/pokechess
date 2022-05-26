@@ -1,3 +1,5 @@
+import { PokemonOnBoard } from "../objects/pokemon"
+
 export enum AlterationType {    
     POISON = "POISON", // perd 2% de ses HP par seconde par stack
     BRULURE = "BRULURE", // perd 0.1HP par seconde par level, réduit les soins reçus de 50%
@@ -29,4 +31,5 @@ export interface Alteration {
     keepStacks?: boolean
     effectSprite?: Phaser.GameObjects.Sprite
     effectDelta?: number
+    attacker?: PokemonOnBoard
 }

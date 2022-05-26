@@ -78,7 +78,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         // BONUS ALLIANCE ELEC
         if(pokemon.hasType(TYPE_ELECTRIQUE) && allianceState.type === TYPE_ELECTRIQUE && allianceState.stepReached){
             const effect: OnHitReceivedEffect = ({ attacker }) => {
-                applyDamage(allianceState.stepReachedN * 2, attacker)
+                applyDamage(allianceState.stepReachedN * 2, attacker, pokemon)
                 console.log(`Choc ELEC sur ${attacker.entry.name}: ${allianceState.stepReachedN*2} dégats`)
             }
             pokemon.buffs.onHitReceived.push(effect)

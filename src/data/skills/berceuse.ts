@@ -23,6 +23,6 @@ export const BERCEUSE: AOESkill = {
     hitDelay: 1000,
     hitAlteration: {
         type: AlterationType.SOMMEIL,
-        stacks: 50
+        stacks: 40
     }
 }

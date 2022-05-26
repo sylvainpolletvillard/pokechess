@@ -140,8 +140,8 @@ export function renderDirectHitAttack(skill: Skill, attacker: PokemonOnBoard, ta
         if(testPrecision(attacker, target, skill)){
             attacker.buffs.onHit.forEach(buff => buff({ target, attacker }))
             target.buffs.onHitReceived.forEach(buff => buff({ damage, attacker }))
-            applyDamage(damage, target)
-            if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker)            
+            applyDamage(damage, target, attacker)
+            if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker, attacker)            
         }
         if(skill.hitAlteration) addAlteration(target, skill.hitAlteration, game)
         if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)
@@ -168,12 +168,12 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
             if(target && target.owner !== attacker.owner){
                 const damage = calcDamage(skill, target, attacker)
                 console.log(`AOE from ${attacker.entry.name} ; ${target.entry.name} receives ${damage} damage !`)
-                applyDamage(damage, target)
+                applyDamage(damage, target, attacker)
                 if(skill.hitAlteration) addAlteration(target, skill.hitAlteration, game)
             }
         })
 
-        if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker)
+        if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker, attacker)
     })
 }
 

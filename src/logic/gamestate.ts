@@ -26,6 +26,7 @@ import { fadeOut } from "../utils/camera";
 import { FAST_TRAVELS } from "../data/destinations";
 import { receiveItem } from "../data/dialogs/descriptions";
 import { ITEM_POKEBALL } from "../data/items";
+import { logStats, resetStats } from "./stats";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -176,6 +177,7 @@ export class GameState {
         gameState.board.xpEarned = calcXpBoard()
         this.stage = GameStage.LAUNCH
 
+        resetStats()
         initJumps()        
 
         game.time.addEvent({
@@ -232,7 +234,8 @@ export class GameState {
         this.stage = GameStage.ENDED;
         removeAllAlterations()
         game.time.removeEvent(this.fightTimer!)
-        game.time.removeEvent(this.fightClock!)        
+        game.time.removeEvent(this.fightClock!)
+        logStats()
 
         const player = game.sprites.get("player")
         const hasWon = (loser !== 1)

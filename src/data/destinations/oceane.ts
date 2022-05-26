@@ -98,7 +98,7 @@ export const OCEANE_AZURIA: Destination = {
     name: "L'Océane",
     nextDestinations: {
         AZURIA: [[0,1],[-1,0],[0,1],[-2,0]],
-        CENTRALE: [[0,1],[-1,0],[0,2],[1,0],[0,1]]
+        CENTRALE: [[0,1],[-1,0],[0,1],[0,1],[1,0],[0,1]]
     },
     coordinates: [17*16 -8, 8],
     type: DestinationType.SPECIAL,

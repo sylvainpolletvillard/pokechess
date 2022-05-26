@@ -13,13 +13,13 @@ import {Alteration, AlterationType} from "../data/alterations";
 import {clamp} from "../utils/helpers";
 import {recordLastSkillSeen} from "./specials";
 import {TABLE_TYPES, TYPE_INSECTE, TYPE_NORMAL, TYPE_POISON, TYPE_ROCHE, TYPE_VOL} from "../data/types";
-import {getAllianceState} from "./player";
 import { OWNER_PLAYER } from "../data/owners";
 import { xpToLevel } from "./xp";
 import { startDialog } from "./dialog";
 import { pauseMusicAndPlaySound, playSound } from "./audio";
 import { SKILLS } from "../data/skills";
 import { DialogLine } from "../types/dialog";
+import { registerDamageDone, registerDamageReceived, registerHeal } from "./stats";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
@@ -157,7 +157,7 @@ export function initJumps(){
             do {
                 i += dx;
                 dx = -1 * (Math.abs(dx)+1) * Math.sign(dx) // +1 , -2, +3, -4 ...
-            } while((i<0 || i>=8) && Math.abs(dx) <= 8)
+            } while((i<0 || i>=7) && Math.abs(dx) <= 8)
             
             if(Math.abs(dx) > 8){ // row is full, try another row              
                 j = pokemon.owner === OWNER_PLAYER ? dy : 7 - dy
@@ -211,9 +211,11 @@ export function testPrecision(attacker: PokemonOnBoard, target: PokemonOnBoard, 
     else return Math.random() <= precisionScore
 }
 
-export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=false, noWakeup = false){
+export function applyDamage(damage: number, target: PokemonOnBoard, attacker?: PokemonOnBoard, noPPGain=false, noWakeup = false){
     if(target.hasAlteration(AlterationType.INVULNERABLE)) return;
     target.pv = Math.max(0, target.pv - damage)
+    if(attacker) registerDamageDone(attacker, damage)
+    registerDamageReceived(target, damage)
     if(!noPPGain) target.pp = Math.min(target.entry.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))
     if(target.pv === 0) killPokemon(target)
     else {
@@ -243,7 +245,7 @@ export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: Pokem
         }
     }
 
-    return attacker.attack * (1+skill.power/80) * typeFactor / target.defense
+    return attacker.attack * (1+skill.power/60) * typeFactor / target.defense
 }
 
 export function calcSelfDamage(skill: Skill, attacker: PokemonOnBoard): number {
@@ -324,6 +326,7 @@ export function sendBackToPokeball(pokemon: PokemonOnBoard){
 export function healPokemon(pokemon: PokemonOnBoard, healAmount: number){
     if(pokemon.hasAlteration(AlterationType.BRULURE)) healAmount *= 0.5 // les brûlures réduisent de 50% l'efficacité des soins
     pokemon.pv = Math.min(pokemon.maxPV, pokemon.pv + healAmount)
+    registerHeal(pokemon, healAmount)
 }
 
 export function gainXP(pokemon: Pokemon, amount: number){

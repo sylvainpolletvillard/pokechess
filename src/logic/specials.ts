@@ -113,8 +113,8 @@ export function eclair(attacker: PokemonOnBoard, game: GameScene) {
     let [x, y] = randomTarget.position;
     renderEclair(attacker, x, y, game)    
     const damage = calcDamage(SKILLS.ECLAIR, randomTarget, attacker)
-    applyDamage(damage, randomTarget)
-    addAlteration(randomTarget, { type: AlterationType.PARALYSIE, stacks: 50 }, game)
+    applyDamage(damage, randomTarget, attacker)
+    addAlteration(randomTarget, { type: AlterationType.PARALYSIE, stacks: 50, attacker }, game)
     console.log(`Eclair sur ${randomTarget.entry.name} ; ${randomTarget.entry.name} receives ${damage} damage !`)
 }
 
@@ -188,7 +188,7 @@ export function renderUltralaser(attacker: PokemonOnBoard, target: PokemonOnBoar
         if(pokemonOnTile && pokemonOnTile.owner !== attacker.owner) {
             const damage = calcDamage(SKILLS.ULTRALASER, pokemonOnTile, attacker)
             console.log(`Ultralaser sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
-            applyDamage(damage, pokemonOnTile)
+            applyDamage(damage, pokemonOnTile, attacker)
         }
 
         y += dy*32
@@ -214,8 +214,8 @@ export function renderLaserGlace(attacker: PokemonOnBoard, target: PokemonOnBoar
         if(pokemonOnTile && pokemonOnTile.owner !== attacker.owner) {
             const damage = calcDamage(SKILLS.LASER_GLACE, pokemonOnTile, attacker)
             console.log(`Laser glace sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
-            applyDamage(damage, pokemonOnTile)
-            addAlteration(pokemonOnTile, { type: AlterationType.GEL, stacks: 50 }, game)
+            applyDamage(damage, pokemonOnTile, attacker)
+            addAlteration(pokemonOnTile, { type: AlterationType.GEL, stacks: 50, attacker }, game)
         }
 
         y += dy*32
@@ -276,11 +276,11 @@ export function evolution(attacker: PokemonOnBoard, target: PokemonOnBoard, game
 export function psyko(attacker: PokemonOnBoard, game: GameScene){    
     attacker.opponents.forEach(target => {
         game.cameras.main.flash(250, 255, 0, 255)
-        addAlteration(target, { type: AlterationType.CONFUSION, stacks: 40 }, game)
+        addAlteration(target, { type: AlterationType.CONFUSION, stacks: 40, attacker }, game)
         wait(SKILLS.PSYKO.hitDelay).then(() => {
             const damage = calcDamage(SKILLS.PSYKO, target, attacker)
             console.log(`Psyko sur ${target.entry.name} ; ${target.entry.name} receives ${damage} damage !`)
-            applyDamage(damage, target)
+            applyDamage(damage, target, attacker)
         })
     })
 }
@@ -288,7 +288,7 @@ export function psyko(attacker: PokemonOnBoard, game: GameScene){
 export function deflagration(attacker: PokemonOnBoard, game: GameScene){
     const eruptionsCoords: [number, number][] = []    
     attacker.opponents.forEach(target => {
-        addAlteration(target, { type: AlterationType.BRULURE, stacks: 60 }, game)
+        addAlteration(target, { type: AlterationType.BRULURE, stacks: 60, attacker }, game)
         eruptionsCoords.push([target.x, target.y])
     })
 
@@ -305,7 +305,7 @@ export function deflagration(attacker: PokemonOnBoard, game: GameScene){
                     if(pokemonOnTile){
                         const damage = calcDamage(SKILLS.DEFLAGRATION, pokemonOnTile, attacker)
                         console.log(`Eruption sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
-                        applyDamage(damage, pokemonOnTile)
+                        applyDamage(damage, pokemonOnTile, attacker)
                     }
                 })
 
@@ -348,7 +348,7 @@ export function blizzard(attacker: PokemonOnBoard, game: GameScene){
                         if(pokemonOnTile){
                             const damage = calcDamage(SKILLS.BLIZZARD, pokemonOnTile, attacker)
                             console.log(`Grelon sur ${pokemonOnTile.entry.name} ; ${pokemonOnTile.entry.name} receives ${damage} damage !`)
-                            applyDamage(damage, pokemonOnTile)
+                            applyDamage(damage, pokemonOnTile, attacker)
                         }
                     }
                 });
@@ -358,7 +358,7 @@ export function blizzard(attacker: PokemonOnBoard, game: GameScene){
 
 export function fatalFoudre(attacker: PokemonOnBoard, game: GameScene){    
     attacker.opponents.forEach(target => {
-        addAlteration(target, { type: AlterationType.PARALYSIE, stacks: 40 }, game)
+        addAlteration(target, { type: AlterationType.PARALYSIE, stacks: 40, attacker }, game)
     })
     const NUMBER_ECLAIRS = 3
     const randomTargets = pickNRandomIn(attacker.opponents, NUMBER_ECLAIRS)
@@ -370,7 +370,7 @@ export function fatalFoudre(attacker: PokemonOnBoard, game: GameScene){
             .then(() => {
                 renderEclair(attacker, x, y, game)
                 const damage = calcDamage(SKILLS.FATAL_FOUDRE, randomTarget, attacker)
-                applyDamage(damage, randomTarget)
+                applyDamage(damage, randomTarget, attacker)
                 console.log(`Fatal-foudre sur ${randomTarget.entry.name} ; ${randomTarget.entry.name} receives ${damage} damage !`)
             })
             .then(() => wait(randomInt(300,500)))

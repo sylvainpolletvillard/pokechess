@@ -318,7 +318,6 @@ export default class MapScene extends MyScene {
         const WALK_SPEED = 2.5;
         let STOP_FLAG = false;
         if(!this.player) return;
-        let x = this.player.x, y= this.player.y;
         this.player.once("stop", () => {
             STOP_FLAG = true
             wait(200).then(() => {
@@ -329,6 +328,7 @@ export default class MapScene extends MyScene {
         this.isMoving = true;
         this.directionsGroup?.clear(false, true)
 
+        let x = this.player.x, y = this.player.y;
         path.reduce(async (previousStep: Promise<any>, step) => {
             await previousStep;
             if(STOP_FLAG) return Promise.reject("STOP");
