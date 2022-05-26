@@ -4,6 +4,7 @@ import { Destination, DestinationType, RoomArena } from "../types/destination";
 import { OCEANE_CARMIN, OCEANE_CRAMOISILE, OCEANE_AZURIA } from "../data/destinations/oceane";
 import { fadeOut } from "../utils/camera";
 import { FAST_TRAVEL_DESTINATIONS } from "../data/destinations";
+import { MONT_SELENITE } from "../data/destinations/mont_selenite";
 
 export function enterDestination(destination: Destination){
     if([OCEANE_CARMIN, OCEANE_CRAMOISILE, OCEANE_AZURIA].includes(destination)) playSound("oceane_horn")
@@ -21,10 +22,10 @@ export function getRoomOrder(destination: Destination): string[] {
      */
     if(destination.type === DestinationType.ARENA){
         const arena = destination.rooms["arena"] as RoomArena
-        if(arena.badge && gameState.player.badges.includes(arena.badge.ref)) return ["shop", "trainer"].filter(room => room in destination.rooms)
+        if(arena.badge && gameState.hasBadge(arena.badge)) return ["shop", "trainer"].filter(room => room in destination.rooms)
         else return ["shop", "arena"].filter(room => room in destination.rooms)
     }    
-    if(destination.type === DestinationType.WILD || FAST_TRAVEL_DESTINATIONS.includes(destination)){
+    if(destination.type === DestinationType.WILD || FAST_TRAVEL_DESTINATIONS.includes(destination) || destination === MONT_SELENITE){
         if(gameState.lastCaptureDestination === destination){
             gameState.lastCaptureDestination = null;
             return ["trainer"]

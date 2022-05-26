@@ -178,3 +178,11 @@ export function removeAlteration(pokemon: PokemonOnBoard, alt: Alteration){
         pokemon.resetAction()
     }
 }
+
+export function removeAllAlterations(){
+    gameState.allPokemonsOnBoard.forEach(pokemon => {
+        pokemon.alterations.forEach(alt => {
+            removeAlteration(pokemon, alt)
+        })
+    })
+}

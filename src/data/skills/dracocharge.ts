@@ -11,6 +11,6 @@ export const DRACOCHARGE: ProjectileSkill = {
     travelSpeed: 8,
     projectileRadius: 4,
     rotateProjectile: true,
-    power: 50,
+    power: 100,
     attackRange: 3
 }

@@ -62,6 +62,6 @@ export const COL_DE_MONTAGNE: Destination = {
     },
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('col_de_montagne', 'assets/maps/col_de_montagne.json');
-        preloadMusic("music_col_montagne", "assets/audio/music/20 The Road to Cerulean ~ from Mt. Moon.mp3");
+        preloadMusic("music_col_montagne", "assets/audio/music/20 The Road to Cerulean - from Mt. Moon.mp3");
     }
 }

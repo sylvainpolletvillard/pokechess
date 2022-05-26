@@ -9,6 +9,7 @@ import GameScene from "../scenes/GameScene";
 import { receiveItem } from "./dialogs/descriptions";
 import {wait} from "../utils/helpers";
 import {Trainer} from "../types/trainer";
+import { startMusic } from "../logic/audio";
 
 
 export const PIERRE: Trainer = {
@@ -57,8 +58,9 @@ export const ONDINE: Trainer = {
             `Je te donne le BADGE CASCADE pour m'avoir battue!`,
             () => {
                 gameState.receiveBadge(BADGE_CASCADE);
-                return `Il t'ouvre aussi le chemin vers la grotte au nord d'Azuria.` 
+                return `Tu vas pouvoir agrandir ton équipe !`
             },
+            `Il t'ouvre aussi le chemin vers la grotte au nord d'Azuria.` 
         ],
         defeat: [
             `Haha, on dirait que ton équipe a pris l'eau !`,
@@ -377,7 +379,10 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Tu augmenteras nettement tes chances de victoire !`
         ],
         step2: [
-            `Tes Pokémon deviennnent plus fort en gagnant de l'expérience après un combat.`,
+            () => {
+                startMusic("music_guide")
+                return `Tes Pokémon deviennnent plus fort en gagnant de l'expérience après un combat.`
+            },
             `Mais il existe une autre manière de faire monter en expérience un Pokémon.`,
             `Il suffit de capturer un Pokémon sauvage de la même espèce.`,
             `Il partagera son expérience avec ton Pokémon avant d'être relâché.`,

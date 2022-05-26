@@ -7,7 +7,7 @@ import Phaser from "phaser";
 import {PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
 import {Skill} from "./skill";
-import {hasBlockingAlteration} from "./alteration";
+import {hasBlockingAlteration, removeAlteration} from "./alteration";
 import {triggerSkill} from "./skill-anims";
 import {Alteration, AlterationType} from "../data/alterations";
 import {clamp} from "../utils/helpers";
@@ -67,7 +67,7 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
 
     pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
     sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
-    sprite.anims.pause()
+    if(!pokemon.hasType(TYPE_VOL)) sprite.anims.pause()
 }
 
 export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
@@ -100,7 +100,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
             delay: duration,
             callback: () => {
                 if(pokemon.alive){
-                    sprite.anims.pause()
+                    if(!pokemon.hasType(TYPE_VOL)) sprite.anims.pause()
                     pokemon.resetTarget(target)
                 }
             }
@@ -183,8 +183,7 @@ export function jump(pokemon: PokemonOnBoard, game: GameScene){
     const [nextX,nextY] = pokemon.nextAction.path[0]
     const [sceneX,sceneY] = getPositionFromCoords(nextX,nextY);
     pokemon.facingDirection = getDirection(nextX - pokemon.x, nextY - pokemon.y)
-    sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
-    sprite.anims.pause() 
+    sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)    
     pokemon.x = nextX;
     pokemon.y = nextY;
     const duration = 1000
@@ -218,8 +217,12 @@ export function applyDamage(damage: number, target: PokemonOnBoard, noPPGain=fal
     else {
         const sommeil = target.alterations.find(alt => alt.type === AlterationType.SOMMEIL)
         if(sommeil && !noWakeup){
-            sommeil.stacks -= Math.ceil((damage/target.maxPV)*100);
-            //console.log("reducing stacks to "+sommeil.stacks, Math.ceil(damage*10))
+            const stacksConsummed = Math.ceil((damage/target.maxPV)*200);
+            sommeil.stacks -= stacksConsummed;
+            console.log(`reducing sommeil stacks by ${stacksConsummed}`)
+            if(sommeil.stacks <= 0){
+                removeAlteration(target, sommeil)                
+            }
         }
     }
 }

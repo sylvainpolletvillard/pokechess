@@ -100,7 +100,7 @@ export const OCEANE_AZURIA: Destination = {
         AZURIA: [[0,1],[-1,0],[0,1],[-2,0]],
         CENTRALE: [[0,1],[-1,0],[0,2],[1,0],[0,1]]
     },
-    coordinates: [18*16 -8, 8],
+    coordinates: [17*16 -8, 8],
     type: DestinationType.SPECIAL,
     icons: ["boat"],
     subtext: "Voyage rapide vers Carmin",

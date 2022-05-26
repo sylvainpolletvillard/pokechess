@@ -12,19 +12,8 @@ export function preloadMusic(name: string, filepath: string){
     }
 }
 
-export function loadAndPlayMusic(name: string){
-    const scene = gameState.activeScene!;
-    
-    if (scene.cache.audio.has(name)) {
-        startMusic(name)        
-    } else {
-        scene.load.audio(name, [`assets/audio/music/${name}.mp3`]);        
-        scene.load.once("filecomplete", () => startMusic(name));
-        scene.load.start();
-    }    
-}
-
 export function startMusic(name: string, params: Phaser.Types.Sound.SoundConfig = {}): Promise<void> {
+    const scene = gameState.activeScene!;
     return new Promise((resolve, reject) => {
         params = Object.assign({ volume: MUSIC_VOLUME }, params)
         console.log("playing "+name)
@@ -32,9 +21,13 @@ export function startMusic(name: string, params: Phaser.Types.Sound.SoundConfig 
             gameState.music.stop();
         }
         try {
-            gameState.music = gameState.activeScene?.sound.add(name, params);
-            gameState.music!.play();
-            gameState.music!.on(Phaser.Sound.Events.COMPLETE, () => resolve())
+            if (scene.cache.audio.has(name)) {
+                gameState.music = gameState.activeScene?.sound.add(name, params);
+                gameState.music!.play();
+                gameState.music!.on(Phaser.Sound.Events.COMPLETE, () => resolve())
+            } else {
+                scene.load.once("filecomplete", () => startMusic(name));
+            }
         } catch(error){
             reject(error)
         }

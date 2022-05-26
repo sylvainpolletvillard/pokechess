@@ -17,7 +17,7 @@ import { Badge } from "../types/badge";
 import { CHAMPIONS, SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 import { checkProjectilesImpact } from "./projectile";
 import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
-import { updateAlterations } from "./alteration";
+import { removeAllAlterations, updateAlterations } from "./alteration";
 import {loadSave, saveState} from "./save";
 import { updateFightButton } from "../objects/menuButtons";
 import { PokemonOnBoard } from "../objects/pokemon";
@@ -106,6 +106,7 @@ export class GameState {
         if(!loadSave()) {
             //new game
             this.currentDestination = BOURG_PALETTE
+            this.currentRoomIndex = 0
             this.roomOrder = ["labo", "tuto"]
         }
 
@@ -132,14 +133,12 @@ export class GameState {
             new PokemonOnBoard( new Pokemon(CARABAFFE, 2, 22), 5 ,2),
         ]))
         */
-
-        this.activeScene!.scene.start("MapScene")
-        /*
+        
         if(this.currentRoomIndex >= this.roomOrder.length) {
             this.activeScene!.scene.start("MapScene")
         } else {
             gameState.initRoom()
-        }*/
+        }
     }
 
     goToNextRoom(){
@@ -231,8 +230,9 @@ export class GameState {
         const game = gameState.activeScene as GameScene;
         const room = gameState.currentRoom
         this.stage = GameStage.ENDED;
+        removeAllAlterations()
         game.time.removeEvent(this.fightTimer!)
-        game.time.removeEvent(this.fightClock!)
+        game.time.removeEvent(this.fightClock!)        
 
         const player = game.sprites.get("player")
         const hasWon = (loser !== 1)
@@ -265,7 +265,7 @@ export class GameState {
 
         await startDialog(lines)
 
-        for(let pokemon of gameState.board.playerTeam){
+        for(let pokemon of gameState.player.team){
             await gainXP(pokemon, xpPerPokemon)
         }        
 
@@ -282,7 +282,7 @@ export class GameState {
 
     endCapture(){
         const game = gameState.activeScene as GameScene;
-        this.stage = GameStage.ENDED;
+        this.stage = GameStage.ENDED;        
         game.time.removeEvent(this.fightTimer!)
         game.time.removeEvent(this.fightClock!)
 
