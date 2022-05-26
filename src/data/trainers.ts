@@ -349,8 +349,7 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Une minute ! Si tu veux monter une équipe, il te faut des Pokéballs !`,
             `Tiens, voilà 5 Pokéballs pour capturer tes premiers Pokémons.`,
             () => {
-                gameState.player.inventory[ITEM_POKEBALL.ref] += 5;
-                drawPokeballsCounter()
+                receiveItem(ITEM_POKEBALL, 5);
                 gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.BEFORE_WILD
                 return `Sais-tu comment on s'en sert ?`
             },

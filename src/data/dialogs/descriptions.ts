@@ -5,8 +5,9 @@ import {pickStarter} from "../../logic/starters";
 import {Description} from "../../objects/description";
 import {pauseMusicAndPlaySound} from "../../logic/audio";
 import {gameState} from "../../logic/gamestate";
-import {Item, ITEMS} from "../items";
+import {Item, ITEMS, ITEM_POKEBALL} from "../items";
 import {DialogLine} from "../../types/dialog";
+import { drawPokeballsCounter } from "../../objects/pokeballsCounter";
 
 export function receiveItem(item: Item, quantity: number = 1, shouldPlaySound = true): Promise<void>{
     shouldPlaySound && pauseMusicAndPlaySound("item_received")
@@ -15,6 +16,7 @@ export function receiveItem(item: Item, quantity: number = 1, shouldPlaySound = 
     }
     gameState.player.inventory[item.ref] += quantity;
     const label = ITEMS[item.ref]?.label ?? "???"
+    if(item === ITEM_POKEBALL) drawPokeballsCounter()
     waitBeforeNextLine(2000)
     return startDialog([`Vous recevez: ${label} x${quantity}`], { speaker: "system"})
 }
