@@ -6,7 +6,8 @@ export function loadAudio(scene: Phaser.Scene) {
     /* MUSIC */
 
     scene.load.audio("music_overworld", ["assets/audio/music/02 Opening (part 2).mp3"]);
-    scene.load.audio("music_labo_chen", ["assets/audio/music/32 Oak Research Lab.mp3"]);
+    scene.load.audio("music_labo_chen", ["assets/audio/music/32 Oak Research Lab.mp3"]);    
+    scene.load.audio("music_guide", ["assets/audio/music/16 Guide.mp3"])
     scene.load.audio("music_shop", ["assets/audio/music/05 Pokemon Center.mp3"]);    
 
     scene.load.audio("music_battle_wild", ["assets/audio/music/25 Battle (VS Wild Pokemon).mp3"]);

@@ -3,7 +3,6 @@ import {spawnTutoCaptureTeam} from "../../logic/spawns";
 import {SCIENTIFIQUE_TUTO} from "../trainers";
 import {homeLevel} from "../levels/home";
 import {chenLevel} from "../levels/labo_chen";
-import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 
 export const BOURG_PALETTE: Destination = {
@@ -26,7 +25,7 @@ export const BOURG_PALETTE: Destination = {
             name: "Route de Bourg Palette",
             type: RoomType.TUTORIAL,
             map: "foret_de_jade",
-            music: "music_labo_chen",
+            music: "music_guide",
             trainer: SCIENTIFIQUE_TUTO,
             spawnOtherTeam(){
                 return spawnTutoCaptureTeam()
@@ -44,6 +43,5 @@ export const BOURG_PALETTE: Destination = {
     subtext: "Maman",
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('bourg_palette', 'assets/maps/bourg_palette.json');        
-        preloadMusic("music_labo_chen", "assets/audio/music/32 Oak Research Lab.mp3")
     },
 }
