@@ -1,4 +1,4 @@
-import { loadAudio, addSounds } from "../data/sounds"
+import { loadAudio } from "../data/sounds"
 import {addText} from "../utils/text";
 import {gameState} from "../logic/gamestate";
 import {MyScene} from "./MyScene";
@@ -45,10 +45,6 @@ export default class LoadingScene extends MyScene {
 		loadSpritesheets(this);
 		loadTilemaps(this);
 
-	}
-
-	create() {
-		addSounds()
 	}
 
 }

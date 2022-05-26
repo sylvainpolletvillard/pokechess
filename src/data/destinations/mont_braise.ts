@@ -28,7 +28,7 @@ export const MONT_BRAISE: Destination = {
             name: "Mont Braise",
             map: "mont_braise",
             type: RoomType.WILD,
-            music: "music_battle_wild",
+            music: "music_mont_braise",
             spawnOtherTeam(){
                 return spawnTeamByTypeFactor({
                     [TYPE_FEU.ref]: 1,
@@ -42,7 +42,7 @@ export const MONT_BRAISE: Destination = {
             type: RoomType.ARENA,
             name: "Mont Braise",
             map: "mont_braise",
-            music: "music_battle_wild",
+            music: "music_mont_braise",
             trainer: DRESSEUR_MONT_BRAISE,
             spawnOtherTeam(){
                 return spawnTrainerTeam([

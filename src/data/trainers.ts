@@ -899,7 +899,7 @@ export const DRESSEUR_COLLINE_ROYALE: Trainer = {
 export const DRESSEUR_MONT_BRAISE: Trainer = {
     ref: "dresseur_mont_braise",
     name: "Duo Ron & Mya les Casse-Cous",
-    frameIndex: 42,
+    frameIndex: 43,
     introFrameIndex: null,
     dialogs: {
         start: [
@@ -919,7 +919,7 @@ export const DRESSEUR_MONT_BRAISE: Trainer = {
 export const DRESSEUR_PARMANIE: Trainer = {
     ref: "sbire_rocket",
     name: "Sbire Rocket",
-    frameIndex: 43,
+    frameIndex: 44,
     introFrameIndex: null,
     dialogs: {
         start: [

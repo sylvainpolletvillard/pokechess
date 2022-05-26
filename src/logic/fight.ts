@@ -4,11 +4,11 @@ import {getPokemonOnTile, getPositionFromCoords} from "./board";
 import GameScene from "../scenes/GameScene";
 import {getDirection} from "./anims";
 import Phaser from "phaser";
-import {PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
+import {makePokemonSprite, PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
 import {Skill} from "./skill";
 import {hasBlockingAlteration, removeAlteration} from "./alteration";
-import {triggerSkill} from "./skill-anims";
+import {renderSkillEffect, triggerSkill} from "./skill-anims";
 import {Alteration, AlterationType} from "../data/alterations";
 import {clamp} from "../utils/helpers";
 import {recordLastSkillSeen} from "./specials";
@@ -18,6 +18,8 @@ import { OWNER_PLAYER } from "../data/owners";
 import { xpToLevel } from "./xp";
 import { startDialog } from "./dialog";
 import { pauseMusicAndPlaySound, playSound } from "./audio";
+import { SKILLS } from "../data/skills";
+import { DialogLine } from "../types/dialog";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
@@ -324,7 +326,8 @@ export function healPokemon(pokemon: PokemonOnBoard, healAmount: number){
     pokemon.pv = Math.min(pokemon.maxPV, pokemon.pv + healAmount)
 }
 
-export function gainXP(pokemon: Pokemon, amount: number){    
+export function gainXP(pokemon: Pokemon, amount: number){
+    const game = gameState.activeScene as GameScene
     const oldLvl = pokemon.level
     let buffFactor = 1
     const bonusInsecte = pokemon.owner === OWNER_PLAYER ? gameState.board.playerAlliances.get(TYPE_INSECTE) : gameState.board.otherTeamAlliances.get(TYPE_INSECTE)
@@ -337,7 +340,26 @@ export function gainXP(pokemon: Pokemon, amount: number){
 
     if(oldLvl !== pokemon.level){
         pauseMusicAndPlaySound("level_up")
-        return startDialog([`${pokemon.entry.name} passe au niveau ${pokemon.level}`])
+        const lines: DialogLine[] = [`${pokemon.entry.name} passe au niveau ${pokemon.level}`]
+        if(pokemon.entry.evolution && pokemon.level >= (pokemon.entry.evolutionLevel ?? 50)){
+            lines.push(() => {
+                let oldEntry = pokemon.entry
+                pokemon.entry = pokemon.entry.evolution!
+                pauseMusicAndPlaySound("success")
+                if(pokemon instanceof PokemonOnBoard && pokemon.alive){
+                     // retrieve pokemon from board instead to get latest position
+                    const pokemonOnBoard = gameState.board.playerTeam.find(pkm => pkm.uid === pokemon.uid) as PokemonOnBoard
+                    renderSkillEffect(SKILLS.EVOLUTION, pokemonOnBoard, pokemonOnBoard, game)
+                    removePokemonSprite(pokemonOnBoard, game)                    
+                    const newSprite = makePokemonSprite(pokemonOnBoard, game)
+                    newSprite.play(`${pokemon.entry.ref}_${pokemonOnBoard.facingDirection}`)
+                    game.sprites.set(pokemon.uid, newSprite)
+                }
+
+                return `${oldEntry.name} évolue en ${pokemon.entry.name} !`
+            })
+        }
+        return startDialog(lines)
     }
     return Promise.resolve(pokemon.level)
 }

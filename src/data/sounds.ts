@@ -1,7 +1,5 @@
 import { getPokedexIndex, getPokemonCry, POKEMONS } from "./pokemons";
 
-export const SOUNDS = {}
-
 export function loadAudio(scene: Phaser.Scene) {
     /* MUSIC */
 
@@ -49,13 +47,5 @@ export function loadAudio(scene: Phaser.Scene) {
 function loadCries(scene: Phaser.Scene){
     POKEMONS.forEach(pokemon => {
         scene.load.audio(getPokemonCry(pokemon), [`assets/audio/sounds/cries/${getPokedexIndex(pokemon)}.ogg`]);
-    })
-}
-
-export function addSounds() {
-    Object.assign(SOUNDS, {
-        ITEM_RECEIVED: game.sound.add("item_received"),
-        SUCCESS: game.sound.add("success"),
-        POKEMON_RECEIVED: game.sound.add("pokemon_received")
     })
 }

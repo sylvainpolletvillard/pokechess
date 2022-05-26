@@ -105,13 +105,6 @@ export class GameState {
     }
 
     initGame(){
-        if(!loadSave()) {
-            //new game
-            this.currentDestination = BOURG_PALETTE
-            this.currentRoomIndex = 0
-            this.roomOrder = ["labo", "tuto"]
-        }
-
         // QUICK TESTING         
         /*
         gameState.player.badges = [BADGE_AME.ref,BADGE_AME.ref]
@@ -134,12 +127,17 @@ export class GameState {
             new PokemonOnBoard( new Pokemon(POISSIRENE, 2, 22), 1 ,2),
             new PokemonOnBoard( new Pokemon(CARABAFFE, 2, 22), 5 ,2),
         ]))
+        gameState.initRoom()
         */
-        
-        if(this.currentRoomIndex >= this.roomOrder.length) {
-            this.activeScene!.scene.start("MapScene")
-        } else {
+
+        if(!loadSave()) {
+            //new game
+            this.currentDestination = BOURG_PALETTE
+            this.currentRoomIndex = 0
+            this.roomOrder = ["labo", "tuto"]
             gameState.initRoom()
+        } else {
+            this.activeScene!.scene.start("MapScene")
         }
     }
 
