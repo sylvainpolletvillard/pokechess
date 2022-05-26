@@ -33,7 +33,7 @@ export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }
          }
 
         const pokemonEntry = pickRandomIn(getNonLegendaryPokemonsOfType(POKEMON_TYPES[types[factorIndex-1]]))
-        const level = clamp(Math.floor(gameState.worldLevel) + randomInt(-5,0), 1, 50);
+        const level = clamp(gameState.worldLevel - randomInt(0,5), 1, 50);
 
         let x: number, y: number;
         do {
@@ -62,7 +62,7 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
     )
 
     for(let i=0; i<numberToSpawn; i++){
-        let level = clamp(Math.floor(gameState.worldLevel) - 2 + (i%5), 1,100)
+        let level = clamp(gameState.worldLevel + (i%5), 1,100)
         const entry = pokemons[i]
         const [x,y] = positions[i]
         team.push(
@@ -94,7 +94,7 @@ export function spawnTrainerTeam(pokemons: PokemonEntry[]): PokemonOnBoard[] {
         let x=0, y=0, entry, level
         do {
             entry = pickRandomIn(pokemons)
-            level = clamp(Math.floor(gameState.worldLevel) - randomInt(1,5), 3, 50)
+            level = clamp(gameState.worldLevel + randomInt(-2,2), 3, 50)
             x = randomInt(0, 6)
             y = clamp(4 - entry.baseSkill.attackRange, 0, 3)
         } while(team.some(p => p.x === x && p.y === y))
@@ -146,9 +146,8 @@ export function spawnSafariTeam(): PokemonOnBoard[] {
 
     const team: PokemonOnBoard[] = [];
     for(let i=0; i<NUMBER_TO_SPAWN; i++){
-
         const pokemonEntry = selection[i]
-        const level = clamp(Math.floor(gameState.worldLevel) + randomInt(-4,1), 1, 50);
+        const level = clamp(gameState.worldLevel + randomInt(-4, 4), 1, 50);
 
         let x: number, y: number;
         do {
