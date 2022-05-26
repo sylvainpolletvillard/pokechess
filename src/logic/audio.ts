@@ -1,3 +1,4 @@
+import { GEMME_FLAMME } from "../data/items";
 import {gameState} from "./gamestate";
 
 const MUSIC_VOLUME = 0.1
@@ -34,11 +35,9 @@ export function startMusic(name: string, params: Phaser.Types.Sound.SoundConfig 
     })
 }
 
-export function pauseMusicAndPlaySound(name: string){
-    const previousMusic = gameState.music?.key;
-    return startMusic(name, { loop: false }).then(() => {
-        if(previousMusic && previousMusic !== name) startMusic(previousMusic).then(() => {})
-    })
+export function pauseMusicAndPlaySound(name: string){    
+    gameState.music?.pause()
+    playSound(name).then(() => gameState.music?.resume())
 }
 
 export function playSound(name: string, params: Phaser.Types.Sound.SoundConfig = {}): Promise<void> {

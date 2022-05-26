@@ -24,6 +24,8 @@ import { PokemonOnBoard } from "../objects/pokemon";
 import { startMusic } from "./audio";
 import { fadeOut } from "../utils/camera";
 import { FAST_TRAVELS } from "../data/destinations";
+import { receiveItem } from "../data/dialogs/descriptions";
+import { ITEM_POKEBALL } from "../data/items";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -84,8 +86,8 @@ export class GameState {
     }
 
     get worldLevel(): number {
-        // should be between 0 and 150, with max world level reached at 100
-        return this.player.badges.length*5 + this.player.averagePokemonLevel 
+        // should be between 0 and 100
+        return Math.floor(this.player.averagePokemonLevel * 0.9 + this.player.badges.length)
     }
 
     get allPokemonsOnBoard(): PokemonOnBoard[] {
@@ -268,7 +270,7 @@ export class GameState {
         if(hasWon){
             for(let pokemon of gameState.player.team){
                 await gainXP(pokemon, xpPerPokemon)
-            }
+            }            
         }
 
         if([RoomType.ARENA, RoomType.TUTORIAL].includes(gameState.currentRoom.type)){
@@ -277,6 +279,10 @@ export class GameState {
                 ? arena.trainer.dialogs.victory
                 : arena.trainer.dialogs.defeat
             , { speaker: arena.trainer.ref })
+            if(gameState.currentRoom.type === RoomType.ARENA){
+                let nbPokeballsReceived = hasWon ? CHAMPIONS.includes(arena.trainer) ? 3 : 2 : 1
+                await receiveItem(ITEM_POKEBALL, nbPokeballsReceived, false)
+            }
         }
 
         gameState.afterEnd()        

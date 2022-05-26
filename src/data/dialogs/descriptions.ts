@@ -8,8 +8,8 @@ import {gameState} from "../../logic/gamestate";
 import {Item, ITEMS} from "../items";
 import {DialogLine} from "../../types/dialog";
 
-export function receiveItem(item: Item, quantity: number = 1){
-    pauseMusicAndPlaySound("item_received").then(() => {})
+export function receiveItem(item: Item, quantity: number = 1, shouldPlaySound = true): Promise<void>{
+    shouldPlaySound && pauseMusicAndPlaySound("item_received")
     if(!gameState.player.inventory.hasOwnProperty(item.ref)){
         gameState.player.inventory[item.ref] = 0;
     }
