@@ -121,7 +121,6 @@ export class GameState {
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
-        */
 
         gameState.player.team = [
             //new PokemonOnBoard( new Pokemon(POISSIRENE, 1, 24), 3 ,6),
@@ -131,18 +130,14 @@ export class GameState {
             //new PokemonOnBoard( new Pokemon(CARABAFFE, 1, 24), 4 ,7),
             //new PokemonOnBoard( new Pokemon(AKWAKWAK, 1, 24), 2 ,7),
         ]
-        /*enterDestination(TEST_ROOM([
+        enterDestination(TEST_ROOM([
             new PokemonOnBoard( new Pokemon(POISSIRENE, 2, 22), 1 ,2),
             new PokemonOnBoard( new Pokemon(CARABAFFE, 2, 22), 5 ,2),
         ]))
         
         this.initRoom()
         */
-        this.pension = spawnPensionTeam()
-        this.currentDestination = PENSION
-        this.currentRoomIndex = 0
-        this.activeScene!.scene.start("MapScene")
-/*
+
         if(!loadSave()) {
             //new game
             this.currentDestination = BOURG_PALETTE
@@ -153,7 +148,6 @@ export class GameState {
         } else {
             this.activeScene!.scene.start("MapScene")
         }
-        */
     }
 
     goToNextRoom(){

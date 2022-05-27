@@ -33,13 +33,15 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
 
     switch(alteration.type){
         case AlterationType.POISON: 
-            const poisonDamage = calcPoisonDamage(pokemon, alteration, game)        
+            const poisonDamage = calcPoisonDamage(pokemon, alteration, game)
+            console.log(`Poison damage to ${pokemon.entry.name}: ${poisonDamage}`)
             applyDamage(poisonDamage, pokemon, alteration.attacker, true, true)
             break;
 
         case AlterationType.BRULURE:
             const burnDamage = calcBurnDamage(pokemon, game)
             applyDamage(burnDamage, pokemon, alteration.attacker, true, false)
+            console.log(`Burn damage to ${pokemon.entry.name}: ${burnDamage}`)
             const gel = pokemon.alterations.find(alt => alt.type === AlterationType.GEL)
             if(gel) gel.stacks -= 3
             break;
@@ -112,26 +114,26 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 break;
             
             case AlterationType.BRULURE:
-                if(pokemon.hasType(TYPE_EAU)) break; // Pokémon Eau insensible aux brûlures
+                if(pokemon.hasType(TYPE_EAU)) return; // Pokémon Eau insensible aux brûlures
                 alteration.effectSprite = makeEffectSprite(EFFECTS.BURN, targetSprite.x, targetSprite.y, game)
                 //game.tweens.add({ targets: alteration.effectSprite, alpha: 0.35, duration: 250, easing: "Linear" })
                 break;
 
             case AlterationType.GEL:
-                if(pokemon.hasType(TYPE_FEU)) break; // Pokémon Feu insensible au Gel
+                if(pokemon.hasType(TYPE_FEU)) return; // Pokémon Feu insensible au Gel
                 alteration.effectSprite = makeEffectSprite(EFFECTS.FROZEN, targetSprite.x, targetSprite.y, game)
                 pokemon.makeUntargettable(alteration.stacks * game.gameSpeed)
                 //game.tweens.add({ targets: alteration.effectSprite, alpha: EFFECTS.FROZEN.opacity, duration: 250, easing: "Linear" })
                 break;
 
             case AlterationType.SOMMEIL:
-                if(pokemon.hasType(TYPE_SPECTRE)) break; // Pokémon Spectre insensible au sommeil
+                if(pokemon.hasType(TYPE_SPECTRE)) return; // Pokémon Spectre insensible au sommeil
                 pokemon.resetAction()
                 alteration.effectSprite = makeEffectSprite(EFFECTS.SOMMEIL, targetSprite.x, targetSprite.y, game)
                 break;
 
             case AlterationType.CONFUSION:
-                if(pokemon.hasType(TYPE_PSY)) break; // Pokémon Psy insensible à la confusion
+                if(pokemon.hasType(TYPE_PSY)) return; // Pokémon Psy insensible à la confusion
                 pokemon.resetAction()
                 alteration.effectSprite = makeEffectSprite(EFFECTS.CONFUSION, targetSprite.x, targetSprite.y, game)
                 break;
@@ -141,7 +143,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 break;
 
             case AlterationType.PEUR:
-                if(pokemon.hasType(TYPE_COMBAT)) break; // Pokémon Combat insensible à la peur
+                if(pokemon.hasType(TYPE_COMBAT)) return; // Pokémon Combat insensible à la peur
                 pokemon.resetAction()
                 alteration.effectSprite = makeEffectSprite(EFFECTS.PEUR, targetSprite.x, targetSprite.y, game)
                 break;

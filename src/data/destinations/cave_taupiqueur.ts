@@ -66,7 +66,7 @@ export const CAVE_TAUPIQUEUR_OUEST: Destination = {
     icons: ["cave_entrance", "type_SOL"],
     rooms: {
         wild: ROOM_TAUPIQUEUR_WILD,
-        arena: ROOM_TAUPIQUEUR_TRAINER
+        trainer: ROOM_TAUPIQUEUR_TRAINER
     },
     preload
 }
@@ -84,7 +84,7 @@ export const CAVE_TAUPIQUEUR_EST: Destination = {
     icons: ["cave_entrance","type_SOL"],
     rooms: {
         wild: ROOM_TAUPIQUEUR_WILD,
-        arena: ROOM_TAUPIQUEUR_TRAINER
+        trainer: ROOM_TAUPIQUEUR_TRAINER
     },
     preload
 }

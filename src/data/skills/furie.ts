@@ -1,4 +1,5 @@
 import {HitSkill, SkillBehavior} from "../../logic/skill";
+import { AlterationType } from "../alterations";
 import {POKEMON_TYPES} from "../types";
 import {EFFECTS} from "../effects";
 
@@ -13,4 +14,9 @@ export const FURIE: HitSkill = {
     rotateSprite: false,
     attackRange: 1,
     chargeDelta: 10,
+    selfAlteration: {
+        type: AlterationType.FURIE,
+        stacks: 1,
+        keepStacks: true
+    }
 }

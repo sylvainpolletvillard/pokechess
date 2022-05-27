@@ -105,7 +105,7 @@ export function checkProjectilesImpact(game: GameScene){
                 let damage = calcDamage(projectile.skill, target, projectile.attacker)
                 applyDamage(damage, target, projectile.attacker)
                 console.log(`Projectile from ${projectile.attacker.entry.name} ; ${target.entry.name} receives ${damage} damage !`)
-                if(projectile.skill.hitAlteration) addAlteration(target, projectile.skill.hitAlteration, game)
+                if(projectile.skill.hitAlteration) addAlteration(target, { ...projectile.skill.hitAlteration, attacker: projectile.attacker }, game)
                 if(!projectile.skill.pierceThrough) destroyProjectile(projectile)
                 if(projectile.skill.knockback){ 
                     const angle = Math.atan2(projectile.attacker.y - target.y, target.x - projectile.attacker.x)

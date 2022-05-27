@@ -23,6 +23,6 @@ export const DANSE_FLAMMES: AOESkill = {
     hitDelay: 0,
     hitAlteration: {
         type: AlterationType.BRULURE,
-        stacks: 60
+        stacks: 50
     }
 }

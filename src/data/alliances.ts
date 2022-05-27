@@ -50,9 +50,9 @@ const BONUS_ALLIANCE_EAU: AllianceBonus =  {
 const BONUS_ALLIANCE_ELECTRIQUE: AllianceBonus =  {
     description: "Les Pokémon Electrique gagnent en Vitesse et infligent des dégats électriques à chaque coup reçu au contact.",
     steps: [
-        { numberRequired: 2, ref: "ELEC2", description: "+20% VIT ; 2 dégats par coup reçu" },
-        { numberRequired: 4, ref: "ELEC4", description: "+40% VIT ; 4 dégats par coup reçu" },
-        { numberRequired: 6, ref: "ELEC6", description: "+60% VIT ; 6 dégats par coup reçu" }
+        { numberRequired: 2, ref: "ELEC2", description: "+10% VIT ; 2 dégats par coup reçu" },
+        { numberRequired: 4, ref: "ELEC4", description: "+20% VIT ; 4 dégats par coup reçu" },
+        { numberRequired: 6, ref: "ELEC6", description: "+30% VIT ; 6 dégats par coup reçu" }
     ]
 }
 
@@ -104,9 +104,9 @@ const BONUS_ALLIANCE_NORMAL: AllianceBonus =  {
 const BONUS_ALLIANCE_PLANTE: AllianceBonus =  {
     description: "Les Pokémon Plante ne peuvent pas être repoussés par les compétences adverses et se regénèrent naturellement.",
     steps: [
-        { numberRequired: 2, ref: "PLANTE2", description: "Regen 2% des HP max par seconde" },
-        { numberRequired: 4, ref: "PLANTE4", description: "Regen 4% des HP max par seconde" },
-        { numberRequired: 6, ref: "PLANTE6", description: "Regen 6% des HP max par seconde" }
+        { numberRequired: 2, ref: "PLANTE2", description: "Regen 1% des HP max par seconde" },
+        { numberRequired: 4, ref: "PLANTE4", description: "Regen 2% des HP max par seconde" },
+        { numberRequired: 6, ref: "PLANTE6", description: "Regen 3% des HP max par seconde" }
     ]
 }
 
@@ -131,9 +131,9 @@ const BONUS_ALLIANCE_PSY: AllianceBonus =  {
 const BONUS_ALLIANCE_ROCHE: AllianceBonus =  {
     description: "Les Pokémon Roche ont une grosse défense et réduisent les dégâts reçus liés aux altérations (poison, brûlure).",
     steps: [
-        { numberRequired: 2, ref: "ROCHE2", description: "+20% défense ; -20% altérations" },
-        { numberRequired: 4, ref: "ROCHE4", description: "+40% défense ; -40% altérations" },
-        { numberRequired: 6, ref: "ROCHE6", description: "+60% défense ; -60% altérations" }
+        { numberRequired: 2, ref: "ROCHE2", description: "+10% défense ; -20% altérations" },
+        { numberRequired: 4, ref: "ROCHE4", description: "+20% défense ; -40% altérations" },
+        { numberRequired: 6, ref: "ROCHE6", description: "+30% défense ; -60% altérations" }
     ]
 }
 

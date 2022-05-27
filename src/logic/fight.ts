@@ -222,7 +222,7 @@ export function testPrecision(attacker: PokemonOnBoard, target: PokemonOnBoard, 
 export function applyDamage(damage: number, target: PokemonOnBoard, attacker?: PokemonOnBoard, noPPGain=false, noWakeup = false){
     if(target.hasAlteration(AlterationType.INVULNERABLE)) return;
     target.pv = Math.max(0, target.pv - damage)
-    if(attacker) registerDamageDone(attacker, damage)
+    if(attacker && attacker !== target) registerDamageDone(attacker, damage)
     registerDamageReceived(target, damage)
     if(!noPPGain) target.pp = Math.min(target.entry.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))
     if(target.pv === 0) killPokemon(target)
@@ -263,7 +263,7 @@ export function calcSelfDamage(skill: Skill, attacker: PokemonOnBoard): number {
 export function calcPoisonDamage(target: PokemonOnBoard, alteration: Alteration, game: GameScene): number {
     const perSecond = game.gameSpeed / 1000    
 
-    let poisonDamage = Math.min(500, alteration.stacks) * perSecond * (1 / 10000) * target.maxPV // 0.01% max HP per stack per seconde
+    let poisonDamage = clamp(alteration.stacks, 1, 300) * perSecond * (0.025 / 100) * target.maxPV // 0.025% max HP per stack per seconde
         
     const teamRocheBonus = target.alliances.get(TYPE_ROCHE)    
     const opponentPoisonBonus = target.owner === OWNER_PLAYER ? gameState.board.otherTeamAlliances.get(TYPE_POISON) : gameState.board.playerAlliances.get(TYPE_POISON)

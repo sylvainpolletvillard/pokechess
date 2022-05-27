@@ -14,9 +14,9 @@ export function updatePokemonBars(pokemon: PokemonOnBoard, game: GameScene){
         let ox = sprite.x - BAR_WIDTH/2,
             oy = sprite.y - 16;
         graphics.fillRect(ox, oy, BAR_WIDTH, 2)
-        graphics.fillStyle(pokemon.owner === 1 ? 0x00ff00 : 0xff0000, 1);
+        graphics.fillStyle(pokemon.owner === 1 ? 0x30ff30 : 0xff3030, 1);
         graphics.fillRect(ox, oy, Math.ceil(pokemon.pv / pokemon.maxPV * BAR_WIDTH), 1)
-        graphics.fillStyle(0x0000ff, 1);
+        graphics.fillStyle(0x0070ff, 1);
         graphics.fillRect(ox, oy+1, Math.ceil(pokemon.pp / pokemon.entry.maxPP * BAR_WIDTH), 1)
     }
 }

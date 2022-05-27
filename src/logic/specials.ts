@@ -165,7 +165,7 @@ export function metronome(attacker: PokemonOnBoard, target: PokemonOnBoard, game
 }
 
 export function eCoque(attacker: PokemonOnBoard, game: GameScene){    
-    attacker.team.forEach(pokemon => addAlteration(pokemon, { type: AlterationType.SOIN, stacks: 60 }, game))
+    attacker.team.forEach(pokemon => addAlteration(pokemon, { type: AlterationType.SOIN, stacks: 60, attacker }, game))
 }
 
 export function amnesie(pokemon: PokemonOnBoard){
@@ -317,7 +317,7 @@ export function deflagration(attacker: PokemonOnBoard, game: GameScene){
 export function blizzard(attacker: PokemonOnBoard, game: GameScene){
     const grelonsCoords: [number, number][] = []    
     attacker.opponents.forEach(target => {
-        addAlteration(target, { type: AlterationType.GEL, stacks: clamp(80-target.speed, 20, 60) }, game)
+        addAlteration(target, { type: AlterationType.GEL, stacks: clamp(80-target.speed, 20, 60), attacker }, game)
         grelonsCoords.push([target.x, target.y])
     })
 

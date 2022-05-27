@@ -7,7 +7,7 @@ export const VOLTORBE: PokemonEntry = {
     ref: "voltorbe",
     name: "Voltorbe",
     maxPV: 40,
-    maxPP: 20,
+    maxPP: 50,
     attack: 30,
     defense: 50,
     speed: 100,

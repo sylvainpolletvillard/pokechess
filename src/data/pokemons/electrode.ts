@@ -6,7 +6,7 @@ export const ELECTRODE: PokemonEntry = {
     ref: "electrode",
     name: "Electrode",
     maxPV: 60,
-    maxPP: 20,
+    maxPP: 50,
     attack: 50,
     defense: 70,
     speed: 150,

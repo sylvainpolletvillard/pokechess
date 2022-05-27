@@ -21,5 +21,6 @@ export function raisePokemonsPension(){
     for(let pokemon of gameState.pension){        
         pokemon.xp += gameState.day*100;
         pokemon.level = xpToLevel(pokemon.xp);
+        pokemon.pv = pokemon.maxPV
     }
 }

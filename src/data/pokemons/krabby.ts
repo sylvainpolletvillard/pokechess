@@ -7,7 +7,7 @@ export const KRABBY: PokemonEntry = {
     ref: "krabby",
     name: "Krabby",
     maxPV: 30,
-    maxPP: 20,
+    maxPP: 40,
     attack: 105,
     defense: 90,
     speed: 50,

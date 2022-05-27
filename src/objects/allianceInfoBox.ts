@@ -4,7 +4,6 @@ import {GameStage, gameState} from "../logic/gamestate";
 import {MyScene} from "../scenes/MyScene";
 import { PokemonType } from "../data/types";
 import { ALLIANCES } from "../data/alliances";
-import { PokemonOnBoard } from "./pokemon";
 
 let currentTypeDisplayed: PokemonType | null;
 let currentPlayerDisplayed: number | null;
@@ -46,21 +45,19 @@ export function displayAllianceInfo(type: PokemonType, player: number){
         wordWrap: {width: 180}
     })
     allianceInfoBox.add(allianceDescriptionText)    
-
-    const team = player === 0 ? gameState.board.playerTeam : gameState.board.otherTeam
-    const numberOfThatTypeInTeam = team.filter((p: PokemonOnBoard) => p.hasType(type)).length
-    const stepReached = [...alliance.steps].reverse().find(step => step.numberRequired <= numberOfThatTypeInTeam)
+    
+    const alliances = player === 0 ? gameState.board.playerAlliances : gameState.board.otherTeamAlliances
+    const allianceState = alliances.get(type)!    
     y += allianceDescriptionText.height + 10
     alliance.steps.forEach((step, i) => {
         const stepText = addText(ox - 86, y, `[${step.numberRequired}] ${step.description}`, {
-            color: stepReached && stepReached.ref === step.ref ? "blue" : "gray",
+            color: allianceState.stepReached?.ref === step.ref ? "blue" : "gray",
             fontSize: "10px",
             wordWrap: { width: 172 }
         })
         allianceInfoBox!.add(stepText)
         y+=stepText.height
     })
-
 
     allianceInfoBox.setDepth(Z.MENU)
 }

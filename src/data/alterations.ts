@@ -14,8 +14,9 @@ export enum AlterationType {
     SOIN = "SOIN", // restaure les HP à un rythme de 1HP par seconde (vampirisme),
     REPOS = "REPOS", // restaure les HP à un rythme de 5% max HP par seconde, à condition que le lanceur soit endormi
     POUVOIR_ANTIQUE = "POUVOIR_ANTIQUE", // augmente l'attaque, défense et vitesse de 10% par stack
-    ARMURE = "ARMURE", // augmente la défense de 20% par stack
-    HATE = "HATE", // augmente la vitesse de 20% par stack
+    FURIE = "FURIE", // augmente l'attaque de 10% par stack
+    ARMURE = "ARMURE", // augmente la défense de 10% par stack
+    HATE = "HATE", // augmente la vitesse de 10% par stack    
     ACIDE = "ACIDE", // réduit de 50% la défense
     RUGISSEMENT = "RUGISSEMENT", // réduit de 50% l'attaque
     AVEUGLE = "AVEUGLE", // réduit de 50% la précision

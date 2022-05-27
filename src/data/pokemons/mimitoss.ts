@@ -7,7 +7,7 @@ export const MIMITOSS: PokemonEntry = {
     ref: "mimitoss",
     name: "Mimitoss",
     maxPV: 60,
-    maxPP: 20,
+    maxPP: 10,
     attack: 55,
     defense: 50,
     speed: 45,

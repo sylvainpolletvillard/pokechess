@@ -6,7 +6,7 @@ export const AEROMITE: PokemonEntry = {
     ref: "aeromite",
     name: "Aéromite",
     maxPV: 70,
-    maxPP: 20,
+    maxPP: 10,
     attack: 65,
     defense: 60,
     speed: 90,

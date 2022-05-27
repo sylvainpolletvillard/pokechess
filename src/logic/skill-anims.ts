@@ -131,7 +131,7 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
 export function renderDirectHitAttack(skill: Skill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     renderSkillEffect(skill, attacker, target, game)
 
-    if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
+    if(skill.triggerAlteration) addAlteration(target, { ...skill.triggerAlteration, attacker }, game)
     if((skill as HitSkill).chargeDelta) sendPokemonCharge(attacker, target, (skill as HitSkill).chargeDelta!, game)
 
     wait(skill.hitDelay ?? 0).then(() => {
@@ -143,21 +143,21 @@ export function renderDirectHitAttack(skill: Skill, attacker: PokemonOnBoard, ta
             applyDamage(damage, target, attacker)
             if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker, attacker)            
         }
-        if(skill.hitAlteration) addAlteration(target, skill.hitAlteration, game)
-        if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)
+        if(skill.hitAlteration) addAlteration(target, { ...skill.hitAlteration, attacker }, game)
+        if(skill.selfAlteration) addAlteration(attacker, { ...skill.selfAlteration, attacker }, game)
     })
 }
 
 export function renderSpecialAttack(skill: SpecialSkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     renderSkillEffect(skill, attacker, target, game)
     if(skill.triggerSpecial) wait(skill.triggerSpecialDelay ?? 0).then(() => triggerSpecial(skill.triggerSpecial!, attacker, target, game))
-    if(skill.triggerAlteration) addAlteration(target, skill.triggerAlteration, game)
-    if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)    
+    if(skill.triggerAlteration) addAlteration(target, { ...skill.triggerAlteration, attacker }, game)
+    if(skill.selfAlteration) addAlteration(attacker, { ...skill.selfAlteration, attacker }, game)
 }
 
 export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     renderSkillEffect(skill, attacker, target, game)
-    if(skill.selfAlteration) addAlteration(attacker, skill.selfAlteration, game)
+    if(skill.selfAlteration) addAlteration(attacker, { ...skill.selfAlteration, attacker }, game)
 
      // important: retrieve the impacted tiles at the BEGINNING of the anim
     const tiles = skill.getTilesImpacted(attacker, target).filter(([i,j]) => isOnBoard(i,j))
@@ -169,7 +169,7 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
                 const damage = calcDamage(skill, target, attacker)
                 console.log(`AOE from ${attacker.entry.name} ; ${target.entry.name} receives ${damage} damage !`)
                 applyDamage(damage, target, attacker)
-                if(skill.hitAlteration) addAlteration(target, skill.hitAlteration, game)
+                if(skill.hitAlteration) addAlteration(target, { ...skill.hitAlteration, attacker }, game)
             }
         })
 
@@ -210,7 +210,7 @@ export function sendPokemonCharge(attacker: PokemonOnBoard, target: PokemonOnBoa
     const sprite = game.sprites.get(attacker.uid)
     if(!sprite) return;
     let {x, y} = sprite
-    const attackSpeed = 5000000 / (attacker.speed+25) / game.gameSpeed
+    const attackSpeed = 10000000 / (attacker.speed+40) / game.gameSpeed
     sprite.anims.resume()
     game.tweens.add({
         targets: sprite, 

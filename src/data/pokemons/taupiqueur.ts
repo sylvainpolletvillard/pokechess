@@ -7,7 +7,7 @@ export const TAUPIQUEUR: PokemonEntry = {
     ref: "taupiqueur",
     name: "Taupiqueur",
     maxPV: 10,
-    maxPP: 10,
+    maxPP: 15,
     attack: 55,
     defense: 25,
     speed: 95,

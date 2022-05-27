@@ -373,7 +373,11 @@ export function dropPokemonOnBoard(sprite: Phaser.GameObjects.Sprite, x:number, 
     if(!(pokemon instanceof PokemonOnBoard)) {
         // dropped from box to board
         pokemonOnBoard = new PokemonOnBoard(pokemon, x, y)
-        if(gameState.currentRoom.type === RoomType.PENSION) addToPension(pokemonOnBoard)
+        if(gameState.currentRoom.type === RoomType.PENSION){
+            addToPension(pokemonOnBoard)
+            sprite.setAlpha(1)
+            sprite.anims.resume()
+        }
         else addToTeam(pokemonOnBoard)
     } else {
         // moved position on board

@@ -6,7 +6,7 @@ export const TRIOPIKEUR: PokemonEntry = {
     ref: "triopikeur",
     name: "Triopikeur",
     maxPV: 35,
-    maxPP: 10,
+    maxPP: 15,
     attack: 100,
     defense: 50,
     speed: 120,

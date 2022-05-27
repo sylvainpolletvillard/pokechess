@@ -48,8 +48,8 @@ export function applyBuffs(pokemon: PokemonOnBoard){
     alliances.forEach(allianceState => {
         // BONUS ALLIANCE FEU
         if(pokemon.hasType(TYPE_FEU) && allianceState.type === TYPE_FEU && allianceState.stepReached){
-            const effect: OnHitEffect = ({ target }) => {
-                const alteration: Alteration = { type: AlterationType.BRULURE, stacks: allianceState.stepReachedN+1 }
+            const effect: OnHitEffect = ({ target, attacker }) => {
+                const alteration: Alteration = { type: AlterationType.BRULURE, stacks: allianceState.stepReachedN+1, attacker }
                 addAlteration(target, alteration, game)
                 console.log(`Buff FEU de ${pokemon.entry.name}: ${alteration.stacks} stacks de brûlure`)
             }
@@ -67,8 +67,8 @@ export function applyBuffs(pokemon: PokemonOnBoard){
 
         // BONUS ALLIANCE SPECTRE
         if(pokemon.hasType(TYPE_SPECTRE) && allianceState.type === TYPE_SPECTRE && allianceState.stepReached){
-            const effect: OnHitEffect = ({ target }) => {
-                const alteration: Alteration = { type: AlterationType.PEUR, stacks: allianceState.stepReachedN*2 }
+            const effect: OnHitEffect = ({ target, attacker }) => {
+                const alteration: Alteration = { type: AlterationType.PEUR, stacks: allianceState.stepReachedN*2, attacker }
                 addAlteration(target, alteration, game)
                 console.log(`Buff PEUR de ${pokemon.entry.name}: ${alteration.stacks} stacks de peur`)
             }
@@ -82,7 +82,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
                 console.log(`Choc ELEC sur ${attacker.entry.name}: ${allianceState.stepReachedN*2} dégats`)
             }
             pokemon.buffs.onHitReceived.push(effect)
-            pokemon.buffs.speed.push(() => 0.2 * allianceState.stepReachedN)
+            pokemon.buffs.speed.push(() => 0.1 * allianceState.stepReachedN)
         }
         
         // BONUS ALLIANCE VOL
@@ -92,7 +92,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
 
         // BONUS ALLIANCE ROCHE
         if(pokemon.hasType(TYPE_ROCHE) && allianceState.type === TYPE_ROCHE && allianceState.stepReached){
-            pokemon.buffs.defense.push(() =>  0.2 * allianceState.stepReachedN)
+            pokemon.buffs.defense.push(() =>  0.1 * allianceState.stepReachedN)
         }
 
         // BONUS ALLIANCE SOL
@@ -121,8 +121,8 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         // BONUS ALLIANCE PLANTE
         if(pokemon.hasType(TYPE_PLANTE) && allianceState.type === TYPE_PLANTE && allianceState.stepReached){
             pokemon.buffs.clock.push(() => {
-                healPokemon(pokemon, (2/100)*allianceState.stepReachedN*pokemon.maxPV)
-                //console.log(`Buff PLANTE: +${(2/100)*allianceState.stepReachedN*pokemon.maxPV}PV sur ${pokemon.entry.name}`)
+                healPokemon(pokemon, (1/100)*allianceState.stepReachedN*pokemon.maxPV)
+                //console.log(`Buff PLANTE: +${(1/100)*allianceState.stepReachedN*pokemon.maxPV}PV sur ${pokemon.entry.name}`)
             })
         }
 

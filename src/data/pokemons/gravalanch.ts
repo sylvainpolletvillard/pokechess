@@ -7,7 +7,7 @@ export const GRAVALANCH: PokemonEntry = {
     ref: "gravalanch",
     name: "Gravalanch",
     maxPV: 55,
-    maxPP: 10,
+    maxPP: 20,
     attack: 95,
     defense: 115,
     speed: 35,

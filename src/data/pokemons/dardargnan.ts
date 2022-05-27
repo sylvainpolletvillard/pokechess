@@ -6,7 +6,7 @@ export const DARDARGNAN: PokemonEntry = {
     ref: "dardargnan",
     name: "Dardargnan",
     maxPV: 65,
-    maxPP: 20,
+    maxPP: 10,
     attack: 80,
     defense: 40,
     speed: 75,
