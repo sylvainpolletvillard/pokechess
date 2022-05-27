@@ -124,7 +124,7 @@ export function handleDragMove(scene: MyScene){
 export function testIfCanBeDragged(sprite: Phaser.GameObjects.Sprite){
     if(sprite.getData("pokemon") != null){
         return sprite.getData("pokemon").owner === 1 
-        && (gameState.stage === GameStage.PLACEMENT || gameState.currentRoom.type === RoomType.SAFARI)
+        && (gameState.stage === GameStage.PLACEMENT || [RoomType.SAFARI, RoomType.PENSION].includes(gameState.currentRoom.type ))
     }
     return true;
 }
@@ -136,7 +136,7 @@ export function testIfCanBeDroppedOn(elem: InteractiveElem){
     if(gameState.currentRoom.type === RoomType.SAFARI){
         return dropZoneType === "boxTile" || dropZoneType === "releaseZone"
     }
-    if(gameState.stage !== GameStage.PLACEMENT) return false;
+    if(gameState.stage !== GameStage.PLACEMENT && gameState.currentRoom.type !== RoomType.PENSION) return false;
 
     switch(dropZoneType){
         case "gridTile":            
@@ -144,7 +144,7 @@ export function testIfCanBeDroppedOn(elem: InteractiveElem){
             return draggedType === "pokemon"
                 && x >= 0
                 && x < BOARD_WIDTH
-                && y >= BOARD_HEIGHT/2
+                && y >= (gameState.currentRoom.type === RoomType.PENSION ? 0 : BOARD_HEIGHT/2)
                 && y < BOARD_HEIGHT
         case "boxTile":
         case "pokedexButton":

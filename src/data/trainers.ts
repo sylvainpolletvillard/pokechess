@@ -2,7 +2,6 @@ import {GameStage, gameState} from "../logic/gamestate";
 import { BADGE_AME, BADGE_CASCADE, BADGE_FOUDRE, BADGE_MARAIS, BADGE_PRISME, BADGE_ROCHE, BADGE_TERRE, BADGE_VOLCAN } from "./badges";
 import {ITEM_FILET, ITEM_PARAPLUIE, ITEM_POKEBALL} from "./items";
 import { spawnTutoCaptureTeamStep2 } from "../logic/spawns";
-import { drawPokeballsCounter } from "../objects/pokeballsCounter";
 import { spawnPokemon } from "../logic/board";
 import { sendBackToPokeball } from "../logic/fight";
 import GameScene from "../scenes/GameScene";
@@ -10,6 +9,8 @@ import { receiveItem } from "./dialogs/descriptions";
 import {wait} from "../utils/helpers";
 import {Trainer} from "../types/trainer";
 import { startMusic } from "../logic/audio";
+import { DialogLine } from "../types/dialog";
+import { drawPokeballsCounter } from "../objects/pokeballsCounter";
 
 
 export const PIERRE: Trainer = {
@@ -51,8 +52,8 @@ export const ONDINE: Trainer = {
         start: [
             `Salut ! T'es un nouveau ?`,
             `Si tu veux être un vrai dresseur, il te faut une stratégie !`,
-            `C'est quoi ta tactique pour capturer les pokémons sauvages ?`,
-            `Moi je leur fonce dans le tas avec mes pokémons aquatiques !`],
+            `C'est quoi ta tactique pour capturer les Pokémon sauvages ?`,
+            `Moi je leur fonce dans le tas avec mes Pokémon aquatiques !`],
         victory: [
             `Whouha ! T'es super fort ! Très bien !`,
             `Je te donne le BADGE CASCADE pour m'avoir battue!`,
@@ -110,7 +111,7 @@ export const ERIKA: Trainer = {
             `J'aime la vie. J'aime les fleurs et les chansons. C'est chou, non?`,
             `Moi, c'est ERIKA, la Championne de l'arène de Céladopole.`,
             `L'arrangement floral est ma spécialité.`,
-            `Mes Pokémons sont du type plante.`,
+            `Mes Pokémon sont du type plante.`,
             `Il fit grand froid hier, alors j'ai mis un pull.`,
             `Hein? Tu veux te battre? Bah... Dis-le, mon vieux !`,
             `Tu sais quoi? Tu vas perdre!`
@@ -276,7 +277,7 @@ export const HECTOR: Trainer = {
                 .then(() => `Tu verras, il te sera très utile !`)
             },
             `Bien, je vais lever le camp. J'ai fini ce que j'avais à faire ici.`,
-            `Ce coin regorge de Pokémons rares, tu devrais y repasser !`
+            `Ce coin regorge de Pokémon rares, tu devrais y repasser !`
         ],
         defeat: [
             `Les Pokémon insecte ont des talents cachés.`,
@@ -347,22 +348,23 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
     dialogs:{
         start: [
             `Une minute ! Si tu veux monter une équipe, il te faut des Pokéballs !`,
-            `Tiens, voilà 5 Pokéballs pour capturer tes premiers Pokémons.`,
+            `Tiens, voilà 5 Pokéballs pour capturer tes premiers Pokémon.`,
             () => {
-                receiveItem(ITEM_POKEBALL, 5);
+                gameState.player.inventory.pokeball += 5
+                drawPokeballsCounter()
                 gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.BEFORE_WILD
                 return `Sais-tu comment on s'en sert ?`
             },
             {
                 "Oui": () => [
-                    `Très bien, alors capture ces Pokémons sauvages. Ou mets-les KO, comme tu veux !`
+                    `Très bien, alors capture ces Pokémon sauvages. Ou mets-les KO, comme tu veux !`
                 ],
                 "Non": () => [
                     `Tu peux capturer un Pokémon sauvage plutôt que de l'affronter.`,
                     `Plus le Pokémon est puissant, plus il te faudra de Pokéballs pour le capturer.`,
-                    `Un Pokémon capturé rejoint ta box, qui peut contenir jusqu'à 8 Pokémons.`,
+                    `Un Pokémon capturé rejoint ta box, qui peut contenir jusqu'à 8 Pokémon.`,
                     `Tu peux ensuite les déplacer de ta box vers le terrain pour qu'ils combattent.`,
-                    `Vas-y, essaie de capturer ces Pokémons sauvages !`
+                    `Vas-y, essaie de capturer ces Pokémon sauvages !`
                 ]
             }           
         ],
@@ -557,7 +559,7 @@ export const DRESSEUR_CENTRALE: Trainer = {
         start: [
             `Hé, t'as pété les plombs ?`,
             `C'est pas un endroit pour les enfants ici !`,
-            `Mon équipe de Pokémons va te foudroyer !`
+            `Mon équipe de Pokémon va te foudroyer !`
         ],
         victory: [
             `Je me suis pris un sacré coup de jus !`
@@ -681,7 +683,7 @@ export const DRESSEUR_MR_PSY: Trainer = {
         ],
         defeat: [
             `Quelle déception !`,
-            `Reviens me voir et je te laisserai capturer d'autres Pokémons Psy`,
+            `Reviens me voir et je te laisserai capturer d'autres Pokémon Psy`,
             `Ton équipe a besoin d'améliorer son mental !`
         ]
     }
@@ -827,30 +829,42 @@ export const DRESSEUR_TOUR_POKEMON: Trainer = {
     }
 }
 
+export const DRESSEUR_PENSION_DIALOG_STATE = {
+    hello: 0,
+    has_met: 1,
+    has_deposed: 2
+}
+
 export const DRESSEUR_PENSION: Trainer = {
     ref: "dresseur_pension",
     name: "Gaël de la Pension",
     frameIndex: 40,
     introFrameIndex: null,
     dialogs: {
-        start: [
-            `Bienvenue à la Pension !`,
-            `Ici on prend soin des Pokémons quand leur propriétaire doit s'absenter.`,
-            `Il y a aussi des Pokémons qui ne cherchent qu'à être adoptés !`,
-            `Leur type est banal alors ils n'intéressent pas les autres dresseurs...`
-        ],
-        bye_deposed: [
-            `Je prendrais soin de tes Pokémon en ton absence !`
-        ],
-        bye: [
-            `Reviens quand tu veux !`
-        ],
-        back: [
-            `Tiens, c'est toi ! Tu viens nous confier des Pokémons ?`,
-        ],
-        back_deposed: [
-            `Ah, te revoilà ! Tes Pokémons bien grandi, regarde !`
-        ]
+        start() {
+            if(gameState.dialogStates["pension"] === DRESSEUR_PENSION_DIALOG_STATE.has_met) return [
+                `Tiens, c'est toi ! Tu viens nous confier des Pokémon ?`
+            ]
+
+            if(gameState.dialogStates["pension"] === DRESSEUR_PENSION_DIALOG_STATE.has_deposed) return [
+                `Ah, te revoilà ! Tes Pokémon ont bien grandi, regarde !`
+            ]
+
+            gameState.dialogStates["pension"] = DRESSEUR_PENSION_DIALOG_STATE.has_met
+            return [
+                `Bienvenue à la Pension !`,
+                `Ici on prend soin des Pokémon quand leur propriétaire doit s'absenter.`,
+                `Tu peux nous confier certains de tes Pokémon si tu veux.`,
+                `Il y a aussi des Pokémon qui ne cherchent qu'à être adoptés !`,
+                `Leur type est banal alors ils n'intéressent pas les autres dresseurs...`
+            ]
+        },
+        bye(){
+            if(gameState.dialogStates["pension"] === DRESSEUR_PENSION_DIALOG_STATE.has_deposed) return [
+                `Je prendrais soin de tes Pokémon en ton absence !`
+            ]
+            return [ `Reviens quand tu veux !` ]
+        }
     }
 }
 
@@ -881,7 +895,7 @@ export const DRESSEUR_COLLINE_ROYALE: Trainer = {
     introFrameIndex: null,
     dialogs: {
         start: [
-            `Tu cherches des Pokémons Dragons ?`,
+            `Tu cherches des Pokémon Dragons ?`,
             `Moi aussi ! Moi aussi !`,
             `Ils sont si grands ! si beaux ! si majestueux !`,
             `Ils sont à moi ! Tu m'entends ? À moi seul !`

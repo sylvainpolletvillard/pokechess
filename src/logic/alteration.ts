@@ -177,7 +177,7 @@ export function removeAlteration(pokemon: PokemonOnBoard, alt: Alteration){
         if(repos) removeAlteration(pokemon, repos)
     }
 
-    if(alt.type === AlterationType.CONFUSION){
+    if(alt.type === AlterationType.CONFUSION || alt.type === AlterationType.GEL){
         pokemon.resetAction()
     }
 }

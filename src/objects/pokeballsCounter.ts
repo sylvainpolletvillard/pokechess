@@ -12,7 +12,7 @@ export function drawPokeballsCounter(){
 
     let ox = game.scale.width - 64
 
-    if(gameState.currentRoom.type === RoomType.TUTORIAL){
+    if(gameState.currentRoom.type === RoomType.TUTORIAL || gameState.currentRoom.type === RoomType.PENSION){
         ox = -16
     }
 

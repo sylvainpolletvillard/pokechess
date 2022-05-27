@@ -1,5 +1,5 @@
 import {getNonLegendaryPokemons, getNonLegendaryPokemonsOfType, Pokemon, PokemonEntry} from "../data/pokemons";
-import {POKEMON_TYPES} from "../data/types";
+import {POKEMON_TYPES, TYPE_NORMAL} from "../data/types";
 import {gameState} from "./gamestate";
 import {clamp, pickNRandomIn, pickRandomIn, randomInt} from "../utils/helpers";
 import {PokemonOnBoard} from "../objects/pokemon";
@@ -164,4 +164,30 @@ export function spawnSafariTeam(): PokemonOnBoard[] {
     }
 
     return team    
+}
+
+export function spawnPensionTeam(): PokemonOnBoard[] {
+    const NUMBER_TO_SPAWN = 5
+    const selection = pickNRandomIn(getNonLegendaryPokemonsOfType(TYPE_NORMAL), NUMBER_TO_SPAWN)
+
+    const team: PokemonOnBoard[] = [];
+    for(let i=0; i<NUMBER_TO_SPAWN; i++){
+        const pokemonEntry = selection[i]
+        const level = 1;
+
+        let x: number, y: number;
+        do {
+            x = randomInt(0,6);
+            y = randomInt(0,3);
+        } while(team.some(p => p.x === x && p.y === y))
+
+        team.push(
+            new PokemonOnBoard(
+                autoEvolve(new Pokemon(pokemonEntry, NO_OWNER, level)),
+                x, y
+            )
+        )
+    }
+
+    return team
 }

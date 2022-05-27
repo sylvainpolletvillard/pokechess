@@ -77,7 +77,7 @@ export const POKEFLUTE: Item = {
 export const REPOUSSE: Item = {
     ref: "repousse",
     label: "Repousse",
-    desc: "Fait fuir et ramener de nouveaux Pokémons sauvages",
+    desc: "Fait fuir et ramener de nouveaux Pokémon sauvages",
     cost: 2
 }
 

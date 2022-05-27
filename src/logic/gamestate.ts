@@ -27,6 +27,11 @@ import { FAST_TRAVELS } from "../data/destinations";
 import { receiveItem } from "../data/dialogs/descriptions";
 import { ITEM_POKEBALL } from "../data/items";
 import { logStats, resetStats } from "./stats";
+import { spawnPensionTeam } from "./spawns";
+import { PENSION } from "../data/destinations/pension";
+import { CARABAFFE } from "../data/pokemons/carabaffe";
+import { POISSIRENE } from "../data/pokemons/poissirene";
+import { raisePokemonsPension } from "./pension";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -55,6 +60,7 @@ export class GameState {
     dialogStates: { [pnjName: string]: number }
     seed: number;
     lastCaptureDestination: Destination | null;
+    pension: PokemonOnBoard[]
 
     constructor() {
         this.day = 0
@@ -70,6 +76,7 @@ export class GameState {
         this.activeMenu = null;
         this.activeDialog = null;
         this.starters = pickStarters()
+        this.pension = []
         this.dialogStates = {}
         this.seed = randomInt(1, Math.pow(4,10))
         this.lastCaptureDestination = null
@@ -114,7 +121,7 @@ export class GameState {
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
-        
+        */
 
         gameState.player.team = [
             //new PokemonOnBoard( new Pokemon(POISSIRENE, 1, 24), 3 ,6),
@@ -124,22 +131,29 @@ export class GameState {
             //new PokemonOnBoard( new Pokemon(CARABAFFE, 1, 24), 4 ,7),
             //new PokemonOnBoard( new Pokemon(AKWAKWAK, 1, 24), 2 ,7),
         ]
-        enterDestination(TEST_ROOM([
+        /*enterDestination(TEST_ROOM([
             new PokemonOnBoard( new Pokemon(POISSIRENE, 2, 22), 1 ,2),
             new PokemonOnBoard( new Pokemon(CARABAFFE, 2, 22), 5 ,2),
         ]))
-        gameState.initRoom()
+        
+        this.initRoom()
         */
-
+        this.pension = spawnPensionTeam()
+        this.currentDestination = PENSION
+        this.currentRoomIndex = 0
+        this.activeScene!.scene.start("MapScene")
+/*
         if(!loadSave()) {
             //new game
             this.currentDestination = BOURG_PALETTE
             this.currentRoomIndex = 0
             this.roomOrder = ["labo", "tuto"]
+            this.pension = spawnPensionTeam()
             gameState.initRoom()
         } else {
             this.activeScene!.scene.start("MapScene")
         }
+        */
     }
 
     goToNextRoom(){
@@ -157,9 +171,14 @@ export class GameState {
             gameState.currentDestination = FAST_TRAVELS.get(gameState.currentDestination)!
             if(gameState.lastCaptureDestination != null) gameState.lastCaptureDestination = gameState.currentDestination
         }
+        this.nextDay()
+        gameState.activeScene!.scene.start("MapScene")
+    }
+
+    nextDay(){
         gameState.day++;
         saveState()
-        gameState.activeScene!.scene.start("MapScene")
+        raisePokemonsPension()
     }
 
     initRoom(){

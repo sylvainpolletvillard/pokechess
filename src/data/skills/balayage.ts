@@ -15,7 +15,7 @@ export const BALAYAGE: AOESkill = {
                 ? [ [i-1, j], [i, j], [i+1, j] ] // horizontal slash
                 : [ [i, j-1], [i, j], [i, j+1] ] // vertical slash
     },
-    effect: EFFECTS.BROUILLARD,
+    effect: EFFECTS.BALAYAGE,
     power: 100,
     hitDelay: 100,
     rotateSprite: true

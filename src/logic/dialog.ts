@@ -11,7 +11,7 @@ import { wait } from "../utils/helpers";
 import { RoomType } from "../types/destination";
 import {DialogChoice, DialogLine, DialogParams} from "../types/dialog";
 
-export function startDialog(lines: DialogLine[], params: DialogParams = {}): Promise<void>{
+export function startDialog(lines: DialogLine[] | (() => DialogLine[]), params: DialogParams = {}): Promise<void>{
     const scene = gameState.activeScene
     if(!scene) return Promise.reject("No scene");
 
@@ -38,6 +38,8 @@ export function startDialog(lines: DialogLine[], params: DialogParams = {}): Pro
         wordWrap: { width: W-8 },
     }).setScrollFactor(0).setResolution(2)
     dialogGroup?.add(textSprite)?.setDepth(Z.DIALOG)
+
+    if(typeof lines === "function") lines = lines()
 
     gameState.activeDialog = { lines: [...lines], speaker, voice, dialogGroup, textSprite, bgSprite }
 

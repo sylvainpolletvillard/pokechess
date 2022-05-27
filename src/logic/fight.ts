@@ -1,5 +1,5 @@
 import {getPokemonCry, Pokemon, PokemonTypeAction} from "../data/pokemons";
-import {findClosestReachableTarget, findPathToTarget} from "./pathfinding";
+import {distanceBetweenPokemon, findClosestReachableTarget, findPathToTarget} from "./pathfinding";
 import {getPokemonOnTile, getPositionFromCoords} from "./board";
 import GameScene from "../scenes/GameScene";
 import {getDirection} from "./anims";
@@ -75,6 +75,14 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
 export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
     const sprite = game.sprites.get(pokemon.uid)
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
+
+    if(target.nextAction.type === PokemonTypeAction.MOVE 
+    && target.nextAction.target === pokemon
+    && distanceBetweenPokemon(pokemon, target) < 2){
+        // if target is already moving to you, do nothing to prevent dog-fight
+        pokemon.resetAction({ type: PokemonTypeAction.IDLE, target })
+        return;
+    }
 
     const path = findPathToTarget(pokemon, target, gameState.board)
     //console.log(`${pokemon.entry.name} va vers ${target.name}`, path)

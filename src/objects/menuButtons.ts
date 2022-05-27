@@ -12,15 +12,18 @@ import { Pokemon } from '../data/pokemons';
 import { showPokedex } from './pokedex';
 import { Z } from '../data/depths';
 import { playSound } from '../logic/audio';
-import { RoomSafari, RoomType } from '../types/destination';
+import { RoomPension, RoomSafari, RoomType } from '../types/destination';
 import { drawPokeballsCounter } from './pokeballsCounter';
 import { canAfford } from '../logic/shop';
 import { fadeOut } from '../utils/camera';
+import { removeFromPension } from '../logic/pension';
+import { startDialog } from '../logic/dialog';
 
 let menuButtonsGroup: Phaser.GameObjects.Group;
 
 export function drawMenuButtons(game: GameScene){
     if(gameState.currentRoom.type === RoomType.SAFARI) return drawSafariButtons(game)
+    if(gameState.currentRoom.type === RoomType.PENSION) return drawPensionButtons(game)
     menuButtonsGroup = game.add.group();
 
     drawPokedexButton(game)
@@ -61,6 +64,32 @@ export function drawSafariButtons(game: GameScene){
         .on("click", () => {           
             playSound("run")
             fadeOut(400).then(() => gameState.exitDestination())            
+        })
+    addInteractiveElem(quitButton)
+    game.sprites.set("quitButton", quitButton)
+    menuButtonsGroup.add(quitButton)
+    menuButtonsGroup.setDepth(Z.GUI_BUTTON);
+}
+
+export function drawPensionButtons(game: GameScene){
+    menuButtonsGroup = game.add.group();
+
+    drawBoxButton(game)
+ 
+    const quitButton = game.add.sprite(295, game.scale.height - 12, "buttons_big",2)
+    quitButton
+        .on("over", () => {
+            quitButton.setFrame(3)
+        })
+        .on("out", () => {
+            quitButton.setFrame(2)
+        })
+        .on("click", async () => {
+            const room = gameState.currentRoom as RoomPension
+            await startDialog(room.trainer.dialogs.bye, { speaker: room.trainer.ref })
+            playSound("run")
+            await fadeOut(400)
+            gameState.exitDestination()
         })
     addInteractiveElem(quitButton)
     game.sprites.set("quitButton", quitButton)
@@ -151,7 +180,8 @@ export function drawBoxButton(game: GameScene){
             const pokemon = pokemonSprite.getData("pokemon");
             if(pokemon != null){
                 boxButtonText?.destroy()
-                removeFromTeam(pokemon)
+                if(gameState.pension.includes(pokemon)) removeFromPension(pokemon)
+                else removeFromTeam(pokemon)
                 addToBox(pokemon)
                 drawTeamSizeCounter()
             }

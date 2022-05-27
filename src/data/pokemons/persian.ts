@@ -6,7 +6,7 @@ export const PERSIAN: PokemonEntry = {
     ref: "persian",
     name: "Persian",
     maxPV: 65,
-    maxPP: 5,
+    maxPP: 20,
     attack: 70,
     defense: 60,
     speed: 115,

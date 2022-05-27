@@ -39,7 +39,7 @@ const BONUS_ALLIANCE_DRAGON: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_EAU: AllianceBonus =  {    
-    description: "Les Pokémons Eau sont insensibles aux Brûlures. Les compétences Eau peuvent repousser la cible d'une ou plusieurs cases.",
+    description: "Les Pokémon Eau sont insensibles aux Brûlures. Les compétences Eau peuvent repousser la cible d'une ou plusieurs cases.",
     steps: [
         { numberRequired: 2, ref: "EAU2", description: "Repousse d'une case" },
         { numberRequired: 4, ref: "EAU4", description: "Repousse de 2 cases" },
@@ -48,7 +48,7 @@ const BONUS_ALLIANCE_EAU: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_ELECTRIQUE: AllianceBonus =  {
-    description: "Les Pokémons Electrique gagnent en Vitesse et infligent des dégats électriques à chaque coup reçu au contact.",
+    description: "Les Pokémon Electrique gagnent en Vitesse et infligent des dégats électriques à chaque coup reçu au contact.",
     steps: [
         { numberRequired: 2, ref: "ELEC2", description: "+20% VIT ; 2 dégats par coup reçu" },
         { numberRequired: 4, ref: "ELEC4", description: "+40% VIT ; 4 dégats par coup reçu" },
@@ -57,7 +57,7 @@ const BONUS_ALLIANCE_ELECTRIQUE: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_FEE: AllianceBonus =  {
-    description: "Les Pokémons Fée font gagner progressivement des PP à toute votre équipe.",
+    description: "Les Pokémon Fée font gagner progressivement des PP à toute votre équipe.",
     steps: [
         { numberRequired: 1, ref: "FEE1", description: "+1 PP par seconde" },
         { numberRequired: 2, ref: "FEE2", description: "+2 PP par seconde" },
@@ -66,7 +66,7 @@ const BONUS_ALLIANCE_FEE: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_FEU: AllianceBonus =  {
-    description: "Les Pokémons Feu sont insensibles au Gel. Leurs attaques appliquent une brûlure qui inflige des dégâts sur la durée et réduit de 50% l'efficacité des soins.",
+    description: "Les Pokémon Feu sont insensibles au Gel. Leurs attaques appliquent une brûlure qui inflige des dégâts sur la durée et réduit de 50% l'efficacité des soins.",
     steps: [
         { numberRequired: 2, ref: "FEU2", description: "2 brûlures par attaque" },
         { numberRequired: 4, ref: "FEU4", description: "3 brûlures par attaque" },
@@ -75,7 +75,7 @@ const BONUS_ALLIANCE_FEU: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_GLACE: AllianceBonus =  {
-    description: "Les Pokémons Glace sont entourés d'une aura de gel qui ralentit les adversaires des cases adjacentes.",
+    description: "Les Pokémon Glace sont entourés d'une aura de gel qui ralentit les adversaires des cases adjacentes.",
     steps: [
         { numberRequired: 2, ref: "GLACE2", description: "-20% vitesse" },
         { numberRequired: 3, ref: "GLACE3", description: "-30% vitesse" },
@@ -84,7 +84,7 @@ const BONUS_ALLIANCE_GLACE: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_INSECTE: AllianceBonus =  {
-    description: "Les Pokémons Insecte grandissent et évoluent plus rapidement. Ils gagnent un bonus d'expérience à chaque combat.",
+    description: "Les Pokémon Insecte grandissent et évoluent plus rapidement. Ils gagnent un bonus d'expérience à chaque combat.",
     steps: [
         { numberRequired: 2, ref: "INSECTE2", description: "+20% aux gains d'expérience" },
         { numberRequired: 4, ref: "INSECTE4", description: "+40% aux gains d'expérience" },
@@ -93,7 +93,7 @@ const BONUS_ALLIANCE_INSECTE: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_NORMAL: AllianceBonus =  {
-    description: "Les Pokémons normaux réduisent les pénalités de dégâts reçus liés aux faiblesses de types.",
+    description: "Les Pokémon normaux réduisent les pénalités de dégâts reçus liés aux faiblesses de types.",
     steps: [
         { numberRequired: 2, ref: "NORMAL2", description: "-30% de dégâts de faiblesse reçus" },
         { numberRequired: 4, ref: "NORMAL4", description: "-60% de dégâts de faiblesse reçus" },
@@ -102,7 +102,7 @@ const BONUS_ALLIANCE_NORMAL: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_PLANTE: AllianceBonus =  {
-    description: "Les Pokémons Plante ne peuvent pas être repoussés par les compétences adverses et se regénèrent naturellement.",
+    description: "Les Pokémon Plante ne peuvent pas être repoussés par les compétences adverses et se regénèrent naturellement.",
     steps: [
         { numberRequired: 2, ref: "PLANTE2", description: "Regen 2% des HP max par seconde" },
         { numberRequired: 4, ref: "PLANTE4", description: "Regen 4% des HP max par seconde" },
@@ -111,7 +111,7 @@ const BONUS_ALLIANCE_PLANTE: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_POISON: AllianceBonus =  {
-    description: "Les Pokémons Poison empoisonnent leurs cibles, infligeant des dégâts sur la durée proportionnels à leurs PV max.",
+    description: "Les Pokémon Poison empoisonnent leurs cibles, infligeant des dégâts sur la durée proportionnels à leurs PV max.",
     steps: [
         { numberRequired: 2, ref: "POISON2", description: "Dégâts de poison infligés +40%" },
         { numberRequired: 4, ref: "POISON4", description: "Dégâts de poison infligés +80%" },
@@ -120,7 +120,7 @@ const BONUS_ALLIANCE_POISON: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_PSY: AllianceBonus =  {
-    description: "Les Pokémons Psy sont insensibles à la Confusion, et leurs attaques font perdre des PP à leur cible.",
+    description: "Les Pokémon Psy sont insensibles à la Confusion, et leurs attaques font perdre des PP à leur cible.",
     steps: [
         { numberRequired: 2, ref: "PSY2", description: "La cible perd 2 PP par attaque" },
         { numberRequired: 4, ref: "PSY4", description: "La cible perd 4 PP par attaque" },
@@ -129,7 +129,7 @@ const BONUS_ALLIANCE_PSY: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_ROCHE: AllianceBonus =  {
-    description: "Les Pokémons Roche ont une grosse défense et réduisent les dégâts reçus liés aux altérations (poison, brûlure).",
+    description: "Les Pokémon Roche ont une grosse défense et réduisent les dégâts reçus liés aux altérations (poison, brûlure).",
     steps: [
         { numberRequired: 2, ref: "ROCHE2", description: "+20% défense ; -20% altérations" },
         { numberRequired: 4, ref: "ROCHE4", description: "+40% défense ; -40% altérations" },
@@ -138,7 +138,7 @@ const BONUS_ALLIANCE_ROCHE: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_SOL: AllianceBonus =  {
-    description: "Les Pokémons Sol creusent un tunnel pour se protéger temporairement lorsqu'ils tombent sous un certain seuil de PV.",
+    description: "Les Pokémon Sol creusent un tunnel pour se protéger temporairement lorsqu'ils tombent sous un certain seuil de PV.",
     steps: [
         { numberRequired: 2, ref: "SOL2", description: "Tunnel à 20% des PV" },
         { numberRequired: 4, ref: "SOL4", description: "Tunnel à 20% et 50% des PV" },
@@ -147,7 +147,7 @@ const BONUS_ALLIANCE_SOL: AllianceBonus =  {
 }
 
 const BONUS_ALLIANCE_SPECTRE: AllianceBonus =  {
-    description: "Les Pokémons Spectre ne peuvent pas être endormis et leurs attaques effrayent leur cible, réduisant leur attaque.",
+    description: "Les Pokémon Spectre ne peuvent pas être endormis et leurs attaques effrayent leur cible, réduisant leur attaque.",
     steps: [
         { numberRequired: 2, ref: "SPECTRE2", description: "2 stacks de Peur par attaque" },
         { numberRequired: 4, ref: "SPECTRE4", description: "4 stacks de Peur par attaque" },

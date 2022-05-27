@@ -4,7 +4,6 @@ import {GameStage, gameState} from "./gamestate";
 import {DESTINATIONS} from "../data/destinations";
 import {PokemonOnBoard} from "../objects/pokemon";
 import {HoldableItem, Pokemon, POKEMONS} from "../data/pokemons";
-import {OWNER_PLAYER} from "../data/owners";
 import {MAGICARPE} from "../data/pokemons/magicarpe";
 import {xpToLevel} from "./xp";
 
@@ -18,6 +17,7 @@ interface Save {
     dialogStates: { [pnjName: string]: number }
     seed: number
     lastCaptureDestinationRef: string
+    pension: SerializedPokemonOnBoard[]
 }
 
 
@@ -31,7 +31,8 @@ export function saveState(){
         stage: gameState.stage,
         dialogStates: gameState.dialogStates,
         seed: gameState.seed,
-        lastCaptureDestinationRef: gameState.lastCaptureDestination?.ref
+        lastCaptureDestinationRef: gameState.lastCaptureDestination?.ref,
+        pension: gameState.pension.map(p => serializePokemonOnBoard(p))
     }
     localStorage.setItem("save", JSON.stringify(save))
 }
@@ -41,24 +42,27 @@ export function loadSave(): boolean {
     if(!saveJSON) return false
 
     let save;
+    const loadedState: any = {}
     try {
         save = JSON.parse(saveJSON) as Save
+        
+        loadedState.day = save.day
+        loadedState.currentDestination = DESTINATIONS[save.currentDestinationRef]
+        loadedState.currentRoomIndex = save.currentRoomIndex;
+        loadedState.roomOrder = save.roomOrder
+        loadedState.players = save.players.map(p => parseSerializedPlayer(p))
+        loadedState.board = setupPlayerIdleBoard(parseSerializedPlayer(save.players[0]))
+        loadedState.stage = save.stage as GameStage
+        loadedState.dialogStates = save.dialogStates
+        loadedState.seed = save.seed;
+        loadedState.lastCaptureDestination = save.lastCaptureDestinationRef ? DESTINATIONS[save.lastCaptureDestinationRef] : null
+        loadedState.pension = save.pension.map(p => parseSerializedPokemonOnBoard(p))
     } catch(e){
         console.error(`Corrupted save :${e}`)
         return false;
     }
 
-    gameState.day = save.day
-    gameState.currentDestination = DESTINATIONS[save.currentDestinationRef]
-    gameState.currentRoomIndex = save.currentRoomIndex;
-    gameState.roomOrder = save.roomOrder
-    gameState.players = save.players.map(p => parseSerializedPlayer(p))
-    gameState.board = setupPlayerIdleBoard(parseSerializedPlayer(save.players[0]))
-    gameState.stage = save.stage as GameStage
-    gameState.dialogStates = save.dialogStates
-    gameState.seed = save.seed;
-    gameState.lastCaptureDestination = save.lastCaptureDestinationRef ? DESTINATIONS[save.lastCaptureDestinationRef] : null
-
+    Object.assign(gameState, loadedState)
     return true
 }
 
@@ -95,16 +99,17 @@ function parseSerializedPlayer(player: SerializedPlayer): Player {
 interface SerializedPokemon {
     ref: string
     xp: number
+    owner: number
     item?: HoldableItem
 }
 
 function serializePokemon(p: Pokemon): SerializedPokemon {
-    return { ref: p.entry.ref, xp: p.xp, item: p.item }
+    return { ref: p.entry.ref, xp: p.xp, item: p.item, owner: p.owner }
 }
 
 function parseSerializedPokemon(p: SerializedPokemon): Pokemon {
     const level = xpToLevel(p.xp)
-    const pokemon = new Pokemon(POKEMONS.find(q => q.ref === p.ref) ?? MAGICARPE, OWNER_PLAYER, level)
+    const pokemon = new Pokemon(POKEMONS.find(q => q.ref === p.ref) ?? MAGICARPE, p.owner, level)
     pokemon.xp = p.xp
     pokemon.item = p.item
     return pokemon

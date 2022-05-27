@@ -1,9 +1,8 @@
 import {Destination, DestinationType, RoomType} from "../../types/destination";
-import {spawnTeamByTypeFactor} from "../../logic/spawns";
-import {TYPE_NORMAL} from "../types";
 import {DRESSEUR_PENSION} from "../trainers";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { gameState } from "../../logic/gamestate";
 
 export const PENSION: Destination = {
     ref: "PENSION",
@@ -23,15 +22,11 @@ export const PENSION: Destination = {
             trainer: DRESSEUR_PENSION,
             music: "music_pension_et_camp_nomade",
             map: "pension",
-            spawnOtherTeam(){
-                return spawnTeamByTypeFactor({
-                    [TYPE_NORMAL.ref]: 1
-                })
-            }
+            spawnOtherTeam(){ return gameState.pension }
         }
     },
     preload(scene: MyScene){
-        //scene.load.tilemapTiledJSON('pension', 'assets/maps/pension.json');
+        scene.load.tilemapTiledJSON('pension', 'assets/maps/pension.json');
         preloadMusic("music_pension_et_camp_nomade", "assets/audio/music/47 Pikachu's Beach.mp3")
     }
 }

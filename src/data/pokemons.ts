@@ -200,7 +200,7 @@ export class Pokemon {
         this.pv = this.maxPV;
         this.pp = 0
         this.pokeball = POKEBALLS[this.entry.rank-1] // TEMP: set on capture, based on rank or safari ball
-        this.xp = levelToXP(this.level);
+        this.xp = levelToXP(level);
     }
 
     get baseXP(): number {

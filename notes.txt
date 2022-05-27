@@ -1,7 +1,7 @@
 TODO:
 - items
 - maps
-- océane
-- gain badges
 - debug evoli evolution
-- pension
+- fossiles
+- plus de shops
+- échanges dans les shops

@@ -39,9 +39,9 @@ export function drawAlliancesInfo(team: PokemonOnBoard[]){
         group.add(counterGraphics)
 
         const nextStep = allianceState.stepReached || allianceState.steps[allianceState.stepReachedN] || allianceState.steps.at(-1)
-        addText(left ? x+10 : x-10, y+2, `${allianceState.numberOfThatTypeInTeam}/${nextStep.numberRequired}`, {
+        group.add(addText(left ? x+10 : x-10, y+2, `${allianceState.numberOfThatTypeInTeam}/${nextStep.numberRequired}`, {
             color: allianceState.stepReached ? "white" : "#AAAAAA", strokeThickness: 2, stroke: "black"
-        }).setOrigin(left ? 0 : 1, 0.5)
+        }).setOrigin(left ? 0 : 1, 0.5))
 
         const typeSprite = game.add.sprite(x, y+4, "icons16x16", allianceState.type.frameIndex)
         group.add(typeSprite)

@@ -31,7 +31,7 @@ export const CHEN: () => Promise<any> = () => {
         gameState.dialogStates.chen = CHEN_DIALOG_STATE.end
         return startDialog([
             `${gameState.player.team[0].entry.name} ? Excellent choix !`,
-            "Ton Pokémon te protégera des Pokémons sauvages.",
+            "Ton Pokémon te protégera des Pokémon sauvages.",
             "Mais tout seul il ne sera pas de taille face aux champions d'arène!",
             "Il te faudra capturer des Pokémon sauvages pour composer une équipe.",
             "Chaque espèce de Pokémon a ses forces et faiblesses. N'oublie pas ça:",

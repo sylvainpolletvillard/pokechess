@@ -1,4 +1,4 @@
-import {DialogLine} from "./dialog";
+import {Dialog, DialogLine} from "./dialog";
 
 export interface Trainer {
     ref: string;
@@ -6,7 +6,7 @@ export interface Trainer {
     frameIndex: number,
     introFrameIndex: number | null,
     dialogs: {
-        start: DialogLine[],
-        [other: string]: DialogLine[]
+        start: DialogLine[] | (() => DialogLine[]),
+        [other: string]: DialogLine[] | (() => DialogLine[])
     }
 }

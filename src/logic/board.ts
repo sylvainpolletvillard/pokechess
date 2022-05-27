@@ -29,6 +29,7 @@ import { gainXP } from "./fight";
 import { playSound } from "./audio";
 import { AllianceState } from "../data/alliances";
 import { PokemonType } from "../data/types";
+import { addToPension, removeFromPension } from "./pension";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -97,7 +98,7 @@ export function drawGUI(game: GameScene){
 }
 
 export function drawPokemonsOnBoard(game: GameScene){
-    if([RoomType.ARENA, RoomType.WILD, RoomType.TUTORIAL].includes(gameState.currentRoom.type)){
+    if([RoomType.ARENA, RoomType.WILD, RoomType.TUTORIAL, RoomType.PENSION].includes(gameState.currentRoom.type)){
         for (let pokemon of gameState.player.team) {
             const sprite = makePokemonSprite(pokemon, game)
             sprite.setAlpha(0.5)
@@ -258,7 +259,7 @@ export async function capturePokemon(
 export function drawGrid(){
     const game = gameState.activeScene as GameScene
     const grid = game.add.graphics();
-    let opacity = gameState.currentRoom.type === RoomType.SAFARI ? 0 : 0.1
+    let opacity = [RoomType.SAFARI, RoomType.PENSION].includes(gameState.currentRoom.type) ? 0 : 0.1
     game.objects.set("grid", grid);
     grid.setDepth(Z.GRID);
     grid.lineStyle(1, 0x000000, opacity);
@@ -333,12 +334,12 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: GameScene){
         && (gameState.activeMenu == null || gameState.activeMenu?.ref == "box")){
 
         if(pokemonOnTile.owner === OWNER_PLAYER
-            || [RoomType.WILD, RoomType.ARENA, RoomType.TUTORIAL, RoomType.SAFARI].includes(gameState.currentRoom.type)            
+            || [RoomType.WILD, RoomType.ARENA, RoomType.TUTORIAL, RoomType.SAFARI, RoomType.PENSION].includes(gameState.currentRoom.type)            
             || gameState.stage === GameStage.FIGHT){
             displayPokemonInfo(pokemonOnTile)
         }
 
-        if([RoomType.WILD, RoomType.TUTORIAL, RoomType.SAFARI].includes(gameState.currentRoom.type)
+        if([RoomType.WILD, RoomType.TUTORIAL, RoomType.SAFARI, RoomType.PENSION].includes(gameState.currentRoom.type)
         && pokemonOnTile.owner === NO_OWNER
         && gameState.activeMenu == null
         && (gameState.stage === GameStage.PLACEMENT || gameState.stage === GameStage.CAPTURE)){
@@ -372,10 +373,24 @@ export function dropPokemonOnBoard(sprite: Phaser.GameObjects.Sprite, x:number, 
     if(!(pokemon instanceof PokemonOnBoard)) {
         // dropped from box to board
         pokemonOnBoard = new PokemonOnBoard(pokemon, x, y)
-        addToTeam(pokemonOnBoard)
+        if(gameState.currentRoom.type === RoomType.PENSION) addToPension(pokemonOnBoard)
+        else addToTeam(pokemonOnBoard)
     } else {
         // moved position on board
         pokemonOnBoard = pokemon
+        if(gameState.currentRoom.type === RoomType.PENSION){
+            if(y<4){
+                removeFromTeam(pokemonOnBoard)
+                addToPension(pokemonOnBoard)                
+                sprite.setAlpha(1)
+                sprite.anims.resume()
+            } else {
+                removeFromPension(pokemonOnBoard)
+                addToTeam(pokemonOnBoard)
+                sprite.setAlpha(0.5)
+                sprite.anims.pause()
+            }
+        }
     }
 
     pokemonOnBoard.x = x;
@@ -416,6 +431,7 @@ export function getNumberMaxAllowedOnBoard(){
 }
 
 export function drawTeamSizeCounter(){
+    if([RoomType.PENSION, RoomType.SAFARI].includes(gameState.currentRoom.type)) return;
     const scene = gameState.activeScene as GameScene
     let text = scene.objects.get("teamSizeCounter") as Phaser.GameObjects.Text
     if(text) text.destroy()

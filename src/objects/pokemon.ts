@@ -15,7 +15,6 @@ import {Z} from "../data/depths";
 import {OWNER_PLAYER} from "../data/owners";
 import {updatePokemonBars} from "./pokemonBar";
 import {Buffs, resetBuffs} from "../logic/buffs";
-import { playSound } from "../logic/audio";
 import { PokemonType } from "../data/types";
 import { AllianceState } from "../data/alliances";
 

@@ -10,7 +10,7 @@ export function drawTrainers(game: GameScene){
     game.sprites.set("player", player)
     player.play("trainer_idle");
 
-    if([RoomType.ARENA, RoomType.TUTORIAL].includes(game.state.currentRoom.type)){
+    if([RoomType.ARENA, RoomType.TUTORIAL, RoomType.PENSION].includes(game.state.currentRoom.type)){
         const arena = game.state.currentRoom as RoomArena
         const trainer = game.add.sprite(game.scale.width + 40, 32, "trainer")
             .setDepth(Z.TRAINER)

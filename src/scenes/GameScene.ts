@@ -11,7 +11,7 @@ import {clickEntry, closeMenu} from "../objects/menu";
 import {MyScene} from "./MyScene";
 import {loadFonts} from "../data/fonts";
 import {drawGUI, drawPokemonsOnBoard, getNumberMaxAllowedOnBoard, setupRoomBoard, setupSafariBoard} from "../logic/board";
-import {RoomArena, RoomBoard, RoomType} from "../types/destination";
+import {RoomArena, RoomBoard, RoomPension, RoomType} from "../types/destination";
 import {startMusic} from "../logic/audio";
 import { drawPokeballsCounter } from '../objects/pokeballsCounter';
 import { drawRoomNamePanel } from '../objects/roomNamePanel';
@@ -46,7 +46,7 @@ export default class GameScene extends MyScene {
     setupAnims(this.anims)
     this.drawMap();
     this.drawIntro().then(() => {
-      if(room.type === RoomType.SAFARI){        
+      if(room.type === RoomType.SAFARI || room.type === RoomType.PENSION){        
         gameState.stage = GameStage.CAPTURE
       } else {
         gameState.stage = GameStage.PLACEMENT        
@@ -97,10 +97,10 @@ export default class GameScene extends MyScene {
         })
     }
 
-    if(gameState.currentRoom.type === RoomType.ARENA || gameState.currentRoom.type === RoomType.TUTORIAL){
-        const arena = gameState.currentRoom as RoomArena
-        showTrainerIntro(arena.trainer).then(() => {})
-        return wait(2000).then(() => startDialog(arena.trainer.dialogs.start, { speaker: arena.trainer.ref }))
+    if([RoomType.ARENA, RoomType.TUTORIAL, RoomType.PENSION].includes(gameState.currentRoom.type)){
+        const room = gameState.currentRoom as RoomArena
+        showTrainerIntro(room.trainer)
+        return wait(2000).then(() => startDialog(room.trainer.dialogs.start, { speaker: room.trainer.ref }))
     }
 
     return Promise.resolve()
