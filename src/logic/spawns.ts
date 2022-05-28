@@ -19,7 +19,7 @@ import { getNumberMaxAllowedOnBoard } from "./board";
 export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }): PokemonOnBoard[] {
     const types = Object.keys(typesFactors)
 
-    const numberToSpawn = clamp(getNumberMaxAllowedOnBoard(), 3, 8)
+    const numberToSpawn = clamp(gameState.player.boardAndBox.length, 3, 6)
     
     const sumFactors = Object.values(typesFactors).reduce((a,b) => a+b, 0)
 
@@ -56,7 +56,7 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
     const team: PokemonOnBoard[] = []
 
     const numberToSpawn = Math.min( 
-        clamp(getNumberMaxAllowedOnBoard(), 3, 8 ),
+        clamp(gameState.player.boardAndBox.length, 3, 6),
         positions.length,
         pokemons.length
     )
@@ -86,7 +86,7 @@ export function spawnTrainerTeam(pokemons: PokemonEntry[]): PokemonOnBoard[] {
     const team: PokemonOnBoard[] = []
 
     const numberToSpawn = Math.min(
-        clamp(getNumberMaxAllowedOnBoard(), 2, 8 ),
+        clamp(gameState.player.boardAndBox.length, 2, 6),
         pokemons.length
     )
 

@@ -431,7 +431,7 @@ export function calcXpBoard(){
 }
 
 export function getNumberMaxAllowedOnBoard(){
-    return 2 + gameState.player.badges.length
+    return 6
 }
 
 export function drawTeamSizeCounter(){

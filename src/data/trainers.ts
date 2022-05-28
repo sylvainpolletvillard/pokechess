@@ -31,7 +31,7 @@ export const PIERRE: Trainer = {
                 gameState.receiveBadge(BADGE_ROCHE);
                 return `C'est un Badge officiel de la Ligue Pokémon !` 
             },
-            `Il te permet de contrôler un Pokémon de plus dans ton équipe.`,
+            `Il t'en faudra huit pour pouvoir affronter le Conseil des 4.`,
             `Tu sembles être un Dresseur d'exception !`,
             `Va maintenant à l'Arène d'Azuria pour tester tes capacités.`
         ],
@@ -58,9 +58,8 @@ export const ONDINE: Trainer = {
             `Je te donne le BADGE CASCADE pour m'avoir battue!`,
             () => {
                 gameState.receiveBadge(BADGE_CASCADE);
-                return `Tu vas pouvoir agrandir ton équipe !`
-            },
-            `Il t'ouvre aussi le chemin vers la grotte au nord d'Azuria.` 
+                return `Ce badge t'ouvre le chemin vers la grotte au nord d'Azuria.`
+            }            
         ],
         defeat: [
             `Haha, on dirait que ton équipe a pris l'eau !`,
@@ -121,9 +120,9 @@ export const ERIKA: Trainer = {
             () => {
                 gameState.receiveBadge(BADGE_PRISME);
                 return [
-                    `Chaque badge te permet de contrôler un Pokémon de plus`,
-                    `sur le terrain, tu le savais ?`
-                ]                
+                    `Chaque badge obtenu te fait affronter des Pokémon plus forts.`,
+                    `Tu l'avais remarqué ?`
+                ]
             }
         ],
         defeat: [
@@ -208,14 +207,17 @@ export const AUGUSTE: Trainer = {
             `Salutations. Mon nom est... Auguste !`,
             `Je suis le Champion de l'Arène de Cramois'Île !`,
             `Mes Pokémon flamboyants vont te réduire en cendres !`,
-            `Haha ! Y va bientôt faire très chaud !`
+            `Haha ! Il va bientôt faire très chaud !`
         ],
         victory: [
             `Vlouff ! Je me suis fait vaporiser !`,
             `Tu as gagné le badge Volcan !`,
             () => {
                 gameState.receiveBadge(BADGE_VOLCAN);
-                return `Plus tu possèdes de badges, plus ton équipe sera grande !`
+                return [
+                    `Plus tu possèdes de badges, plus les combats sont coriaces !`,
+                    `C'est le prix à payer pour monter jusqu'à la Ligue !`
+                ]
             }
         ],
         defeat: [`Maintenant tu sais de quel bois je me chauffe !`]
@@ -238,9 +240,11 @@ export const GIOVANNI: Trainer = {
             `En récompense voici le badge Terre !`,
             () => {
                 gameState.receiveBadge(BADGE_TERRE);
-                return `Une fois les 8 badges obtenus, tu pourras accéder à la Ligue Pokémon !`
+                return [
+                    `Une fois les 8 badges obtenus, tu peux te confronter à la Ligue Pokémon.`,
+                    `Tu peux y accéder par la Route Victoire à l'ouest d'ici.`
+                ]
             },
-            `Comme preuve de ta maîtrise comme dresseur Pokémon, voici le badge Terre.`,
             `Je ne suis pas digne d'être le chef de la Team Rocket !`,
             `Ainsi, son existence s'achève avec ma défaite !`,
             `Je vais me retirer, loin, en ermite, pour étudier les Pokémon !`,
@@ -276,7 +280,7 @@ export const HECTOR: Trainer = {
                 .then(() => `Tu verras, il te sera très utile !`)
             },
             `Bien, je vais lever le camp. J'ai fini ce que j'avais à faire ici.`,
-            `Ce coin regorge de Pokémon rares, tu devrais y repasser !`
+            `Ce coin regorge de Pokémon exotiques, tu devrais y repasser !`
         ],
         defeat: [
             `Les Pokémon insecte ont des talents cachés.`,

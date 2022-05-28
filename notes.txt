@@ -1,9 +1,9 @@
 TODO:
 - items
-- maps plateau indigo
-- destination plateau indigo
 - debug evoli evolution
 - fossiles
 - plus de shops
 - échanges dans les shops
+- personnages hall ligue
+- enregistrement records
 - mécanique d'overtime (rage: +50% VIT & ATK, -50% DEF & SOINS)

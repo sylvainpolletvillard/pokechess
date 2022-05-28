@@ -11,7 +11,7 @@ import {clickEntry, closeMenu} from "../objects/menu";
 import {MyScene} from "./MyScene";
 import {loadFonts} from "../data/fonts";
 import {drawGUI, drawPokemonsOnBoard, getNumberMaxAllowedOnBoard, setupRoomBoard, setupSafariBoard} from "../logic/board";
-import {RoomArena, RoomBoard, RoomPension, RoomType} from "../types/destination";
+import {RoomArena, RoomBoard, RoomType} from "../types/destination";
 import {startMusic} from "../logic/audio";
 import { drawPokeballsCounter } from '../objects/pokeballsCounter';
 import { drawRoomNamePanel } from '../objects/roomNamePanel';

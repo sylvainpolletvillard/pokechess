@@ -32,7 +32,8 @@ const ARENE_OLGA: RoomArena = {
     trainer: OLGA,    
     spawnOtherTeam(){
         return [
-            new PokemonOnBoard(new Pokemon(LAMANTINE, OWNER_TRAINER, 54), 1,2),
+            new PokemonOnBoard(new Pokemon(LAMANTINE, OWNER_TRAINER, 54), 0,1),
+            new PokemonOnBoard(new Pokemon(LAMANTINE, OWNER_TRAINER, 54), 6,1),
             new PokemonOnBoard(new Pokemon(CRUSTABRI, OWNER_TRAINER, 53), 3,3),
             new PokemonOnBoard(new Pokemon(FLAGADOSS, OWNER_TRAINER, 54), 4,3),
             new PokemonOnBoard(new Pokemon(LIPPOUTOU, OWNER_TRAINER, 56), 2,3),
@@ -49,11 +50,12 @@ const ARENE_ALDO: RoomArena = {
     trainer: ALDO,    
     spawnOtherTeam(){
         return [
-            new PokemonOnBoard(new Pokemon(ONIX, OWNER_TRAINER, 53), 2,3),
-            new PokemonOnBoard(new Pokemon(COLOSSINGE, OWNER_TRAINER, 56), 4,3),
+            new PokemonOnBoard(new Pokemon(ONIX, OWNER_TRAINER, 53), 0,3),
             new PokemonOnBoard(new Pokemon(TYGNON, OWNER_TRAINER, 55), 1,3),
-            new PokemonOnBoard(new Pokemon(KICKLEE, OWNER_TRAINER, 55), 5,3),
-            new PokemonOnBoard(new Pokemon(MACKOGNEUR, OWNER_TRAINER, 58), 3,3),
+            new PokemonOnBoard(new Pokemon(COLOSSINGE, OWNER_TRAINER, 56), 2,3),
+            new PokemonOnBoard(new Pokemon(MACKOGNEUR, OWNER_TRAINER, 58), 4,3),
+            new PokemonOnBoard(new Pokemon(KICKLEE, OWNER_TRAINER, 55), 5,3),            
+            new PokemonOnBoard(new Pokemon(ONIX, OWNER_TRAINER, 56), 6,3),
         ]
     }
 }
@@ -66,10 +68,11 @@ const ARENE_AGATHA: RoomArena = {
     trainer: AGATHA,    
     spawnOtherTeam(){
         return [
-            new PokemonOnBoard(new Pokemon(ECTOPLASMA, OWNER_TRAINER, 56), 3,2),
-            new PokemonOnBoard(new Pokemon(ARBOK, OWNER_TRAINER, 58), 0,3),
+            new PokemonOnBoard(new Pokemon(ECTOPLASMA, OWNER_TRAINER, 56), 3,3),
+            new PokemonOnBoard(new Pokemon(ARBOK, OWNER_TRAINER, 58), 1,3),
             new PokemonOnBoard(new Pokemon(NOSFERALTO, OWNER_TRAINER, 56), 3,1),
             new PokemonOnBoard(new Pokemon(SPECTRUM, OWNER_TRAINER, 55), 4,2),
+            new PokemonOnBoard(new Pokemon(SPECTRUM, OWNER_TRAINER, 55), 2,2),
             new PokemonOnBoard(new Pokemon(ECTOPLASMA, OWNER_TRAINER, 60), 5,3),
         ]
     }
@@ -83,8 +86,9 @@ const ARENE_PETER: RoomArena = {
     trainer: PETER,    
     spawnOtherTeam(){
         return [
-            new PokemonOnBoard(new Pokemon(LEVIATOR, OWNER_TRAINER, 58), 2,1),
-            new PokemonOnBoard(new Pokemon(PTERA, OWNER_TRAINER, 60), 4,1),
+            new PokemonOnBoard(new Pokemon(LEVIATOR, OWNER_TRAINER, 58), 2,2),
+            new PokemonOnBoard(new Pokemon(PTERA, OWNER_TRAINER, 60), 3,2),
+            new PokemonOnBoard(new Pokemon(LEVIATOR, OWNER_TRAINER, 58), 4,2),
             new PokemonOnBoard(new Pokemon(DRACO, OWNER_TRAINER, 56), 0,0),
             new PokemonOnBoard(new Pokemon(DRACO, OWNER_TRAINER, 56), 6,0),
             new PokemonOnBoard(new Pokemon(DRACOLOSSE, OWNER_TRAINER, 62), 3,1),
