@@ -1,6 +1,6 @@
 import {GameStage, gameState} from "../logic/gamestate";
 import { BADGE_AME, BADGE_CASCADE, BADGE_FOUDRE, BADGE_MARAIS, BADGE_PRISME, BADGE_ROCHE, BADGE_TERRE, BADGE_VOLCAN } from "./badges";
-import {ITEM_FILET, ITEM_PARAPLUIE, ITEM_POKEBALL} from "./items";
+import {ITEM_FILET, ITEM_PARAPLUIE} from "./items";
 import { spawnTutoCaptureTeamStep2 } from "../logic/spawns";
 import { spawnPokemon } from "../logic/board";
 import { sendBackToPokeball } from "../logic/fight";
@@ -9,7 +9,6 @@ import { receiveItem } from "./dialogs/descriptions";
 import {wait} from "../utils/helpers";
 import {Trainer} from "../types/trainer";
 import { startMusic } from "../logic/audio";
-import { DialogLine } from "../types/dialog";
 import { drawPokeballsCounter } from "../objects/pokeballsCounter";
 
 
@@ -332,6 +331,117 @@ export const CHAMPIONS = [
     AUGUSTE,
     SALLY,
     HECTOR
+]
+
+export const OLGA: Trainer = {
+    ref: "olga",
+    name: "Olga",
+    frameIndex: 45,
+    introFrameIndex: null,
+    dialogs: {
+        start: [
+            `Bienvenue à la Ligue Pokémon !`,
+            `Je zuis Olga du Conzeil des 4 !`,
+            `Je zuis la maîtrezze des Pokémon de glaze !`,
+            `Et la glaze... Z'est drop fort !`,
+            `Tes Pokémon zeront à ma merzi une fois gelés !`,
+            `Ach ! Ach ! Ach ! Z'est parti !`,            
+        ],
+        victory: [
+            `Tu es fort. Z'est bien.`,
+            `Mais la Ligue Pokémon te rézerve d'autre zurprizes !`
+        ],
+        defeat: [
+            `Comment as-tu ozé venir ici ?`,
+        ]
+    }
+}
+
+export const ALDO: Trainer = {
+    ref: "aldo",
+    name: "Aldo",
+    frameIndex: 46,
+    introFrameIndex: null,  
+    dialogs: {
+        start: [
+            `Mon nom est Aldo du Conseil des 4 !`,
+            `Ma passion à moi et à mes Pokémon, c'est la muscu !`,
+            `Pour frimer sur la plage ou pour boxer les nabots,`,
+            `rien de tel qu'un corps de rêve !`,
+            `Joueur, ton équipe...`,
+            `J'vais en faire du yaourt ! A table !`,            
+        ],
+        victory: [
+            `Bien joué, p'tit ! La prochaine t'attend !`,            
+        ],
+        defeat: [
+            `Vlan ! Dans les dents !`,
+        ]
+    }
+}
+
+export const AGATHA: Trainer = {
+    ref: "agatha",
+    name: "Agatha",
+    frameIndex: 47,
+    introFrameIndex: null,  
+    dialogs: {
+        start: [
+            `Gnnn... Bonjour mon tout petit.`,
+            `Je suis Agatha du Conseil des 4 !`,
+            `Chen mise de grands espoirs sur toi, fiston !`,
+            `Sais-tu que ce vieux machin était jadis un beau garçon ?`,
+            `Enfin... Il y a très longtemps !`,
+            `Il veut juste frimer avec son Pokédex !`,            
+            `Mais c'est débile ! Les Pokémon servent à combattre !`,
+            `Je vais te montrer comment les grands Dresseurs combattent !`
+        ],
+        victory: [
+            `Mmmm... Je vois pourquoi le vieux Chen t'apprécie autant !`,
+            `Mes ombres ont perdu. Tu peux passer.`,
+        ],
+        defeat: [
+            `Tu as du talent, mais c'est insuffisant !`,
+        ]
+    }
+}
+
+export const PETER: Trainer = {
+    ref: "peter",
+    name: "Peter",
+    frameIndex: 48,
+    introFrameIndex: null,  
+    dialogs: {
+        start: [
+            `Ah ! Enfin... J'ai entendu parler de toi !`,
+            `Je règne sur le Conseil des 4 !`,
+            `Mon nom est Peter le Dresseur de Dragons !`,
+            `Les dragons sont des Pokémon mystiques !`,
+            `Les capturer et les entraîner est difficile mais leurs pouvoirs sont supérieurs !`,
+            `Ils sont presque invincibles !`,            
+            `Le glas de la défaite et de la honte sonne pour toi...`,
+            `L'entends-tu ?`
+        ],
+        victory: [
+            `Comment mes dragons ont-il pu succomber à tes attaques?`,
+            `Tu es désormais le Maître de la Ligue Pokémon !`,
+            `Enfin... Pas tout à fait.`,
+            `Une épreuve doit encore t'être imposée...`,
+            `Un autre grand Dresseur t'attend.`,
+            `Il a vaincu le Conseil des 4 avant toi !`,
+            `C'est le vrai Maître de la Ligue Pokémon !`
+        ],
+        defeat: [
+            `Je n'abandonne jamais. Et toi ?`,
+        ]
+    }
+}
+
+export const CHAMPIONS_LIGUE = [
+    OLGA,
+    ALDO,
+    AGATHA,
+    PETER
 ]
 
 export const SCIENTIFIQUE_TUTO_DIALOG_STATE = {

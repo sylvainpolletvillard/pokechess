@@ -14,7 +14,7 @@ import {pickStarters} from "./starters";
 import {BOURG_PALETTE} from "../data/destinations/bourg_palette";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
 import { Badge } from "../types/badge";
-import { CHAMPIONS, SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
+import { CHAMPIONS, CHAMPIONS_LIGUE, SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 import { checkProjectilesImpact } from "./projectile";
 import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
 import { removeAllAlterations, updateAlterations } from "./alteration";
@@ -294,8 +294,13 @@ export class GameState {
                 : arena.trainer.dialogs.defeat
             , { speaker: arena.trainer.ref })
             if(gameState.currentRoom.type === RoomType.ARENA){
-                let nbPokeballsReceived = hasWon ? CHAMPIONS.includes(arena.trainer) ? 3 : 2 : 1
-                await receiveItem(ITEM_POKEBALL, nbPokeballsReceived, false)
+                let nbPokeballsReceived = 1
+                if(hasWon){
+                    if(CHAMPIONS.includes(arena.trainer)) nbPokeballsReceived = 3
+                    else if(CHAMPIONS_LIGUE.includes(arena.trainer)) nbPokeballsReceived = 0
+                    else nbPokeballsReceived = 2
+                }                
+                if(nbPokeballsReceived > 0) await receiveItem(ITEM_POKEBALL, nbPokeballsReceived, false)
             }
         }
 

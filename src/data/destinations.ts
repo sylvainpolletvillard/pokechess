@@ -28,6 +28,8 @@ import {PARMANIE} from "./destinations/parmanie";
 import {PARC_SAFARI} from "./destinations/parc_safari";
 import {ILES_ECUME} from "./destinations/iles_ecume";
 import {CHAMPS_VERDOYANTS} from "./destinations/champs_verdoyants";
+import { ROUTE_VICTOIRE_ENTREE, ROUTE_VICTOIRE_SORTIE } from "./destinations/route_victoire";
+import { LIGUE } from "./destinations/ligue";
 
 
 export const DESTINATIONS: { [ref: string]: Destination } = {
@@ -63,6 +65,9 @@ export const DESTINATIONS: { [ref: string]: Destination } = {
     ILES_ECUME,
     CRAMOISILE,
     MONT_BRAISE,
+    ROUTE_VICTOIRE_ENTREE,
+    ROUTE_VICTOIRE_SORTIE,
+    LIGUE
 }
 
 export const FAST_TRAVEL_DESTINATIONS = [
@@ -71,6 +76,8 @@ export const FAST_TRAVEL_DESTINATIONS = [
     OCEANE_AZURIA,
     CAVE_TAUPIQUEUR_OUEST,
     CAVE_TAUPIQUEUR_EST,
+    ROUTE_VICTOIRE_ENTREE,
+    ROUTE_VICTOIRE_SORTIE
 ]
 
 export const FAST_TRAVELS: Map<Destination, Destination> = new Map([
@@ -78,7 +85,9 @@ export const FAST_TRAVELS: Map<Destination, Destination> = new Map([
     [OCEANE_CARMIN, OCEANE_CRAMOISILE],
     [OCEANE_CRAMOISILE, OCEANE_AZURIA],
     [CAVE_TAUPIQUEUR_OUEST, CAVE_TAUPIQUEUR_EST],
-    [CAVE_TAUPIQUEUR_EST, CAVE_TAUPIQUEUR_OUEST]
+    [CAVE_TAUPIQUEUR_EST, CAVE_TAUPIQUEUR_OUEST],
+    [ROUTE_VICTOIRE_ENTREE, ROUTE_VICTOIRE_SORTIE],
+    [ROUTE_VICTOIRE_SORTIE, ROUTE_VICTOIRE_ENTREE]
 ])
 
 export const INTERSECTIONS: Intersection[] = [

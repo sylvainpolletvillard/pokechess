@@ -39,6 +39,7 @@ export interface Destination {
     shopId?: number
     preload?: (scene: MyScene) => void
     locked?: () => boolean
+    customRoomOrder?: () => string[]
 }
 
 export interface RoomConfig {

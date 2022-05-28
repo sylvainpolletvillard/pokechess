@@ -10,8 +10,8 @@ export const VAMPIRISME: HitSkill = {
     behavior: SkillBehavior.DIRECT_HIT,
     hitDelay: 150,
     chargeDelta: 0,
-    power: 40,
+    power: 35,
     rotateSprite: true,
-    selfAlteration: { type: AlterationType.SOIN, stacks: 10 },
+    selfAlteration: { type: AlterationType.SOIN, stacks: 5 },
     attackRange: 1
 }

@@ -131,7 +131,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             function getNumberOfOpponentsTargetingMe(){                
                 return pokemon.opponents.filter(p => p.nextAction.target === pokemon).length                
             }
-            const factors = [0.02, 0.05, 0.08]
+            const factors = [0.05, 0.1, 0.2]
             pokemon.buffs.attack.push(() => getNumberOfOpponentsTargetingMe() * factors[allianceState.stepReachedN-1])
             pokemon.buffs.defense.push(() => getNumberOfOpponentsTargetingMe() * factors[allianceState.stepReachedN-1])
         }
@@ -145,11 +145,12 @@ export function applyBuffs(pokemon: PokemonOnBoard){
                     [i-1, j], [i+1, j],
                     [i-1, j+1], [i, j+1], [i+1, j+1]
                 ].filter(([i,j]) => isOnBoard(i,j))
-                const affected = tiles.map(([i,j]) => getPokemonOnTile(i,j)).filter(p => p != null && p.owner !== OWNER_PLAYER) as PokemonOnBoard[]
+                const affected = tiles.map(([i,j]) => getPokemonOnTile(i,j)).filter(p => p != null && p.owner !== pokemon.owner) as PokemonOnBoard[]
                 affected.forEach(opponent => {
                     const factor = [-0.2, -0.3, -0.4]
                     const buff = () => factor[allianceState.stepReachedN] ?? 0
                     opponent.buffs.speed.push(buff)
+                    console.log(`DEBUFF GLACE ${allianceState.stepReachedN} sur ${opponent.entry.name}`)
                     setTimeout(() => removeInArray(opponent.buffs.speed, buff), 1000)
                 })
             })

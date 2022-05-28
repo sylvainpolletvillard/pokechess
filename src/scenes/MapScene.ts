@@ -294,7 +294,8 @@ export default class MapScene extends MyScene {
         Object.entries(paths).forEach(([ref, path]) => {
             if(this.destinationReached != null && this.destinationReached  !== this.origin && ref !== this.origin.ref) return; // can only go back
             const dir = getDirectionFromDelta(...path[0])
-            if(dir != null){ this.directions[dir] = ref; }
+            const destination = DESTINATIONS[ref]
+            if(dir != null && (!destination.locked || !destination.locked())){ this.directions[dir] = ref; }
         })
         Object.entries(this.directions).forEach(([dir, dest]) => {
             if(dest == null || !this.player) return;

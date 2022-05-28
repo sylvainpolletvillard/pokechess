@@ -20,6 +20,7 @@ export class Door {
         this.sprite.body.setSize(door.width*MAP_SCALING, door.height*MAP_SCALING, false)
         this.sprite.setData("type", "door")
         this.sprite.setData("action", () => {
+            if(!door.properties.to) return; // one-way doors
             playSound("door")
             scene.disableTriggers = true;  // to avoid triggers while changing level
             if(door.properties.to === "exit" && scene.level.canExit() === false){

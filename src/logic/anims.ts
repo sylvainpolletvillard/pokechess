@@ -212,7 +212,8 @@ export function setupMapAnims(anims: Phaser.Animations.AnimationManager, debug?:
         ["map_direction_arrow", [20]],
         ["gift", [21]],
         ["safari", [22]],
-        ["cave_entrance",[23]]
+        ["cave_entrance",[23]],
+        ["icon_ligue", [24]]
     ])
 }
 

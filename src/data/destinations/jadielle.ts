@@ -84,7 +84,8 @@ export const JADIELLE: Destination = {
     nextDestinations: {
         BOURG_PALETTE: [[0,3]],
         FORET_JADE: [[0, -3]],
-        CAVE_TAUPIQUEUR_OUEST: [[2,0],[0,-2]]
+        CAVE_TAUPIQUEUR_OUEST: [[2,0],[0,-2]],
+        ROUTE_VICTOIRE_ENTREE: [[-3,0],[0,-7]]
     },
     coordinates: [5*16 -8, 12*16 -8],
     type: DestinationType.ARENA,

@@ -9,3 +9,13 @@ export const SHOP_JADIELLE: LevelConfig = {
 
     }
 }
+
+export const SHOP_LIGUE: LevelConfig = {
+    title: "Hall de la Ligue",
+    tilemap: "shop_ligue",
+    tilesets: ["tileset_inside"],
+    startAt: "enter",
+    init() {
+
+    }
+}

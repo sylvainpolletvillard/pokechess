@@ -16,6 +16,7 @@ export function enterDestination(destination: Destination){
 }
 
 export function getRoomOrder(destination: Destination): string[] {
+    if(destination.customRoomOrder) return destination.customRoomOrder()
     /*
     Dans les villes, le joueur passe au magasin avant d’affronter le Maître d’arène.  S’il a déjà vaincu le maître, il affronte un dresseur à la place.
     Hors des villes, le joueur rencontre des Pokémon sauvages qu’il peut capturer. S’il a déjà capturé à cet emplacement au tour précédent, il affronte un dresseur à la place.
