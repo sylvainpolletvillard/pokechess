@@ -8,7 +8,7 @@ import { LIPPOUTOU } from "../pokemons/lippoutou";
 import { CRUSTABRI } from "../pokemons/crustabri";
 import { FLAGADOSS } from "../pokemons/flagadoss";
 import { LOKHLASS } from "../pokemons/lokhlass";
-import { AGATHA, ALDO, OLGA, PETER } from "../trainers";
+import { AGATHA, ALDO, OLGA, PETER, RIVAL } from "../trainers";
 import { KICKLEE } from "../pokemons/kicklee";
 import { ONIX } from "../pokemons/onix";
 import { TYGNON } from "../pokemons/tygnon";
@@ -23,6 +23,12 @@ import { LEVIATOR } from "../pokemons/leviator";
 import { PTERA } from "../pokemons/ptera";
 import { SHOP_LIGUE } from "../levels/shops";
 import { COLOSSINGE } from "../pokemons/colossinge";
+import { SABLAIREAU } from "../pokemons/sablaireau";
+import { ALAKAZAM } from "../pokemons/alakazam";
+import { NOADKOKO } from "../pokemons/noadkoko";
+import { FEUNARD } from "../pokemons/feunard";
+import { MAGNETON } from "../pokemons/magneton";
+import { AQUALI } from "../pokemons/aquali";
 
 const ARENE_OLGA: RoomArena = {
     type: RoomType.ARENA,
@@ -96,6 +102,26 @@ const ARENE_PETER: RoomArena = {
     }
 }
 
+const ARENE_RIVAL: RoomArena = {
+    type: RoomType.ARENA,
+    map: "arene_ligue5",
+    music: "music_route_victoire",
+    name: "Ligue Indigo - Dernier Étage",
+    trainer: RIVAL,    
+    spawnOtherTeam(){
+        //TODO: adapter la team en fonction du starter choisi
+        //https://www.pokepedia.fr/Blue_(jeux_vidéo)/Équipes_dans_Pokémon_Jaune
+        return [
+            new PokemonOnBoard(new Pokemon(SABLAIREAU, OWNER_TRAINER, 61), 0,3),
+            new PokemonOnBoard(new Pokemon(ALAKAZAM, OWNER_TRAINER, 59), 1,1),
+            new PokemonOnBoard(new Pokemon(MAGNETON, OWNER_TRAINER, 63), 3,3),
+            new PokemonOnBoard(new Pokemon(FEUNARD, OWNER_TRAINER, 61), 5,2),
+            new PokemonOnBoard(new Pokemon(NOADKOKO, OWNER_TRAINER, 61), 6,2),
+            new PokemonOnBoard(new Pokemon(AQUALI, OWNER_TRAINER, 65), 4,1),
+        ]
+    }
+}
+
 export const LIGUE: Destination = {
     ref: "LIGUE",
     name: "Ligue Indigo",
@@ -111,15 +137,17 @@ export const LIGUE: Destination = {
         aldo: ARENE_ALDO,
         agatha: ARENE_AGATHA,
         peter: ARENE_PETER,
+        rival: ARENE_RIVAL,
         shop: {
             type: RoomType.FREEWALK,
             name: "Hall de la Ligue",
             music: "music_route_victoire",
-            level: SHOP_LIGUE
+            level: SHOP_LIGUE,
+            //endroom: END_ROOM
         }
     },
     customRoomOrder(){
-        return ["shop","olga","aldo","agatha","peter"]
+        return ["shop","olga","aldo","agatha","peter", "rival", "endroom"]
     },
     shopId: 10,
     preload(scene: MyScene){
@@ -128,6 +156,7 @@ export const LIGUE: Destination = {
         scene.load.tilemapTiledJSON('arene_ligue2', 'assets/maps/arene_ligue2.json');
         scene.load.tilemapTiledJSON('arene_ligue3', 'assets/maps/arene_ligue3.json');
         scene.load.tilemapTiledJSON('arene_ligue4', 'assets/maps/arene_ligue4.json');
+        scene.load.tilemapTiledJSON('arene_ligue5', 'assets/maps/arene_ligue5.json');
         preloadMusic("music_route_victoire", "assets/audio/music/22 The Last Road.mp3");
     }
 }

@@ -10,6 +10,7 @@ import TestAnimsScene from "./scenes/TestAnims";
 import MapScene from "./scenes/MapScene";
 import RoomScene from "./scenes/RoomScene";
 import LoadingScene from "./scenes/LoadingScene";
+import GameOverScene from "./scenes/GameOverScene";
 
 
 export class Game extends Phaser.Game {
@@ -45,7 +46,7 @@ function startGame(){
                 debug: false
             }
         },
-        scene: [LoadingScene, RoomScene, MapScene, GameScene, TestAnimsScene],
+        scene: [LoadingScene, RoomScene, MapScene, GameScene, GameOverScene, TestAnimsScene],
         plugins: {
             global: [
                 NineSlicePlugin.DefaultCfg,

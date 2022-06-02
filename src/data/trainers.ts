@@ -372,8 +372,7 @@ export const ALDO: Trainer = {
             `Ma passion à moi et à mes Pokémon, c'est la muscu !`,
             `Pour frimer sur la plage ou pour boxer les nabots,`,
             `rien de tel qu'un corps de rêve !`,
-            `Joueur, ton équipe...`,
-            `J'vais en faire du yaourt ! A table !`,            
+            `Ton équipe... J'vais en faire du yaourt ! A table !`,            
         ],
         victory: [
             `Bien joué, p'tit ! La prochaine t'attend !`,            
@@ -441,11 +440,40 @@ export const PETER: Trainer = {
     }
 }
 
+export const RIVAL: Trainer = {
+    ref: "rival",
+    name: "Blue",
+    frameIndex: 49,
+    introFrameIndex: null,  
+    dialogs: {
+        start: [
+            `Salut minable. Je t'attends depuis une bonne plombe !`,
+            `Ton devoir en tant que rival est d'entraîner mes Pokémon.`,
+            `En améliorant mon Pokédex, j'ai recherché les Pokémon surpuissants!`,
+            `J'ai créé l'équipe ultime, efficace contre tous les types de Pokémon!`,
+            `Ça t'épate, hein ?`,
+            `Je suis le Maître! Tu sais c'que ça veut dire?`,
+            `Je suis le dresseur le plus puissant du monde! Yaaa!`
+        ],
+        victory: [
+            `Qu... Comm... Hein? Moi? Pourquoi? WHAAAAAAAAAAA!`,
+            `J'ai entraîné mes Pokémon à la perfection... Et zut alors!`,
+            `Tu es le nouveau Maître! Alors ça... Ça me la coupe`
+        ],
+        defeat: [
+            `Tu m'as amusé un peu !`,
+            `T'es vraiment un minable !`,
+            `Mais je crois que tu commences à le savoir, minable!`
+        ]
+    }
+}
+
 export const CHAMPIONS_LIGUE = [
     OLGA,
     ALDO,
     AGATHA,
-    PETER
+    PETER,
+    RIVAL
 ]
 
 export const SCIENTIFIQUE_TUTO_DIALOG_STATE = {

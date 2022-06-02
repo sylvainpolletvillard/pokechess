@@ -45,3 +45,25 @@ export const CHEN: () => Promise<any> = () => {
         ], { speaker: "chen" })
     }
 }
+
+export const CHEN_END_DIALOG_STATE = {
+    hello: 0,
+    after_hello: 1
+}
+
+export const CHEN_END: () => Promise<any> = () => {
+    if(gameState.dialogStates.chen === CHEN_DIALOG_STATE.after_hello){
+        return startDialog([
+            "Vas-y, enregistre ton équipe sur l'ordinateur pour la postérité !"
+        ], { speaker: "chen" })
+    } else {
+        return startDialog([
+            `Hum-hum! Félicitations !`,
+            `Cet étage est réservé aux célébrités Pokémon !`,
+            `Les Champions de la Ligue sont consacrés ici !`,
+            `Leurs Pokémon sont enregistrés en tant que Célébrités !`,
+            `Long fut ton périple jusqu'à la victoire ! Encore bravo.`
+        ], { speaker: "chen" })
+        .then(() => { gameState.dialogStates.chen = CHEN_DIALOG_STATE.after_hello})
+    }
+}

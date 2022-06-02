@@ -53,6 +53,6 @@ export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) =>
 
     starter1: pickStarter(0),
     starter2: pickStarter(1),
-    starter3: pickStarter(2),
+    starter3: pickStarter(2)
 
 }
