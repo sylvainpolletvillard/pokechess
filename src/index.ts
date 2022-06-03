@@ -5,6 +5,7 @@ import { WebFontLoaderPlugin } from 'phaser3-webfont-loader/src/webfont-loader';
 import {startDebugAnims} from "./debug_anims";
 import {GameState, gameState} from "./logic/gamestate";
 
+import MenuScene from './scenes/MenuScene';
 import GameScene from './scenes/GameScene';
 import TestAnimsScene from "./scenes/TestAnims";
 import MapScene from "./scenes/MapScene";
@@ -46,7 +47,7 @@ function startGame(){
                 debug: false
             }
         },
-        scene: [LoadingScene, RoomScene, MapScene, GameScene, GameOverScene, TestAnimsScene],
+        scene: [LoadingScene, MenuScene, RoomScene, MapScene, GameScene, GameOverScene, TestAnimsScene],
         plugins: {
             global: [
                 NineSlicePlugin.DefaultCfg,

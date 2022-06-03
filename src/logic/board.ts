@@ -461,12 +461,11 @@ export function drawTeamSizeCounter(){
 
     if(numberOnBoard > max){
         text.setAlpha(0.3)
+        text.setVisible(true)
         text.setTint(0xff0000)
     } else {
         text.setTint(0xffffff)
-
-        if(numberOnBoard === max){ text.setAlpha(0) }
-        else { text.setAlpha(0.15) }
+        if(numberOnBoard <= max){ text.setVisible(false) }
     }
     updateFightButton()
 }

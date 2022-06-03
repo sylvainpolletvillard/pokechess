@@ -33,7 +33,7 @@ export default class LoadingScene extends MyScene {
 		this.load.on('complete', () => {
 			progressBar.destroy();
 			progressBox.destroy();
-			gameState.initGame()
+			this.scene.start("MenuScene")
 		});
 
 		// load title screen

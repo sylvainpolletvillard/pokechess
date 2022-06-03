@@ -4,6 +4,7 @@ import { Pokemon } from "../data/pokemons";
 import { loadSprites } from "../data/sprites";
 import { loadSpritesheets } from "../data/spritesheets";
 import { gameState } from "../logic/gamestate";
+import { setupInputs } from "../logic/inputs";
 import { wait } from "../utils/helpers";
 import { addText } from "../utils/text";
 import {MyScene} from "./MyScene";
@@ -21,6 +22,7 @@ export default class GameOverScene extends MyScene {
 
   create(){
     gameState.activeScene = this
+    setupInputs(this)
     this.displayEndScreen();
   }
 
@@ -49,7 +51,7 @@ export default class GameOverScene extends MyScene {
 
     await wait(18000);    
     this.displayPlayerResume()
-    await wait(1000)
+    await wait(10000)
     this.canInteract = true
   }
 

@@ -3,6 +3,7 @@ import { getPokedexIndex, getPokemonCry, POKEMONS } from "./pokemons";
 export function loadAudio(scene: Phaser.Scene) {
     /* MUSIC */
 
+    scene.load.audio("music_opening", ["assets/audio/music/01 Opening Movie (Red, Green & Blue Version).mp3"]);
     scene.load.audio("music_overworld", ["assets/audio/music/02 Opening (part 2).mp3"]);
     scene.load.audio("music_labo_chen", ["assets/audio/music/32 Oak Research Lab.mp3"]);    
     scene.load.audio("music_guide", ["assets/audio/music/16 Guide.mp3"])

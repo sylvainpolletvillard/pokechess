@@ -53,8 +53,6 @@ export default class GameScene extends MyScene {
       }
       drawGUI(this)
       drawPokemonsOnBoard(this)
-      //TEMP
-      this.scene.start("GameOverScene")
     });
 
     if(room.type === RoomType.SAFARI){
