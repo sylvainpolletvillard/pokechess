@@ -1,5 +1,7 @@
 TODO:
 - items
+- perdre à la ligue ne fait pas quitter le niveau
+- cadeaux de maman
 - debug evoli evolution
 - fossiles
 - plus de shops

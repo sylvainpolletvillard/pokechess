@@ -35,18 +35,30 @@ export function startMusic(name: string, params: Phaser.Types.Sound.SoundConfig 
     })
 }
 
-export function pauseMusicAndPlaySound(name: string){    
+let lastSoundPlayed: Phaser.Sound.BaseSound | null = null;
+
+export function pauseMusicAndPlaySound(name: string){
     gameState.music?.pause()
-    playSound(name).then(() => gameState.music?.resume())
+    if(lastSoundPlayed != null) lastSoundPlayed.stop()
+    const { sound, waitEnd } = playSound(name)    
+    lastSoundPlayed = sound
+
+    waitEnd.then(() => {
+        gameState.music?.resume()
+        lastSoundPlayed = null
+    })
 }
 
-export function playSound(name: string, params: Phaser.Types.Sound.SoundConfig = {}): Promise<void> {
-    return new Promise(resolve => {
-        params = Object.assign({ volume: SFX_VOLUME }, params)
-        console.log("playing sound "+name)
+export function playSound(name: string, params: Phaser.Types.Sound.SoundConfig = {}): { sound: Phaser.Sound.BaseSound, waitEnd: Promise<void> } {
+    params = Object.assign({ volume: SFX_VOLUME }, params)
+    console.log("playing sound "+name)
 
-        const sound = gameState.activeScene?.sound.add(name, params)!;
-        sound.play();
-        sound.on(Phaser.Sound.Events.COMPLETE, () => resolve())
-    })
+    const sound = gameState.activeScene?.sound.add(name, params)!;
+    sound.play();
+    return {
+        sound,
+        waitEnd: new Promise(resolve => {        
+            sound.on(Phaser.Sound.Events.COMPLETE, () => resolve())
+        })
+    }
 }

@@ -132,9 +132,12 @@ export function attackTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
         delay: attackSpeed,
         loop: true,
         callback: () => {
-            if(pokemon.pv === 0) return // Pokémon died while preparing attack
-            if(!target.alive) return pokemon.resetAction() //target already dead by another attack
-            if(!canPokemonAttack(pokemon, target)) return pokemon.resetAction() // target moved away or blocking alteration
+            if(!pokemon.alive) return // Pokémon died while preparing attack
+            if(!target.alive  // target already dead by another attack
+            || target.untargettable  // target can no longer be attacked (frozen, flying...)
+            || !canPokemonAttack(pokemon, target)){ // target moved away or blocking alteration
+                return pokemon.resetAction()
+            }
 
             pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
             pokemon.pp = Math.min(pokemon.entry.maxPP, pokemon.pp + 1);

@@ -123,7 +123,7 @@ export const INTERSECTIONS: Intersection[] = [
         coordinates: [264,168],
         nextDestinations: {
             CAVE_TAUPIQUEUR_EST: [[0,-1]],
-            FALAISE: [[2, 0]],
+            FALAISES: [[2, 0]],
             CARMIN: [[-3,0]]
         }
     },

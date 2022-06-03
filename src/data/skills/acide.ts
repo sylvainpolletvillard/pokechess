@@ -20,5 +20,5 @@ export const ACIDE: AOESkill = {
     effect: EFFECTS.ACIDE,
     hitDelay: 500,
     hitEffect: EFFECTS.ACIDE_HIT,
-    hitAlteration: { type: AlterationType.ACIDE, stacks: 150 }
+    hitAlteration: { type: AlterationType.ACIDE, stacks: 100 }
 }

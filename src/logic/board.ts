@@ -156,7 +156,7 @@ export function launchPokeball(player: number, pokeballType: string, x:number, y
             playerY = 40;
         }
 
-        shouldPlaySound && playSound("ball_launch")
+        if(shouldPlaySound) playSound("ball_launch")
         const pokeball = game.add.sprite(playerX, playerY, "pokeball");
         pokeball.play(`${pokeballType}_launch`)
         pokeball.setRotation(Math.random() * Math.PI * 2);

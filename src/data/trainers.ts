@@ -26,14 +26,13 @@ export const PIERRE: Trainer = {
         ],
         victory: [
             `Hmm... Beau combat.`,
+            `Tu sembles être un Dresseur d'exception !`,
             `En reconnaissance de ta victoire, voici le BADGE ROCHE !`,
             () => {
                 gameState.receiveBadge(BADGE_ROCHE);
                 return `C'est un Badge officiel de la Ligue Pokémon !` 
             },
-            `Il t'en faudra huit pour pouvoir affronter le Conseil des 4.`,
-            `Tu sembles être un Dresseur d'exception !`,
-            `Va maintenant à l'Arène d'Azuria pour tester tes capacités.`
+            `Il t'en faudra huit pour pouvoir affronter le Conseil des 4.`
         ],
         defeat: [
             `Tes Pokémon n'ont pas pu passer ma défense de pierre...`,
