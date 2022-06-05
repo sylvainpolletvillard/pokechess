@@ -252,6 +252,7 @@ export async function capturePokemon(
             addToBox(pokemon)
         }
 
+        gameState.registerPokemonCaptured(pokemon)
         if(gameState.board.otherTeam.length === 0) await gameState.endCapture()
     })
 }

@@ -18,7 +18,7 @@ import { drawRoomNamePanel } from '../objects/roomNamePanel';
 import { drawTrainers, showTrainerIntro } from '../objects/trainers';
 import { startDialog } from "../logic/dialog";
 import { randomInt, wait } from "../utils/helpers";
-import { CHAMPIONS } from "../data/trainers";
+import { CHAMPIONS, CHAMPIONS_LIGUE } from "../data/trainers";
 
 export default class GameScene extends MyScene {
   gameSpeed: number = 100;
@@ -62,6 +62,7 @@ export default class GameScene extends MyScene {
     }
     
     startMusic(room.music)
+    gameState.registerPokemonsSeen(gameState.board.otherTeam)
   }
 
   update(){
@@ -124,8 +125,11 @@ export default class GameScene extends MyScene {
       wait(500).then(() => player && player.play("trainer_launch"));
       showCenterText("text_fight", this)
       if(gameState.currentRoom.type === RoomType.WILD) startMusic("music_battle_wild")
-      else if(CHAMPIONS.includes((gameState.currentRoom as RoomArena).trainer)) startMusic("music_battle_champion")
-      else startMusic("music_battle_trainer")
+      else {
+        const trainer = (gameState.currentRoom as RoomArena).trainer
+        if(CHAMPIONS.includes(trainer) || CHAMPIONS_LIGUE.includes(trainer)) startMusic("music_battle_champion")
+        else startMusic("music_battle_trainer")
+      }
     }
   }
 

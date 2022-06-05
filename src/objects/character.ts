@@ -62,7 +62,7 @@ export class Character {
 		switch(this.name) {
 			case "player": return 0;
 			case "mam": return 1;
-			case "chen": return 2;
+			case "chen": case "chen_end": return 2;
 			case "seller_male": return 4;
 			case "seller_female": return 5;
 		}

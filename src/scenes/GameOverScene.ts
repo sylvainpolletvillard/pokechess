@@ -3,8 +3,10 @@ import { loadFonts } from "../data/fonts";
 import { Pokemon } from "../data/pokemons";
 import { loadSprites } from "../data/sprites";
 import { loadSpritesheets } from "../data/spritesheets";
+import { preloadMusic, startMusic } from "../logic/audio";
 import { gameState } from "../logic/gamestate";
 import { setupInputs } from "../logic/inputs";
+import { fadeOut } from "../utils/camera";
 import { wait } from "../utils/helpers";
 import { addText } from "../utils/text";
 import {MyScene} from "./MyScene";
@@ -18,12 +20,14 @@ export default class GameOverScene extends MyScene {
     loadFonts(this)
     loadSprites(this)
     loadSpritesheets(this);
+    preloadMusic("music_ending", "assets/audio/music/30 Ending.mp3")
   }
 
   create(){
     gameState.activeScene = this
     setupInputs(this)
     this.displayEndScreen();
+    startMusic("music_ending")
   }
 
   canInteract = false
@@ -41,7 +45,7 @@ export default class GameOverScene extends MyScene {
   }
 
   handleClick() {
-    if(this.canInteract) this.scene.start("MenuScene");
+    if(this.canInteract) fadeOut(2000).then(() => this.scene.start("MenuScene"));
   }
 
   async displayEndScreen() {
@@ -132,8 +136,8 @@ export default class GameOverScene extends MyScene {
 
     box.add(addText(ox - 120, oy - 20, `Durée jeu: ${gameState.day} tours`));
     box.add(addText(ox - 120, oy+8, `Pokédex`));
-    box.add(addText(ox-50, oy+8, `Vus: 133`));
-    box.add(addText(ox+20, oy+8, `Pris: 30`));
+    box.add(addText(ox-50, oy+8, `Vus: ${gameState.pokedexSeen.size}`));
+    box.add(addText(ox+20, oy+8, `Pris: ${gameState.pokedexCaptured.size}`));
 
     const portrait = this.add.sprite(ox + 100, oy-1, "trainer").setFrame(7);
     portrait.setScrollFactor(0);    

@@ -11,7 +11,7 @@ export function distanceBetweenPokemon(pkm1: PokemonOnBoard, pkm2: PokemonOnBoar
 
 export function findClosestReachableTarget(pkm: PokemonOnBoard): PokemonOnBoard | null {
     let targets = pkm.opponents
-    if(pkm.hasAlteration(AlterationType.CONFUSION)) targets = gameState.allPokemonsOnBoard.filter(p => p !== pkm)
+    if(pkm.hasAlteration(AlterationType.CONFUSION)) targets = pkm.team.filter(p => p !== pkm)
     targets = targets.filter(candidate => !candidate.untargettable)
 
     if(targets.length === 0) return null;

@@ -28,9 +28,6 @@ import { receiveItem } from "../data/dialogs/descriptions";
 import { ITEM_POKEBALL } from "../data/items";
 import { logStats, resetStats } from "./stats";
 import { spawnPensionTeam } from "./spawns";
-import { PENSION } from "../data/destinations/pension";
-import { CARABAFFE } from "../data/pokemons/carabaffe";
-import { POISSIRENE } from "../data/pokemons/poissirene";
 import { raisePokemonsPension } from "./pension";
 
 export enum GameStage {
@@ -61,12 +58,13 @@ export class GameState {
     seed: number;
     lastCaptureDestination: Destination | null;
     pension: PokemonOnBoard[]
+    pokedexSeen: Set<string>
+    pokedexCaptured: Set<string>
 
     constructor() {
         this.day = 0
         this.currentDestination = BOURG_PALETTE;
         this.currentRoomIndex = 0;
-        this.roomOrder = ["labo", "tuto"]
         const p1 = new Player(1)
         const p2 = new Player(2)
         this.players = [p1 , p2]
@@ -80,6 +78,9 @@ export class GameState {
         this.dialogStates = {}
         this.seed = randomInt(1, Math.pow(4,10))
         this.lastCaptureDestination = null
+        this.pokedexCaptured = new Set()
+        this.pokedexSeen = new Set()
+
         // @ts-ignore
         window.gameState = this; //TEMP: DEBUG
     }
@@ -140,9 +141,7 @@ export class GameState {
 
         if(!loadSave()) {
             //new game
-            this.currentDestination = BOURG_PALETTE
-            this.currentRoomIndex = 0
-            this.roomOrder = ["labo", "tuto"]
+            this.currentDestination = BOURG_PALETTE            
             this.pension = spawnPensionTeam()
             gameState.initRoom()
         } else {
@@ -304,7 +303,7 @@ export class GameState {
             }
         }
 
-        gameState.afterEnd()        
+        gameState.afterEnd(hasWon)        
     }
 
     endCapture(){
@@ -327,19 +326,21 @@ export class GameState {
                 return startDialog(dialog, { speaker: room.trainer.ref })
             }
         }).then(() => {
-            gameState.afterEnd()
+            gameState.afterEnd(true)
         })
     }
 
-    afterEnd(){        
+    afterEnd(hasWon: boolean){        
         if(gameState.currentRoom.type === RoomType.TUTORIAL 
         && gameState.dialogStates["scientifique_tuto"] === SCIENTIFIQUE_TUTO_DIALOG_STATE.BEFORE_WILD){
             const room = gameState.currentRoom as RoomTutorial
             startDialog(room.trainer.dialogs.step2, {
                 speaker: room.trainer.ref
             })
-        } else {
+        } else if(hasWon){
             fadeOut(400).then(() => gameState.goToNextRoom())
+        } else {
+            fadeOut(400).then(() => gameState.exitDestination())
         }
     }
 
@@ -347,6 +348,14 @@ export class GameState {
         gameState.allPokemonsOnBoard.forEach(pokemon => {
             pokemon.buffs.clock.forEach(buff => buff())
         })
+    }
+
+    registerPokemonsSeen(team: PokemonOnBoard[]){
+        team.map(p => p.entry.ref).forEach(ref => this.pokedexSeen.add(ref))
+    }
+
+    registerPokemonCaptured(pokemon: Pokemon){
+        this.pokedexCaptured.add(pokemon.entry.ref)
     }
 }
 

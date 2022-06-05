@@ -68,8 +68,8 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
     pokemon.facingDirection = getDirection(target.x - pokemon.x, target.y - pokemon.y)
-    sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
-    if(!pokemon.hasType(TYPE_VOL)) sprite.anims.pause()
+    sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`, true)
+    //sprite.anims.pause()
 }
 
 export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
@@ -94,7 +94,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
         const [sceneX,sceneY] = getPositionFromCoords(nextX,nextY);
 
         pokemon.facingDirection = getDirection(nextX - pokemon.x, nextY - pokemon.y)
-        sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`)
+        sprite.play(`${pokemon.entry.ref}_${pokemon.facingDirection}`, true)
         sprite.anims.resume()
         pokemon.x = nextX;
         pokemon.y = nextY;
@@ -110,7 +110,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
             delay: duration,
             callback: () => {
                 if(pokemon.alive){
-                    if(!pokemon.hasType(TYPE_VOL)) sprite.anims.pause()
+                    //sprite.anims.pause()
                     pokemon.resetTarget(target)
                 }
             }

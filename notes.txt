@@ -9,3 +9,4 @@ TODO:
 - personnages hall ligue
 - enregistrement records
 - mécanique d'overtime (rage: +50% VIT & ATK, -50% DEF & SOINS)
+- gérer stack dialog (startDialog quand dialog en cours)

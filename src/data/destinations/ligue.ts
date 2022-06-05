@@ -29,6 +29,7 @@ import { NOADKOKO } from "../pokemons/noadkoko";
 import { FEUNARD } from "../pokemons/feunard";
 import { MAGNETON } from "../pokemons/magneton";
 import { AQUALI } from "../pokemons/aquali";
+import { END_ROOM } from "../levels/endroom";
 
 const ARENE_OLGA: RoomArena = {
     type: RoomType.ARENA,
@@ -143,11 +144,17 @@ export const LIGUE: Destination = {
             name: "Hall de la Ligue",
             music: "music_route_victoire",
             level: SHOP_LIGUE,
-            //endroom: END_ROOM
+        },
+        endroom: {
+            type: RoomType.FREEWALK,
+            name: "Ligue Indigo - Dernier Étage",
+            music: "music_ending",
+            level: END_ROOM
         }
     },
     customRoomOrder(){
-        return ["shop","olga","aldo","agatha","peter", "rival", "endroom"]
+        return ["endroom"]
+        //return ["shop","olga","aldo","agatha","peter", "rival", "endroom"]
     },
     shopId: 10,
     preload(scene: MyScene){
@@ -157,6 +164,8 @@ export const LIGUE: Destination = {
         scene.load.tilemapTiledJSON('arene_ligue3', 'assets/maps/arene_ligue3.json');
         scene.load.tilemapTiledJSON('arene_ligue4', 'assets/maps/arene_ligue4.json');
         scene.load.tilemapTiledJSON('arene_ligue5', 'assets/maps/arene_ligue5.json');
+        scene.load.tilemapTiledJSON('endroom', 'assets/maps/endroom.json');
         preloadMusic("music_route_victoire", "assets/audio/music/22 The Last Road.mp3");
+        preloadMusic("music_ending", "assets/audio/music/30 Ending.mp3")
     }
 }

@@ -12,6 +12,5 @@ export const LECHOUILLE: HitSkill = {
     hitAlteration: { type: AlterationType.PARALYSIE, stacks: 20 },
     power: 20,
     rotateSprite: true,
-    attackRange: 1,
-    chargeDelta: 4,
+    attackRange: 1
 }

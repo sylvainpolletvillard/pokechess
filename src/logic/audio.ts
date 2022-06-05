@@ -19,6 +19,7 @@ export function startMusic(name: string, params: Phaser.Types.Sound.SoundConfig 
         params = Object.assign({ volume: MUSIC_VOLUME }, params)
         console.log("playing "+name)
         if (gameState.music && gameState.music.isPlaying) {
+            if(gameState.music.key === name) return; // already playing
             gameState.music.stop();
         }
         try {

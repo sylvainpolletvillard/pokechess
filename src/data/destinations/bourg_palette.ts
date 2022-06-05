@@ -4,6 +4,7 @@ import {SCIENTIFIQUE_TUTO} from "../trainers";
 import {homeLevel} from "../levels/home";
 import {chenLevel} from "../levels/labo_chen";
 import { MyScene } from "../../scenes/MyScene";
+import { gameState } from "../../logic/gamestate";
 
 export const BOURG_PALETTE: Destination = {
     ref: "BOURG_PALETTE",
@@ -31,6 +32,10 @@ export const BOURG_PALETTE: Destination = {
                 return spawnTutoCaptureTeam()
             }
         },
+    },
+    customRoomOrder(){
+        if(gameState.day === 0) return ["labo", "tuto"]
+        else return ["home"]
     },
     nextDestinations: {
         JADIELLE: [[0,-3]],

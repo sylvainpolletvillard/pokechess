@@ -556,6 +556,25 @@ export const SBIRE_ROCKET: Trainer = {
     introFrameIndex: null,
     dialogs:{
         start: [
+            `Giovanni est peut-être parti, mais la Team Rocket ne meurt jamais !`,
+            `J'ai bien l'intention de prendre sa place ! A l'attaque !`
+        ],
+        victory: [
+            `La Team Rocket s'envole vers d'autres cieux ! `
+        ],
+        defeat: [
+            `Mouahaha ! C'est la renaissance de la team Rocket !`
+        ]
+    }
+}
+
+export const SBIRE_ROCKET_TUTO: Trainer = {
+    ref: "sbire_rocket",
+    name: "Sbire Rocket",
+    frameIndex: 18,
+    introFrameIndex: null,
+    dialogs:{
+        start: [
             `Eh toi là, qu'est-ce que tu fiches ici ?`,
             `Ici c'est le territoire de Giovanni, notre chef et maître de l'arène !`,
             `Quoi ? Tu comptes te mesurer à lui ? Laisse-moi rire !`,
@@ -1098,13 +1117,14 @@ export const DRESSEUR_CRAMOISILE: Trainer = {
     introFrameIndex: null,
     dialogs: {
         start: [
-            `...`,
+            `Ah, un nouveau sujet d'expérience !`,
+            `Laisse-moi te montrer le fruit de mes recherches...`
         ],
         victory: [
-            `...`
+            `Mes calculs ne sont pas bons !`
         ],
         defeat: [
-            `...`
+            `Euréka !`
         ]
     }
 }

@@ -1,6 +1,6 @@
 
 import {startDialog, waitBeforeNextLine} from "../../logic/dialog";
-import {pickRandomIn} from "../../utils/helpers";
+import {pickRandomIn, wait} from "../../utils/helpers";
 import {pickStarter} from "../../logic/starters";
 import {Description} from "../../objects/description";
 import {pauseMusicAndPlaySound} from "../../logic/audio";
@@ -8,6 +8,8 @@ import {gameState} from "../../logic/gamestate";
 import {Item, ITEMS, ITEM_POKEBALL} from "../items";
 import {DialogLine} from "../../types/dialog";
 import { drawPokeballsCounter } from "../../objects/pokeballsCounter";
+import { saveNewRecord } from "../../logic/save";
+import { fadeOut } from "../../utils/camera";
 
 export function receiveItem(item: Item, quantity: number = 1, shouldPlaySound = true): Promise<void>{
     shouldPlaySound && pauseMusicAndPlaySound("item_received")
@@ -53,6 +55,22 @@ export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) =>
 
     starter1: pickStarter(0),
     starter2: pickStarter(1),
-    starter3: pickStarter(2)
+    starter3: pickStarter(2),
+
+    pc_end: [
+        "Enregistrer l'équipe dans le livre des records ?",
+        {
+            "Oui": () => ["Enregistrement...", () => {
+                saveNewRecord()
+                wait(2000)
+                    .then(() => fadeOut(2000))
+                    .then(() => { gameState.activeScene!.scene.start("GameOverScene") })
+                return `Félicitations ! Vous et vos Pokémon êtes célèbres !`
+            }],
+            "Non": () => {
+                return [`... Fin de session.`]
+            }
+        }
+    ]
 
 }

@@ -7,6 +7,9 @@ import {HoldableItem, Pokemon, POKEMONS} from "../data/pokemons";
 import {MAGICARPE} from "../data/pokemons/magicarpe";
 import {xpToLevel} from "./xp";
 
+const KEY_SAVE = "pokechess_save"
+const KEY_RECORD = "pokechess_record"
+
 interface Save {
     day: number
     currentDestinationRef: string
@@ -16,13 +19,28 @@ interface Save {
     stage: string
     dialogStates: { [pnjName: string]: number }
     seed: number
-    lastCaptureDestinationRef: string
+    lastCaptureDestinationRef?: string
     pension: SerializedPokemonOnBoard[]
+    pokedexSeen: string[];
+    pokedexCaptured: string[]
 }
 
+interface SerializedRecord {
+    team: SerializedPokemonOnBoard[]
+    pokedexSeen: number
+    pokedexCaptured: number
+    nbTours: number;
+}
+
+interface Record {
+    team: PokemonOnBoard[]
+    pokedexSeen: number
+    pokedexCaptured: number
+    nbTours: number;
+}
 
 export function saveState(){
-    const save = {
+    const save: Save = {
         day: gameState.day,
         currentDestinationRef: gameState.currentDestination.ref,
         currentRoomIndex: gameState.currentRoomIndex,
@@ -32,38 +50,69 @@ export function saveState(){
         dialogStates: gameState.dialogStates,
         seed: gameState.seed,
         lastCaptureDestinationRef: gameState.lastCaptureDestination?.ref,
-        pension: gameState.pension.map(p => serializePokemonOnBoard(p))
+        pension: gameState.pension.map(p => serializePokemonOnBoard(p)),
+        pokedexSeen: [...gameState.pokedexSeen],
+        pokedexCaptured: [...gameState.pokedexCaptured] 
     }
-    localStorage.setItem("save", JSON.stringify(save))
+    localStorage.setItem(KEY_SAVE, JSON.stringify(save))
 }
 
 export function loadSave(): boolean {
-    const saveJSON = localStorage.getItem("save")
+    const saveJSON = localStorage.getItem(KEY_SAVE)
     if(!saveJSON) return false
 
     let save;
-    const loadedState: any = {}
     try {
         save = JSON.parse(saveJSON) as Save
-        
-        loadedState.day = save.day
-        loadedState.currentDestination = DESTINATIONS[save.currentDestinationRef]
-        loadedState.currentRoomIndex = save.currentRoomIndex;
-        loadedState.roomOrder = save.roomOrder
-        loadedState.players = save.players.map(p => parseSerializedPlayer(p))
-        loadedState.board = setupPlayerIdleBoard(parseSerializedPlayer(save.players[0]))
-        loadedState.stage = save.stage as GameStage
-        loadedState.dialogStates = save.dialogStates
-        loadedState.seed = save.seed;
-        loadedState.lastCaptureDestination = save.lastCaptureDestinationRef ? DESTINATIONS[save.lastCaptureDestinationRef] : null
-        loadedState.pension = save.pension.map(p => parseSerializedPokemonOnBoard(p))
     } catch(e){
         console.error(`Corrupted save :${e}`)
         return false;
     }
-
-    Object.assign(gameState, loadedState)
+        
+    gameState.day = save.day
+    gameState.currentDestination = DESTINATIONS[save.currentDestinationRef]
+    gameState.currentRoomIndex = save.currentRoomIndex;
+    gameState.roomOrder = save.roomOrder
+    gameState.players = save.players.map(p => parseSerializedPlayer(p))
+    gameState.board = setupPlayerIdleBoard(parseSerializedPlayer(save.players[0]))
+    gameState.stage = save.stage as GameStage
+    gameState.dialogStates = save.dialogStates
+    gameState.seed = save.seed;
+    gameState.lastCaptureDestination = save.lastCaptureDestinationRef ? DESTINATIONS[save.lastCaptureDestinationRef] : null
+    gameState.pension = save.pension.map(p => parseSerializedPokemonOnBoard(p))
+    gameState.pokedexCaptured = new Set(save.pokedexCaptured)
+    gameState.pokedexSeen = new Set(save.pokedexSeen)
     return true
+}
+
+export function loadRecord(): Record | null {
+    const recordJSON = localStorage.getItem(KEY_RECORD)
+    if(!recordJSON) return null
+
+    let record
+    try {
+        record = JSON.parse(recordJSON) as SerializedRecord
+        return {
+            team: record.team.map(p => parseSerializedPokemonOnBoard(p)),
+            pokedexSeen: record.pokedexSeen,
+            pokedexCaptured: record.pokedexCaptured,
+            nbTours: record.nbTours
+        }
+    } catch(e){
+        console.error(`Corrupted record save :${e}`)
+        return null;
+    }
+}
+
+export function saveNewRecord(){
+    const record: SerializedRecord = {
+        team: gameState.player.team.map(p => serializePokemonOnBoard(p)),
+        pokedexSeen: gameState.pokedexSeen.size,
+        pokedexCaptured: gameState.pokedexCaptured.size,
+        nbTours: gameState.day
+    }
+
+    localStorage.setItem(KEY_RECORD, JSON.stringify(record))
 }
 
 interface SerializedPlayer {

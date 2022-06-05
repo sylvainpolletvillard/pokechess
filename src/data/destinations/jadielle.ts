@@ -1,5 +1,5 @@
 import {Destination, DestinationType, RoomArena, RoomType} from "../../types/destination";
-import {GIOVANNI, SBIRE_ROCKET} from "../trainers";
+import {GIOVANNI, SBIRE_ROCKET, SBIRE_ROCKET_TUTO} from "../trainers";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
 import {SHOP_JADIELLE} from "../levels/shops";
 import { MIAOUSS } from "../pokemons/miaouss";
@@ -23,6 +23,7 @@ import {RACAILLOU} from "../pokemons/racaillou";
 import {BADGE_TERRE} from "../badges";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { gameState } from "../../logic/gamestate";
 
 const ARENA_GIOVANNI: RoomArena = {
     type: RoomType.ARENA,
@@ -55,7 +56,7 @@ const ARENA_GIOVANNI: RoomArena = {
     }
 }
 
-export const TUTO_SBIRE: RoomArena = {
+export const TRAINER: RoomArena = {
     type: RoomType.ARENA,
     map: "arene_jadielle",
     music: "music_jadielle",
@@ -78,6 +79,21 @@ export const TUTO_SBIRE: RoomArena = {
     }
 }
 
+export const TUTO_SBIRE: RoomArena = {
+    type: RoomType.ARENA,
+    map: "arene_jadielle",
+    music: "music_jadielle",
+    name: "Arène de Jadielle",
+    trainer: SBIRE_ROCKET_TUTO,
+    spawnOtherTeam(){
+        return spawnTrainerTeam([
+            MIAOUSS,
+            ABO,
+            SMOGO
+        ])
+    }
+}
+
 export const JADIELLE: Destination = {
     ref: "JADIELLE",
     name: "Jadielle",
@@ -92,13 +108,19 @@ export const JADIELLE: Destination = {
     icons: ["type_SOL"],
     rooms: {
         arena: ARENA_GIOVANNI,
-        trainer: TUTO_SBIRE,
+        tuto_dresseur: TUTO_SBIRE,
+        trainer: TRAINER,
         shop: {
             type: RoomType.FREEWALK,
             name: "Magasin de Jadielle",
             music: "music_shop",
             level: SHOP_JADIELLE
         }
+    },
+    customRoomOrder(){
+        if(gameState.day < 10) return ["shop","tuto_dresseur"]
+        else if(gameState.hasBadge(BADGE_TERRE)) return ["shop","trainer"]
+        else return ["shop","arena"]
     },
     shopId: 1,
     preload(scene: MyScene){

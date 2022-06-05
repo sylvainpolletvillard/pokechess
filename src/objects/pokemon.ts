@@ -64,7 +64,7 @@ export class PokemonOnBoard extends Pokemon {
         let buffFactor = this.buffs.attack.reduce((factor, buff) => factor + buff(), 1)
 
         const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
-        if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
+        if(pouvoirAntique){ buffFactor += 0.1 * clamp(pouvoirAntique.stacks, 0, 10) }
 
         const furie = this.alterations.find(alt => alt.type === AlterationType.FURIE)
         if(furie){ buffFactor += 0.1 * clamp(furie.stacks, 0, 20) }
@@ -78,7 +78,7 @@ export class PokemonOnBoard extends Pokemon {
         if(this.hasAlteration(AlterationType.ACIDE)) buffFactor -= 0.5
 
         const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
-        if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
+        if(pouvoirAntique){ buffFactor += 0.1 * clamp(pouvoirAntique.stacks, 0, 10) }
 
         const armure = this.alterations.find(alt => alt.type === AlterationType.ARMURE)
         if(armure){ buffFactor += 0.1 * clamp(armure.stacks, 0, 20) }
@@ -95,7 +95,7 @@ export class PokemonOnBoard extends Pokemon {
         if(this.hasAlteration(AlterationType.SECRETION)) buffFactor -= 0.5
 
         const pouvoirAntique = this.alterations.find(alt => alt.type === AlterationType.POUVOIR_ANTIQUE)
-        if(pouvoirAntique){ buffFactor += 0.1 * pouvoirAntique.stacks }
+        if(pouvoirAntique){ buffFactor += 0.1 * clamp(pouvoirAntique.stacks, 0, 10) }
 
         const hate = this.alterations.find(alt => alt.type === AlterationType.HATE)
         if(hate){ buffFactor += 0.1 * hate.stacks }        
