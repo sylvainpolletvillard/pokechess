@@ -13,7 +13,7 @@ export const CHEN: () => Promise<any> = () => {
         return startDialog([
             "Bonjour Red ! Alors c'est aujourd'hui le grand jour !",
             "Le jour de ton voyage initiatique comme dresseur Pokémon !",
-            "Tu vas voyager à travers tout Kanto, capturer des Pokemon,",
+            "Tu vas voyager à travers tout Kanto, capturer des Pokémon,",
             "monter une équipe et affronter les 8 champions d'arènes.",
             "Peut-être même te confronter à la ligue Pokémon si tu en es capable !",
             "Mais d'abord, il te faut adopter ton premier Pokémon.",

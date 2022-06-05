@@ -1,6 +1,6 @@
 
 import {startDialog, waitBeforeNextLine} from "../../logic/dialog";
-import {pickRandomIn, wait} from "../../utils/helpers";
+import {pickRandomIn, splitInGroups, wait} from "../../utils/helpers";
 import {pickStarter} from "../../logic/starters";
 import {Description} from "../../objects/description";
 import {pauseMusicAndPlaySound} from "../../logic/audio";
@@ -8,7 +8,7 @@ import {gameState} from "../../logic/gamestate";
 import {Item, ITEMS, ITEM_POKEBALL} from "../items";
 import {DialogLine} from "../../types/dialog";
 import { drawPokeballsCounter } from "../../objects/pokeballsCounter";
-import { saveNewRecord } from "../../logic/save";
+import { loadRecord, saveNewRecord } from "../../logic/save";
 import { fadeOut } from "../../utils/camera";
 
 export function receiveItem(item: Item, quantity: number = 1, shouldPlaySound = true): Promise<void>{
@@ -41,7 +41,7 @@ export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) =>
         () => pickRandomIn([
             `Les Pokémon de type Roche n'aiment pas l'eau`,
             `Les Pokémon aquatiques craignent l'électricité`,
-            `Les Pokemon de type Feu n'aiment pas l'eau`,
+            `Les Pokémon de type Feu n'aiment pas l'eau`,
             `Le feu est mortel pour les pokémon Plante`,
             `Les Pokémon Vol craignent la foudre`,
         ])
@@ -71,6 +71,21 @@ export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) =>
                 return [`... Fin de session.`]
             }
         }
+    ],
+
+    pc_record: [
+        `Bzzz... Ouverture du livre des records...`,
+        () => {
+            const record = loadRecord()
+            if(!record) return "Aucune donnée disponible."            
+            return [
+                `Dernier maître de la ligue recensé:\nMaître en ${record.nbTours} tours`,
+                `${record.pokedexCaptured} Pokémon capturés\n${record.pokedexSeen} Pokémon observés`,
+                `Equipe de prédilection:`,
+                ...splitInGroups(record.team.map(p => `${p.entry.name} lvl ${p.level}`), 2).map((pair: string[]) => `${pair[0]}\n${pair[1]}`)
+            ]
+        },
+        `Bzzz.. L'écran s'est éteint...`,
     ]
 
 }

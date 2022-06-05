@@ -35,7 +35,7 @@ export function displayPokemonCaptureInfo(pokemon: PokemonOnBoard, game: GameSce
         const text2 = addText(6, 16, `pokeballs !`)
         pokemonCaptureBox.add(text1).add(text2)
     } else if(gameState.player.hasBoxFull) {
-        const text1 = addText(6, 2, `Box Pokemon`)
+        const text1 = addText(6, 2, `Box Pokémon`)
         const text2 = addText(6, 16, `pleine !`)
         pokemonCaptureBox.add(text1).add(text2)
     } else {

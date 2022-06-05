@@ -3,13 +3,16 @@ import { loadFonts } from "../data/fonts";
 import { loadSprites } from "../data/sprites";
 import { loadSpritesheets } from "../data/spritesheets";
 import { gameState } from "../logic/gamestate";
-import { setupInputs } from "../logic/inputs";
-import { addText } from "../utils/text";
+import { handleCursor, setupInputs } from "../logic/inputs";
 import { wait } from "../utils/helpers";
 import { generatePokemonsAnims } from "../logic/anims";
 import { startMusic } from "../logic/audio";
+import { clickEntry, MenuEntry, openMenu } from "../objects/menu";
+import { hasSave, loadSave } from "../logic/save";
 
 export default class MenuScene extends MyScene {
+    isIntroAnim = true;    
+
     constructor() {
         super("MenuScene");
     }
@@ -25,6 +28,7 @@ export default class MenuScene extends MyScene {
         generatePokemonsAnims(this.anims)
         setupInputs(this)
         startMusic("music_opening")
+        this.isIntroAnim = true;
         
         this.swipe("salameche", 100, "left", 120)
         this.swipe("bulbizarre", 800, "right", 240)
@@ -45,7 +49,7 @@ export default class MenuScene extends MyScene {
         this.swipe("nidoran_m", 8100, "left", 140)
         this.swipe("abra", 8100, "right", 180)
 
-        wait(7700).then(() => this.finalPose())
+        this.finalPose(7700)
     }
     
     onPressStart() {
@@ -53,46 +57,96 @@ export default class MenuScene extends MyScene {
     }
     
     onPressA() {
-        this.handleClick();
+        if(gameState.activeMenu != null) clickEntry()
+        else this.handleClick();
     }
+
+    onPressB(){}
     
     onClick() {
         this.handleClick();
     }
     
     handleClick() {
-        this.startGame()
+        if(this.isIntroAnim) this.skipIntro()
     }
-    
-    startGame(){
-        gameState.initGame()
+
+    update(){
+        handleCursor(this)
     }
-    
+
+    drawMenu(){
+        const entries: MenuEntry[] = [
+            {
+                label: "Nouvelle partie",
+                x: 16,
+                y: 0,
+                value: "newgame"
+            }
+        ]
+        if(hasSave()){
+            entries[0].y = 20
+            entries.unshift({
+                label: "Continuer",
+                x: 16,
+                y: 0,
+                value: "continue"
+            })
+        }
+
+        openMenu({
+            ref: "main_menu",
+            x: 100,
+            y: 260,
+            width: 120,
+            height: 44,
+            background: "box2",
+            offset: 16,
+            entries,
+            handleChoice(choice){
+                if(choice.value === "newgame") gameState.initGame(false)
+                else if(choice.value === "continue") gameState.initGame(true)
+            }
+        })
+    }
+
     swipe(name: string, delay: number, dir: "left" | "right", y: number){
         const x = dir === "left" ? 350 : -30
         const sprite = this.add.sprite(x, y, "pokemon_portraits").play(name+"_portrait")
-        wait(delay).then(() => this.tweens.add({
+        this.tweens.add({
             targets: [sprite],
+            delay,
             duration: 500,
             ease: "Linear",
             x: dir === "left" ? -30 : 350
-        }))
+        })
     }
 
     swipeDiag(name: string, delay: number, dir: "top-left" | "top-right" | "bottom-left" | "bottom-right", duration: number = 1000){
         const x = dir === "top-left" || dir === "bottom-left" ? 350 : -30
         const y = dir === "top-left" || dir ===  "top-right" ? 350 : -30
         const sprite = this.add.sprite(x, y, "pokemon_portraits").play(name+"_portrait")
-        wait(delay).then(() => this.tweens.add({
+        this.tweens.add({
             targets: [sprite],
             duration,
+            delay,
             ease: "Linear",
             x: dir === "top-left" || dir === "bottom-left" ? -30: 350,
             y: dir === "top-left" || dir ===  "top-right" ? -30: 350
-        }))
+        })
     }
 
-    finalPose(){
+    skipIntro(){
+        this.tweens.getAllTweens().forEach(tween => {
+            tween.targets.forEach(target => {
+                tween.stop()
+                if(target instanceof Phaser.GameObjects.GameObject) target.destroy()
+            })            
+        })
+        this.finalPose(0, true)
+    }
+
+    finalPose(delay: number, immediate: boolean = false){
         const logo = this.add.sprite(this.scale.width/2, -100, "logo")
         this.sprites.set("logo", logo)
 
@@ -117,8 +171,8 @@ export default class MenuScene extends MyScene {
         this.tweens.add({
             targets: [logo],
             y: 100,
-            duration: 2000,
-            delay: 2000,
+            duration: immediate ? 0 : 2000,
+            delay: immediate ? 0 : delay + 2000,
             ease: Phaser.Math.Easing.Bounce.Out
         })
         
@@ -127,20 +181,15 @@ export default class MenuScene extends MyScene {
                 chenipan, nidoran, minidraco, melofee, roucool, machoc, racaillou,
                 otaria, sabelette, miaouss, abra ],
                 y: "-=200",
-                duration: 2500,
+                duration: immediate ? 0 : 2500,
+                delay: delay,
                 ease: "Linear"
         })
         
-        wait(2000).then(() => {
-            const text = addText(this.scale.width/2, 300, "Press key to start", { fontSize: "16px", align: "center" }).setOrigin(0.5)
-            this.tweens.add({
-                targets: [text],
-                alpha: 0,
-                duration: 1500,
-                ease: "EaseInOut",
-                loop: -1,
-                yoyo: true
-            })
+        wait(immediate ? 0 : delay +  4000).then(() => {
+            this.isIntroAnim = false;
+            startMusic("music_overworld")
+            this.drawMenu()
         })
     }
 }

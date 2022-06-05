@@ -22,6 +22,31 @@ export const buttonsMap = new Map([
     [Phaser.Input.Gamepad.Configs.XBOX_360.DOWN, { id: "fleche_BAS", downColor: "#666", upColor: "#3a3a3a" }],
 ]);
 
+export const keysMap = new Map([    
+    ["f", Phaser.Input.Gamepad.Configs.XBOX_360.A],
+    ["e", Phaser.Input.Gamepad.Configs.XBOX_360.A],
+    [" ", Phaser.Input.Gamepad.Configs.XBOX_360.A],
+    ["b", Phaser.Input.Gamepad.Configs.XBOX_360.B],
+    ["x", Phaser.Input.Gamepad.Configs.XBOX_360.B],
+    ["Escape", Phaser.Input.Gamepad.Configs.XBOX_360.B],
+    ["Enter", Phaser.Input.Gamepad.Configs.XBOX_360.START],
+    ["Backspace", Phaser.Input.Gamepad.Configs.XBOX_360.BACK],
+    ["w", Phaser.Input.Gamepad.Configs.XBOX_360.UP],
+    ["z", Phaser.Input.Gamepad.Configs.XBOX_360.UP],
+    ["a", Phaser.Input.Gamepad.Configs.XBOX_360.LEFT],
+    ["q", Phaser.Input.Gamepad.Configs.XBOX_360.LEFT],
+    ["s", Phaser.Input.Gamepad.Configs.XBOX_360.DOWN],
+    ["d", Phaser.Input.Gamepad.Configs.XBOX_360.RIGHT],
+])
+
+function highlightButton(buttonIndex: number, on: boolean){
+    const button = buttonsMap.get(buttonIndex)
+    if(button != null){
+        const gbButton = document.getElementById(button.id)
+        if(gbButton != null) gbButton.style.fill = on ? button.downColor : button.upColor;
+    }
+}
+
 let wasdKeys: any;
 let cursorKeys: Phaser.Types.Input.Keyboard.CursorKeys;
 let cursorBlockerFlag: boolean = false;
@@ -36,28 +61,24 @@ export function setupInputs(scene: MyScene){
     scene.input.gamepad.once('connected', (pad: Phaser.Input.Gamepad.Gamepad) => {
         console.log('gamepad connected', pad.id);
 
-        pad.on('down', (buttonIndex: number) => {
-            const button = buttonsMap.get(buttonIndex)
-            if(button != null){
-                const gbButton = document.getElementById(button.id)
-                if(gbButton != null) gbButton.style.fill = button.downColor;
-            }
-            handleControlPress(buttonIndex, scene)
+        pad.on('down', (buttonIndex: number) => {            
+            handleControlPress(buttonIndex)
         });
 
         pad.on('up', (buttonIndex: number) => {
-            const button = buttonsMap.get(buttonIndex)
-            if(button != null){
-                const gbButton = document.getElementById(button.id)
-                if(gbButton != null) gbButton.style.fill = button.upColor;
-            }
+            highlightButton(buttonIndex, false)
         });
     });
 
     scene.input.keyboard.on('keydown', function (event: KeyboardEvent) {
         event.preventDefault()
-        handleKeyPress(event.key, scene)
+        if(keysMap.has(event.key)) handleControlPress(keysMap.get(event.key))
     });
+
+    scene.input.keyboard.on("keyup", function (event: KeyboardEvent) {
+        event.preventDefault()
+        if(keysMap.has(event.key)) highlightButton(keysMap.get(event.key), false)
+    })
 
     wasdKeys = scene.input.keyboard.addKeys('W,A,S,D,Z,Q');
 
@@ -142,7 +163,8 @@ export function handleCursor(scene: MyScene) {
     return null
 }
 
-export function handleControlPress(button: number, scene: MyScene){
+export function handleControlPress(button: number){
+    highlightButton(button, true)
     switch(button){
         case Phaser.Input.Gamepad.Configs.XBOX_360.A: onPressA(); break;
         case Phaser.Input.Gamepad.Configs.XBOX_360.B: onPressB(); break;
@@ -150,7 +172,7 @@ export function handleControlPress(button: number, scene: MyScene){
     }
 }
 
-export function handleKeyPress(key: string, scene: MyScene){
+export function handleKeyPress(key: string){
     switch(key){
         case "a":
         case "e":

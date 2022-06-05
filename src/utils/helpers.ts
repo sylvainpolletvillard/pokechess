@@ -38,6 +38,10 @@ export function shuffleArray(array: Array<any>) {
     }
 }
 
+export function splitInGroups(array: Array<any>, nb: number){    
+    return Array(Math.ceil(array.length / nb)).fill("").map((v,i) => array.slice(nb*i, nb*(i+1)))
+}
+
 export function pickRandomIn<T>(array: Array<T>): T {
     return array[Math.floor(Math.random() * array.length)]
 }

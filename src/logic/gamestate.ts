@@ -29,6 +29,7 @@ import { ITEM_POKEBALL } from "../data/items";
 import { logStats, resetStats } from "./stats";
 import { spawnPensionTeam } from "./spawns";
 import { raisePokemonsPension } from "./pension";
+import { enterDestination } from "./destination";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -113,7 +114,7 @@ export class GameState {
         }
     }
 
-    initGame(){
+    initGame(useSave: boolean){
         // QUICK TESTING         
         /*
         gameState.player.badges = [BADGE_AME.ref,BADGE_AME.ref]
@@ -139,11 +140,10 @@ export class GameState {
         this.initRoom()
         */
 
-        if(!loadSave()) {
+        if(!useSave || !loadSave()) {
             //new game
-            this.currentDestination = BOURG_PALETTE            
             this.pension = spawnPensionTeam()
-            gameState.initRoom()
+            enterDestination(BOURG_PALETTE)
         } else {
             this.activeScene!.scene.start("MapScene")
         }

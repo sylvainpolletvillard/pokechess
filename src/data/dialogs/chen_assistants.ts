@@ -2,7 +2,7 @@ import {startDialog} from "../../logic/dialog";
 
 export const assistant1 = () => {
     return startDialog([
-      "ASSISTANT: Je pose la racine carrée, je retiens cinq...",
+      "Je pose la racine carrée, je retiens cinq...",
         "Hmm ? C'est pour quoi ?",
         {
             "Qui êtes-vous ?": () => [
@@ -25,8 +25,8 @@ export const assistant1 = () => {
 
 export const assistant2 = () => {
     return startDialog([
-        "ASSISTANT: Cette machine garde en mémoire les équipes de Pokémon",
-        "qui se sont illustrées en battant la ligue Pokemon.",
+        "Cette machine garde en mémoire les équipes de Pokémon",
+        "qui se sont illustrées en battant la Ligue Pokémon.",
         "Analyser les meilleures équipes nous permet d'en apprendre un maximum !",
         "Si tu parviens à battre la ligue, nous ajouterons avec plaisir ton équipe."
     ], { speaker: "assistant2"})

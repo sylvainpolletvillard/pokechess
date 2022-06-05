@@ -57,6 +57,10 @@ export function saveState(){
     localStorage.setItem(KEY_SAVE, JSON.stringify(save))
 }
 
+export function hasSave(){
+    return localStorage.getItem(KEY_SAVE) != null
+}
+
 export function loadSave(): boolean {
     const saveJSON = localStorage.getItem(KEY_SAVE)
     if(!saveJSON) return false
