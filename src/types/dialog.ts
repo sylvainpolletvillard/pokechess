@@ -1,7 +1,7 @@
 import {VoiceConfig} from "../data/voices";
 import {Menu} from "../objects/menu";
 
-export type DialogLine = string | DialogChoice | DialogLine[] | null | Promise<DialogLine> | (() => DialogLine);
+export type DialogLine = string | DialogChoice | DialogLine[] | null | Promise<DialogLine | void> | (() => DialogLine);
 
 export interface Dialog {
     lines: DialogLine[];
@@ -24,3 +24,9 @@ export interface DialogParams {
 }
 
 export type DialogChoice = { [option: string]: () => any }
+
+export interface DialogStacked {
+    lines: DialogLine[];
+    params: DialogParams;
+    onEndCallback?: () => Promise<void>
+}

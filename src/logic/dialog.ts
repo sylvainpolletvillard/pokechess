@@ -11,7 +11,9 @@ import { wait } from "../utils/helpers";
 import { RoomType } from "../types/destination";
 import {DialogChoice, DialogLine, DialogParams} from "../types/dialog";
 
-export function startDialog(lines: DialogLine[] | (() => DialogLine[]), params: DialogParams = {}): Promise<void>{
+const dialogStack: DialogStacked = []
+
+export function startDialog(lines: DialogLine[] | (() => DialogLine[]), params: DialogParams = {}, onEndCallback?: () => Promise<void>): Promise<void>{
     const scene = gameState.activeScene
     if(!scene) return Promise.reject("No scene");
 
@@ -41,13 +43,23 @@ export function startDialog(lines: DialogLine[] | (() => DialogLine[]), params: 
 
     if(typeof lines === "function") lines = lines()
 
-    gameState.activeDialog = { lines: [...lines], speaker, voice, dialogGroup, textSprite, bgSprite }
+    if(gameState.activeDialog != null){
+        gameState.activeDialog.dialogGroup?.destroy(true, true)        
+        dialogStack.push({ 
+            lines: gameState.activeDialog.lines,
+            params: gameState.activeDialog.params,
+            onEndCallback: gameState.activeDialog.onEnd
+        })
+    }
 
-    const dialogPromise: Promise<void> = new Promise((resolve) => {
-        gameState.activeDialog!.onEnd = () => wait(0).then(resolve)
-    })
+    gameState.activeDialog = { lines: [...lines], params, speaker, voice, dialogGroup, textSprite, bgSprite }
 
     showNextLine()
+
+    const dialogPromise: Promise<void> = new Promise((resolve) => {
+        gameState.activeDialog!.onEnd = onEndCallback || (() => wait(0).then(resolve))
+    })
+
     return dialogPromise
 }
 
@@ -125,6 +137,10 @@ export function endDialog() {
         gameState.activeDialog.dialogGroup?.destroy(true, true)
         gameState.activeDialog.onEnd && gameState.activeDialog.onEnd()
         gameState.activeDialog = null
+        if(dialogStack.length > 0){
+            const dialogStacked = dialogStack.pop()
+            wait(0).then(() => startDialog(dialogStacked.lines, dialogStacked.params, dialogStacked.onEndCallback))
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 import {GameStage, gameState} from "../logic/gamestate";
 import { BADGE_AME, BADGE_CASCADE, BADGE_FOUDRE, BADGE_MARAIS, BADGE_PRISME, BADGE_ROCHE, BADGE_TERRE, BADGE_VOLCAN } from "./badges";
-import {ITEM_FILET, ITEM_PARAPLUIE} from "./items";
+import {ITEM_FILET, ITEM_PARAPLUIE, ITEM_POKEBALL} from "./items";
 import { spawnTutoCaptureTeamStep2 } from "../logic/spawns";
 import { spawnPokemon } from "../logic/board";
 import { sendBackToPokeball } from "../logic/fight";
@@ -491,11 +491,10 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             `Une minute ! Si tu veux monter une équipe, il te faut des Pokéballs !`,
             `Tiens, voilà 5 Pokéballs pour capturer tes premiers Pokémon.`,
             () => {
-                gameState.player.inventory.pokeball += 5
-                drawPokeballsCounter()
                 gameState.dialogStates["scientifique_tuto"] = SCIENTIFIQUE_TUTO_DIALOG_STATE.BEFORE_WILD
-                return `Sais-tu comment on s'en sert ?`
+                return receiveItem(ITEM_POKEBALL, 5)
             },
+            `Sais-tu comment on s'en sert ?`,
             {
                 "Oui": () => [
                     `Très bien, alors capture ces Pokémon sauvages. Ou mets-les KO, comme tu veux !`

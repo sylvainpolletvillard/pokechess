@@ -25,8 +25,8 @@ export const assistant1 = () => {
 
 export const assistant2 = () => {
     return startDialog([
-        "Cette machine garde en mémoire les équipes de Pokémon",
-        "qui se sont illustrées en battant la Ligue Pokémon.",
+        "Cette machine garde en mémoire les équipes de Pokémon qui se sont illustrées",
+        "en battant le Conseil des 4 de la Ligue Pokémon.",
         "Analyser les meilleures équipes nous permet d'en apprendre un maximum !",
         "Si tu parviens à battre la ligue, nous ajouterons avec plaisir ton équipe."
     ], { speaker: "assistant2"})
