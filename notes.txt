@@ -1,11 +1,10 @@
 TODO:
 - items
-- perdre à la ligue ne fait pas quitter le niveau
+- filet papillon et parapluie
 - cadeaux de maman
 - debug evoli evolution
 - fossiles
 - plus de shops
 - échanges dans les shops
 - personnages hall ligue
-- enregistrement records
 - mécanique d'overtime (rage: +50% VIT & ATK, -50% DEF & SOINS)

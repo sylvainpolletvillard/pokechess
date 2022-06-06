@@ -58,27 +58,29 @@ export class GameState {
     dialogStates: { [pnjName: string]: number }
     seed: number;
     lastCaptureDestination: Destination | null;
+    lastTourMam: number;
     pension: PokemonOnBoard[]
     pokedexSeen: Set<string>
     pokedexCaptured: Set<string>
 
     constructor() {
         this.day = 0
-        this.currentDestination = BOURG_PALETTE;
-        this.currentRoomIndex = 0;
+        this.currentDestination = BOURG_PALETTE
+        this.currentRoomIndex = 0
         const p1 = new Player(1)
         const p2 = new Player(2)
         this.players = [p1 , p2]
-        this.board = setupPlayerIdleBoard(p1);
+        this.board = setupPlayerIdleBoard(p1)
         this.stage = GameStage.CREATION
-        this.activeScene = null;
-        this.activeMenu = null;
-        this.activeDialog = null;
+        this.activeScene = null
+        this.activeMenu = null
+        this.activeDialog = null
         this.starters = pickStarters()
         this.pension = []
         this.dialogStates = {}
         this.seed = randomInt(1, Math.pow(4,10))
         this.lastCaptureDestination = null
+        this.lastTourMam = 0
         this.pokedexCaptured = new Set()
         this.pokedexSeen = new Set()
 

@@ -5,10 +5,11 @@ import {homeLevel} from "../levels/home";
 import {chenLevel} from "../levels/labo_chen";
 import { MyScene } from "../../scenes/MyScene";
 import { gameState } from "../../logic/gamestate";
+import { MAM_DIALOG_STATE } from "../dialogs/mam";
 
 export const BOURG_PALETTE: Destination = {
     ref: "BOURG_PALETTE",
-    name: "Bourg Palette",    
+    name: "Bourg Palette",
     rooms: {
         home: {
             name: "Chez Maman",
@@ -35,7 +36,10 @@ export const BOURG_PALETTE: Destination = {
     },
     customRoomOrder(){
         if(gameState.day === 0) return ["labo", "tuto"]
-        else return ["home"]
+        else {
+            gameState.dialogStates.mam = MAM_DIALOG_STATE.hello
+            return ["home"]
+        }
     },
     nextDestinations: {
         JADIELLE: [[0,-3]],

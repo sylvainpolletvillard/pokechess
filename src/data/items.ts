@@ -252,7 +252,7 @@ export const ORBE_GLACE: Item = {
 export const SUPER_BONBON: Item = {
     ref: "super_bonbon",
     label: "Super Bonbon",
-    desc: "Donne l'assurance de passer au niveau supérieur à chaque fin de combat"
+    desc: "Gagne un niveau supplémentaire à chaque fin de combat"
 }
 
 export const FOSSILE_AMONITA: Item = {
@@ -323,6 +323,8 @@ export const ITEMS: { [ref: string]: Item } = {
     [ORBE_GLACE.ref]: ORBE_GLACE,
     [SUPER_BONBON.ref]: SUPER_BONBON
 }
+
+export const ITEMS_LIST: Item[] = Object.values(ITEMS)
 
 export const ITEMS_SPRITES_INDEX = [
     ITEM_POKEBALL, BAIE_CERIZ, BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS, PV_PLUS, VITESSE_PLUS, ATTAQUE_PLUS, DEFENSE_PLUS, REPOUSSE, POKEFLUTE, GEMME_DRACO,

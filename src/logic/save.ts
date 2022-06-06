@@ -20,6 +20,7 @@ interface Save {
     dialogStates: { [pnjName: string]: number }
     seed: number
     lastCaptureDestinationRef?: string
+    lastTourMam: number
     pension: SerializedPokemonOnBoard[]
     pokedexSeen: string[];
     pokedexCaptured: string[]
@@ -50,6 +51,7 @@ export function saveState(){
         dialogStates: gameState.dialogStates,
         seed: gameState.seed,
         lastCaptureDestinationRef: gameState.lastCaptureDestination?.ref,
+        lastTourMam: gameState.lastTourMam,
         pension: gameState.pension.map(p => serializePokemonOnBoard(p)),
         pokedexSeen: [...gameState.pokedexSeen],
         pokedexCaptured: [...gameState.pokedexCaptured] 
@@ -83,6 +85,7 @@ export function loadSave(): boolean {
     gameState.dialogStates = save.dialogStates
     gameState.seed = save.seed;
     gameState.lastCaptureDestination = save.lastCaptureDestinationRef ? DESTINATIONS[save.lastCaptureDestinationRef] : null
+    gameState.lastTourMam = save.lastTourMam
     gameState.pension = save.pension.map(p => parseSerializedPokemonOnBoard(p))
     gameState.pokedexCaptured = new Set(save.pokedexCaptured)
     gameState.pokedexSeen = new Set(save.pokedexSeen)
