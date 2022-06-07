@@ -12,6 +12,10 @@ export function drawAlliancesInfo(team: PokemonOnBoard[]){
     const game = gameState.activeScene as GameScene;
     const left = (team === gameState.board.playerTeam)
     const alliances = left ? gameState.board.playerAlliances : gameState.board.otherTeamAlliances
+    const listAlliances = [...alliances.values()].sort((a,b) => {
+        if(a.stepReachedN !== b.stepReachedN) return b.stepReachedN - a.stepReachedN
+        else return b.numberOfThatTypeInTeam - a.numberOfThatTypeInTeam
+    }).slice(0,10)
 
     if(left && leftGroup) leftGroup.destroy(true, true)         
     else if(!left && rightGroup) rightGroup.destroy(true, true)         
@@ -21,7 +25,8 @@ export function drawAlliancesInfo(team: PokemonOnBoard[]){
     else rightGroup = group
 
     let i = 0;
-    alliances.forEach((allianceState) => {
+    
+    listAlliances.forEach((allianceState) => {
         if(!allianceState.stepReached && !left) return; // do not show alliances not reached for opponent
 
         let x = left ? 14 : game.scale.width - 14
