@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import {Destination, RoomArena, RoomTutorial, RoomType} from "../types/destination";
 import {Player} from "./player";
 import {Board, calcXpBoard, clearPlacement, setupPlayerIdleBoard, spawnPokemon} from "./board";
-import {gainXP, initJumps, updatePokemonAction} from "./fight";
+import {enrageBoard, gainXP, initJumps, updatePokemonAction} from "./fight";
 import GameScene from "../scenes/GameScene";
 import {closeMenu, Menu} from "../objects/menu";
 import {Dialog, DialogLine} from "../types/dialog";
@@ -48,6 +48,7 @@ export class GameState {
     players: Player[];
     board: Board;
     stage: GameStage;
+    fightTime: number;
     fightTimer?: Phaser.Time.TimerEvent;
     fightClock?: Phaser.Time.TimerEvent;
     activeScene: MyScene | null;
@@ -220,6 +221,7 @@ export class GameState {
                     callbackScope: this,
                     loop: true
                 });
+                this.fightTime = 0
                 this.fightClock = game.time.addEvent({
                     delay: 1000,
                     callback: this.onClockTick,
@@ -347,6 +349,8 @@ export class GameState {
     }
 
     onClockTick(){
+        this.fightTime++;
+        if(this.fightTime >= 30 && this.fightTime % 10 === 0) enrageBoard()
         gameState.allPokemonsOnBoard.forEach(pokemon => {
             pokemon.buffs.clock.forEach(buff => buff())
         })

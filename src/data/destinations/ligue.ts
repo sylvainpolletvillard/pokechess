@@ -153,8 +153,7 @@ export const LIGUE: Destination = {
         }
     },
     customRoomOrder(){
-        return ["endroom"]
-        //return ["shop","olga","aldo","agatha","peter", "rival", "endroom"]
+        return ["shop","olga","aldo","agatha","peter", "rival", "endroom"]
     },
     shopId: 10,
     preload(scene: MyScene){

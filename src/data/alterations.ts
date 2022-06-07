@@ -23,7 +23,8 @@ export enum AlterationType {
     EXECUTION = "EXECUTION", // met KO l'unité si moins de 30% de ses PV max
     DAMAGE_OVER_TIME = "DAMAGE_OVER_TIME", // inflige 1 HP brut par tick
     INVULNERABLE = "INVULNERABLE", // ne peut plus recevoir de dégâts
-    ADAPTATION = "ADAPTATION" // remplace son type par celui des attaques reçues
+    ADAPTATION = "ADAPTATION", // remplace son type par celui des attaques reçues
+    RAGE = "RAGE" // overtime, +20% attaque et vitesse et -20% défense par stack
 }
 
 export interface Alteration {

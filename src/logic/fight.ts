@@ -7,7 +7,7 @@ import Phaser from "phaser";
 import {makePokemonSprite, PokemonOnBoard, removePokemonSprite} from "../objects/pokemon";
 import {GameStage, gameState} from "./gamestate";
 import {Skill} from "./skill";
-import {hasBlockingAlteration, removeAlteration} from "./alteration";
+import {addAlteration, hasBlockingAlteration, removeAlteration} from "./alteration";
 import {renderSkillEffect, triggerSkill} from "./skill-anims";
 import {Alteration, AlterationType} from "../data/alterations";
 import {clamp} from "../utils/helpers";
@@ -335,7 +335,7 @@ export function sendBackToPokeball(pokemon: PokemonOnBoard){
 }
 
 export function healPokemon(pokemon: PokemonOnBoard, healAmount: number){
-    if(pokemon.hasAlteration(AlterationType.BRULURE)) healAmount *= 0.5 // les brûlures réduisent de 50% l'efficacité des soins
+    if(pokemon.hasAlteration(AlterationType.BRULURE) || pokemon.hasAlteration(AlterationType.RAGE)) healAmount *= 0.5 // les brûlures réduisent de 50% l'efficacité des soins
     pokemon.pv = Math.min(pokemon.maxPV, pokemon.pv + healAmount)
     registerHeal(pokemon, healAmount)
 }
@@ -376,4 +376,15 @@ export function gainXP(pokemon: Pokemon, amount: number){
         return startDialog(lines)
     }
     return Promise.resolve(pokemon.level)
+}
+
+export function enrageBoard(){
+    const game = gameState.activeScene as GameScene
+    game.cameras.main.flash(300, 255, 0, 0)
+    playSound("rage", { volume: 0.75 })
+    gameState.allPokemonsOnBoard.forEach(pokemon => addAlteration(pokemon, {
+        type: AlterationType.RAGE,
+        stacks: 1,
+        keepStacks: true
+    }, game))
 }

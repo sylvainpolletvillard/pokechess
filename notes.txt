@@ -1,10 +1,8 @@
 TODO:
 - items
 - filet papillon et parapluie
-- cadeaux de maman
 - debug evoli evolution
 - fossiles
 - plus de shops
 - échanges dans les shops
 - personnages hall ligue
-- mécanique d'overtime (rage: +50% VIT & ATK, -50% DEF & SOINS)

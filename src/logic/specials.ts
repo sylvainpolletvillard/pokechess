@@ -8,7 +8,7 @@ import GameScene from "../scenes/GameScene";
 import {clamp, pickNRandomIn, pickRandomIn, randomInt, wait} from "../utils/helpers";
 import {addAlteration, removeAlteration} from "./alteration";
 import {getCoordsFromPosition, getPokemonOnTile, getPositionFromCoords} from "./board";
-import {applyDamage, calcDamage} from "./fight";
+import {applyDamage, calcDamage, healPokemon} from "./fight";
 import {gameState} from "./gamestate";
 import {distanceBetweenPokemon} from "./pathfinding";
 import {makeEffectSprite, triggerSkill} from "./skill-anims";
@@ -267,6 +267,7 @@ export function evolution(attacker: PokemonOnBoard, target: PokemonOnBoard, game
         ])
 
     attacker.entry = EVOLI_MAPPING.get(target.entry.types[0]) ?? PYROLI
+    healPokemon(attacker, 0.2 * attacker.maxPV)
     removePokemonSprite(attacker, game)
     const newSprite = makePokemonSprite(attacker, game)
     newSprite.play(`${attacker.entry.ref}_${attacker.facingDirection}`)

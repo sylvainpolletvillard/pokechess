@@ -157,6 +157,10 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
             case AlterationType.REPOS:
                 alteration.effectSprite = makeEffectSprite(EFFECTS.SOIN, targetSprite.x, targetSprite.y-8, game)
                 break;
+
+            case AlterationType.RAGE:
+                targetSprite.setTint(0xff0000)
+                break;
         }
 
         pokemon.alterations.push({ ...alteration })
