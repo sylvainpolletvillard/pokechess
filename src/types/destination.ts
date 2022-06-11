@@ -10,6 +10,7 @@ export interface Intersection {
     ref: string;
     coordinates: [number, number],
     nextDestinations: { [destinationRef: string]: Path }
+    onReach?: () => Promise<boolean>
 }
 
 export enum DestinationType {
@@ -40,6 +41,7 @@ export interface Destination {
     preload?: (scene: MyScene) => void
     locked?: () => boolean
     customRoomOrder?: () => string[]
+    onExit?: () => void
 }
 
 export interface RoomConfig {

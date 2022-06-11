@@ -22,8 +22,9 @@ interface Save {
     lastCaptureDestinationRef?: string
     lastTourMam: number
     pension: SerializedPokemonOnBoard[]
-    pokedexSeen: string[];
+    pokedexSeen: string[]
     pokedexCaptured: string[]
+    wokeUpRonflex: boolean
 }
 
 interface SerializedRecord {
@@ -54,7 +55,8 @@ export function saveState(){
         lastTourMam: gameState.lastTourMam,
         pension: gameState.pension.map(p => serializePokemonOnBoard(p)),
         pokedexSeen: [...gameState.pokedexSeen],
-        pokedexCaptured: [...gameState.pokedexCaptured] 
+        pokedexCaptured: [...gameState.pokedexCaptured],
+        wokeUpRonflex: gameState.wokeUpRonflex
     }
     localStorage.setItem(KEY_SAVE, JSON.stringify(save))
 }
@@ -89,6 +91,7 @@ export function loadSave(): boolean {
     gameState.pension = save.pension.map(p => parseSerializedPokemonOnBoard(p))
     gameState.pokedexCaptured = new Set(save.pokedexCaptured)
     gameState.pokedexSeen = new Set(save.pokedexSeen)
+    gameState.wokeUpRonflex = save.wokeUpRonflex
     return true
 }
 

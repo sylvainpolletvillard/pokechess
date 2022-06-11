@@ -6,6 +6,11 @@ import {MINIDRACO} from "../pokemons/minidraco";
 import {REPTINCEL} from "../pokemons/reptincel";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { PokemonOnBoard } from "../../objects/pokemon";
+import { Pokemon } from "../pokemons";
+import { RONFLEX } from "../pokemons/ronflex";
+import { NO_OWNER } from "../owners";
+import { gameState } from "../../logic/gamestate";
 
 export const COLLINE_ROYALE: Destination = {
     ref: "COLLINE_ROYALE",
@@ -47,7 +52,37 @@ export const COLLINE_ROYALE: Destination = {
         }
     },
     preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('ronflex_endormi', 'assets/maps/ronflex_endormi.json');
         scene.load.tilemapTiledJSON('colline_royale', 'assets/maps/colline_royale.json');
         preloadMusic("music_colline_royale", "assets/audio/music/03 To Bill's Origin - From Cerulean.mp3");
+    }
+}
+
+export const RONFLEX_ENDORMI: Destination = {
+    ref: "RONFLEX_ENDORMI",
+    name: "Chemin vers la Colline",
+    nextDestinations: {},
+    coordinates: [11*16 -8, 5*16 -8],
+    type: DestinationType.WILD,
+    icons: ["type_NORMAL"],
+    rooms: {
+        wild: {
+            type: RoomType.WILD,
+            name: "Chemin vers la Colline",
+            map: "ronflex_endormi",
+            music: "music_colline_royale",
+            spawnOtherTeam(){
+                return [
+                    new PokemonOnBoard(new Pokemon(RONFLEX, NO_OWNER, 30), 3, 3)
+                ]
+            },
+        }
+    },
+    preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('ronflex_endormi', 'assets/maps/ronflex_endormi.json');
+    },
+    onExit(){
+        gameState.wokeUpRonflex = true
+        gameState.currentDestination = COLLINE_ROYALE
     }
 }

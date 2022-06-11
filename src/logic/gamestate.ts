@@ -63,6 +63,7 @@ export class GameState {
     pension: PokemonOnBoard[]
     pokedexSeen: Set<string>
     pokedexCaptured: Set<string>
+    wokeUpRonflex: boolean;
 
     constructor() {
         this.day = 0
@@ -84,6 +85,7 @@ export class GameState {
         this.lastTourMam = 0
         this.pokedexCaptured = new Set()
         this.pokedexSeen = new Set()
+        this.wokeUpRonflex = false;
 
         // @ts-ignore
         window.gameState = this; //TEMP: DEBUG
@@ -163,6 +165,9 @@ export class GameState {
     }
 
     exitDestination(){
+        if(gameState.currentDestination.onExit){
+            gameState.currentDestination.onExit()
+        }
         if(FAST_TRAVELS.has(gameState.currentDestination)){
             gameState.currentDestination = FAST_TRAVELS.get(gameState.currentDestination)!
             if(gameState.lastCaptureDestination != null) gameState.lastCaptureDestination = gameState.currentDestination

@@ -7,7 +7,7 @@ import {COL_DE_MONTAGNE} from "./destinations/col_montagne";
 import {MONT_SELENITE} from "./destinations/mont_selenite";
 import {CRAMOISILE} from "./destinations/cramoisile";
 import {MONT_BRAISE} from "./destinations/mont_braise";
-import {COLLINE_ROYALE} from "./destinations/colline_royale";
+import {COLLINE_ROYALE, RONFLEX_ENDORMI} from "./destinations/colline_royale";
 import {CELADOPOLE} from "./destinations/celadopole";
 import {AZURIA} from "./destinations/azuria";
 import {GROTTE_AZUREE} from "./destinations/grotte_azuree";
@@ -30,6 +30,10 @@ import {ILES_ECUME} from "./destinations/iles_ecume";
 import {CHAMPS_VERDOYANTS} from "./destinations/champs_verdoyants";
 import { ROUTE_VICTOIRE_ENTREE, ROUTE_VICTOIRE_SORTIE } from "./destinations/route_victoire";
 import { LIGUE } from "./destinations/ligue";
+import { startDialog } from "../logic/dialog";
+import { gameState } from "../logic/gamestate";
+import { POKEFLUTE } from "./items";
+import { enterDestination } from "../logic/destination";
 
 
 export const DESTINATIONS: { [ref: string]: Destination } = {
@@ -98,7 +102,8 @@ export const INTERSECTIONS: Intersection[] = [
             ARGENTA: [[-2,0]],
             COLLINE_ROYALE: [[2,0]],
             CELADOPOLE: [[0,2]]
-        }
+        },
+        onReach: onReachSleepyRonflex
     },
     {
         ref: "i2",
@@ -142,4 +147,23 @@ export const DestinationTypeHighlightTint: { [type in DestinationType]: number }
     [DestinationType.ARENA]: 0x33eeff,
     [DestinationType.WILD]: 0x33ff33,
     [DestinationType.SPECIAL]: 0xffff33
+}
+
+function onReachSleepyRonflex(): Promise<boolean> {
+    return new Promise((resolve) => {
+        if(gameState.wokeUpRonflex) return resolve(true)
+        else if(gameState.player.inventory[POKEFLUTE.ref] > 0) return startDialog([
+            `Un Pokémon endormi bloque le chemin. Le réveiller avec la Pokéflute ?`,
+            {
+                "Oui": () => {
+                    enterDestination(RONFLEX_ENDORMI)
+                    resolve(true)
+                },
+                "Non": () => resolve(false)
+            }
+        ])
+        else return startDialog([
+            `Un Pokémon endormi bloque le chemin.`
+        ]).then(() => resolve(false))
+    })  
 }

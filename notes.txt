@@ -6,4 +6,3 @@ TODO:
 - plus de shops
 - échanges dans les shops
 - personnages hall ligue
-- ronflex endormi

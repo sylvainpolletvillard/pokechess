@@ -14,7 +14,7 @@ import {
 import { drawTourCounter } from '../objects/tourCounter';
 import { enterDestination } from '../logic/destination';
 import { gameState } from '../logic/gamestate';
-import {getMovementVector, setupInputs} from '../logic/inputs';
+import {getMovementVector, handleCursor, setupInputs} from '../logic/inputs';
 import { getPathLength } from '../utils/path';
 import { hideDestinationPanel, showDestinationPanel } from '../objects/destinationPanel';
 import { loadFonts } from '../data/fonts';
@@ -40,6 +40,8 @@ import { CENTRALE } from '../data/destinations/centrale';
 import { PENSION } from '../data/destinations/pension';
 import { LAVANVILLE } from '../data/destinations/lavanville';
 import { OCEANE_AZURIA, OCEANE_CRAMOISILE } from '../data/destinations/oceane';
+import { clickEntry } from '../objects/menu';
+import { showNextLine } from '../logic/dialog';
 
 
 export default class MapScene extends MyScene {
@@ -85,6 +87,7 @@ export default class MapScene extends MyScene {
     create() {
         gameState.activeScene = this
         this.origin = gameState.currentDestination;
+        this.intersectionReached = null;
         this.destinationReached = this.origin;
         this.destinationsHighLightGroup = this.add.group()
         this.directionsGroup = this.add.group()
@@ -106,6 +109,7 @@ export default class MapScene extends MyScene {
     update(){
         if(this.isMoving) this.updatePlayerPosition();
         else {
+            handleCursor(this)
             const { moveVector } = getMovementVector(this);
             if(moveVector.length() > 1){
                 const dir = getDirectionFromVector(moveVector)
@@ -123,6 +127,9 @@ export default class MapScene extends MyScene {
     }
 
     onPressA() {
+        if(gameState.activeMenu != null) return clickEntry()
+        else if (gameState.activeDialog) return showNextLine();
+
         if(!this.isMoving
             && this.destinationReached != null
             && (!this.destinationSelected || this.destinationSelected === this.destinationReached)
@@ -166,12 +173,18 @@ export default class MapScene extends MyScene {
             })
 
         if(intersectionReached != null && !this.intersectionReached && !this.destinationSelected){
-            this.intersectionReached = intersectionReached;
             this.destinationReached = null;
-            wait(250).then(() => {
-                this.updateDirections(intersectionReached.nextDestinations)
-            })
-            return this.player.emit("stop")
+            this.intersectionReached = intersectionReached;
+            this.player.emit("stop")            
+            const onReach = intersectionReached.onReach || (() => Promise.resolve(true))
+            return onReach().then((canStay: boolean) => {
+                if(!canStay) this.walkPath(intersectionReached.nextDestinations[this.origin.ref])
+                else {
+                    wait(250).then(() => {
+                        this.updateDirections(intersectionReached.nextDestinations)
+                    })
+                }
+            })            
         }
 
         const isOnOrigin = this.originZone?.getBounds().contains(x, y+5)
@@ -223,8 +236,10 @@ export default class MapScene extends MyScene {
         const boat = this.add.sprite(boatX*16-8, boatY*16-8, "map").play("boat")
         this.sprites.set("boat", boat)
 
-        const ronflex = this.add.sprite(136,72, "map").play("ronflex")
-        this.sprites.set("ronflex", ronflex)
+        if(!gameState.wokeUpRonflex){
+            const ronflex = this.add.sprite(136,72, "map").play("ronflex")
+            this.sprites.set("ronflex", ronflex)
+        }
     }
 
     drawBadges(){

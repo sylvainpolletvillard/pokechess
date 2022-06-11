@@ -4,11 +4,11 @@ import { loadSprites } from "../data/sprites";
 import { loadSpritesheets } from "../data/spritesheets";
 import { gameState } from "../logic/gamestate";
 import { handleCursor, setupInputs } from "../logic/inputs";
-import { wait } from "../utils/helpers";
+import { clearTimeouts, wait } from "../utils/helpers";
 import { generatePokemonsAnims } from "../logic/anims";
 import { startMusic } from "../logic/audio";
 import { clickEntry, MenuEntry, openMenu } from "../objects/menu";
-import { hasSave, loadSave } from "../logic/save";
+import { hasSave } from "../logic/save";
 
 export default class MenuScene extends MyScene {
     isIntroAnim = true;    
@@ -137,6 +137,7 @@ export default class MenuScene extends MyScene {
     }
 
     skipIntro(){
+        clearTimeouts();
         this.tweens.getAllTweens().forEach(tween => {
             tween.targets.forEach(target => {
                 tween.stop()

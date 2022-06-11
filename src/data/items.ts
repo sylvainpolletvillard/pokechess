@@ -70,7 +70,7 @@ export const PV_PLUS: Item = {
 export const POKEFLUTE: Item = {
     ref: "pokeflute",
     label: "Pokéflute",
-    desc: "Réveillerait les Pokémon les plus profondément endormis",
+    desc: "Réveille les Pokémon les plus profondément endormis",
     cost: 2
 }
 
