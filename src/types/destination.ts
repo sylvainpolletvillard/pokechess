@@ -48,6 +48,7 @@ export interface RoomConfig {
     type: RoomType;
     name: string;
     music: string;
+    beforeExit?: () => Promise<any>
 }
 
 export type Room = RoomFreewalk | RoomWild | RoomArena | RoomTutorial | RoomSafari | RoomPension

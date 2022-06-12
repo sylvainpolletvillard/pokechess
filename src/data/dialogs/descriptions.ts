@@ -11,16 +11,16 @@ import { drawPokeballsCounter } from "../../objects/pokeballsCounter";
 import { loadRecord, saveNewRecord } from "../../logic/save";
 import { fadeOut } from "../../utils/camera";
 
-export function receiveItem(item: Item, quantity: number = 1, shouldPlaySound = true): Promise<void>{
+export function receiveItem(item: Item, quantity: number = 1, shouldPlaySound = true, source="trainer"): Promise<void>{
     shouldPlaySound && pauseMusicAndPlaySound("item_received")
     if(!gameState.player.inventory.hasOwnProperty(item.ref)){
         gameState.player.inventory[item.ref] = 0;
     }
     gameState.player.inventory[item.ref] += quantity;
-    const label = ITEMS[item.ref]?.label ?? "???"
+    const label = item.label ?? "???"
     if(item === ITEM_POKEBALL) drawPokeballsCounter()
     waitBeforeNextLine(2000)
-    return startDialog([`Vous recevez: ${label} x${quantity}`], { speaker: "system"})
+    return startDialog([`Vous ${source==="finding"? "trouvez" : "recevez"}: ${label} ${quantity > 1 ? 'x'+quantity : ''}`], { speaker: "system"})
 }
 
 export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) => DialogLine[]) } = {

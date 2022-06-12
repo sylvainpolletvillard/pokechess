@@ -257,21 +257,23 @@ export const SUPER_BONBON: Item = {
 
 export const FOSSILE_AMONITA: Item = {
     ref: "fossile_amonita",
-    label: "Fossile",
+    label: "Nautile",
     desc: "Un fossile de Pokémon antique en forme d'escargot"
 }
 
 export const FOSSILE_KABUTO: Item = {
     ref: "fossile_kabuto",
-    label: "Fossile",
+    label: "Fossile Dôme",
     desc: "Un fossile de Pokémon antique en forme de carapace"
 }
 
 export const FOSSILE_PTERA: Item = {
     ref: "fossile_ptera",
-    label: "Fossile",
+    label: "Vieil Ambre",
     desc: "Un fossile de Pokémon antique en forme d'oeuf"
 }
+
+export const FOSSILES = [FOSSILE_AMONITA, FOSSILE_KABUTO, FOSSILE_PTERA]
 
 export const ITEM_FILET: Item = {
     ref: "filet",
@@ -321,7 +323,12 @@ export const ITEMS: { [ref: string]: Item } = {
     [ORBE_FLAMME.ref]: ORBE_FLAMME,
     [ORBE_TOXIQUE.ref]:ORBE_TOXIQUE,
     [ORBE_GLACE.ref]: ORBE_GLACE,
-    [SUPER_BONBON.ref]: SUPER_BONBON
+    [SUPER_BONBON.ref]: SUPER_BONBON,
+    [FOSSILE_AMONITA.ref]: FOSSILE_AMONITA,
+    [FOSSILE_KABUTO.ref]: FOSSILE_KABUTO,
+    [FOSSILE_PTERA.ref]: FOSSILE_PTERA,
+    [ITEM_PARAPLUIE.ref]: ITEM_PARAPLUIE,
+    [ITEM_FILET.ref]: ITEM_FILET
 }
 
 export const ITEMS_LIST: Item[] = Object.values(ITEMS)

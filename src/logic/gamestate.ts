@@ -308,7 +308,7 @@ export class GameState {
                     else if(CHAMPIONS_LIGUE.includes(arena.trainer)) nbPokeballsReceived = 0
                     else nbPokeballsReceived = 2
                 }                
-                if(nbPokeballsReceived > 0) await receiveItem(ITEM_POKEBALL, nbPokeballsReceived, false)
+                if(nbPokeballsReceived > 0) await receiveItem(ITEM_POKEBALL, nbPokeballsReceived, false, "trainer")
             }
         }
 
@@ -346,10 +346,14 @@ export class GameState {
             startDialog(room.trainer.dialogs.step2, {
                 speaker: room.trainer.ref
             })
-        } else if(hasWon){
-            fadeOut(400).then(() => gameState.goToNextRoom())
         } else {
-            fadeOut(400).then(() => gameState.exitDestination())
+            const beforeExit: () => Promise<any> = gameState.currentRoom.beforeExit || (() => Promise.resolve())
+            beforeExit()
+            .then(() => fadeOut(400))
+            .then(() => {
+                if(hasWon) gameState.goToNextRoom()
+                else  gameState.exitDestination()
+            })
         }
     }
 

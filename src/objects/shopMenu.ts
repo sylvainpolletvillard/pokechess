@@ -65,7 +65,7 @@ export function openBuyMenu(seller: string){
                     "Oui": () => {
                         endDialog();
                         spend(item.cost!)                        
-                        return receiveItem(item, 1)
+                        return receiveItem(item, 1, true, "shop")
                             .then(() => { openBuyMenu(seller) })
                     },
                     "Non": () => wait(100).then(() => {

@@ -13,6 +13,9 @@ import {OSSELAIT} from "../pokemons/osselait";
 import {DRESSEUR_MONT_SELENITE} from "../trainers";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { receiveItem } from "../dialogs/descriptions";
+import { pickRandomIn } from "../../utils/helpers";
+import { FOSSILES } from "../items";
 
 export const MONT_SELENITE: Destination = {
     ref: "MONT_SELENITE",
@@ -39,6 +42,9 @@ export const MONT_SELENITE: Destination = {
                     [TYPE_EAU.ref]: 0.5,
                     [TYPE_SPECTRE.ref]: 0.2
                 })
+            },
+            beforeExit(){
+                return receiveItem(pickRandomIn(FOSSILES), 1, true, "finding")
             }
         },
         trainer: {
