@@ -28,6 +28,7 @@ export class PokemonOnBoard extends Pokemon {
     alterations: Alteration[];
     initialEntry?: PokemonEntry;
     untargettable: boolean;
+    unalterable: boolean;
     buffs: Buffs;
 
     constructor(pokemon: Pokemon, x:number, y:number) {
@@ -48,6 +49,7 @@ export class PokemonOnBoard extends Pokemon {
         this.pp = 0
         this.alterations = []
         this.untargettable = false;
+        this.unalterable = false;
         this.buffs = resetBuffs()
         return this
     }
@@ -123,6 +125,10 @@ export class PokemonOnBoard extends Pokemon {
 
     get alive(): boolean {
         return this.pv > 0
+    }
+
+    get maxPP(): number {
+        return this.entry.maxPP
     }
 
     get team(): PokemonOnBoard[] {

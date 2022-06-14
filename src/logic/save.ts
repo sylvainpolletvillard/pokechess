@@ -3,9 +3,10 @@ import {setupPlayerIdleBoard} from "./board";
 import {GameStage, gameState} from "./gamestate";
 import {DESTINATIONS} from "../data/destinations";
 import {PokemonOnBoard} from "../objects/pokemon";
-import {HoldableItem, Pokemon, POKEMONS} from "../data/pokemons";
+import { Pokemon, POKEMONS} from "../data/pokemons";
 import {MAGICARPE} from "../data/pokemons/magicarpe";
 import {xpToLevel} from "./xp";
+import { Item } from "../data/items";
 
 const KEY_SAVE = "pokechess_save"
 const KEY_RECORD = "pokechess_record"
@@ -159,7 +160,7 @@ interface SerializedPokemon {
     ref: string
     xp: number
     owner: number
-    item?: HoldableItem
+    item?: Item
 }
 
 function serializePokemon(p: Pokemon): SerializedPokemon {

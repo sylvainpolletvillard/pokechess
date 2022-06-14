@@ -1,4 +1,5 @@
 import { Alteration, AlterationType } from "../data/alterations"
+import { BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS } from "../data/items"
 import { OWNER_PLAYER } from "../data/owners"
 import { TYPE_COMBAT, TYPE_DRAGON, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
@@ -87,12 +88,12 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         
         // BONUS ALLIANCE VOL
         if(pokemon.hasType(TYPE_VOL) && allianceState.type === TYPE_VOL && allianceState.stepReached){
-            pokemon.buffs.dodge.push(() =>  0.2 * allianceState.stepReachedN)
+            pokemon.buffs.dodge.push(() => 0.2 * allianceState.stepReachedN)
         }
 
         // BONUS ALLIANCE ROCHE
         if(pokemon.hasType(TYPE_ROCHE) && allianceState.type === TYPE_ROCHE && allianceState.stepReached){
-            pokemon.buffs.defense.push(() =>  0.1 * allianceState.stepReachedN)
+            pokemon.buffs.defense.push(() => 0.1 * allianceState.stepReachedN)
         }
 
         // BONUS ALLIANCE SOL
@@ -162,6 +163,42 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             pokemon.buffs.attack.push(() => isLastDragon() ? 0.1 * allianceState.stepReachedN : 0);
             pokemon.buffs.defense.push(() => isLastDragon() ? 0.1 * allianceState.stepReachedN : 0);
             pokemon.buffs.speed.push(() => isLastDragon() ? 0.1 * allianceState.stepReachedN : 0);            
+        }
+
+        // ITEMS
+
+        // BAIES
+        if(pokemon.item === BAIE_SITRUS){
+            const baie: OnHitReceivedEffect = ({ damage }) => {
+                if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
+                    delete pokemon.item;
+                    healPokemon(pokemon, 0.25 * pokemon.maxPV)
+                    removeInArray(pokemon.buffs.onHitReceived, baie)
+                }
+            }
+            pokemon.buffs.onHitReceived.push(baie)
+        }
+
+        if(pokemon.item === BAIE_ORAN){
+            const baie: OnHitReceivedEffect = ({ damage }) => {
+                if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
+                    delete pokemon.item;
+                    removeInArray(pokemon.buffs.onHitReceived, baie)
+                    pokemon.buffs.defense.push(() => 0.3)
+                }
+            }
+            pokemon.buffs.onHitReceived.push(baie)
+        }
+
+        if(pokemon.item === BAIE_MEPO){
+            const baie: OnHitReceivedEffect = () => {
+                delete pokemon.item;
+                removeInArray(pokemon.buffs.onHitReceived, baie)
+                pokemon.buffs.onHitReceived.push(() => {
+                    pokemon.pp = Math.min(pokemon.pp + 2, pokemon.maxPP)
+                })
+            }
+            pokemon.buffs.onHitReceived.push(baie)
         }
 
     })

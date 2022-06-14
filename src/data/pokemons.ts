@@ -155,13 +155,10 @@ import { DRACO } from "./pokemons/draco";
 import { DRACOLOSSE } from "./pokemons/dracolosse";
 import { MEWTWO } from "./pokemons/mewtwo";
 import { MEW } from "./pokemons/mew";
-import { levelToXP, xpToLevel } from "../logic/xp";
+import { levelToXP } from "../logic/xp";
 import { PokemonOnBoard } from "../objects/pokemon";
+import { Item } from "./items";
 
-
-export interface HoldableItem {
-    name: string;
-}
 
 export interface PokemonEntry {
     ref: string;
@@ -185,7 +182,7 @@ export class Pokemon {
     owner: number;
     pv: number;
     pp: number;
-    item?: HoldableItem;
+    item?: Item;
     level: number;
     pokeball: string;
     entry: PokemonEntry;

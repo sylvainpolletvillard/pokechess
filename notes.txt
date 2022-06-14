@@ -2,7 +2,7 @@ TODO:
 - items
 - filet papillon et parapluie
 - debug evoli evolution
-- fossiles
+- conversion fossiles
 - plus de shops
 - échanges dans les shops
 - personnages hall ligue

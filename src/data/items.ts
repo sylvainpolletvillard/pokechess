@@ -14,28 +14,28 @@ export const ITEM_POKEBALL: Item = {
 export const BAIE_SITRUS: Item = {
     ref: "baie_sitrus",
     label: "Baie Sitrus",
-    desc: "Soigne 25% des PV max quand les PV tombent sous les 50% la première fois",
+    desc: "Soigne 25% des PV max - Consommé quand les PV tombent sous les 50% la première fois",
     cost: 1
 }
 
 export const BAIE_CERIZ: Item = {
     ref: "baie_ceriz",
     label: "Baie Ceriz",
-    desc: "Soigne la première altération subie par le porteur",
+    desc: "Consommé à la première altération subie - Soigne toutes les altérations pendant 10 secondes",
     cost: 1
 }
 
 export const BAIE_ORAN: Item = {
     ref: "baie_oran",
     label: "Baie Oran",
-    desc: "Augmente la Def de 30% quand les PV sont sous les 30%",
+    desc: "Def +30% - Consommé quand les PV tombent sous les 50% la première fois",
     cost: 1
 }
 
 export const BAIE_MEPO: Item = {
     ref: "baie_mepo",
     label: "Baie Mepo",
-    desc: "Démarre le combat avec 20 PP supplémentaires",
+    desc: "Consommé au premier coup reçu - Gagne 2PP supplémentaires par coup reçu",
     cost: 1
 }
 

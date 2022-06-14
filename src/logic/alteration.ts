@@ -1,5 +1,6 @@
 import {Alteration, AlterationType} from "../data/alterations"
 import {EFFECTS} from "../data/effects"
+import { BAIE_CERIZ } from "../data/items"
 import { TYPE_COMBAT, TYPE_EAU, TYPE_FEU, TYPE_PSY, TYPE_SPECTRE } from "../data/types"
 import {PokemonOnBoard} from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
@@ -91,6 +92,13 @@ export function hasBlockingAlteration(pokemon: PokemonOnBoard){
 
 export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, game: GameScene){
     if(!pokemon.alive) return;
+
+    if(pokemon.item === BAIE_CERIZ){
+        pokemon.unalterable = true;
+        setTimeout(() => { pokemon.unalterable = false; }, 10 * 1000)
+        delete pokemon.item;
+    }
+    
     const alterationToStack = pokemon.alterations.find(alt => alt.type === alteration.type)
     if(alterationToStack){        
         // altérations ne pouvant pas se stack:
