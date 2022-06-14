@@ -6,6 +6,7 @@ import {PokemonOnBoard} from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import {Direction} from "../utils/directions"
 import {removeInArray} from "../utils/helpers"
+import { playSound } from "./audio"
 import {applyDamage, calcBurnDamage, calcPoisonDamage, healPokemon, killPokemon} from "./fight"
 import {gameState} from "./gamestate"
 import {freezePokemonDuringMs, makeEffectSprite, sendPokemonFlying} from "./skill-anims"
@@ -97,8 +98,9 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
         pokemon.unalterable = true;
         setTimeout(() => { pokemon.unalterable = false; }, 10 * 1000)
         delete pokemon.item;
+        playSound("heal_ailment")
     }
-    
+
     const alterationToStack = pokemon.alterations.find(alt => alt.type === alteration.type)
     if(alterationToStack){        
         // altérations ne pouvant pas se stack:

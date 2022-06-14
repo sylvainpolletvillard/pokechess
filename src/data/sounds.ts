@@ -24,6 +24,7 @@ export function loadAudio(scene: Phaser.Scene) {
     scene.load.audio("pokemon_received", ["assets/audio/sounds/pokemon_received.ogg"]);
     scene.load.audio("level_up", ["assets/audio/sounds/level_up.ogg"]);
     scene.load.audio("rage", ["assets/audio/sounds/rage.ogg"]);
+    scene.load.audio("heal_ailment", ["assets/audio/sounds/heal_ailment.ogg"])
     
     scene.load.audio("press_ab", ["assets/audio/sounds/press_ab.ogg"]);
     scene.load.audio("tick", ["assets/audio/sounds/tick.ogg"]);

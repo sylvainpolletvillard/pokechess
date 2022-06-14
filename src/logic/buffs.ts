@@ -6,6 +6,7 @@ import { PokemonOnBoard } from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import { removeInArray } from "../utils/helpers"
 import { addAlteration } from "./alteration"
+import { playSound } from "./audio"
 import { getPokemonOnTile, isOnBoard } from "./board"
 import { applyDamage, healPokemon } from "./fight"
 import { gameState } from "./gamestate"
@@ -172,6 +173,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             const baie: OnHitReceivedEffect = ({ damage }) => {
                 if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
                     delete pokemon.item;
+                    playSound("heal_ailment")
                     healPokemon(pokemon, 0.25 * pokemon.maxPV)
                     removeInArray(pokemon.buffs.onHitReceived, baie)
                 }
@@ -183,6 +185,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             const baie: OnHitReceivedEffect = ({ damage }) => {
                 if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
                     delete pokemon.item;
+                    playSound("heal_ailment")
                     removeInArray(pokemon.buffs.onHitReceived, baie)
                     pokemon.buffs.defense.push(() => 0.3)
                 }
@@ -193,6 +196,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         if(pokemon.item === BAIE_MEPO){
             const baie: OnHitReceivedEffect = () => {
                 delete pokemon.item;
+                playSound("heal_ailment")
                 removeInArray(pokemon.buffs.onHitReceived, baie)
                 pokemon.buffs.onHitReceived.push(() => {
                     pokemon.pp = Math.min(pokemon.pp + 2, pokemon.maxPP)
