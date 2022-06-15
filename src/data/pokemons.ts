@@ -1,6 +1,6 @@
 import {nanoid} from "nanoid";
 
-import {PokemonType} from "./types";
+import {PokemonType, TYPE_COMBAT, TYPE_DRAGON, TYPE_EAU, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_INSECTE, TYPE_NORMAL, TYPE_PLANTE, TYPE_POISON, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL} from "./types";
 import {Skill} from "../logic/skill";
 import {POKEBALLS, POKEBALL_COSTS} from "./pokeballs";
 
@@ -157,7 +157,8 @@ import { MEWTWO } from "./pokemons/mewtwo";
 import { MEW } from "./pokemons/mew";
 import { levelToXP } from "../logic/xp";
 import { PokemonOnBoard } from "../objects/pokemon";
-import { Item, PV_PLUS } from "./items";
+
+import { GEMME_CIEL, GEMME_DRACO, GEMME_FLAMME, GEMME_GLACE, GEMME_GRISE, GEMME_HERBE, GEMME_HYDRO, GEMME_INSECTE, GEMME_OMBRE, GEMME_PIXIE, GEMME_POING, GEMME_PSY, GEMME_ROC, GEMME_TERRE, GEMME_TOXIC, GEMME_VOLT, Item, PV_PLUS } from "./items";
 
 
 export interface PokemonEntry {
@@ -217,6 +218,10 @@ export class Pokemon {
         return maxPV
     }
 
+    get maxPP(): number {
+        return this.entry.maxPP
+    }
+
     get attack(): number {
         return Math.round(this.entry.attack * this.level / 50 + 5)
     }
@@ -233,8 +238,29 @@ export class Pokemon {
         return POKEBALL_COSTS[this.pokeball]
     }
 
+    get types(){
+        const types = [...this.entry.types]
+        if(this.item === GEMME_DRACO) types.push(TYPE_DRAGON)
+        if(this.item === GEMME_HYDRO) types.push(TYPE_EAU)
+        if(this.item === GEMME_FLAMME) types.push(TYPE_FEU)
+        if(this.item === GEMME_HERBE) types.push(TYPE_PLANTE)
+        if(this.item === GEMME_VOLT) types.push(TYPE_ELECTRIQUE)
+        if(this.item === GEMME_TERRE) types.push(TYPE_SOL)
+        if(this.item === GEMME_INSECTE) types.push(TYPE_INSECTE)
+        if(this.item === GEMME_PIXIE) types.push(TYPE_FEE)
+        if(this.item === GEMME_CIEL) types.push(TYPE_VOL)
+        if(this.item === GEMME_POING) types.push(TYPE_COMBAT)
+        if(this.item === GEMME_GLACE) types.push(TYPE_GLACE)
+        if(this.item === GEMME_PSY) types.push(TYPE_PSY)
+        if(this.item === GEMME_TOXIC) types.push(TYPE_POISON)
+        if(this.item === GEMME_ROC) types.push(TYPE_ROCHE)
+        if(this.item === GEMME_OMBRE) types.push(TYPE_SPECTRE)
+        if(this.item === GEMME_GRISE) types.push(TYPE_NORMAL)
+        return types
+    }
+
     hasType(type: PokemonType){
-        return this.entry.types.includes(type)
+        return this.types.includes(type)
     }
 }
 

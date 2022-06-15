@@ -91,12 +91,12 @@ export default class GameOverScene extends MyScene {
     portrait.setScrollFactor(0);
     pokemonInfoBox.add(portrait);
 
-    for (let i = 0; i < pokemon.entry.types.length; i++) {
+    for (let i = 0; i < pokemon.types.length; i++) {
       const typeSprite = this.add.sprite(
         ox + 112 - i * 20,
         oy - 22,
         "icons16x16",
-        pokemon.entry.types[i].frameIndex
+        pokemon.types[i].frameIndex
       );
       typeSprite.setScrollFactor(0);
       pokemonInfoBox.add(typeSprite);

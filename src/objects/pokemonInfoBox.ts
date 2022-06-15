@@ -86,8 +86,8 @@ export function displayPokemonInfo(pokemon: Pokemon){
     const statRangeText = addText(ox +114, oy+15, pokemon.entry.baseSkill.attackRange.toFixed(0))
     pokemonInfoBox.add(statRangeText)
 
-    for(let i=0; i< pokemon.entry.types.length; i++) {
-        const typeSprite = scene.add.sprite(ox + 112 - i*20, oy-22, "icons16x16", pokemon.entry.types[i].frameIndex)
+    for(let i=0; i< pokemon.types.length; i++) {
+        const typeSprite = scene.add.sprite(ox + 112 - i*20, oy-22, "icons16x16", pokemon.types[i].frameIndex)
         typeSprite.setScrollFactor(0);
         pokemonInfoBox.add(typeSprite)
     }

@@ -243,7 +243,7 @@ export function applyDamage(damage: number, target: PokemonOnBoard, attacker?: P
 }
 
 export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: PokemonOnBoard): number {
-    let targetTypes = target.entry.types
+    let targetTypes = target.types
     if(target.hasAlteration(AlterationType.ADAPTATION)) targetTypes = [skill.type]
     let typeFactor = targetTypes
         .map(type => TABLE_TYPES.get(skill.type)?.get(type) ?? 1)

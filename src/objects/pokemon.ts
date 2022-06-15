@@ -127,10 +127,6 @@ export class PokemonOnBoard extends Pokemon {
         return this.pv > 0
     }
 
-    get maxPP(): number {
-        return this.entry.maxPP
-    }
-
     get team(): PokemonOnBoard[] {
         return this.owner === OWNER_PLAYER ? gameState.board.playerTeam : gameState.board.otherTeam
     }

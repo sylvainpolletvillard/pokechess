@@ -84,7 +84,7 @@ export class Player {
 }
 
 export function getAlliancesState(team: Pokemon[]): Map<PokemonType, AllianceState> {
-    const teamTypes = new Set(team.map(pokemon => pokemon.entry.types).flat())
+    const teamTypes = new Set(team.map(pokemon => pokemon.types).flat())
     return new Map([...teamTypes].map(type => [type, getAllianceState(team, type)]))
 }
 

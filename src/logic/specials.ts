@@ -266,7 +266,7 @@ export function evolution(attacker: PokemonOnBoard, target: PokemonOnBoard, game
             [TYPE_VOL, VOLTALI]
         ])
 
-    attacker.entry = EVOLI_MAPPING.get(target.entry.types[0]) ?? PYROLI
+    attacker.entry = EVOLI_MAPPING.get(target.types[0]) ?? PYROLI
     healPokemon(attacker, 0.2 * attacker.maxPV)
     removePokemonSprite(attacker, game)
     const newSprite = makePokemonSprite(attacker, game)
