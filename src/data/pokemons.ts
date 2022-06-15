@@ -157,7 +157,7 @@ import { MEWTWO } from "./pokemons/mewtwo";
 import { MEW } from "./pokemons/mew";
 import { levelToXP } from "../logic/xp";
 import { PokemonOnBoard } from "../objects/pokemon";
-import { Item } from "./items";
+import { Item, PV_PLUS } from "./items";
 
 
 export interface PokemonEntry {
@@ -212,7 +212,9 @@ export class Pokemon {
     }
 
     get maxPV(): number {
-        return Math.round(this.entry.maxPV * this.level / 50 + 10)
+        let maxPV = Math.round(this.entry.maxPV * this.level / 50 + 10)
+        if(this.item === PV_PLUS) maxPV *= 1.2
+        return maxPV
     }
 
     get attack(): number {

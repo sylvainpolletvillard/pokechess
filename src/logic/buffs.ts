@@ -1,5 +1,5 @@
 import { Alteration, AlterationType } from "../data/alterations"
-import { BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS } from "../data/items"
+import { ATTAQUE_PLUS, BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS, DEFENSE_PLUS, PV_PLUS, VITESSE_PLUS } from "../data/items"
 import { OWNER_PLAYER } from "../data/owners"
 import { TYPE_COMBAT, TYPE_DRAGON, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
@@ -204,6 +204,11 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             }
             pokemon.buffs.onHitReceived.push(baie)
         }
+
+        // STATS BOOSTERS
+        if(pokemon.item === ATTAQUE_PLUS) pokemon.buffs.attack.push(() => 0.2)
+        if(pokemon.item === DEFENSE_PLUS) pokemon.buffs.defense.push(() => 0.2)
+        if(pokemon.item === VITESSE_PLUS) pokemon.buffs.speed.push(() => 0.2)
 
     })
 }
