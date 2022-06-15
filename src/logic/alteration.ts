@@ -1,6 +1,6 @@
 import {Alteration, AlterationType} from "../data/alterations"
 import {EFFECTS} from "../data/effects"
-import { BAIE_CERIZ } from "../data/items"
+import { BAIE_CERIZ, POKEFLUTE } from "../data/items"
 import { TYPE_COMBAT, TYPE_EAU, TYPE_FEU, TYPE_PSY, TYPE_SPECTRE } from "../data/types"
 import {PokemonOnBoard} from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
@@ -137,6 +137,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 break;
 
             case AlterationType.SOMMEIL:
+                if(pokemon.item === POKEFLUTE) return;
                 if(pokemon.hasType(TYPE_SPECTRE)) return; // Pokémon Spectre insensible au sommeil
                 pokemon.resetAction()
                 alteration.effectSprite = makeEffectSprite(EFFECTS.SOMMEIL, targetSprite.x, targetSprite.y, game)

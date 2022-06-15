@@ -21,7 +21,7 @@ export const DRACORAGE: AOESkill = {
     effect: EFFECTS.DRACORAGE,
     power: 0,
     hitDelay: 0,
-    triggerAlteration: {
+    hitAlteration: {
         type: AlterationType.DAMAGE_OVER_TIME,
         stacks: 30
     }

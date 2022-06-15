@@ -1,7 +1,7 @@
 import { addInteractiveElem, dragState, handleDragEnd } from './cursor';
 import { addText } from '../utils/text';
 import { addToBox, removeFromTeam } from '../logic/box';
-import { cancelPokemonDrag, clearPokemonsOnBoard, drawPokemonsOnBoard, drawTeamSizeCounter } from '../logic/board';
+import { cancelPokemonDrag, drawPokemonsOnBoard, drawTeamSizeCounter } from '../logic/board';
 import { closeMenu } from './menu';
 import GameScene from '../scenes/GameScene';
 import { gameState } from '../logic/gamestate';
@@ -259,7 +259,9 @@ export function drawRefreshButton(game: GameScene){
             gameState.player.inventory.pokeball -= 1
             playSound("refresh")
             game.drawMap();
-            clearPokemonsOnBoard(game)
+            for (let pokemon of gameState.board.otherTeam) {
+                game.sprites.get(pokemon.uid)?.destroy(true)
+            }
             gameState.board.otherTeam = (gameState.currentRoom as RoomSafari).spawnOtherTeam()
             drawPokemonsOnBoard(game)
             drawPokeballsCounter()

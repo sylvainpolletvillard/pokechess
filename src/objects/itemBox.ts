@@ -1,10 +1,14 @@
 import {MenuEntry, openMenu} from "./menu";
 import GameScene from "../scenes/GameScene";
 import {gameState} from "../logic/gamestate";
-import {Item, ITEMS, ITEMS_SPRITES_INDEX, ITEM_POKEBALL} from "../data/items";
+import {Item, ITEMS, ITEMS_SPRITES_INDEX, ItemType, ITEM_POKEBALL, REPOUSSE} from "../data/items";
 import {hideItemDescription, showItemDescription} from "./itemDescriptionBox";
 import { handleDragStart } from "./cursor";
 import { playSound } from "../logic/audio";
+import { startDialog } from "../logic/dialog";
+import { RoomType } from "../types/destination";
+import { refreshWildPokemons } from "../logic/board";
+import { wait } from "../utils/helpers";
 
 export function makeItemSprite(item: Item){
     const sprite = gameState.activeScene!.add.sprite(0, 0, "items",
@@ -35,7 +39,7 @@ export function openItemMenu(game: GameScene){
     const entries: MenuEntry[] = items.map((item,i) => ({
         x: 4,
         y: 4+i*rowHeight,
-        color: item.ref === ITEM_POKEBALL.ref ? "gray" : "black",
+        color: ITEMS[item.ref].type === ItemType.Trade ? "gray" : "black",
         label: item.label,
         value: item.ref
     }))
@@ -51,16 +55,23 @@ export function openItemMenu(game: GameScene){
         background: "box1",
         offset: 8,
         entries,
-        draw(group){
-
-        },
-        async handleChoice(choice){
-            hideItemDescription();
-
+        handleChoice(choice){
             const item = ITEMS[choice.value] as Item;
-            const itemSprite = makeItemSprite(item)
 
-            handleDragStart(itemSprite, game)
+            if(item.type === ItemType.Holdable){
+                const itemSprite = makeItemSprite(item)
+                handleDragStart(itemSprite, game)
+            } 
+            else if(item.type === ItemType.Usable){
+                wait(0).then(() => startDialog([`Utiliser ${item.label} ?`, {
+                    "Oui"(){ useItem(item, game); },
+                    "Non"(){ }
+                }]))
+                return true
+            }
+            else if(item.type === ItemType.Trade){
+                return false
+            }
         },
         handleCancel(){
             hideItemDescription();
@@ -74,4 +85,12 @@ export function openItemMenu(game: GameScene){
             hideItemDescription()
         }
     })
+}
+
+function useItem(item: Item, game: GameScene){
+    if(item === REPOUSSE){
+        if(gameState.currentRoom.type !== RoomType.WILD) return startDialog(["Ça ne marchera pas ici..."])        
+        gameState.player.inventory[REPOUSSE.ref] -= 1
+        refreshWildPokemons(game)
+    }
 }

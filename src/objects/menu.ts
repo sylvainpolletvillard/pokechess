@@ -52,14 +52,15 @@ export function getSelectedMenuEntry(): MenuEntry | null {
     return gameState.activeMenu.entries[menuCursorPos]
 }
 
-export function clickEntry(){
-    if(!gameState.activeMenu?.entries) return false;
+export function clickEntry(): void {
+    if(!gameState.activeMenu?.entries) return;
     const selectedEntry = gameState.activeMenu.entries[menuCursorPos]
-    const menuToBeClosed = gameState.activeMenu
+    const menu = gameState.activeMenu
     playSound(selectedEntry.value ? "press_ab" : "menu_close")
-    closeMenu()
-    if(menuToBeClosed.handleChoice) menuToBeClosed.handleChoice(selectedEntry);
-    return true;
+    if(menu.handleChoice){
+        const shouldCloseMenu = menu.handleChoice(selectedEntry);
+        if(shouldCloseMenu !== false) closeMenu()
+    }
 }
 
 export function openMenu(menu: Menu){

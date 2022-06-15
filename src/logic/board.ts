@@ -16,7 +16,7 @@ import {getPokemonCry, Pokemon} from "../data/pokemons";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
 import { NO_OWNER, OWNER_CHANGING, OWNER_PLAYER } from "../data/owners";
-import { RoomBoard, RoomType} from "../types/destination";
+import { RoomBoard, RoomType, RoomWild} from "../types/destination";
 import {displayPokemonCaptureInfo, hidePokemonCaptureInfo} from "../objects/pokemonCaptureBox";
 import {spend} from "./shop";
 import { calcXpEarnedOnDefeat } from "./xp";
@@ -111,7 +111,7 @@ export function drawPokemonsOnBoard(game: GameScene){
     }
 }
 
-export function clearPokemonsOnBoard(game: GameScene){
+export function clearPlacement(game: GameScene){
     for (let pokemon of gameState.player.team) {
         game.sprites.get(pokemon.uid)?.destroy()
     }
@@ -120,10 +120,6 @@ export function clearPokemonsOnBoard(game: GameScene){
             game.sprites.get(pokemon.uid)?.destroy(true)
         }
     }
-}
-
-export function clearPlacement(game: GameScene){
-    clearPokemonsOnBoard(game)
     game.objects.get("grid")?.destroy();
     hidePokemonReleaseInfo();
     hideTeamSizeCounter();
@@ -474,4 +470,24 @@ export function drawTeamSizeCounter(){
 export function hideTeamSizeCounter(){
     const scene = gameState.activeScene as GameScene
     scene.objects.get("teamSizeCounter")?.destroy()
+}
+
+export function refreshWildPokemons(game: GameScene){
+    playSound("refresh")
+    
+    for (let pokemon of gameState.board.otherTeam) {
+        game.sprites.get(pokemon.uid)?.destroy(true)
+    }
+
+    gameState.board.otherTeam = (gameState.currentRoom as RoomWild).spawnOtherTeam()
+    gameState.board.otherTeamAlliances = getAlliancesState(gameState.board.otherTeam)
+    
+    for (let pokemon of gameState.board.otherTeam) {
+        const sprite = makePokemonSprite(pokemon, game)
+        sprite.anims.resume()
+    }
+    
+    if([RoomType.ARENA, RoomType.WILD].includes(gameState.currentRoom.type)){
+        drawAlliancesInfo(gameState.board.otherTeam)
+    }
 }
