@@ -30,6 +30,7 @@ export function openItemMenu(game: GameScene){
             label: `${ITEMS[itemRef].label} x${quantity}`,
             quantity
          }))
+         .filter(item => item.quantity > 0)
          .sort((a,b) => {
             if(b.ref === ITEM_POKEBALL.ref) return -1
             if(a.ref === ITEM_POKEBALL.ref) return +1

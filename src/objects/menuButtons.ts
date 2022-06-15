@@ -214,7 +214,7 @@ export function drawBagButton(game: GameScene){
                 if(pokemon != null){
                     bagButtonText = addText(bagButtonX, game.scale.height - dyText,
                         pokemon.item 
-                            ? `Récupérer ${pokemon.item.name}`
+                            ? `Récupérer ${pokemon.item.label}`
                             : `${pokemon.entry.name} ne tient pas d'objet`,
                         { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                        
                 } else if(item != null){
@@ -235,8 +235,11 @@ export function drawBagButton(game: GameScene){
             const pokemon = sprite.getData("pokemon");
             const item: Item = sprite.getData("item")
             if(pokemon != null){
-                bagButtonText?.destroy()
-                //TODO: prendre l'objet tenu par le pokemon
+                bagButtonText?.destroy()                
+                if(pokemon.item != null){
+                    gameState.player.inventory[pokemon.item.ref] += 1
+                    pokemon.item = null
+                }
                 cancelPokemonDrag();                
             } else if(item != null){
                 bagButtonText?.destroy()           

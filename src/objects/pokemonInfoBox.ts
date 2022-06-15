@@ -5,6 +5,7 @@ import {Z} from "../data/depths";
 import {GameStage, gameState} from "../logic/gamestate";
 import {MyScene} from "../scenes/MyScene";
 import {METAMORPH} from "../data/pokemons/metamorph";
+import { ITEMS_SPRITES_INDEX } from "../data/items";
 
 let currentPokemonInfoDisplayed: Pokemon | null;
 let pokemonInfoBox: Phaser.GameObjects.Group | null;
@@ -90,6 +91,12 @@ export function displayPokemonInfo(pokemon: Pokemon){
         const typeSprite = scene.add.sprite(ox + 112 - i*20, oy-22, "icons16x16", pokemon.types[i].frameIndex)
         typeSprite.setScrollFactor(0);
         pokemonInfoBox.add(typeSprite)
+    }
+
+    if(pokemon.item != null){
+        const itemSprite = scene.add.sprite(ox+110, oy-2, "items", ITEMS_SPRITES_INDEX.indexOf(pokemon.item))
+        itemSprite.setScrollFactor(0);
+        pokemonInfoBox.add(itemSprite)
     }
 
     pokemonInfoBox.setDepth(Z.MENU)

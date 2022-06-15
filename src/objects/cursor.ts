@@ -1,10 +1,11 @@
 import Phaser from "phaser";
-import {BOARD_HEIGHT, BOARD_WIDTH, getCoordsFromPosition, getPositionFromCoords} from "../logic/board";
+import {BOARD_HEIGHT, BOARD_WIDTH, getCoordsFromPosition, getPokemonOnTile, getPositionFromCoords} from "../logic/board";
 import {GameStage, gameState} from "../logic/gamestate";
 import {Z} from "../data/depths";
 import {MyScene} from "../scenes/MyScene";
 import {showNextLine} from "../logic/dialog";
 import { RoomType } from "../types/destination";
+import { OWNER_PLAYER } from "../data/owners";
 
 export type InteractiveElem = Phaser.GameObjects.Sprite | Phaser.GameObjects.Zone | Phaser.GameObjects.Rectangle | Phaser.GameObjects.Text
 const interactiveElems: Set<InteractiveElem> = new Set();
@@ -141,11 +142,17 @@ export function testIfCanBeDroppedOn(elem: InteractiveElem){
     switch(dropZoneType){
         case "gridTile":            
             const [x,y] = elem.getData("position")
-            return draggedType === "pokemon"
-                && x >= 0
-                && x < BOARD_WIDTH
-                && y >= (gameState.currentRoom.type === RoomType.PENSION ? 0 : BOARD_HEIGHT/2)
-                && y < BOARD_HEIGHT
+            if(draggedType === "pokemon"){
+                return x >= 0
+                    && x < BOARD_WIDTH
+                    && y >= (gameState.currentRoom.type === RoomType.PENSION ? 0 : BOARD_HEIGHT/2)
+                    && y < BOARD_HEIGHT
+            }
+            if(draggedType === "item"){
+                const pokemonOnTile = getPokemonOnTile(x,y)
+                return pokemonOnTile != null && pokemonOnTile.owner === OWNER_PLAYER
+            }
+            return false;
         case "boxTile":
         case "pokedexButton":
         case "boxButton":

@@ -30,6 +30,7 @@ import { playSound } from "./audio";
 import { AllianceState } from "../data/alliances";
 import { PokemonType } from "../data/types";
 import { addToPension, removeFromPension } from "./pension";
+import { makeItemSprite } from "../objects/itemBox";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -133,12 +134,12 @@ export function getCoordsFromPosition(x: number, y:number): [number, number]{
     return [ Math.floor((x-64)/32), Math.floor((y-48)/32) ]
 }
 
-export function getPokemonOnTile(i: number, j:number){    
-    return gameState.allPokemonsOnBoard.find(pokemon => pokemon.x === i && pokemon.y === j)
+export function getPokemonOnTile(x: number, y:number){    
+    return gameState.allPokemonsOnBoard.find(pokemon => pokemon.x === x && pokemon.y === y)
 }
 
-export function isOnBoard(i: number, j: number): boolean {
-    return i >= 0 && i < 7 && j >= 0 && j < 8
+export function isOnBoard(x: number, y: number): boolean {
+    return x >= 0 && x < 7 && y >= 0 && y < 8
 }
 
 export function launchPokeball(player: number, pokeballType: string, x:number, y:number, game: GameScene, shouldPlaySound=false){
@@ -294,7 +295,9 @@ export function drawGrid(){
                 if(dragState.draggedElem != null){ handleDragEnd(game) }
             })
             gridTile.on("dropReceived", (droppedSprite: Phaser.GameObjects.Sprite) => {
-                dropPokemonOnBoard(droppedSprite, x, y, game)
+                const droppedType = droppedSprite.getData("type")
+                if(droppedType === "pokemon") dropPokemonOnBoard(droppedSprite, x, y, game)
+                else if(droppedType === "item") dropItemOnPokemon(droppedSprite, x, y, game)
             })
         }
     }
@@ -490,4 +493,22 @@ export function refreshWildPokemons(game: GameScene){
     if([RoomType.ARENA, RoomType.WILD].includes(gameState.currentRoom.type)){
         drawAlliancesInfo(gameState.board.otherTeam)
     }
+}
+
+export function dropItemOnPokemon(droppedSprite: Phaser.GameObjects.Sprite, x: number, y: number, game: GameScene){
+    const pokemon = getPokemonOnTile(x,y)
+    if(pokemon == null) return;
+    if(pokemon.item != null){
+        let previousItem = pokemon.item
+        wait(10).then(() => {
+            const itemSprite = makeItemSprite(previousItem)
+            handleDragStart(itemSprite, game)
+        })
+    }
+    pokemon.item = droppedSprite.getData("item")
+    droppedSprite.destroy()
+    gameState.player.inventory[pokemon.item!.ref] -= 1
+
+    drawAlliancesInfo(gameState.board.playerTeam) // si une gemme de type est rajoutée
+    displayPokemonInfo(pokemon)
 }
