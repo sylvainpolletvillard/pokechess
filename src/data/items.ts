@@ -250,7 +250,7 @@ export const MULTI_EXP: Item = {
 export const MAX_ELIXIR: Item = {
     ref: "max_elixir",
     label: "Max Elixir",
-    desc: "Gagne 5PP à chaque attaque",
+    desc: "Gagne 4PP à chaque attaque",
     cost: 4,
     type: ItemType.Holdable
 }

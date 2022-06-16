@@ -138,7 +138,7 @@ export function renderDirectHitAttack(skill: Skill, attacker: PokemonOnBoard, ta
         const damage = calcDamage(skill, target, attacker)
         console.log(`${attacker.entry.name} is attacking ${target.entry.name} for ${damage} damage !`)
         if(testPrecision(attacker, target, skill)){
-            attacker.buffs.onHit.forEach(buff => buff({ target, attacker }))
+            attacker.buffs.onHit.forEach(buff => buff({ target, attacker, damage }))
             target.buffs.onHitReceived.forEach(buff => buff({ damage, attacker }))
             applyDamage(damage, target, attacker)
             if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker, attacker)            

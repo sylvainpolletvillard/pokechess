@@ -1,5 +1,6 @@
 import { Alteration, AlterationType } from "../data/alterations"
-import { ATTAQUE_PLUS, BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS, DEFENSE_PLUS, PV_PLUS, VITESSE_PLUS } from "../data/items"
+import { EFFECTS } from "../data/effects"
+import { ATTAQUE_PLUS, BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS, BOULE_FUMEE, DEFENSE_PLUS, GRELOT_COQUE, MAX_ELIXIR, PV_PLUS, VITESSE_PLUS } from "../data/items"
 import { OWNER_PLAYER } from "../data/owners"
 import { TYPE_COMBAT, TYPE_DRAGON, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
@@ -10,9 +11,10 @@ import { playSound } from "./audio"
 import { getPokemonOnTile, isOnBoard } from "./board"
 import { applyDamage, healPokemon } from "./fight"
 import { gameState } from "./gamestate"
+import { makeEffectSprite } from "./skill-anims"
 import { tunnel } from "./specials"
 
-export type OnHitEffect = (params: { attacker: PokemonOnBoard, target: PokemonOnBoard }) => void
+export type OnHitEffect = (params: { attacker: PokemonOnBoard, target: PokemonOnBoard, damage: number }) => void
 
 export type OnHitReceivedEffect = {
     (params: { damage: number , attacker: PokemonOnBoard}): void
@@ -209,6 +211,32 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         if(pokemon.item === ATTAQUE_PLUS) pokemon.buffs.attack.push(() => 0.2)
         if(pokemon.item === DEFENSE_PLUS) pokemon.buffs.defense.push(() => 0.2)
         if(pokemon.item === VITESSE_PLUS) pokemon.buffs.speed.push(() => 0.2)
+
+        // ITEMS RANG 4
+        if(pokemon.item === GRELOT_COQUE){
+            pokemon.buffs.onHit.push(({ damage }) => {
+                healPokemon(pokemon, damage*0.2)
+            })
+        }
+
+        if(pokemon.item === BOULE_FUMEE){
+            const buff: OnHitReceivedEffect = ({ damage }) => {
+                if(pokemon.pv - damage < 0.3 * pokemon.maxPV){
+                    pokemon.makeUntargettable(3000)
+                    playSound("fly")
+                    const pokemonSprite = gameState.activeScene?.sprites.get(pokemon.uid)
+                    if(pokemonSprite) makeEffectSprite(EFFECTS.BROUILLARD, pokemonSprite.x, pokemonSprite.y, game)
+                    removeInArray(pokemon.buffs.onHitReceived, buff)
+                }
+            }
+            pokemon.buffs.onHitReceived.push(buff)
+        }
+
+        if(pokemon.item === MAX_ELIXIR){
+            pokemon.buffs.onHit.push(() => {
+                pokemon.pp = Math.min(pokemon.pp + 4, pokemon.maxPP)
+            })
+        }
 
     })
 }

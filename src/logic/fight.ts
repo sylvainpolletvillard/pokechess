@@ -20,6 +20,7 @@ import { pauseMusicAndPlaySound, playSound } from "./audio";
 import { SKILLS } from "../data/skills";
 import { DialogLine } from "../types/dialog";
 import { registerDamageDone, registerDamageReceived, registerHeal } from "./stats";
+import { MULTI_EXP } from "../data/items";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
@@ -347,6 +348,9 @@ export function gainXP(pokemon: Pokemon, amount: number){
     const bonusInsecte = pokemon.owner === OWNER_PLAYER ? gameState.board.playerAlliances.get(TYPE_INSECTE) : gameState.board.otherTeamAlliances.get(TYPE_INSECTE)
     if(pokemon.hasType(TYPE_INSECTE) && bonusInsecte){
         buffFactor += 0.2 * bonusInsecte.stepReachedN
+    }
+    if(pokemon.item === MULTI_EXP){
+        buffFactor += 0.3
     }
 
     pokemon.xp += amount * buffFactor;
