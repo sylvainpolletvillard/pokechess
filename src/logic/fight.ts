@@ -20,7 +20,8 @@ import { pauseMusicAndPlaySound, playSound } from "./audio";
 import { SKILLS } from "../data/skills";
 import { DialogLine } from "../types/dialog";
 import { registerDamageDone, registerDamageReceived, registerHeal } from "./stats";
-import { MULTI_EXP, SUPER_BONBON } from "../data/items";
+import { ITEM_FILET, MULTI_EXP, SUPER_BONBON } from "../data/items";
+import { drawPokeballsCounter } from "../objects/pokeballsCounter";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
@@ -229,8 +230,13 @@ export function applyDamage(damage: number, target: PokemonOnBoard, attacker?: P
     if(attacker && attacker !== target) registerDamageDone(attacker, damage)
     registerDamageReceived(target, damage)
     if(!noPPGain) target.pp = Math.min(target.entry.maxPP, target.pp + clamp(damage/target.maxPV * 25, 2, 5))
-    if(target.pv === 0) killPokemon(target)
-    else {
+    if(target.pv === 0){
+        killPokemon(target)
+        if(attacker && attacker.item === ITEM_FILET && attacker.owner === OWNER_PLAYER){
+            gameState.player.inventory.pokeball += 1
+            drawPokeballsCounter()
+        } 
+    } else {
         const sommeil = target.alterations.find(alt => alt.type === AlterationType.SOMMEIL)
         if(sommeil && !noWakeup){
             const stacksConsummed = Math.ceil((damage/target.maxPV)*200);
