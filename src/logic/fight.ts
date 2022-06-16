@@ -14,13 +14,13 @@ import {clamp} from "../utils/helpers";
 import {recordLastSkillSeen} from "./specials";
 import {TABLE_TYPES, TYPE_INSECTE, TYPE_NORMAL, TYPE_POISON, TYPE_ROCHE, TYPE_VOL} from "../data/types";
 import { OWNER_PLAYER } from "../data/owners";
-import { xpToLevel } from "./xp";
+import { levelToXP, xpToLevel } from "./xp";
 import { startDialog } from "./dialog";
 import { pauseMusicAndPlaySound, playSound } from "./audio";
 import { SKILLS } from "../data/skills";
 import { DialogLine } from "../types/dialog";
 import { registerDamageDone, registerDamageReceived, registerHeal } from "./stats";
-import { MULTI_EXP } from "../data/items";
+import { MULTI_EXP, SUPER_BONBON } from "../data/items";
 
 export function canPokemonAttack(pokemon: PokemonOnBoard, target: PokemonOnBoard){
     const distance = Phaser.Math.Distance.Snake(pokemon.x, pokemon.y, target.x, target.y)
@@ -355,6 +355,11 @@ export function gainXP(pokemon: Pokemon, amount: number){
 
     pokemon.xp += amount * buffFactor;
     pokemon.level = xpToLevel(pokemon.xp);
+
+    if(pokemon.item === SUPER_BONBON){
+        pokemon.level++;
+        pokemon.xp = levelToXP(pokemon.level)
+    }
 
     if(oldLvl !== pokemon.level){
         pauseMusicAndPlaySound("level_up")

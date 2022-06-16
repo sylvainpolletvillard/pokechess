@@ -1,6 +1,6 @@
 import { Alteration, AlterationType } from "../data/alterations"
 import { EFFECTS } from "../data/effects"
-import { ATTAQUE_PLUS, BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS, BOULE_FUMEE, DEFENSE_PLUS, GRELOT_COQUE, MAX_ELIXIR, PV_PLUS, VITESSE_PLUS } from "../data/items"
+import { ATTAQUE_PLUS, BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS, BOULE_FUMEE, DEFENSE_PLUS, ENCENS_FLEUR, GRELOT_COQUE, MAX_ELIXIR, ORBE_FLAMME, ORBE_GLACE, ORBE_TOXIQUE, PV_PLUS, VITESSE_PLUS } from "../data/items"
 import { OWNER_PLAYER } from "../data/owners"
 import { TYPE_COMBAT, TYPE_DRAGON, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
@@ -224,7 +224,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
                 if(pokemon.pv - damage < 0.3 * pokemon.maxPV){
                     pokemon.makeUntargettable(3000)
                     playSound("fly")
-                    const pokemonSprite = gameState.activeScene?.sprites.get(pokemon.uid)
+                    const pokemonSprite = game.sprites.get(pokemon.uid)
                     if(pokemonSprite) makeEffectSprite(EFFECTS.BROUILLARD, pokemonSprite.x, pokemonSprite.y, game)
                     removeInArray(pokemon.buffs.onHitReceived, buff)
                 }
@@ -236,6 +236,40 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             pokemon.buffs.onHit.push(() => {
                 pokemon.pp = Math.min(pokemon.pp + 4, pokemon.maxPP)
             })
+        }
+
+        // ITEMS RANG 5
+        if(pokemon.item === ENCENS_FLEUR){
+            pokemon.buffs.clock.push(() => {
+                const [i,j] = [pokemon.x, pokemon.y]
+                const tilesImpacted = [
+                    [i-1,j-1], [i,j-1], [i+1,j-1],
+                    [i-1, j ], [i, j ], [i+1, j ],
+                    [i-1,j+1], [i,j+1], [i+1,j+1]
+                ].filter(([i,j]) => isOnBoard(i,j))
+    
+                tilesImpacted.forEach(([i,j]) => {
+                    const target = getPokemonOnTile(i,j)
+                    if(target && target.owner === pokemon.owner){
+                        healPokemon(target, target.maxPV * (3/100))
+                    }
+                })            
+            })
+        }
+
+        if(pokemon.item === ORBE_TOXIQUE){
+            pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.POISON, stacks: 10 }, game) })
+            pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.POISON, stacks: 10 }, game) })
+        }
+
+        if(pokemon.item === ORBE_FLAMME){
+            pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.BRULURE, stacks: 10 }, game) })
+            pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.BRULURE, stacks: 10 }, game) })
+        }
+
+        if(pokemon.item === ORBE_GLACE){
+            pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.GEL, stacks: 10 }, game) })
+            pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.GEL, stacks: 10 }, game) })
         }
 
     })

@@ -258,7 +258,7 @@ export const MAX_ELIXIR: Item = {
 export const ENCENS_FLEUR: Item = {
     ref: "encens_fleur",
     label: "Encens Fleur",
-    desc: "Soigne 3% des PV par seconde du porteur et des alliés sur une case adjacente",
+    desc: "Soigne chaque seconde 3% des PV max du porteur et des alliés sur une case adjacente",
     cost: 5,
     type: ItemType.Holdable
 }
@@ -266,7 +266,7 @@ export const ENCENS_FLEUR: Item = {
 export const ORBE_TOXIQUE: Item = {
     ref: "orbe_toxique",
     label: "Orbe Toxique",
-    desc: "Inflige l'altération Poison au porteur et aux ennemis des cases adjacentes",
+    desc: "Inflige l'altération Poison à chaque coup reçu ou porté",
     cost: 5,
     type: ItemType.Holdable
 }
@@ -274,7 +274,7 @@ export const ORBE_TOXIQUE: Item = {
 export const ORBE_FLAMME: Item = {
     ref: "orbe_flamme",
     label: "Orbe Flamme",
-    desc: "Inflige l'altération Brûlure au porteur et aux ennemis des cases adjacentes",
+    desc: "Inflige l'altération Brûlure à chaque coup reçu ou porté",
     cost: 5,
     type: ItemType.Holdable
 }
@@ -282,7 +282,7 @@ export const ORBE_FLAMME: Item = {
 export const ORBE_GLACE: Item = {
     ref: "orbe_glace",
     label: "Orbe Glace",
-    desc: "Inflige l'altération Glace au porteur et aux ennemis des cases adjacentes",
+    desc: "Inflige l'altération Glace à chaque coup reçu ou porté",
     cost: 5,
     type: ItemType.Holdable
 }
@@ -291,6 +291,7 @@ export const SUPER_BONBON: Item = {
     ref: "super_bonbon",
     label: "Super Bonbon",
     desc: "Gagne un niveau supplémentaire à chaque fin de combat",
+    cost: 5,
     type: ItemType.Holdable
 }
 
