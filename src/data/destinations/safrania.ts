@@ -1,7 +1,7 @@
 import {Destination, DestinationType, RoomType} from "../../types/destination";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
 import { preloadMusic } from "../../logic/audio";
-import {SHOP_JADIELLE} from "../levels/shops";
+import {SHOP_JADIELLE, SHOP_SAFRANIA} from "../levels/shops";
 import { MyScene } from "../../scenes/MyScene";
 import { DRESSEUR_SAFRANIA, MORGANE} from "../trainers";
 import { KADABRA } from "../pokemons/kadabra";
@@ -84,12 +84,13 @@ export const SAFRANIA: Destination = {
             type: RoomType.FREEWALK,
             name: "Magasin de Safrania",
             music: "music_shop",
-            level: SHOP_JADIELLE
+            level: SHOP_SAFRANIA
         }
     },
     shopId: 5,
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('arene_safrania', 'assets/maps/arene_safrania.json');
+        scene.load.tilemapTiledJSON('shop_safrania', 'assets/maps/shop_safrania.json');
         preloadMusic("music_argenta_safrania", "assets/audio/music/07 Pewter City's Theme.mp3");
     }
 }

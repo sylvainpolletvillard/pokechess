@@ -13,7 +13,7 @@ import {SMOGO} from "../pokemons/smogo";
 import {FANTOMINUS} from "../pokemons/fantominus";
 import {MAGMAR} from "../pokemons/magmar";
 import {STARI} from "../pokemons/stari";
-import {SHOP_JADIELLE} from "../levels/shops";
+import {SHOP_CARMIN} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { BADGE_FOUDRE } from "../badges";
@@ -86,12 +86,13 @@ export const CARMIN: Destination = {
             type: RoomType.FREEWALK,
             name: "Magasin de Carmin sur Mer",
             music: "music_shop",
-            level: SHOP_JADIELLE
+            level: SHOP_CARMIN
         }
     },
     shopId: 7,
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('arene_carmin', 'assets/maps/arene_carmin.json');
+        scene.load.tilemapTiledJSON('shop_carmin', 'assets/maps/shop_carmin.json');
         preloadMusic("music_carmin", "assets/audio/music/11 Vermilion City's Theme.mp3");
     }
 }

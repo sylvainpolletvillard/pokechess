@@ -277,7 +277,5 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             pokemon.unalterable = true
         }
 
-        
-
     })
 }

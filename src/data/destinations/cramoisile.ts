@@ -17,7 +17,7 @@ import {ARBOK} from "../pokemons/arbok";
 import {AEROMITE} from "../pokemons/aeromite";
 import {TENTACRUEL} from "../pokemons/tentacruel";
 import {RAFFLESIA} from "../pokemons/rafflesia";
-import {SHOP_JADIELLE} from "../levels/shops";
+import {SHOP_CRAMOISILE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { BADGE_VOLCAN } from "../badges";
@@ -88,12 +88,13 @@ export const CRAMOISILE: Destination = {
             type: RoomType.FREEWALK,
             name: "Magasin de Cramois'Île",
             music: "music_shop",
-            level: SHOP_JADIELLE
+            level: SHOP_CRAMOISILE
         }
     },
     shopId: 9,
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('cramoisile', 'assets/maps/cramoisile.json');
+        scene.load.tilemapTiledJSON('shop_cramoisile', 'assets/maps/shop_cramoisile.json');
         preloadMusic("music_cramoisile", "assets/audio/music/10 Cinnabar Island's Theme.mp3");
     }
 }

@@ -88,11 +88,12 @@ export const ARGENTA: Destination = {
             type: RoomType.FREEWALK,
             name: "Magasin d'Argenta",
             music: "music_shop",
-            level: SHOP_JADIELLE
+            level: SHOP_ARGENTA
         }
     },
     shopId: 2,
     preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('shop_argenta', 'assets/maps/shop_argenta.json');
         scene.load.tilemapTiledJSON('arene_argenta', 'assets/maps/arene_argenta.json');
         preloadMusic("music_argenta_safrania", "assets/audio/music/07 Pewter City's Theme.mp3");
     }

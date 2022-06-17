@@ -124,6 +124,7 @@ export const JADIELLE: Destination = {
     },
     shopId: 1,
     preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('shop_jadielle', 'assets/maps/shop_jadielle.json');
         scene.load.tilemapTiledJSON('arene_jadielle', 'assets/maps/arene_jadielle.json');
         preloadMusic("music_jadielle", "assets/audio/music/06 Pokemon Gym.mp3");
     }

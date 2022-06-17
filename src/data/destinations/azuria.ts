@@ -17,7 +17,7 @@ import {KOKIYAS} from "../pokemons/kokiyas";
 import {KRABBY} from "../pokemons/krabby";
 import {HYPOTREMPE} from "../pokemons/hypotrempe";
 import {POISSIRENE} from "../pokemons/poissirene";
-import {SHOP_JADIELLE} from "../levels/shops";
+import {SHOP_AZURIA} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { BADGE_CASCADE } from "../badges";
@@ -93,11 +93,12 @@ export const AZURIA: Destination = {
             type: RoomType.FREEWALK,
             name: "Magasin d'Azuria",
             music: "music_shop",
-            level: SHOP_JADIELLE
+            level: SHOP_AZURIA
         }
     },
     shopId: 3,
     preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('shop_azuria', 'assets/maps/shop_azuria.json');
         scene.load.tilemapTiledJSON('arene_azuria', 'assets/maps/arene_azuria.json');
         preloadMusic("music_azuria", "assets/audio/music/08 Cerulean City's Theme.mp3");
     }

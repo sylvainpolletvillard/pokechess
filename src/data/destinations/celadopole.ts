@@ -16,7 +16,7 @@ import {NOEUFNOEUF} from "../pokemons/noeufnoeuf";
 import {PARAS} from "../pokemons/paras";
 import {PAPILUSION} from "../pokemons/papilusion";
 import {TAUPIQUEUR} from "../pokemons/taupiqueur";
-import {SHOP_JADIELLE} from "../levels/shops";
+import {SHOP_CELADOPOLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 
@@ -86,12 +86,13 @@ export const CELADOPOLE: Destination = {
             type: RoomType.FREEWALK,
             name: "Magasin de Céladopole",
             music: "music_shop",
-            level: SHOP_JADIELLE
+            level: SHOP_CELADOPOLE
         }
     },
     shopId: 6,
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('arene_celadopole', 'assets/maps/arene_celadopole.json');
+        scene.load.tilemapTiledJSON('shop_celadopole', 'assets/maps/shop_celadopole.json');
         preloadMusic("music_celadopole", "assets/audio/music/09 Celadon City's Theme.mp3");        
     }
 }

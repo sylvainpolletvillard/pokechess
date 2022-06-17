@@ -14,7 +14,7 @@ import {MIAOUSS} from "../pokemons/miaouss";
 import {CANINOS} from "../pokemons/caninos";
 import {TAUROS} from "../pokemons/tauros";
 import {EVOLI} from "../pokemons/evoli";
-import {SHOP_JADIELLE} from "../levels/shops";
+import {SHOP_JADIELLE, SHOP_LAVANVILLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 
@@ -82,12 +82,13 @@ export const LAVANVILLE: Destination = {
             type: RoomType.FREEWALK,
             name: "Magasin de Lavanville",
             music: "music_shop",
-            level: SHOP_JADIELLE
+            level: SHOP_LAVANVILLE
         }
     },
     shopId: 4,
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('arene_lavanville', 'assets/maps/arene_lavanville.json');
+        scene.load.tilemapTiledJSON('shop_lavanville', 'assets/maps/shop_lavanville.json');
         preloadMusic("music_lavanville", "assets/audio/music/12 Lavender Town's Theme.mp3");
     }
 }

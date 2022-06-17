@@ -16,7 +16,7 @@ import {BOUSTIFLOR} from "../pokemons/boustiflor";
 import {NOADKOKO} from "../pokemons/noadkoko";
 import {ABO} from "../pokemons/abo";
 import {PIKACHU} from "../pokemons/pikachu";
-import {SHOP_JADIELLE} from "../levels/shops";
+import {SHOP_CAMP_NOMADE, SHOP_JADIELLE} from "../levels/shops";
 import { MyScene } from "../../scenes/MyScene";
 import { preloadMusic } from "../../logic/audio";
 
@@ -89,10 +89,11 @@ export const CAMP_NOMADE: Destination = {
             type: RoomType.FREEWALK,
             name: "Camp nomade",
             music: "music_shop",
-            level: SHOP_JADIELLE
+            level: SHOP_CAMP_NOMADE
         }
     },
     preload(scene: MyScene){
+        scene.load.tilemapTiledJSON('shop_camp_nomade', 'assets/maps/shop_camp_nomade.json');
         scene.load.tilemapTiledJSON('camp_nomade', 'assets/maps/camp_nomade.json');
         preloadMusic("music_pension_et_camp_nomade", "assets/audio/music/47 Pikachu's Beach.mp3")
     }

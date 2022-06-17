@@ -9,7 +9,7 @@ import { SMOGOGO } from "../pokemons/smogogo";
 import { TADMORV } from "../pokemons/tadmorv";
 import { TENTACRUEL } from "../pokemons/tentacruel";
 import { GROTADMORV } from "../pokemons/grotadmorv";
-import {SHOP_JADIELLE} from "../levels/shops";
+import {SHOP_JADIELLE, SHOP_PARMANIE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { BADGE_AME } from "../badges";
@@ -81,12 +81,13 @@ export const PARMANIE: Destination = {
             type: RoomType.FREEWALK,
             name: "Magasin de Parmanie",
             music: "music_shop",
-            level: SHOP_JADIELLE
+            level: SHOP_PARMANIE
         }
     },
     shopId: 8,
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('arene_parmanie', 'assets/maps/arene_parmanie.json');
+        scene.load.tilemapTiledJSON('shop_parmanie', 'assets/maps/shop_parmanie.json');
         preloadMusic("music_parmanie", "assets/audio/music/40 Pokemon Mansion.mp3");
     }
 }

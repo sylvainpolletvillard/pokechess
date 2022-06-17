@@ -1,6 +1,4 @@
 TODO:
-- items
-- filet papillon et parapluie
 - debug evoli evolution
 - conversion fossiles
 - plus de shops
