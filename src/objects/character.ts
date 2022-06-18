@@ -59,15 +59,16 @@ export class Character {
 	get isMoving(){ return this.walkingDirection !== null }
 
 	get spriteRowIndex(){
+		if(this.name.startsWith("assistant")) return 3
 		switch(this.name) {
 			case "player": return 0;
 			case "mam": return 1;
 			case "chen": case "chen_end": return 2;
 			case "seller_male": return 4;
 			case "seller_female": return 5;
+			case "trader":  return 6 + (gameState.currentDestination.shopId ?? 0) % 10
+			case "info": default: return 16 + (gameState.currentDestination.shopId ?? 0) % 10
 		}
-		if(this.name.startsWith("assistant")) return 3
-		return 0
 	}
 
 	get direction(){

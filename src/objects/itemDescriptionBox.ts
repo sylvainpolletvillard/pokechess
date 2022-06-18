@@ -27,7 +27,7 @@ export function showItemDescription(item: Item){
 
     itemDescriptionGroup.add(background)
 
-    const itemSprite = makeItemSprite(item).setPosition(ox+78, oy + 96)
+    const itemSprite = makeItemSprite(item).setPosition(ox+28, oy + 32).setScrollFactor(0)
     itemDescriptionGroup.add(itemSprite)
     if(gameState.activeScene?.scene.key === "GameScene"){
         itemSprite.x -= 48;

@@ -1,7 +1,7 @@
 import {Destination, DestinationType, RoomType} from "../../types/destination";
 import {DRESSEUR_ARGENTA, PIERRE} from "../trainers";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
-import {SHOP_JADIELLE} from "../levels/shops";
+import {SHOP_ARGENTA} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { AMONISTAR } from "../pokemons/amonistar";

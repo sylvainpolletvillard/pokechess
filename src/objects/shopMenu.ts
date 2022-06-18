@@ -4,7 +4,7 @@ import {Item, ITEMS} from "../data/items";
 import {wait} from "../utils/helpers";
 import {addText} from "../utils/text";
 import {drawPokeballsCounter} from "./pokeballsCounter";
-import {getShopContent, spend} from "../logic/shop";
+import {canAfford, getShopContent, spend} from "../logic/shop";
 import {endDialog, startDialog, waitBeforeNextLine} from "../logic/dialog";
 import {receiveItem} from "../data/dialogs/descriptions";
 import {hideItemDescription, showItemDescription} from "./itemDescriptionBox";
@@ -44,8 +44,8 @@ export function openBuyMenu(seller: string){
             entries.forEach((entry, i) => {
                 if(!entry.value) return
                 const item = ITEMS[entry.value]
-                const pokeball = container.scene.add.sprite(330, 87+i*rowHeight, "pokeball", 0).play("POKEBALL_idle")
-                const cost = addText(320-28, 17+i*rowHeight, "x"+item.cost)
+                const pokeball = container.scene.add.sprite(ox+114, oy+15+i*rowHeight, "pokeball", 0).play("POKEBALL_idle").setScrollFactor(0)
+                const cost = addText(320-28, 17+i*rowHeight, "x"+item.cost, { color: canAfford(item.cost!) ? "black":  "red" })
                 container.add(pokeball)
                 container.add(cost)
             })
@@ -63,6 +63,7 @@ export function openBuyMenu(seller: string){
                 `1 ${item.label} pour ${item.cost} ball${item.cost > 1 ? 's' : ''}, c'est ça ?`,
                 {
                     "Oui": () => {
+                        if(!canAfford(item.cost!)) return "Tu n'as pas assez de Pokéballs, gamin !"
                         endDialog();
                         spend(item.cost!)                        
                         return receiveItem(item, 1, true, "shop")
@@ -116,7 +117,7 @@ export function openSellMenu(seller: string){
             entries.forEach((entry, i) => {
                 if(!entry.value) return;
                 const item = ITEMS[entry.value]
-                const pokeball = group.scene.add.sprite(330, 86+i*20, "pokeball", 0).play("POKEBALL_idle")
+                const pokeball = group.scene.add.sprite(ox+114, oy+15+i*20, "pokeball", 0).play("POKEBALL_idle").setScrollFactor(0)
                 const cost = addText(320-28, 16+i*20, "x"+item.cost)
                 group.add(pokeball)
                 group.add(cost)

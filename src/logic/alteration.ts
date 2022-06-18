@@ -1,11 +1,12 @@
 import {Alteration, AlterationType} from "../data/alterations"
+import { COLLINE_ROYALE } from "../data/destinations/colline_royale"
 import {EFFECTS} from "../data/effects"
 import { BAIE_CERIZ, POKEFLUTE } from "../data/items"
 import { TYPE_COMBAT, TYPE_EAU, TYPE_FEU, TYPE_PSY, TYPE_SPECTRE } from "../data/types"
 import {PokemonOnBoard} from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
 import {Direction} from "../utils/directions"
-import {removeInArray} from "../utils/helpers"
+import {clamp, removeInArray} from "../utils/helpers"
 import { playSound } from "./audio"
 import {applyDamage, calcBurnDamage, calcPoisonDamage, healPokemon, killPokemon} from "./fight"
 import {gameState} from "./gamestate"
@@ -108,6 +109,12 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
             
         alterationToStack.stacks += alteration.stacks
         console.log(`More stacks of ${alteration.type} on ${pokemon.entry.name} (stacks: ${alterationToStack.stacks})`)
+
+        if(alteration.type === AlterationType.RAGE){
+            const targetSprite = game.sprites.get(pokemon.uid)
+            if(!targetSprite) return console.error(`Error, can't find pokemon sprite uid ${pokemon.uid}`)
+            targetSprite.setTint(Phaser.Display.Color.GetColor(255, clamp(128- alteration.stacks * 30, 0,255), clamp(128 - alteration.stacks * 30,0, 255)))
+        } 
     } 
     else {
         console.log(`Apply ${alteration.type} on ${pokemon.entry.name} (stacks: ${alteration.stacks})`)
@@ -169,8 +176,8 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 alteration.effectSprite = makeEffectSprite(EFFECTS.SOIN, targetSprite.x, targetSprite.y-8, game)
                 break;
 
-            case AlterationType.RAGE:
-                targetSprite.setTint(0xff0000)
+            case AlterationType.RAGE:                
+                targetSprite.setTint(Phaser.Display.Color.GetColor(255, 128, 128))
                 break;
         }
 
