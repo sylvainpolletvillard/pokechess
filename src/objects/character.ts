@@ -66,8 +66,9 @@ export class Character {
 			case "chen": case "chen_end": return 2;
 			case "seller_male": return 4;
 			case "seller_female": return 5;
-			case "trader":  return 6 + (gameState.currentDestination.shopId ?? 0) % 10
-			case "info": default: return 16 + (gameState.currentDestination.shopId ?? 0) % 10
+			case "trader":  return 6 + (gameState.currentDestination.shopId ?? 0) % 10;
+			case "info": default: return 16 + (gameState.currentDestination.shopId ?? 0) % 10;
+			case "healer": return 26;
 		}
 	}
 

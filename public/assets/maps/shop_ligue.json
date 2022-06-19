@@ -65,12 +65,17 @@
                  "gid":12290,
                  "height":16,
                  "id":1,
-                 "name":"seller",
+                 "name":"healer",
                  "properties":[
+                        {
+                         "name":"interactionDistance",
+                         "type":"int",
+                         "value":2
+                        }, 
                         {
                          "name":"state",
                          "type":"string",
-                         "value":"LEFT"
+                         "value":"DOWN"
                         }],
                  "rotation":0,
                  "type":"character",
@@ -124,7 +129,7 @@
                  "gid":12292,
                  "height":16,
                  "id":9,
-                 "name":"pc",
+                 "name":"pc_record",
                  "rotation":0,
                  "type":"description",
                  "visible":true,
@@ -136,12 +141,17 @@
                  "gid":12290,
                  "height":16,
                  "id":11,
-                 "name":"recordman",
+                 "name":"seller_male",
                  "properties":[
+                        {
+                         "name":"interactionDistance",
+                         "type":"int",
+                         "value":2
+                        }, 
                         {
                          "name":"state",
                          "type":"string",
-                         "value":"LEFT"
+                         "value":"DOWN"
                         }],
                  "rotation":0,
                  "type":"character",
@@ -154,7 +164,7 @@
                  "gid":12290,
                  "height":16,
                  "id":12,
-                 "name":"ligue_guy1",
+                 "name":"info",
                  "properties":[
                         {
                          "name":"state",

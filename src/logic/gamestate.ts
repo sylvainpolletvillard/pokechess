@@ -343,9 +343,7 @@ export class GameState {
         if(gameState.currentRoom.type === RoomType.TUTORIAL 
         && gameState.dialogStates["scientifique_tuto"] === SCIENTIFIQUE_TUTO_DIALOG_STATE.BEFORE_WILD){
             const room = gameState.currentRoom as RoomTutorial
-            startDialog(room.trainer.dialogs.step2, {
-                speaker: room.trainer.ref
-            })
+            startDialog(room.trainer.dialogs.step2, { speaker: room.trainer.ref })
         } else {
             const beforeExit: () => Promise<any> = gameState.currentRoom.beforeExit || (() => Promise.resolve())
             beforeExit()

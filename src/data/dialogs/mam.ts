@@ -11,7 +11,7 @@ export const MAM_DIALOG_STATE = {
 }
 
 export const MAM = () => {
-  if(gameState.dialogStates.mam === MAM_DIALOG_STATE.after_gift) return startDialog(["Bon courage dans ton aventure !"])
+  if(gameState.dialogStates.mam === MAM_DIALOG_STATE.after_gift) return startDialog(["Bon courage dans ton aventure !"], { speaker: "mam" })
 
   const ITEMS_1 = [BAIE_CERIZ, BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS]
   const ITEMS_2 = [ATTAQUE_PLUS, DEFENSE_PLUS, VITESSE_PLUS, PV_PLUS]

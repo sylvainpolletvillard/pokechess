@@ -4,7 +4,7 @@ import {gameState} from "./gamestate";
 import {Z} from "../data/depths";
 import {Character, CHARACTER_STATE} from "../objects/character";
 import {DIALOGS} from "../data/dialogs";
-import {DEFAULT_VOICE, voicesByActor} from "../data/voices";
+import {DEFAULT_VOICE, VOICES_BY_ACTOR} from "../data/voices";
 import {MyScene} from "../scenes/MyScene";
 import {closeMenu, openMenu} from "../objects/menu";
 import { wait } from "../utils/helpers";
@@ -19,7 +19,7 @@ export function startDialog(lines: DialogLine[] | (() => DialogLine[]), params: 
 
     let speaker = params.speaker ?? "system";
 
-    let voice = Object.assign({}, DEFAULT_VOICE, voicesByActor[speaker ?? "red"], params)
+    let voice = Object.assign({}, DEFAULT_VOICE, VOICES_BY_ACTOR[speaker ?? "red"], params)
 
     let ox = 60;
     let oy = scene.scale.height - 38

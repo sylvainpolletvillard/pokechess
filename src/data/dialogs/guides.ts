@@ -10,6 +10,7 @@ import { CELADOPOLE } from "../destinations/celadopole";
 import { CRAMOISILE } from "../destinations/cramoisile";
 import { JADIELLE } from "../destinations/jadielle";
 import { LAVANVILLE } from "../destinations/lavanville";
+import { LIGUE } from "../destinations/ligue";
 import { PARMANIE } from "../destinations/parmanie";
 import { SAFRANIA } from "../destinations/safrania";
 import { FOSSILES, FOSSILE_AMONITA, FOSSILE_KABUTO, FOSSILE_PTERA } from "../items";
@@ -19,7 +20,9 @@ import { AMONITA } from "../pokemons/amonita";
 import { KABUTO } from "../pokemons/kabuto";
 import { PTERA } from "../pokemons/ptera";
 
-export const GUIDE = () => startDialog(GUIDES[gameState.currentDestination.ref] || ["Salut ?"])
+export const GUIDE = () => startDialog(GUIDES[gameState.currentDestination.ref] || ["Salut ?"], { 
+    speaker: `character${16 + (gameState.currentDestination.shopId ?? 0) % 10}` 
+})
 
 export const GUIDES: { [destination: string]: DialogLine[] } = {
     [JADIELLE.ref]: [
@@ -116,6 +119,33 @@ export const GUIDES: { [destination: string]: DialogLine[] } = {
                 ]
             }
         }
+    ],
+
+    [LIGUE.ref]: [
+        `Ah, alors tu veux des infos sur les Champions de la Ligue ?`,
+        {
+            "Oui": () => [
+                `Pour prétendre au titre de maître de la Ligue Pokémon,`,
+                `tu devras affronter les 4 membres du Conseil des 4 l'un après l'autre.`,
+                `Tout d'abord tu affronteras Olga, la reine de la glace !`,
+                `Débarasse-toi en rapidement avec que ton équipe soit transformée en glaçon.`,
+                `Ensuite vient Aldo, spécialiste du combat et de la force brute.`,
+                `Ses Pokémon sont costauds, il va falloir ruser pour le vaincre !`,
+                `En troisième, la terrifiante Agatha et ses Pokémon Spectre !`,
+                `Ils sèment la confusion dans ton équipe, alors peaufine ton placement.`,
+                `Enfin tu affronteras Peter, maître des Dragons.`,
+                `Les Dragons sont très tenaces. Il te faudra donner tout ce que tu as !`,
+                `Voilà, je ne sais pas ce qu'il y a après. Je n'ai jamais pu aller plus loin !`
+            ],
+            "Non": () => [
+                `Ah, je croyais que... non, laisse tomber.`
+            ]
+        }
     ]
     
 }
+
+export const HEALER = () => startDialog([
+    `Les combats dans la Ligue sont très éprouvants pour tes Pokémon.`,
+    `Mais nous prenons soin de soigner toute ton équipe entre chaque combat.`
+], { speaker: "female2" })

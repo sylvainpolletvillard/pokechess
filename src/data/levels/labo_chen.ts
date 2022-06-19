@@ -16,12 +16,6 @@ export const chenLevel: LevelConfig = {
             ], { speaker: "red" })
             return false;
         }
-        /*if(gameState.player.inventory.pokeball === 0){
-            startDialog([
-                `Oh, j'allais oublier mes Pokéballs ! Le prof Chen doit en avoir.`
-            ], { speaker: "red" })
-            return false;
-        }*/
         return true;
     },
     exit() {

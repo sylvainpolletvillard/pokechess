@@ -388,7 +388,7 @@ export function gainXP(pokemon: Pokemon, amount: number){
                 return `${oldEntry.name} évolue en ${pokemon.entry.name} !`
             })
         }
-        return startDialog(lines)
+        return startDialog(lines, { speaker: "system" })
     }
     return Promise.resolve(pokemon.level)
 }
