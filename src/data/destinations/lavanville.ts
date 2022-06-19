@@ -14,7 +14,7 @@ import {MIAOUSS} from "../pokemons/miaouss";
 import {CANINOS} from "../pokemons/caninos";
 import {TAUROS} from "../pokemons/tauros";
 import {EVOLI} from "../pokemons/evoli";
-import {SHOP_JADIELLE, SHOP_LAVANVILLE} from "../levels/shops";
+import { SHOP_LAVANVILLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 
