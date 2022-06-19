@@ -1,6 +1,5 @@
 TODO:
 - debug evoli evolution
-- conversion fossiles
 - plus de shops
 - échanges dans les shops
 - personnages hall ligue

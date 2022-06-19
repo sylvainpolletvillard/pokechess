@@ -54,11 +54,11 @@ export function startDialog(lines: DialogLine[] | (() => DialogLine[]), params: 
 
     gameState.activeDialog = { lines: [...lines], params, speaker, voice, dialogGroup, textSprite, bgSprite }
 
-    showNextLine()
-
     const dialogPromise: Promise<void> = new Promise((resolve) => {
         gameState.activeDialog!.onEnd = onEndCallback || (() => wait(0).then(resolve))
     })
+
+    showNextLine()
 
     return dialogPromise
 }
