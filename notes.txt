@@ -1,5 +1,3 @@
 TODO:
 - debug evoli evolution
-- plus de shops
 - échanges dans les shops
-- personnages hall ligue

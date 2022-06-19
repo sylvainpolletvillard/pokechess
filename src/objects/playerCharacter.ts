@@ -140,7 +140,7 @@ export class PlayerCharacter extends Character {
 		if (objectInFront && this.canInteract) {
 			let desc = DESCRIPTIONS[objectInFront.getData("name")] || DESCRIPTIONS.unknown
 			if(typeof desc === "function") desc = desc(objectInFront.getData("description"))
-			startDialog(desc).then(() => {})
+			startDialog(desc, { speaker: objectInFront.getData("name") }).then(() => {})
 		}
 	}
 

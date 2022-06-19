@@ -171,6 +171,12 @@ export const VOICES_BY_ACTOR: { [name: string]: VoiceConfig } = {
         pitch: 10,
         speed: 30
     },
+    pc_record: {
+        voice: "triangle",
+        emotion: 0,
+        pitch: 10,
+        speed: 30
+    },
     male1: {
         emotion: 15,
         pitch: 20,
@@ -236,17 +242,19 @@ export const VOICES_BY_SPRITE_INDEX: { [index: number]: VoiceConfig } = {
     11: VOICES_BY_ACTOR.female2,
     12: VOICES_BY_ACTOR.male1,
     13: VOICES_BY_ACTOR.female1,
-    14: VOICES_BY_ACTOR.female2,
-    15: VOICES_BY_ACTOR.male2,
-    16: VOICES_BY_ACTOR.male1,
-    17: VOICES_BY_ACTOR.male1,
-    18: VOICES_BY_ACTOR.female1,
-    19: VOICES_BY_ACTOR.male2,
-    20: VOICES_BY_ACTOR.female2,
+    14: VOICES_BY_ACTOR.male1,
+    15: VOICES_BY_ACTOR.female1,
+    16: VOICES_BY_ACTOR.female2,
+    17: VOICES_BY_ACTOR.male2,
+    18: VOICES_BY_ACTOR.male1,
+    19: VOICES_BY_ACTOR.male1,
+    20: VOICES_BY_ACTOR.female1,
     21: VOICES_BY_ACTOR.male2,
     22: VOICES_BY_ACTOR.female2,
-    23: VOICES_BY_ACTOR.assistant2,
-    24: VOICES_BY_ACTOR.female2
+    23: VOICES_BY_ACTOR.male2,
+    24: VOICES_BY_ACTOR.female2,
+    25: VOICES_BY_ACTOR.assistant2,
+    26: VOICES_BY_ACTOR.female2
 }
 
 for(let index in VOICES_BY_SPRITE_INDEX) VOICES_BY_ACTOR["character"+index] = VOICES_BY_SPRITE_INDEX[index]
