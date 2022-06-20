@@ -1,6 +1,6 @@
 import RoomScene from "../scenes/RoomScene";
 import {findObjectsByType, MapObject} from "../utils/map";
-import {Character, CHARACTER_STATE} from "../objects/character";
+import {Character, Trader, CHARACTER_STATE} from "../objects/character";
 import {gameState} from "./gamestate";
 import {Description} from "../objects/description";
 import {Door} from "../objects/door";
@@ -81,7 +81,12 @@ export class Level {
             let characterName = character.name;
             let state = character.properties.state;
             let interactionDistance = character.properties.interactionDistance ?? 1
-            let pnj = new Character( { x: character.x / 16, y: character.y / 16 }, characterName, state as CHARACTER_STATE, interactionDistance)
+            let pnj;
+            if(characterName === "trader"){
+                pnj = new Trader( { x: character.x / 16, y: character.y / 16 }, characterName, state as CHARACTER_STATE, interactionDistance)
+            } else {
+                pnj = new Character( { x: character.x / 16, y: character.y / 16 }, characterName, state as CHARACTER_STATE, interactionDistance)
+            } 
             character.sprite = pnj.sprite;
             scene.groups.characters.add(pnj.sprite)
         })

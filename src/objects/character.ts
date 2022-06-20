@@ -3,6 +3,8 @@ import {Direction} from "../utils/directions";
 import {declareAnims} from "../utils/anims";
 import {gameState} from "../logic/gamestate";
 import {TILE_SIZE} from "../logic/level";
+import { Pokemon, PokemonEntry, getNonLegendaryPokemons } from "../data/pokemons";
+import { pickRandomIn } from "../utils/helpers";
 
 export enum CHARACTER_STATE {
 	LEFT = Direction.LEFT,
@@ -185,4 +187,17 @@ export class Character {
 		this.sprite.body.x = Math.round(this.sprite.body.x)
 		this.sprite.body.y = Math.round(this.sprite.body.y)
 	}
+}
+
+
+export class Trader extends Character {
+
+    pokemonToGive: Pokemon | null
+    pokemonToReceive: PokemonEntry
+
+    constructor(position: {x:number, y:number}, name: string, startState = CHARACTER_STATE.DOWN, interactionDistance = 1){
+        super(position, name, startState, interactionDistance)
+        this.pokemonToGive = pickRandomIn(gameState.player.box.filter(p => p!= null))
+        this.pokemonToReceive = pickRandomIn(getNonLegendaryPokemons())
+    }
 }

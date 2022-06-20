@@ -205,7 +205,7 @@ export function talkTo(pnj: Character, playerState: CHARACTER_STATE){
     }
 
     talkingTo = pnj.name;
-    return DIALOGS[pnj.name]().then(() => {
+    return DIALOGS[pnj.name](pnj).then(() => {
         talkingTo = null;
     })
 
