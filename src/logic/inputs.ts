@@ -121,8 +121,8 @@ export function getMovementVector(scene: Phaser.Scene): { moveVector: Phaser.Mat
         const pad = scene.input.gamepad.getPad(0)
 
         if (pad.axes.length) {
-            const axeVector = new Phaser.Math.Vector2(pad.axes[0].getValue() , pad.axes[1].getValue())
-            if(axeVector.length() > 0.3){
+            const axeVector = new Phaser.Math.Vector2(pad.axes[0].getValue(), pad.axes[1].getValue())
+            if(axeVector.length() > 0.5){
                 moveVector = axeVector.scale(5)
                 useAnalogMovement = true;
                 return { moveVector, useAnalogMovement }

@@ -138,8 +138,8 @@ export default class GameScene extends MyScene {
   }
 
   onPressA(){
-    if(gameState.activeMenu != null) clickEntry()
-    else handleClick(this)
+    let stopPropagation = gameState.activeMenu && clickEntry()
+    if(!stopPropagation) handleClick(this)
   }
 
   onPressB(){

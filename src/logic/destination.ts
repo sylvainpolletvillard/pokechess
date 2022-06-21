@@ -5,6 +5,7 @@ import { OCEANE_CARMIN, OCEANE_CRAMOISILE, OCEANE_AZURIA } from "../data/destina
 import { fadeOut } from "../utils/camera";
 import { FAST_TRAVEL_DESTINATIONS } from "../data/destinations";
 import { MONT_SELENITE } from "../data/destinations/mont_selenite";
+import { closeMenu } from "../objects/menu";
 
 export function enterDestination(destination: Destination){
     if([OCEANE_CARMIN, OCEANE_CRAMOISILE, OCEANE_AZURIA].includes(destination)) playSound("oceane_horn")
@@ -12,6 +13,7 @@ export function enterDestination(destination: Destination){
     gameState.roomOrder = getRoomOrder(destination)
     gameState.currentDestination = destination
     gameState.currentRoomIndex = 0;
+    if(gameState.activeMenu != null) closeMenu()
     fadeOut(250).then(() => gameState.initRoom())
 }
 

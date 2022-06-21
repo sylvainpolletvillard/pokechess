@@ -6,7 +6,7 @@ export const RONFLEX: PokemonEntry = {
     ref: "ronflex",
     name: "Ronflex",
     maxPV: 160,
-    maxPP: 20,
+    maxPP: 30,
     attack: 110,
     defense: 65,
     speed: 30,

@@ -33,7 +33,14 @@ export function getDirectionFromDelta(dx: number, dy: number): Direction | null 
 }
 
 export function getDirectionFromVector(vec: Phaser.Math.Vector2): Direction | null {
-  return getDirectionFromDelta(vec.x, vec.y)
+  if(vec.length() === 0) return null
+  const angle = vec.angle(), q = Math.PI/4;
+  if(angle >= 0 && angle < 1*q) return Direction.RIGHT
+  if(angle >= 1*q && angle < 3*q) return Direction.DOWN
+  if(angle >= 3*q && angle < 5*q) return Direction.LEFT
+  if(angle >= 5*q && angle < 7*q) return Direction.UP
+  if(angle >= 7*q && angle < 8*q) return Direction.RIGHT
+  return null
 }
 
 export function getDirectionFromAngle(angle: number): Direction {
