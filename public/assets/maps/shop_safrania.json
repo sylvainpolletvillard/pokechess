@@ -99,9 +99,9 @@
                  "name":"shop_exit",
                  "properties":[
                         {
-                         "name":"forceMoveY",
-                         "type":"int",
-                         "value":-2
+                         "name":"outDirection",
+                         "type":"string",
+                         "value":"UP"
                         }, 
                         {
                          "name":"to",
@@ -129,7 +129,7 @@
                         {
                          "name":"state",
                          "type":"string",
-                         "value":"LEFT"
+                         "value":"DOWN"
                         }],
                  "rotation":0,
                  "type":"character",
@@ -152,14 +152,14 @@
                         {
                          "name":"state",
                          "type":"string",
-                         "value":"LEFT"
+                         "value":"DOWN"
                         }],
                  "rotation":0,
                  "type":"character",
                  "visible":true,
                  "width":16,
-                 "x":272,
-                 "y":160
+                 "x":80,
+                 "y":112
                 }],
          "opacity":1,
          "type":"objectgroup",

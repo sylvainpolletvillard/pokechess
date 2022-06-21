@@ -59,7 +59,7 @@
          "name":"collisions",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":20,
          "x":0,
          "y":0
@@ -76,9 +76,9 @@
                  "name":"shop_exit",
                  "properties":[
                         {
-                         "name":"forceMoveY",
-                         "type":"int",
-                         "value":-2
+                         "name":"outDirection",
+                         "type":"string",
+                         "value":"UP"
                         }, 
                         {
                          "name":"to",

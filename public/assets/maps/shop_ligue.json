@@ -114,9 +114,9 @@
                  "name":"enter",
                  "properties":[
                         {
-                         "name":"forceMoveY",
-                         "type":"int",
-                         "value":-2
+                         "name":"outDirection",
+                         "type":"string",
+                         "value":"UP"
                         }],
                  "rotation":0,
                  "type":"door",
