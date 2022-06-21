@@ -91,11 +91,6 @@ export function showPokedex(game: GameScene, pokemonToShow?: Pokemon){
             pokedexContainer = game.add.container(ox,oy)
             container.add(pokedexContainer)
             drawPokedex()
-        },
-        handleCancel(){
-            /*if(pokedexContainer){
-                pokedexContainer.destroy(true)
-            }*/
         }
     })
 }

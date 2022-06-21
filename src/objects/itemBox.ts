@@ -74,9 +74,6 @@ export function openItemMenu(game: GameScene){
                 return false
             }
         },
-        handleCancel(){
-            hideItemDescription();
-        },
         onSelect(entry){
             const item = ITEMS[entry.value]
             if(item) showItemDescription(item)

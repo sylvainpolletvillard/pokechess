@@ -10,7 +10,7 @@ export const TRADER = (character: Trader) => startDialog([
         const pokemonGiven = character.pokemonToGive
         if(pokemonGiven == null) return [
             `Salut, tu veux échanger des Pokémon ?`,
-            `Si tu as des Pokémon en réserve dans ta box, ça m'intéresserait de faire des échanges.`
+            `Si tu as des Pokémon en réserve dans ta box, on peut se les échanger !`
         ]
         else {
             const pokemonReceived = new Pokemon(character.pokemonToReceive, OWNER_PLAYER, pokemonGiven.level)

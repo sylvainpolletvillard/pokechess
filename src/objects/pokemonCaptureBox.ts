@@ -17,9 +17,11 @@ export function displayPokemonCaptureInfo(pokemon: PokemonOnBoard, game: GameSce
     if(currentPokemonCaptureInfoDisplayed != null) hidePokemonCaptureInfo(game);
     currentPokemonCaptureInfoDisplayed = pokemon
 
+    const cursor = game.sprites.get("cursor")!
+
     pokemonCaptureBox = game.add.container(
-        game.input.activePointer.x - WIDTH - 8,
-        game.input.activePointer.y - HEIGHT - 8
+        cursor.x - WIDTH - 8,
+        cursor.y - HEIGHT - 8
     );
 
     const pokemonInfoBoxBackground = game.add.nineslice(
@@ -44,8 +46,8 @@ export function displayPokemonCaptureInfo(pokemon: PokemonOnBoard, game: GameSce
         pokemonCaptureBox.add(text1).add(text2)
 
         pokeballOnHand = game.add.sprite(
-            Math.floor(game.input.activePointer.x +8),
-            Math.floor(game.input.activePointer.y +12),
+            Math.floor(cursor.x +8),
+            Math.floor(cursor.y +12),
             "pokeball"
         )
         pokeballOnHand
@@ -65,13 +67,14 @@ export function displayPokemonCaptureInfo(pokemon: PokemonOnBoard, game: GameSce
 
 export function updatePokemonCaptureInfoPosition(game: GameScene){
     if(!currentPokemonCaptureInfoDisplayed) return;
+    const cursor = game.sprites.get("cursor")!
     pokemonCaptureBox?.setPosition(
-        Math.max(2, Math.floor(game.input.activePointer.x - WIDTH - 8)),
-        Math.max(0, Math.floor(game.input.activePointer.y - HEIGHT - 8))
+        Math.max(2, Math.floor(cursor.x - WIDTH - 8)),
+        Math.max(0, Math.floor(cursor.y - HEIGHT - 8))
     )
     pokeballOnHand?.setPosition(
-        Math.floor(game.input.activePointer.x +8),
-        Math.floor(game.input.activePointer.y +12)
+        Math.floor(cursor.x +8),
+        Math.floor(cursor.y +12)
     )
 }
 

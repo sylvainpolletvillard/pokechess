@@ -6,6 +6,8 @@ import {MyScene} from "../scenes/MyScene";
 import {showNextLine} from "../logic/dialog";
 import { RoomType } from "../types/destination";
 import { OWNER_PLAYER } from "../data/owners";
+import GameScene from "../scenes/GameScene";
+import { updatePokemonCaptureInfoPosition } from "./pokemonCaptureBox";
 
 export type InteractiveElem = Phaser.GameObjects.Sprite | Phaser.GameObjects.Zone | Phaser.GameObjects.Rectangle | Phaser.GameObjects.Text
 const interactiveElems: Set<InteractiveElem> = new Set();
@@ -39,9 +41,15 @@ export function moveCursor(vector: Phaser.Math.Vector2, scene: MyScene, snapToGr
         y += vector.y;
         cursor.x = Phaser.Math.Clamp(x, 0, scene.scale.width-10)
         cursor.y = Phaser.Math.Clamp(y, 0, scene.scale.height-10)
-        updateCursorHover(scene)
-        handleDragMove(scene)
+        onCursorMove()
     }
+}
+
+export function onCursorMove(){
+    const scene = gameState.activeScene as MyScene
+    updateCursorHover(scene)
+    handleDragMove(scene)
+    updatePokemonCaptureInfoPosition(scene as GameScene)
 }
 
 export function handleClick(scene: MyScene){

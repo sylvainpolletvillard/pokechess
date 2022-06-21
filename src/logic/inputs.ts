@@ -3,13 +3,10 @@ import {
     handleDragEnd,
     handleDragMove,
     handleDragStart,
-    moveCursor, testIfCanBeDragged,
-    updateCursorHover
+    moveCursor, onCursorMove, testIfCanBeDragged
 } from "../objects/cursor";
-import GameScene from "../scenes/GameScene";
 import { gameState} from "./gamestate";
 import { MyScene } from "../scenes/MyScene";
-import {updatePokemonCaptureInfoPosition} from "../objects/pokemonCaptureBox";
 
 export const buttonsMap = new Map([
     [Phaser.Input.Gamepad.Configs.XBOX_360.A, { id: "bouton_A", downColor: "#E71A07", upColor: "#2b2b2b" }],
@@ -60,14 +57,14 @@ export function setupInputs(scene: MyScene){
 
     scene.input.gamepad.once('connected', (pad: Phaser.Input.Gamepad.Gamepad) => {
         console.log('gamepad connected', pad.id);
+    });
 
-        pad.on('down', (buttonIndex: number) => {            
-            handleControlPress(buttonIndex)
-        });
+    scene.input.gamepad.on('down', (pad: Phaser.Input.Gamepad.Gamepad, button: Phaser.Input.Gamepad.Button) => {            
+        handleControlPress(button.index)
+    });
 
-        pad.on('up', (buttonIndex: number) => {
-            highlightButton(buttonIndex, false)
-        });
+    scene.input.gamepad.on('up', (pad: Phaser.Input.Gamepad.Gamepad, button: Phaser.Input.Gamepad.Button) => {
+        highlightButton(button.index, false)
     });
 
     scene.input.keyboard.on('keydown', function (event: KeyboardEvent) {
@@ -166,9 +163,9 @@ export function handleCursor(scene: MyScene) {
 export function handleControlPress(button: number){
     highlightButton(button, true)
     switch(button){
-        case Phaser.Input.Gamepad.Configs.XBOX_360.A: onPressA(); break;
-        case Phaser.Input.Gamepad.Configs.XBOX_360.B: onPressB(); break;
-        case Phaser.Input.Gamepad.Configs.XBOX_360.START: onPressStart(); break;
+        case Phaser.Input.Gamepad.Configs.XBOX_360.A ?? 0: onPressA(); break;
+        case Phaser.Input.Gamepad.Configs.XBOX_360.B ?? 1: onPressB(); break;
+        case Phaser.Input.Gamepad.Configs.XBOX_360.START ?? 9: onPressStart(); break;
     }
 }
 
@@ -198,9 +195,7 @@ export function onPointerMove(scene: MyScene, pointer: PointerEvent){
         Phaser.Math.Clamp(pointer.x, 0, scene.scale.width - 15),
         Phaser.Math.Clamp(pointer.y, 0, scene.scale.height - 15)
     )
-    updateCursorHover(scene)
-    handleDragMove(scene)
-    updatePokemonCaptureInfoPosition(scene as GameScene)
+    onCursorMove()
 }
 
 function onPressA(){
@@ -208,8 +203,7 @@ function onPressA(){
 }
 
 function onPressB(){
-    if(gameState.activeMenu != null){ gameState.activeMenu.handleCancel!() }
-    else if(gameState.activeScene?.onPressB){ gameState.activeScene.onPressB() }
+    if(gameState.activeScene?.onPressB){ gameState.activeScene.onPressB() }
 }
 
 function onPressStart(){

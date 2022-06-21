@@ -136,13 +136,14 @@ export default class GameScene extends MyScene {
   onPressStart(){
     this.launchFight()
   }
-  onPressB(){
-    if(gameState.activeMenu != null) closeMenu()
-  }
 
   onPressA(){
     if(gameState.activeMenu != null) clickEntry()
     else handleClick(this)
+  }
+
+  onPressB(){
+    if(gameState.activeMenu != null) gameState.activeMenu.handleCancel!()
   }
 
   onClick(){

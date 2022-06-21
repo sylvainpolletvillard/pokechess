@@ -91,4 +91,8 @@ export default class RoomScene extends MyScene {
         if(gameState.activeMenu != null) return clickEntry()
         this.player?.doAction()
     }
+
+    onPressB(){
+        if(gameState.activeMenu != null) gameState.activeMenu.handleCancel!()
+    }
 }
