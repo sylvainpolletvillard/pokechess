@@ -1,4 +1,4 @@
-import { MenuEntry, openMenu} from "./menu";
+import { closeMenu, MenuEntry, openMenu} from "./menu";
 import {gameState} from "../logic/gamestate";
 import {Item, ITEMS} from "../data/items";
 import {wait} from "../utils/helpers";
@@ -78,6 +78,7 @@ export function openBuyMenu(seller: string){
         },
         handleCancel(){
             hideItemDescription();
+            closeMenu()
         },
         onSelect(entry){
             const item = ITEMS[entry.value]
