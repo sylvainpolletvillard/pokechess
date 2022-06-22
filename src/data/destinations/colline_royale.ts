@@ -11,6 +11,7 @@ import { Pokemon } from "../pokemons";
 import { RONFLEX } from "../pokemons/ronflex";
 import { NO_OWNER } from "../owners";
 import { gameState } from "../../logic/gamestate";
+import { levelToXP } from "../../logic/xp";
 
 export const COLLINE_ROYALE: Destination = {
     ref: "COLLINE_ROYALE",
@@ -73,7 +74,7 @@ export const RONFLEX_ENDORMI: Destination = {
             music: "music_colline_royale",
             spawnOtherTeam(){
                 return [
-                    new PokemonOnBoard(new Pokemon(RONFLEX, NO_OWNER, 30), 3, 3)
+                    new PokemonOnBoard(RONFLEX, NO_OWNER, levelToXP(30), null, 3, 3)
                 ]
             },
         }

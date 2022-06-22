@@ -13,7 +13,7 @@ export const TRADER = (character: Trader) => startDialog([
             `Si tu as des Pokémon en réserve dans ta box, on peut se les échanger !`
         ]
         else {
-            const pokemonReceived = new Pokemon(character.pokemonToReceive, OWNER_PLAYER, pokemonGiven.level)
+            const pokemonReceived = new Pokemon(character.pokemonToReceive, OWNER_PLAYER, pokemonGiven.xp, pokemonGiven.item)
             return [
                 `Salut, tu veux échanger ton ${pokemonGiven.entry.name} contre mon ${pokemonReceived.entry.name} ?`,
                 {

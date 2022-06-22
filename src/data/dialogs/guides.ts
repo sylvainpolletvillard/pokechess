@@ -92,7 +92,7 @@ export const GUIDES: { [destination: string]: DialogLine[] } = {
                                         [FOSSILE_KABUTO.ref]: KABUTO,
                                         [FOSSILE_PTERA.ref]: PTERA
                                     }
-                                    const pokemon = new Pokemon(FOSSILE_MAPPING[fossile.ref]!, OWNER_PLAYER, 30)
+                                    const pokemon = new Pokemon(FOSSILE_MAPPING[fossile.ref]!, OWNER_PLAYER, 30, null)
                                     addToBox(pokemon)
                                     return [`!!!`, `Incroyable !`, 
                                         `C'est un ${pokemon.entry.name} ! Je les croyais disparus !`,

@@ -71,7 +71,7 @@ export function applyAlterationEffect(pokemon: PokemonOnBoard, alteration: Alter
             break;
 
         case AlterationType.DAMAGE_OVER_TIME:
-            applyDamage(10 * perSecond, pokemon, alteration.attacker)
+            applyDamage(5 * perSecond, pokemon, alteration.attacker)
             break;
         
         case AlterationType.TOURBILLON:
@@ -99,7 +99,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
         pokemon.unalterable = true;
         setTimeout(() => { pokemon.unalterable = false; }, 10 * 1000)
         delete pokemon.item;
-        playSound("heal_ailment")
+        playSound("heal_ailment", { volume: 0.5 })
     }
 
     const alterationToStack = pokemon.alterations.find(alt => alt.type === alteration.type)
@@ -113,7 +113,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
         if(alteration.type === AlterationType.RAGE){
             const targetSprite = game.sprites.get(pokemon.uid)
             if(!targetSprite) return console.error(`Error, can't find pokemon sprite uid ${pokemon.uid}`)
-            targetSprite.setTint(Phaser.Display.Color.GetColor(255, clamp(128- alteration.stacks * 30, 0,255), clamp(128 - alteration.stacks * 30,0, 255)))
+            targetSprite.setTint(Phaser.Display.Color.GetColor(255, clamp(200- alteration.stacks * 40, 0,255), clamp(128 - alteration.stacks * 30,0, 255)))
         } 
     } 
     else {
@@ -177,7 +177,7 @@ export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, g
                 break;
 
             case AlterationType.RAGE:                
-                targetSprite.setTint(Phaser.Display.Color.GetColor(255, 128, 128))
+                targetSprite.setTint(Phaser.Display.Color.GetColor(255, 200, 200))
                 break;
         }
 

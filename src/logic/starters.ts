@@ -18,13 +18,14 @@ import { ROUCOOL } from "../data/pokemons/roucool";
 import { SABELETTE } from "../data/pokemons/sabelette";
 import { SALAMECHE } from "../data/pokemons/salameche";
 import { Description } from "../objects/description";
-import { PokemonOnBoard } from "../objects/pokemon";
+import { PokemonOnBoard, putOnBoard } from "../objects/pokemon";
 import { displayPokemonInfo, hidePokemonInfo } from "../objects/pokemonInfoBox";
 import { pickNRandomIn } from "../utils/helpers";
 import { pauseMusicAndPlaySound } from "./audio";
 import { addToTeam } from "./box";
 import { waitBeforeNextLine } from "./dialog";
 import { gameState } from "./gamestate";
+import { levelToXP } from "./xp";
 
 const STARTERS = [
     BULBIZARRE,
@@ -45,7 +46,7 @@ const STARTERS = [
 ]
 
 export function pickStarters(): Pokemon[] {    
-    return pickNRandomIn(STARTERS, 3).map(entry => new Pokemon(entry, OWNER_CHEN, 5))
+    return pickNRandomIn(STARTERS, 3).map(entry => new Pokemon(entry, OWNER_CHEN, levelToXP(5), null))
 }
 
 export const pickStarter = (index: number) => (desc: Description) => {
@@ -57,7 +58,7 @@ export const pickStarter = (index: number) => (desc: Description) => {
     }, {
         "OUI": () => {
             const starter = gameState.starters[index]
-            addToTeam(new PokemonOnBoard(starter, 3, 6))
+            addToTeam(putOnBoard(starter, 3, 6))
             hidePokemonInfo()
             desc.sprite.destroy(true)
             gameState.dialogStates.chen = CHEN_DIALOG_STATE.after_starter_choice

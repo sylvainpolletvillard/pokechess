@@ -274,6 +274,7 @@ export default class MapScene extends MyScene {
             if(destination.preload){
                 destination.preloading = true;
                 destination.preload(this as MyScene)
+                this.load.start()
                 this.load.on("complete", () => { 
                     console.log(`finished preloading destination ${destination.name}`)
                     destination.preloading = false

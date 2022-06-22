@@ -36,23 +36,6 @@ export class Player {
         this.badges = [];
     }
 
-    setupTeam(owner: number){
-        if(owner === 1){
-            return [
-                new PokemonOnBoard( new Pokemon(BULBIZARRE, owner, 1), 6, 7),
-                new PokemonOnBoard( new Pokemon(HERBIZARRE, owner,10), 2, 5),
-                new PokemonOnBoard( new Pokemon(FLORIZARRE, owner,20), 3 ,7),
-                new PokemonOnBoard( new Pokemon(DRACAUFEU, owner, 50), 4 ,6),
-            ]
-        } else {
-            return [
-                new PokemonOnBoard( new Pokemon(SALAMECHE, owner,1), 1, 3),
-                new PokemonOnBoard( new Pokemon(REPTINCEL, owner,1), 5, 1),
-                new PokemonOnBoard( new Pokemon(DRACAUFEU, owner,1), 6 ,1)
-            ]
-        }
-    }
-
     resetTeam(): PokemonOnBoard[] {
         return this.team.map((pokemon: PokemonOnBoard) => pokemon.reset())
     }

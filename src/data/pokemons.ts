@@ -155,7 +155,7 @@ import { DRACO } from "./pokemons/draco";
 import { DRACOLOSSE } from "./pokemons/dracolosse";
 import { MEWTWO } from "./pokemons/mewtwo";
 import { MEW } from "./pokemons/mew";
-import { levelToXP } from "../logic/xp";
+import { xpToLevel } from "../logic/xp";
 import { PokemonOnBoard } from "../objects/pokemon";
 
 import { GEMME_CIEL, GEMME_DRACO, GEMME_FLAMME, GEMME_GLACE, GEMME_GRISE, GEMME_HERBE, GEMME_HYDRO, GEMME_INSECTE, GEMME_OMBRE, GEMME_PIXIE, GEMME_POING, GEMME_PSY, GEMME_ROC, GEMME_TERRE, GEMME_TOXIC, GEMME_VOLT, Item, PV_PLUS } from "./items";
@@ -183,22 +183,24 @@ export class Pokemon {
     owner: number;
     pv: number;
     pp: number;
-    item?: Item;
+    item: Item | null;
     level: number;
-    pokeball: string;
     entry: PokemonEntry;
     xp: number;
 
-    constructor(entry: PokemonEntry | Pokemon, owner: number, level = 1) {
-        this.uid = entry instanceof Pokemon ? entry.uid : nanoid()
-        this.entry = entry instanceof Pokemon ? entry.entry : entry
+    constructor(entry: PokemonEntry, owner: number, xp: number, item: Item | null) {
+        this.uid =  nanoid()
+        this.entry = entry
         this.owner = owner
-        this.level = level
-        this.item = undefined
+        this.xp = xp
+        this.level = xpToLevel(xp)
+        this.item = item
         this.pv = this.maxPV;
-        this.pp = 0
-        this.pokeball = POKEBALLS[this.entry.rank-1] // TEMP: set on capture, based on rank or safari ball
-        this.xp = levelToXP(level);
+        this.pp = 0  
+    }
+
+    get pokeball(): string {
+        return POKEBALLS[this.entry.rank-1]
     }
 
     get baseXP(): number {

@@ -18,6 +18,7 @@ import { gameState } from "../../logic/gamestate";
 import { PokemonOnBoard } from "../../objects/pokemon";
 import { NO_OWNER } from "../owners";
 import { Pokemon } from "../pokemons";
+import { levelToXP } from "../../logic/xp";
 
 export const ILES_ECUME: Destination = {
     ref: "ILES_ECUME",
@@ -37,7 +38,7 @@ export const ILES_ECUME: Destination = {
             map: "iles_ecume",
             spawnOtherTeam(){
                 if(!gameState.pokedexSeen.has(ARTIKODIN.ref) && Math.random() < 5/100){
-                    return [ new PokemonOnBoard(new Pokemon(ARTIKODIN, NO_OWNER, 50), 3, 3) ]
+                    return [ new PokemonOnBoard(ARTIKODIN, NO_OWNER, levelToXP(50), null, 3, 3) ]
                 }
                 return spawnTeamByTypeFactor({
                     [TYPE_EAU.ref]: 1,

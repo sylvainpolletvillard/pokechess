@@ -21,6 +21,7 @@ import { MEWTWO } from "../pokemons/mewtwo";
 import { PokemonOnBoard } from "../../objects/pokemon";
 import { NO_OWNER } from "../owners";
 import { Pokemon } from "../pokemons";
+import { levelToXP } from "../../logic/xp";
 
 export const GROTTE_AZUREE: Destination = {
     ref: "GROTTE_AZUREE",
@@ -42,7 +43,7 @@ export const GROTTE_AZUREE: Destination = {
             map: "grotte_azuree",
             spawnOtherTeam(){
                 if(!gameState.pokedexSeen.has(MEWTWO.ref) && Math.random() < 5/100){
-                    return [ new PokemonOnBoard(new Pokemon(MEWTWO, NO_OWNER, 50), 3, 3) ]
+                    return [ new PokemonOnBoard(MEWTWO, NO_OWNER, levelToXP(50), null, 3, 3) ]
                 }
                 return spawnTeamByTypeFactor({
                     [TYPE_GLACE.ref]: 0.5,

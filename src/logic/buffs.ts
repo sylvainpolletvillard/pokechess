@@ -175,7 +175,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             const baie: OnHitReceivedEffect = ({ damage }) => {
                 if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
                     delete pokemon.item;
-                    playSound("heal_ailment")
+                    playSound("heal_ailment", { volume: 0.5 })
                     healPokemon(pokemon, 0.25 * pokemon.maxPV)
                     removeInArray(pokemon.buffs.onHitReceived, baie)
                 }
@@ -187,7 +187,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             const baie: OnHitReceivedEffect = ({ damage }) => {
                 if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
                     delete pokemon.item;
-                    playSound("heal_ailment")
+                    playSound("heal_ailment", { volume: 0.5 })
                     removeInArray(pokemon.buffs.onHitReceived, baie)
                     pokemon.buffs.defense.push(() => 0.3)
                 }
@@ -198,7 +198,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         if(pokemon.item === BAIE_MEPO){
             const baie: OnHitReceivedEffect = () => {
                 delete pokemon.item;
-                playSound("heal_ailment")
+                playSound("heal_ailment", { volume: 0.5 })
                 removeInArray(pokemon.buffs.onHitReceived, baie)
                 pokemon.buffs.onHitReceived.push(() => {
                     pokemon.pp = Math.min(pokemon.pp + 2, pokemon.maxPP)
@@ -251,7 +251,7 @@ export function applyBuffs(pokemon: PokemonOnBoard){
                 tilesImpacted.forEach(([i,j]) => {
                     const target = getPokemonOnTile(i,j)
                     if(target && target.owner === pokemon.owner){
-                        healPokemon(target, target.maxPV * (3/100))
+                        healPokemon(target, target.maxPV * (1/100))
                     }
                 })            
             })

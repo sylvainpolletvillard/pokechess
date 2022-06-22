@@ -22,6 +22,7 @@ import { ELECTHOR } from "../pokemons/electhor";
 import { Pokemon } from "../pokemons";
 import { NO_OWNER } from "../owners";
 import { PokemonOnBoard } from "../../objects/pokemon";
+import { levelToXP } from "../../logic/xp";
 
 export const CENTRALE: Destination = {
     ref: "CENTRALE",
@@ -42,7 +43,7 @@ export const CENTRALE: Destination = {
             map: "centrale",
             spawnOtherTeam(){
                 if(!gameState.pokedexSeen.has(ELECTHOR.ref) && Math.random() < 5/100){
-                    return [ new PokemonOnBoard(new Pokemon(ELECTHOR, NO_OWNER, 50), 3, 3) ]
+                    return [ new PokemonOnBoard(ELECTHOR, NO_OWNER, levelToXP(50), null, 3, 3) ]
                 }
                 return spawnTeamByTypeFactor({
                     [TYPE_ELECTRIQUE.ref]: 1,

@@ -17,6 +17,7 @@ import {updatePokemonBars} from "./pokemonBar";
 import {Buffs, resetBuffs} from "../logic/buffs";
 import { PokemonType } from "../data/types";
 import { AllianceState } from "../data/alliances";
+import { Item } from "../data/items";
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -31,8 +32,8 @@ export class PokemonOnBoard extends Pokemon {
     unalterable: boolean;
     buffs: Buffs;
 
-    constructor(pokemon: Pokemon, x:number, y:number) {
-        super(pokemon, pokemon.owner, pokemon.level);
+    constructor(entry: PokemonEntry, owner: number, xp: number, item: Item | null, x:number, y:number) {
+        super(entry, owner, xp, item);
         this.x = x
         this.y = y
         this.placementX = x
@@ -139,10 +140,9 @@ export class PokemonOnBoard extends Pokemon {
         return this.owner === OWNER_PLAYER ?  gameState.board.playerAlliances : gameState.board.otherTeamAlliances
     }
 
-    toBoxPokemon(game: GameScene){
-        const pokemon = new Pokemon(this, this.owner, this.level)
+    toBoxPokemon(game: GameScene): Pokemon {
+        const pokemon = new Pokemon(this.entry, this.owner, this.xp, this.item)
         game.sprites.get(pokemon.uid)?.setData("pokemon", pokemon);
-        pokemon.owner = 1
         return pokemon
     }
 
@@ -173,6 +173,10 @@ export class PokemonOnBoard extends Pokemon {
         this.untargettable = false
         if(this.initialEntry) this.entry = this.initialEntry // revert morphing/evolution
     }    
+}
+
+export function putOnBoard(pokemon: Pokemon, x: number, y: number){
+    return new PokemonOnBoard(pokemon.entry, pokemon.owner, pokemon.xp, pokemon.item, x, y)
 }
 
 export function makePokemonSprite(

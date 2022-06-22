@@ -663,7 +663,7 @@ export const DRESSEUR_SAFRANIA: Trainer = {
             `Ma puissance va te faire tourner la tête !`
         ],
         victory: [
-            `Tu m'as collé la migraine !`
+            `Tu m'as donné la migraine !`
         ],
         defeat: [
             `La force brute ne vaut rien contre la puissance de l'intellect !`
@@ -864,7 +864,7 @@ export const DRESSEUR_CHAMPS_VERDOYANTS: Trainer = {
         ],
         defeat: [
             `Je vais te faire une fleur et te donner un conseil:`,
-            `Il n'y a pas de rose sans épines.`,
+            `Même les plus belles roses ont besoin d'épines.`,
             `Il te faut une bonne attaque si tu veux gagner.`
         ]
     }

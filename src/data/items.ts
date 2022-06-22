@@ -223,6 +223,13 @@ export const GEMME_GRISE: Item = {
     type: ItemType.Holdable
 }
 
+export const GEMMES: Item[] = [
+    GEMME_CIEL, GEMME_DRACO, GEMME_FLAMME, GEMME_GLACE,
+    GEMME_GRISE, GEMME_HERBE, GEMME_HYDRO, GEMME_INSECTE,
+    GEMME_OMBRE, GEMME_PIXIE, GEMME_POING, GEMME_PSY,
+    GEMME_ROC, GEMME_TERRE, GEMME_TOXIC, GEMME_VOLT
+]
+
 export const GRELOT_COQUE: Item = {
     ref: "grelot_coque",
     label: "Grelot Coque",
@@ -258,7 +265,7 @@ export const MAX_ELIXIR: Item = {
 export const ENCENS_FLEUR: Item = {
     ref: "encens_fleur",
     label: "Encens Fleur",
-    desc: "Soigne chaque seconde 3% des PV max du porteur et des alliés sur une case adjacente",
+    desc: "Soigne chaque seconde 1% des PV max du porteur et des alliés sur une case adjacente",
     cost: 5,
     type: ItemType.Holdable
 }

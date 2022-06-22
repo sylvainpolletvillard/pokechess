@@ -6,7 +6,7 @@ export const LEVIATOR: PokemonEntry = {
     ref: "leviator",
     name: "Leviator",
     maxPV: 95,
-    maxPP: 20,
+    maxPP: 25,
     attack: 125,
     defense: 79,
     speed: 81,

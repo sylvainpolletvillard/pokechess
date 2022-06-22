@@ -11,7 +11,7 @@ import {
     handleDragStart,
     testIfCanBeDragged
 } from "../objects/cursor";
-import {makePokemonSprite, PokemonOnBoard} from "../objects/pokemon";
+import {makePokemonSprite, PokemonOnBoard, putOnBoard} from "../objects/pokemon";
 import {getPokemonCry, Pokemon} from "../data/pokemons";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
@@ -31,6 +31,7 @@ import { AllianceState } from "../data/alliances";
 import { PokemonType } from "../data/types";
 import { addToPension, removeFromPension } from "./pension";
 import { makeItemSprite } from "../objects/itemBox";
+import { GEMMES, Item } from "../data/items";
 
 export const BOARD_WIDTH = 7
 export const BOARD_HEIGHT = 8
@@ -372,7 +373,7 @@ export function dropPokemonOnBoard(sprite: Phaser.GameObjects.Sprite, x:number, 
 
     if(!(pokemon instanceof PokemonOnBoard)) {
         // dropped from box to board
-        pokemonOnBoard = new PokemonOnBoard(pokemon, x, y)
+        pokemonOnBoard = putOnBoard(pokemon, x, y)
         if(gameState.currentRoom.type === RoomType.PENSION){
             addToPension(pokemonOnBoard)
             sprite.setAlpha(1)
@@ -505,10 +506,15 @@ export function dropItemOnPokemon(droppedSprite: Phaser.GameObjects.Sprite, x: n
             handleDragStart(itemSprite, game)
         })
     }
-    pokemon.item = droppedSprite.getData("item")
+    pokemon.item = droppedSprite.getData("item") as Item
     droppedSprite.destroy()
     gameState.player.inventory[pokemon.item!.ref] -= 1
 
-    drawAlliancesInfo(gameState.board.playerTeam) // si une gemme de type est rajoutée
+    if(GEMMES.includes(pokemon.item)){
+        // actualise les alliances si une gemme de type est rajoutée
+        gameState.board.playerAlliances = getAlliancesState(gameState.board.playerTeam)
+        drawAlliancesInfo(gameState.board.playerTeam) 
+    }
+    
     displayPokemonInfo(pokemon)
 }

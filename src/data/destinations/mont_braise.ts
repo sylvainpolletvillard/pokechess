@@ -17,6 +17,7 @@ import { gameState } from "../../logic/gamestate";
 import { PokemonOnBoard } from "../../objects/pokemon";
 import { NO_OWNER } from "../owners";
 import { Pokemon } from "../pokemons";
+import { levelToXP } from "../../logic/xp";
 
 export const MONT_BRAISE: Destination = {
     ref: "MONT_BRAISE",
@@ -36,7 +37,7 @@ export const MONT_BRAISE: Destination = {
             music: "music_mont_braise",
             spawnOtherTeam(){
                 if(!gameState.pokedexSeen.has(SULFURA.ref) && Math.random() < 5/100){
-                    return [ new PokemonOnBoard(new Pokemon(SULFURA, NO_OWNER, 50), 3, 3) ]
+                    return [ new PokemonOnBoard(SULFURA, NO_OWNER, levelToXP(50), null, 3, 3) ]
                 }
                 return spawnTeamByTypeFactor({
                     [TYPE_FEU.ref]: 1,

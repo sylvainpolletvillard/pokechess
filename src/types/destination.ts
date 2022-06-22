@@ -38,7 +38,7 @@ export interface Destination {
     subtext?: string
     rooms: { [ref: string]: Room }
     shopId?: number
-    preloading: boolean;
+    preloading?: boolean;
     preload?: (scene: MyScene) => void
     locked?: () => boolean
     customRoomOrder?: () => string[]

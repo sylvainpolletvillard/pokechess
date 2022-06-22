@@ -130,16 +130,12 @@ export class GameState {
         gameState.player.inventory[ORBE_GLACE.ref] = 1
 
         gameState.player.team = [
-            //new PokemonOnBoard( new Pokemon(POISSIRENE, 1, 24), 3 ,6),
-            //new PokemonOnBoard( new Pokemon(POISSOROY, 1, 24), 2 ,7),
-            new PokemonOnBoard( new Pokemon(CARABAFFE, 1, 24), 1 ,7),
-            new PokemonOnBoard( new Pokemon(POISSIRENE, 1, 24), 5 ,7),
-            //new PokemonOnBoard( new Pokemon(CARABAFFE, 1, 24), 4 ,7),
-            //new PokemonOnBoard( new Pokemon(AKWAKWAK, 1, 24), 2 ,7),
+            //new PokemonOnBoard( POISSIRENE, 1, levelToXP(24), null, 3 ,6),
+            //new PokemonOnBoard( POISSOROY, 1, levelToXP(24), null, 2 ,7),
         ]
         enterDestination(TEST_ROOM([
-            new PokemonOnBoard( new Pokemon(POISSIRENE, 2, 22), 1 ,2),
-            new PokemonOnBoard( new Pokemon(CARABAFFE, 2, 22), 5 ,2),
+            new PokemonOnBoard( POISSIRENE, 2, levelToXP(22), null, 1 ,2),
+            new PokemonOnBoard( CARABAFFE, 2, levelToXP(22), null, 5 ,2),
         ]))
         
         this.initRoom()

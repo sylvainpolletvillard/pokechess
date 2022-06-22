@@ -263,7 +263,7 @@ export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: Pokem
         }
     }
 
-    return attacker.attack * (1+skill.power/50) * typeFactor / target.defense
+    return attacker.attack * (1+skill.power/40) * typeFactor / target.defense
 }
 
 export function calcSelfDamage(skill: Skill, attacker: PokemonOnBoard): number {
@@ -383,6 +383,10 @@ export function gainXP(pokemon: Pokemon, amount: number){
                     const newSprite = makePokemonSprite(pokemonOnBoard, game)
                     newSprite.play(`${pokemon.entry.ref}_${pokemonOnBoard.facingDirection}`)
                     game.sprites.set(pokemon.uid, newSprite)
+                    if(gameState.stage === GameStage.PLACEMENT || gameState.stage === GameStage.CAPTURE){
+                        newSprite.anims.pause()
+                        newSprite.setAlpha(0.5)
+                    }
                 }
 
                 return `${oldEntry.name} évolue en ${pokemon.entry.name} !`

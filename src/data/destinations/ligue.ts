@@ -30,6 +30,7 @@ import { FEUNARD } from "../pokemons/feunard";
 import { MAGNETON } from "../pokemons/magneton";
 import { AQUALI } from "../pokemons/aquali";
 import { END_ROOM } from "../levels/endroom";
+import { levelToXP } from "../../logic/xp";
 
 const ARENE_OLGA: RoomArena = {
     type: RoomType.ARENA,
@@ -39,12 +40,12 @@ const ARENE_OLGA: RoomArena = {
     trainer: OLGA,    
     spawnOtherTeam(){
         return [
-            new PokemonOnBoard(new Pokemon(LAMANTINE, OWNER_TRAINER, 54), 0,1),
-            new PokemonOnBoard(new Pokemon(LAMANTINE, OWNER_TRAINER, 54), 6,1),
-            new PokemonOnBoard(new Pokemon(CRUSTABRI, OWNER_TRAINER, 53), 3,3),
-            new PokemonOnBoard(new Pokemon(FLAGADOSS, OWNER_TRAINER, 54), 4,3),
-            new PokemonOnBoard(new Pokemon(LIPPOUTOU, OWNER_TRAINER, 56), 2,3),
-            new PokemonOnBoard(new Pokemon(LOKHLASS, OWNER_TRAINER, 56), 5,2),
+            new PokemonOnBoard(LAMANTINE, OWNER_TRAINER, levelToXP(54), null, 0,1),
+            new PokemonOnBoard(LAMANTINE, OWNER_TRAINER, levelToXP(54), null, 6,1),
+            new PokemonOnBoard(CRUSTABRI, OWNER_TRAINER, levelToXP(53), null, 3,3),
+            new PokemonOnBoard(FLAGADOSS, OWNER_TRAINER, levelToXP(54), null, 4,3),
+            new PokemonOnBoard(LIPPOUTOU, OWNER_TRAINER, levelToXP(56), null, 2,3),
+            new PokemonOnBoard(LOKHLASS, OWNER_TRAINER, levelToXP(56), null, 5,2),
         ]
     }
 }
@@ -57,12 +58,12 @@ const ARENE_ALDO: RoomArena = {
     trainer: ALDO,    
     spawnOtherTeam(){
         return [
-            new PokemonOnBoard(new Pokemon(ONIX, OWNER_TRAINER, 53), 0,3),
-            new PokemonOnBoard(new Pokemon(TYGNON, OWNER_TRAINER, 55), 1,3),
-            new PokemonOnBoard(new Pokemon(COLOSSINGE, OWNER_TRAINER, 56), 2,3),
-            new PokemonOnBoard(new Pokemon(MACKOGNEUR, OWNER_TRAINER, 58), 4,3),
-            new PokemonOnBoard(new Pokemon(KICKLEE, OWNER_TRAINER, 55), 5,3),            
-            new PokemonOnBoard(new Pokemon(ONIX, OWNER_TRAINER, 56), 6,3),
+            new PokemonOnBoard(ONIX, OWNER_TRAINER, levelToXP(53), null, 0,3),
+            new PokemonOnBoard(TYGNON, OWNER_TRAINER, levelToXP(55), null, 1,3),
+            new PokemonOnBoard(COLOSSINGE, OWNER_TRAINER, levelToXP(56), null, 2,3),
+            new PokemonOnBoard(MACKOGNEUR, OWNER_TRAINER, levelToXP(58), null, 4,3),
+            new PokemonOnBoard(KICKLEE, OWNER_TRAINER, levelToXP(55), null, 5,3),            
+            new PokemonOnBoard(ONIX, OWNER_TRAINER, levelToXP(56), null, 6,3),
         ]
     }
 }
@@ -75,12 +76,12 @@ const ARENE_AGATHA: RoomArena = {
     trainer: AGATHA,    
     spawnOtherTeam(){
         return [
-            new PokemonOnBoard(new Pokemon(ECTOPLASMA, OWNER_TRAINER, 56), 3,3),
-            new PokemonOnBoard(new Pokemon(ARBOK, OWNER_TRAINER, 58), 1,3),
-            new PokemonOnBoard(new Pokemon(NOSFERALTO, OWNER_TRAINER, 56), 3,1),
-            new PokemonOnBoard(new Pokemon(SPECTRUM, OWNER_TRAINER, 55), 4,2),
-            new PokemonOnBoard(new Pokemon(SPECTRUM, OWNER_TRAINER, 55), 2,2),
-            new PokemonOnBoard(new Pokemon(ECTOPLASMA, OWNER_TRAINER, 60), 5,3),
+            new PokemonOnBoard(ECTOPLASMA, OWNER_TRAINER, levelToXP(56), null, 3,3),
+            new PokemonOnBoard(ARBOK, OWNER_TRAINER, levelToXP(58), null, 1,3),
+            new PokemonOnBoard(NOSFERALTO, OWNER_TRAINER, levelToXP(56), null, 3,1),
+            new PokemonOnBoard(SPECTRUM, OWNER_TRAINER, levelToXP(55), null, 4,2),
+            new PokemonOnBoard(SPECTRUM, OWNER_TRAINER, levelToXP(55), null, 2,2),
+            new PokemonOnBoard(ECTOPLASMA, OWNER_TRAINER, levelToXP(60), null, 5,3),
         ]
     }
 }
@@ -93,12 +94,12 @@ const ARENE_PETER: RoomArena = {
     trainer: PETER,    
     spawnOtherTeam(){
         return [
-            new PokemonOnBoard(new Pokemon(LEVIATOR, OWNER_TRAINER, 58), 2,2),
-            new PokemonOnBoard(new Pokemon(PTERA, OWNER_TRAINER, 60), 3,2),
-            new PokemonOnBoard(new Pokemon(LEVIATOR, OWNER_TRAINER, 58), 4,2),
-            new PokemonOnBoard(new Pokemon(DRACO, OWNER_TRAINER, 56), 0,0),
-            new PokemonOnBoard(new Pokemon(DRACO, OWNER_TRAINER, 56), 6,0),
-            new PokemonOnBoard(new Pokemon(DRACOLOSSE, OWNER_TRAINER, 62), 3,1),
+            new PokemonOnBoard(LEVIATOR, OWNER_TRAINER, levelToXP(58), null, 2,2),
+            new PokemonOnBoard(PTERA, OWNER_TRAINER, levelToXP(60), null, 3,2),
+            new PokemonOnBoard(LEVIATOR, OWNER_TRAINER, levelToXP(58), null, 4,2),
+            new PokemonOnBoard(DRACO, OWNER_TRAINER, levelToXP(56), null, 0,0),
+            new PokemonOnBoard(DRACO, OWNER_TRAINER, levelToXP(56), null, 6,0),
+            new PokemonOnBoard(DRACOLOSSE, OWNER_TRAINER, levelToXP(62), null, 3,1),
         ]
     }
 }
@@ -113,12 +114,12 @@ const ARENE_RIVAL: RoomArena = {
         //TODO: adapter la team en fonction du starter choisi
         //https://www.pokepedia.fr/Blue_(jeux_vidéo)/Équipes_dans_Pokémon_Jaune
         return [
-            new PokemonOnBoard(new Pokemon(SABLAIREAU, OWNER_TRAINER, 61), 0,3),
-            new PokemonOnBoard(new Pokemon(ALAKAZAM, OWNER_TRAINER, 59), 1,1),
-            new PokemonOnBoard(new Pokemon(MAGNETON, OWNER_TRAINER, 63), 3,3),
-            new PokemonOnBoard(new Pokemon(FEUNARD, OWNER_TRAINER, 61), 5,2),
-            new PokemonOnBoard(new Pokemon(NOADKOKO, OWNER_TRAINER, 61), 6,2),
-            new PokemonOnBoard(new Pokemon(AQUALI, OWNER_TRAINER, 65), 4,1),
+            new PokemonOnBoard(SABLAIREAU, OWNER_TRAINER, levelToXP(61), null, 0,3),
+            new PokemonOnBoard(ALAKAZAM, OWNER_TRAINER, levelToXP(59), null, 1,1),
+            new PokemonOnBoard(MAGNETON, OWNER_TRAINER, levelToXP(63), null, 3,3),
+            new PokemonOnBoard(FEUNARD, OWNER_TRAINER, levelToXP(61), null, 5,2),
+            new PokemonOnBoard(NOADKOKO, OWNER_TRAINER,levelToXP(61), null, 6,2),
+            new PokemonOnBoard(AQUALI, OWNER_TRAINER, levelToXP(65), null, 4,1),
         ]
     }
 }

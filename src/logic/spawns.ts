@@ -2,7 +2,7 @@ import {getNonLegendaryPokemons, getNonLegendaryPokemonsOfType, Pokemon, Pokemon
 import {POKEMON_TYPES, TYPE_NORMAL} from "../data/types";
 import {gameState} from "./gamestate";
 import {clamp, pickNRandomIn, pickRandomIn, randomInt} from "../utils/helpers";
-import {PokemonOnBoard} from "../objects/pokemon";
+import {PokemonOnBoard, putOnBoard} from "../objects/pokemon";
 import { NO_OWNER, OWNER_TRAINER } from "../data/owners";
 import { RATTATA } from "../data/pokemons/rattata";
 import { NIDORAN_FEMALE } from "../data/pokemons/nidoranf";
@@ -14,7 +14,7 @@ import { MAGNETI } from "../data/pokemons/magneti";
 import { RONDOUDOU } from "../data/pokemons/rondoudou";
 import { SOPORIFIK } from "../data/pokemons/soporifik";
 import { NOSFERAPTI } from "../data/pokemons/nosferapti";
-import { getNumberMaxAllowedOnBoard } from "./board";
+import { levelToXP } from "./xp";
 
 export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }): PokemonOnBoard[] {
     const types = Object.keys(typesFactors)
@@ -42,10 +42,7 @@ export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }
         } while(team.some(p => p.x === x && p.y === y))
 
         team.push(
-            new PokemonOnBoard(
-                autoEvolve(new Pokemon(pokemonEntry, 0, level)),
-                x, y
-            )
+            putOnBoard(autoEvolve(new Pokemon(pokemonEntry, NO_OWNER, levelToXP(level), null)), x, y)
         )
     }
 
@@ -66,19 +63,22 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
         const entry = pokemons[i]
         const [x,y] = positions[i]
         team.push(
-            new PokemonOnBoard(
-                autoEvolve(new Pokemon(entry, OWNER_TRAINER, level)),
-                x, y
-            )
+            putOnBoard(autoEvolve(new Pokemon(entry, OWNER_TRAINER, levelToXP(level), null)), x, y)
         )
     }
 
     return team
 }
 
-export function autoEvolve(pokemon: Pokemon): Pokemon{
-    if(pokemon.entry.evolution && pokemon.entry.evolutionLevel && pokemon.level > pokemon.entry.evolutionLevel) return autoEvolve(new Pokemon(pokemon.entry.evolution, pokemon.owner, pokemon.level))
-    if(pokemon.entry.devolution && pokemon.level < pokemon.entry.devolution.evolutionLevel!) return autoEvolve(new Pokemon(pokemon.entry.devolution, pokemon.owner, pokemon.level))
+export function autoEvolve(pokemon: Pokemon): Pokemon {
+    if(pokemon.entry.evolution && pokemon.entry.evolutionLevel && pokemon.level > pokemon.entry.evolutionLevel){
+        pokemon.entry = pokemon.entry.evolution
+        return autoEvolve(pokemon)
+    }
+    if(pokemon.entry.devolution && pokemon.level < pokemon.entry.devolution.evolutionLevel!){
+        pokemon.entry = pokemon.entry.devolution
+        return autoEvolve(pokemon)
+    }
     return pokemon
 }
 
@@ -100,10 +100,7 @@ export function spawnTrainerTeam(pokemons: PokemonEntry[]): PokemonOnBoard[] {
         } while(team.some(p => p.x === x && p.y === y))
 
         team.push(
-            new PokemonOnBoard(
-                autoEvolve(new Pokemon(entry, OWNER_TRAINER, level)),
-                x, y
-            )
+            putOnBoard(autoEvolve(new Pokemon(entry, OWNER_TRAINER, levelToXP(level), null)), x, y)
         )
     }
 
@@ -125,17 +122,14 @@ export function spawnTutoCaptureTeam(): PokemonOnBoard[] {
     ]
     const selection = pickNRandomIn(SECONDERS, 3)
     const team: PokemonOnBoard[] = selection.map(
-        (entry: PokemonEntry, i: number) => new PokemonOnBoard(
-            new Pokemon(entry, NO_OWNER, 1),
-            2*i + 1, (i%2) + 1
-        )
+        (entry: PokemonEntry, i: number) => new PokemonOnBoard(entry, NO_OWNER, levelToXP(1), null, 2*i + 1, (i%2) + 1)
     )
    
     return team
 }
 
 export function spawnTutoCaptureTeamStep2(entry: PokemonEntry): PokemonOnBoard[] {
-    const cloneStarter = new PokemonOnBoard(new Pokemon(entry, NO_OWNER, 4), 3, 3)
+    const cloneStarter = new PokemonOnBoard(entry, NO_OWNER, levelToXP(4), null, 3, 3)
     const team: PokemonOnBoard[] = [ cloneStarter ]
     return team
 }
@@ -156,10 +150,7 @@ export function spawnSafariTeam(): PokemonOnBoard[] {
         } while(team.some(p => p.x === x && p.y === y))
 
         team.push(
-            new PokemonOnBoard(
-                autoEvolve(new Pokemon(pokemonEntry, NO_OWNER, level)),
-                x, y
-            )
+            putOnBoard(autoEvolve(new Pokemon(pokemonEntry, NO_OWNER, levelToXP(level), null)), x, y)
         )
     }
 
@@ -182,10 +173,7 @@ export function spawnPensionTeam(): PokemonOnBoard[] {
         } while(team.some(p => p.x === x && p.y === y))
 
         team.push(
-            new PokemonOnBoard(
-                autoEvolve(new Pokemon(pokemonEntry, NO_OWNER, level)),
-                x, y
-            )
+            putOnBoard(autoEvolve(new Pokemon(pokemonEntry, NO_OWNER, levelToXP(level), null)), x, y)
         )
     }
 
