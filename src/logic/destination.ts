@@ -6,8 +6,22 @@ import { fadeOut } from "../utils/camera";
 import { FAST_TRAVEL_DESTINATIONS } from "../data/destinations";
 import { MONT_SELENITE } from "../data/destinations/mont_selenite";
 import { closeMenu } from "../objects/menu";
+import { addText } from "../utils/text";
 
 export function enterDestination(destination: Destination){
+    const scene = gameState.activeScene as MyScene
+
+    if(destination.preloading){
+        const loadingText = addText(scene.scale.width/2, scene.scale.height - 30, "Chargement...",
+            { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)
+        scene.load.on("complete", () => {
+            destination.preloading = false;
+            loadingText.destroy()
+            enterDestination(destination)
+        })
+        return;
+    }
+    
     if([OCEANE_CARMIN, OCEANE_CRAMOISILE, OCEANE_AZURIA].includes(destination)) playSound("oceane_horn")
     else playSound("door")
     gameState.roomOrder = getRoomOrder(destination)
