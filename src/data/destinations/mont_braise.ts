@@ -37,7 +37,12 @@ export const MONT_BRAISE: Destination = {
             music: "music_mont_braise",
             spawnOtherTeam(){
                 if(!gameState.pokedexSeen.has(SULFURA.ref) && Math.random() < 5/100){
-                    return [ new PokemonOnBoard(SULFURA, NO_OWNER, levelToXP(50), null, 3, 3) ]
+                    return [ new PokemonOnBoard({
+                        entry: SULFURA, 
+                        owner: NO_OWNER, 
+                        level: 50,
+                        x: 3, y: 1
+                    }) ]
                 }
                 return spawnTeamByTypeFactor({
                     [TYPE_FEU.ref]: 1,

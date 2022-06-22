@@ -5,7 +5,7 @@ import {pickStarter} from "../../logic/starters";
 import {Description} from "../../objects/description";
 import {pauseMusicAndPlaySound} from "../../logic/audio";
 import {gameState} from "../../logic/gamestate";
-import {Item, ITEMS, ITEM_POKEBALL} from "../items";
+import {Item, ITEM_POKEBALL} from "../items";
 import {DialogLine} from "../../types/dialog";
 import { drawPokeballsCounter } from "../../objects/pokeballsCounter";
 import { loadRecord, saveNewRecord } from "../../logic/save";

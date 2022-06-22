@@ -2,7 +2,7 @@ import {Player} from "./player";
 import {setupPlayerIdleBoard} from "./board";
 import {GameStage, gameState} from "./gamestate";
 import {DESTINATIONS} from "../data/destinations";
-import {PokemonOnBoard, putOnBoard} from "../objects/pokemon";
+import {PokemonOnBoard} from "../objects/pokemon";
 import { Pokemon, POKEMONS} from "../data/pokemons";
 import {MAGICARPE} from "../data/pokemons/magicarpe";
 import {xpToLevel} from "./xp";
@@ -168,9 +168,12 @@ function serializePokemon(p: Pokemon): SerializedPokemon {
 }
 
 function parseSerializedPokemon(p: SerializedPokemon): Pokemon {
-    const level = xpToLevel(p.xp)
-    const pokemon = new Pokemon(POKEMONS.find(q => q.ref === p.ref) ?? MAGICARPE, p.owner, level, p.itemRef ? ITEMS[p.itemRef] : null)
-    pokemon.xp = p.xp
+    const pokemon = new Pokemon({
+        entry: POKEMONS.find(q => q.ref === p.ref) ?? MAGICARPE,
+        owner: p.owner, 
+        xp: p.xp,
+        item: p.itemRef ? ITEMS[p.itemRef] : undefined
+    })
     return pokemon
 }
 
@@ -184,5 +187,12 @@ function serializePokemonOnBoard(p: PokemonOnBoard): SerializedPokemonOnBoard {
 }
 
 function parseSerializedPokemonOnBoard(p: SerializedPokemonOnBoard): PokemonOnBoard {
-    return putOnBoard(parseSerializedPokemon(p), p.x, p.y)
+    return new PokemonOnBoard({
+        entry: POKEMONS.find(q => q.ref === p.ref) ?? MAGICARPE,
+        owner: p.owner, 
+        xp: p.xp,
+        item: p.itemRef ? ITEMS[p.itemRef] : undefined,
+        x: p.x,
+        y: p.y
+    })
 }

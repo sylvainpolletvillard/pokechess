@@ -1,3 +1,5 @@
 TODO:
 - debug evoli evolution
 - trainer à la place de sally et hector
+- indiquer version sur le menu
+- controles gamepad box pokemon

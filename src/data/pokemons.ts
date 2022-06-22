@@ -155,11 +155,10 @@ import { DRACO } from "./pokemons/draco";
 import { DRACOLOSSE } from "./pokemons/dracolosse";
 import { MEWTWO } from "./pokemons/mewtwo";
 import { MEW } from "./pokemons/mew";
-import { xpToLevel } from "../logic/xp";
+import { levelToXP, xpToLevel } from "../logic/xp";
 import { PokemonOnBoard } from "../objects/pokemon";
 
 import { GEMME_CIEL, GEMME_DRACO, GEMME_FLAMME, GEMME_GLACE, GEMME_GRISE, GEMME_HERBE, GEMME_HYDRO, GEMME_INSECTE, GEMME_OMBRE, GEMME_PIXIE, GEMME_POING, GEMME_PSY, GEMME_ROC, GEMME_TERRE, GEMME_TOXIC, GEMME_VOLT, Item, PV_PLUS } from "./items";
-
 
 export interface PokemonEntry {
     ref: string;
@@ -178,6 +177,26 @@ export interface PokemonEntry {
     rank: number;
 }
 
+export function autoEvolve(entry: PokemonEntry, level: number): PokemonEntry {
+    if(entry.evolution && entry.evolutionLevel && level > entry.evolutionLevel){
+        return autoEvolve(entry.evolution, level)
+    }
+    if(entry.devolution && level < entry.devolution.evolutionLevel!){        
+        return autoEvolve(entry.devolution, level)
+    }
+    return entry
+}
+
+export interface PokemonConstructor {
+    entry: PokemonEntry,
+    owner: number,
+    xp?: number,
+    level?: number,
+    item?: Item,
+    uid?: string
+    shouldAutoEvolve?: boolean
+}
+
 export class Pokemon {
     uid: string;
     owner: number;
@@ -188,15 +207,15 @@ export class Pokemon {
     entry: PokemonEntry;
     xp: number;
 
-    constructor(entry: PokemonEntry, owner: number, xp: number, item: Item | null) {
-        this.uid =  nanoid()
-        this.entry = entry
+    constructor({ entry, owner, xp, level, item, uid, shouldAutoEvolve }: PokemonConstructor) {
+        this.uid = uid ?? nanoid()
         this.owner = owner
-        this.xp = xp
-        this.level = xpToLevel(xp)
-        this.item = item
+        this.xp = xp || levelToXP(level ?? 1)
+        this.level = xpToLevel(this.xp)
+        this.entry = shouldAutoEvolve ? autoEvolve(entry, this.level) : entry
+        this.item = item ?? null
         this.pv = this.maxPV;
-        this.pp = 0  
+        this.pp = 0
     }
 
     get pokeball(): string {

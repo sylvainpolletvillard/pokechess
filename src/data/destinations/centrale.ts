@@ -43,7 +43,12 @@ export const CENTRALE: Destination = {
             map: "centrale",
             spawnOtherTeam(){
                 if(!gameState.pokedexSeen.has(ELECTHOR.ref) && Math.random() < 5/100){
-                    return [ new PokemonOnBoard(ELECTHOR, NO_OWNER, levelToXP(50), null, 3, 3) ]
+                    return [ new PokemonOnBoard({
+                        entry: ELECTHOR,
+                        owner: NO_OWNER,
+                        level: 50,
+                        x: 3, y: 2
+                    }) ]
                 }
                 return spawnTeamByTypeFactor({
                     [TYPE_ELECTRIQUE.ref]: 1,

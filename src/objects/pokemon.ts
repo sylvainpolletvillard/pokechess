@@ -1,4 +1,4 @@
-import {getPokemonCry, Pokemon, PokemonAction, PokemonEntry, PokemonTypeAction} from "../data/pokemons";
+import {getPokemonCry, Pokemon, PokemonAction, PokemonConstructor, PokemonEntry, PokemonTypeAction} from "../data/pokemons";
 import GameScene from "../scenes/GameScene";
 import {addInteractiveElem, dragState, handleDragStart, testIfCanBeDragged} from "./cursor";
 import {clamp, wait} from "../utils/helpers";
@@ -18,6 +18,12 @@ import {Buffs, resetBuffs} from "../logic/buffs";
 import { PokemonType } from "../data/types";
 import { AllianceState } from "../data/alliances";
 import { Item } from "../data/items";
+import { TILE_SIZE } from "../logic/level";
+
+interface PokemonOnBoardConstructor extends PokemonConstructor {
+    x: number,
+    y: number
+}
 
 export class PokemonOnBoard extends Pokemon {
     x:number;
@@ -32,8 +38,8 @@ export class PokemonOnBoard extends Pokemon {
     unalterable: boolean;
     buffs: Buffs;
 
-    constructor(entry: PokemonEntry, owner: number, xp: number, item: Item | null, x:number, y:number) {
-        super(entry, owner, xp, item);
+    constructor({ entry, owner, xp, level, item, uid, x, y, shouldAutoEvolve }: PokemonOnBoardConstructor) {
+        super({ entry, owner, xp, level, item, uid, shouldAutoEvolve });
         this.x = x
         this.y = y
         this.placementX = x
@@ -141,7 +147,13 @@ export class PokemonOnBoard extends Pokemon {
     }
 
     toBoxPokemon(game: GameScene): Pokemon {
-        const pokemon = new Pokemon(this.entry, this.owner, this.xp, this.item)
+        const pokemon = new Pokemon({
+            uid: this.uid,
+            entry: this.entry,
+            owner: this.owner,
+            xp: this.xp,
+            item: this.item ?? undefined
+        })
         game.sprites.get(pokemon.uid)?.setData("pokemon", pokemon);
         return pokemon
     }
@@ -175,9 +187,6 @@ export class PokemonOnBoard extends Pokemon {
     }    
 }
 
-export function putOnBoard(pokemon: Pokemon, x: number, y: number){
-    return new PokemonOnBoard(pokemon.entry, pokemon.owner, pokemon.xp, pokemon.item, x, y)
-}
 
 export function makePokemonSprite(
     pokemon: Pokemon,

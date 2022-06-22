@@ -38,7 +38,12 @@ export const ILES_ECUME: Destination = {
             map: "iles_ecume",
             spawnOtherTeam(){
                 if(!gameState.pokedexSeen.has(ARTIKODIN.ref) && Math.random() < 5/100){
-                    return [ new PokemonOnBoard(ARTIKODIN, NO_OWNER, levelToXP(50), null, 3, 3) ]
+                    return [ new PokemonOnBoard({
+                        entry: ARTIKODIN,
+                        owner: NO_OWNER,
+                        level: 50,
+                        x:3, y: 2
+                    }) ]
                 }
                 return spawnTeamByTypeFactor({
                     [TYPE_EAU.ref]: 1,

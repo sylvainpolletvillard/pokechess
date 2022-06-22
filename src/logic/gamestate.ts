@@ -9,7 +9,7 @@ import {Dialog, DialogLine} from "../types/dialog";
 import { startDialog} from "./dialog";
 import {showCenterText} from "../objects/gui";
 import { MyScene } from "../scenes/MyScene"
-import {Pokemon} from "../data/pokemons";
+import {Pokemon, PokemonEntry} from "../data/pokemons";
 import {pickStarters} from "./starters";
 import {BOURG_PALETTE} from "../data/destinations/bourg_palette";
 import {clearTimeouts, randomInt, wait} from "../utils/helpers";
@@ -54,7 +54,7 @@ export class GameState {
     activeScene: MyScene | null;
     activeMenu: Menu | null;
     activeDialog: Dialog | null;
-    starters: Pokemon[];
+    starters: PokemonEntry[];
     music: Phaser.Sound.BaseSound | undefined;
     dialogStates: { [pnjName: string]: number }
     seed: number;

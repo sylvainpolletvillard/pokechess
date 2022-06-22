@@ -43,7 +43,12 @@ export const GROTTE_AZUREE: Destination = {
             map: "grotte_azuree",
             spawnOtherTeam(){
                 if(!gameState.pokedexSeen.has(MEWTWO.ref) && Math.random() < 5/100){
-                    return [ new PokemonOnBoard(MEWTWO, NO_OWNER, levelToXP(50), null, 3, 3) ]
+                    return [ new PokemonOnBoard({
+                        entry: MEWTWO,
+                        owner: NO_OWNER,
+                        level: 50,
+                        x: 3, y: 1
+                    }) ]
                 }
                 return spawnTeamByTypeFactor({
                     [TYPE_GLACE.ref]: 0.5,

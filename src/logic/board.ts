@@ -11,7 +11,7 @@ import {
     handleDragStart,
     testIfCanBeDragged
 } from "../objects/cursor";
-import {makePokemonSprite, PokemonOnBoard, putOnBoard} from "../objects/pokemon";
+import {makePokemonSprite, PokemonOnBoard} from "../objects/pokemon";
 import {getPokemonCry, Pokemon} from "../data/pokemons";
 import {wait} from "../utils/helpers";
 import {Z} from "../data/depths";
@@ -373,7 +373,16 @@ export function dropPokemonOnBoard(sprite: Phaser.GameObjects.Sprite, x:number, 
 
     if(!(pokemon instanceof PokemonOnBoard)) {
         // dropped from box to board
-        pokemonOnBoard = putOnBoard(pokemon, x, y)
+        pokemonOnBoard =  new PokemonOnBoard({
+            uid: pokemon.uid,
+            entry: pokemon.entry,
+            owner: pokemon.owner,
+            xp: pokemon.xp,
+            item: pokemon.item ?? undefined,
+            x, y
+        })    
+        game.sprites.get(pokemon.uid)?.setData("pokemon", pokemonOnBoard);
+
         if(gameState.currentRoom.type === RoomType.PENSION){
             addToPension(pokemonOnBoard)
             sprite.setAlpha(1)

@@ -263,7 +263,7 @@ export function calcDamage(skill: Skill, target: PokemonOnBoard, attacker: Pokem
         }
     }
 
-    return attacker.attack * (1+skill.power/40) * typeFactor / target.defense
+    return attacker.attack * (1+skill.power/50) * typeFactor / target.defense
 }
 
 export function calcSelfDamage(skill: Skill, attacker: PokemonOnBoard): number {

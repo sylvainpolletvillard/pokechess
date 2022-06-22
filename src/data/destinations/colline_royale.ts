@@ -74,7 +74,12 @@ export const RONFLEX_ENDORMI: Destination = {
             music: "music_colline_royale",
             spawnOtherTeam(){
                 return [
-                    new PokemonOnBoard(RONFLEX, NO_OWNER, levelToXP(30), null, 3, 3)
+                    new PokemonOnBoard({
+                        entry: RONFLEX,
+                        owner: NO_OWNER,
+                        level: 30,
+                        x:3, y:3
+                    })
                 ]
             },
         }
