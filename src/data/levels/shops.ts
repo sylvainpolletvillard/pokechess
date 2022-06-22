@@ -58,16 +58,16 @@ export const SHOP_CRAMOISILE: LevelConfig = {
 
 export const SHOP_LAVANVILLE: LevelConfig = {
     title: "Maison Pokémon de Lavanville",
-    tilemap: "map_lavanville",
+    tilemap: "shop_lavanville",
     tilesets: ["tileset_inside"],
-    startAt: "exit",
+    startAt: "shop_exit",
 }
 
 export const SHOP_CAMP_NOMADE: LevelConfig = {
     title: "Camp Nomade",
-    tilemap: "map_camp",
+    tilemap: "shop_camp_nomade",
     tilesets: ["tileset_inside"],
-    startAt: "exit",
+    startAt: "shop_exit",
 }
 
 export const SHOP_LIGUE: LevelConfig = {
