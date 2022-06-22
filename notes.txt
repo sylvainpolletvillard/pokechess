@@ -1,2 +1,3 @@
 TODO:
 - debug evoli evolution
+- trainer à la place de sally et hector

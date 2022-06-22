@@ -6,7 +6,7 @@ import {PokemonOnBoard} from "../objects/pokemon";
 import { Pokemon, POKEMONS} from "../data/pokemons";
 import {MAGICARPE} from "../data/pokemons/magicarpe";
 import {xpToLevel} from "./xp";
-import { Item } from "../data/items";
+import { ITEMS } from "../data/items";
 
 const KEY_SAVE = "pokechess_save"
 const KEY_RECORD = "pokechess_record"
@@ -160,18 +160,18 @@ interface SerializedPokemon {
     ref: string
     xp: number
     owner: number
-    item?: Item
+    item?: string
 }
 
 function serializePokemon(p: Pokemon): SerializedPokemon {
-    return { ref: p.entry.ref, xp: p.xp, item: p.item, owner: p.owner }
+    return { ref: p.entry.ref, xp: p.xp, item: p.item?.ref, owner: p.owner }
 }
 
 function parseSerializedPokemon(p: SerializedPokemon): Pokemon {
     const level = xpToLevel(p.xp)
     const pokemon = new Pokemon(POKEMONS.find(q => q.ref === p.ref) ?? MAGICARPE, p.owner, level)
     pokemon.xp = p.xp
-    pokemon.item = p.item
+    pokemon.item = p.item ? ITEMS[p.item] : undefined
     return pokemon
 }
 
