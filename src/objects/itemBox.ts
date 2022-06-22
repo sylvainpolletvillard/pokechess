@@ -21,7 +21,7 @@ export function makeItemSprite(item: Item){
 
 export function openItemMenu(game: GameScene){
     const rowHeight = 20
-    const width = 104, height = 6 * rowHeight + 8
+    const width = 128, height = 6 * rowHeight + 8
     let ox = 320 - width - 8;
     let oy = 8;
     const items = Object.entries(gameState.player.inventory)

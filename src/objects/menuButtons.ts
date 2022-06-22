@@ -216,11 +216,11 @@ export function drawBagButton(game: GameScene){
                         pokemon.item 
                             ? `Récupérer ${pokemon.item.label}`
                             : `${pokemon.entry.name} ne tient pas d'objet`,
-                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                        
+                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)
                 } else if(item != null){
                     bagButtonText = addText(bagButtonX, game.scale.height - dyText,
                         `Ranger ${item.label}`,
-                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)                        
+                        { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)
                 }
             } else {
                 bagButtonText = addText(bagButtonX, game.scale.height - dyText, "ITEMS",
