@@ -93,7 +93,7 @@ export function hasBlockingAlteration(pokemon: PokemonOnBoard){
 }
 
 export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, game: GameScene){
-    if(!pokemon.alive) return;
+    if(!pokemon.alive || pokemon.unalterable) return;
 
     if(pokemon.item === BAIE_CERIZ){
         pokemon.unalterable = true;
