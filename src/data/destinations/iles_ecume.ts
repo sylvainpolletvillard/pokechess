@@ -13,6 +13,11 @@ import {CARAPUCE} from "../pokemons/carapuce";
 import {AQUALI} from "../pokemons/aquali";
 import { MyScene } from "../../scenes/MyScene";
 import { preloadMusic } from "../../logic/audio";
+import { ARTIKODIN } from "../pokemons/artikodin";
+import { gameState } from "../../logic/gamestate";
+import { PokemonOnBoard } from "../../objects/pokemon";
+import { NO_OWNER } from "../owners";
+import { Pokemon } from "../pokemons";
 
 export const ILES_ECUME: Destination = {
     ref: "ILES_ECUME",
@@ -31,6 +36,9 @@ export const ILES_ECUME: Destination = {
             name: "Îles Ecume",
             map: "iles_ecume",
             spawnOtherTeam(){
+                if(!gameState.pokedexSeen.has(ARTIKODIN.ref) && Math.random() < 5/100){
+                    return [ new PokemonOnBoard(new Pokemon(ARTIKODIN, NO_OWNER, 50), 3, 3) ]
+                }
                 return spawnTeamByTypeFactor({
                     [TYPE_EAU.ref]: 1,
                     [TYPE_NORMAL.ref]: 0.2,

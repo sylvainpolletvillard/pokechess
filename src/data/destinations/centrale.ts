@@ -17,6 +17,11 @@ import {MACHOC} from "../pokemons/machoc";
 import {METAMORPH} from "../pokemons/metamorph";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { gameState } from "../../logic/gamestate";
+import { ELECTHOR } from "../pokemons/electhor";
+import { Pokemon } from "../pokemons";
+import { NO_OWNER } from "../owners";
+import { PokemonOnBoard } from "../../objects/pokemon";
 
 export const CENTRALE: Destination = {
     ref: "CENTRALE",
@@ -36,6 +41,9 @@ export const CENTRALE: Destination = {
             music: "music_centrale",
             map: "centrale",
             spawnOtherTeam(){
+                if(!gameState.pokedexSeen.has(ELECTHOR.ref) && Math.random() < 5/100){
+                    return [ new PokemonOnBoard(new Pokemon(ELECTHOR, NO_OWNER, 50), 3, 3) ]
+                }
                 return spawnTeamByTypeFactor({
                     [TYPE_ELECTRIQUE.ref]: 1,
                     [TYPE_NORMAL.ref]: 0.5,
