@@ -66,6 +66,14 @@ export class GameState {
     wokeUpRonflex: boolean;
 
     constructor() {
+        this.activeScene = null
+        this.reset()
+
+        // @ts-ignore
+        window.gameState = this; //TEMP: DEBUG
+    }
+
+    reset(){
         this.day = 0
         this.currentDestination = BOURG_PALETTE
         this.currentRoomIndex = 0
@@ -74,7 +82,6 @@ export class GameState {
         this.players = [p1 , p2]
         this.board = setupPlayerIdleBoard(p1)
         this.stage = GameStage.CREATION
-        this.activeScene = null
         this.activeMenu = null
         this.activeDialog = null
         this.starters = pickStarters()
@@ -86,9 +93,6 @@ export class GameState {
         this.pokedexCaptured = new Set()
         this.pokedexSeen = new Set()
         this.wokeUpRonflex = false;
-
-        // @ts-ignore
-        window.gameState = this; //TEMP: DEBUG
     }
 
     get player(){
@@ -138,10 +142,10 @@ export class GameState {
 
         if(!useSave || !loadSave()) {
             //new game
+            gameState.reset()
             this.pension = spawnPensionTeam()
             enterDestination(BOURG_PALETTE)
         } else {
-            Object.assign(gameState, new GameState())
             this.activeScene!.scene.start("MapScene")
         }
     }

@@ -31,7 +31,7 @@ export function findPathToTarget(pkm: PokemonOnBoard, target: PokemonOnBoard, bo
     }
     const finder = new PF.AStarFinder({
         //allowDiagonal: true,
-        dontCrossCorners: true
+        //dontCrossCorners: true
     });
 
     return finder.findPath(pkm.x, pkm.y, target.x, target.y, grid)

@@ -9,5 +9,4 @@ TODO:
 - pathfinding: si cible inaccessible, essayer une autre cible
 - pathfinding: si cible inaccessible, se rapprocher au moins
 - trader: quand un échange a lieu, ne pas pouvoir échanger deux fois. idem quand plusieurs traders (camp nomade)
-- description item camp nomade
-- drawPokeballsCounter en arène, en haut à gauche
+- mettre des droprate sur les entry des rares (mew, ptera etc.)

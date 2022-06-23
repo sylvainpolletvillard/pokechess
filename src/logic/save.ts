@@ -5,8 +5,8 @@ import {DESTINATIONS} from "../data/destinations";
 import {PokemonOnBoard} from "../objects/pokemon";
 import { Pokemon, POKEMONS} from "../data/pokemons";
 import {MAGICARPE} from "../data/pokemons/magicarpe";
-import {xpToLevel} from "./xp";
 import { ITEMS } from "../data/items";
+import { SCIENTIFIQUE_TUTO_DIALOG_STATE } from "../data/trainers";
 
 const KEY_SAVE = "pokechess_save"
 const KEY_RECORD = "pokechess_record"
@@ -43,6 +43,9 @@ interface Record {
 }
 
 export function saveState(){
+    // prevent saving before the end of the tutorial
+    if(gameState.dialogStates["scientifique_tuto"] !== SCIENTIFIQUE_TUTO_DIALOG_STATE.AFTER_WILD) return;
+
     const save: Save = {
         day: gameState.day,
         currentDestinationRef: gameState.currentDestination.ref,

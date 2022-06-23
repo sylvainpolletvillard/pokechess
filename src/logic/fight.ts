@@ -87,6 +87,11 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
     }
 
     const path = findPathToTarget(pokemon, target, gameState.board)
+
+    if(path.length === 0){
+        //TODO : pick another target
+    }
+    
     //console.log(`${pokemon.entry.name} va vers ${target.name}`, path)
     pokemon.resetAction({ type: PokemonTypeAction.MOVE, path, target })
 
