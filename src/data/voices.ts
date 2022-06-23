@@ -20,7 +20,6 @@ export const DEFAULT_VOICE: VoiceConfig = {
 export const VOICES_BY_ACTOR: { [name: string]: VoiceConfig } = {
     system: {
         emotion: 0,
-        volume: 1,
         speed: 50,
         pitch: 10,
     },

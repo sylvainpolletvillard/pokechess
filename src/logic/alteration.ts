@@ -93,13 +93,22 @@ export function hasBlockingAlteration(pokemon: PokemonOnBoard){
 }
 
 export function addAlteration(pokemon: PokemonOnBoard, alteration: Alteration, game: GameScene){
-    if(!pokemon.alive || pokemon.unalterable) return;
+    if(!pokemon.alive) return;
+    if(pokemon.unalterable && [
+        AlterationType.BRULURE,
+        AlterationType.CONFUSION,
+        AlterationType.GEL,
+        AlterationType.PARALYSIE,
+        AlterationType.PEUR,
+        AlterationType.POISON,
+        AlterationType.SOMMEIL
+    ].includes(alteration.type)) return;
 
     if(pokemon.item === BAIE_CERIZ){
         pokemon.unalterable = true;
         setTimeout(() => { pokemon.unalterable = false; }, 10 * 1000)
-        delete pokemon.item;
-        playSound("heal_ailment", { volume: 0.5 })
+        pokemon.item = null;
+        playSound("heal_ailment")
     }
 
     const alterationToStack = pokemon.alterations.find(alt => alt.type === alteration.type)

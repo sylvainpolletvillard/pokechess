@@ -1,8 +1,7 @@
-import { GEMME_FLAMME } from "../data/items";
 import {gameState} from "./gamestate";
 
-const MUSIC_VOLUME = 0.1
-const SFX_VOLUME = 0.1
+const MUSIC_VOLUME = 0.2
+const SFX_VOLUME = 0.2
 
 export function preloadMusic(name: string, filepath: string){
     const scene = gameState.activeScene!;

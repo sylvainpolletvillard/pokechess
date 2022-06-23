@@ -81,7 +81,5 @@ export function releasePokemon(pokemon: Pokemon){
     game.sprites.get(pokemon.uid)?.destroy()
     playSound(getPokemonCry(pokemon.entry))
     gameState.player.inventory[ITEM_POKEBALL.ref] += pokemon.cost;
-    if([RoomType.WILD, RoomType.FREEWALK, RoomType.SAFARI].includes(gameState.currentRoom.type)){
-        drawPokeballsCounter()
-    }
+    drawPokeballsCounter()
 }

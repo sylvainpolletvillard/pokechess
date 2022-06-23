@@ -9,7 +9,6 @@ import { receiveItem } from "./dialogs/descriptions";
 import {wait} from "../utils/helpers";
 import {Trainer} from "../types/trainer";
 import { startMusic } from "../logic/audio";
-import { drawPokeballsCounter } from "../objects/pokeballsCounter";
 
 
 export const PIERRE: Trainer = {

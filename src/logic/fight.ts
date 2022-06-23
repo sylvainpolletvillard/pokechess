@@ -400,7 +400,7 @@ export function gainXP(pokemon: Pokemon, amount: number){
 export function enrageBoard(){
     const game = gameState.activeScene as GameScene
     game.cameras.main.flash(250, 255, 0, 0)
-    playSound("rage", { volume: 0.25 })
+    playSound("rage")
     gameState.allPokemonsOnBoard.forEach(pokemon => addAlteration(pokemon, {
         type: AlterationType.RAGE,
         stacks: 1,

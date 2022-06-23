@@ -4,4 +4,10 @@ TODO:
 - indiquer version sur le menu
 - controles gamepad box pokemon
 - debug tremblement curseur sur gridzone au pad
-- fix level champions basé sur le nb de badges
+- metamorph ne s'est pas démorph après un combat contre champion
+- roucarnage "ghost" pas spawn après placement
+- pathfinding: si cible inaccessible, essayer une autre cible
+- pathfinding: si cible inaccessible, se rapprocher au moins
+- trader: quand un échange a lieu, ne pas pouvoir échanger deux fois. idem quand plusieurs traders (camp nomade)
+- description item camp nomade
+- drawPokeballsCounter en arène, en haut à gauche

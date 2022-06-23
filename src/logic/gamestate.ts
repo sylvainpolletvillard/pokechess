@@ -141,6 +141,7 @@ export class GameState {
             this.pension = spawnPensionTeam()
             enterDestination(BOURG_PALETTE)
         } else {
+            Object.assign(gameState, new GameState())
             this.activeScene!.scene.start("MapScene")
         }
     }

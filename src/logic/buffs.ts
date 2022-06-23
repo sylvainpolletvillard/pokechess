@@ -174,8 +174,8 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         if(pokemon.item === BAIE_SITRUS){
             const baie: OnHitReceivedEffect = ({ damage }) => {
                 if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
-                    delete pokemon.item;
-                    playSound("heal_ailment", { volume: 0.5 })
+                    pokemon.item = null;
+                    playSound("heal_ailment")
                     healPokemon(pokemon, 0.25 * pokemon.maxPV)
                     removeInArray(pokemon.buffs.onHitReceived, baie)
                 }
@@ -186,8 +186,8 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         if(pokemon.item === BAIE_ORAN){
             const baie: OnHitReceivedEffect = ({ damage }) => {
                 if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
-                    delete pokemon.item;
-                    playSound("heal_ailment", { volume: 0.5 })
+                    pokemon.item = null;
+                    playSound("heal_ailment")
                     removeInArray(pokemon.buffs.onHitReceived, baie)
                     pokemon.buffs.defense.push(() => 0.3)
                 }
@@ -197,8 +197,8 @@ export function applyBuffs(pokemon: PokemonOnBoard){
 
         if(pokemon.item === BAIE_MEPO){
             const baie: OnHitReceivedEffect = () => {
-                delete pokemon.item;
-                playSound("heal_ailment", { volume: 0.5 })
+                pokemon.item = null;
+                playSound("heal_ailment")
                 removeInArray(pokemon.buffs.onHitReceived, baie)
                 pokemon.buffs.onHitReceived.push(() => {
                     pokemon.pp = Math.min(pokemon.pp + 2, pokemon.maxPP)

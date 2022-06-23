@@ -47,10 +47,13 @@ export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) =>
         ])
     ],
     map: [
-        `C'est la carte de la région de Kanto`
+        `C'est la carte de la région de Kanto.`
     ],
     bed: [
         `Ce n'est pas le moment d'aller dormir !`
+    ],
+    boat: [
+        `C'est une maquette de l'Océane, le célèbre bateau de croisière.`
     ],
 
     starter1: pickStarter(0),

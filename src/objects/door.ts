@@ -21,8 +21,6 @@ export class Door {
         this.sprite.setData("type", "door")
         this.sprite.setData("action", () => {
             if(!door.properties.to) return; // one-way doors
-            playSound("door")
-            scene.disableTriggers = true;  // to avoid triggers while changing level
             if(door.properties.to === "exit" && scene.level.canExit() === false){
                 // can't exit, move back
                 scene.player?.moveBack(1);
@@ -32,6 +30,8 @@ export class Door {
                 return;
             }
 
+            playSound("door")
+            scene.disableTriggers = true;  // to avoid triggers while changing level
             fadeOut(250).then(() => {
                 if(door.properties.to === "exit"){
                     scene.level.exit()

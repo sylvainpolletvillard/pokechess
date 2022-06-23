@@ -236,6 +236,7 @@ export async function capturePokemon(
         await wait(800)
         pokeball.destroy()
         removeFromTeam(pokemon)
+        pokemon.owner = OWNER_PLAYER
 
         const pokemons = gameState.player.boardAndBox
         const myPokemon = pokemons.find(p => p.entry.ref === pokemon.entry.ref)
