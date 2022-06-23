@@ -1,6 +1,6 @@
 
 import {startDialog, waitBeforeNextLine} from "../../logic/dialog";
-import {pickRandomIn, splitInGroups, wait} from "../../utils/helpers";
+import {splitInGroups, wait} from "../../utils/helpers";
 import {pickStarter} from "../../logic/starters";
 import {Description} from "../../objects/description";
 import {pauseMusicAndPlaySound} from "../../logic/audio";
@@ -10,6 +10,7 @@ import {DialogLine} from "../../types/dialog";
 import { drawPokeballsCounter } from "../../objects/pokeballsCounter";
 import { loadRecord, saveNewRecord } from "../../logic/save";
 import { fadeOut } from "../../utils/camera";
+import { getNonLegendaryPokemons, PokemonEntry } from "../pokemons";
 
 export function receiveItem(item: Item, quantity: number = 1, shouldPlaySound = true, source="trainer"): Promise<void>{
     shouldPlaySound && pauseMusicAndPlaySound("item_received")
@@ -23,28 +24,54 @@ export function receiveItem(item: Item, quantity: number = 1, shouldPlaySound = 
     return startDialog([`Vous ${source==="finding"? "trouvez" : "recevez"}: ${label} ${quantity > 1 ? 'x'+quantity : ''}`], { speaker: "system"})
 }
 
+let bookIndex = 0;
+
 export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) => DialogLine[]) } = {
     unknown: [`..?`],
     tv: [`La TV diffuse les actualités du jour...`,
         `FLASH SPECIAL !`,
-        () => pickRandomIn([
+        () => [
             `On aurait aperçu un Elekthor à la centrale !`,
             `Un Artikodin a été vu aux Îles Ecume !`,
             `Le Mont Braise serait le repère d'un Sulfura !`,
-        ]),
+        ][(++bookIndex) % 3],
         `Nos journalistes tâchent d'en savoir plus.`],
     frigo: [
         `MAM: Tu as encore faim ? Un vrai estomac sur pattes !`
     ],
     book: [
         `C'est mon cahier de cours d'études des Pokémon`,
-        () => pickRandomIn([
-            `Les Pokémon de type Roche n'aiment pas l'eau`,
-            `Les Pokémon aquatiques craignent l'électricité`,
-            `Les Pokémon de type Feu n'aiment pas l'eau`,
-            `Le feu est mortel pour les pokémon Plante`,
-            `Les Pokémon Vol craignent la foudre`,
-        ])
+        () => {
+            const conseils = [
+                `Les Pokémon normaux sont polyvalents, mais se font battre par les spécialistes du Combat.`,
+                `Les Pokémon de type Roche n'aiment pas l'eau.`,
+                `Les Pokémon aquatiques craignent l'électricité.`,
+                `Les Pokémon de type Feu sont impuissants face à l'eau.`,
+                `Le feu est mortel pour les pokémon Plante.`,
+                `Les Pokémon Vol craignent la foudre.`,
+                `Les Pokémon électriques sont neutralisés par la Terre.`,
+                `Les Pokémon Glace sont brisés par la Roche.`,
+                `Les Pokémon Combat ont une faiblesse: les attaques Psy.`,
+                `Les Pokémon Sol résistent bien au Poison.`,
+                `Les Pokémon Plante gagnent contre les Pokémon Sol au long terme.`,
+                `Les Pokémon Psy ont étrangement peur des Insectes.`,
+                `Les Pokémon Insecte se font picorer par les oiseaux.`,
+                `Seul un Spectre peut vraiment faire face à un autre Spectre.`,
+                `Les Dragons peuvent être piégés par la Glace.`
+            ]
+            return conseils[(++bookIndex) % conseils.length]
+        }
+    ],
+    book_insect: [
+        `C'est un cahier de notes sur les évolutions des Pokémon.`,
+        () => {
+            let pokemons = gameState.player.boardAndBox.map(p => p.entry).filter(p => p.evolution != null)
+            if(pokemons.length === 0) pokemons = getNonLegendaryPokemons().filter(p => p.evolution != null)
+            let pokemon: PokemonEntry = pokemons[bookIndex % pokemons.length]
+            bookIndex++
+            return `Il est écrit que ${pokemon.name} évolue au niveau ${pokemon.evolutionLevel}`
+        },
+        `Intéressant. Je devrais garder ça en mémoire !`
     ],
     map: [
         `C'est la carte de la région de Kanto.`
