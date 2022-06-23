@@ -3,3 +3,5 @@ TODO:
 - trainer à la place de sally et hector
 - indiquer version sur le menu
 - controles gamepad box pokemon
+- debug tremblement curseur sur gridzone au pad
+- fix level champions basé sur le nb de badges

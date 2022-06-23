@@ -14,7 +14,6 @@ import { MAGNETI } from "../data/pokemons/magneti";
 import { RONDOUDOU } from "../data/pokemons/rondoudou";
 import { SOPORIFIK } from "../data/pokemons/soporifik";
 import { NOSFERAPTI } from "../data/pokemons/nosferapti";
-import { levelToXP } from "./xp";
 
 export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }): PokemonOnBoard[] {
     const types = Object.keys(typesFactors)
@@ -42,7 +41,7 @@ export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }
             new PokemonOnBoard({
                 entry: pickRandomIn(getNonLegendaryPokemonsOfType(POKEMON_TYPES[types[factorIndex-1]])),
                 owner: NO_OWNER,
-                level: clamp(gameState.worldLevel - randomInt(0,5), 1, 50),
+                level: clamp(Math.floor(gameState.player.averagePokemonLevel * 0.9) - randomInt(0,5), 1, 50),
                 shouldAutoEvolve: true,
                 x, y
             })
@@ -66,7 +65,7 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
         team.push(new PokemonOnBoard({
             entry: pokemons[i],
             owner: OWNER_TRAINER,
-            level: clamp(gameState.worldLevel + (i%5), 1,100) ,
+            level: clamp((gameState.player.badges.length + 2) * 5 + (i%5), 1, 100),
             x, y
         }))
     }
@@ -86,7 +85,7 @@ export function spawnTrainerTeam(pokemons: PokemonEntry[]): PokemonOnBoard[] {
         let x=0, y=0, entry, level
         do {
             entry = pickRandomIn(pokemons)
-            level = clamp(gameState.worldLevel + randomInt(-2,2), 3, 50)
+            level = clamp(gameState.player.averagePokemonLevel + randomInt(-3,+1), 3, 50)
             x = randomInt(0, 6)
             y = clamp(4 - entry.baseSkill.attackRange, 0, 3)
         } while(team.some(p => p.x === x && p.y === y))
@@ -155,7 +154,7 @@ export function spawnSafariTeam(): PokemonOnBoard[] {
 
         team.push(new PokemonOnBoard({
             entry: selection[i],
-            level: clamp(gameState.worldLevel + randomInt(-4, 4), 1, 50),
+            level: clamp(Math.floor(gameState.player.averagePokemonLevel * 0.9) + randomInt(-4, 4), 1, 50),
             owner: NO_OWNER,
             shouldAutoEvolve: true,
             x, y

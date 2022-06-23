@@ -100,11 +100,6 @@ export class GameState {
         return this.currentDestination.rooms[roomRef]
     }
 
-    get worldLevel(): number {
-        // should be between 0 and 100
-        return Math.floor(this.player.averagePokemonLevel * 0.9 + this.player.badges.length)
-    }
-
     get allPokemonsOnBoard(): PokemonOnBoard[] {
         return [...gameState.board.playerTeam, ...gameState.board.otherTeam]
     }
