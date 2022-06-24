@@ -8,7 +8,10 @@ import { Pokemon } from "../pokemons";
 export const TRADER = (character: Trader) => startDialog([
     () => {
         const pokemonGiven = character.pokemonToGive
-        if(pokemonGiven == null) return [
+        if(character.hasExchanged){
+            return `Trop cool, un ${character.pokemonToReceive.name} !`
+        }
+        else if(pokemonGiven == null) return [
             `Salut, tu veux échanger des Pokémon ?`,
             `Si tu as des Pokémon en réserve dans ta box, on peut se les échanger !`
         ]
@@ -29,6 +32,7 @@ export const TRADER = (character: Trader) => startDialog([
                             const index = gameState.player.box.indexOf(pokemonGiven)
                             delete gameState.player.box[index]
                             gameState.player.box[index] = pokemonReceived
+                            character.hasExchanged = true
                             return startDialog([`Vous échangez ${pokemonGiven.entry.name} contre ${pokemonReceived.entry.name} !`], { speaker: "system" })                                            
                         },
                         `Trop cool, un ${pokemonGiven.entry.name} !`

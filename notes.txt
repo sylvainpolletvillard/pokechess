@@ -2,4 +2,3 @@ TODO:
 - debug evoli evolution
 - indiquer version sur le menu
 - roucarnage "ghost" pas spawn après placement
-- trader: quand un échange a lieu, ne pas pouvoir échanger deux fois. idem quand plusieurs traders (camp nomade)

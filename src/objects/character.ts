@@ -194,9 +194,11 @@ export class Trader extends Character {
 
     pokemonToGive: Pokemon | null
     pokemonToReceive: PokemonEntry
+	hasExchanged: boolean
 
     constructor(position: {x:number, y:number}, name: string, startState = CHARACTER_STATE.DOWN, interactionDistance = 1){
         super(position, name, startState, interactionDistance)
+		this.hasExchanged = false
         this.pokemonToGive = pickRandomIn(gameState.player.box.filter(p => p!= null))
         this.pokemonToReceive = pickRandomIn(getNonLegendaryPokemons())
     }
