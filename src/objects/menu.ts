@@ -56,12 +56,14 @@ export function clickEntry(): boolean {
     if(!gameState.activeMenu?.entries) return false;
     const selectedEntry = gameState.activeMenu.entries[menuCursorPos]
     const menu = gameState.activeMenu
-    playSound(selectedEntry.value ? "press_ab" : "menu_close")
+    
+    let shouldCloseMenu = false;
     if(menu.handleChoice){
-        const shouldCloseMenu = menu.handleChoice(selectedEntry);
+        shouldCloseMenu = menu.handleChoice(selectedEntry);
         if(shouldCloseMenu !== false) closeMenu()
         return true
     }
+    playSound(shouldCloseMenu ? "menu_close" : "press_ab")
     return false
 }
 

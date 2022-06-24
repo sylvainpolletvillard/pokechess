@@ -8,7 +8,10 @@ import { RoomType } from "../types/destination";
 import { OWNER_PLAYER } from "../data/owners";
 import GameScene from "../scenes/GameScene";
 import { updatePokemonCaptureInfoPosition } from "./pokemonCaptureBox";
-import { clamp } from "../utils/helpers";
+import { clamp, closest } from "../utils/helpers";
+
+enum CursorZone { GRID, BUTTONS, TYPES, TYPES_OPPONENT }
+let cursorZone: CursorZone = CursorZone.GRID
 
 export type InteractiveElem = Phaser.GameObjects.Sprite | Phaser.GameObjects.Zone | Phaser.GameObjects.Rectangle | Phaser.GameObjects.Text
 const interactiveElems: Set<InteractiveElem> = new Set();
@@ -34,12 +37,51 @@ export function moveCursor(vector: Phaser.Math.Vector2, scene: MyScene, snapToGr
     const cursor = scene.sprites.get("cursor")
     if(cursor != null){
         let x = cursor.x, y= cursor.y;
-        if(snapToGrid){
-            const [row,col] = getCoordsFromPosition(cursor.x + 18, cursor.y + 18);
-            [x, y] = getPositionFromCoords(row,col)
-        }
+
         x += vector.x;
         y += vector.y;
+
+        if(snapToGrid){
+            if(vector.x > 0 && cursorZone === CursorZone.TYPES){
+                cursorZone = CursorZone.GRID
+                x += 16
+            } 
+            else if(vector.x < 0 && cursorZone === CursorZone.TYPES_OPPONENT){
+                cursorZone = CursorZone.GRID
+                x -= 16
+            } 
+            else if(y > scene.scale.height - 32){
+                cursorZone = CursorZone.BUTTONS
+                x += 28 * Math.sign(vector.x) // deplacement de 60 et non 32 par défaut
+            } 
+            else if(x < 64){
+                y -= 8 * Math.sign(vector.y) // deplacement de 24 et non 32 par défaut
+                cursorZone = CursorZone.TYPES
+            } 
+            else if(x > scene.scale.width - 64){
+                cursorZone = CursorZone.TYPES_OPPONENT
+                y -= 8 * Math.sign(vector.y) // deplacement de 24 et non 32 par défaut
+            } 
+            else cursorZone = CursorZone.GRID
+
+            switch(cursorZone){
+                case CursorZone.BUTTONS:
+                    [x,y] = [closest(x, [100, 160, 220, 280]), scene.scale.height - 16]
+                    break;
+                case CursorZone.TYPES:
+                    [x,y] = [8, +6 + Math.round(y/24) * 24]
+                    break;
+                case CursorZone.TYPES_OPPONENT:
+                    [x,y] = [scene.scale.width - 16, Math.round(y/24) * 24]
+                    break;
+                case CursorZone.GRID:
+                default:
+                    const [row,col] = getCoordsFromPosition(x, y);
+                    [x, y] = getPositionFromCoords(row,col)
+                    break;
+            }
+        }
+        
         cursor.x = clamp(x, 0, scene.scale.width-10)
         cursor.y = clamp(y, 0, scene.scale.height-10)
         onCursorMove()

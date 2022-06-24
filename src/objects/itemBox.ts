@@ -1,4 +1,4 @@
-import {MenuEntry, openMenu} from "./menu";
+import {closeMenu, MenuEntry, openMenu} from "./menu";
 import GameScene from "../scenes/GameScene";
 import {gameState} from "../logic/gamestate";
 import {Item, ITEMS, ITEMS_SPRITES_INDEX, ItemType, ITEM_POKEBALL, REPOUSSE} from "../data/items";
@@ -71,7 +71,8 @@ export function openItemMenu(game: GameScene){
                 return true
             }
             else if(item.type === ItemType.Trade){
-                return false
+                const shouldCloseMenu = (item === ITEM_POKEBALL)
+                return shouldCloseMenu
             }
         },
         onSelect(entry){
