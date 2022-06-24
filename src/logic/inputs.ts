@@ -1,8 +1,6 @@
 import Phaser from "phaser";
 import {
-    handleDragEnd,
-    handleDragMove,
-    handleDragStart,
+    handleDragEnd, handleDragMove, handleDragStart,
     moveCursor, onCursorMove, testIfCanBeDragged
 } from "../objects/cursor";
 import { gameState} from "./gamestate";
@@ -145,7 +143,7 @@ export function getMovementVector(scene: Phaser.Scene): { moveVector: Phaser.Mat
 
 export function handleCursor(scene: MyScene) {
     const { moveVector, useAnalogMovement } = getMovementVector(scene);
-    if(useAnalogMovement) moveCursor(moveVector, scene, false)
+    if(useAnalogMovement) return moveCursor(moveVector, scene, false)
 
     if(moveVector.length() === 0){
         cursorBlockerTimer && cursorBlockerTimer.destroy()

@@ -3,6 +3,5 @@ TODO:
 - trainer à la place de sally et hector
 - indiquer version sur le menu
 - controles gamepad box pokemon
-- debug tremblement curseur sur gridzone au pad
 - roucarnage "ghost" pas spawn après placement
 - trader: quand un échange a lieu, ne pas pouvoir échanger deux fois. idem quand plusieurs traders (camp nomade)
