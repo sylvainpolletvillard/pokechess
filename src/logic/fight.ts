@@ -1,5 +1,5 @@
 import {getPokemonCry, Pokemon, PokemonTypeAction} from "../data/pokemons";
-import {distanceBetweenPokemon, findClosestReachableTarget, findPathToTarget} from "./pathfinding";
+import {distanceBetweenPokemon, findAnotherTarget, findClosestReachableTarget, findPathToTarget, tryToGetCloserToTarget} from "./pathfinding";
 import {getPokemonOnTile, getPositionFromCoords} from "./board";
 import GameScene from "../scenes/GameScene";
 import {getDirection} from "./anims";
@@ -53,7 +53,7 @@ export function updatePokemonAction(pokemon: PokemonOnBoard, game: GameScene){
 
     if(hasBlockingAlteration(pokemon)) return;    
     
-    const target = pokemon.nextAction.target || findClosestReachableTarget(pokemon)
+    const target = findClosestReachableTarget(pokemon)
     if(target == null || !target.alive){
         pokemon.resetAction()
     } else {
@@ -74,7 +74,7 @@ export function faceTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game
     //sprite.anims.pause()
 }
 
-export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
+export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, game: GameScene): void {
     const sprite = game.sprites.get(pokemon.uid)
     if(sprite == null) return console.error(`Sprite not found for pokemon ${pokemon.uid}`)
 
@@ -86,10 +86,13 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
         return;
     }
 
-    const path = findPathToTarget(pokemon, target, gameState.board)
+    let path = findPathToTarget(pokemon, target)
 
     if(path.length === 0){
-        //TODO : pick another target
+        //TODO : no path to current target, try to find another target
+        const newTarget = findAnotherTarget(pokemon, [target])
+        if(newTarget != null) return moveToTarget(pokemon, newTarget, game)
+        else path = tryToGetCloserToTarget(pokemon, target)
     }
     
     //console.log(`${pokemon.entry.name} va vers ${target.name}`, path)

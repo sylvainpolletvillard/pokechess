@@ -25,11 +25,7 @@ export function getRotationAngle(dir: Direction){
 }
 
 export function getDirectionFromDelta(dx: number, dy: number): Direction | null {
-    return dy <= -1 ? Direction.UP
-        : dy >= 1? Direction.DOWN
-            : dx <= -1 ? Direction.LEFT
-                : dx >= 1 ? Direction.RIGHT
-                    : null;
+    return getDirectionFromVector(new Phaser.Math.Vector2(dx,dy))
 }
 
 export function getDirectionFromVector(vec: Phaser.Math.Vector2): Direction | null {
