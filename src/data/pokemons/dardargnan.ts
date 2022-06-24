@@ -13,5 +13,6 @@ export const DARDARGNAN: PokemonEntry = {
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.POISON],
     rank: 3,
     baseSkill: SKILLS.DARD_VENIN,
-    ppSkill: SKILLS.FURIE
+    ppSkill: SKILLS.FURIE,
+    wildEncounterChance: 0
 }

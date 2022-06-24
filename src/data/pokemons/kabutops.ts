@@ -13,5 +13,6 @@ export const KABUTOPS: PokemonEntry = {
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.ROCHE],
     rank: 3,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.POUVOIR_ANTIQUE
+    ppSkill: SKILLS.POUVOIR_ANTIQUE,
+    wildEncounterChance: 0
 }

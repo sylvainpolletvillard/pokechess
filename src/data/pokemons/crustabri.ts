@@ -13,5 +13,6 @@ export const CRUSTABRI: PokemonEntry = {
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.GLACE],
     rank: 3,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.ABRI
+    ppSkill: SKILLS.ABRI,
+    wildEncounterChance: 0
 }

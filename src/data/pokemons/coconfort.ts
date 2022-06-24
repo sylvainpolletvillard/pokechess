@@ -16,5 +16,6 @@ export const COCONFORT: PokemonEntry = {
     evolutionLevel: 10,
     rank: 2,
     baseSkill: SKILLS.DARD_VENIN,
-    ppSkill: SKILLS.ARMURE
+    ppSkill: SKILLS.ARMURE,
+    wildEncounterChance: 0
 }

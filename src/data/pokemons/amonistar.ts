@@ -13,5 +13,6 @@ export const AMONISTAR: PokemonEntry = {
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.ROCHE],
     rank: 3,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.POUVOIR_ANTIQUE
+    ppSkill: SKILLS.POUVOIR_ANTIQUE,
+    wildEncounterChance: 0
 }

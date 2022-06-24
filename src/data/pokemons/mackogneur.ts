@@ -13,5 +13,6 @@ export const MACKOGNEUR: PokemonEntry = {
     types: [POKEMON_TYPES.COMBAT],
     rank: 3,
     baseSkill: SKILLS.POING_KARATE,
-    ppSkill: SKILLS.BALAYAGE
+    ppSkill: SKILLS.BALAYAGE,
+    wildEncounterChance: 0
 }

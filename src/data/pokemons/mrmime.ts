@@ -13,5 +13,6 @@ export const MR_MIME: PokemonEntry = {
     types: [POKEMON_TYPES.PSY, POKEMON_TYPES.FEE],
     rank: 1,
     baseSkill: SKILLS.TORGNOLES,
-    ppSkill: SKILLS.ENCORE
+    ppSkill: SKILLS.ENCORE,
+    wildEncounterChance: 1
 }

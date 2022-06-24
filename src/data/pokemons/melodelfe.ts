@@ -13,5 +13,6 @@ export const MELODELFE: PokemonEntry = {
     types: [POKEMON_TYPES.FEE],
     rank: 1,
     baseSkill: SKILLS.TORGNOLES,
-    ppSkill: SKILLS.POUVOIR_LUNAIRE
+    ppSkill: SKILLS.POUVOIR_LUNAIRE,
+    wildEncounterChance: 0
 }

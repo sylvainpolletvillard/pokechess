@@ -13,5 +13,6 @@ export const MAGNETON: PokemonEntry = {
     types: [POKEMON_TYPES.ELECTRIQUE],
     rank: 2,
     baseSkill: SKILLS.ETINCELLE,
-    ppSkill: SKILLS.CAGE_ECLAIR
+    ppSkill: SKILLS.CAGE_ECLAIR,
+    wildEncounterChance: 0
 }

@@ -13,5 +13,6 @@ export const SULFURA: PokemonEntry = {
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.FEU],
     rank: 5,
     baseSkill: SKILLS.FLAMMECHE,
-    ppSkill: SKILLS.DEFLAGRATION
+    ppSkill: SKILLS.DEFLAGRATION,
+    wildEncounterChance: 0
 }

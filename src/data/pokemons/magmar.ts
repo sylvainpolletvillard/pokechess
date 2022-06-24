@@ -13,5 +13,6 @@ export const MAGMAR: PokemonEntry = {
     types: [POKEMON_TYPES.FEU],
     rank: 2,
     baseSkill: SKILLS.FLAMMECHE,
-    ppSkill: SKILLS.BROUILLARD
+    ppSkill: SKILLS.BROUILLARD,
+    wildEncounterChance: 0.5
 }

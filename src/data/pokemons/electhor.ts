@@ -13,5 +13,6 @@ export const ELECTHOR: PokemonEntry = {
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.ELECTRIQUE],
     rank: 5,
     baseSkill: SKILLS.ETINCELLE,
-    ppSkill: SKILLS.FATAL_FOUDRE
+    ppSkill: SKILLS.FATAL_FOUDRE,
+    wildEncounterChance: 0
 }

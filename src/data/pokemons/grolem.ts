@@ -13,5 +13,6 @@ export const GROLEM: PokemonEntry = {
     types: [POKEMON_TYPES.ROCHE, POKEMON_TYPES.SOL],
     rank: 3,
     baseSkill: SKILLS.JET_PIERRES,
-    ppSkill: SKILLS.ARMURE
+    ppSkill: SKILLS.ARMURE,
+    wildEncounterChance: 0
 }

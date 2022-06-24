@@ -13,5 +13,6 @@ export const EVOLI: PokemonEntry = {
     types: [POKEMON_TYPES.NORMAL],
     rank: 1,
     baseSkill: SKILLS.CHARGE,
-    ppSkill: SKILLS.EVOLUTION
+    ppSkill: SKILLS.EVOLUTION,
+    wildEncounterChance: 1
 }

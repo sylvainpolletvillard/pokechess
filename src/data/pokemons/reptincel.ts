@@ -16,5 +16,6 @@ export const REPTINCEL: PokemonEntry = {
     evolutionLevel: 36,
     rank: 2,
     baseSkill: SKILLS.FLAMMECHE,
-    ppSkill: SKILLS.LANCE_FLAMMES
+    ppSkill: SKILLS.LANCE_FLAMMES,
+    wildEncounterChance: 0
 }

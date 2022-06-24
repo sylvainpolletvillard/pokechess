@@ -16,5 +16,6 @@ export const NOEUFNOEUF: PokemonEntry = {
     evolutionLevel: 40,
     rank: 1,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.BOMB_OEUF
+    ppSkill: SKILLS.BOMB_OEUF,
+    wildEncounterChance: 1
 }

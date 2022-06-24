@@ -13,5 +13,6 @@ export const LOKHLASS: PokemonEntry = {
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.GLACE],
     rank: 3,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.SURF
+    ppSkill: SKILLS.SURF,
+    wildEncounterChance: 0.5
 }

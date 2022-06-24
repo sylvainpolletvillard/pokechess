@@ -16,5 +16,6 @@ export const KABUTO: PokemonEntry = {
     evolutionLevel: 40,
     rank: 1,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.POUVOIR_ANTIQUE
+    ppSkill: SKILLS.POUVOIR_ANTIQUE,
+    wildEncounterChance: 0.1
 }

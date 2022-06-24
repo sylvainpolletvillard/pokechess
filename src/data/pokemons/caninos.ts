@@ -16,5 +16,6 @@ export const CANINOS: PokemonEntry = {
     evolutionLevel: 30,
     rank: 1,
     baseSkill: SKILLS.MORSURE,
-    ppSkill: SKILLS.CROCS_FEU
+    ppSkill: SKILLS.CROCS_FEU,
+    wildEncounterChance: 1
 }

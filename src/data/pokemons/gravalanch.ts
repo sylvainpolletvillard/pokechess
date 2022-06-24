@@ -16,5 +16,6 @@ export const GRAVALANCH: PokemonEntry = {
     evolutionLevel: 38,
     rank: 2,
     baseSkill: SKILLS.JET_PIERRES,
-    ppSkill: SKILLS.ARMURE
+    ppSkill: SKILLS.ARMURE,
+    wildEncounterChance: 0
 }

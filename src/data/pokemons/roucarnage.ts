@@ -13,5 +13,6 @@ export const ROUCARNAGE: PokemonEntry = {
     types: [POKEMON_TYPES.VOL, POKEMON_TYPES.NORMAL],
     rank: 3,
     baseSkill: SKILLS.CRUAILE,
-    ppSkill: SKILLS.OURAGAN
+    ppSkill: SKILLS.OURAGAN,
+    wildEncounterChance: 0
 }

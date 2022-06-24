@@ -16,5 +16,6 @@ export const ABO: PokemonEntry = {
     evolutionLevel: 22,
     rank: 1,
     baseSkill: SKILLS.CROCHET_VENIN,
-    ppSkill: SKILLS.LIGOTAGE
+    ppSkill: SKILLS.LIGOTAGE,
+    wildEncounterChance: 1
 }

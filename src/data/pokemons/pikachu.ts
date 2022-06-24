@@ -16,5 +16,6 @@ export const PIKACHU: PokemonEntry = {
     evolutionLevel: 22,
     rank: 1,
     baseSkill: SKILLS.VIVE_ATTAQUE,
-    ppSkill: SKILLS.ECLAIR
+    ppSkill: SKILLS.ECLAIR,
+    wildEncounterChance: 1
 }

@@ -16,5 +16,6 @@ export const KRABBY: PokemonEntry = {
     evolutionLevel: 28,
     rank: 1,
     baseSkill: SKILLS.PINCE_MASSE,
-    ppSkill: SKILLS.GUILLOTINE
+    ppSkill: SKILLS.GUILLOTINE,
+    wildEncounterChance: 1
 }

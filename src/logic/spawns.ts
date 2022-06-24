@@ -1,7 +1,7 @@
-import {getNonLegendaryPokemons, getNonLegendaryPokemonsOfType, Pokemon, PokemonEntry} from "../data/pokemons";
+import {getNonLegendaryPokemonsOfType, getPokemonsOfType, PokemonEntry, POKEMONS} from "../data/pokemons";
 import {POKEMON_TYPES, TYPE_NORMAL} from "../data/types";
 import {gameState} from "./gamestate";
-import {clamp, pickNRandomIn, pickRandomIn, randomInt} from "../utils/helpers";
+import {clamp, pickNRandomIn, pickRandomIn, ponderatedRandomIn, randomInt} from "../utils/helpers";
 import {PokemonOnBoard} from "../objects/pokemon";
 import { NO_OWNER, OWNER_TRAINER } from "../data/owners";
 import { RATTATA } from "../data/pokemons/rattata";
@@ -17,20 +17,12 @@ import { NOSFERAPTI } from "../data/pokemons/nosferapti";
 
 export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }): PokemonOnBoard[] {
     const types = Object.keys(typesFactors)
-
     const numberToSpawn = clamp(gameState.player.boardAndBox.length, 3, 6)
-    
-    const sumFactors = Object.values(typesFactors).reduce((a,b) => a+b, 0)
 
     const team: PokemonOnBoard[] = [];
     for(let i=0; i<numberToSpawn; i++){
-        const rand = Math.random() * sumFactors
-        let acc=0, factorIndex=0;
-        while(acc < rand){
-            acc += typesFactors[types[factorIndex]]
-            factorIndex++;
-        }
-
+        const type = ponderatedRandomIn(types, typeRef => typesFactors[typeRef])
+      
         let x: number, y: number;
         do {
             x = randomInt(0,6);
@@ -39,7 +31,7 @@ export function spawnTeamByTypeFactor(typesFactors: {[typeRef: string]: number }
 
         team.push(
             new PokemonOnBoard({
-                entry: pickRandomIn(getNonLegendaryPokemonsOfType(POKEMON_TYPES[types[factorIndex-1]])),
+                entry: ponderatedRandomIn(getPokemonsOfType(POKEMON_TYPES[type]), p => p.wildEncounterChance),
                 owner: NO_OWNER,
                 level: clamp(Math.floor(gameState.player.averagePokemonLevel * 0.9) - randomInt(0,5), 1, 50),
                 shouldAutoEvolve: true,
@@ -142,7 +134,7 @@ export function spawnTutoCaptureTeamStep2(entry: PokemonEntry): PokemonOnBoard[]
 
 export function spawnSafariTeam(): PokemonOnBoard[] {
     const NUMBER_TO_SPAWN = 8
-    const selection = pickNRandomIn(getNonLegendaryPokemons(), NUMBER_TO_SPAWN)
+    const selection = Array.from({ length: NUMBER_TO_SPAWN }).map(() => ponderatedRandomIn(POKEMONS, p => p.wildEncounterChance))
 
     const team: PokemonOnBoard[] = [];
     for(let i=0; i<NUMBER_TO_SPAWN; i++){

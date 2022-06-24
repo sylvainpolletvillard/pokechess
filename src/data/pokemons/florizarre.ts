@@ -13,5 +13,6 @@ export const FLORIZARRE: PokemonEntry = {
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],
     rank: 3,
     baseSkill: SKILLS.FOUET_LIANES,
-    ppSkill: SKILLS.LANCE_SOLEIL
+    ppSkill: SKILLS.LANCE_SOLEIL,
+    wildEncounterChance: 0
 }

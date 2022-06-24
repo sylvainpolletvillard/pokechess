@@ -16,5 +16,6 @@ export const HERBIZARRE: PokemonEntry = {
     evolutionLevel: 20,
     rank: 2,
     baseSkill: SKILLS.FOUET_LIANES,
-    ppSkill: SKILLS.LANCE_SOLEIL
+    ppSkill: SKILLS.LANCE_SOLEIL,
+    wildEncounterChance: 0
 }

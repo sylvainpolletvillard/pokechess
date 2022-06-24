@@ -13,5 +13,6 @@ export const CANARTICHO: PokemonEntry = {
     types: [POKEMON_TYPES.NORMAL, POKEMON_TYPES.VOL],
     rank: 1,
     baseSkill: SKILLS.PICPIC,
-    ppSkill: SKILLS.DANSE_LAMES
+    ppSkill: SKILLS.DANSE_LAMES,
+    wildEncounterChance: 1
 }

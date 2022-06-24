@@ -13,5 +13,6 @@ export const LIPPOUTOU: PokemonEntry = {
     types: [POKEMON_TYPES.GLACE, POKEMON_TYPES.PSY],
     rank: 2,
     baseSkill: SKILLS.POUDREUSE,
-    ppSkill: SKILLS.GROBISOU
+    ppSkill: SKILLS.GROBISOU,
+    wildEncounterChance: 1
 }

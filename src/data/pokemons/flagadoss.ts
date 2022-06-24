@@ -13,5 +13,6 @@ export const FLAGADOSS: PokemonEntry = {
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.PSY],
     rank: 2,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.AMNESIE
+    ppSkill: SKILLS.AMNESIE,
+    wildEncounterChance: 0
 }

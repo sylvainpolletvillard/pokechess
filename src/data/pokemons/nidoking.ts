@@ -13,5 +13,6 @@ export const NIDOKING: PokemonEntry = {
     types: [POKEMON_TYPES.POISON, POKEMON_TYPES.SOL],
     rank: 1,
     baseSkill: SKILLS.DOUBLE_PIED,
-    ppSkill: SKILLS.EMPAL_KORNE
+    ppSkill: SKILLS.EMPAL_KORNE,
+    wildEncounterChance: 0
 }

@@ -13,5 +13,6 @@ export const PTERA: PokemonEntry = {
     types: [POKEMON_TYPES.DRAGON, POKEMON_TYPES.ROCHE],
     rank: 3,
     baseSkill: SKILLS.CRUAILE,
-    ppSkill: SKILLS.POUVOIR_ANTIQUE
+    ppSkill: SKILLS.POUVOIR_ANTIQUE,
+    wildEncounterChance: 0.1
 }

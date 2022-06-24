@@ -13,5 +13,6 @@ export const KANGOUREX: PokemonEntry = {
     types: [POKEMON_TYPES.NORMAL],
     rank: 2,
     baseSkill: SKILLS.MORSURE,
-    ppSkill: SKILLS.ULTIMAPOING
+    ppSkill: SKILLS.ULTIMAPOING,
+    wildEncounterChance: 1
 }

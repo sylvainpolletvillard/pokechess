@@ -13,5 +13,6 @@ export const ARBOK: PokemonEntry = {
     types: [POKEMON_TYPES.POISON],
     rank: 2,
     baseSkill: SKILLS.CROCHET_VENIN,
-    ppSkill: SKILLS.LIGOTAGE
+    ppSkill: SKILLS.LIGOTAGE,
+    wildEncounterChance: 0
 }

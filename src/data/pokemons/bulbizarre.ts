@@ -17,4 +17,5 @@ export const BULBIZARRE: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES,
     ppSkill: SKILLS.LANCE_SOLEIL,
+    wildEncounterChance: 1
 }

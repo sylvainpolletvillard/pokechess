@@ -16,5 +16,6 @@ export const GOUPIX: PokemonEntry = {
     evolutionLevel: 20,
     rank: 1,
     baseSkill: SKILLS.FLAMMECHE,
-    ppSkill: SKILLS.DANSE_FLAMMES
+    ppSkill: SKILLS.DANSE_FLAMMES,
+    wildEncounterChance: 1
 }

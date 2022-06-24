@@ -13,5 +13,6 @@ export const STAROSS: PokemonEntry = {
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.PSY],
     rank: 3,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.METEORES
+    ppSkill: SKILLS.METEORES,
+    wildEncounterChance: 0
 }

@@ -16,5 +16,6 @@ export const PIAFABEC: PokemonEntry = {
     evolutionLevel: 20,
     rank: 1,
     baseSkill: SKILLS.PICPIC,
-    ppSkill: SKILLS.HATE
+    ppSkill: SKILLS.HATE,
+    wildEncounterChance: 1
 }

@@ -12,5 +12,6 @@ export const METAMORPH: PokemonEntry = {
     speed: 48,
     types: [POKEMON_TYPES.NORMAL],
     rank: 2,
-    baseSkill: SKILLS.MORPHING
+    baseSkill: SKILLS.MORPHING,
+    wildEncounterChance: 1
 }

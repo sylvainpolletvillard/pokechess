@@ -13,5 +13,6 @@ export const SAQUEDENEU: PokemonEntry = {
     types: [POKEMON_TYPES.PLANTE],
     rank: 3,
     baseSkill: SKILLS.FOUET_LIANES,
-    ppSkill: SKILLS.LIGOTAGE
+    ppSkill: SKILLS.LIGOTAGE,
+    wildEncounterChance: 1
 }

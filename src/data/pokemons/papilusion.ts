@@ -13,5 +13,6 @@ export const PAPILUSION: PokemonEntry = {
     types: [POKEMON_TYPES.INSECTE, POKEMON_TYPES.VOL],
     rank: 3,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.POUDRE_TOXIK
+    ppSkill: SKILLS.POUDRE_TOXIK,
+    wildEncounterChance: 0
 }

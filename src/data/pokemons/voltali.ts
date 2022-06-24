@@ -15,5 +15,6 @@ export const VOLTALI: PokemonEntry = {
     devolution: EVOLI,
     rank: 2,
     baseSkill: SKILLS.ETINCELLE,
-    ppSkill: SKILLS.ECLAIR
+    ppSkill: SKILLS.ECLAIR,
+    wildEncounterChance: 1
 }

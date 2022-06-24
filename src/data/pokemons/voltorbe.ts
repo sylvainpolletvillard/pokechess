@@ -16,5 +16,6 @@ export const VOLTORBE: PokemonEntry = {
     evolutionLevel: 22,
     rank: 1,
     baseSkill: SKILLS.CHARGE,
-    ppSkill: SKILLS.DESTRUCTION
+    ppSkill: SKILLS.DESTRUCTION,
+    wildEncounterChance: 1
 }

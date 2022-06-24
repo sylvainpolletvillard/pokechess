@@ -16,5 +16,6 @@ export const CHRYSACIER: PokemonEntry = {
     evolutionLevel: 10,
     rank: 2,
     baseSkill: SKILLS.PIQURE,
-    ppSkill: SKILLS.SECRETION
+    ppSkill: SKILLS.SECRETION,
+    wildEncounterChance: 0
 }

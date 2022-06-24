@@ -16,5 +16,6 @@ export const SALAMECHE: PokemonEntry = {
     evolutionLevel: 16,
     rank: 1,
     baseSkill: SKILLS.FLAMMECHE,
-    ppSkill: SKILLS.LANCE_FLAMMES
+    ppSkill: SKILLS.LANCE_FLAMMES,
+    wildEncounterChance: 1
 }

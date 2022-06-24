@@ -16,5 +16,6 @@ export const MACHOC: PokemonEntry = {
     evolutionLevel: 28,
     rank: 1,
     baseSkill: SKILLS.POING_KARATE,
-    ppSkill: SKILLS.BALAYAGE
+    ppSkill: SKILLS.BALAYAGE,
+    wildEncounterChance: 1
 }

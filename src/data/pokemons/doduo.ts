@@ -16,5 +16,6 @@ export const DODUO: PokemonEntry = {
     evolutionLevel: 31,
     rank: 1,
     baseSkill: SKILLS.VIVE_ATTAQUE,
-    ppSkill: SKILLS.FURIE
+    ppSkill: SKILLS.FURIE,
+    wildEncounterChance: 1
 }

@@ -13,5 +13,6 @@ export const MEW: PokemonEntry = {
     types: [POKEMON_TYPES.PSY],
     rank: 5,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.METRONOME
+    ppSkill: SKILLS.METRONOME,
+    wildEncounterChance: 0.01
 }

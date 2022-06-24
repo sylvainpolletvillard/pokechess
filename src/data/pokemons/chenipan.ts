@@ -16,5 +16,6 @@ export const CHENIPAN: PokemonEntry = {
     evolutionLevel: 7,
     rank: 1,
     baseSkill: SKILLS.PIQURE,
-    ppSkill: SKILLS.SECRETION
+    ppSkill: SKILLS.SECRETION,
+    wildEncounterChance: 1
 }

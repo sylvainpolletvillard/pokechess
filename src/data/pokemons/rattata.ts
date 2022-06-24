@@ -16,5 +16,6 @@ export const RATTATA: PokemonEntry = {
     evolutionLevel: 20,
     rank: 1,
     baseSkill: SKILLS.MORSURE,
-    ppSkill: SKILLS.CROC_DE_MORT
+    ppSkill: SKILLS.CROC_DE_MORT,
+    wildEncounterChance: 1
 }

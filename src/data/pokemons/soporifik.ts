@@ -16,5 +16,6 @@ export const SOPORIFIK: PokemonEntry = {
     evolutionLevel: 26,
     rank: 1,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.HYPNOSE
+    ppSkill: SKILLS.HYPNOSE,
+    wildEncounterChance: 1
 }

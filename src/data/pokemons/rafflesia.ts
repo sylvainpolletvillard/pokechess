@@ -13,5 +13,6 @@ export const RAFFLESIA: PokemonEntry = {
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],
     rank: 3,
     baseSkill: SKILLS.VOL_VIE,
-    ppSkill: SKILLS.POUDRE_TOXIK
+    ppSkill: SKILLS.POUDRE_TOXIK,
+    wildEncounterChance: 0
 }

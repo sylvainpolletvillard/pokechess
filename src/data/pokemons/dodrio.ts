@@ -13,5 +13,6 @@ export const DODRIO: PokemonEntry = {
     types: [POKEMON_TYPES.NORMAL, POKEMON_TYPES.VOL],
     rank: 2,
     baseSkill: SKILLS.VIVE_ATTAQUE,
-    ppSkill: SKILLS.FURIE
+    ppSkill: SKILLS.FURIE,
+    wildEncounterChance: 0
 }

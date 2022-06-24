@@ -13,5 +13,6 @@ export const AKWAKWAK: PokemonEntry = {
     types: [POKEMON_TYPES.EAU, POKEMON_TYPES.PSY],
     rank: 2,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.SURF
+    ppSkill: SKILLS.SURF,
+    wildEncounterChance: 0
 }

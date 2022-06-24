@@ -16,5 +16,6 @@ export const TAUPIQUEUR: PokemonEntry = {
     evolutionLevel: 26,
     rank: 1,
     baseSkill: SKILLS.COUD_BOUE,
-    ppSkill: SKILLS.TUNNEL
+    ppSkill: SKILLS.TUNNEL,
+    wildEncounterChance: 1
 }

@@ -13,5 +13,6 @@ export const EMPIFLOR: PokemonEntry = {
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],
     rank: 3,
     baseSkill: SKILLS.FOUET_LIANES,
-    ppSkill: SKILLS.ACIDE
+    ppSkill: SKILLS.ACIDE,
+    wildEncounterChance: 0
 }

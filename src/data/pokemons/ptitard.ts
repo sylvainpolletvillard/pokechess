@@ -16,5 +16,6 @@ export const PTITARD: PokemonEntry = {
     evolutionLevel: 25,
     rank: 1,
     baseSkill: SKILLS.BULLES_D_O,
-    ppSkill: SKILLS.HYPNOSE
+    ppSkill: SKILLS.HYPNOSE,
+    wildEncounterChance: 1
 }

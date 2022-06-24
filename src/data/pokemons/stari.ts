@@ -16,5 +16,6 @@ export const STARI: PokemonEntry = {
     evolutionLevel: 40,
     rank: 1,
     baseSkill: SKILLS.PISTOLET_A_O,
-    ppSkill: SKILLS.METEORES
+    ppSkill: SKILLS.METEORES,
+    wildEncounterChance: 1
 }

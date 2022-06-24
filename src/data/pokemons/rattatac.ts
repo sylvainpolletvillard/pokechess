@@ -13,5 +13,6 @@ export const RATTATAC: PokemonEntry = {
     types: [POKEMON_TYPES.NORMAL],
     rank: 2,
     baseSkill: SKILLS.MORSURE,
-    ppSkill: SKILLS.CROC_DE_MORT
+    ppSkill: SKILLS.CROC_DE_MORT,
+    wildEncounterChance: 0
 }

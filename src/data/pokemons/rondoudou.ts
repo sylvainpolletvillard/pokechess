@@ -16,5 +16,6 @@ export const RONDOUDOU: PokemonEntry = {
     evolutionLevel: 25,
     rank: 1,
     baseSkill: SKILLS.TORGNOLES,
-    ppSkill: SKILLS.BERCEUSE
+    ppSkill: SKILLS.BERCEUSE,
+    wildEncounterChance: 1
 }

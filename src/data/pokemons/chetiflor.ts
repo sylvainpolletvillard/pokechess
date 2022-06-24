@@ -16,5 +16,6 @@ export const CHETIFLOR: PokemonEntry = {
     evolutionLevel: 21,
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES,
-    ppSkill: SKILLS.ACIDE
+    ppSkill: SKILLS.ACIDE,
+    wildEncounterChance: 1
 }

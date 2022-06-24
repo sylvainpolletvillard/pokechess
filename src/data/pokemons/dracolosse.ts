@@ -13,5 +13,6 @@ export const DRACOLOSSE: PokemonEntry = {
     types: [POKEMON_TYPES.DRAGON, POKEMON_TYPES.VOL],
     rank: 3,
     baseSkill: SKILLS.CRUAILE,
-    ppSkill: SKILLS.ULTRALASER
+    ppSkill: SKILLS.ULTRALASER,
+    wildEncounterChance: 0
 }

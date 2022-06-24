@@ -15,6 +15,10 @@ export function clearTimeouts(){
     timeouts.clear()
 }
 
+export function sum(...array: number[]){
+    return array.reduce((a,b)=> a+b, 0)
+}
+
 export function range(start: number, end: number) {
     return Array(end - start)
         .fill(0)
@@ -55,6 +59,17 @@ export function pickNRandomIn<T>(array: Array<T>, number=1): Array<T> {
         nbSelected++
     }
     return selection
+}
+
+export function ponderatedRandomIn<T>(array: Array<T>, ponderator: (elem: T) => number){
+    const weights = array.map(ponderator)
+    const sumWeights = sum(...weights)
+    const rand = Math.random() * sumWeights
+    for(let i=0, w=0; i < weights.length; i++){
+        w += weights[i]
+        if(rand < w) return array[i]
+    }
+    return array[array.length - 1]
 }
 
 export function randomInt(start: number, end: number){

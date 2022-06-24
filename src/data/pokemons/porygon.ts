@@ -13,5 +13,6 @@ export const PORYGON: PokemonEntry = {
     types: [POKEMON_TYPES.NORMAL],
     rank: 2,
     baseSkill: SKILLS.CHARGE,
-    ppSkill: SKILLS.ADAPTATION
+    ppSkill: SKILLS.ADAPTATION,
+    wildEncounterChance: 1
 }

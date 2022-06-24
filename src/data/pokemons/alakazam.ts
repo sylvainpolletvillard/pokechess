@@ -13,5 +13,6 @@ export const ALAKAZAM: PokemonEntry = {
     types: [POKEMON_TYPES.PSY],
     rank: 3,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.TELEPORT
+    ppSkill: SKILLS.TELEPORT,
+    wildEncounterChance: 0
 }

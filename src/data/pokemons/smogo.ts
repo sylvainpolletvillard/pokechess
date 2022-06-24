@@ -16,5 +16,6 @@ export const SMOGO: PokemonEntry = {
     evolutionLevel: 35,
     rank: 1,
     baseSkill: SKILLS.DETRITUS,
-    ppSkill: SKILLS.BROUILLARD
+    ppSkill: SKILLS.BROUILLARD,
+    wildEncounterChance: 1
 }

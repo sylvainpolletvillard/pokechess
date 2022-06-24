@@ -13,5 +13,6 @@ export const ONIX: PokemonEntry = {
     types: [POKEMON_TYPES.ROCHE, POKEMON_TYPES.SOL],
     rank: 1,
     baseSkill: SKILLS.JET_PIERRES,
-    ppSkill: SKILLS.ARMURE
+    ppSkill: SKILLS.ARMURE,
+    wildEncounterChance: 1
 }

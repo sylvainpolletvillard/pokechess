@@ -13,5 +13,6 @@ export const TARTARD: PokemonEntry = {
     types: [POKEMON_TYPES.EAU],
     rank: 3,
     baseSkill: SKILLS.TORGNOLES,
-    ppSkill: SKILLS.HYPNOSE
+    ppSkill: SKILLS.HYPNOSE,
+    wildEncounterChance: 0
 }

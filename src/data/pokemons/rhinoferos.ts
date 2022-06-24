@@ -13,5 +13,6 @@ export const RHINOFEROS: PokemonEntry = {
     types: [POKEMON_TYPES.ROCHE, POKEMON_TYPES.SOL],
     rank: 3,
     baseSkill: SKILLS.KOUD_KORNE,
-    ppSkill: SKILLS.EMPAL_KORNE
+    ppSkill: SKILLS.EMPAL_KORNE,
+    wildEncounterChance: 0
 }

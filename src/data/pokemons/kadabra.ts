@@ -16,5 +16,6 @@ export const KADABRA: PokemonEntry = {
     evolutionLevel: 33,
     rank: 2,
     baseSkill: SKILLS.CHOC_MENTAL,
-    ppSkill: SKILLS.TELEPORT
+    ppSkill: SKILLS.TELEPORT,
+    wildEncounterChance: 0
 }

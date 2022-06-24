@@ -16,5 +16,6 @@ export const NIDORINO: PokemonEntry = {
     evolutionLevel: 32,
     rank: 1,
     baseSkill: SKILLS.DARD_VENIN,
-    ppSkill: SKILLS.EMPAL_KORNE
+    ppSkill: SKILLS.EMPAL_KORNE,
+    wildEncounterChance: 0
 }

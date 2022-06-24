@@ -16,5 +16,6 @@ export const MACHOPEUR: PokemonEntry = {
     evolutionLevel: 40,
     rank: 2,
     baseSkill: SKILLS.POING_KARATE,
-    ppSkill: SKILLS.BALAYAGE
+    ppSkill: SKILLS.BALAYAGE,
+    wildEncounterChance: 0
 }

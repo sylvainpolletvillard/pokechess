@@ -175,6 +175,7 @@ export interface PokemonEntry {
     evolutionLevel?: number;
     devolution?: PokemonEntry;
     rank: number;
+    wildEncounterChance: number;
 }
 
 export function autoEvolve(entry: PokemonEntry, level: number): PokemonEntry {

@@ -13,5 +13,6 @@ export const RAICHU: PokemonEntry = {
     types: [POKEMON_TYPES.ELECTRIQUE],
     rank: 2,
     baseSkill: SKILLS.VIVE_ATTAQUE,
-    ppSkill: SKILLS.ECLAIR
+    ppSkill: SKILLS.ECLAIR,
+    wildEncounterChance: 0
 }

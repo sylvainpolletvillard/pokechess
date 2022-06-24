@@ -16,5 +16,6 @@ export const RACAILLOU: PokemonEntry = {
     evolutionLevel: 25,
     rank: 1,
     baseSkill: SKILLS.JET_PIERRES,
-    ppSkill: SKILLS.ARMURE
+    ppSkill: SKILLS.ARMURE,
+    wildEncounterChance: 1
 }

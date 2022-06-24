@@ -13,5 +13,6 @@ export const TYGNON: PokemonEntry = {
     types: [POKEMON_TYPES.COMBAT],
     rank: 2,
     baseSkill: SKILLS.POING_KARATE,
-    ppSkill: SKILLS.ULTIMAPOING
+    ppSkill: SKILLS.ULTIMAPOING,
+    wildEncounterChance: 0.75
 }

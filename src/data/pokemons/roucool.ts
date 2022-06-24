@@ -16,5 +16,6 @@ export const ROUCOOL: PokemonEntry = {
     evolutionLevel: 18,
     rank: 1,
     baseSkill: SKILLS.PICPIC,
-    ppSkill: SKILLS.OURAGAN
+    ppSkill: SKILLS.OURAGAN,
+    wildEncounterChance: 1
 }

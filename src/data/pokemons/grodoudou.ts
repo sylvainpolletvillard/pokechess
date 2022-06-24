@@ -13,5 +13,6 @@ export const GRODOUDOU: PokemonEntry = {
     types: [POKEMON_TYPES.FEE],
     rank: 2,
     baseSkill: SKILLS.TORGNOLES,
-    ppSkill: SKILLS.BERCEUSE
+    ppSkill: SKILLS.BERCEUSE,
+    wildEncounterChance: 0
 }

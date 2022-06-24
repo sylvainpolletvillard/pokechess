@@ -13,5 +13,6 @@ export const COLOSSINGE: PokemonEntry = {
     types: [POKEMON_TYPES.COMBAT],
     rank: 2,
     baseSkill: SKILLS.GRIFFE,
-    ppSkill: SKILLS.PROVOC
+    ppSkill: SKILLS.PROVOC,
+    wildEncounterChance: 0
 }
