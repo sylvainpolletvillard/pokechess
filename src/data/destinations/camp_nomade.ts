@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../types/destination";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
-import {DRESSEUR_CAMP_NOMADE, HECTOR} from "../trainers";
+import {DRESSEUR_CAMP_NOMADE, HECTOR, HECTOR_DIALOG_STATE} from "../trainers";
 import {COCONFORT} from "../pokemons/coconfort";
 import {MIMITOSS} from "../pokemons/mimitoss";
 import {AEROMITE} from "../pokemons/aeromite";
@@ -16,9 +16,10 @@ import {BOUSTIFLOR} from "../pokemons/boustiflor";
 import {NOADKOKO} from "../pokemons/noadkoko";
 import {ABO} from "../pokemons/abo";
 import {PIKACHU} from "../pokemons/pikachu";
-import {SHOP_CAMP_NOMADE, SHOP_JADIELLE} from "../levels/shops";
+import {SHOP_CAMP_NOMADE} from "../levels/shops";
 import { MyScene } from "../../scenes/MyScene";
 import { preloadMusic } from "../../logic/audio";
+import { gameState } from "../../logic/gamestate";
 
 export const CAMP_NOMADE: Destination = {
     ref: "CAMP_NOMADE",
@@ -91,6 +92,10 @@ export const CAMP_NOMADE: Destination = {
             music: "music_shop",
             level: SHOP_CAMP_NOMADE
         }
+    },
+    customRoomOrder(){ 
+        if(gameState.dialogStates["hector"] === HECTOR_DIALOG_STATE.BEATEN) return ["shop", "trainer"] 
+        return ["shop", "arena"]
     },
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('shop_camp_nomade', 'assets/maps/shop_camp_nomade.json');

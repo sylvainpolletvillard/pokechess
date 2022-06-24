@@ -1,6 +1,6 @@
 import {Destination, DestinationType, RoomType} from "../../types/destination";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
-import { DRESSEUR_LAVANVILLE, SALLY} from "../trainers";
+import { DRESSEUR_LAVANVILLE, SALLY, SALLY_DIALOG_STATE} from "../trainers";
 import { GRODOUDOU } from "../pokemons/grodoudou";
 import { LEVEINARD } from "../pokemons/leveinard";
 import { MELODELFE } from "../pokemons/melodelfe";
@@ -17,6 +17,7 @@ import {EVOLI} from "../pokemons/evoli";
 import { SHOP_LAVANVILLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { gameState } from "../../logic/gamestate";
 
 export const LAVANVILLE: Destination = {
     ref: "LAVANVILLE",
@@ -86,6 +87,10 @@ export const LAVANVILLE: Destination = {
         }
     },
     shopId: 4,
+    customRoomOrder(){ 
+        if(gameState.dialogStates["sally"] === SALLY_DIALOG_STATE.BEATEN) return ["shop", "trainer"] 
+        return ["shop", "arena"]
+    },
     preload(scene: MyScene){
         scene.load.tilemapTiledJSON('arene_lavanville', 'assets/maps/arene_lavanville.json');
         scene.load.tilemapTiledJSON('shop_lavanville', 'assets/maps/shop_lavanville.json');

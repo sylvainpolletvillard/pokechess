@@ -255,6 +255,7 @@ export const GIOVANNI: Trainer = {
     }
 }
 
+export enum HECTOR_DIALOG_STATE { MET, BEATEN }
 export const HECTOR: Trainer = {
     ref: "hector",
     name: "Hector",
@@ -262,7 +263,10 @@ export const HECTOR: Trainer = {
     introFrameIndex: 8,
     dialogs: {
         start: [
-            `Tiens, tu as trouvé mon camp ? Moi, c'est Hector!`,            
+            () => {
+                gameState.dialogStates["hector"] = HECTOR_DIALOG_STATE.MET
+                return `Tiens, tu as trouvé mon camp ? Moi, c'est Hector!`
+            },
             `Je suis venu étudier les Pokémon Insecte de cette région.`,
             `Personne ne connait mieux les Pokémon Insecte que moi!`,
             `Quand je serai adulte, je serai un grand expert en Pokémon Insecte!`,
@@ -274,6 +278,7 @@ export const HECTOR: Trainer = {
             `Ah, j'ai encore beaucoup à apprendre! ... `,
             `Oui, je sais ! Prends mon filet à insecte comme récompense !`,
             () => {
+                gameState.dialogStates["hector"] = HECTOR_DIALOG_STATE.BEATEN
                 return receiveItem(ITEM_FILET)
                 .then(() => `Tu verras, il te sera très utile !`)
             },
@@ -288,7 +293,7 @@ export const HECTOR: Trainer = {
     }
 }
 
-
+export enum SALLY_DIALOG_STATE { MET, BEATEN }
 export const SALLY: Trainer = {
     ref: "sally",
     name: "Sally",
@@ -296,7 +301,10 @@ export const SALLY: Trainer = {
     introFrameIndex: 9,
     dialogs: {
         start: [
-            `Tiens, tiens. J'ai entendu parler de toi, mon enfant.`,
+            () => {
+                gameState.dialogStates["sally"] = SALLY_DIALOG_STATE.MET
+                return `Tiens, tiens. J'ai entendu parler de toi, mon enfant.`
+            },
             `Je suis Sally, la championne d'arène de Corrifey de la région de Galar.`,
             `Je suis venu à Lavanville pour rendre visite à un vieil ami...`,
             `Cet endroit a quelque-chose de féérique à mes yeux.`,
@@ -309,6 +317,7 @@ export const SALLY: Trainer = {
             `Tu me rappelles mon mari dans ces jeunes années.`,
             `Tu sais quoi ? Tu devrais prendre ce parapluie.`,
             () => {
+                gameState.dialogStates["sally"] = SALLY_DIALOG_STATE.BEATEN
                 return receiveItem(ITEM_PARAPLUIE)
                 .then(() => `Il m'a été très utile lors de mes voyages`)
             },
