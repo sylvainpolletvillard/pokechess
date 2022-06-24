@@ -65,8 +65,8 @@ export function openItemMenu(game: GameScene){
             } 
             else if(item.type === ItemType.Usable){
                 wait(0).then(() => startDialog([`Utiliser ${item.label} ?`, {
-                    "Oui"(){ useItem(item, game); },
-                    "Non"(){ }
+                    "OUI"(){ useItem(item, game); },
+                    "NON"(){ }
                 }]))
                 return true
             }

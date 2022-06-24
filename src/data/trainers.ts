@@ -504,10 +504,10 @@ export const SCIENTIFIQUE_TUTO: Trainer = {
             },
             `Sais-tu comment on s'en sert ?`,
             {
-                "Oui": () => [
+                "OUI": () => [
                     `Très bien, alors capture ces Pokémon sauvages. Ou mets-les KO, comme tu veux !`
                 ],
-                "Non": () => [
+                "NON": () => [
                     `Tu peux capturer un Pokémon sauvage plutôt que de l'affronter.`,
                     `Plus le Pokémon est puissant, plus il te faudra de Pokéballs pour le capturer.`,
                     `Un Pokémon capturé rejoint ta box, qui peut contenir jusqu'à 8 Pokémon.`,

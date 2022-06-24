@@ -155,11 +155,11 @@ function onReachSleepyRonflex(): Promise<boolean> {
         else if(gameState.player.inventory[POKEFLUTE.ref] > 0) return startDialog([
             `Un Pokémon endormi bloque le chemin. Le réveiller avec la Pokéflute ?`,
             {
-                "Oui": () => {
+                "OUI": () => {
                     enterDestination(RONFLEX_ENDORMI)
                     resolve(true)
                 },
-                "Non": () => resolve(false)
+                "NON": () => resolve(false)
             }
         ])
         else return startDialog([

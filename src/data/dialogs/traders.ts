@@ -26,7 +26,7 @@ export const TRADER = (character: Trader) => startDialog([
             return [
                 `Salut, tu veux échanger ton ${pokemonGiven.entry.name} contre mon ${pokemonReceived.entry.name} ?`,
                 {
-                    "Oui": () => [
+                    "OUI": () => [
                         () => {
                             pauseMusicAndPlaySound("pokemon_received")
                             const index = gameState.player.box.indexOf(pokemonGiven)
@@ -37,7 +37,7 @@ export const TRADER = (character: Trader) => startDialog([
                         },
                         `Trop cool, un ${pokemonGiven.entry.name} !`
                     ],
-                    "Non": () => ["Ah, bon tant pis."]
+                    "NON": () => ["Ah, bon tant pis."]
                 }
             ]
         }

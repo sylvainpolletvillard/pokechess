@@ -62,14 +62,14 @@ export function openBuyMenu(seller: string){
             startDialog([
                 `1 ${item.label} pour ${item.cost} ball${item.cost > 1 ? 's' : ''}, c'est ça ?`,
                 {
-                    "Oui": () => {
+                    "OUI": () => {
                         if(!canAfford(item.cost!)) return "Tu n'as pas assez de Pokéballs, gamin !"
                         endDialog();
                         spend(item.cost!)                        
                         return receiveItem(item, 1, true, "shop")
                             .then(() => { openBuyMenu(seller) })
                     },
-                    "Non": () => wait(100).then(() => {
+                    "NON": () => wait(100).then(() => {
                         endDialog();
                         openBuyMenu(seller)
                     })

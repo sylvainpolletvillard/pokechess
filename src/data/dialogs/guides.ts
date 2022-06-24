@@ -81,7 +81,7 @@ export const GUIDES: { [destination: string]: DialogLine[] } = {
                     `Je pourrais peut-être même... le ramener à la vie !`,
                     `Tu veux bien me le confier ?`,
                     {
-                        "Oui": () => {
+                        "OUI": () => {
                             return [
                                 `Excellent ! Je reviens vite !`,
                                 () => {
@@ -111,7 +111,7 @@ export const GUIDES: { [destination: string]: DialogLine[] } = {
                                 }
                             ]
                         },
-                        "Non": () => {
+                        "NON": () => {
                             return [`Mais... mais... c'est pour la science !`]
                         }
                     }
@@ -128,7 +128,7 @@ export const GUIDES: { [destination: string]: DialogLine[] } = {
     [LIGUE.ref]: [
         `Ah, alors tu veux des infos sur les Champions de la Ligue ?`,
         {
-            "Oui": () => [
+            "OUI": () => [
                 `Pour prétendre au titre de maître de la Ligue Pokémon,`,
                 `tu devras affronter les 4 membres du Conseil des 4 l'un après l'autre.`,
                 `Tout d'abord tu affronteras Olga, la reine de la glace !`,
@@ -141,7 +141,7 @@ export const GUIDES: { [destination: string]: DialogLine[] } = {
                 `Les Dragons sont très tenaces. Il te faudra donner tout ce que tu as !`,
                 `Voilà, je ne sais pas ce qu'il y a après. Je n'ai jamais pu aller plus loin !`
             ],
-            "Non": () => [
+            "NON": () => [
                 `Ah, je croyais que... non, laisse tomber.`
             ]
         }

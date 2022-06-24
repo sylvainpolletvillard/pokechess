@@ -90,14 +90,14 @@ export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) =>
     pc_end: [
         "Enregistrer l'équipe dans le livre des records ?",
         {
-            "Oui": () => ["Enregistrement...", () => {
+            "OUI": () => ["Enregistrement...", () => {
                 saveNewRecord()
                 wait(2000)
                     .then(() => fadeOut(2000))
                     .then(() => { gameState.activeScene!.scene.start("GameOverScene") })
                 return `Félicitations ! Vous et vos Pokémon êtes célèbres !`
             }],
-            "Non": () => {
+            "NON": () => {
                 return [`... Fin de session.`]
             }
         }

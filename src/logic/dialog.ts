@@ -162,14 +162,20 @@ export function startChoice(choice: DialogChoice) {
         entries: Object.entries(choice).map(([label, value], i) => ({
             label, value, x: 4, y: i*16
         })),
-        handleChoice(selectedChoice){
-            if(!gameState.activeDialog?.choice) return;
-            delete gameState.activeDialog.choice
-            closeMenu()
-            gameState.activeDialog.lines.unshift(selectedChoice?.value || selectedChoice?.label)
-            showNextLine()
-        }
+        handleChoice,
+        handleCancel() {
+            if("NON" in choice) handleChoice({ value: choice["NON"] })
+            else closeMenu()
+        },
     })
+}
+
+function handleChoice(selectedChoice){
+    if(!gameState.activeDialog?.choice) return;
+    delete gameState.activeDialog.choice
+    closeMenu()
+    gameState.activeDialog.lines.unshift(selectedChoice?.value || selectedChoice?.label)
+    showNextLine()
 }
 
 let talkingTo: string | null = null;
