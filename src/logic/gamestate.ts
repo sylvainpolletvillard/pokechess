@@ -281,7 +281,7 @@ export class GameState {
             )
         }
 
-        gameState.allPokemonsOnBoard.forEach(pokemon => pokemon.resetAfterFight())
+        gameState.player.team.forEach(pokemon => pokemon.resetAfterFight())
 
         await startDialog(lines)
 

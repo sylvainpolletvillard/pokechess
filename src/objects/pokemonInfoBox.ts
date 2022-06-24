@@ -32,7 +32,7 @@ export function displayPokemonInfo(pokemon: Pokemon){
     pokemonInfoBox.add(pokemonInfoBoxBackground)
 
     let name = pokemon.entry.name
-    if(pokemon instanceof PokemonOnBoard && pokemon.entry === METAMORPH) name = METAMORPH.name
+    if(pokemon instanceof PokemonOnBoard && pokemon.initialEntry === METAMORPH) name = METAMORPH.name
     const pokemonNameText = addText(ox - 50, oy - 28,`${name} Lv${pokemon.level}`)
     pokemonInfoBox.add(pokemonNameText)
 

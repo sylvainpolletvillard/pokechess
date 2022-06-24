@@ -17,8 +17,6 @@ import {updatePokemonBars} from "./pokemonBar";
 import {Buffs, resetBuffs} from "../logic/buffs";
 import { PokemonType } from "../data/types";
 import { AllianceState } from "../data/alliances";
-import { Item } from "../data/items";
-import { TILE_SIZE } from "../logic/level";
 
 interface PokemonOnBoardConstructor extends PokemonConstructor {
     x: number,
@@ -183,6 +181,7 @@ export class PokemonOnBoard extends Pokemon {
         this.x = this.placementX
         this.y = this.placementY
         this.untargettable = false
+        this.unalterable = false
         if(this.initialEntry) this.entry = this.initialEntry // revert morphing/evolution
     }    
 }

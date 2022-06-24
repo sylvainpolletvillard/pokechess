@@ -19,10 +19,8 @@ import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { gameState } from "../../logic/gamestate";
 import { ELECTHOR } from "../pokemons/electhor";
-import { Pokemon } from "../pokemons";
 import { NO_OWNER } from "../owners";
 import { PokemonOnBoard } from "../../objects/pokemon";
-import { levelToXP } from "../../logic/xp";
 
 export const CENTRALE: Destination = {
     ref: "CENTRALE",
