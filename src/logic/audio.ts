@@ -1,7 +1,7 @@
 import {gameState} from "./gamestate";
 
-const MUSIC_VOLUME = 0.2
-const SFX_VOLUME = 0.2
+let MUSIC_VOLUME = 0.2
+let SFX_VOLUME = 0.2
 
 export function preloadMusic(name: string, filepath: string){
     const scene = gameState.activeScene!;
@@ -23,7 +23,7 @@ export function startMusic(name: string, params: Phaser.Types.Sound.SoundConfig 
         }
         try {
             if (scene.cache.audio.has(name)) {
-                gameState.music = gameState.activeScene?.sound.add(name, params);
+                gameState.music = gameState.activeScene?.sound.add(name, params) as Phaser.Sound.WebAudioSound;
                 gameState.music!.play();
                 gameState.music!.on(Phaser.Sound.Events.COMPLETE, () => resolve())
             } else {
@@ -60,5 +60,20 @@ export function playSound(name: string, params: Phaser.Types.Sound.SoundConfig =
         waitEnd: new Promise(resolve => {        
             sound.on(Phaser.Sound.Events.COMPLETE, () => resolve())
         })
+    }
+}
+
+export function initVolumeControls(){
+    const musicVolumeInput = document.getElementById("volume_music") as HTMLInputElement;
+    musicVolumeInput.value = (MUSIC_VOLUME*100).toString()
+    musicVolumeInput.onchange = () => {
+        MUSIC_VOLUME = +musicVolumeInput.value / 100
+        gameState.music?.setVolume(MUSIC_VOLUME)
+    }
+
+    const sfxVolumeInput = document.getElementById("volume_sfx") as HTMLInputElement;
+    sfxVolumeInput.value = (SFX_VOLUME*100).toString()
+    sfxVolumeInput.onchange = () => {
+        SFX_VOLUME = +sfxVolumeInput.value / 100
     }
 }

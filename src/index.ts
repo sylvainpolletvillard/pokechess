@@ -12,6 +12,7 @@ import MapScene from "./scenes/MapScene";
 import RoomScene from "./scenes/RoomScene";
 import LoadingScene from "./scenes/LoadingScene";
 import GameOverScene from "./scenes/GameOverScene";
+import { initVolumeControls } from './logic/audio';
 
 
 export class Game extends Phaser.Game {
@@ -19,6 +20,7 @@ export class Game extends Phaser.Game {
     constructor(gameConfig: Phaser.Types.Core.GameConfig) {
         super(gameConfig);
         this.state = gameState
+        initVolumeControls()
     }
 }
 

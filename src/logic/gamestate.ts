@@ -55,7 +55,7 @@ export class GameState {
     activeMenu: Menu | null;
     activeDialog: Dialog | null;
     starters: PokemonEntry[];
-    music: Phaser.Sound.BaseSound | undefined;
+    music: Phaser.Sound.WebAudioSound | undefined;
     dialogStates: { [pnjName: string]: number }
     seed: number;
     lastCaptureDestination: Destination | null;

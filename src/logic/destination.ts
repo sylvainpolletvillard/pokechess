@@ -14,11 +14,13 @@ export function enterDestination(destination: Destination){
     if(destination.preloading){
         const loadingText = addText(scene.scale.width/2, scene.scale.height - 30, "Chargement...",
             { align: "center", color: "white", strokeThickness: 4, stroke: "black" }).setOrigin(0.5)
-        scene.load.on("complete", () => {
+        const enterAfterLoad = () => {
             destination.preloading = false;
             loadingText.destroy()
             enterDestination(destination)
-        })
+            scene.load.off("complete", enterAfterLoad)
+        }
+        scene.load.on("complete", enterAfterLoad)
         return;
     }
     
