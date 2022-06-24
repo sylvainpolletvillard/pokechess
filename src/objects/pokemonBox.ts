@@ -4,7 +4,7 @@ import {
     dragState,
     handleDragEnd, handleDragStart,
     InteractiveElem,
-    removeInteractiveElem, testIfCanBeDragged
+    removeInteractiveElem, testIfCanBeDragged, updateCursorHover
 } from "./cursor";
 import GameScene from "../scenes/GameScene";
 import {makePokemonSprite} from "./pokemon";
@@ -16,6 +16,7 @@ import {gameState} from "../logic/gamestate";
 import { drawTeamSizeCounter } from "../logic/board";
 import { playSound } from "../logic/audio";
 
+let selectedIndex: number = -1
 let interactiveElems: InteractiveElem[] = [];
 const ox = 20, oy = 100,  WIDTH = 248, HEIGHT = 24;
 const NB_ROWS = 1, NB_COLS = 8;
@@ -33,6 +34,17 @@ export function openBox(game: GameScene){
         offset: 8,
         draw(container){
             draw(game, container)
+        },
+        handleMove(moveVector){
+            playSound("tick")
+            if(moveVector.x > 0){
+                selectedIndex = (selectedIndex+1) % 8
+            } else if(moveVector.x < 0){
+                if(selectedIndex === -1) selectedIndex = 9
+                selectedIndex = (selectedIndex+8-1) % 8
+            }
+            game.sprites.get("cursor")?.setPosition(ox + 16 + CASE_GAP + L*selectedIndex, oy + 20 + CASE_GAP)
+            updateCursorHover(game)
         }
     })
 }
