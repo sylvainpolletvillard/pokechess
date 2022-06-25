@@ -60,12 +60,6 @@ body {
     appearance: none;
 }
 
-@media(max-width: 1100px){
-    #game {
-        left: 230px;
-    }
-}
-
 @media(max-width: 1800px){
     #infos {
         width: 96vw;
@@ -94,5 +88,23 @@ body {
 
     #game {
         top: 180px;
+    }
+}
+
+@media(max-width: 1100px){
+    body {
+        overflow: hidden;
+    }
+
+    #gameboy {
+        left: 0;
+        width: 100vw;
+    }
+
+    #game {
+        top: 19vw;
+        width: 58vw;
+        height: 58vw;
+        left: 21vw;
     }
 }

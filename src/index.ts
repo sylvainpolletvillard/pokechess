@@ -13,6 +13,7 @@ import RoomScene from "./scenes/RoomScene";
 import LoadingScene from "./scenes/LoadingScene";
 import GameOverScene from "./scenes/GameOverScene";
 import { initVolumeControls } from './logic/audio';
+import { setupHTMLButtons } from './logic/inputs';
 
 
 export class Game extends Phaser.Game {
@@ -21,6 +22,7 @@ export class Game extends Phaser.Game {
         super(gameConfig);
         this.state = gameState
         initVolumeControls()
+        setupHTMLButtons()
     }
 }
 

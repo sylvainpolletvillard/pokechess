@@ -34,6 +34,25 @@ export const keysMap = new Map([
     ["d", Phaser.Input.Gamepad.Configs.XBOX_360.RIGHT],
 ])
 
+let pressedDirection: String | null = null;
+
+export function setupHTMLButtons(){
+    buttonsMap.forEach(({ id }, button) => {
+        let elm = document.getElementById(id)
+        if(elm != null){
+            elm.addEventListener("pointerdown", () => { 
+                if(id.startsWith("fleche")) pressedDirection = id
+                highlightButton(button, true); 
+                handleControlPress(button)
+             })
+            elm.addEventListener("pointerup", () => {
+                highlightButton(button, false)
+                if(id === pressedDirection) pressedDirection = null;
+            })
+        }
+    })
+}
+
 function highlightButton(buttonIndex: number, on: boolean){
     const button = buttonsMap.get(buttonIndex)
     if(button != null){
@@ -133,10 +152,10 @@ export function getMovementVector(scene: Phaser.Scene): { moveVector: Phaser.Mat
         else if(pad.isButtonDown(Phaser.Input.Gamepad.Configs.XBOX_360.DOWN)) moveVector.y = 32
     }
 
-    if (cursorKeys.left.isDown || wasdKeys.Q.isDown || wasdKeys.A.isDown) moveVector.x = -32
-    else if(cursorKeys.right.isDown || wasdKeys.D.isDown) moveVector.x = 32
-    if(cursorKeys.up.isDown || wasdKeys.W.isDown || wasdKeys.Z.isDown) moveVector.y = -32
-    else if(cursorKeys.down.isDown || wasdKeys.S.isDown) moveVector.y = 32
+    if (cursorKeys.left.isDown || wasdKeys.Q.isDown || wasdKeys.A.isDown || pressedDirection === "fleche_GAUCHE") moveVector.x = -32
+    else if(cursorKeys.right.isDown || wasdKeys.D.isDown || pressedDirection === "fleche_DROITE") moveVector.x = 32
+    if(cursorKeys.up.isDown || wasdKeys.W.isDown || wasdKeys.Z.isDown || pressedDirection === "fleche_HAUT") moveVector.y = -32
+    else if(cursorKeys.down.isDown || wasdKeys.S.isDown || pressedDirection === "fleche_BAS") moveVector.y = 32
 
     return { moveVector, useAnalogMovement }
 }
