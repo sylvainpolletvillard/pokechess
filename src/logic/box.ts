@@ -8,10 +8,11 @@ import { ITEM_POKEBALL } from '../data/items';
 import { MyScene } from '../scenes/MyScene';
 import { getPokemonCry, Pokemon } from '../data/pokemons';
 import { PokemonOnBoard } from '../objects/pokemon';
-import { removeInArray } from '../utils/helpers';
+import { removeInArray, wait } from '../utils/helpers';
 
 import { playSound } from './audio';
 import { getAlliancesState } from './player';
+import { updateCursorHover } from '../objects/cursor';
 
 export function removeFromBox(pokemon: Pokemon){
     const box = gameState.player.box;
@@ -48,6 +49,8 @@ export function addToBox(pokemon: Pokemon, caseIndex?: number){
     } else if(pokemonSprite != null){
         pokemonSprite.destroy()
     }
+
+    wait(0).then(() => updateCursorHover(game))
 }
 
 export function addToTeam(pokemon: PokemonOnBoard){
