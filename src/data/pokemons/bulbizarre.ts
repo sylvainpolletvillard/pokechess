@@ -13,7 +13,7 @@ export const BULBIZARRE: PokemonEntry = {
     speed: 45,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],
     evolution: HERBIZARRE,
-    evolutionLevel: 10,
+    evolutionLevel: 16,
     rank: 1,
     baseSkill: SKILLS.FOUET_LIANES,
     ppSkill: SKILLS.LANCE_SOLEIL,

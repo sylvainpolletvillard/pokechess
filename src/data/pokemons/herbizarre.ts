@@ -13,7 +13,7 @@ export const HERBIZARRE: PokemonEntry = {
     speed: 60,
     types: [POKEMON_TYPES.PLANTE, POKEMON_TYPES.POISON],
     evolution: FLORIZARRE,
-    evolutionLevel: 20,
+    evolutionLevel: 32,
     rank: 2,
     baseSkill: SKILLS.FOUET_LIANES,
     ppSkill: SKILLS.LANCE_SOLEIL,

@@ -383,12 +383,16 @@ export function gainXP(pokemon: Pokemon, amount: number){
                 let oldEntry = pokemon.entry
                 pokemon.entry = pokemon.entry.evolution!
                 pauseMusicAndPlaySound("success")
-                if(pokemon instanceof PokemonOnBoard && pokemon.alive){
+                const oldSprite = game.sprites.get(pokemon.uid)
+                if(oldSprite != null){
                      // retrieve pokemon from board instead to get latest position
                     const pokemonOnBoard = gameState.board.playerTeam.find(pkm => pkm.uid === pokemon.uid) as PokemonOnBoard
                     renderSkillEffect(SKILLS.EVOLUTION, pokemonOnBoard, pokemonOnBoard, game)
-                    removePokemonSprite(pokemonOnBoard, game)                    
+                    
+                    let {x, y} = oldSprite
+                    removePokemonSprite(pokemonOnBoard, game)
                     const newSprite = makePokemonSprite(pokemonOnBoard, game)
+                    newSprite.setPosition(x, y)
                     newSprite.play(`${pokemon.entry.ref}_${pokemonOnBoard.facingDirection}`)
                     game.sprites.set(pokemon.uid, newSprite)
                     if(gameState.stage === GameStage.PLACEMENT || gameState.stage === GameStage.CAPTURE){
