@@ -103,7 +103,8 @@ export function handleClick(scene: MyScene){
 
     if(dragState.draggedElem === null){
         const cursor = scene.sprites.get("cursor")
-        cursor?.play("cursor_click")
+        if(cursor == null || !cursor.anims) return;
+        cursor.play("cursor_click")
     }
 
     hoveredElems
@@ -158,7 +159,7 @@ export function handleDragEnd(scene: MyScene){
     const dropZones = hoveredElems.filter(elm => testIfCanBeDroppedOn(elm))
     if(dropZones.length === 0) return;
     const cursor = scene.sprites.get('cursor');
-    if(cursor == null) return;
+    if(cursor == null || !cursor.anims) return;
     cursor.play("cursor_drop")
     if(dragState.draggedElem != null){
         dragState.draggedElem?.setDepth(Z.POKEMON).emit('drop', cursor)
