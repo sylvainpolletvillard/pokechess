@@ -24,7 +24,7 @@ import { loadTilemaps } from '../data/tilemaps';
 import { MyScene } from './MyScene';
 import { setupAnims } from '../logic/anims';
 import { startMusic } from '../logic/audio';
-import { wait } from '../utils/helpers';
+import { defer, wait } from '../utils/helpers';
 import { Z } from '../data/depths';
 import { fadeIn } from '../utils/camera';
 import { BOURG_PALETTE } from '../data/destinations/bourg_palette';
@@ -119,7 +119,8 @@ export default class MapScene extends MyScene {
                         ?? this.origin.nextDestinations;
                     const destinationChosen: Path = destinations[this.directions[dir]];
                     if(destinationChosen != null){
-                        this.walkPath(destinationChosen);
+                        const origin = this.intersectionReached || this.destinationReached || this.origin
+                        this.walkPath(destinationChosen, origin.coordinates);
                     }
                 }
             }
@@ -178,7 +179,7 @@ export default class MapScene extends MyScene {
             this.player.emit("stop")            
             const onReach = intersectionReached.onReach || (() => Promise.resolve(true))
             return onReach().then((canStay: boolean) => {
-                if(!canStay) this.walkPath(intersectionReached.nextDestinations[this.origin.ref])
+                if(!canStay) this.walkPath(intersectionReached.nextDestinations[this.origin.ref], intersectionReached.coordinates)
                 else {
                     wait(250).then(() => {
                         this.updateDirections(intersectionReached.nextDestinations)
@@ -299,14 +300,14 @@ export default class MapScene extends MyScene {
             if(destination.ref in currentPos.nextDestinations){
                 // a direct path exists from your current position
                 const path = currentPos.nextDestinations[destination.ref]
-                this.walkPath(path)
+                this.walkPath(path, currentPos.coordinates)
             } else if(this.origin.ref in currentPos.nextDestinations){
                 // travel from another destination or intersection
                 // without direct path to selected destination
                 // must go back to origin before
                 const backToOrigin = currentPos.nextDestinations[this.origin.ref]
                 const path = this.origin.nextDestinations[destination.ref]
-                this.walkPath([...backToOrigin, ...path])
+                this.walkPath([...backToOrigin, ...path], currentPos.coordinates)
             }
         })
     }
@@ -338,21 +339,27 @@ export default class MapScene extends MyScene {
         })
     }
 
-    walkPath(path: Path){
+    walkPath(path: Path, from: [number, number]){
         const WALK_SPEED = 2.5;
         let STOP_FLAG = false;
         if(!this.player) return;
+
+        let x = from[0], y = from[1];
+        this.player.setPosition(x, y)
+        this.player.off("stop");
         this.player.once("stop", () => {
             STOP_FLAG = true
+            const reached = this.intersectionReached || this.destinationReached || this.origin            
             wait(200).then(() => {
                 this.player?.play("player_idle")
+                this.player?.setPosition(reached.coordinates[0], reached.coordinates[1])
                 this.isMoving = false;
+                STOP_FLAG = false;
             })
         })
         this.isMoving = true;
         this.directionsGroup?.clear(false, true)
 
-        let x = this.player.x, y = this.player.y;
         path.reduce(async (previousStep: Promise<any>, step) => {
             await previousStep;
             if(STOP_FLAG) return Promise.reject("STOP");
@@ -376,11 +383,10 @@ export default class MapScene extends MyScene {
         }, Promise.resolve()).then(() => {
             this.intersectionReached = null;
             this.destinationSelected = null;
-            this.isMoving = false;
+            wait(200).then(() => { this.isMoving = false; })
             this.player?.play("player_idle")
             this.updatePlayerPosition()         
         }).catch(e => { if( e!=="STOP") throw e })
-
     }
 
     getBoatCoordinates(){
