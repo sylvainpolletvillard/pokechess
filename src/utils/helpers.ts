@@ -99,3 +99,7 @@ export function isBetween(value: number, min: number, max:number): boolean {
 export function closest(value: number, propositions: number[]): number {
     return propositions.sort((a,b) => Math.abs(a-value) - Math.abs(b-value))[0]
 }
+
+export function arrayEquals(a: any[], b: any[]): boolean {
+    return a.length === b.length && a.every((val: any, i: number) => b[i] === val)
+}

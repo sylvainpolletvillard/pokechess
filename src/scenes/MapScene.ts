@@ -24,7 +24,7 @@ import { loadTilemaps } from '../data/tilemaps';
 import { MyScene } from './MyScene';
 import { setupAnims } from '../logic/anims';
 import { startMusic } from '../logic/audio';
-import { defer, wait } from '../utils/helpers';
+import { arrayEquals, wait } from '../utils/helpers';
 import { Z } from '../data/depths';
 import { fadeIn } from '../utils/camera';
 import { BOURG_PALETTE } from '../data/destinations/bourg_palette';
@@ -42,7 +42,6 @@ import { LAVANVILLE } from '../data/destinations/lavanville';
 import { OCEANE_AZURIA, OCEANE_CRAMOISILE } from '../data/destinations/oceane';
 import { clickEntry } from '../objects/menu';
 import { showNextLine } from '../logic/dialog';
-
 
 export default class MapScene extends MyScene {
     gameSpeed: number = 100;
@@ -150,7 +149,7 @@ export default class MapScene extends MyScene {
 
     changeOrigin(newOrigin: Destination){
         this.origin = newOrigin;
-        this.player?.setPosition(newOrigin.coordinates[0], newOrigin.coordinates[1]-4)
+        this.player?.setPosition(newOrigin.coordinates[0], newOrigin.coordinates[1])
         this.destinationReached = newOrigin;
         this.updateDestinations()
         this.updateDirections(this.origin.nextDestinations);
@@ -176,11 +175,16 @@ export default class MapScene extends MyScene {
         if(intersectionReached != null && !this.intersectionReached && !this.destinationSelected){
             this.destinationReached = null;
             this.intersectionReached = intersectionReached;
-            this.player.emit("stop")            
+            wait(200).then(() => {
+                this.player?.play("player_idle")
+                this.player?.setPosition(intersectionReached.coordinates[0], intersectionReached.coordinates[1])
+                this.isMoving = false;
+            })
             const onReach = intersectionReached.onReach || (() => Promise.resolve(true))
             return onReach().then((canStay: boolean) => {
-                if(!canStay) this.walkPath(intersectionReached.nextDestinations[this.origin.ref], intersectionReached.coordinates)
-                else {
+                if(!canStay){
+                    this.walkPath(intersectionReached.nextDestinations[this.origin.ref], intersectionReached.coordinates)
+                } else {
                     wait(250).then(() => {
                         this.updateDirections(intersectionReached.nextDestinations)
                     })
@@ -224,7 +228,7 @@ export default class MapScene extends MyScene {
 
     drawMapObjects(){
         const [px,py] = gameState.currentDestination.coordinates;
-        this.player = this.add.sprite(px,py-4, "characters")
+        this.player = this.add.sprite(px, py, "characters")
         this.player.play("player_idle").setDepth(Z.PLAYER)
         this.sprites.set("player", this.player)
 
@@ -341,28 +345,16 @@ export default class MapScene extends MyScene {
 
     walkPath(path: Path, from: [number, number]){
         const WALK_SPEED = 2.5;
-        let STOP_FLAG = false;
         if(!this.player) return;
 
         let x = from[0], y = from[1];
         this.player.setPosition(x, y)
-        this.player.off("stop");
-        this.player.once("stop", () => {
-            STOP_FLAG = true
-            const reached = this.intersectionReached || this.destinationReached || this.origin            
-            wait(200).then(() => {
-                this.player?.play("player_idle")
-                this.player?.setPosition(reached.coordinates[0], reached.coordinates[1])
-                this.isMoving = false;
-                STOP_FLAG = false;
-            })
-        })
         this.isMoving = true;
         this.directionsGroup?.clear(false, true)
 
         path.reduce(async (previousStep: Promise<any>, step) => {
             await previousStep;
-            if(STOP_FLAG) return Promise.reject("STOP");
+            if(this.intersectionReached && !arrayEquals(this.intersectionReached.coordinates, from)) return Promise.reject("STOP");
             const [dx, dy] = step;
             const stepDuration = getPathLength([step]) * 1000 / WALK_SPEED
             x += dx*16;
