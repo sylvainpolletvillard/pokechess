@@ -76,8 +76,9 @@ export function moveCursor(vector: Phaser.Math.Vector2, scene: MyScene, snapToGr
                     break;
                 case CursorZone.GRID:
                 default:
-                    const [row,col] = getCoordsFromPosition(x, y);
-                    [x, y] = getPositionFromCoords(row,col)
+                    const [col, row] = getCoordsFromPosition(x, y+10);
+                    [x, y] = getPositionFromCoords(col, row)
+                    y -= 10
                     break;
             }
         }
@@ -174,6 +175,7 @@ export function handleDragMove(scene: MyScene){
 }
 
 export function testIfCanBeDragged(sprite: Phaser.GameObjects.Sprite){
+    if(gameState.activeMenu?.ref === "pokedex") return false;
     if(sprite.getData("pokemon") != null){
         return sprite.getData("pokemon").owner === 1 
         && (gameState.stage === GameStage.PLACEMENT || [RoomType.SAFARI, RoomType.PENSION].includes(gameState.currentRoom.type ))

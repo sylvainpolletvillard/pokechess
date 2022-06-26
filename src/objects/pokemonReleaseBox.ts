@@ -66,18 +66,21 @@ export function displayPokemonReleaseBox(pokemon: PokemonOnBoard){
         })
         .on("over", () => {
             if(dragState.draggedElem != null){
-            dragState.draggedElem.setAlpha(0.3)
+                dragState.draggedElem.setTint(0xff0000)
+                bg.setTint(0xffffcc)
             }
         })
         .on("out", () => {
             if(dragState.draggedElem != null){
-                dragState.draggedElem.setAlpha(1)
+                dragState.draggedElem.setTint(0xffffff)
+                bg.setTint(0xffffff)
             }
         })
         .on("dropReceived", (pokemonSprite: Phaser.GameObjects.Sprite) => {
             const pokemon = pokemonSprite.getData("pokemon");
             if(pokemon != null){
-                releasePokemon(pokemon)            
+                bg.setTint(0xffffff)
+                releasePokemon(pokemon)           
             }
         })
 }

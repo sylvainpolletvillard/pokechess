@@ -20,6 +20,8 @@ body {
     left: calc(50% - 550px);
     position: absolute;
     top: 20px;
+    touch-action: none;
+    pointer-events: all;
 }
 
 #game {

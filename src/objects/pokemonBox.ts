@@ -3,17 +3,17 @@ import {
     addInteractiveElem,
     dragState,
     handleDragEnd, handleDragStart,
-    InteractiveElem,
-    removeInteractiveElem, testIfCanBeDragged, updateCursorHover
+    InteractiveElem, onCursorMove,
+    removeInteractiveElem, testIfCanBeDragged
 } from "./cursor";
 import GameScene from "../scenes/GameScene";
 import {makePokemonSprite} from "./pokemon";
 import {addToBox, removeFromTeam} from "../logic/box";
 import {displayPokemonInfo, hidePokemonInfo} from "./pokemonInfoBox";
-import {wait} from "../utils/helpers";
+import {clamp, closest, wait} from "../utils/helpers";
 import {Z} from "../data/depths";
 import {gameState} from "../logic/gamestate";
-import { drawTeamSizeCounter } from "../logic/board";
+import { drawTeamSizeCounter, getCoordsFromPosition, getPositionFromCoords } from "../logic/board";
 import { playSound } from "../logic/audio";
 
 let selectedIndex: number = -1
@@ -21,6 +21,9 @@ let interactiveElems: InteractiveElem[] = [];
 const ox = 20, oy = 100,  WIDTH = 248, HEIGHT = 24;
 const NB_ROWS = 1, NB_COLS = 8;
 const CASE_SIZE = 28, CASE_GAP = 4, L = CASE_SIZE + CASE_GAP;
+
+enum CursorZone { GRID, BOX, BUTTONS, RELEASE }
+let cursorZone: CursorZone = CursorZone.BOX
 
 export function openBox(game: GameScene){
     playSound("menu_open")
@@ -37,14 +40,49 @@ export function openBox(game: GameScene){
         },
         handleMove(moveVector){
             playSound("tick")
-            if(moveVector.x > 0){
-                selectedIndex = (selectedIndex+1) % 8
-            } else if(moveVector.x < 0){
-                if(selectedIndex === -1) selectedIndex = 9
-                selectedIndex = (selectedIndex+8-1) % 8
+
+            const cursor = game.sprites.get("cursor")
+            if(!cursor) return
+            let x = cursor.x, y= cursor.y;
+
+            if(moveVector.y > 0 && cursorZone === CursorZone.BOX){
+                cursorZone = CursorZone.GRID
+                y += 16
+            } 
+            else if(moveVector.y < 0 && cursorZone === CursorZone.GRID && y < 180){
+                cursorZone = CursorZone.BOX
+            } else if(moveVector.y > 0 && cursorZone === CursorZone.GRID && y > 260){
+                cursorZone = CursorZone.BUTTONS
+            } else if(moveVector.y < 0 && cursorZone === CursorZone.BUTTONS){
+                cursorZone = CursorZone.GRID
+            } else if(moveVector.y < 0 && cursorZone === CursorZone.BOX && dragState.draggedElem != null){
+                cursorZone = CursorZone.RELEASE
+            } else if(moveVector.y > 0 && cursorZone === CursorZone.RELEASE){
+                cursorZone = CursorZone.BOX
             }
-            game.sprites.get("cursor")?.setPosition(ox + 16 + CASE_GAP + L*selectedIndex, oy + 20 + CASE_GAP)
-            updateCursorHover(game)
+
+            x += moveVector.x;
+            y += moveVector.y;
+
+            if(cursorZone === CursorZone.BOX){
+                selectedIndex = clamp(Math.round((x - (ox + 16 + CASE_GAP)) / L), 0, 7)
+                x = ox + 20 + CASE_GAP + L*selectedIndex
+                y = oy + 16 + CASE_GAP
+            } else if(cursorZone === CursorZone.GRID){
+                let [col, row] = getCoordsFromPosition(x, y+10);
+                col = clamp(col, 0, 6);
+                row = clamp(row, 4, 7);
+                [x, y] = getPositionFromCoords(col, row)
+                y -= 10
+            } else if(cursorZone === CursorZone.BUTTONS){
+                [x,y] = [closest(x, [100, 160, 220]), game.scale.height - 24]
+            } else if(cursorZone === CursorZone.RELEASE){
+                x = game.scale.width / 2 + 24
+                y = 10
+            }
+
+            game.sprites.get("cursor")?.setPosition(x,y)
+            onCursorMove()
         }
     })
 }
