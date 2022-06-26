@@ -5,7 +5,7 @@ import { OWNER_PLAYER } from "../data/owners"
 import { TYPE_COMBAT, TYPE_DRAGON, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
 import GameScene from "../scenes/GameScene"
-import { removeInArray } from "../utils/helpers"
+import { defer, removeInArray, wait } from "../utils/helpers"
 import { addAlteration } from "./alteration"
 import { playSound } from "./audio"
 import { getPokemonOnTile, isOnBoard } from "./board"
@@ -48,7 +48,116 @@ export function applyBuffs(pokemon: PokemonOnBoard){
     const game = gameState.activeScene as GameScene    
     const alliances = pokemon.owner === OWNER_PLAYER ? gameState.board.playerAlliances : gameState.board.otherTeamAlliances
     pokemon.buffs = resetBuffs()
-    
+
+    // ITEMS
+
+    // BAIES
+    if(pokemon.item === BAIE_SITRUS){
+        const baie: OnHitReceivedEffect = ({ damage }) => {
+            if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
+                pokemon.item = null;
+                playSound("heal_ailment")
+                healPokemon(pokemon, 0.25 * pokemon.maxPV)
+                defer(() => removeInArray(pokemon.buffs.onHitReceived, baie))
+            }
+        }
+        pokemon.buffs.onHitReceived.push(baie)
+    }
+
+    if(pokemon.item === BAIE_ORAN){
+        const baie: OnHitReceivedEffect = ({ damage }) => {
+            if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
+                pokemon.item = null;
+                playSound("heal_ailment")
+                defer(() => removeInArray(pokemon.buffs.onHitReceived, baie))
+                pokemon.buffs.defense.push(() => 0.3)
+            }
+        }
+        pokemon.buffs.onHitReceived.push(baie)
+    }
+
+    if(pokemon.item === BAIE_MEPO){
+        const baie: OnHitReceivedEffect = () => {
+            pokemon.item = null;
+            playSound("heal_ailment")
+            defer(() => removeInArray(pokemon.buffs.onHitReceived, baie))
+            pokemon.buffs.onHitReceived.push(() => {
+                pokemon.pp = Math.min(pokemon.pp + 2, pokemon.maxPP)
+            })
+        }
+        pokemon.buffs.onHitReceived.push(baie)
+    }
+
+    // STATS BOOSTERS
+    if(pokemon.item === ATTAQUE_PLUS) pokemon.buffs.attack.push(() => 0.2)
+    if(pokemon.item === DEFENSE_PLUS) pokemon.buffs.defense.push(() => 0.2)
+    if(pokemon.item === VITESSE_PLUS) pokemon.buffs.speed.push(() => 0.2)
+
+    // ITEMS RANG 4
+    if(pokemon.item === GRELOT_COQUE){
+        pokemon.buffs.onHit.push(({ damage }) => {
+            healPokemon(pokemon, damage*0.2)
+        })
+    }
+
+    if(pokemon.item === BOULE_FUMEE){
+        const buff: OnHitReceivedEffect = ({ damage }) => {
+            if(pokemon.pv - damage < 0.3 * pokemon.maxPV){
+                pokemon.makeUntargettable(3000)
+                playSound("fly")
+                const pokemonSprite = game.sprites.get(pokemon.uid)
+                if(pokemonSprite) makeEffectSprite(EFFECTS.BROUILLARD, pokemonSprite.x, pokemonSprite.y, game)
+                removeInArray(pokemon.buffs.onHitReceived, buff)
+            }
+        }
+        pokemon.buffs.onHitReceived.push(buff)
+    }
+
+    if(pokemon.item === MAX_ELIXIR){
+        pokemon.buffs.onHit.push(() => {
+            pokemon.pp = Math.min(pokemon.pp + 4, pokemon.maxPP)
+        })
+    }
+
+    // ITEMS RANG 5
+    if(pokemon.item === ENCENS_FLEUR){
+        pokemon.buffs.clock.push(() => {
+            const [i,j] = [pokemon.x, pokemon.y]
+            const tilesImpacted = [
+                [i-1,j-1], [i,j-1], [i+1,j-1],
+                [i-1, j ], [i, j ], [i+1, j ],
+                [i-1,j+1], [i,j+1], [i+1,j+1]
+            ].filter(([i,j]) => isOnBoard(i,j))
+
+            tilesImpacted.forEach(([i,j]) => {
+                const target = getPokemonOnTile(i,j)
+                if(target && target.owner === pokemon.owner){
+                    healPokemon(target, target.maxPV * (1/100))
+                }
+            })            
+        })
+    }
+
+    if(pokemon.item === ORBE_TOXIQUE){
+        pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.POISON, stacks: 10 }, game) })
+        pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.POISON, stacks: 10 }, game) })
+    }
+
+    if(pokemon.item === ORBE_FLAMME){
+        pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.BRULURE, stacks: 10 }, game) })
+        pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.BRULURE, stacks: 10 }, game) })
+    }
+
+    if(pokemon.item === ORBE_GLACE){
+        pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.GEL, stacks: 10 }, game) })
+        pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.GEL, stacks: 10 }, game) })
+    }
+
+    // ITEMS CHAMPION
+    if(pokemon.item === ITEM_PARAPLUIE){
+        pokemon.unalterable = true
+    }
+
     alliances.forEach(allianceState => {
         // BONUS ALLIANCE FEU
         if(pokemon.hasType(TYPE_FEU) && allianceState.type === TYPE_FEU && allianceState.stepReached){
@@ -167,118 +276,5 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             pokemon.buffs.defense.push(() => isLastDragon() ? 0.1 * allianceState.stepReachedN : 0);
             pokemon.buffs.speed.push(() => isLastDragon() ? 0.1 * allianceState.stepReachedN : 0);            
         }
-
-        // ITEMS
-
-        // BAIES
-        if(pokemon.item === BAIE_SITRUS){
-            const baie: OnHitReceivedEffect = ({ damage }) => {
-                if(pokemon.item === null) return;
-                if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
-                    pokemon.item = null;
-                    playSound("heal_ailment")
-                    healPokemon(pokemon, 0.25 * pokemon.maxPV)
-                    removeInArray(pokemon.buffs.onHitReceived, baie)
-                }
-            }
-            pokemon.buffs.onHitReceived.push(baie)
-        }
-
-        if(pokemon.item === BAIE_ORAN){
-            const baie: OnHitReceivedEffect = ({ damage }) => {
-                if(pokemon.item === null) return;
-                if(pokemon.pv - damage < 0.5 * pokemon.maxPV){
-                    pokemon.item = null;
-                    playSound("heal_ailment")
-                    removeInArray(pokemon.buffs.onHitReceived, baie)
-                    pokemon.buffs.defense.push(() => 0.3)
-                }
-            }
-            pokemon.buffs.onHitReceived.push(baie)
-        }
-
-        if(pokemon.item === BAIE_MEPO){
-            const baie: OnHitReceivedEffect = () => {
-                if(pokemon.item === null) return;
-                pokemon.item = null;
-                playSound("heal_ailment")
-                removeInArray(pokemon.buffs.onHitReceived, baie)
-                pokemon.buffs.onHitReceived.push(() => {
-                    pokemon.pp = Math.min(pokemon.pp + 2, pokemon.maxPP)
-                })
-            }
-            pokemon.buffs.onHitReceived.push(baie)
-        }
-
-        // STATS BOOSTERS
-        if(pokemon.item === ATTAQUE_PLUS) pokemon.buffs.attack.push(() => 0.2)
-        if(pokemon.item === DEFENSE_PLUS) pokemon.buffs.defense.push(() => 0.2)
-        if(pokemon.item === VITESSE_PLUS) pokemon.buffs.speed.push(() => 0.2)
-
-        // ITEMS RANG 4
-        if(pokemon.item === GRELOT_COQUE){
-            pokemon.buffs.onHit.push(({ damage }) => {
-                healPokemon(pokemon, damage*0.2)
-            })
-        }
-
-        if(pokemon.item === BOULE_FUMEE){
-            const buff: OnHitReceivedEffect = ({ damage }) => {
-                if(pokemon.pv - damage < 0.3 * pokemon.maxPV){
-                    pokemon.makeUntargettable(3000)
-                    playSound("fly")
-                    const pokemonSprite = game.sprites.get(pokemon.uid)
-                    if(pokemonSprite) makeEffectSprite(EFFECTS.BROUILLARD, pokemonSprite.x, pokemonSprite.y, game)
-                    removeInArray(pokemon.buffs.onHitReceived, buff)
-                }
-            }
-            pokemon.buffs.onHitReceived.push(buff)
-        }
-
-        if(pokemon.item === MAX_ELIXIR){
-            pokemon.buffs.onHit.push(() => {
-                pokemon.pp = Math.min(pokemon.pp + 4, pokemon.maxPP)
-            })
-        }
-
-        // ITEMS RANG 5
-        if(pokemon.item === ENCENS_FLEUR){
-            pokemon.buffs.clock.push(() => {
-                const [i,j] = [pokemon.x, pokemon.y]
-                const tilesImpacted = [
-                    [i-1,j-1], [i,j-1], [i+1,j-1],
-                    [i-1, j ], [i, j ], [i+1, j ],
-                    [i-1,j+1], [i,j+1], [i+1,j+1]
-                ].filter(([i,j]) => isOnBoard(i,j))
-    
-                tilesImpacted.forEach(([i,j]) => {
-                    const target = getPokemonOnTile(i,j)
-                    if(target && target.owner === pokemon.owner){
-                        healPokemon(target, target.maxPV * (1/100))
-                    }
-                })            
-            })
-        }
-
-        if(pokemon.item === ORBE_TOXIQUE){
-            pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.POISON, stacks: 10 }, game) })
-            pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.POISON, stacks: 10 }, game) })
-        }
-
-        if(pokemon.item === ORBE_FLAMME){
-            pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.BRULURE, stacks: 10 }, game) })
-            pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.BRULURE, stacks: 10 }, game) })
-        }
-
-        if(pokemon.item === ORBE_GLACE){
-            pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.GEL, stacks: 10 }, game) })
-            pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.GEL, stacks: 10 }, game) })
-        }
-
-        // ITEMS CHAMPION
-        if(pokemon.item === ITEM_PARAPLUIE){
-            pokemon.unalterable = true
-        }
-
     })
 }

@@ -10,6 +10,10 @@ export function wait(ms: number = 0): Promise<void>{
     })
 }
 
+export function defer(callback: () => void): Promise<void> {
+    return Promise.resolve().then(callback)
+}
+
 export function clearTimeouts(){
     timeouts.forEach(timeout => clearTimeout(timeout))
     timeouts.clear()
