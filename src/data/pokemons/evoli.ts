@@ -6,7 +6,7 @@ export const EVOLI: PokemonEntry = {
     ref: "evoli",
     name: "Evoli",
     maxPV: 55,
-    maxPP: 50,
+    maxPP: 40,
     attack: 55,
     defense: 50,
     speed: 55,

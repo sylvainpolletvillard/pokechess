@@ -245,26 +245,25 @@ export function morphing(attacker: PokemonOnBoard, target: PokemonOnBoard, game:
 }
 
 export function evolution(attacker: PokemonOnBoard, target: PokemonOnBoard, game: GameScene){
-    attacker.initialEntry = attacker.entry
-        // aquali voltali pyroli
-        const EVOLI_MAPPING = new Map([
-            [TYPE_COMBAT, AQUALI],
-            [TYPE_DRAGON, VOLTALI],
-            [TYPE_EAU, VOLTALI],
-            [TYPE_ELECTRIQUE, PYROLI],
-            [TYPE_FEE, VOLTALI],
-            [TYPE_FEU, AQUALI],
-            [TYPE_GLACE, PYROLI],
-            [TYPE_INSECTE, PYROLI],
-            [TYPE_NORMAL, VOLTALI],
-            [TYPE_PLANTE, PYROLI],
-            [TYPE_POISON, VOLTALI],
-            [TYPE_PSY, AQUALI],
-            [TYPE_ROCHE, AQUALI],
-            [TYPE_SOL, AQUALI],
-            [TYPE_SPECTRE, PYROLI],
-            [TYPE_VOL, VOLTALI]
-        ])
+    // choisir entre aquali voltali pyroli selon la cible
+    const EVOLI_MAPPING = new Map([
+        [TYPE_COMBAT, AQUALI],
+        [TYPE_DRAGON, VOLTALI],
+        [TYPE_EAU, VOLTALI],
+        [TYPE_ELECTRIQUE, PYROLI],
+        [TYPE_FEE, VOLTALI],
+        [TYPE_FEU, AQUALI],
+        [TYPE_GLACE, PYROLI],
+        [TYPE_INSECTE, PYROLI],
+        [TYPE_NORMAL, VOLTALI],
+        [TYPE_PLANTE, PYROLI],
+        [TYPE_POISON, VOLTALI],
+        [TYPE_PSY, AQUALI],
+        [TYPE_ROCHE, AQUALI],
+        [TYPE_SOL, AQUALI],
+        [TYPE_SPECTRE, PYROLI],
+        [TYPE_VOL, VOLTALI]
+    ])
 
     attacker.entry = EVOLI_MAPPING.get(target.types[0]) ?? PYROLI
     healPokemon(attacker, 0.2 * attacker.maxPV)
