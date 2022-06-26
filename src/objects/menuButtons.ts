@@ -181,7 +181,7 @@ export function drawBoxButton(game: GameScene){
             if(pokemon != null){
                 boxButtonText?.destroy()
                 if(gameState.pension.includes(pokemon)) removeFromPension(pokemon)
-                else removeFromTeam(pokemon)
+                else removeFromTeam(pokemon, gameState.board.playerTeam)
                 addToBox(pokemon)
                 drawTeamSizeCounter()
             }

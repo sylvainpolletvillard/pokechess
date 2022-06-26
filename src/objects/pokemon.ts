@@ -1,7 +1,7 @@
 import {getPokemonCry, Pokemon, PokemonAction, PokemonConstructor, PokemonEntry, PokemonTypeAction} from "../data/pokemons";
 import GameScene from "../scenes/GameScene";
 import {addInteractiveElem, dragState, handleDragStart, testIfCanBeDragged} from "./cursor";
-import {clamp, wait} from "../utils/helpers";
+import {clamp, defer, wait} from "../utils/helpers";
 import {capturePokemon, getPositionFromCoords} from "../logic/board";
 import {Direction} from "../utils/directions";
 import {removeFromBox} from "../logic/box";
@@ -206,7 +206,7 @@ export function makePokemonSprite(
 
     sprite.on('click', () => {
         if(dragState.draggedElem === null && testIfCanBeDragged(sprite)){
-            wait(50).then(() => handleDragStart(sprite, game))
+            defer(() => handleDragStart(sprite, game))
         }
         if(getCurrentPokemonCaptureInfoDisplayed() === pokemon
             && pokemon instanceof PokemonOnBoard

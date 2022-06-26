@@ -13,6 +13,7 @@ import { removeInArray, wait } from '../utils/helpers';
 import { playSound } from './audio';
 import { getAlliancesState } from './player';
 import { updateCursorHover } from '../objects/cursor';
+import { OWNER_PLAYER } from '../data/owners';
 
 export function removeFromBox(pokemon: Pokemon){
     const box = gameState.player.box;
@@ -54,7 +55,7 @@ export function addToBox(pokemon: Pokemon, caseIndex?: number){
 }
 
 export function addToTeam(pokemon: PokemonOnBoard){
-    pokemon.owner = 1;
+    pokemon.owner = OWNER_PLAYER;
     gameState.board.playerTeam.push(pokemon)
     gameState.player.team.push(pokemon)
     if(gameState.activeScene instanceof GameScene){
@@ -63,21 +64,19 @@ export function addToTeam(pokemon: PokemonOnBoard){
     }    
 }
 
-export function removeFromTeam(pokemon: PokemonOnBoard){
-    if(pokemon.owner === 1){
+export function removeFromTeam(pokemon: PokemonOnBoard, team: PokemonOnBoard[]){
+    removeInArray(team, pokemon)
+    if(team === gameState.board.playerTeam){
         removeInArray(gameState.player.team, pokemon)
-        removeInArray(gameState.board.playerTeam, pokemon)
         gameState.board.playerAlliances = getAlliancesState(gameState.board.playerTeam)
         drawAlliancesInfo(gameState.board.playerTeam)
-    } else {
-        removeInArray(gameState.board.otherTeam, pokemon)
     }
 }
 
 export function releasePokemon(pokemon: Pokemon){
     const game = gameState.activeScene as GameScene
     if(pokemon instanceof PokemonOnBoard){
-        removeFromTeam(pokemon)
+        removeFromTeam(pokemon, gameState.board.playerTeam)
     } else {
         removeFromBox(pokemon)
     }

@@ -10,7 +10,7 @@ import GameScene from "../scenes/GameScene";
 import {makePokemonSprite} from "./pokemon";
 import {addToBox, removeFromTeam} from "../logic/box";
 import {displayPokemonInfo, hidePokemonInfo} from "./pokemonInfoBox";
-import {clamp, closest, wait} from "../utils/helpers";
+import {clamp, closest, defer} from "../utils/helpers";
 import {Z} from "../data/depths";
 import {gameState} from "../logic/gamestate";
 import { drawTeamSizeCounter, getCoordsFromPosition, getPositionFromCoords } from "../logic/board";
@@ -146,11 +146,14 @@ export function dropPokemonInBox(caseIndex:number, game: GameScene){
     if(previousPokemonOnZone != null){
         const newPokemonSprite = game.sprites.get(previousPokemonOnZone.uid)
         if(newPokemonSprite && testIfCanBeDragged(newPokemonSprite)){
-            wait().then(() => handleDragStart(newPokemonSprite, game))
+            defer(() => {
+                gameState.activeMenu?.container?.remove(newPokemonSprite)
+                handleDragStart(newPokemonSprite, game)
+            })
         }
     }
 
-    removeFromTeam(droppedPokemon)
+    removeFromTeam(droppedPokemon, gameState.board.playerTeam)
     addToBox(droppedPokemon, caseIndex)
     drawTeamSizeCounter()
 }

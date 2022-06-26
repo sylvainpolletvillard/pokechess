@@ -13,7 +13,7 @@ import {
 } from "../objects/cursor";
 import {makePokemonSprite, PokemonOnBoard} from "../objects/pokemon";
 import {getPokemonCry, Pokemon} from "../data/pokemons";
-import {wait} from "../utils/helpers";
+import {defer, wait} from "../utils/helpers";
 import {Z} from "../data/depths";
 import { NO_OWNER, OWNER_CHANGING, OWNER_PLAYER } from "../data/owners";
 import { RoomBoard, RoomType, RoomWild} from "../types/destination";
@@ -235,7 +235,7 @@ export async function capturePokemon(
         })
         await wait(800)
         pokeball.destroy()
-        removeFromTeam(pokemon)
+        removeFromTeam(pokemon, gameState.board.otherTeam)
         pokemon.owner = OWNER_PLAYER
 
         const pokemons = gameState.player.boardAndBox
@@ -395,7 +395,7 @@ export function dropPokemonOnBoard(sprite: Phaser.GameObjects.Sprite, x:number, 
         pokemonOnBoard = pokemon
         if(gameState.currentRoom.type === RoomType.PENSION){
             if(y<4){
-                removeFromTeam(pokemonOnBoard)
+                removeFromTeam(pokemonOnBoard, gameState.board.playerTeam)
                 addToPension(pokemonOnBoard)                
                 sprite.setAlpha(1)
                 sprite.anims.resume()
@@ -511,7 +511,7 @@ export function dropItemOnPokemon(droppedSprite: Phaser.GameObjects.Sprite, x: n
     if(pokemon == null) return;
     if(pokemon.item != null){
         let previousItem = pokemon.item
-        wait(10).then(() => {
+        defer(() => {
             const itemSprite = makeItemSprite(previousItem)
             handleDragStart(itemSprite, game)
         })
