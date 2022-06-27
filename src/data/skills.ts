@@ -85,6 +85,7 @@ import {METEORES} from "./skills/meteores";
 import {POUVOIR_LUNAIRE} from "./skills/pouvoirLunaire";
 import {MORPHING} from "./skills/morphing";
 import {EVOLUTION} from "./skills/evolution";
+import {TRIPLATTAQUE} from "./skills/triplattaque";
 import {ADAPTATION} from "./skills/adaptation";
 import {TUNNEL} from "./skills/tunnel";
 import {PSYKO} from "./skills/psyko";
@@ -180,6 +181,7 @@ export const SKILLS = {
     POUVOIR_LUNAIRE,
     MORPHING,
     EVOLUTION,
+    TRIPLATTAQUE,
     ADAPTATION,
     TUNNEL,
     PSYKO,

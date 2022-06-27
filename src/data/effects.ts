@@ -309,8 +309,8 @@ export const EFFECTS: { [name: string] : Effect} = {
         position: "source_ground",
         delta: -24
     },
-    FURIE: {
-        key: "furie",
+    PICPIC: {
+        key: "picpic",
         frames: [157,156,155,154],
         frameRate: 8,
         position: "target_ground"
@@ -514,11 +514,11 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         position: "source_ground"
     },
-    PICPIC: {
-        key: "picpic",
+    FURIE: {
+        key: "furie",
         frames: [289,290,291,292,293],
         frameRate: 8,
-        position: "target"
+        position: "source"
     },
     DRACORAGE: {
         key: "dracorage",
@@ -792,5 +792,15 @@ export const EFFECTS: { [name: string] : Effect} = {
         frameRate: 8,
         depth: Z.SKILL_EFFECT_ABOVE_POKEMON,
         position: "target_ground"        
+    },
+    TRIPLATTAQUE: {
+        key: "triplattaque",
+        frames: [500,501,502,503,504,505,506,507],
+        frameRate: 8
+    },
+    TRIPLATTAQUE_HIT: {
+        key: "triplattaque_hit",
+        frames: [508,509,510,511,512],
+        frameRate: 8
     }
 }

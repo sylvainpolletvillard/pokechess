@@ -8,8 +8,8 @@ export const TUNNEL: SpecialSkill = {
     attackRange: 9,
     effect: EFFECTS.TUNNEL,
     behavior: SkillBehavior.SPECIAL,
-    power: 50,
-    type: POKEMON_TYPES.PSY,
+    power: 100,
+    type: POKEMON_TYPES.SOL,
     triggerSpecial: "tunnel",
     hitDelay: 500
 }

@@ -7,7 +7,7 @@ export const PIAFABEC: PokemonEntry = {
     ref: "piafabec",
     name: "Piafabec",
     maxPV: 40,
-    maxPP: 20,
+    maxPP: 10,
     attack: 60,
     defense: 30,
     speed: 70,

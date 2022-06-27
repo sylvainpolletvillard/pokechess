@@ -193,7 +193,7 @@ export async function capturePokemon(
 ){
     hidePokemonInfo()
     hidePokemonCaptureInfo(game)
-    pokemon.owner = OWNER_CHANGING // temp owner while waiting for end anim
+    pokemon.owner = OWNER_CHANGING // temporary owner while waiting for end anim
     spend(pokemon.cost)
 
     const player = game.sprites.get("player")

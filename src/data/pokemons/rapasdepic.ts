@@ -6,7 +6,7 @@ export const RAPASDEPIC: PokemonEntry = {
     ref: "rapasdepic",
     name: "Rapasdepic",
     maxPV: 65,
-    maxPP: 20,
+    maxPP: 10,
     attack: 90,
     defense: 65,
     speed: 100,

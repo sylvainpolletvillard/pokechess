@@ -7,7 +7,7 @@ export const DODUO: PokemonEntry = {
     ref: "doduo",
     name: "Doduo",
     maxPV: 35,
-    maxPP: 20,
+    maxPP: 10,
     attack: 85,
     defense: 45,
     speed: 75,

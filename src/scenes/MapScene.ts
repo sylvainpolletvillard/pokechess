@@ -140,7 +140,7 @@ export default class MapScene extends MyScene {
 
     onPressStart() {
         // TEMP
-        this.destinationReached && this.changeOrigin(this.destinationReached)
+        //this.destinationReached && this.changeOrigin(this.destinationReached)
     }
 
     onClick(){

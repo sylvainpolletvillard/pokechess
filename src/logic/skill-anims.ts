@@ -123,7 +123,7 @@ export function renderSkillEffect(skill: Skill, attacker: PokemonOnBoard, target
         }
         if(skill.knockback){
             let knockbackAngle = Math.atan2(attacker.y - target.y, target.x - attacker.x)
-            knockback(target, knockbackAngle, game)
+            knockbackTarget(target, knockbackAngle, game)
         }
     })
 }
@@ -231,7 +231,7 @@ export function sendPokemonCharge(attacker: PokemonOnBoard, target: PokemonOnBoa
     });
 }
 
-export function knockback(pokemon: PokemonOnBoard, angle: number, game: GameScene){    
+export function knockbackTarget(pokemon: PokemonOnBoard, angle: number, game: GameScene){    
     const sprite = game.sprites.get(pokemon.uid)
     let knockbackStrength = pokemon.alliances.get(TYPE_EAU)?.stepReachedN ?? 0
 

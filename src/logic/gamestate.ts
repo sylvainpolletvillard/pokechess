@@ -127,14 +127,14 @@ export class GameState {
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
         gameState.player.inventory[ORBE_GLACE.ref] = 1
-
+        
         gameState.player.team = [
-            //new PokemonOnBoard( POISSIRENE, 1, levelToXP(24), null, 3 ,6),
-            //new PokemonOnBoard( POISSOROY, 1, levelToXP(24), null, 2 ,7),
+            new PokemonOnBoard({ entry: DODRIO, owner: 1, level: 24, x:3, y:6 }),
+            new PokemonOnBoard({ entry: TRIOPIKEUR, owner: 1, level: 24, x:2, y:7 }),
         ]
         enterDestination(TEST_ROOM([
-            new PokemonOnBoard( POISSIRENE, 2, levelToXP(22), null, 1 ,2),
-            new PokemonOnBoard( CARABAFFE, 2, levelToXP(22), null, 5 ,2),
+            new PokemonOnBoard({ entry: NOADKOKO, owner: 2, level: 24, x:1, y:2 }),
+            new PokemonOnBoard({ entry: NOADKOKO, owner: 2, level: 24, x:5, y:2 }),
         ]))
         
         this.initRoom()
