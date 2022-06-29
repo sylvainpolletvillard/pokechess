@@ -60,19 +60,19 @@ export class Level {
 
         scene.groups = {}
 
-        scene.groups.characters = scene.add.group([], { key:"characters" });
+        scene.groups.characters = scene.add.group();
         scene.groups.characters.enableBody = true
         scene.groups.characters.add(scene.player?.sprite)
 
-        scene.groups.objects = scene.add.group([], { key: "objects" })
+        scene.groups.objects = scene.add.group()
         scene.groups.objects.enableBody = true
 
-        scene.groups.triggers = scene.add.group([], { key: "triggers" });
+        scene.groups.triggers = scene.add.group();
         scene.groups.triggers.enableBody = true
 
         //this.layer_top?.bringToTop();
 
-        scene.groups.hud = scene.add.group([], { key: "hud" });
+        scene.groups.hud = scene.add.group();
     }
 
     createCharacters() {
