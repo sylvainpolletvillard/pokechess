@@ -57,7 +57,7 @@ export function spawnChampionTeam(pokemons: PokemonEntry[], positions: [number, 
         team.push(new PokemonOnBoard({
             entry: pokemons[i],
             owner: OWNER_TRAINER,
-            level: clamp((gameState.player.badges.length + 2) * 5 + (i%5), 1, 100),
+            level: clamp((gameState.player.badges.length + 1) * 5 + (i%5), 1, 100),
             x, y
         }))
     }
@@ -77,7 +77,7 @@ export function spawnTrainerTeam(pokemons: PokemonEntry[]): PokemonOnBoard[] {
         let x=0, y=0, entry, level
         do {
             entry = pickRandomIn(pokemons)
-            level = clamp(gameState.player.averagePokemonLevel + randomInt(-3,+1), 3, 50)
+            level = clamp(gameState.player.averagePokemonLevel + randomInt(-4,+0), 2, 50)
             x = randomInt(0, 6)
             y = clamp(4 - entry.baseSkill.attackRange, 0, 3)
         } while(team.some(p => p.x === x && p.y === y))
