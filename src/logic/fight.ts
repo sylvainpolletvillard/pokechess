@@ -108,7 +108,7 @@ export function moveToTarget(pokemon: PokemonOnBoard, target: PokemonOnBoard, ga
         sprite.anims.resume()
         pokemon.x = nextX;
         pokemon.y = nextY;
-        const duration = 3000000 / (pokemon.speed+20) / game.gameSpeed
+        const duration = 2500000 / (pokemon.speed+30) / game.gameSpeed
         game.tweens.add({
             targets: sprite,
             x: sceneX,
