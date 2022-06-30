@@ -6,7 +6,7 @@ export const LOKHLASS: PokemonEntry = {
     ref: "lokhlass",
     name: "Lokhlass",
     maxPV: 130,
-    maxPP: 20,
+    maxPP: 16,
     attack: 85,
     defense: 80,
     speed: 60,

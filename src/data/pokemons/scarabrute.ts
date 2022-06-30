@@ -6,7 +6,7 @@ export const SCARABRUTE: PokemonEntry = {
     ref: "scarabrute",
     name: "Scarabrute",
     maxPV: 65,
-    maxPP: 30,
+    maxPP: 25,
     attack: 125,
     defense: 100,
     speed: 85,

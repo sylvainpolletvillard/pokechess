@@ -6,7 +6,7 @@ export const KICKLEE: PokemonEntry = {
     ref: "kicklee",
     name: "Kicklee",
     maxPV: 50,
-    maxPP: 20,
+    maxPP: 12,
     attack: 120,
     defense: 53,
     speed: 87,

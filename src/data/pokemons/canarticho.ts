@@ -6,7 +6,7 @@ export const CANARTICHO: PokemonEntry = {
     ref: "canarticho",
     name: "Canarticho",
     maxPV: 52,
-    maxPP: 20,
+    maxPP: 15,
     attack: 90,
     defense: 55,
     speed: 60,

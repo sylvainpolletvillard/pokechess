@@ -7,7 +7,7 @@ export const FANTOMINUS: PokemonEntry = {
     ref: "fantominus",
     name: "Fantominus",
     maxPV: 30,
-    maxPP: 20,
+    maxPP: 16,
     attack: 35,
     defense: 30,
     speed: 80,

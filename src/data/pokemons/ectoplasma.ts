@@ -6,7 +6,7 @@ export const ECTOPLASMA: PokemonEntry = {
     ref: "ectoplasma",
     name: "Ectoplasma",
     maxPV: 60,
-    maxPP: 20,
+    maxPP: 16,
     attack: 65,
     defense: 60,
     speed: 110,

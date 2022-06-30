@@ -6,7 +6,7 @@ export const INSECATEUR: PokemonEntry = {
     ref: "insecateur",
     name: "Insecateur",
     maxPV: 70,
-    maxPP: 20,
+    maxPP: 10,
     attack: 110,
     defense: 80,
     speed: 105,

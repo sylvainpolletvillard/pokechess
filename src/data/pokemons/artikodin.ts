@@ -6,7 +6,7 @@ export const ARTIKODIN: PokemonEntry = {
     ref: "artikodin",
     name: "Artikodin",
     maxPV: 90,
-    maxPP: 20,
+    maxPP: 30,
     attack: 95,
     defense: 100,
     speed: 85,

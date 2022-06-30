@@ -7,7 +7,7 @@ export const SPECTRUM: PokemonEntry = {
     ref: "spectrum",
     name: "Spectrum",
     maxPV: 45,
-    maxPP: 20,
+    maxPP: 16,
     attack: 50,
     defense: 45,
     speed: 95,

@@ -17,7 +17,7 @@ export const BOMB_OEUF: AOESkill = {
             [i-1, j+1], [i,j+1], [i+1, j+1],
         ]
     },
-    power: 150,
+    power: 200,
     effect: EFFECTS.BOMB_OEUF,
     hitDelay: 1000,
     hitEffect: EFFECTS.BOMB_OEUF_HIT

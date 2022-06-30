@@ -6,7 +6,7 @@ export const AKWAKWAK: PokemonEntry = {
     ref: "akwakwak",
     name: "Akwakwak ",
     maxPV: 80,
-    maxPP: 20,
+    maxPP: 16,
     attack: 82,
     defense: 78,
     speed: 85,
