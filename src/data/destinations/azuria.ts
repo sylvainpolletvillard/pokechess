@@ -35,7 +35,7 @@ export const AZURIA: Destination = {
     },
     coordinates: [14*16 -8, 3*16 -8],
     type: DestinationType.ARENA,
-    icons: ["type_EAU", "badge_cascade"],
+    icons: ["badge_cascade", "type_EAU"],
     rooms: {
         arena: {
             type: RoomType.ARENA,

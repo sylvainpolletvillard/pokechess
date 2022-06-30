@@ -105,7 +105,7 @@ export const JADIELLE: Destination = {
     },
     coordinates: [5*16 -8, 12*16 -8],
     type: DestinationType.ARENA,
-    icons: ["type_SOL", "badge_terre"],
+    icons: ["badge_terre", "type_SOL"],
     rooms: {
         arena: ARENA_GIOVANNI,
         tuto_dresseur: TUTO_SBIRE,

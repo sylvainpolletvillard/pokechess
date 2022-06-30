@@ -25,7 +25,7 @@ export const PARMANIE: Destination = {
     },
     coordinates: [13*16 -8, 16*16 -8],
     type: DestinationType.ARENA,
-    icons: ["type_POISON", "badge_ame"],
+    icons: ["badge_ame", "type_POISON"],
     subtext: "Arène",
     rooms: {
         arena: {

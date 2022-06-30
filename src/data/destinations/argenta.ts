@@ -32,7 +32,7 @@ export const ARGENTA: Destination = {
     },
     coordinates: [7*16 -8, 5*16 -8],
     type: DestinationType.ARENA,
-    icons: ["type_ROCHE", "badge_roche"],
+    icons: ["badge_roche", "type_ROCHE"],
     rooms: {
         arena: {
             name: "Arène d'Argenta",

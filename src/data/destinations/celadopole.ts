@@ -32,7 +32,7 @@ export const CELADOPOLE: Destination = {
     },
     coordinates: [9*16 -8, 7*16 -8],
     type: DestinationType.ARENA,
-    icons: ["type_PLANTE", "badge_prisme"],
+    icons: ["badge_prisme", "type_PLANTE"],
     rooms: {
         arena: {
             type: RoomType.ARENA,

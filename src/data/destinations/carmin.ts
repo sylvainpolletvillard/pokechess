@@ -29,7 +29,7 @@ export const CARMIN: Destination = {
     },
     coordinates: [14*16 -8, 11*16 -8],
     type: DestinationType.ARENA,
-    icons: ["type_ELECTRIQUE", "badge_foudre"],
+    icons: ["badge_foudre", "type_ELECTRIQUE"],
     rooms: {
         arena: {
             type: RoomType.ARENA,
