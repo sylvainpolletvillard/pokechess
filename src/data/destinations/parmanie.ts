@@ -9,7 +9,7 @@ import { SMOGOGO } from "../pokemons/smogogo";
 import { TADMORV } from "../pokemons/tadmorv";
 import { TENTACRUEL } from "../pokemons/tentacruel";
 import { GROTADMORV } from "../pokemons/grotadmorv";
-import {SHOP_JADIELLE, SHOP_PARMANIE} from "../levels/shops";
+import { SHOP_PARMANIE } from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { BADGE_AME } from "../badges";
@@ -25,7 +25,7 @@ export const PARMANIE: Destination = {
     },
     coordinates: [13*16 -8, 16*16 -8],
     type: DestinationType.ARENA,
-    icons: ["type_POISON"],
+    icons: ["type_POISON", "badge_ame"],
     subtext: "Arène",
     rooms: {
         arena: {

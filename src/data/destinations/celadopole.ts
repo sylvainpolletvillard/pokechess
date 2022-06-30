@@ -19,6 +19,7 @@ import {TAUPIQUEUR} from "../pokemons/taupiqueur";
 import {SHOP_CELADOPOLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { BADGE_PRISME } from "../badges";
 
 export const CELADOPOLE: Destination = {
     ref: "CELADOPOLE",
@@ -31,7 +32,7 @@ export const CELADOPOLE: Destination = {
     },
     coordinates: [9*16 -8, 7*16 -8],
     type: DestinationType.ARENA,
-    icons: ["type_PLANTE"],
+    icons: ["type_PLANTE", "badge_prisme"],
     rooms: {
         arena: {
             type: RoomType.ARENA,
@@ -39,6 +40,7 @@ export const CELADOPOLE: Destination = {
             map: "arene_celadopole",
             music: "music_celadopole",
             trainer: ERIKA,
+            badge: BADGE_PRISME,
             spawnOtherTeam() {
                 return spawnChampionTeam([
                         SAQUEDENEU,

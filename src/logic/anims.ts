@@ -4,6 +4,7 @@ import {POKEBALLS} from "../data/pokeballs";
 import {POKEMON_TYPES} from "../data/types";
 import {Direction} from "../utils/directions";
 import {declareAnims} from "../utils/anims";
+import { ALL_BADGES } from "../data/badges";
 export const DIRECTIONS = [Direction.UP, Direction.LEFT, Direction.DOWN, Direction.RIGHT]
 
 export function getDirection(dx: number, dy:number){
@@ -187,6 +188,10 @@ export function setupGUI(anims: Phaser.Animations.AnimationManager, debug?: bool
 
     Object.values(POKEMON_TYPES).forEach((type) => {
         anims.create({ key: `type_${type.ref}`, frames: anims.generateFrameNumbers('icons16x16',{ frames: [type.frameIndex] }) })
+    })
+
+    Object.values(ALL_BADGES).forEach((badge) => {
+        anims.create({ key: badge.ref, frames: anims.generateFrameNumbers('icons16x16',{ frames: [badge.frameIndex] }) })
     })
 
     anims.create({ key: `icon_pokeball`, frames: anims.generateFrameNumbers('icons16x16',{ frames: [20] }) })

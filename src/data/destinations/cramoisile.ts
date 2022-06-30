@@ -27,7 +27,7 @@ export const CRAMOISILE: Destination = {
     name: "Cramois'Île",
     coordinates: [6*16 -8, 19*16 -8],
     type: DestinationType.ARENA,
-    icons: ["type_FEU"],
+    icons: ["type_FEU", "badge_volcan"],
     nextDestinations: {
         BOURG_PALETTE: [[0,-2.5],[0,-1.5],[-1,0]],
         MONT_BRAISE: [[0,-2.5], [-3, 0.5]],

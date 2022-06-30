@@ -55,13 +55,6 @@ export function loadSpritesheets(scene: Phaser.Scene){
         margin: 0
     })
 
-    scene.load.spritesheet('badges', 'assets/sprites/badges.png', {
-        frameWidth: 16,
-        frameHeight: 16,
-        spacing: 0,
-        margin: 0
-    })
-
     scene.load.spritesheet('buttons', 'assets/sprites/buttons.png', {
         frameWidth: 64,
         frameHeight: 32,

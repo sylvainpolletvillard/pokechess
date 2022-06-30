@@ -29,7 +29,7 @@ export const SAFRANIA: Destination = {
     },
     coordinates: [14*16 -8, 7*16 -8],
     type: DestinationType.ARENA,
-    icons: ["type_PSY"],
+    icons: ["type_PSY", "badge_marais"],
     rooms: {
         arena: {
             name: "Arène de Safrania",
