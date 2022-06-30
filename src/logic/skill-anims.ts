@@ -9,8 +9,7 @@ import {launchProjectile} from "./projectile";
 import {AOESkill, HitSkill, ProjectileSkill, Skill, SkillBehavior, SpecialSkill} from "./skill";
 import {triggerSpecial} from "./specials";
 import {Effect} from "../data/effects";
-import { getDeltaFromDirection, getDirectionFromAngle, getDirectionFromVector } from "../utils/directions";
-import { getAllianceState } from "./player";
+import { getDeltaFromDirection, getDirectionFromAngle } from "../utils/directions";
 import { TYPE_EAU } from "../data/types";
 import { PokemonTypeAction } from "../data/pokemons";
 
@@ -138,8 +137,8 @@ export function renderDirectHitAttack(skill: Skill, attacker: PokemonOnBoard, ta
         const damage = calcDamage(skill, target, attacker)
         console.log(`${attacker.entry.name} is attacking ${target.entry.name} for ${damage} damage !`)
         if(testPrecision(attacker, target, skill)){
-            attacker.buffs.onHit.forEach(buff => buff({ target, attacker, damage }))
-            target.buffs.onHitReceived.forEach(buff => buff({ damage, attacker }))
+            attacker.buffs.onHit.forEach(buff => buff({ target, attacker, damage, skill }))
+            target.buffs.onHitReceived.forEach(buff => buff({ damage, attacker, skill }))
             applyDamage(damage, target, attacker)
             if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker, attacker)            
         }
@@ -161,6 +160,7 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
 
      // important: retrieve the impacted tiles at the BEGINNING of the anim
     const tiles = skill.getTilesImpacted(attacker, target).filter(([i,j]) => isOnBoard(i,j))
+    let hasTouchedAtLeastOneTarget = false;
     
     wait(skill.hitDelay ?? 0).then(() => {
         tiles.forEach(([i,j]) => {
@@ -168,12 +168,17 @@ export function renderAOEAttack(skill: AOESkill, attacker: PokemonOnBoard, targe
             if(target && target.owner !== attacker.owner){
                 const damage = calcDamage(skill, target, attacker)
                 console.log(`AOE from ${attacker.entry.name} ; ${target.entry.name} receives ${damage} damage !`)
+                target.buffs.onHitReceived.forEach(buff => buff({ damage, attacker, skill }))
+                if(!hasTouchedAtLeastOneTarget){
+                    hasTouchedAtLeastOneTarget = true;
+                    attacker.buffs.onHit.forEach(buff => buff({ target, attacker, damage, skill }))
+                } 
                 applyDamage(damage, target, attacker)
                 if(skill.hitAlteration) addAlteration(target, { ...skill.hitAlteration, attacker }, game)
             }
         })
 
-        if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker, attacker)
+        if(skill.selfDamage) applyDamage(calcSelfDamage(skill, attacker), attacker, attacker)        
     })
 }
 

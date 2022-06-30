@@ -11,13 +11,14 @@ import { playSound } from "./audio"
 import { getPokemonOnTile, isOnBoard } from "./board"
 import { applyDamage, healPokemon } from "./fight"
 import { gameState } from "./gamestate"
+import { Skill } from "./skill"
 import { makeEffectSprite } from "./skill-anims"
 import { tunnel } from "./specials"
 
-export type OnHitEffect = (params: { attacker: PokemonOnBoard, target: PokemonOnBoard, damage: number }) => void
+export type OnHitEffect = (params: { attacker: PokemonOnBoard, target: PokemonOnBoard, damage: number, skill: Skill }) => void
 
 export type OnHitReceivedEffect = {
-    (params: { damage: number , attacker: PokemonOnBoard}): void
+    (params: { damage: number , attacker: PokemonOnBoard, skill: Skill }): void
     count?: number;
 }
 export type ClockEffect = () => void
@@ -190,9 +191,11 @@ export function applyBuffs(pokemon: PokemonOnBoard){
 
         // BONUS ALLIANCE ELEC
         if(pokemon.hasType(TYPE_ELECTRIQUE) && allianceState.type === TYPE_ELECTRIQUE && allianceState.stepReached){
-            const effect: OnHitReceivedEffect = ({ attacker }) => {
-                applyDamage(allianceState.stepReachedN * 2, attacker, pokemon)
-                console.log(`Choc ELEC sur ${attacker.entry.name}: ${allianceState.stepReachedN*2} dégats`)
+            const effect: OnHitReceivedEffect = ({ attacker, skill }) => {
+                if(skill.attackRange === 1){
+                    applyDamage(allianceState.stepReachedN * 2, attacker, pokemon)
+                    console.log(`Choc ELEC sur ${attacker.entry.name}: ${allianceState.stepReachedN*2} dégats`)
+                }
             }
             pokemon.buffs.onHitReceived.push(effect)
             pokemon.buffs.speed.push(() => 0.1 * allianceState.stepReachedN)

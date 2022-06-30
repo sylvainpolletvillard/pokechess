@@ -92,7 +92,8 @@ export function checkProjectilesImpact(game: GameScene){
         let {x,y} = projectile.sprite
         x+=8; y+=8; // try to better center for collision detection
         const r = projectile.skill.projectileRadius
-        const targets = projectile.attacker.opponents
+        const { attacker, skill } = projectile
+        const targets = attacker.opponents
         const targetsTouched = targets.filter(p => {
             let [px, py] = p.position
             let distance = Math.sqrt((px - x) ** 2 + (py - y) ** 2)
@@ -102,14 +103,16 @@ export function checkProjectilesImpact(game: GameScene){
         targetsTouched.forEach(target => {
             if(!projectile.impactedPokemonIds.includes(target.uid)){
                 projectile.impactedPokemonIds.push(target.uid)
-                let damage = calcDamage(projectile.skill, target, projectile.attacker)
-                applyDamage(damage, target, projectile.attacker)
-                console.log(`Projectile from ${projectile.attacker.entry.name} ; ${target.entry.name} receives ${damage} damage !`)
+                let damage = calcDamage(projectile.skill, target, attacker)
+                attacker.buffs.onHit.forEach(buff => buff({ target, attacker, damage, skill }))
+                target.buffs.onHitReceived.forEach(buff => buff({ damage, attacker, skill }))
+                applyDamage(damage, target, attacker)
+                console.log(`Projectile from ${attacker.entry.name} ; ${target.entry.name} receives ${damage} damage !`)
                 let { hitAlteration, pierceThrough, knockback } = projectile.skill
-                if(hitAlteration) addAlteration(target, { ...hitAlteration, attacker: projectile.attacker }, game)
+                if(hitAlteration) addAlteration(target, { ...hitAlteration, attacker }, game)
                 if(!pierceThrough) destroyProjectile(projectile)
                 if(knockback){ 
-                    const angle = Math.atan2(projectile.attacker.y - target.y, target.x - projectile.attacker.x)
+                    const angle = Math.atan2(attacker.y - target.y, target.x - attacker.x)
                     knockbackTarget(target, angle, game) 
                 }
             }
