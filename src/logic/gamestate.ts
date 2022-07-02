@@ -30,6 +30,9 @@ import { logStats, resetStats } from "./stats";
 import { spawnPensionTeam } from "./spawns";
 import { raisePokemonsPension } from "./pension";
 import { enterDestination } from "./destination";
+import { drawFightStats, hideStatsBox } from "../objects/fightStatsBox";
+import { hideAlliancesInfo } from "../objects/alliancesInfo";
+import { hidePokeballsCounter } from "../objects/pokeballsCounter";
 
 export enum GameStage {
     CREATION = "CREATION",
@@ -126,7 +129,7 @@ export class GameState {
         gameState.player.inventory[ITEM_POKEBALL.ref] = 20
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
-        gameState.player.inventory[ORBE_GLACE.ref] = 1
+        gameState.player.inventory[ORBE_PARALYSIE.ref] = 1
         
         gameState.player.team = [
             new PokemonOnBoard({ entry: DODRIO, owner: 1, level: 24, x:3, y:6 }),
@@ -252,7 +255,6 @@ export class GameState {
         removeAllAlterations()
         game.time.removeEvent(this.fightTimer!)
         game.time.removeEvent(this.fightClock!)
-        logStats()
 
         const player = game.sprites.get("player")
         const hasWon = (loser !== 1)
@@ -266,6 +268,13 @@ export class GameState {
             player && player.play("trainer_defeat")
             showCenterText("text_defaite", game)            
         }
+
+        hideAlliancesInfo()
+        hidePokeballsCounter()
+        wait(500).then(() => {
+            logStats()
+            drawFightStats()
+        })
 
         let xpPerPokemon = (gameState.board.xpEarned || 0) / gameState.player.team.length
         xpPerPokemon = Math.max(1, Math.ceil(xpPerPokemon))
@@ -291,6 +300,8 @@ export class GameState {
             }            
         }
 
+        hideStatsBox()
+        
         if([RoomType.ARENA, RoomType.TUTORIAL].includes(gameState.currentRoom.type)){
             const arena = gameState.currentRoom as RoomArena
             await startDialog(hasWon

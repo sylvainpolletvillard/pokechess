@@ -2,7 +2,7 @@ import GameScene from "../scenes/GameScene";
 import { Z } from "../data/depths";
 import { Trainer } from "../types/trainer";
 import { RoomType, RoomArena } from "../types/destination";
-import { tweenFade } from "../utils/tweens";
+import { tweenFadeInOut } from "../utils/tweens";
 import { gameState } from "../logic/gamestate";
 
 export function drawTrainers(game: GameScene){
@@ -32,5 +32,5 @@ export function showTrainerIntro(trainer: Trainer){
     const portrait = scene.add.sprite(scene.scale.width/2, scene.scale.height/2, "trainers_intros")
     portrait.setDepth(Z.CENTER_TEXT).setFrame(trainer.introFrameIndex)
     scene.sprites.set("centerIntro", portrait)
-    return tweenFade(scene, portrait, 2000);
+    return tweenFadeInOut(scene, portrait, 2000);
 }

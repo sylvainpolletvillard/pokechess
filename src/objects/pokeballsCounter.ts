@@ -37,3 +37,8 @@ export function drawPokeballsCounter(){
     pokeballCount.setStroke("#000000", 3);
     pokeballsCounterGroup = scene.add.group([pokeball, pokeballCount])
 }
+
+export function hidePokeballsCounter(){
+    if(!pokeballsCounterGroup) return;
+    pokeballsCounterGroup.destroy(true)
+}

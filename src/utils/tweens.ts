@@ -24,22 +24,46 @@ export function tweenPop(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite,
     return wait(delay + 400)
 }
 
-export function tweenFade(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, delay = 1000): Promise<void>{
+export function tweenFadeIn(scene: Phaser.Scene, object: Phaser.GameObjects.Sprite | Phaser.GameObjects.Group, duration = 400): Promise<void>{
+    scene.tweens.add({
+        targets: object instanceof Phaser.GameObjects.Group ? object.getChildren() : object,
+        alpha: {
+            from: 0,
+            to: 1
+        },
+        duration
+    })
+    return wait(duration)
+}
+
+export function tweenFadeOut(scene: Phaser.Scene, object: Phaser.GameObjects.Sprite | Phaser.GameObjects.Group, duration = 400): Promise<void>{
+    scene.tweens.add({
+        targets: object instanceof Phaser.GameObjects.Group ? object.getChildren() : object,
+        alpha: {
+            from: 1,
+            to: 0
+        },
+        duration
+    })
+    return wait(duration)
+}
+
+export function tweenFadeInOut(scene: Phaser.Scene, sprite: Phaser.GameObjects.Sprite, delay = 1000, duration = 400): Promise<void>{
     sprite.setAlpha(0)
     scene.tweens.timeline({
         tweens: [
             {
                 targets: sprite,
                 alpha: 1,
-                duration: 400
+                duration
             },
             {
                 targets: sprite,
                 alpha: 0,
-                duration: 400,
+                duration,
                 delay
             }
         ]
     })
-    return wait(delay + 800)
+    return wait(delay + duration*2)
 }

@@ -59,3 +59,8 @@ export function drawAlliancesInfo(team: PokemonOnBoard[]){
         i++;
     })
 }
+
+export function hideAlliancesInfo(){
+    leftGroup?.destroy(true)
+    rightGroup?.destroy(true)
+}

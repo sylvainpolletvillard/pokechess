@@ -15,6 +15,10 @@ let stats: Stats = {
     heal: new Map()
 }
 
+export function getStats(){
+    return stats
+}
+
 export function resetStats(){
     stats = {
         pokemons: gameState.allPokemonsOnBoard,
