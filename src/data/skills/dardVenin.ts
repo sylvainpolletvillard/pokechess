@@ -10,7 +10,7 @@ export const DARD_VENIN: ProjectileSkill = {
     behavior: SkillBehavior.PROJECTILE,
     travelSpeed: 6,
     power: 30,
-    projectileRadius: 2,
+    projectileRadius: 5,
     hitEffect: EFFECTS.DARD_VENIN_HIT,
     hitAlteration: { type: AlterationType.POISON, stacks: 30 },
     rotateProjectile: true,

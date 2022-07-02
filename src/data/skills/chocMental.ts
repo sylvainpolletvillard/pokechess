@@ -10,6 +10,6 @@ export const CHOC_MENTAL: ProjectileSkill = {
     travelSpeed: 8,
     projectileRadius: 8,
     rotateProjectile: true,
-    power: 40,    
+    power: 50,    
     attackRange: 4
 }

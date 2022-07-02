@@ -14,6 +14,6 @@ export const ADAPTATION: SpecialSkill = {
     hitDelay: 0,
     selfAlteration: {
         type: AlterationType.ADAPTATION,
-        stacks: 50,
+        stacks: 60,
     }
 }
