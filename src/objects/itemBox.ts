@@ -27,10 +27,10 @@ export function openItemMenu(game: GameScene){
     const items = Object.entries(gameState.player.inventory)
         .map(([itemRef, quantity],i) => ({ 
             ref: itemRef,
-            label: `${ITEMS[itemRef].label} x${quantity}`,
+            label: `${ITEMS[itemRef]?.label} x${quantity}`,
             quantity
          }))
-         .filter(item => item.quantity > 0)
+         .filter(item => item.quantity > 0 && item.ref in ITEMS)
          .sort((a,b) => {
             if(b.ref === ITEM_POKEBALL.ref) return -1
             if(a.ref === ITEM_POKEBALL.ref) return +1

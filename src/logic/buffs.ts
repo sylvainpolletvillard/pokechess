@@ -1,6 +1,6 @@
 import { Alteration, AlterationType } from "../data/alterations"
 import { EFFECTS } from "../data/effects"
-import { ATTAQUE_PLUS, BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS, BOULE_FUMEE, DEFENSE_PLUS, ENCENS_FLEUR, GRELOT_COQUE, ITEM_PARAPLUIE, MAX_ELIXIR, ORBE_FLAMME, ORBE_GLACE, ORBE_TOXIQUE, PV_PLUS, VITESSE_PLUS } from "../data/items"
+import { ATTAQUE_PLUS, BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS, BOULE_FUMEE, DEFENSE_PLUS, ENCENS_FLEUR, GRELOT_COQUE, ITEM_PARAPLUIE, MAX_ELIXIR, ORBE_FLAMME, ORBE_FOUDRE, ORBE_TOXIQUE, PV_PLUS, VITESSE_PLUS } from "../data/items"
 import { OWNER_PLAYER } from "../data/owners"
 import { TYPE_COMBAT, TYPE_DRAGON, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE, TYPE_VOL } from "../data/types"
 import { PokemonOnBoard } from "../objects/pokemon"
@@ -149,9 +149,9 @@ export function applyBuffs(pokemon: PokemonOnBoard){
         pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.BRULURE, stacks: 10 }, game) })
     }
 
-    if(pokemon.item === ORBE_GLACE){
-        pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.GEL, stacks: 10 }, game) })
-        pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.GEL, stacks: 10 }, game) })
+    if(pokemon.item === ORBE_FOUDRE){
+        pokemon.buffs.onHit.push(({target}) => { addAlteration(target, { type: AlterationType.PARALYSIE, stacks: 10 }, game) })
+        pokemon.buffs.onHitReceived.push(({ attacker }) => { addAlteration(attacker, { type: AlterationType.PARALYSIE, stacks: 10 }, game) })
     }
 
     // ITEMS CHAMPION

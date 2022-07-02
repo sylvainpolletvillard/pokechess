@@ -286,10 +286,10 @@ export const ORBE_FLAMME: Item = {
     type: ItemType.Holdable
 }
 
-export const ORBE_GLACE: Item = {
-    ref: "orbe_glace",
-    label: "Orbe Glace",
-    desc: "Inflige l'altération Glace à chaque coup reçu ou porté",
+export const ORBE_FOUDRE: Item = {
+    ref: "orbe_foudre",
+    label: "Orbe Foudre",
+    desc: "Inflige l'altération Paralysie à chaque coup reçu ou porté",
     cost: 5,
     type: ItemType.Holdable
 }
@@ -374,7 +374,7 @@ export const ITEMS: { [ref: string]: Item } = {
     [ENCENS_FLEUR.ref]: ENCENS_FLEUR,
     [ORBE_FLAMME.ref]: ORBE_FLAMME,
     [ORBE_TOXIQUE.ref]:ORBE_TOXIQUE,
-    [ORBE_GLACE.ref]: ORBE_GLACE,
+    [ORBE_FOUDRE.ref]: ORBE_FOUDRE,
     [SUPER_BONBON.ref]: SUPER_BONBON,
     [FOSSILE_AMONITA.ref]: FOSSILE_AMONITA,
     [FOSSILE_KABUTO.ref]: FOSSILE_KABUTO,
@@ -389,5 +389,5 @@ export const ITEMS_SPRITES_INDEX = [
     ITEM_POKEBALL, BAIE_CERIZ, BAIE_MEPO, BAIE_ORAN, BAIE_SITRUS, PV_PLUS, VITESSE_PLUS, ATTAQUE_PLUS, DEFENSE_PLUS, REPOUSSE, POKEFLUTE, GEMME_DRACO,
     GEMME_POING, GEMME_CIEL, GEMME_VOLT, GEMME_HERBE, GEMME_HYDRO, GEMME_FLAMME, GEMME_TOXIC, GEMME_PSY, GEMME_INSECTE, GEMME_ROC, GEMME_OMBRE, GEMME_GLACE,
     GEMME_GRISE, GEMME_PIXIE, GEMME_TERRE, GRELOT_COQUE, BOULE_FUMEE, MULTI_EXP, MAX_ELIXIR, SUPER_BONBON, FOSSILE_AMONITA, FOSSILE_KABUTO, FOSSILE_PTERA, ENCENS_FLEUR,
-    ORBE_TOXIQUE, ORBE_FLAMME, ORBE_GLACE, ITEM_FILET, ITEM_PARAPLUIE
+    ORBE_TOXIQUE, ORBE_FLAMME, ORBE_FOUDRE, ITEM_FILET, ITEM_PARAPLUIE
 ]
