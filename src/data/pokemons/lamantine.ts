@@ -14,5 +14,6 @@ export const LAMANTINE: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.POUDREUSE,
     ppSkill: SKILLS.LASER_GLACE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 8
 }

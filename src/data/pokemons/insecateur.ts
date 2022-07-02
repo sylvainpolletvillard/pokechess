@@ -14,5 +14,6 @@ export const INSECATEUR: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.VIVE_ATTAQUE,
     ppSkill: SKILLS.DANSE_LAMES,
-    wildEncounterChance: 0.5
+    wildEncounterChance: 0.5,
+    portraitCropY: 20
 }

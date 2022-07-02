@@ -17,5 +17,6 @@ export const MAGNETI: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.ETINCELLE,
     ppSkill: SKILLS.CAGE_ECLAIR,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 22
 }

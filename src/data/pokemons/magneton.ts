@@ -14,5 +14,6 @@ export const MAGNETON: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.ETINCELLE,
     ppSkill: SKILLS.CAGE_ECLAIR,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 21
 }

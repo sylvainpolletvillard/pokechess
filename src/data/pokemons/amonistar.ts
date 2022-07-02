@@ -14,5 +14,6 @@ export const AMONISTAR: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.POUVOIR_ANTIQUE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 26
 }

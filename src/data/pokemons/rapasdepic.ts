@@ -14,5 +14,6 @@ export const RAPASDEPIC: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.CRUAILE,
     ppSkill: SKILLS.HATE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 30
 }

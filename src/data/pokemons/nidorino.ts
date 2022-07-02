@@ -17,5 +17,6 @@ export const NIDORINO: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.DARD_VENIN,
     ppSkill: SKILLS.EMPAL_KORNE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 26
 }

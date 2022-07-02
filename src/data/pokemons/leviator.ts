@@ -14,5 +14,6 @@ export const LEVIATOR: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.MORSURE,
     ppSkill: SKILLS.DRACORAGE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 22
 }

@@ -14,5 +14,6 @@ export const PARASECT: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.GRIFFE,
     ppSkill: SKILLS.PARASPORE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 24
 }

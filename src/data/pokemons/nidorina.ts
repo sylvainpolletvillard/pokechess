@@ -17,5 +17,6 @@ export const NIDORINA: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.DARD_VENIN,
     ppSkill: SKILLS.RUGISSEMENT,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 19
 }

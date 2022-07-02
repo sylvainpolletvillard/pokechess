@@ -14,5 +14,6 @@ export const DRACAUFEU: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.FLAMMECHE,
     ppSkill: SKILLS.LANCE_FLAMMES,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 8
 }

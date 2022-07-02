@@ -14,5 +14,6 @@ export const MACKOGNEUR: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.POING_KARATE,
     ppSkill: SKILLS.BALAYAGE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 8
 }

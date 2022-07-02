@@ -17,5 +17,6 @@ export const ORTIDE: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.VOL_VIE,
     ppSkill: SKILLS.POUDRE_TOXIK,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 22
 }

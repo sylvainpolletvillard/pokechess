@@ -17,5 +17,6 @@ export const RHINOCORNE: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.KOUD_KORNE,
     ppSkill: SKILLS.EMPAL_KORNE,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 32
 }

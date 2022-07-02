@@ -14,5 +14,6 @@ export const ARTIKODIN: PokemonEntry = {
     rank: 5,
     baseSkill: SKILLS.POUDREUSE,
     ppSkill: SKILLS.BLIZZARD,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 7
 }

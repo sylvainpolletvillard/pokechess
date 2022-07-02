@@ -14,5 +14,6 @@ export const OSSATUEUR: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.MASSDOS,
     ppSkill: SKILLS.RUGISSEMENT,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 10
 }

@@ -14,5 +14,6 @@ export const RONFLEX: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.REPOS,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 8
 }

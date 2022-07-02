@@ -16,5 +16,6 @@ export const AQUALI: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.HYDROCANON,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 24
 }

@@ -14,5 +14,6 @@ export const DRACOLOSSE: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.CRUAILE,
     ppSkill: SKILLS.ULTRALASER,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 1
 }

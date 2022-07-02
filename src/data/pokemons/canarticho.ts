@@ -14,5 +14,6 @@ export const CANARTICHO: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.PICPIC,
     ppSkill: SKILLS.DANSE_LAMES,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 19
 }

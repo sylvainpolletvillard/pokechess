@@ -17,5 +17,6 @@ export const MIMITOSS: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.RAFALE_PSY,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 20
 }

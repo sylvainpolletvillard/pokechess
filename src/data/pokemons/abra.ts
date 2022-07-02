@@ -17,5 +17,6 @@ export const ABRA: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.TELEPORT,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 13
 }

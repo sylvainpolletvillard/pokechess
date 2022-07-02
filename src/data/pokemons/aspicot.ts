@@ -17,5 +17,6 @@ export const ASPICOT: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.DARD_VENIN,
     ppSkill: SKILLS.SECRETION,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 23
 }

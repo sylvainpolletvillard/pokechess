@@ -17,5 +17,6 @@ export const BOUSTIFLOR: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.FOUET_LIANES,
     ppSkill: SKILLS.ACIDE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 26
 }

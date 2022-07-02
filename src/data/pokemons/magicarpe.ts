@@ -16,5 +16,6 @@ export const MAGICARPE: PokemonEntry = {
     evolutionLevel: 20,
     rank: 1,
     baseSkill: SKILLS.TREMPETTE,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 21
 }

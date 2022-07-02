@@ -14,5 +14,6 @@ export const NOADKOKO: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.BOMB_OEUF,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 20
 }

@@ -17,5 +17,6 @@ export const TETARTE: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.TORGNOLES,
     ppSkill: SKILLS.HYPNOSE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 13
 }

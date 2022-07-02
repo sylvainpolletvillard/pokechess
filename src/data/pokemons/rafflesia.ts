@@ -14,5 +14,6 @@ export const RAFFLESIA: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.VOL_VIE,
     ppSkill: SKILLS.POUDRE_TOXIK,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 19
 }

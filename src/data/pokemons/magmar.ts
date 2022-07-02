@@ -14,5 +14,6 @@ export const MAGMAR: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.FLAMMECHE,
     ppSkill: SKILLS.BROUILLARD,
-    wildEncounterChance: 0.5
+    wildEncounterChance: 0.5,
+    portraitCropY: 12
 }

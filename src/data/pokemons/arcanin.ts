@@ -14,5 +14,6 @@ export const ARCANIN: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.MORSURE,
     ppSkill: SKILLS.CROCS_FEU,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 10
 }

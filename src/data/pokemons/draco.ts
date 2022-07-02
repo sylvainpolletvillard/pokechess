@@ -17,5 +17,6 @@ export const DRACO: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.DRACOCHARGE,
     ppSkill: SKILLS.OURAGAN,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 10
 }

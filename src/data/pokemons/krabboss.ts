@@ -14,5 +14,6 @@ export const KRABBOSS: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.PINCE_MASSE,
     ppSkill: SKILLS.GUILLOTINE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 21
 }

@@ -14,5 +14,6 @@ export const ONIX: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.JET_PIERRES,
     ppSkill: SKILLS.ARMURE,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 30
 }

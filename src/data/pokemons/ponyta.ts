@@ -17,5 +17,6 @@ export const PONYTA: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.NITROCHARGE,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 13
 }

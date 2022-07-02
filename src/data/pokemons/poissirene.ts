@@ -17,5 +17,6 @@ export const POISSIRENE: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.KOUD_KORNE,
     ppSkill: SKILLS.CASCADE,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 27
 }

@@ -14,5 +14,6 @@ export const TAUROS: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.BELIER,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 22
 }

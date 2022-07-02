@@ -14,5 +14,6 @@ export const PTERA: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.CRUAILE,
     ppSkill: SKILLS.POUVOIR_ANTIQUE,
-    wildEncounterChance: 0.1
+    wildEncounterChance: 0.1,
+    portraitCropY: 22
 }

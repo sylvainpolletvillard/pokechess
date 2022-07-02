@@ -14,5 +14,6 @@ export const MEWTWO: PokemonEntry = {
     rank: 5,
     baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.PSYKO,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 5
 }

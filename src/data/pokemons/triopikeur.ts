@@ -14,5 +14,6 @@ export const TRIOPIKEUR: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.TRIPLATTAQUE,
     ppSkill: SKILLS.TUNNEL,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 18
 }

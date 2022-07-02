@@ -14,5 +14,6 @@ export const GALOPA: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.NITROCHARGE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 9
 }

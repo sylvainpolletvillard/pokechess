@@ -16,5 +16,6 @@ export const VOLTALI: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.ETINCELLE,
     ppSkill: SKILLS.ECLAIR,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 21
 }

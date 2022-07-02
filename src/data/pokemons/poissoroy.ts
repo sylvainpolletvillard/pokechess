@@ -14,5 +14,6 @@ export const POISSOROY: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.KOUD_KORNE,
     ppSkill: SKILLS.CASCADE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 14
 }

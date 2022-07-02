@@ -14,5 +14,6 @@ export const NIDOQUEEN: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.DOUBLE_PIED,
     ppSkill: SKILLS.RUGISSEMENT,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 9
 }

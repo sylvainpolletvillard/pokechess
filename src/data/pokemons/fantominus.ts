@@ -17,5 +17,6 @@ export const FANTOMINUS: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.LECHOUILLE,
     ppSkill: SKILLS.DEVOREVE,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 26
 }

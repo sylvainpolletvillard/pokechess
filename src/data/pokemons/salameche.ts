@@ -17,5 +17,6 @@ export const SALAMECHE: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.FLAMMECHE,
     ppSkill: SKILLS.LANCE_FLAMMES,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 13
 }

@@ -17,5 +17,6 @@ export const ROUCOUPS: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.PICPIC,
     ppSkill: SKILLS.OURAGAN,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 8
 }

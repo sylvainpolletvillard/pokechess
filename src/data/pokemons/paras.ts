@@ -17,5 +17,6 @@ export const PARAS: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.GRIFFE,
     ppSkill: SKILLS.PARASPORE,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 21
 }

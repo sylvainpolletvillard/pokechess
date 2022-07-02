@@ -6,7 +6,7 @@ export const PORYGON: PokemonEntry = {
     ref: "porygon",
     name: "Porygon",
     maxPV: 65,
-    maxPP: 10,
+    maxPP: 20,
     attack: 60,
     defense: 70,
     speed: 40,
@@ -14,5 +14,6 @@ export const PORYGON: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.TRIPLATTAQUE,
     ppSkill: SKILLS.ADAPTATION,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 15
 }

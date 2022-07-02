@@ -14,5 +14,6 @@ export const GRODOUDOU: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.TORGNOLES,
     ppSkill: SKILLS.BERCEUSE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 14
 }

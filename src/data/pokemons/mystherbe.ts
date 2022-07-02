@@ -17,5 +17,6 @@ export const MYSTHERBE: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.VOL_VIE,
     ppSkill: SKILLS.POUDRE_TOXIK,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 28
 }

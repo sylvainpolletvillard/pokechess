@@ -14,5 +14,6 @@ export const TARTARD: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.TORGNOLES,
     ppSkill: SKILLS.HYPNOSE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 11
 }

@@ -14,5 +14,6 @@ export const KANGOUREX: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.MORSURE,
     ppSkill: SKILLS.ULTIMAPOING,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 8
 }

@@ -17,5 +17,6 @@ export const OSSELAIT: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.MASSDOS,
     ppSkill: SKILLS.RUGISSEMENT,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 14
 }

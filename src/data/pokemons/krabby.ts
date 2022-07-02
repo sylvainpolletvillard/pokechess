@@ -17,5 +17,6 @@ export const KRABBY: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.PINCE_MASSE,
     ppSkill: SKILLS.GUILLOTINE,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 18
 }

@@ -14,5 +14,6 @@ export const AKWAKWAK: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.SURF,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 14
 }

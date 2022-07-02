@@ -14,5 +14,6 @@ export const ECTOPLASMA: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.LECHOUILLE,
     ppSkill: SKILLS.DEVOREVE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 23
 }

@@ -14,5 +14,6 @@ export const FEUNARD: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.FLAMMECHE,
     ppSkill: SKILLS.DANSE_FLAMMES,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 13
 }

@@ -17,5 +17,6 @@ export const NOSFERAPTI: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.VAMPIRISME,
     ppSkill: SKILLS.ULTRASON,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 24
 }

@@ -14,5 +14,6 @@ export const NOSFERALTO: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.VAMPIRISME,
     ppSkill: SKILLS.ULTRASON,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 24
 }

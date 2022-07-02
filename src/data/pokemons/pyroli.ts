@@ -16,5 +16,6 @@ export const PYROLI: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.FLAMMECHE,
     ppSkill: SKILLS.CROCS_FEU,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 15
 }

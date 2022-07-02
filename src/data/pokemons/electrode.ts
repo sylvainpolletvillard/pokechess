@@ -14,5 +14,6 @@ export const ELECTRODE: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.CHARGE,
     ppSkill: SKILLS.DESTRUCTION,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 24
 }

@@ -14,5 +14,6 @@ export const SABLAIREAU: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.GRIFFE,
     ppSkill: SKILLS.JET_DE_SABLE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 15
 }

@@ -17,5 +17,6 @@ export const KOKIYAS: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.PISTOLET_A_O,
     ppSkill: SKILLS.ABRI,
-    wildEncounterChance: 1
+    wildEncounterChance: 1,
+    portraitCropY: 24
 }

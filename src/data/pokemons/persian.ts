@@ -14,5 +14,6 @@ export const PERSIAN: PokemonEntry = {
     rank: 1,
     baseSkill: SKILLS.GRIFFE,
     ppSkill: SKILLS.JACKPOT,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 12
 }

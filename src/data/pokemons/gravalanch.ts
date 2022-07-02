@@ -17,5 +17,6 @@ export const GRAVALANCH: PokemonEntry = {
     rank: 2,
     baseSkill: SKILLS.JET_PIERRES,
     ppSkill: SKILLS.ARMURE,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 20
 }

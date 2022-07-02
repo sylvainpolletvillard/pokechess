@@ -14,5 +14,6 @@ export const PAPILUSION: PokemonEntry = {
     rank: 3,
     baseSkill: SKILLS.CHOC_MENTAL,
     ppSkill: SKILLS.POUDRE_TOXIK,
-    wildEncounterChance: 0
+    wildEncounterChance: 0,
+    portraitCropY: 22
 }
