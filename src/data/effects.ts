@@ -650,6 +650,14 @@ export const EFFECTS: { [name: string] : Effect} = {
         frames: [380,381,382,383,384,385,386],
         frameRate: 8,
         repeat: Infinity,
+        scale: 1,
+        position: "parabolic_to_target"
+    },
+    PILONNAGE: {
+        key: "pilonnage",
+        frames: [380,381,382,383,384,385,386],
+        frameRate: 8,
+        repeat: Infinity,
         scale: 0.5,
         position: "parabolic_to_target"
     },

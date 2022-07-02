@@ -76,6 +76,7 @@ import {EMPAL_KORNE} from "./skills/empalKorne";
 import {MAWASHI_GERI} from "./skills/mawashiGeri";
 import {ABRI} from "./skills/abri";
 import {AMNESIE} from "./skills/amnesie";
+import {PILONNAGE} from "./skills/pilonnage";
 import {BOMB_OEUF} from "./skills/bombOeuf";
 import {ULTRALASER} from "./skills/ultralaser";
 import {LASER_GLACE} from "./skills/laserGlace";
@@ -172,6 +173,7 @@ export const SKILLS = {
     MAWASHI_GERI,
     ABRI,
     AMNESIE,
+    PILONNAGE,
     BOMB_OEUF,
     ULTRALASER,
     LASER_GLACE,

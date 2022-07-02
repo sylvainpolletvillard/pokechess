@@ -271,7 +271,7 @@ export class GameState {
 
         hideAlliancesInfo()
         hidePokeballsCounter()
-        wait(500).then(() => {
+        wait(750).then(() => {
             logStats()
             drawFightStats()
         })

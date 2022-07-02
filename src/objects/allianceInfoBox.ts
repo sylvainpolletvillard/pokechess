@@ -12,7 +12,7 @@ let allianceInfoBox: Phaser.GameObjects.Group | null;
 export function displayAllianceInfo(type: PokemonType, player: number){
     const scene = gameState.activeScene as MyScene;
     if(currentTypeDisplayed === type && gameState.stage !== GameStage.FIGHT) return;
-    if(currentTypeDisplayed != null) hideAllianceInfo();
+    if(currentTypeDisplayed != null) hideAllianceInfoBox();
     currentTypeDisplayed = type
     currentPlayerDisplayed = player
 
@@ -62,7 +62,7 @@ export function displayAllianceInfo(type: PokemonType, player: number){
     allianceInfoBox.setDepth(Z.MENU)
 }
 
-export function hideAllianceInfo(){
+export function hideAllianceInfoBox(){
     if(!allianceInfoBox) return;
     allianceInfoBox.destroy(true)
     allianceInfoBox = null;

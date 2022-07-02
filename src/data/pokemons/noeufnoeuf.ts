@@ -15,7 +15,7 @@ export const NOEUFNOEUF: PokemonEntry = {
     evolution: NOADKOKO,
     evolutionLevel: 40,
     rank: 1,
-    baseSkill: SKILLS.CHOC_MENTAL,
+    baseSkill: SKILLS.PILONNAGE,
     ppSkill: SKILLS.BOMB_OEUF,
     wildEncounterChance: 1
 }

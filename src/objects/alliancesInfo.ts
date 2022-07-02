@@ -1,7 +1,7 @@
 import GameScene from "../scenes/GameScene";
 import {gameState} from "../logic/gamestate";
 import { addInteractiveElem } from "./cursor";
-import { displayAllianceInfo, hideAllianceInfo } from "./allianceInfoBox";
+import { displayAllianceInfo, hideAllianceInfoBox } from "./allianceInfoBox";
 import { PokemonOnBoard } from "./pokemon";
 import { addText } from "../utils/text";
 
@@ -54,7 +54,7 @@ export function drawAlliancesInfo(team: PokemonOnBoard[]){
         addInteractiveElem(typeSprite)
         typeSprite
             .on("over", () => displayAllianceInfo(allianceState.type, left ? 0 : 1))
-            .on("out", () => hideAllianceInfo())
+            .on("out", () => hideAllianceInfoBox())
 
         i++;
     })
@@ -63,4 +63,5 @@ export function drawAlliancesInfo(team: PokemonOnBoard[]){
 export function hideAlliancesInfo(){
     leftGroup?.destroy(true)
     rightGroup?.destroy(true)
+    hideAllianceInfoBox()    
 }
