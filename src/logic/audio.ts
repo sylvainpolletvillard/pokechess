@@ -1,7 +1,6 @@
+import baragouin from "baragouin";
+import { store } from "../utils/store";
 import {gameState} from "./gamestate";
-
-let MUSIC_VOLUME = 0.2
-let SFX_VOLUME = 0.2
 
 export function preloadMusic(name: string, filepath: string){
     const scene = gameState.activeScene!;
@@ -15,7 +14,7 @@ export function preloadMusic(name: string, filepath: string){
 export function startMusic(name: string, params: Phaser.Types.Sound.SoundConfig = {}): Promise<void> {
     const scene = gameState.activeScene!;
     return new Promise((resolve, reject) => {
-        params = Object.assign({ volume: MUSIC_VOLUME }, params)
+        params = Object.assign({ volume: store.MUSIC_VOLUME }, params)
         console.log("playing "+name)
         if (gameState.music && gameState.music.isPlaying) {
             if(gameState.music.key === name) return; // already playing
@@ -50,7 +49,7 @@ export function pauseMusicAndPlaySound(name: string){
 }
 
 export function playSound(name: string, params: Phaser.Types.Sound.SoundConfig = {}): { sound: Phaser.Sound.BaseSound, waitEnd: Promise<void> } {
-    params = Object.assign({ volume: SFX_VOLUME }, params)
+    params = Object.assign({ volume: store.SFX_VOLUME }, params)
     console.log("playing sound "+name)
 
     const sound = gameState.activeScene?.sound.add(name, params)!;
@@ -65,15 +64,34 @@ export function playSound(name: string, params: Phaser.Types.Sound.SoundConfig =
 
 export function initVolumeControls(){
     const musicVolumeInput = document.getElementById("volume_music") as HTMLInputElement;
-    musicVolumeInput.value = (MUSIC_VOLUME*100).toString()
+    musicVolumeInput.value = (store.MUSIC_VOLUME*100).toString()
     musicVolumeInput.onchange = () => {
-        MUSIC_VOLUME = +musicVolumeInput.value / 100
-        gameState.music?.setVolume(MUSIC_VOLUME)
+        store.MUSIC_VOLUME = +musicVolumeInput.value / 100
+        gameState.music?.setVolume(store.MUSIC_VOLUME)
     }
 
     const sfxVolumeInput = document.getElementById("volume_sfx") as HTMLInputElement;
-    sfxVolumeInput.value = (SFX_VOLUME*100).toString()
+    sfxVolumeInput.value = (store.SFX_VOLUME*100).toString()
     sfxVolumeInput.onchange = () => {
-        SFX_VOLUME = +sfxVolumeInput.value / 100
+        store.SFX_VOLUME = +sfxVolumeInput.value / 100
     }
+}
+
+export function launchSpeech(line: string){
+    return baragouin(
+        line,
+        Object.assign(
+            {
+                onNote(text: string) {
+                    gameState.activeDialog?.textSprite.setText(text)
+                },
+                onEnd(text: string) {
+                    gameState.activeDialog?.textSprite.setText(text)
+                    delete gameState.activeDialog?.speech
+                }
+            },
+            gameState.activeDialog?.voice,
+            { volume: store.SFX_VOLUME * 100 }
+        )
+    )
 }

@@ -1,4 +1,3 @@
-import baragouin from "baragouin";
 import {addText} from "../utils/text";
 import {gameState} from "./gamestate";
 import {Z} from "../data/depths";
@@ -10,6 +9,7 @@ import {closeMenu, openMenu} from "../objects/menu";
 import { wait } from "../utils/helpers";
 import { RoomType } from "../types/destination";
 import {DialogChoice, DialogLine, DialogParams} from "../types/dialog";
+import { launchSpeech } from "./audio";
 
 const dialogStack: DialogStacked = []
 
@@ -115,21 +115,7 @@ export function sayLine(line: string) {
         return
     }
 
-    gameState.activeDialog.speech = baragouin(
-        line,
-        Object.assign(
-            {
-                onNote(text: string) {
-                    gameState.activeDialog?.textSprite.setText(text)
-                },
-                onEnd(text: string) {
-                    gameState.activeDialog?.textSprite.setText(text)
-                    delete gameState.activeDialog?.speech
-                }
-            },
-            gameState.activeDialog.voice
-        )
-    )
+    gameState.activeDialog.speech = launchSpeech(line)
 }
 
 export function endDialog() {

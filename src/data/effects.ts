@@ -506,6 +506,7 @@ export const EFFECTS: { [name: string] : Effect} = {
         key: "hate",
         frames: [280,281,282],
         frameRate: 8,
+        scale: 0.5,
         position: "source_ground"
     },
     DANSE_LAMES: {
