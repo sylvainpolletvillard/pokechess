@@ -206,11 +206,6 @@ export function applyBuffs(pokemon: PokemonOnBoard){
             pokemon.buffs.dodge.push(() => 0.2 * allianceState.stepReachedN)
         }
 
-        // BONUS ALLIANCE ROCHE
-        if(pokemon.hasType(TYPE_ROCHE) && allianceState.type === TYPE_ROCHE && allianceState.stepReached){
-            pokemon.buffs.defense.push(() => 0.1 * allianceState.stepReachedN)
-        }
-
         // BONUS ALLIANCE SOL
         if(pokemon.hasType(TYPE_SOL) && allianceState.type === TYPE_SOL && allianceState.stepReached){
             const buffTunnel:OnHitReceivedEffect = ({ damage }) => {

@@ -294,10 +294,10 @@ export function calcPoisonDamage(target: PokemonOnBoard, alteration: Alteration,
         buffFactor += 0.4 * opponentPoisonBonus.stepReachedN
     }
     if(teamRocheBonus){
-        buffFactor -= 0.2 * teamRocheBonus.stepReachedN
+        buffFactor -= 0.3 * teamRocheBonus.stepReachedN
     }
 
-    poisonDamage *= buffFactor
+    poisonDamage *= clamp(buffFactor,0,10)
     return poisonDamage
 }
 
@@ -309,7 +309,7 @@ export function calcBurnDamage(target: PokemonOnBoard, game: GameScene): number 
     
     const teamRocheBonus = target.alliances.get(TYPE_ROCHE)
     if(teamRocheBonus){
-        buffFactor -= 0.2 * teamRocheBonus.stepReachedN
+        buffFactor -= 0.3 * teamRocheBonus.stepReachedN
     }
 
     burnDamage *= buffFactor

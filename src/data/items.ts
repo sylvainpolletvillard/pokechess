@@ -26,7 +26,7 @@ export const BAIE_SITRUS: Item = {
 export const BAIE_CERIZ: Item = {
     ref: "baie_ceriz",
     label: "Baie Ceriz",
-    desc: "Consommé à la première altération subie - Soigne toutes les altérations pendant 10 secondes",
+    desc: "Consommé à la première altération subie - Soigne les altérations pendant 10 secondes",
     cost: 1,
     type: ItemType.Holdable
 }
