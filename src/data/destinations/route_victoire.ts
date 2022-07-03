@@ -2,7 +2,7 @@ import { preloadMusic } from "../../logic/audio";
 import { gameState } from "../../logic/gamestate";
 import { spawnTeamByTypeFactor } from "../../logic/spawns";
 import { Destination, DestinationType, RoomType, RoomWild } from "../../types/destination";
-import { TYPE_COMBAT, TYPE_DRAGON, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE } from "../types";
+import { TYPE_COMBAT, TYPE_DRAGON, TYPE_EAU, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU, TYPE_GLACE, TYPE_PLANTE, TYPE_PSY, TYPE_ROCHE, TYPE_SOL, TYPE_SPECTRE } from "../types";
 
 const ROUTE_VICTOIRE: RoomWild = {
     type: RoomType.WILD,
@@ -15,10 +15,15 @@ const ROUTE_VICTOIRE: RoomWild = {
             [TYPE_ROCHE.ref]: 1,
             [TYPE_PSY.ref]: 1,
             [TYPE_COMBAT.ref]: 1,
-            [TYPE_FEU.ref]: 1,
+            [TYPE_FEU.ref]: 0.5,
+            [TYPE_EAU.ref]: 0.5,
+            [TYPE_PLANTE.ref]: 0.5,
+            [TYPE_ELECTRIQUE.ref]: 0.5,
             [TYPE_DRAGON.ref]: 0.5,
-            [TYPE_SPECTRE.ref]: 0.5,
-            [TYPE_FEE.ref]: 0.5,
+            [TYPE_SPECTRE.ref]: 0.25,
+            [TYPE_GLACE.ref]: 0.25,
+            [TYPE_FEE.ref]: 0.25,
+            [TYPE_ELECTRIQUE.ref]: 0.25,
         })
     }
 }
