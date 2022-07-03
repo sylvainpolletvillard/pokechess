@@ -40,6 +40,7 @@ export function canPokemonMove(pokemon: PokemonOnBoard){
     return !(pokemon.hasAlteration(AlterationType.GEL) 
         || pokemon.hasAlteration(AlterationType.LIGOTAGE)
         || pokemon.hasAlteration(AlterationType.SOMMEIL)
+        || pokemon.hasAlteration(AlterationType.PARALYSIE)
     )
 }
 

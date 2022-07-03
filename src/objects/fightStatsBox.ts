@@ -18,8 +18,8 @@ export function drawFightStats(){
     let ox = 50
 
     const stats = getStats()
-    const playerTeam = stats.pokemons.filter(p => p.owner === OWNER_PLAYER)
-    const otherTeam = stats.pokemons.filter(p => p.owner !== OWNER_PLAYER)
+    const playerTeam = stats.pokemons.filter(p => p.owner === OWNER_PLAYER).sort((a,b) => (stats.damageDone.get(b.uid)??0) - (stats.damageDone.get(a.uid)??0))
+    const otherTeam = stats.pokemons.filter(p => p.owner !== OWNER_PLAYER).sort((a,b) => (stats.damageDone.get(a.uid)??0) - (stats.damageDone.get(b.uid)??0))
     const maxDamageDone = Math.max(...stats.damageDone.values())
     const maxDamageReceived = Math.max(...stats.damageReceived.values())
     const maxDamage = Math.max(maxDamageDone, maxDamageReceived, 100)
