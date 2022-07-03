@@ -125,6 +125,7 @@ export function clearPlacement(game: GameScene){
     game.objects.get("grid")?.destroy();
     hidePokemonReleaseInfo();
     hideTeamSizeCounter();
+    drawAlliancesInfo(gameState.board.playerTeam);
 }
 
 export function getPositionFromCoords(i: number, j:number): [number, number]{

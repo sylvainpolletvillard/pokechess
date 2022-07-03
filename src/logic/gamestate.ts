@@ -191,10 +191,10 @@ export class GameState {
     }
 
     initFight(game: GameScene){
+        this.stage = GameStage.LAUNCH
         closeMenu()
         clearPlacement(game)
         gameState.board.xpEarned = calcXpBoard()
-        this.stage = GameStage.LAUNCH
 
         resetStats()
         initJumps()        

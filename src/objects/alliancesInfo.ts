@@ -1,7 +1,7 @@
 import GameScene from "../scenes/GameScene";
-import {gameState} from "../logic/gamestate";
+import {GameStage, gameState} from "../logic/gamestate";
 import { addInteractiveElem } from "./cursor";
-import { displayAllianceInfo, hideAllianceInfoBox } from "./allianceInfoBox";
+import { showAllianceInfoBox, hideAllianceInfoBox } from "./allianceInfoBox";
 import { PokemonOnBoard } from "./pokemon";
 import { addText } from "../utils/text";
 
@@ -27,7 +27,8 @@ export function drawAlliancesInfo(team: PokemonOnBoard[]){
     let i = 0;
     
     listAlliances.forEach((allianceState) => {
-        if(!allianceState.stepReached && !left) return; // do not show alliances not reached for opponent
+        // only show incomplete alliances for player on placement stage
+        if(!allianceState.stepReached && (!left || gameState.stage !== GameStage.PLACEMENT)) return; 
 
         let x = left ? 14 : game.scale.width - 14
         let y = left ? game.scale.height - 74 - i*24 : 74 + i*24
@@ -49,11 +50,12 @@ export function drawAlliancesInfo(team: PokemonOnBoard[]){
         }).setOrigin(left ? 0 : 1, 0.5))
 
         const typeSprite = game.add.sprite(x, y+4, "icons16x16", allianceState.type.frameIndex)
+        if(!allianceState.stepReached) typeSprite.setAlpha(0.35)
         group.add(typeSprite)
 
         addInteractiveElem(typeSprite)
         typeSprite
-            .on("over", () => displayAllianceInfo(allianceState.type, left ? 0 : 1))
+            .on("over", () => showAllianceInfoBox(allianceState.type, left ? 0 : 1))
             .on("out", () => hideAllianceInfoBox())
 
         i++;
