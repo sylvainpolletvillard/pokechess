@@ -17,8 +17,6 @@ import { ARTIKODIN } from "../pokemons/artikodin";
 import { gameState } from "../../logic/gamestate";
 import { PokemonOnBoard } from "../../objects/pokemon";
 import { NO_OWNER } from "../owners";
-import { Pokemon } from "../pokemons";
-import { levelToXP } from "../../logic/xp";
 
 export const ILES_ECUME: Destination = {
     ref: "ILES_ECUME",
@@ -37,7 +35,7 @@ export const ILES_ECUME: Destination = {
             name: "Îles Ecume",
             map: "iles_ecume",
             spawnOtherTeam(){
-                if(!gameState.pokedexSeen.has(ARTIKODIN.ref) && Math.random() < 5/100){
+                if(!gameState.pokedexSeen.has(ARTIKODIN.ref) && gameState.day >= 20 && Math.random() < 10/100){
                     return [ new PokemonOnBoard({
                         entry: ARTIKODIN,
                         owner: NO_OWNER,

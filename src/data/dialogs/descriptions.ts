@@ -31,7 +31,7 @@ export const DESCRIPTIONS: { [name: string]: DialogLine[] | ((d: Description) =>
     tv: [`La TV diffuse les actualités du jour...`,
         `FLASH SPECIAL !`,
         () => [
-            `On aurait aperçu un Elekthor à la centrale !`,
+            `On aurait aperçu un Electhor à la centrale !`,
             `Un Artikodin a été vu aux Îles Ecume !`,
             `Le Mont Braise serait le repère d'un Sulfura !`,
         ][(++bookIndex) % 3],

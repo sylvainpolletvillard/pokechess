@@ -40,7 +40,7 @@ export const CENTRALE: Destination = {
             music: "music_centrale",
             map: "centrale",
             spawnOtherTeam(){
-                if(!gameState.pokedexSeen.has(ELECTHOR.ref) && Math.random() < 5/100){
+                if(!gameState.pokedexSeen.has(ELECTHOR.ref) && gameState.day >= 20 && Math.random() < 10/100){
                     return [ new PokemonOnBoard({
                         entry: ELECTHOR,
                         owner: NO_OWNER,

@@ -42,7 +42,7 @@ export const GROTTE_AZUREE: Destination = {
             name: "Grotte Azurée",
             map: "grotte_azuree",
             spawnOtherTeam(){
-                if(!gameState.pokedexSeen.has(MEWTWO.ref) && Math.random() < 5/100){
+                if(!gameState.pokedexSeen.has(MEWTWO.ref) && gameState.day >= 20 && Math.random() < 10/100){
                     return [ new PokemonOnBoard({
                         entry: MEWTWO,
                         owner: NO_OWNER,

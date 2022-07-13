@@ -36,7 +36,7 @@ export const MONT_BRAISE: Destination = {
             type: RoomType.WILD,
             music: "music_mont_braise",
             spawnOtherTeam(){
-                if(!gameState.pokedexSeen.has(SULFURA.ref) && Math.random() < 5/100){
+                if(!gameState.pokedexSeen.has(SULFURA.ref) && gameState.day >= 20 && Math.random() < 10/100){
                     return [ new PokemonOnBoard({
                         entry: SULFURA, 
                         owner: NO_OWNER, 
