@@ -1,6 +1,6 @@
 /* Offline cache service worker */
 
-const CACHE_VERSION = "v1.0.5"
+const CACHE_VERSION = "v1.06"
 const EXTENSIONS_SAVED = [".png", ".jpg", ".json", ".mp3", ".ogg", ".wav"]
 
 this.addEventListener('install', (event) => {
