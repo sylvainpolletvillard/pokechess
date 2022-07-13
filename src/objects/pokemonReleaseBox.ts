@@ -4,6 +4,7 @@ import { gameState } from "../logic/gamestate";
 import { MyScene } from "../scenes/MyScene";
 import { addText } from "../utils/text";
 import { addInteractiveElem, dragState, handleDragEnd, removeInteractiveElem } from "./cursor";
+import { closeMenu } from "./menu";
 import { PokemonOnBoard } from "./pokemon";
 
 let pokemonReleaseBox: Phaser.GameObjects.Container | null;
@@ -80,6 +81,8 @@ export function displayPokemonReleaseBox(pokemon: PokemonOnBoard){
             const pokemon = pokemonSprite.getData("pokemon");
             if(pokemon != null){
                 bg.setTint(0xffffff)
+                closeMenu();
+                pokemonSprite.destroy();
                 releasePokemon(pokemon)           
             }
         })

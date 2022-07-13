@@ -14,6 +14,9 @@ import { playSound } from './audio';
 import { getAlliancesState } from './player';
 import { updateCursorHover } from '../objects/cursor';
 import { OWNER_PLAYER } from '../data/owners';
+import { startDialog } from './dialog';
+import { closeMenu } from '../objects/menu';
+import { cancelPokemonDrag } from './board';
 
 export function removeFromBox(pokemon: Pokemon){
     const box = gameState.player.box;
@@ -75,13 +78,24 @@ export function removeFromTeam(pokemon: PokemonOnBoard, team: PokemonOnBoard[]){
 
 export function releasePokemon(pokemon: Pokemon){
     const game = gameState.activeScene as GameScene
-    if(pokemon instanceof PokemonOnBoard){
-        removeFromTeam(pokemon, gameState.board.playerTeam)
-    } else {
-        removeFromBox(pokemon)
-    }
-    game.sprites.get(pokemon.uid)?.destroy()
-    playSound(getPokemonCry(pokemon.entry))
-    gameState.player.inventory[ITEM_POKEBALL.ref] += pokemon.cost;
-    drawPokeballsCounter()
+    return startDialog([
+        `Relâcher ${pokemon.entry.name} et récupérer ${pokemon.cost} Pokéball ?`,
+        {
+            "Non"(){
+                addToBox(pokemon);
+                return false;
+            },
+            "Oui"(){
+                if(pokemon instanceof PokemonOnBoard){
+                    removeFromTeam(pokemon, gameState.board.playerTeam)
+                } else {
+                    removeFromBox(pokemon)
+                }
+                game.sprites.get(pokemon.uid)?.destroy()
+                playSound(getPokemonCry(pokemon.entry))
+                gameState.player.inventory[ITEM_POKEBALL.ref] += pokemon.cost;
+                drawPokeballsCounter()
+            }
+        }
+    ])   
 }
