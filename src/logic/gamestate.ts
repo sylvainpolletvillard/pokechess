@@ -129,7 +129,6 @@ export class GameState {
         gameState.player.inventory[ITEM_POKEBALL.ref] = 20
         gameState.player.inventory[VITESSE_PLUS.ref] = 1
         gameState.player.inventory[GEMME_VOLT.ref] = 1
-        gameState.player.inventory[ORBE_PARALYSIE.ref] = 1
         
         gameState.player.team = [
             new PokemonOnBoard({ entry: DODRIO, owner: 1, level: 24, x:3, y:6 }),

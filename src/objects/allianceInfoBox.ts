@@ -11,6 +11,7 @@ let allianceInfoBox: Phaser.GameObjects.Group | null;
 
 export function showAllianceInfoBox(type: PokemonType, player: number){
     const scene = gameState.activeScene as MyScene;
+    if(gameState.activeMenu != null) return;
     if(currentTypeDisplayed === type && gameState.stage !== GameStage.FIGHT) return;
     if(currentTypeDisplayed != null) hideAllianceInfoBox();
     currentTypeDisplayed = type
