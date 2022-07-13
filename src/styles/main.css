@@ -1,5 +1,5 @@
 @font-face { font-family: "Pokemon"; /*noinspection CssUnknownTarget*/
-    src: url("/fonts/Pokemon-FRLG.ttf") format("truetype"); }
+    src: url("./fonts/Pokemon-FRLG.ttf") format("truetype"); }
 
 html, body {
     font-smoothing: never;
