@@ -19,17 +19,17 @@ export function clearTimeouts(){
     timeouts.clear()
 }
 
-export function sum(...array: number[]){
+export function sum(...array: number[]): number {
     return array.reduce((a,b)=> a+b, 0)
 }
 
-export function range(start: number, end: number) {
+export function range(start: number, end: number): number[] {
     return Array(end - start)
         .fill(0)
         .map((_, i) => start + i)
 }
 
-export function removeInArray(array: Array<any>, elem: any) {
+export function removeInArray<T>(array: T[], elem: T): T[] {
     return array.splice(array.indexOf(elem), 1)
 }
 

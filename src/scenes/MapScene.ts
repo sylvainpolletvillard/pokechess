@@ -17,7 +17,6 @@ import { gameState } from '../logic/gamestate';
 import {getMovementVector, handleCursor, setupInputs} from '../logic/inputs';
 import { getPathLength } from '../utils/path';
 import { hideDestinationPanel, showDestinationPanel } from '../objects/destinationPanel';
-import { loadFonts } from '../data/fonts';
 import { loadSprites } from '../data/sprites';
 import { loadSpritesheets } from '../data/spritesheets';
 import { loadTilemaps } from '../data/tilemaps';
@@ -77,7 +76,6 @@ export default class MapScene extends MyScene {
 
     // noinspection JSUnusedGlobalSymbols
     preload() {
-        loadFonts(this)
         loadSprites(this)
         loadSpritesheets(this);
         loadTilemaps(this);

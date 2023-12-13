@@ -24,10 +24,12 @@ export function showAllianceInfoBox(type: PokemonType, player: number){
 
     const allianceInfoBoxBackground = scene.add.nineslice(
         ox, oy,   // this is the starting x/y location
-        200, 140,   // the width and height of your object
         'box1', // a key to an already loaded image
-        8,         // the width and height to offset for a corner slice
+        undefined, // an optional frame from the Texture this Game Object is rendering with.
+        200, 140,   // the width and height of your object        
+        8, 8, 8, 8        // the width and height to offset for a corner slice
     ).setOrigin(0.5,0).setScrollFactor(0);
+
     allianceInfoBox.add(allianceInfoBoxBackground)
 
     const allianceNameText = addText(ox - 60, oy + 16, `${type.label}`)

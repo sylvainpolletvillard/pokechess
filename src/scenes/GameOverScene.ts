@@ -1,5 +1,4 @@
 import { Z } from "../data/depths";
-import { loadFonts } from "../data/fonts";
 import { Pokemon } from "../data/pokemons";
 import { loadSprites } from "../data/sprites";
 import { loadSpritesheets } from "../data/spritesheets";
@@ -9,7 +8,7 @@ import { setupInputs } from "../logic/inputs";
 import { fadeOut } from "../utils/camera";
 import { wait } from "../utils/helpers";
 import { addText } from "../utils/text";
-import {MyScene} from "./MyScene";
+import { MyScene } from "./MyScene";
 
 export default class GameOverScene extends MyScene {
   constructor() {
@@ -17,20 +16,19 @@ export default class GameOverScene extends MyScene {
   }
 
   preload() {
-    loadFonts(this)
-    loadSprites(this)
+    loadSprites(this);
     loadSpritesheets(this);
-    preloadMusic("music_ending", "assets/audio/music/30 Ending.mp3")
+    preloadMusic("music_ending", "assets/audio/music/30 Ending.mp3");
   }
 
-  create(){
-    gameState.activeScene = this
-    setupInputs(this)
+  create() {
+    gameState.activeScene = this;
+    setupInputs(this);
     this.displayEndScreen();
-    startMusic("music_ending")
+    startMusic("music_ending");
   }
 
-  canInteract = false
+  canInteract = false;
 
   onPressStart() {
     this.handleClick();
@@ -45,7 +43,8 @@ export default class GameOverScene extends MyScene {
   }
 
   handleClick() {
-    if(this.canInteract) fadeOut(2000).then(() => this.scene.start("MenuScene"));
+    if (this.canInteract)
+      fadeOut(2000).then(() => this.scene.start("MenuScene"));
   }
 
   async displayEndScreen() {
@@ -53,10 +52,10 @@ export default class GameOverScene extends MyScene {
       wait(3000 * i).then(() => this.displayEndScreenPokemonInfo(pokemon));
     });
 
-    await wait(18000);    
-    this.displayPlayerResume()
-    await wait(10000)
-    this.canInteract = true
+    await wait(18000);
+    this.displayPlayerResume();
+    await wait(10000);
+    this.canInteract = true;
   }
 
   displayEndScreenPokemonInfo(pokemon: Pokemon) {
@@ -69,9 +68,13 @@ export default class GameOverScene extends MyScene {
       .nineslice(
         ox,
         oy, // this is the starting x/y location
+        "box1", // a key to an already loaded image
+        undefined,
         280,
         84, // the width and height of your object
-        "box1", // a key to an already loaded image
+        8,
+        8,
+        8,
         8 // the width and height to offset for a corner slice
       )
       .setOrigin(0.5, 0.5)
@@ -125,9 +128,13 @@ export default class GameOverScene extends MyScene {
       .nineslice(
         ox,
         oy, // this is the starting x/y location
+        "box1", // a key to an already loaded image
+        undefined,
         280,
         84, // the width and height of your object
-        "box1", // a key to an already loaded image
+        8,
+        8,
+        8,
         8 // the width and height to offset for a corner slice
       )
       .setOrigin(0.5, 0.5)
@@ -135,19 +142,21 @@ export default class GameOverScene extends MyScene {
     box.add(boxBackground);
 
     box.add(addText(ox - 120, oy - 20, `Durée jeu: ${gameState.day} tours`));
-    box.add(addText(ox - 120, oy+8, `Pokédex`));
-    box.add(addText(ox-50, oy+8, `Vus: ${gameState.pokedexSeen.size}`));
-    box.add(addText(ox+20, oy+8, `Pris: ${gameState.pokedexCaptured.size}`));
+    box.add(addText(ox - 120, oy + 8, `Pokédex`));
+    box.add(addText(ox - 50, oy + 8, `Vus: ${gameState.pokedexSeen.size}`));
+    box.add(
+      addText(ox + 20, oy + 8, `Pris: ${gameState.pokedexCaptured.size}`)
+    );
 
-    const portrait = this.add.sprite(ox + 100, oy-1, "trainer").setFrame(7);
-    portrait.setScrollFactor(0);    
+    const portrait = this.add.sprite(ox + 100, oy - 1, "trainer").setFrame(7);
+    portrait.setScrollFactor(0);
     box.add(portrait);
 
     this.tweens.add({
-        targets: box.getChildren(),
-        y: "-= 240",
-        duration: 8000,
-        ease: "Linear"
-      });
+      targets: box.getChildren(),
+      y: "-= 240",
+      duration: 8000,
+      ease: "Linear",
+    });
   }
 }

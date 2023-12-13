@@ -1,0 +1,16 @@
+*~
+.DS_Store
+node_modules/
+.idea
+.vscode
+*.log
+*.cache
+/tmp
+/.gh-pages
+webpack.config*
+.babelrc
+.editorconfig
+.gitignore
+.npmignore
+Makefile
+/src/

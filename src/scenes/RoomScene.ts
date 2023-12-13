@@ -3,7 +3,6 @@ import {gameState} from "../logic/gamestate";
 import {MyScene} from "./MyScene";
 import {Level} from "../logic/level";
 import {PlayerCharacter} from "../objects/playerCharacter";
-import {loadFonts} from "../data/fonts";
 import {loadSprites} from "../data/sprites";
 import {loadSpritesheets} from "../data/spritesheets";
 import {loadTilemaps} from "../data/tilemaps";
@@ -29,7 +28,6 @@ export default class RoomScene extends MyScene {
     }
 
     preload() {
-        loadFonts(this)
         loadSprites(this)
         loadSpritesheets(this);
         loadTilemaps(this);

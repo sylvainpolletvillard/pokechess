@@ -7,9 +7,8 @@ import {loadSprites} from "../data/sprites";
 import { showCenterText, updateGUI} from "../objects/gui";
 import {hideMenuButtons} from "../objects/menuButtons";
 import {handleClick} from "../objects/cursor";
-import {clickEntry, closeMenu} from "../objects/menu";
+import {clickEntry} from "../objects/menu";
 import {MyScene} from "./MyScene";
-import {loadFonts} from "../data/fonts";
 import {drawGUI, drawPokemonsOnBoard, getNumberMaxAllowedOnBoard, setupRoomBoard, setupSafariBoard} from "../logic/board";
 import {RoomArena, RoomBoard, RoomType} from "../types/destination";
 import {startMusic} from "../logic/audio";
@@ -33,7 +32,6 @@ export default class GameScene extends MyScene {
   }
 
   preload() {
-    loadFonts(this)
     loadSprites(this)
     loadSpritesheets(this);
     loadTilemaps(this);
