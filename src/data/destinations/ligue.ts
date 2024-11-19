@@ -29,12 +29,13 @@ import { FEUNARD } from "../pokemons/feunard";
 import { MAGNETON } from "../pokemons/magneton";
 import { AQUALI } from "../pokemons/aquali";
 import { END_ROOM } from "../levels/endroom";
+import { t } from "../../i18n";
 
 const ARENE_OLGA: RoomArena = {
     type: RoomType.ARENA,
     map: "arene_ligue1",
     music: "music_route_victoire",
-    name: "Ligue Indigo - Étage 1",
+    name: t("destination.LIGUE_FLOOR1"),
     trainer: OLGA,    
     spawnOtherTeam(){
         return [
@@ -52,7 +53,7 @@ const ARENE_ALDO: RoomArena = {
     type: RoomType.ARENA,
     map: "arene_ligue2",
     music: "music_route_victoire",
-    name: "Ligue Indigo - Étage 2",
+    name: t("destination.LIGUE_FLOOR2"),
     trainer: ALDO,    
     spawnOtherTeam(){
         return [
@@ -70,7 +71,7 @@ const ARENE_AGATHA: RoomArena = {
     type: RoomType.ARENA,
     map: "arene_ligue3",
     music: "music_route_victoire",
-    name: "Ligue Indigo - Étage 3",
+    name: t("destination.LIGUE_FLOOR3"),
     trainer: AGATHA,    
     spawnOtherTeam(){
         return [
@@ -88,7 +89,7 @@ const ARENE_PETER: RoomArena = {
     type: RoomType.ARENA,
     map: "arene_ligue4",
     music: "music_route_victoire",
-    name: "Ligue Indigo - Étage 4",
+    name: t("destination.LIGUE_FLOOR4"),
     trainer: PETER,    
     spawnOtherTeam(){
         return [
@@ -106,7 +107,7 @@ const ARENE_RIVAL: RoomArena = {
     type: RoomType.ARENA,
     map: "arene_ligue5",
     music: "music_route_victoire",
-    name: "Ligue Indigo - Dernier Étage",
+    name: t("destination.LIGUE_FLOOR5"),
     trainer: RIVAL,    
     spawnOtherTeam(){
         //TODO: adapter la team en fonction du starter choisi
@@ -124,8 +125,8 @@ const ARENE_RIVAL: RoomArena = {
 
 export const LIGUE: Destination = {
     ref: "LIGUE",
-    name: "Ligue Indigo",
-    subtext: "Conseil des 4",
+    name: t("destination.LIGUE"),
+    subtext: t("destination_subtext.CONSEIL_DES_4"),
     nextDestinations: {
         ROUTE_VICTOIRE_SORTIE: [[0,1],[-1,0],[0,-1]]
     },
@@ -140,13 +141,13 @@ export const LIGUE: Destination = {
         rival: ARENE_RIVAL,
         shop: {
             type: RoomType.FREEWALK,
-            name: "Hall de la Ligue",
+            name: t("destination.LIGUE_HALL"),
             music: "music_route_victoire",
             level: SHOP_LIGUE,
         },
         endroom: {
             type: RoomType.FREEWALK,
-            name: "Ligue Indigo - Dernier Étage",
+            name: t("destination.LIGUE_FLOOR5"),
             music: "music_ending",
             level: END_ROOM
         }

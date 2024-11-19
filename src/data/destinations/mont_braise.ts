@@ -16,12 +16,11 @@ import { SULFURA } from "../pokemons/sulfura";
 import { gameState } from "../../logic/gamestate";
 import { PokemonOnBoard } from "../../objects/pokemon";
 import { NO_OWNER } from "../owners";
-import { Pokemon } from "../pokemons";
-import { levelToXP } from "../../logic/xp";
+import { t } from "../../i18n";
 
 export const MONT_BRAISE: Destination = {
     ref: "MONT_BRAISE",
-    name: "Mont Braise",
+    name: t("destination.MONT_BRAISE"),
     nextDestinations: {
         BOURG_PALETTE: [[3,-0.5], [0,-1.5], [-1,0]],
         CRAMOISILE: [[3,-0.5],[0,2.5]]
@@ -31,7 +30,7 @@ export const MONT_BRAISE: Destination = {
     icons: ["type_FEU"],
     rooms: {
         wild: {
-            name: "Mont Braise",
+            name: t("destination.MONT_BRAISE"),
             map: "mont_braise",
             type: RoomType.WILD,
             music: "music_mont_braise",
@@ -54,7 +53,7 @@ export const MONT_BRAISE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Mont Braise",
+            name: t("destination.MONT_BRAISE"),
             map: "mont_braise",
             music: "music_mont_braise",
             trainer: DRESSEUR_MONT_BRAISE,

@@ -21,10 +21,11 @@ import {SHOP_AZURIA} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { BADGE_CASCADE } from "../badges";
+import { t } from "../../i18n";
 
 export const AZURIA: Destination = {
     ref: "AZURIA",
-    name: "Azuria",
+    name: t("destination.AZURIA"),
     nextDestinations: {
         GROTTE_AZUREE: [[0,-2]],
         COL_DE_MONTAGNE: [[-4,0],[-2,0]],
@@ -39,7 +40,7 @@ export const AZURIA: Destination = {
     rooms: {
         arena: {
             type: RoomType.ARENA,
-            name: "Arène d'Azuria",
+            name: t("destination.AZURIA_ARENA"),
             map: "arene_azuria",
             spawnOtherTeam(){
                 return spawnChampionTeam([
@@ -69,7 +70,7 @@ export const AZURIA: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Arène d'Azuria",
+            name: t("destination.AZURIA_ARENA"),
             map: "arene_azuria",
             music: "music_azuria",
             trainer: DRESSEUR_AZURIA,
@@ -91,7 +92,7 @@ export const AZURIA: Destination = {
         },
         shop: {
             type: RoomType.FREEWALK,
-            name: "Magasin d'Azuria",
+            name: t("destination.AZURIA_SHOP"),
             music: "music_shop",
             level: SHOP_AZURIA
         }

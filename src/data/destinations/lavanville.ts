@@ -18,10 +18,11 @@ import { SHOP_LAVANVILLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { gameState } from "../../logic/gamestate";
+import { t } from "../../i18n";
 
 export const LAVANVILLE: Destination = {
     ref: "LAVANVILLE",
-    name: "Lavanville",
+    name: t("destination.LAVANVILLE"),
     nextDestinations: {
         CENTRALE: [[0,-1],[-1,0],[0,-1],[-1,0]],
         TOUR_POKEMON: [[-3,0]],
@@ -33,7 +34,7 @@ export const LAVANVILLE: Destination = {
     rooms: {
         arena: {
             type: RoomType.ARENA,
-            name: "Arène de Lavanville",
+            name: t("destination.LAVANVILLE_ARENA"),
             map: "arene_lavanville",
             spawnOtherTeam() {
                 return spawnChampionTeam([
@@ -62,7 +63,7 @@ export const LAVANVILLE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Arène de Lavanville",
+            name: t("destination.LAVANVILLE_ARENA"),
             map: "arene_lavanville",
             music: "music_lavanville",
             trainer: DRESSEUR_LAVANVILLE,
@@ -81,7 +82,7 @@ export const LAVANVILLE: Destination = {
         },
         shop: {
             type: RoomType.FREEWALK,
-            name: "Magasin de Lavanville",
+            name: t("destination.LAVANVILLE_SHOP"),
             music: "music_shop",
             level: SHOP_LAVANVILLE
         }

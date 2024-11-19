@@ -1,7 +1,7 @@
 import {Destination, DestinationType, RoomType} from "../../types/destination";
 import {spawnChampionTeam, spawnTrainerTeam} from "../../logic/spawns";
 import { preloadMusic } from "../../logic/audio";
-import {SHOP_JADIELLE, SHOP_SAFRANIA} from "../levels/shops";
+import {SHOP_SAFRANIA} from "../levels/shops";
 import { MyScene } from "../../scenes/MyScene";
 import { DRESSEUR_SAFRANIA, MORGANE} from "../trainers";
 import { KADABRA } from "../pokemons/kadabra";
@@ -17,10 +17,11 @@ import { NOEUFNOEUF } from "../pokemons/noeufnoeuf";
 import { PSYKOKWAK } from "../pokemons/psykokwak";
 import { AKWAKWAK } from "../pokemons/akwakwak";
 import { BADGE_MARAIS } from "../badges";
+import { t } from "../../i18n";
 
 export const SAFRANIA: Destination = {
     ref: "SAFRANIA",
-    name: "Safrania",
+    name: t("destination.SAFRANIA"),
     nextDestinations: {
         PENSION: [[0,-2]],
         DOJO: [[-2,0]],
@@ -32,7 +33,7 @@ export const SAFRANIA: Destination = {
     icons: ["badge_marais", "type_PSY"],
     rooms: {
         arena: {
-            name: "Arène de Safrania",
+            name: t("destination.SAFRANIA_ARENA"),
             type: RoomType.ARENA,
             map: "arene_safrania",
             music: "music_argenta_safrania", // meme musique que argenta
@@ -63,7 +64,7 @@ export const SAFRANIA: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Arène de Safrania",
+            name: t("destination.SAFRANIA_ARENA"),
             map: "arene_safrania",
             music: "music_argenta_safrania", // meme musique que argenta
             trainer: DRESSEUR_SAFRANIA,
@@ -82,7 +83,7 @@ export const SAFRANIA: Destination = {
         },
         shop: {
             type: RoomType.FREEWALK,
-            name: "Magasin de Safrania",
+            name: t("destination.SAFRANIA_SHOP"),
             music: "music_shop",
             level: SHOP_SAFRANIA
         }

@@ -279,7 +279,7 @@ export default class MapScene extends MyScene {
                 destination.preload(this as MyScene)
                 this.load.start()
                 this.load.on("complete", () => { 
-                    console.log(`finished preloading destination ${destination.name}`)
+                    console.log(`finished preloading destination ${destination.ref}`)
                     destination.preloading = false
                  })
             } 

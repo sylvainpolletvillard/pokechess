@@ -7,6 +7,7 @@ import { FAST_TRAVEL_DESTINATIONS } from "../data/destinations";
 import { MONT_SELENITE } from "../data/destinations/mont_selenite";
 import { closeMenu } from "../objects/menu";
 import { addText } from "../utils/text";
+import { t } from "../i18n";
 
 export function enterDestination(destination: Destination){
     const scene = gameState.activeScene as MyScene
@@ -59,9 +60,9 @@ export function getRoomOrder(destination: Destination): string[] {
 
 export function getSubText(destination: Destination): string {
     if(destination.subtext) return destination.subtext
-    if(destination.type === DestinationType.ARENA) return "Arène"
+    if(destination.type === DestinationType.ARENA) return t("destination_subtext.ARENA")
     if(destination.type === DestinationType.WILD){
-        return gameState.lastCaptureDestination === destination ? "Combat" : "Capture"
+        return gameState.lastCaptureDestination === destination ? t("destination_subtext.FIGHT") : t("destination_subtext.CAPTURE")
     }
     return "???"
 }

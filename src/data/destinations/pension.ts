@@ -3,10 +3,11 @@ import {DRESSEUR_PENSION} from "../trainers";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { gameState } from "../../logic/gamestate";
+import { t } from "../../i18n";
 
 export const PENSION: Destination = {
     ref: "PENSION",
-    name: "Pension",
+    name: t("destination.PENSION"),
     nextDestinations: {
         AZURIA: [[0,-2]],
         SAFRANIA: [[0,2]]
@@ -17,7 +18,7 @@ export const PENSION: Destination = {
     subtext: "Élevage",
     rooms: {
         pension: {
-            name: "Pension",
+            name: t("destination.PENSION"),
             type: RoomType.PENSION,
             trainer: DRESSEUR_PENSION,
             music: "music_pension_et_camp_nomade",

@@ -8,6 +8,7 @@ import { generatePokemonsAnims } from "../logic/anims";
 import { startMusic } from "../logic/audio";
 import { clickEntry, MenuEntry, openMenu } from "../objects/menu";
 import { hasSave } from "../logic/save";
+import { t } from "../i18n";
 
 export default class MenuScene extends MyScene {
   isIntroAnim = true;
@@ -76,7 +77,7 @@ export default class MenuScene extends MyScene {
   drawMenu() {
     const entries: MenuEntry[] = [
       {
-        label: "Nouvelle partie",
+        label: t("new_game"),
         x: 16,
         y: 0,
         value: "newgame",
@@ -85,7 +86,7 @@ export default class MenuScene extends MyScene {
     if (hasSave()) {
       entries[0].y = 20;
       entries.unshift({
-        label: "Continuer",
+        label: t("continue"),
         x: 16,
         y: 0,
         value: "continue",

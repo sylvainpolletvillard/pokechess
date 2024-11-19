@@ -12,10 +12,11 @@ import {SABELETTE} from "../pokemons/sabelette";
 import {DRESSEUR_FALAISES} from "../trainers";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { t } from "../../i18n";
 
 export const FALAISES: Destination = {
     ref: "FALAISES",
-    name: "Falaises",
+    name: t("destination.FALAISES"),
     nextDestinations: {
         LAVANVILLE: [[0,-4]],
         CARMIN: [[-2,0],[-3,0]],
@@ -28,7 +29,7 @@ export const FALAISES: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            name: "Falaises",
+            name: t("destination.FALAISES"),
             map: "falaises",
             music: "music_falaises",
             spawnOtherTeam(){
@@ -42,7 +43,7 @@ export const FALAISES: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Falaises",
+            name: t("destination.FALAISES"),
             map: "falaises",
             music: "music_falaises",
             trainer: DRESSEUR_FALAISES,

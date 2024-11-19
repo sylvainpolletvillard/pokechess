@@ -12,10 +12,11 @@ import {RACAILLOU} from "../pokemons/racaillou";
 import {MIAOUSS} from "../pokemons/miaouss";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { t } from "../../i18n";
 
 const ROOM_TAUPIQUEUR_WILD: RoomWild = {
     type: RoomType.WILD,
-    name: "Cave taupiqueur",
+    name: t("destination.CAVE_TAUPIQUEUR"),
     music: "music_cave",
     map: "cave_taupiqueur",
     spawnOtherTeam(){
@@ -30,7 +31,7 @@ const ROOM_TAUPIQUEUR_WILD: RoomWild = {
 
 const ROOM_TAUPIQUEUR_TRAINER: RoomArena = {
     type: RoomType.ARENA,
-    name: "Cave taupiqueur",
+    name: t("destination.CAVE_TAUPIQUEUR"),
     music: "music_cave",
     map: "cave_taupiqueur",
     trainer: DRESSEUR_CAVE_TAUPIQUEUR,
@@ -56,8 +57,8 @@ function preload(scene: MyScene){
 
 export const CAVE_TAUPIQUEUR_OUEST: Destination = {
     ref: "CAVE_TAUPIQUEUR_OUEST",
-    name: "Cave Taupiqueur (Entrée Ouest)",
-    subtext: "Voyage rapide",
+    name: t("destination.CAVE_TAUPIQUEUR_WEST"),
+    subtext: t("destination_subtext.fast_travel"),
     nextDestinations: {
         JADIELLE: [[0,2],[-2,0]],
     },
@@ -73,8 +74,8 @@ export const CAVE_TAUPIQUEUR_OUEST: Destination = {
 
 export const CAVE_TAUPIQUEUR_EST: Destination = {
     ref: "CAVE_TAUPIQUEUR_EST",
-    name: "Cave Taupiqueur (Entrée Est)",
-    subtext: "Voyage rapide",
+    name: t("destination.CAVE_TAUPIQUEUR_EAST"),
+    subtext: t("destination_subtext.fast_travel"),
     nextDestinations: {
         CARMIN: [[0,1],[-3,0]],
         FALAISES: [[0,1],[2,0]]

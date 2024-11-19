@@ -19,11 +19,12 @@ import {KOKIYAS} from "../pokemons/kokiyas";
 import {KRABBY} from "../pokemons/krabby";
 import {MACHOC} from "../pokemons/machoc";
 import { BADGE_ROCHE } from "../badges";
+import { t } from "../../i18n";
 
 
 export const ARGENTA: Destination = {
     ref: "ARGENTA",
-    name: "Argenta",
+    name: t("destination.ARGENTA"),
     nextDestinations: {
         FORET_JADE: [[-2,0],[0, 4]],
         COL_DE_MONTAGNE: [[0,-1],[1,0],[0,-1]],
@@ -35,7 +36,7 @@ export const ARGENTA: Destination = {
     icons: ["badge_roche", "type_ROCHE"],
     rooms: {
         arena: {
-            name: "Arène d'Argenta",
+            name: t("destination.ARGENTA_ARENA"),
             type: RoomType.ARENA,
             trainer: PIERRE,
             badge: BADGE_ROCHE,
@@ -66,7 +67,7 @@ export const ARGENTA: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Arène d'Argenta",
+            name: t("destination.ARGENTA_ARENA"),
             map: "arene_argenta",
             music: "music_argenta_safrania",
             trainer: DRESSEUR_ARGENTA,
@@ -86,7 +87,7 @@ export const ARGENTA: Destination = {
         },
         shop: {
             type: RoomType.FREEWALK,
-            name: "Magasin d'Argenta",
+            name: t("destination.ARGENTA_SHOP"),
             music: "music_shop",
             level: SHOP_ARGENTA
         }

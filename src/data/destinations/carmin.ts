@@ -17,10 +17,11 @@ import {SHOP_CARMIN} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { BADGE_FOUDRE } from "../badges";
+import { t } from "../../i18n";
 
 export const CARMIN: Destination = {
     ref: "CARMIN",
-    name: "Carmin sur mer",
+    name: t("destination.CARMIN"),
     nextDestinations: {
         MAISON_PSY: [[0,-2.5]],
         CAVE_TAUPIQUEUR_EST: [[3,0],[0,-1]],
@@ -33,7 +34,7 @@ export const CARMIN: Destination = {
     rooms: {
         arena: {
             type: RoomType.ARENA,
-            name: "Arène de Carmin s.mer",
+            name: t("destination.CARMIN_ARENA"),
             map: "arene_carmin",
             music: "music_carmin",
             trainer: MAJOR_BOB,
@@ -64,7 +65,7 @@ export const CARMIN: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Arène de Carmin s.mer",
+            name: t("destination.CARMIN_ARENA"),
             map: "arene_carmin",
             music: "music_carmin",
             trainer: DRESSEUR_CARMIN,
@@ -84,7 +85,7 @@ export const CARMIN: Destination = {
         },
         shop: {
             type: RoomType.FREEWALK,
-            name: "Magasin de Carmin sur Mer",
+            name: t("destination.CARMIN_SHOP"),
             music: "music_shop",
             level: SHOP_CARMIN
         }

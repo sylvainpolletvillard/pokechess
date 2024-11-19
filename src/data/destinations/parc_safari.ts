@@ -2,21 +2,22 @@ import { preloadMusic } from "../../logic/audio";
 import {Destination, DestinationType, RoomType} from "../../types/destination";
 import { spawnSafariTeam } from "../../logic/spawns";
 import { MyScene } from "../../scenes/MyScene";
+import { t } from "../../i18n";
 
 export const PARC_SAFARI: Destination = {
     ref: "PARC_SAFARI",
-    name: "Parc Safari",
+    name: t("destination.PARC_SAFARI"),
     nextDestinations: {
         PARMANIE: [[0,2]],
     },
     coordinates: [13*16 -8, 14*16 -8],
     type: DestinationType.SPECIAL,
     icons: ["safari"],
-    subtext: "Capture à gogo",
+    subtext: t("destination_subtext.SAFARI"),
     rooms: {
         safari: {
             type: RoomType.SAFARI,            
-            name: "Parc Safari",            
+            name: t("destination.PARC_SAFARI"),            
             music: "music_safari",
             map: "safari1",
             maps: ["safari1","safari2","safari3"],

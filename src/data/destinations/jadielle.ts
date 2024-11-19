@@ -24,12 +24,13 @@ import {BADGE_TERRE} from "../badges";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { gameState } from "../../logic/gamestate";
+import { t } from "../../i18n";
 
 const ARENA_GIOVANNI: RoomArena = {
     type: RoomType.ARENA,
     map: "arene_jadielle",
     music: "music_jadielle",
-    name: "Arène de Jadielle",
+    name: t("destination.JADIELLE_ARENA"),
     trainer: GIOVANNI,
     badge: BADGE_TERRE,
     spawnOtherTeam(){
@@ -60,7 +61,7 @@ export const TRAINER: RoomArena = {
     type: RoomType.ARENA,
     map: "arene_jadielle",
     music: "music_jadielle",
-    name: "Arène de Jadielle",
+    name: t("destination.JADIELLE_ARENA"),
     trainer: SBIRE_ROCKET,
     spawnOtherTeam(){
         return spawnTrainerTeam([
@@ -83,7 +84,7 @@ export const TUTO_SBIRE: RoomArena = {
     type: RoomType.ARENA,
     map: "arene_jadielle",
     music: "music_jadielle",
-    name: "Arène de Jadielle",
+    name: t("destination.JADIELLE_ARENA"),
     trainer: SBIRE_ROCKET_TUTO,
     spawnOtherTeam(){
         return spawnTrainerTeam([
@@ -96,7 +97,7 @@ export const TUTO_SBIRE: RoomArena = {
 
 export const JADIELLE: Destination = {
     ref: "JADIELLE",
-    name: "Jadielle",
+    name: t("destination.JADIELLE"),
     nextDestinations: {
         BOURG_PALETTE: [[0,3]],
         FORET_JADE: [[0, -3]],
@@ -112,7 +113,7 @@ export const JADIELLE: Destination = {
         trainer: TRAINER,
         shop: {
             type: RoomType.FREEWALK,
-            name: "Magasin de Jadielle",
+            name: t("destination.JADIELLE_SHOP"),
             music: "music_shop",
             level: SHOP_JADIELLE
         }

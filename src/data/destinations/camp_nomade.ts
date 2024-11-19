@@ -20,10 +20,11 @@ import {SHOP_CAMP_NOMADE} from "../levels/shops";
 import { MyScene } from "../../scenes/MyScene";
 import { preloadMusic } from "../../logic/audio";
 import { gameState } from "../../logic/gamestate";
+import { t } from "../../i18n";
 
 export const CAMP_NOMADE: Destination = {
     ref: "CAMP_NOMADE",
-    name: "Camp nomade",
+    name: t("destination.CAMP_NOMADE"),
     nextDestinations: {
         CHAMPS_VERDOYANTS: [[-2,0],[0,1]],
         FALAISES: [[0,-3]]
@@ -34,7 +35,7 @@ export const CAMP_NOMADE: Destination = {
     rooms: {
         arena: {
             type: RoomType.ARENA,
-            name: "Arène sauvage",
+            name: t("destination.CAMP_NOMADE_ARENA"),
             map: "camp_nomade",
             music: "music_pension_et_camp_nomade",
             trainer: HECTOR,
@@ -63,7 +64,7 @@ export const CAMP_NOMADE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Arène sauvage",
+            name: t("destination.CAMP_NOMADE_ARENA"),
             map: "camp_nomade",
             music: "music_pension_et_camp_nomade",
             trainer: DRESSEUR_CAMP_NOMADE,
@@ -88,7 +89,7 @@ export const CAMP_NOMADE: Destination = {
             genre collectionneurs d'insectes qui offrent des objets
              */
             type: RoomType.FREEWALK,
-            name: "Camp nomade",
+            name: t("destination.CAMP_NOMADE"),
             music: "music_shop",
             level: SHOP_CAMP_NOMADE
         }

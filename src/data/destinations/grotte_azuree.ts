@@ -20,12 +20,11 @@ import { BADGE_CASCADE } from "../badges";
 import { MEWTWO } from "../pokemons/mewtwo";
 import { PokemonOnBoard } from "../../objects/pokemon";
 import { NO_OWNER } from "../owners";
-import { Pokemon } from "../pokemons";
-import { levelToXP } from "../../logic/xp";
+import { t } from "../../i18n";
 
 export const GROTTE_AZUREE: Destination = {
     ref: "GROTTE_AZUREE",
-    name: "Grotte Azurée",
+    name: t("destination.GROTTE_AZUREE"),
     nextDestinations: {
         AZURIA: [[0,2]]
     },
@@ -39,7 +38,7 @@ export const GROTTE_AZUREE: Destination = {
         wild: {
             type: RoomType.WILD,
             music: "music_grotte_azuree",
-            name: "Grotte Azurée",
+            name: t("destination.GROTTE_AZUREE"),
             map: "grotte_azuree",
             spawnOtherTeam(){
                 if(!gameState.pokedexSeen.has(MEWTWO.ref) && gameState.day >= 20 && Math.random() < 10/100){
@@ -61,7 +60,7 @@ export const GROTTE_AZUREE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Grotte Azurée",
+            name: t("destination.GROTTE_AZUREE"),
             map: "grotte_azuree",
             music: "music_grotte_azuree",
             trainer: DRESSEUR_GROTTE_AZUREE,

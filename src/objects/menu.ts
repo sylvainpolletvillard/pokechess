@@ -28,7 +28,7 @@ export interface Menu {
   draw?: (container: Phaser.GameObjects.Container) => any;
   handleMove?: (moveVector: Phaser.Math.Vector2) => any;
   handleCancel?: () => any;
-  handleChoice?: (selectedEntry?: MenuEntry) => any;
+  handleChoice?: (selectedEntry: MenuEntry) => any;
   onSelect?: (selectedEntry: MenuEntry) => any;
   onClose?: () => any;
   container?: Phaser.GameObjects.Container;
@@ -62,7 +62,7 @@ export function clickEntry(): boolean {
   const menu = gameState.activeMenu;
 
   let shouldCloseMenu = false;
-  if (menu.handleChoice) {
+  if (menu.handleChoice && selectedEntry) {
     shouldCloseMenu = menu.handleChoice(selectedEntry);
     if (shouldCloseMenu !== false) closeMenu();
     return true;

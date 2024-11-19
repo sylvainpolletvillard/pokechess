@@ -13,10 +13,11 @@ import {ELEKTEK} from "../pokemons/elektek";
 import {VOLTORBE} from "../pokemons/voltorbe";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { t } from "../../i18n";
 
 export const PISTE_CYCLABLE: Destination = {
     ref: "PISTE_CYCLABLE",
-    name: "Piste Cyclable",
+    name: t("destination.PISTE_CYCLABLE"),
     nextDestinations: {
         CELADOPOLE: [[0,-5]],
         PARMANIE: [[0,4],[4,0]]
@@ -27,7 +28,7 @@ export const PISTE_CYCLABLE: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            name: "Piste cyclable",
+            name: t("destination.PISTE_CYCLABLE"),
             map: "piste_cyclable",
             music: "music_piste_cyclable",
             spawnOtherTeam(){
@@ -40,7 +41,7 @@ export const PISTE_CYCLABLE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Piste cyclable",
+            name: t("destination.PISTE_CYCLABLE"),
             map: "piste_cyclable",
             music: "music_piste_cyclable",
             trainer: DRESSEUR_PISTE_CYCLABLE,

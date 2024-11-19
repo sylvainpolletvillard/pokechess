@@ -15,11 +15,12 @@ import {KOKIYAS} from "../pokemons/kokiyas";
 import {TADMORV} from "../pokemons/tadmorv";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { t } from "../../i18n";
 
 export const OCEANE_WILD: RoomWild = {
     type: RoomType.WILD,
     music: "music_oceane",
-    name: "Sur l'Océane",
+    name: t("destination.OCEANE_DECK"),
     map: "oceane",
     spawnOtherTeam(){
         return spawnTeamByTypeFactor({
@@ -39,7 +40,7 @@ function preload(scene: MyScene){
 export const OCEANE_TRAINER: RoomArena = {
     type: RoomType.ARENA,
     music: "music_oceane",
-    name: "Sur l'Océane",
+    name: t("destination.OCEANE_DECK"),
     map: "oceane",
     trainer: DRESSEUR_OCEANE,
     spawnOtherTeam(){
@@ -61,14 +62,14 @@ export const OCEANE_TRAINER: RoomArena = {
 
 export const OCEANE_CARMIN: Destination = {
     ref: "OCEANE_CARMIN",
-    name: "L'Océane",
+    name: t("destination.OCEANE"),
     nextDestinations: {
         CARMIN: [[2,0]]
     },
     coordinates: [12*16 -8, 11*16 -8],
     type: DestinationType.SPECIAL,
     icons: ["boat"],
-    subtext: "Voyage rapide vers Cramois'Île",
+    subtext: t("destination_subtext.fast_travel_CRAMOISILE"),
     rooms: {
         wild: OCEANE_WILD,
         trainer: OCEANE_TRAINER
@@ -78,14 +79,14 @@ export const OCEANE_CARMIN: Destination = {
 
 export const OCEANE_CRAMOISILE: Destination = {
     ref: "OCEANE_CRAMOISILE",
-    name: "L'Océane",
+    name: t("destination.OCEANE"),
     nextDestinations: {
         CRAMOISILE: [[2,0]],
     },
     coordinates: [4*16 -8, 19*16 -8],
     type: DestinationType.SPECIAL,
     icons: ["boat"],
-    subtext: "Voyage rapide vers Azuria",
+    subtext: t("destination_subtext.fast_travel_AZURIA"),
     rooms: {
         wild: OCEANE_WILD,
         trainer: OCEANE_TRAINER
@@ -95,7 +96,7 @@ export const OCEANE_CRAMOISILE: Destination = {
 
 export const OCEANE_AZURIA: Destination = {
     ref: "OCEANE_AZURIA",
-    name: "L'Océane",
+    name: t("destination.OCEANE"),
     nextDestinations: {
         AZURIA: [[0,1],[-1,0],[0,1],[-2,0]],
         CENTRALE: [[0,1],[-1,0],[0,1],[0,1],[1,0],[0,1]]
@@ -103,7 +104,7 @@ export const OCEANE_AZURIA: Destination = {
     coordinates: [17*16 -8, 8],
     type: DestinationType.SPECIAL,
     icons: ["boat"],
-    subtext: "Voyage rapide vers Carmin",
+    subtext: t("destination_subtext.fast_travel_CARMIN"),
     rooms: {
         wild: OCEANE_WILD,
         trainer: OCEANE_TRAINER

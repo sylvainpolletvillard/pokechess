@@ -1,3 +1,4 @@
+import { t } from "../../i18n";
 import { preloadMusic } from "../../logic/audio";
 import { gameState } from "../../logic/gamestate";
 import { spawnTeamByTypeFactor } from "../../logic/spawns";
@@ -6,7 +7,7 @@ import { TYPE_COMBAT, TYPE_DRAGON, TYPE_EAU, TYPE_ELECTRIQUE, TYPE_FEE, TYPE_FEU
 
 const ROUTE_VICTOIRE: RoomWild = {
     type: RoomType.WILD,
-    name: "Route Victoire",
+    name: t("destination.ROUTE_VICTOIRE"),
     music: "music_route_victoire",
     map: "route_victoire",
     spawnOtherTeam(){
@@ -30,8 +31,8 @@ const ROUTE_VICTOIRE: RoomWild = {
 
 export const ROUTE_VICTOIRE_ENTREE: Destination = {
     ref: "ROUTE_VICTOIRE_ENTREE",
-    name: "Route Victoire (Entrée)",
-    subtext: "Voyage rapide",
+    name: t("destination.ROUTE_VICTOIRE_ENTREE"),
+    subtext: t("destination_subtext.fast_travel"),
     nextDestinations: {
         JADIELLE: [[0,7],[3,0]],
     },
@@ -50,8 +51,8 @@ export const ROUTE_VICTOIRE_ENTREE: Destination = {
 
 export const ROUTE_VICTOIRE_SORTIE: Destination = {
     ref: "ROUTE_VICTOIRE_SORTIE",
-    name: "Route Victoire (Sortie)",
-    subtext: "Voyage rapide",
+    name: t("destination.ROUTE_VICTOIRE_SORTIE"),
+    subtext: t("destination_subtext.fast_travel"),
     nextDestinations: {
         LIGUE: [[0,1],[1,0],[0,-1]]
     },

@@ -21,10 +21,11 @@ import {SHOP_CRAMOISILE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { BADGE_VOLCAN } from "../badges";
+import { t } from "../../i18n";
 
 export const CRAMOISILE: Destination = {
     ref: "CRAMOISILE",
-    name: "Cramois'Île",
+    name: t("destination.CRAMOISILE"),
     coordinates: [6*16 -8, 19*16 -8],
     type: DestinationType.ARENA,
     icons: ["badge_volcan", "type_FEU"],
@@ -36,7 +37,7 @@ export const CRAMOISILE: Destination = {
     },
     rooms: {
         arena: {
-            name: "Arène de Cramois'Île",
+            name: t("destination.CRAMOISILE_ARENA"),
             type: RoomType.ARENA,
             map: "cramoisile",
             music: "music_cramoisile",
@@ -66,7 +67,7 @@ export const CRAMOISILE: Destination = {
             }
         },
         trainer: {
-            name: "Arène de Cramois'Île",
+            name: t("destination.CRAMOISILE_ARENA"),
             type: RoomType.ARENA,
             map: "cramoisile",
             music: "music_cramoisile",
@@ -86,7 +87,7 @@ export const CRAMOISILE: Destination = {
         },
         shop: {
             type: RoomType.FREEWALK,
-            name: "Magasin de Cramois'Île",
+            name: t("destination.CRAMOISILE_SHOP"),
             music: "music_shop",
             level: SHOP_CRAMOISILE
         }

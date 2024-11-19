@@ -17,10 +17,11 @@ import { ARTIKODIN } from "../pokemons/artikodin";
 import { gameState } from "../../logic/gamestate";
 import { PokemonOnBoard } from "../../objects/pokemon";
 import { NO_OWNER } from "../owners";
+import { t } from "../../i18n";
 
 export const ILES_ECUME: Destination = {
     ref: "ILES_ECUME",
-    name: "Îles Écume",
+    name: t("destination.ILES_ECUME"),
     nextDestinations: {
         CRAMOISILE: [[-4,0]],
         PARMANIE: [[3,0],[0,-3]]
@@ -53,7 +54,7 @@ export const ILES_ECUME: Destination = {
         trainer: {
             type: RoomType.ARENA,
             music: "music_iles_ecume",
-            name: "Îles Ecume",
+            name: t("destination.ILES_ECUME"),
             map: "iles_ecume",
             trainer: DRESSEUR_ILES_ECUME,
             spawnOtherTeam(){

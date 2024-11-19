@@ -7,15 +7,14 @@ import {REPTINCEL} from "../pokemons/reptincel";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { PokemonOnBoard } from "../../objects/pokemon";
-import { Pokemon } from "../pokemons";
 import { RONFLEX } from "../pokemons/ronflex";
 import { NO_OWNER } from "../owners";
 import { gameState } from "../../logic/gamestate";
-import { levelToXP } from "../../logic/xp";
+import { t } from "../../i18n";
 
 export const COLLINE_ROYALE: Destination = {
     ref: "COLLINE_ROYALE",
-    name: "Colline des Rois",
+    name: t("destination.COLLINE_ROYALE"),
     nextDestinations: {
         ARGENTA: [[-2,0],[-2,0]],
         CELADOPOLE: [[-2,0],[0,2]]
@@ -26,7 +25,7 @@ export const COLLINE_ROYALE: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            name: "Colline des Rois",
+            name: t("destination.COLLINE_ROYALE"),
             map: "colline_royale",
             music: "music_colline_royale",
             spawnOtherTeam(){
@@ -39,7 +38,7 @@ export const COLLINE_ROYALE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Colline des Rois",
+            name: t("destination.COLLINE_ROYALE"),
             map: "colline_royale",
             music: "music_colline_royale",
             trainer: DRESSEUR_COLLINE_ROYALE,
@@ -61,7 +60,7 @@ export const COLLINE_ROYALE: Destination = {
 
 export const RONFLEX_ENDORMI: Destination = {
     ref: "RONFLEX_ENDORMI",
-    name: "Chemin vers la Colline",
+    name: t("destination.CHEMIN_COLLINE"),
     nextDestinations: {},
     coordinates: [11*16 -8, 5*16 -8],
     type: DestinationType.WILD,
@@ -69,7 +68,7 @@ export const RONFLEX_ENDORMI: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            name: "Chemin vers la Colline",
+            name: t("destination.CHEMIN_COLLINE"),
             map: "ronflex_endormi",
             music: "music_colline_royale",
             spawnOtherTeam(){

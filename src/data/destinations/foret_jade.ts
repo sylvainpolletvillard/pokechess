@@ -14,10 +14,11 @@ import {ASPICOT} from "../pokemons/aspicot";
 import {DRESSEUR_FORET_JADE} from "../trainers";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { t } from "../../i18n";
 
 export const FORET_JADE: Destination = {
     ref: "FORET_JADE",
-    name: "Forêt de Jade",
+    name: t("destination.FORET_JADE"),
     nextDestinations: {
         JADIELLE: [[0,3]],
         ARGENTA: [[0,-4],[2,0]]
@@ -28,7 +29,7 @@ export const FORET_JADE: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            name: "Forêt de Jade",
+            name: t("destination.FORET_JADE"),
             map: "foret_de_jade",
             music: "music_foret_jade",
             spawnOtherTeam(){
@@ -42,7 +43,7 @@ export const FORET_JADE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Forêt de Jade",
+            name: t("destination.FORET_JADE"),
             map: "foret_de_jade",
             music: "music_foret_jade",
             trainer: DRESSEUR_FORET_JADE,

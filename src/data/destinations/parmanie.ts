@@ -13,10 +13,11 @@ import { SHOP_PARMANIE } from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { BADGE_AME } from "../badges";
+import { t } from "../../i18n";
 
 export const PARMANIE: Destination = {
     ref: "PARMANIE",
-    name: "Parmanie",
+    name: t("destination.PARMANIE"),
     nextDestinations: {
         PARC_SAFARI: [[0,-2]],
         PISTE_CYCLABLE: [[-4,0],[0,-4]],
@@ -30,7 +31,7 @@ export const PARMANIE: Destination = {
     rooms: {
         arena: {
             type: RoomType.ARENA,
-            name: "Arène de Parmanie",
+            name: t("destination.PARMANIE_ARENA"),
             map: "arene_parmanie",
             music: "music_parmanie",
             trainer: KOGA,
@@ -60,7 +61,7 @@ export const PARMANIE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Arène de Parmanie",
+            name: t("destination.PARMANIE_ARENA"),
             map: "arene_parmanie",
             music: "music_parmanie",
             trainer: DRESSEUR_PARMANIE,
@@ -79,7 +80,7 @@ export const PARMANIE: Destination = {
         },
         shop: {
             type: RoomType.FREEWALK,
-            name: "Magasin de Parmanie",
+            name: t("destination.PARMANIE_SHOP"),
             music: "music_shop",
             level: SHOP_PARMANIE
         }

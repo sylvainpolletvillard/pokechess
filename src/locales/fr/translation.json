@@ -1,0 +1,860 @@
+{
+	"new_game": "Nouvelle partie",
+	"continue": "Continuer",
+	"home": {
+		"description": "Un fangame remake de Pokémon Rouge/Bleu en version autobattler",
+		"controls": "Contrôles",
+		"gamepad": "Manette",
+		"keyboard": "Clavier",
+		"mouse": "Souris",
+		"music": "Musique",
+		"sfx": "Effets sonores",
+		"volume": "Volume",
+		"language": "Langue"
+	},
+	"destination": {
+		"BOURG_PALETTE": "Bourg Palette",
+		"HOME": "Chez Maman",
+		"LABO_CHEN": "Labo du Prof. Chen",
+		"BOURG_PALETTE_ROAD": "Route de Bourg Palette",
+		"ARGENTA_ARENA": "Arène d'Argenta",
+		"ARGENTA": "Argenta",
+		"ARGENTA_SHOP": "Magasin d'Argenta",
+		"AZURIA": "Azuria",
+		"AZURIA_ARENA": "Arène d'Azuria",
+		"AZURIA_SHOP": "Magasin d'Azuria",
+		"CAMP_NOMADE": "Camp Nomade",
+		"CAMP_NOMADE_ARENA": "Arène sauvage",
+		"CARMIN": "Carmin sur mer",
+		"CARMIN_ARENA": "Arène de Carmin s.mer",
+		"CARMIN_SHOP": "Magasin de Carmin s.mer",
+		"CAVE_TAUPIQUEUR": "Grotte Taupiqueur",
+		"CAVE_TAUPIQUEUR_WEST": "Grotte Taupiqueur (Entrée Ouest)",
+		"CAVE_TAUPIQUEUR_EAST": "Grotte Taupiqueur (Entrée Est)",
+		"CELADOPOLE": "Céladopole",
+		"CELADOPOLE_ARENA": "Arène de Céladopole",
+		"CELADOPOLE_SHOP": "Magasin de Céladopole",
+		"CENTRALE": "Centrale électrique",
+		"CHAMPS_VERDOYANTS": "Champs verdoyants",
+		"COL_MONTAGNE": "Col de Montagne",
+		"COLLINE_ROYALE": "Colline des Rois",
+		"CHEMIN_COLLINE": "Chemin vers la Colline",
+		"CRAMOISILE": "Cramois'Île",
+		"CRAMOISILE_ARENA": "Arène de Cramois'Île",
+		"CRAMOISILE_SHOP": "Magasin de Cramois'Île",
+		"DOJO": "Dojo",
+		"FALAISES": "Falaises",
+		"FORET_JADE": "Forêt de Jade",
+		"GROTTE_AZUREE": "Grotte Azurée",
+		"ILES_ECUME": "Îles Écume",
+		"JADIELLE": "Jadielle",
+		"JADIELLE_ARENA": "Arène de Jadielle",
+		"JADIELLE_SHOP": "Magasin de Jadielle",
+		"LAVANVILLE": "Lavanville",
+		"LAVANVILLE_ARENA": "Arène de Lavanville",
+		"LAVANVILLE_SHOP": "Magasin de Lavanville",
+		"LIGUE_FLOOR1": "Ligue Indigo - 1er étage",
+		"LIGUE_FLOOR2": "Ligue Indigo - 2ème étage",
+		"LIGUE_FLOOR3": "Ligue Indigo - 3ème étage",
+		"LIGUE_FLOOR4": "Ligue Indigo - 4ème étage",
+		"LIGUE_FLOOR5": "Ligue Indigo - Dernier étage",
+		"LIGUE": "Ligue Indigo",
+		"LIGUE_HALL": "Hall de la Ligue",
+		"MAISON_PSY": "Maison de Mr Psy",
+		"MONT_BRAISE": "Mont Braise",
+		"MONT_SELENITE": "Mont Sélénite",
+		"OCEANE_DECK": "Sur l'Océane",
+		"OCEANE": "L'Océane",
+		"PARC_SAFARI": "Parc Safari",
+		"PARMANIE": "Parmanie",
+		"PARMANIE_ARENA": "Arène de Parmanie",
+		"PARMANIE_SHOP": "Magasin de Parmanie",
+		"PENSION": "Pension Pokémon",
+		"PISTE_CYCLABLE": "Piste cyclable",
+		"ROUTE_VICTOIRE": "Route Victoire",
+		"ROUTE_VICTOIRE_ENTREE": "Route Victoire (Entrée)",
+		"ROUTE_VICTOIRE_SORTIE": "Route Victoire (Sortie)",
+		"SAFRANIA": "Safrania",
+		"SAFRANIA_ARENA": "Arène de Safrania",
+		"SAFRANIA_SHOP": "Magasin de Safrania",
+		"TOUR_POKEMON": "Tour Pokémon"
+	},
+	"destination_subtext": {
+		"ARENA": "Arène",
+		"BOURG_PALETTE": "Maman",
+		"CAPTURE": "Capture",
+		"CONSEIL_DES_4": "Conseil des 4",
+		"fast_travel": "Voyage rapide",
+		"fast_travel_CRAMOISILE": "Voyage rapide vers Cramois'Île",
+		"fast_travel_AZURIA": "Voyage rapide vers Azuria",
+		"fast_travel_CARMIN": "Voyage rapide vers Carmin",
+		"FIGHT": "Combat",
+		"SAFARI": "Capture à gogo"
+	},
+	"dialog": {
+		"mom": {
+			"hello": "Bonjour, mon chéri !",
+			"gift1": "Tiens, avant que tu partes... J'ai retrouvé ça sous ton lit.",
+			"gift2": "Tu n'es pas parti longtemps. Comment ça va ?",
+			"gift3": "J'ai cueilli des baies au jardin. Tes Pokémon vont adorer !",
+			"gift4": "Comment se passe ton aventure ?",
+			"gift5": "Tiens, j'ai trouvé ça pour toi au Labo du Prof Chen.",
+			"gift6": "Le voyage se passe bien ?",
+			"gift7": "As-tu capturé beaucoup de Pokémon ?",
+			"gift8": "Tiens, j'ai quelque-chose à t'offrir.",
+			"gift9": "C'est une gemme très rare.",
+			"gift10": "Elle permet d'ajouter un nouveau type à un de tes Pokémon !",
+			"gift11": "J'espère que ça te sera utile.",
+			"gift12": "Tu es parti depuis un bon moment. Tu t'es fait de nouveaux amis ?",
+			"gift13": "Je suis passée au magasin et j'ai trouvé quelque-chose pour toi.",
+			"gift14": "Le vendeur m'a dit que tous les meilleurs dresseurs en avaient un !",
+			"gift15": "Mais il faut bien choisir le Pokémon à qui le donner.",
+			"gift16": "Cela fait si longtemps que tu as quitté la maison !",
+			"gift17": "Tu dois avoir beaucoup d'histoires à raconter.",
+			"gift18": "Pour ton retour, je voudrais t'offrir un cadeau:",
+			"gift19": "Toutes les économies y sont passées ! Mais c'est une occasion spéciale.",
+			"gift20": "Tu es si proche de ton but ! Je crois en toi mon chéri !",
+			"after_gift": "Bon courage dans ton aventure !"
+		},
+		"pierre": {
+			"start": {
+				"0": "Je suis Pierre ! Je suis le Champion d'Argenta !",
+				"1": "Je crois en la grande résistance de la pierre !",
+				"2": "C'est pourquoi mes Pokémon sont des élémentaires de pierre !",
+				"3": "Tu veux toujours te battre avec moi ? Très bien. En garde !"
+			},
+			"victory": {
+				"0": "Hmm... Beau combat.",
+				"1": "Tu sembles être un Dresseur d'exception !",
+				"2": "En reconnaissance de ta victoire, voici le BADGE ROCHE !",
+				"3": "C'est un Badge officiel de la Ligue Pokémon !",
+				"4": "Il t'en faudra huit pour pouvoir affronter le Conseil des 4."
+			},
+			"defeat": {
+				"0": "Tes Pokémon n'ont pas pu passer ma défense de pierre...",
+				"1": "Entraîne-les et reviens m'affronter quand tu seras assez fort."
+			}
+		},
+		"ondine": {
+			"start": {
+				"0": "Salut ! T'es un nouveau ?",
+				"1": "Si tu veux être un vrai dresseur, il te faut une stratégie !",
+				"2": "C'est quoi ta tactique pour capturer les Pokémon sauvages ?",
+				"3": "Moi je leur fonce dans le tas avec mes Pokémon aquatiques !"
+			},
+			"victory": {
+				"0": "Whouha ! T'es super fort ! Très bien !",
+				"1": "Je te donne le BADGE CASCADE pour m'avoir battue!",
+				"2": "Ce badge t'ouvre le chemin vers la grotte au nord d'Azuria."
+			},
+			"defeat": {
+				"0": "Haha, on dirait que ton équipe a pris l'eau !",
+				"1": "Il va te falloir trouver une autre tactique."
+			}
+		},
+		"bob": {
+			"start": {
+				"0": "Hé, gamin ! Tu fais quoi là ?",
+				"1": "Tu ne résisterais pas longtemps en temps de guerre !",
+				"2": "Je vais te dire, mes Pokémon Électriques m'ont sauvé la vie !",
+				"3": "Et ouais ! Ils ont paralysé mes ennemis avec leurs éclairs !",
+				"4": "Une vraie boucherie ! Y va t'arriver la même chose !",
+				"5": "Compte tes dents ! Tu vas morfler !"
+			},
+			"victory": {
+				"0": "Whoo ! Gard'vous ! T'es un dur, mon p'tit gars !",
+				"1": "Très bien, prends le BADGE FOUDRE !",
+				"2": "T'en auras besoin pour rentrer dans la Ligue Pokémon."
+			},
+			"defeat": {
+				"0": "Ha ! Une défaite foudroyante !",
+				"1": "Un p'tit conseil, gamin ! L'électricité est très puissante !",
+				"2": "Mais elle est impuissante face aux Pokémon de la terre !"
+			}
+		},
+		"erika": {
+			"start": {
+				"0": "Bonjour et sois le bienvenu. Il fait beau, n'est-ce pas?",
+				"1": "J'aime la vie. J'aime les fleurs et les chansons. C'est chou, non?",
+				"2": "Moi, c'est ERIKA, la Championne de l'arène de Céladopole.",
+				"3": "L'arrangement floral est ma spécialité.",
+				"4": "Mes Pokémon sont du type plante.",
+				"5": "Il fit grand froid hier, alors j'ai mis un pull.",
+				"6": "Hein? Tu veux te battre? Bah... Dis-le, mon vieux !",
+				"7": "Tu sais quoi? Tu vas perdre!"
+			},
+			"victory": {
+				"0": "Oh! J'ai perdu? Bien joué. C'est mérité.",
+				"1": "Je te confie le BADGE PRISME.",
+				"2": "Chaque badge obtenu te fait affronter des Pokémon plus forts.",
+				"3": "Tu l'avais remarqué ?"
+			},
+			"defeat": {
+				"0": "Perdre fait toujours un peu mal mais...",
+				"1": "Combattre un bon adversaire est stimulant... ",
+				"2": "Allez, ne reste pas planté là !"
+			}
+		},
+		"koga": {
+			"start": {
+				"0": "Gwahahaha ! Un nain ose me défier ?",
+				"1": "Moi, le grand le beau le terrible Koga ?",
+				"2": "Par l'enfer, par le sang, par l'acier, j'vais gagner !",
+				"3": "Puisse la poigne de mes poisons pétrifier de peur tes petits Pokémon !"
+			},
+			"victory": {
+				"0": "Gwaha... heu ? Tu as prouvé ta valeur !",
+				"1": "Ouvre ta mimine, car voici... le BADGE ÂME !",
+				"2": "J'ai combattu de toutes mes forces...",
+				"3": "Mais... Je ne suis pas assez fort.",
+				"4": "Va dans la prochaine arène ! Explore tes limites !",
+				"5": "Bonne chance !"
+			},
+			"defeat": {
+				"0": "Ha ha ! Il est temps de t'apprendre que certains Pokémon",
+				"1": "ne peuvent pas être vaincus par la force pure !"
+			}
+		},
+		"morgane": {
+			"start": {
+				"0": "J'avais prédit ton arrivée !",
+				"1": "J'ai des pouvoirs psychiques depuis l'enfance.",
+				"2": "J'ai appris à plier les cuillères par la force de mon esprit.",
+				"3": "C'est pas super utile, mais ça en jette !",
+				"4": "Je n'aime pas les combats, mais si tu insistes, je vais te montrer mes pouvoirs !"
+			},
+			"victory": {
+				"0": "Ha! Je suis surprise ! Tu as gagné.",
+				"1": "C'est vrai, je n'ai pas fait de mon mieux !",
+				"2": "Tu mérites ta victoire ! Tu gagnes le BADGE MARAIS !",
+				"3": "Le Badge Marais renforce les pouvoirs occultes...",
+				"4": "Et ça... C'est pas de la gnognotte.",
+				"5": "Tu deviendras un Maître ! Je le sens !"
+			},
+			"defeat": {
+				"0": "C'est exactement ce que j'avais prédit."
+			}
+		},
+		"auguste": {
+			"start": {
+				"0": "Salutations. Mon nom est... Auguste !",
+				"1": "Je suis le Champion de l'Arène de Cramois'Île !",
+				"2": "Mes Pokémon flamboyants vont te réduire en cendres !",
+				"3": "Haha ! Il va bientôt faire très chaud !"
+			},
+			"victory": {
+				"0": "Vlouff ! Je me suis fait vaporiser !",
+				"1": "Tu as gagné le badge Volcan !",
+				"2": "Plus tu possèdes de badges, plus les combats sont coriaces !",
+				"3": "C'est le prix à payer pour monter jusqu'à la Ligue !"
+			},
+			"defeat": {
+				"0": "Maintenant tu sais de quel bois je me chauffe !"
+			}
+		},
+		"giovanni": {
+			"start": {
+				"0": "Je dois dire que je suis surpris que tu sois arrivé jusqu'ici !",
+				"1": "Te voici dans mon repaire ! Je compte reformer la Team Rocket ici !",
+				"2": "Tu oses me défier, moi, le grand Giovanni ? Tu vas déguster !"
+			},
+			"victory": {
+				"0": "Ah ! Voilà ce que j'appelle du combat ! Tu as gagné !",
+				"1": "En récompense voici le badge Terre !",
+				"2": "Une fois les 8 badges obtenus, tu peux te confronter à la Ligue Pokémon.",
+				"3": "Tu peux y accéder par la Route Victoire à l'ouest d'ici.",
+				"4": "Je ne suis pas digne d'être le chef de la Team Rocket !",
+				"5": "Ainsi, son existence s'achève avec ma défaite !",
+				"6": "Je vais me retirer, loin, en ermite, pour étudier les Pokémon !",
+				"7": "Un jour, nos chemins se croiseront à nouveau ! Adieu !"
+			},
+			"defeat": {
+				"0": "Tu élèves tes Pokémon trop soigneusement.",
+				"1": "Un gosse comme toi ne peut pas comprendre mes plans !"
+			}
+		},
+		"hector": {
+			"start": {
+				"0": "Tiens, tu as trouvé mon camp ? Moi, c'est Hector!",
+				"1": "Je suis venu étudier les Pokémon Insecte de cette région.",
+				"2": "Personne ne connait mieux les Pokémon Insecte que moi!",
+				"3": "Quand je serai adulte, je serai un grand expert en Pokémon Insecte!",
+				"4": "Tu veux que je te montre ?",
+				"5": "Prépare toi à admirer le résultat de mes recherches!"
+			},
+			"victory": {
+				"0": "Wah, Ça alors ! Tu connais vraiment bien les Pokémon !",
+				"1": "Ah, j'ai encore beaucoup à apprendre! ... ",
+				"2": "Oui, je sais ! Prends mon filet à insecte comme récompense !",
+				"3": "Tu verras, il te sera très utile !",
+				"4": "Bien, je vais lever le camp. J'ai fini ce que j'avais à faire ici.",
+				"5": "Ce coin regorge de Pokémon exotiques, tu devrais y repasser !"
+			},
+			"defeat": {
+				"0": "Les Pokémon insecte ont des talents cachés.",
+				"1": "Il faudra encore du temps pour tous les découvrir.",
+				"2": "Étudies-les minutieusement."
+			}
+		},
+		"sally": {
+			"start": {
+				"0": "Tiens, tiens. J'ai entendu parler de toi, mon enfant.",
+				"1": "Je suis Sally, la championne d'arène de Corrifey de la région de Galar.",
+				"2": "Je suis venu à Lavanville pour rendre visite à un vieil ami...",
+				"3": "Cet endroit a quelque-chose de féérique à mes yeux.",
+				"4": "Bien, que dirais-tu d'un combat ?",
+				"5": "Ça m'intéresserait de voir comment tu te bats..."
+			},
+			"victory": {
+				"0": "Félicitations pour cette victoire! Je me suis follement amusée !",
+				"1": "Même si j'ai passé l’âge pour ce genre de choses...",
+				"2": "Tu me rappelles mon mari dans ces jeunes années.",
+				"3": "Tu sais quoi ? Tu devrais prendre ce parapluie.",
+				"4": "Il m'a été très utile lors de mes voyages",
+				"5": "Allez, ouste ! Tu as une Ligue à affronter !"
+			},
+			"defeat": {
+				"0": "C'est beau, l'énergie de la jeunesse.",
+				"1": "Mais la puissance des attaques ne fait pas tout...",
+				"2": "Commencerais-tu enfin à comprendre ce qu'est la féérie ?"
+			}
+		},
+		"olga": {
+			"start": {
+				"0": "Bienvenue à la Ligue Pokémon !",
+				"1": "Je zuis Olga du Conzeil des 4 !",
+				"2": "Je zuis la maîtrezze des Pokémon de glaze !",
+				"3": "Et la glaze... Z'est drop fort !",
+				"4": "Tes Pokémon zeront à ma merzi une fois gelés !",
+				"5": "Ach ! Ach ! Ach ! Z'est parti !"
+			},
+			"victory": {
+				"0": "Tu es fort. Z'est bien.",
+				"1": "Mais la Ligue Pokémon te rézerve d'autre zurprizes !"
+			},
+			"defeat": {
+				"0": "Comment as-tu ozé venir ici ?"
+			}
+		},
+		"aldo": {
+			"start": {
+				"0": "Mon nom est Aldo du Conseil des 4 !",
+				"1": "Ma passion à moi et à mes Pokémon, c'est la muscu !",
+				"2": "Pour frimer sur la plage ou pour boxer les nabots,",
+				"3": "rien de tel qu'un corps de rêve !",
+				"4": "Ton équipe... J'vais en faire du yaourt ! A table !"
+			},
+			"victory": {
+				"0": "Bien joué, p'tit ! La prochaine t'attend !"
+			},
+			"defeat": {
+				"0": "Vlan ! Dans les dents !"
+			}
+		},
+		"agatha": {
+			"victory": {
+				"0": "Mmmm... Je vois pourquoi le vieux Chen t'apprécie autant !",
+				"1": "Mes ombres ont perdu. Tu peux passer."
+			},
+			"defeat": {
+				"0": "Tu as du talent, mais c'est insuffisant !"
+			},
+			"start": {
+				"0": "Gnnn... Bonjour mon tout petit.",
+				"1": "Je suis Agatha du Conseil des 4 !",
+				"2": "Chen mise de grands espoirs sur toi, fiston !",
+				"3": "Sais-tu que ce vieux machin était jadis un beau garçon ?",
+				"4": "Enfin... Il y a très longtemps !",
+				"5": "Il veut juste frimer avec son Pokédex !",
+				"6": "Mais c'est débile ! Les Pokémon servent à combattre !",
+				"7": "Je vais te montrer comment les grands Dresseurs combattent !"
+			}
+		},
+		"peter": {
+			"start": {
+				"0": "Ah ! Enfin... J'ai entendu parler de toi !",
+				"1": "Je règne sur le Conseil des 4 !",
+				"2": "Mon nom est Peter le Dresseur de Dragons !",
+				"3": "Les dragons sont des Pokémon mystiques !",
+				"4": "Les capturer et les entraîner est difficile mais leurs pouvoirs sont supérieurs !",
+				"5": "Ils sont presque invincibles !",
+				"6": "Le glas de la défaite et de la honte sonne pour toi...",
+				"7": "L'entends-tu ?"
+			},
+			"victory": {
+				"0": "Comment mes dragons ont-il pu succomber à tes attaques?",
+				"1": "Tu es désormais le Maître de la Ligue Pokémon !",
+				"2": "Enfin... Pas tout à fait.",
+				"3": "Une épreuve doit encore t'être imposée...",
+				"4": "Un autre grand Dresseur t'attend.",
+				"5": "Il a vaincu le Conseil des 4 avant toi !",
+				"6": "C'est le vrai Maître de la Ligue Pokémon !"
+			},
+			"defeat": {
+				"0": "Je n'abandonne jamais. Et toi ?"
+			}
+		},
+		"rival": {
+			"start": {
+				"0": "Salut minable. Je t'attends depuis une bonne plombe !",
+				"1": "Ton devoir en tant que rival est d'entraîner mes Pokémon.",
+				"2": "En améliorant mon Pokédex, j'ai recherché les Pokémon surpuissants!",
+				"3": "J'ai créé l'équipe ultime, efficace contre tous les types de Pokémon!",
+				"4": "Ça t'épate, hein ?",
+				"5": "Je suis le Maître! Tu sais c'que ça veut dire?",
+				"6": "Je suis le dresseur le plus puissant du monde! Yaaa!"
+			},
+			"victory": {
+				"0": "Qu... Comm... Hein? Moi? Pourquoi? WHAAAAAAAAAAA!",
+				"1": "J'ai entraîné mes Pokémon à la perfection... Et zut alors!",
+				"2": "Tu es le nouveau Maître! Alors ça... Ça me la coupe"
+			},
+			"defeat": {
+				"0": "Tu m'as amusé un peu !",
+				"1": "T'es vraiment un minable !",
+				"2": "Mais je crois que tu commences à le savoir, minable!"
+			}
+		},
+		"assistant_tuto": {
+			"start": {
+				"0": "Une minute ! Si tu veux monter une équipe, il te faut des Pokéballs !",
+				"1": "Tiens, voilà 5 Pokéballs pour capturer tes premiers Pokémon.",
+				"2": "Sais-tu comment on s'en sert ?",
+				"yes0": "Très bien, alors capture ces Pokémon sauvages. Ou mets-les KO, comme tu veux !",
+				"no0": "Tu peux capturer un Pokémon sauvage plutôt que de l'affronter.",
+				"no1": "Plus le Pokémon est puissant, plus il te faudra de Pokéballs pour le capturer.",
+				"no2": "Un Pokémon capturé rejoint ta box, qui peut contenir jusqu'à 8 Pokémon.",
+				"no3": "Tu peux ensuite les déplacer de ta box vers le terrain pour qu'ils combattent.",
+				"no4": "Vas-y, essaie de capturer ces Pokémon sauvages !"
+			},
+			"victory": {
+				"0": "Bien, tu sembles te débrouiller comme un chef !"
+			},
+			"defeat": {
+				"0": "La prochaine fois, sers-toi de mes Pokéballs !",
+				"1": "Tu augmenteras nettement tes chances de victoire !"
+			},
+			"step2": {
+				"0": "Tes Pokémon deviennnent plus fort en gagnant de l'expérience après un combat.",
+				"1": "Mais il existe une autre manière de faire monter en expérience un Pokémon.",
+				"2": "Il suffit de capturer un Pokémon sauvage de la même espèce.",
+				"3": "Il partagera son expérience avec ton Pokémon avant d'être relâché.",
+				"4": "Tiens, essaie tout de suite. Essaie de capturer mon ${playerPokemon.name}."
+			},
+			"step3": {
+				"0": "Plus le niveau du Pokémon capturé est élevé, plus il donnera d'expérience",
+				"1": "Rappelle-toi, cela marche uniquement si les Pokémon sont de la même espèce !",
+				"2": "Bien, tu sais tout. Bon voyage et bonne chance!"
+			}
+		},
+		"sbire_rocket": {
+			"start": {
+				"0": "Giovanni est peut-être parti, mais la Team Rocket ne meurt jamais !",
+				"1": "J'ai bien l'intention de prendre sa place ! A l'attaque !"
+			},
+			"victory": {
+				"0": "La Team Rocket s'envole vers d'autres cieux ! "
+			},
+			"defeat": {
+				"0": "Mouahaha ! C'est la renaissance de la team Rocket !"
+			}
+		},
+		"sbire_rocket_tuto": {
+			"start": {
+				"0": "Eh toi là, qu'est-ce que tu fiches ici ?",
+				"1": "Ici c'est le territoire de Giovanni, notre chef et maître de l'arène !",
+				"2": "Quoi ? Tu comptes te mesurer à lui ? Laisse-moi rire !",
+				"3": "Je vais te montrer la puissance de la Team Rocket !"
+			},
+			"victory": {
+				"0": "Hmpff ! Tu es plus coriace que tu en as l'air... ",
+				"1": "Mais ça ne change rien ! Giovanni va te régler ton compte !",
+				"2": "Reviens plus tard quand tu auras une vraie équipe."
+			},
+			"defeat": {
+				"0": "Allez, dégage d'ici minus, et reviens quand tu auras une vraie équipe !"
+			}
+		},
+		"dresseur_col_de_montagne": {
+			"start": {
+				"0": "Salut blanc-bec, tu t'es perdu ?",
+				"1": "Ne compte pas sur moi pour te prendre sous mon aile !",
+				"2": "Moi je cherche plutôt la prise de bec !"
+			},
+			"victory": {
+				"0": "Ouille, j'ai du plomb dans l'aile ! Bisous je m'envole !"
+			},
+			"defeat": {
+				"0": "Va-t'en à tire-d'aile avant d'y laisser des plumes !"
+			}
+		},
+		"dresseur_dojo": {
+			"start": {
+				"0": "P'tit faiblard ! Je suis le GRAND MAITRE de KARATE !",
+				"1": "Tu me provoques ? Tu veux t'battre ?",
+				"2": "Tu cherches le contact ? HAHAHA ! Ayaaaaa !"
+			},
+			"victory": {
+				"0": "STOP ! Tu m'as battu ! J'ai honte !",
+				"1": "OK, tu as gagné ! Mais ne va pas le crier sur tous les toits !"
+			},
+			"defeat": {
+				"0": "Ton entraînement n'est pas encore suffisant ! Ayaaaaa !"
+			}
+		},
+		"dresseur_falaises": {
+			"start": {
+				"0": "Salut petit gars ! Je suis le plus grand grimpeur de Kanto !",
+				"1": "Et j'ai bien l'intention de me hisser au sommet !",
+				"2": "Un combat ? C'est dans mes cordes !"
+			},
+			"victory": {
+				"0": "Bon, j'ai perdu, on va pas en faire toute une montagne !"
+			},
+			"defeat": {
+				"0": "Alors, on est sur la corde raide ?"
+			}
+		},
+		"dresseur_safrania": {
+			"start": {
+				"0": "Tu oses revenir ici ? Tu as perdu l'esprit ?",
+				"1": "Nous autres adeptes Psy nous battons à la force du mental !",
+				"2": "Ma puissance va te faire tourner la tête !"
+			},
+			"victory": {
+				"0": "Tu m'as donné la migraine !"
+			},
+			"defeat": {
+				"0": "La force brute ne vaut rien contre la puissance de l'intellect !"
+			}
+		},
+		"dresseur_piste_cyclable": {
+			"start": {
+				"0": "Allez gamin, aboule ton quatre heures ! J'ai faim !",
+				"1": "Essaie pas de fuir ! Mate un peu ma bécane !",
+				"2": "Tu n'iras pas loin avec ta petite bicyclette !"
+			},
+			"victory": {
+				"0": "Raaah t'as rayé la carroserie ! Vite, au garage !"
+			},
+			"defeat": {
+				"0": "Allez, je mets les gaz, à plus gros naze !"
+			}
+		},
+		"dresseur_iles_ecume": {
+			"start": {
+				"0": "Fais pas de bruit, tu fais fuir les poissons !"
+			},
+			"victory": {
+				"0": "J'aurais pas de belles prises aujourd'hui..."
+			},
+			"defeat": {
+				"0": "Je suis frais comme un gardon !"
+			}
+		},
+		"dresseur_centrale": {
+			"start": {
+				"0": "Hé, t'as pété les plombs ?",
+				"1": "C'est pas un endroit pour les enfants ici !",
+				"2": "Mon équipe de Pokémon va te foudroyer !"
+			},
+			"victory": {
+				"0": "Je me suis pris un sacré coup de jus !"
+			},
+			"defeat": {
+				"0": "C'était une victoire éclair !"
+			}
+		},
+		"dresseur_foret_jade": {
+			"start": {
+				"0": "T'es un dresseur Pokémon ? Moi aussi !",
+				"1": "J'ai capturé plein de Pokémon insectes !",
+				"2": "Maintenant on doit faire un combat, c'est la règle !"
+			},
+			"victory": {
+				"0": "Je vais le dire à ma mère !"
+			},
+			"defeat": {
+				"0": "Ouaiiiis j'ai gagné pour la première fois !"
+			}
+		},
+		"dresseur_azuria": {
+			"start": {
+				"0": "De l'eau a coulé sous les ponts depuis ta victoire contre Ondine.",
+				"1": "Je suis plus fraîche que jamais ! Attends-toi à un raz de marée !"
+			},
+			"victory": {
+				"0": "Gloups, j'ai bu la tasse !"
+			},
+			"defeat": {
+				"0": "Alors, ta stratégie a pris l'eau ?"
+			}
+		},
+		"dresseur_lavanville": {
+			"start": {
+				"0": "Sally m'a beaucoup parlé de vous.",
+				"1": "Me ferez-vous l'honneur d'un combat ?"
+			},
+			"victory": {
+				"0": "C'était un combat magique, je n'aurais pas rêvé mieux."
+			},
+			"defeat": {
+				"0": "Allez vous reposer, la nuit porte conseil. Et croyez en vos rêves !"
+			}
+		},
+		"dresseur_mont_selenite": {
+			"start": {
+				"0": "Je suis à la recherche de fossiles, tu n'en aurais pas vu ?"
+			},
+			"victory": {
+				"0": "Il semblerait que ce soit moi le fossile..."
+			},
+			"defeat": {
+				"0": "Tu ne feras pas de vieux os ici, mieux vaut que tu partes."
+			}
+		},
+		"dresseur_oceane": {
+			"start": {
+				"0": "Ahoy, marin d'eau douce !",
+				"1": "La traversée va être longue...",
+				"2": "Faisons un combat pour passer le temps !",
+				"3": "Prêt ? Larguez les amarres !"
+			},
+			"victory": {
+				"0": "Bon, je dois aller souquer les artimuses... Bon vent !"
+			},
+			"defeat": {
+				"0": "J'ai le vent en poupe aujourd'hui !",
+				"1": "Allez, les perdants à la cale ! Ha ha, je rigole !"
+			}
+		},
+		"mr_psy": {
+			"start": {
+				"0": "Ah, te revoilà ! Alors, as-tu entraîné le mental de tes Pokémon ?",
+				"1": "C'est l'heure de... l'évaluation !"
+			},
+			"victory": {
+				"0": "C'est un 10/10 ! Tu es diplômé de l'école de Monsieur Psy !"
+			},
+			"defeat": {
+				"0": "Quelle déception !",
+				"1": "Reviens me voir et je te laisserai capturer d'autres Pokémon Psy",
+				"2": "Ton équipe a besoin d'améliorer son mental !"
+			}
+		},
+		"dresseur_champs_verdoyants": {
+			"start": {
+				"0": "Tiens ? Qui es-tu à arriver comme une fleur ?",
+				"1": "C'est mon coin ici ! Je vais t'envoyer sur les roses !"
+			},
+			"victory": {
+				"0": "Mon équipe a été envoyée dans les pâquerettes !",
+				"1": "Raaaah tu m'as mis les nerfs à fleur de peau !"
+			},
+			"defeat": {
+				"0": "Je vais te faire une fleur et te donner un conseil:",
+				"1": "Même les plus belles roses ont besoin d'épines.",
+				"2": "Il te faut une bonne attaque si tu veux gagner."
+			}
+		},
+		"dresseur_camp_nomade": {
+			"start": {
+				"0": "Minute Papillon !",
+				"1": "Je vais te montrer ma collection d'insectes !",
+				"2": "Attends-toi à un combat pas piqué des hannetons !"
+			},
+			"victory": {
+				"0": "Aïe ! Je me suis fait piquer par un moustique !"
+			},
+			"defeat": {
+				"0": "Alors, tu as des fourmis dans les jambes ?"
+			}
+		},
+		"dresseur_celadopole": {
+			"start": {
+				"0": "Je t'ai déjà croisé en ville, non ?",
+				"1": "Je peux te faire entrer dans les clubs de dresseurs les plus chics ici !",
+				"2": "Mais tu dois d'abord prouver que tu le mérites ! À l'attaque !"
+			},
+			"victory": {
+				"0": "Mais euh ! Tu étais censé me laisser gagner !",
+				"1": "Vous autres provinciaux n'avez aucun savoir vivre !"
+			},
+			"defeat": {
+				"0": "Finalement je n'ai plus trop envie qu'on traîne ensemble, hi hi !"
+			}
+		},
+		"dresseur_argenta": {
+			"start": {
+				"0": "Tu as vaincu Pierre, mais moi je suis solide comme un roc !"
+			},
+			"victory": {
+				"0": "Je crois que j'ai un caillou dans ma chaussure..."
+			},
+			"defeat": {
+				"0": "Alors, on a un coup de calcaire ?"
+			}
+		},
+		"dresseur_grotte_azuree": {
+			"start": {
+				"0": "Hmmm... Drôle d'endroit pour une rencontre.",
+				"1": "Laisse moi briser la glace. En garde !"
+			},
+			"victory": {
+				"0": "Ma défense a fondu comme neige au soleil !"
+			},
+			"defeat": {
+				"0": "Hmm... Ton équipe s'est fait refroidir.",
+				"1": "Que fais-tu encore ici ? Tu attends le dégel ?"
+			}
+		},
+		"dresseur_carmin": {
+			"start": {
+				"0": "Hey t'es venu pour mon concert ? L'ambiance est électrique ici !",
+				"1": "Comment ça, non ? T'as jamais écouté mon CD ?!",
+				"2": "Je vais pas te laisser gâcher la fête !"
+			},
+			"victory": {
+				"0": "Ça y est t'as ruiné l'ambiance !"
+			},
+			"defeat": {
+				"0": "Ça c'est du rock !!!"
+			}
+		},
+		"dresseur_tour_pokemon": {
+			"start": {
+				"0": "Arrière, démon !!!"
+			},
+			"victory": {
+				"0": "AaAaaaAaaah !!! Fuyez pour vos vies !!!"
+			},
+			"defeat": {
+				"0": "Ça... ? Ça a marché ?",
+				"1": "Les démons ne prennent pas les coups d'habitude..."
+			}
+		},
+		"dresseur_pension": {
+			"start": {
+				"0": "Tiens, c'est toi ! Tu viens nous confier des Pokémon ?",
+				"1": "Ah, te revoilà ! Tes Pokémon ont bien grandi, regarde !",
+				"2": "Bienvenue à la Pension !",
+				"3": "Ici on prend soin des Pokémon quand leur propriétaire doit s'absenter.",
+				"4": "Tu peux nous confier certains de tes Pokémon si tu veux.",
+				"5": "Il y a aussi des Pokémon qui ne cherchent qu'à être adoptés !",
+				"6": "Leur type est banal alors ils n'intéressent pas les autres dresseurs..."
+			},
+			"bye": {
+				"0": "Je prendrais soin de tes Pokémon en ton absence !",
+				"1": "Reviens quand tu veux !"
+			}
+		},
+		"dresseur_cave_taupiqueur": {
+			"start": {
+				"0": "Hein ? Non, c'est pas moi !",
+				"1": "J'ai un alibi ! J'étais au cinéma !"
+			},
+			"victory": {
+				"0": "Pas la peine de s'énerver ! Tiens, prends ces Pokéballs !",
+				"1": "Et... on dit que tu ne m'as jamais vu, OK ?"
+			},
+			"defeat": {
+				"0": "Ça t'apprendra à venir fouiner dans les coins sombres !"
+			}
+		},
+		"dresseur_colline_royale": {
+			"start": {
+				"0": "Tu cherches des Pokémon Dragons ?",
+				"1": "Moi aussi ! Moi aussi !",
+				"2": "Ils sont si grands ! si beaux ! si majestueux !",
+				"3": "Ils sont à moi ! Tu m'entends ? À moi seul !"
+			},
+			"victory": {
+				"0": "La force ancestrale du dragon m'a abandonné !"
+			},
+			"defeat": {
+				"0": "Mes dragons sont si forts ! si terrifiants !",
+				"1": "si puissants ! si... ah, il est parti."
+			}
+		},
+		"dresseur_mont_braise": {
+			"start": {
+				"0": "Eh bien que fait un jeune garçon dans un endroit pareil ?",
+				"1": "Tu n'as pas froid aux yeux, toi !",
+				"2": "Hé Ron, si on lui faisait un baptême du feu ?"
+			},
+			"victory": {
+				"0": "Cessez-le-feu ! Viens Ron, on s'en va !"
+			},
+			"defeat": {
+				"0": "Tu vois ce que ça fait d'être pris entre deux feux !"
+			}
+		},
+		"dresseur_parmanie": {
+			"start": {
+				"0": "Dégage sale morveux !",
+				"1": "La Team Rocket mène des opérations secrètes ici !"
+			},
+			"victory": {
+				"0": "La team Rocket s'envole vers d'autres cieux !"
+			},
+			"defeat": {
+				"0": "Nous sommes de retour...`, `Pour vous jouer un mauvais tour..."
+			}
+		},
+		"dresseur_cramoisile": {
+			"start": {
+				"0": "Ah, un nouveau sujet d'expérience !",
+				"1": "Laisse-moi te montrer le fruit de mes recherches..."
+			},
+			"victory": {
+				"0": "Mes calculs ne sont pas bons !"
+			},
+			"defeat": {
+				"0": "Euréka !"
+			}
+		}
+	},
+	"trainer": {
+		"pierre": "Pierre",
+		"ondine": "Ondine",
+		"bob": "Major Bob",
+		"erika": "Erika",
+		"koga": "Koga",
+		"morgane": "Morgane",
+		"auguste": "Auguste",
+		"giovanni": "Giovanni",
+		"hector": "Hector",
+		"sally": "Sally",
+		"olga": "Olga",
+		"aldo": "Aldo",
+		"agatha": "Agatha",
+		"peter": "Peter",
+		"assistant_tuto": "Assistant du Prof Chen",
+		"sbire_rocket": "Sbire Rocket",
+		"dresseur_col_de_montagne": "Sébastien l'ornithologue",
+		"dresseur_dojo": "Koichi le Karatéka",
+		"dresseur_falaises": "Maurice le Montagnard",
+		"dresseur_safrania": "Polo le Kinésiste",
+		"dresseur_piste_cyclable": "Karl le Loubard",
+		"dresseur_iles_ecume": "Fabien le Pêcheur",
+		"dresseur_centrale": "Bernard le mécano",
+		"dresseur_foret_jade": "Calvin le Gamin",
+		"dresseur_azuria": "Anya la nageuse",
+		"dresseur_lavanville": "Henri le gentilhomme",
+		"dresseur_mont_selenite": "Arthur le paléontologue",
+		"dresseur_oceane": "Firmin le Marin",
+		"mr_psy": "Monsieur Psy",
+		"dresseur_champs_verdoyants": "Isabelle la Fleuriste",
+		"dresseur_camp_nomade": "Nancy la scout",
+		"dresseur_celadopole": "Valentine la Citadine",
+		"dresseur_argenta": "Roche le géologue",
+		"dresseur_grotte_azuree": "Ugo le vieux sage",
+		"dresseur_carmin": "Elton le Rocker",
+		"dresseur_tour_pokemon": "Gwen l'Exorciste",
+		"dresseur_pension": "Gaël de la Pension",
+		"dresseur_cave_taupiqueur": "Joe le Cambrioleur",
+		"dresseur_colline_royale": "Norbert le Fan de Dragons",
+		"dresseur_mont_braise": "Duo Ron & Mya les Casse-Cous",
+		"dresseur_cramoisile": "Isaac le Scientifique"
+	}
+}

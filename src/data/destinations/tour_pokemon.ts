@@ -11,10 +11,11 @@ import {ABRA} from "../pokemons/abra";
 import {RATTATA} from "../pokemons/rattata";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { t } from "../../i18n";
 
 export const TOUR_POKEMON: Destination = {
     ref: "TOUR_POKEMON",
-    name: "Tour Pokémon",
+    name: t("destination.TOUR_POKEMON"),
     nextDestinations: {
         SAFRANIA: [[-2,0]],
         LAVANVILLE: [[3,0]]
@@ -24,7 +25,7 @@ export const TOUR_POKEMON: Destination = {
     icons: ["type_SPECTRE"],
     rooms: {
         wild: {
-            name: "Tour Pokémon",
+            name: t("destination.TOUR_POKEMON"),
             type: RoomType.WILD,
             map: "tour_pokemon",
             music: "music_tour_pokemon",
@@ -38,7 +39,7 @@ export const TOUR_POKEMON: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Tour Pokémon",
+            name: t("destination.TOUR_POKEMON"),
             map: "tour_pokemon",
             music: "music_tour_pokemon",
             trainer: DRESSEUR_TOUR_POKEMON,

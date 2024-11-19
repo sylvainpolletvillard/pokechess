@@ -12,10 +12,11 @@ import {MIMITOSS} from "../pokemons/mimitoss";
 import {CANARTICHO} from "../pokemons/canarticho";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { t } from "../../i18n";
 
 export const COL_DE_MONTAGNE: Destination = {
     ref: "COL_DE_MONTAGNE",
-    name: "Col de Montagne",
+    name: t("destination.COL_MONTAGNE"),
     nextDestinations: {
         ARGENTA: [[0,1],[-1,0],[0,1]],
         MONT_SELENITE: [[2,0]],
@@ -27,7 +28,7 @@ export const COL_DE_MONTAGNE: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            name: "Col de Montagne",
+            name: t("destination.COL_MONTAGNE"),
             music: "music_col_montagne",
             map: "col_de_montagne",
             spawnOtherTeam(){
@@ -42,7 +43,7 @@ export const COL_DE_MONTAGNE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Col de Montagne",
+            name: t("destination.COL_MONTAGNE"),
             map: "col_de_montagne",
             music: "music_col_montagne",
             trainer: DRESSEUR_COL_DE_MONTAGNE,

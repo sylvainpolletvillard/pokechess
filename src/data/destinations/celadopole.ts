@@ -20,10 +20,11 @@ import {SHOP_CELADOPOLE} from "../levels/shops";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
 import { BADGE_PRISME } from "../badges";
+import { t } from "../../i18n";
 
 export const CELADOPOLE: Destination = {
     ref: "CELADOPOLE",
-    name: "Céladopole",
+    name: t("destination.CELADOPOLE"),
     nextDestinations: {
         ARGENTA: [[0,-2],[-2,0]],
         COLLINE_ROYALE: [[0,-2],[2,0]],
@@ -36,7 +37,7 @@ export const CELADOPOLE: Destination = {
     rooms: {
         arena: {
             type: RoomType.ARENA,
-            name: "Arène de Céladopole",
+            name: t("destination.CELADOPOLE_ARENA"),
             map: "arene_celadopole",
             music: "music_celadopole",
             trainer: ERIKA,
@@ -66,7 +67,7 @@ export const CELADOPOLE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Arène de Céladopole",
+            name: t("destination.CELADOPOLE_ARENA"),
             map: "arene_celadopole",
             music: "music_celadopole",
             trainer: DRESSEUR_CELADOPOLE,
@@ -86,7 +87,7 @@ export const CELADOPOLE: Destination = {
         },
         shop: {
             type: RoomType.FREEWALK,
-            name: "Magasin de Céladopole",
+            name: t("destination.CELADOPOLE_SHOP"),
             music: "music_shop",
             level: SHOP_CELADOPOLE
         }

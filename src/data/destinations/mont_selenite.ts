@@ -16,10 +16,11 @@ import { MyScene } from "../../scenes/MyScene";
 import { receiveItem } from "../dialogs/descriptions";
 import { pickRandomIn } from "../../utils/helpers";
 import { FOSSILES } from "../items";
+import { t } from "../../i18n";
 
 export const MONT_SELENITE: Destination = {
     ref: "MONT_SELENITE",
-    name: "Mont Selenite",
+    name: t("destination.MONT_SELENITE"),
     nextDestinations: {
         COL_DE_MONTAGNE: [[0,1],[-2,0]],        
         AZURIA: [[0,1],[4,0]]
@@ -31,7 +32,7 @@ export const MONT_SELENITE: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            name: "Mont Sélénite",
+            name: t("destination.MONT_SELENITE"),
             map: "mont_selenite",
             music: "music_cave",
             spawnOtherTeam(){
@@ -49,7 +50,7 @@ export const MONT_SELENITE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Mont Sélénite",
+            name: t("destination.MONT_SELENITE"),
             map: "mont_selenite",
             music: "music_cave",
             trainer: DRESSEUR_MONT_SELENITE,

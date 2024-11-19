@@ -21,10 +21,11 @@ import { gameState } from "../../logic/gamestate";
 import { ELECTHOR } from "../pokemons/electhor";
 import { NO_OWNER } from "../owners";
 import { PokemonOnBoard } from "../../objects/pokemon";
+import { t } from "../../i18n";
 
 export const CENTRALE: Destination = {
     ref: "CENTRALE",
-    name: "Centrale",
+    name: t("destination.CENTRALE"),
     nextDestinations: {
         AZURIA: [[0,-1],[-1,0],[0,-1],[-2,0]],
         OCEANE_AZURIA: [[0,-1],[-1,0],[0,-1],[0,-1],[1,0],[0,-1]],
@@ -36,7 +37,7 @@ export const CENTRALE: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            name: "Centrale électrique",
+            name: t("destination.CENTRALE"),
             music: "music_centrale",
             map: "centrale",
             spawnOtherTeam(){
@@ -58,7 +59,7 @@ export const CENTRALE: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Centrale électrique",
+            name: t("destination.CENTRALE"),
             music: "music_centrale",
             map: "centrale",
             trainer: DRESSEUR_CENTRALE,

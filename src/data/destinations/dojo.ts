@@ -10,10 +10,11 @@ import {FEROSINGE} from "../pokemons/ferosinge";
 import {TARTARD} from "../pokemons/tartard";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { t } from "../../i18n";
 
 export const DOJO: Destination = {
     ref: "DOJO",
-    name: "Dojo",
+    name: t("destination.DOJO"),
     nextDestinations: {
         SAFRANIA: [[2,0]],
         CELADOPOLE: [[-3,0]]
@@ -24,7 +25,7 @@ export const DOJO: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            name: "Dojo",
+            name: t("destination.DOJO"),
             map: "dojo",
             music: "music_dojo",
             spawnOtherTeam(){
@@ -39,7 +40,7 @@ export const DOJO: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Dojo",
+            name:  t("destination.DOJO"),
             map: "dojo",
             music: "music_dojo",
             trainer: DRESSEUR_DOJO,

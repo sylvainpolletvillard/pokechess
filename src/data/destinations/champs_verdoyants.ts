@@ -12,10 +12,11 @@ import {SAQUEDENEU} from "../pokemons/saquedeneu";
 import {TAUPIQUEUR} from "../pokemons/taupiqueur";
 import { preloadMusic } from "../../logic/audio";
 import { MyScene } from "../../scenes/MyScene";
+import { t } from "../../i18n";
 
 export const CHAMPS_VERDOYANTS: Destination = {
     ref: "CHAMPS_VERDOYANTS",
-    name: "Champs verdoyants",
+    name: t("destination.CHAMPS_VERDOYANTS"),
     nextDestinations: {
         CAMP_NOMADE: [[0,-1],[2,0]],
         PARMANIE: [[-1,0],[0,1],[-3,0]]
@@ -26,7 +27,7 @@ export const CHAMPS_VERDOYANTS: Destination = {
     rooms: {
         wild: {
             type: RoomType.WILD,
-            name: "Champs verdoyants",
+            name: t("destination.CHAMPS_VERDOYANTS"),
             map: "champs_verdoyants",
             music: "music_champs_verdoyants",
             spawnOtherTeam(){
@@ -41,7 +42,7 @@ export const CHAMPS_VERDOYANTS: Destination = {
         },
         trainer: {
             type: RoomType.ARENA,
-            name: "Champs verdoyants",
+            name: t("destination.CHAMPS_VERDOYANTS"),
             map: "champs_verdoyants",
             music: "music_champs_verdoyants",
             trainer: DRESSEUR_CHAMPS_VERDOYANTS,
