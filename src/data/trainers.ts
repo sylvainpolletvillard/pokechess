@@ -476,8 +476,8 @@ export const ASSISTANT_TUTO: Trainer = {
 			},
 			t("dialog.assistant_tuto.start.2"),
 			{
-				OUI: () => [t("dialog.assistant_tuto.start.yes0")],
-				NON: () => [
+				[t("yes")]: () => [t("dialog.assistant_tuto.start.yes0")],
+				[t("no")]: () => [
 					t("dialog.assistant_tuto.start.no0"),
 					t("dialog.assistant_tuto.start.no1"),
 					t("dialog.assistant_tuto.start.no2"),
@@ -517,7 +517,7 @@ export const ASSISTANT_TUTO: Trainer = {
 					spawnPokemon(gameState.board.otherTeam[0], game);
 				});
 				return t("dialog.assistant_tuto.step2.4", {
-					name: t("pokemon." + playerPokemon.ref),
+					name: t(`pokemon.${playerPokemon.ref}`),
 				});
 			},
 		],

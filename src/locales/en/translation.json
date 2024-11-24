@@ -131,7 +131,8 @@
 				"4": "You will need eight of them to be able to face the Elite Four."
 			},
 			"defeat": {
-				"0": "Your Pokémon couldn't get past my rock defense..."
+				"0": "Your Pokémon couldn't get past my rock defense...",
+				"1": "Train them and come back and fight me when you're strong enough."
 			}
 		},
 		"ondine": {
@@ -147,7 +148,8 @@
 				"2": "This badge opens the way to the cave north of Cerulean City."
 			},
 			"defeat": {
-				"0": "Haha, looks like your team took on water!"
+				"0": "Haha, looks like your team took on water!",
+				"1": "You're going to have to find another tactic."
 			}
 		},
 		"bob": {
@@ -184,7 +186,8 @@
 			"victory": {
 				"0": "Oh! I lost? Well done. It's deserved.",
 				"1": "I entrust you with the PRISM BADGE.",
-				"2": "Each badge you earn makes you face stronger Pokémon."
+				"2": "Each badge you earn makes you face stronger Pokémon.",
+				"3": "Did you notice?"
 			},
 			"defeat": {
 				"0": "Losing always hurts a little but...",
@@ -242,7 +245,8 @@
 			"victory": {
 				"0": "Phew! I got vaporized!",
 				"1": "You have earned the VOLCANO BADGE!",
-				"2": "The more badges you have, the tougher the fights!"
+				"2": "The more badges you have, the tougher the fights!",
+				"3": "This is the price to pay to climb up the League!"
 			},
 			"defeat": {
 				"0": "Now you know what I'm made of!"
@@ -258,13 +262,15 @@
 				"0": "Ah! Now that's what I call a fight! You won!",
 				"1": "As a reward, here is the EARTH BADGE!",
 				"2": "Once you have obtained all 8 badges, you can compete in the Pokémon League.",
+				"3": "You can access it via Victory Road west of here.",
 				"4": "I'm not worthy of being the leader of Team Rocket!",
 				"5": "So his existence ends with my defeat!",
 				"6": "I'm going to retreat, far away, as a hermit, to study Pokémon!",
 				"7": "One day our paths will cross again! Goodbye!"
 			},
 			"defeat": {
-				"0": "You raise your Pokémon too carefully."
+				"0": "You raise your Pokémon too carefully.",
+				"1": "A kid like you can't understand my plans!"
 			}
 		},
 		"hector": {
@@ -347,7 +353,8 @@
 		},
 		"agatha": {
 			"victory": {
-				"0": "Mmmm... I see why Oak likes you so much!"
+				"0": "Mmmm... I see why Oak likes you so much!",
+				"1": "My shadows have lost. You can pass."
 			},
 			"defeat": {
 				"0": "You have talent, but it's not enough!"
@@ -406,6 +413,402 @@
 				"0": "You amused me a little!",
 				"1": "You're really a loser!",
 				"2": "But I think you're starting to know, you loser!"
+			}
+		},
+		"assistant_tuto": {
+			"start": {
+				"0": "Wait a minute! If you want to build a team, you need Pokéballs!",
+				"1": "Here are 5 Pokéballs to catch your first Pokémon.",
+				"2": "Do you know how to use it?",
+				"yes0": "Alright, then catch these wild Pokémon. Or knock them out, whatever you want!",
+				"no0": "You can capture a wild Pokémon instead of battling it.",
+				"no1": "The more powerful the Pokémon, the more Pokéballs you will need to capture it.",
+				"no2": "A captured Pokémon joins your box, which can contain up to 8 Pokémon.",
+				"no3": "You can then move them from your box to the field for them to fight.",
+				"no4": "Go ahead, try to capture these wild Pokémon!"
+			},
+			"victory": {
+				"0": "Well, you seem to be doing great!"
+			},
+			"defeat": {
+				"0": "Next time, use my Pokéballs!",
+				"1": "You will significantly increase your chances of victory!"
+			},
+			"step2": {
+				"0": "Your Pokémon become stronger by gaining experience after a battle.",
+				"1": "But there is another way to increase the experience of a Pokémon.",
+				"2": "All you need to do is capture a wild Pokémon of the same species.",
+				"3": "They will share his experience with your Pokémon before being released.",
+				"4": "Here, try it right now. Try to capture my {{name}} ."
+			},
+			"step3": {
+				"0": "The higher the level of the captured Pokémon, the more experience they will give.",
+				"1": "Remember, this only works if the Pokémon are the same species!",
+				"2": "Well, you know everything. Have a good trip and good luck!"
+			}
+		},
+		"sbire_rocket": {
+			"start": {
+				"0": "Giovanni may be gone, but Team Rocket never dies!"
+			},
+			"victory": {
+				"0": "Looks like Team Rocket's blasting off again!"
+			},
+			"defeat": {
+				"0": "Mouahaha! It's the rebirth of Team Rocket!"
+			}
+		},
+		"sbire_rocket_tuto": {
+			"start": {
+				"0": "Hey you, what are you doing here?",
+				"1": "This is the territory of Giovanni, our master and gym leader!",
+				"2": "What? You're going to compete with him? Let me laugh!",
+				"3": "I'll show you the power of Team Rocket!"
+			},
+			"victory": {
+				"0": "Hmpff! You're tougher than you look... ",
+				"1": "But it doesn't change anything! Giovanni will settle your score!",
+				"2": "Come back later when you have a real team."
+			},
+			"defeat": {
+				"0": "Come on, get out of here, little one, and come back when you have a real team!"
+			}
+		},
+		"dresseur_col_de_montagne": {
+			"start": {
+				"0": "Hey kid, are you lost! Well, I rule the roost here!",
+				"1": "A little birdie told me you’re about to lose this fight",
+				"2": "Let me show you how FLY my bird pokemon are!"
+			},
+			"victory": {
+				"0": "Ouch, I'm dead as a dodo ! Bye, flying away!"
+			},
+			"defeat": {
+				"0": "Another feather in my cap!"
+			}
+		},
+		"dresseur_dojo": {
+			"start": {
+				"0": "Little weakling! I am the GRAND MASTER of KARATE!",
+				"1": "Are you provoking me? Do you want to fight?",
+				"2": "Are you looking for close combat? HAHAHA! Ayaaaaa!"
+			},
+			"victory": {
+				"0": "STOP! You beat me! I'm ashamed!",
+				"1": "Okay, you win! You fought tooth and nail!"
+			},
+			"defeat": {
+				"0": "Your training is not enough yet! Ayaaaaa!"
+			}
+		},
+		"dresseur_falaises": {
+			"start": {
+				"0": "Hey little guy! I'm the greatest climber in Kanto!",
+				"1": "And I fully intend to rise to the top!",
+				"2": "Hang on tight cuz it's gonna get bumpy!"
+			},
+			"victory": {
+				"0": "That battle rocked! I can see you climb the league!"
+			},
+			"defeat": {
+				"0": "So, you still have to learn the ropes!"
+			}
+		},
+		"dresseur_safrania": {
+			"start": {
+				"0": "You dare to come back here? Have you lost your mind?",
+				"1": "We Psychic fight with our mental !",
+				"2": "My power will make your head spin!"
+			},
+			"victory": {
+				"0": "You gave me a migraine!"
+			},
+			"defeat": {
+				"0": "Brute force is no match for the power of intellect!"
+			}
+		},
+		"dresseur_piste_cyclable": {
+			"start": {
+				"0": "Come on kid, show me what you got! I'm gonna roll you over!",
+				"1": "Don't try to run away! Check out my bike!",
+				"2": "You won't get far with your little bicycle!"
+			},
+			"victory": {
+				"0": "Raaah you scratched the bodywork! Quick, to the garage!"
+			},
+			"defeat": {
+				"0": "You were just a bump in the road. See you loser!"
+			}
+		},
+		"dresseur_iles_ecume": {
+			"start": {
+				"0": "Don't make any noise, you'll scare away the fish!"
+			},
+			"victory": {
+				"0": "Aw, man! My line snapped!"
+			},
+			"defeat": {
+				"0": "I’ve got you now! You’re hooked!"
+			}
+		},
+		"dresseur_centrale": {
+			"start": {
+				"0": "Hey, did you blacked out ?",
+				"1": "This is not a place for children!",
+				"2": "My Electric Pokémon team will blast you!"
+			},
+			"victory": {
+				"0": "I'm shocked! You made me blow a fuse!"
+			},
+			"defeat": {
+				"0": "It was a lightning victory!"
+			}
+		},
+		"dresseur_foret_jade": {
+			"start": {
+				"0": "Are you a Pokemon trainer? Me too!",
+				"1": "I caught a lot of bug Pokémon!",
+				"2": "Now we have to have a fight, that's the rule!"
+			},
+			"victory": {
+				"0": "I'll tell my mother!"
+			},
+			"defeat": {
+				"0": "Yeeeesss I won for the first time!"
+			}
+		},
+		"dresseur_azuria": {
+			"start": {
+				"0": "You won against Misty, but that's water under the bridge!",
+				"1": "I'm fresher than ever! Expect a tidal wave!"
+			},
+			"victory": {
+				"0": "Man, I'm washed up!"
+			},
+			"defeat": {
+				"0": "Keep your head above water!"
+			}
+		},
+		"dresseur_lavanville": {
+			"start": {
+				"0": "Sally has told me a lot about you.",
+				"1": "Will you do me the honor of a fight?"
+			},
+			"victory": {
+				"0": "It was a magical fight, I couldn't have dreamed of anything better."
+			},
+			"defeat": {
+				"0": "Go and rest. Continue to believe in your dreams!"
+			}
+		},
+		"dresseur_mont_selenite": {
+			"start": {
+				"0": "I'm looking for fossils, have you seen any?"
+			},
+			"victory": {
+				"0": "It seems I'm the fossil..."
+			},
+			"defeat": {
+				"0": "You won't live long here, you'd better leave."
+			}
+		},
+		"dresseur_oceane": {
+			"start": {
+				"0": "Ahoy, a challenger ahead!",
+				"1": "The crossing is going to be long...",
+				"2": "Let's have a fight to pass the time!",
+				"3": "Ready? Drop the anchors, it's time to battle!"
+			},
+			"victory": {
+				"0": "I'll just get back to setting the sails for our next destination..."
+			},
+			"defeat": {
+				"0": "Loser has to walk the plank!",
+				"1": "Ha ha, I'm just kidding!"
+			}
+		},
+		"mr_psy": {
+			"start": {
+				"0": "Ah, here you are again! So, have you trained your Pokémon's minds?"
+			},
+			"victory": {
+				"0": "That's a 10/10! You graduated from Mr. Psychic's school!"
+			},
+			"defeat": {
+				"0": "What a disappointment!",
+				"1": "Come back to me and I'll let you catch more Psychic Pokémon.",
+				"2": "Your team needs to improve its mental!"
+			}
+		},
+		"dresseur_champs_verdoyants": {
+			"start": {
+				"0": "Hey? Who are you little flower?",
+				"1": "This is my garden! I'll send you pushing up daisies!"
+			},
+			"victory": {
+				"0": "Looks like my team is in need of some pruning!",
+				"1": "Well played, you're a real gardener!"
+			},
+			"defeat": {
+				"0": "I'm going to do you a favor and give you some advice:",
+				"1": "Even the most beautiful roses need thorns.",
+				"2": "You need a good attack if you want to win."
+			}
+		},
+		"dresseur_camp_nomade": {
+			"start": {
+				"0": "Wait a minute butterfly!",
+				"1": "You look like you have ants in your pants.",
+				"2": "Let me show you my insect collection!"
+			},
+			"victory": {
+				"0": "Ouch! I got bitten by a mosquito!"
+			},
+			"defeat": {
+				"0": "Your Pokémon dropped like flies!"
+			}
+		},
+		"dresseur_celadopole": {
+			"start": {
+				"0": "I've seen you around town before, right?",
+				"1": "I can get you into the fanciest trainer clubs here!",
+				"2": "But first you have to prove you deserve it! Attack!"
+			},
+			"victory": {
+				"0": "But uh! You were supposed to let me win!",
+				"1": "Countryside people have no manners!"
+			},
+			"defeat": {
+				"0": "Finally I don't really want us to hang out together anymore, haha!"
+			}
+		},
+		"dresseur_argenta": {
+			"start": {
+				"0": "You defeated Brock, but I am as solid as a rock!"
+			},
+			"victory": {
+				"0": "I think I have a pebble in my shoe..."
+			},
+			"defeat": {
+				"0": "You sink like a stone !"
+			}
+		},
+		"dresseur_grotte_azuree": {
+			"start": {
+				"0": "Hmmm... Strange place for a meeting.",
+				"1": "Let me break the ice. On guard!"
+			},
+			"victory": {
+				"0": "My defense melted like snow in the sun!"
+			},
+			"defeat": {
+				"0": "Hmm... Your team got cold feet.",
+				"1": "What are you still doing here? Are you waiting for the thaw?"
+			}
+		},
+		"dresseur_carmin": {
+			"start": {
+				"0": "Hey, did you come to my concert? The atmosphere is electric here!",
+				"1": "What do you mean, no? You've never listened to my CD?!",
+				"2": "I'm not gonna let you ruin the party!"
+			},
+			"victory": {
+				"0": "That's it, you've ruined the mood!"
+			},
+			"defeat": {
+				"0": "This is rock'n roll baby!!!"
+			}
+		},
+		"dresseur_tour_pokemon": {
+			"start": {
+				"0": "Back off, demon!!!"
+			},
+			"victory": {
+				"0": "AaAaaaAaaah!!! Run for your lives!!!"
+			},
+			"defeat": {
+				"0": "Did it...? Did it work?",
+				"1": "Demons don't usually take hits..."
+			}
+		},
+		"dresseur_pension": {
+			"start": {
+				"0": "Hey, it's you! You want us to train some of your Pokémon?",
+				"1": "Ah, there you are again! Your Pokémon have grown up a lot, look!",
+				"2": "Welcome to the Pokémon Day Care!",
+				"3": "Here we take care of Pokémon when their owners have to go away.",
+				"4": "You can lend us some of your Pokémon if you want.",
+				"5": "There are also Pokémon that are just looking to be adopted!",
+				"6": "Their type is ordinary so they don't interest other trainers..."
+			},
+			"bye": {
+				"0": "I'll take care of your Pokémon while you're away!",
+				"1": "Come back whenever you want!"
+			}
+		},
+		"dresseur_cave_taupiqueur": {
+			"start": {
+				"0": "Huh? No, it's not me!",
+				"1": "I have an alibi! I was at the movies!"
+			},
+			"victory": {
+				"0": "No need to get upset! Here, take these Pokéballs!",
+				"1": "And... they say you've never seen me, okay?"
+			},
+			"defeat": {
+				"0": "That'll teach you to come snooping around in dark corners!"
+			}
+		},
+		"dresseur_colline_royale": {
+			"start": {
+				"0": "Are you looking for Dragon Pokémon?",
+				"1": "Me too! Me too!",
+				"2": "They are so big! so beautiful! so majestic!",
+				"3": "They're mine! Do you hear me? Mine alone!"
+			},
+			"victory": {
+				"0": "The dragon's ancestral force has abandoned me!"
+			},
+			"defeat": {
+				"0": "My dragons are so strong! so terrifying!",
+				"1": "so powerful! so... ah, he's gone."
+			}
+		},
+		"dresseur_mont_braise": {
+			"start": {
+				"0": "Well what is a young boy doing in a place like this?",
+				"1": "You're in hot water, kid!",
+				"2": "Hey Ron, how about we give him a baptism by fire?"
+			},
+			"victory": {
+				"0": "Ceasefire! Come on Ron, let's go!"
+			},
+			"defeat": {
+				"0": "You see what it's like to be caught in the crossfire!"
+			}
+		},
+		"dresseur_parmanie": {
+			"start": {
+				"0": "Get out you dirty brat!",
+				"1": "Team Rocket is conducting covert operations here!"
+			},
+			"victory": {
+				"0": "Team Rocket is blasting off again!"
+			},
+			"defeat": {
+				"0": "To protect the world from devastation...`, `To unite all peoples within our nation..."
+			}
+		},
+		"dresseur_cramoisile": {
+			"start": {
+				"0": "Ah, a new subject for experiment!",
+				"1": "Let me show you the fruit of my research..."
+			},
+			"defeat": {
+				"0": "Eureka!"
+			},
+			"victory": {
+				"0": "My calculations are wrong!"
 			}
 		}
 	},
