@@ -1,16 +1,16 @@
-import {ProjectileSkill, SkillBehavior} from "../../logic/skill";
-import {POKEMON_TYPES} from "../types";
-import {EFFECTS} from "../effects";
+import { type ProjectileSkill, SkillBehavior } from "../../logic/skill";
+import { EFFECTS } from "../effects";
+import { POKEMON_TYPES } from "../types";
 
 export const PILONNAGE: ProjectileSkill = {
-    name: "Pilonnage",
-    type: POKEMON_TYPES.NORMAL,
-    effect: EFFECTS.PILONNAGE,
-    behavior: SkillBehavior.PROJECTILE,
-    travelSpeed: 6,
-    power: 30,
-    projectileRadius: 6,
-    hitEffect: EFFECTS.CHARGE_HIT,    
-    rotateProjectile: true,
-    attackRange: 4
-}
+	name: "Pilonnage",
+	type: POKEMON_TYPES.NORMAL,
+	effect: EFFECTS.PILONNAGE,
+	behavior: SkillBehavior.PROJECTILE,
+	travelSpeed: 6,
+	power: 30,
+	projectileRadius: 6,
+	hitEffect: EFFECTS.CHARGE_HIT,
+	rotateProjectile: true,
+	attackRange: 4,
+};

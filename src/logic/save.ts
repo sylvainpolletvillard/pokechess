@@ -1,12 +1,12 @@
-import { Player } from "./player";
-import { setupPlayerIdleBoard } from "./board";
-import { GameStage, gameState } from "./gamestate";
 import { DESTINATIONS } from "../data/destinations";
-import { PokemonOnBoard } from "../objects/pokemon";
-import { Pokemon, POKEMONS } from "../data/pokemons";
-import { MAGICARPE } from "../data/pokemons/magicarpe";
 import { ITEMS } from "../data/items";
-import { ASSISTANT_DIALOG_STATE } from "../data/trainers";
+import { POKEMONS, Pokemon } from "../data/pokemons";
+import { MAGICARPE } from "../data/pokemons/magicarpe";
+import { ASSISTANT_TUTO_DIALOG_STATE } from "../data/trainers";
+import { PokemonOnBoard } from "../objects/pokemon";
+import { setupPlayerIdleBoard } from "./board";
+import { type GameStage, gameState } from "./gamestate";
+import { Player } from "./player";
 
 const KEY_SAVE = "pokechess_save";
 const KEY_RECORD = "pokechess_record";
@@ -45,7 +45,8 @@ interface Record {
 export function saveState() {
 	// prevent saving before the end of the tutorial
 	if (
-		gameState.dialogStates.assistant_tuto !== ASSISTANT_DIALOG_STATE.AFTER_WILD
+		gameState.dialogStates.assistant_tuto !==
+		ASSISTANT_TUTO_DIALOG_STATE.AFTER_WILD
 	)
 		return;
 

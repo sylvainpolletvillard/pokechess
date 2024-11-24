@@ -255,5 +255,5 @@ export const VOICES_BY_SPRITE_INDEX: { [index: number]: VoiceConfig } = {
 	26: VOICES_BY_ACTOR.female2,
 };
 
-for (let index in VOICES_BY_SPRITE_INDEX)
+for (const index in VOICES_BY_SPRITE_INDEX)
 	VOICES_BY_ACTOR["character" + index] = VOICES_BY_SPRITE_INDEX[index];

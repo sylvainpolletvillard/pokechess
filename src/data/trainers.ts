@@ -1,4 +1,12 @@
+import { t } from "../i18n";
+import { startMusic } from "../logic/audio";
+import { spawnPokemon } from "../logic/board";
+import { sendBackToPokeball } from "../logic/fight";
 import { GameStage, gameState } from "../logic/gamestate";
+import { spawnTutoCaptureTeamStep2 } from "../logic/spawns";
+import type GameScene from "../scenes/GameScene";
+import type { Trainer } from "../types/trainer";
+import { wait } from "../utils/helpers";
 import {
 	BADGE_AME,
 	BADGE_CASCADE,
@@ -9,16 +17,8 @@ import {
 	BADGE_TERRE,
 	BADGE_VOLCAN,
 } from "./badges";
-import { ITEM_FILET, ITEM_PARAPLUIE, ITEM_POKEBALL } from "./items";
-import { spawnTutoCaptureTeamStep2 } from "../logic/spawns";
-import { spawnPokemon } from "../logic/board";
-import { sendBackToPokeball } from "../logic/fight";
-import type GameScene from "../scenes/GameScene";
 import { receiveItem } from "./dialogs/descriptions";
-import { wait } from "../utils/helpers";
-import type { Trainer } from "../types/trainer";
-import { startMusic } from "../logic/audio";
-import { t } from "../i18n";
+import { ITEM_FILET, ITEM_PARAPLUIE, ITEM_POKEBALL } from "./items";
 
 export const PIERRE: Trainer = {
 	ref: "pierre",
@@ -516,7 +516,9 @@ export const ASSISTANT_TUTO: Trainer = {
 					gameState.board.otherTeam = spawnTutoCaptureTeamStep2(playerPokemon);
 					spawnPokemon(gameState.board.otherTeam[0], game);
 				});
-				return t("dialog.assistant_tuto.step2.4");
+				return t("dialog.assistant_tuto.step2.4", {
+					name: t("pokemon." + playerPokemon.ref),
+				});
 			},
 		],
 		step3: [

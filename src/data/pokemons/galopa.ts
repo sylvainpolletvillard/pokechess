@@ -1,19 +1,19 @@
-import {POKEMON_TYPES} from "../types";
-import {SKILLS} from "../skills";
-import {PokemonEntry} from "../pokemons";
+import { t } from "../../i18n";
+import type { PokemonEntry } from "../pokemons";
+import { SKILLS } from "../skills";
+import { POKEMON_TYPES } from "../types";
 
 export const GALOPA: PokemonEntry = {
-    ref: "galopa",
-    name: "Galopa",
-    maxPV: 65,
-    maxPP: 20,
-    attack: 100,
-    defense: 70,
-    speed: 105,
-    types: [POKEMON_TYPES.FEU],
-    rank: 2,
-    baseSkill: SKILLS.CHARGE,
-    ppSkill: SKILLS.NITROCHARGE,
-    wildEncounterChance: 0,
-    portraitCropY: 9
-}
+	ref: "galopa",
+	maxPV: 65,
+	maxPP: 20,
+	attack: 100,
+	defense: 70,
+	speed: 105,
+	types: [POKEMON_TYPES.FEU],
+	rank: 2,
+	baseSkill: SKILLS.CHARGE,
+	ppSkill: SKILLS.NITROCHARGE,
+	wildEncounterChance: 0,
+	portraitCropY: 9,
+};

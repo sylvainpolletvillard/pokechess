@@ -1,15 +1,15 @@
-import {HitSkill, SkillBehavior} from "../../logic/skill";
-import {POKEMON_TYPES} from "../types";
-import {EFFECTS} from "../effects";
+import { type HitSkill, SkillBehavior } from "../../logic/skill";
+import { EFFECTS } from "../effects";
+import { POKEMON_TYPES } from "../types";
 
 export const POUDREUSE: HitSkill = {
-    name: "Poudreuse",
-    type: POKEMON_TYPES.GLACE,
-    effect: EFFECTS.POUDREUSE,
-    behavior: SkillBehavior.DIRECT_HIT,
-    hitDelay: 200,
-    power: 40,
-    rotateSprite: true,
-    attackRange: 1,
-    chargeDelta: 2,
-}
+	name: "Poudreuse",
+	type: POKEMON_TYPES.GLACE,
+	effect: EFFECTS.POUDREUSE,
+	behavior: SkillBehavior.DIRECT_HIT,
+	hitDelay: 200,
+	power: 40,
+	rotateSprite: true,
+	attackRange: 1,
+	chargeDelta: 2,
+};

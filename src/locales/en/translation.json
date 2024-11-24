@@ -115,6 +115,341 @@
 			"gift19": "All the savings went into it! But it's a special occasion.",
 			"gift20": "You are so close to your goal! I believe in you my darling!",
 			"after_gift": "Good luck in your adventure!"
+		},
+		"pierre": {
+			"start": {
+				"0": "I am Brock! I am the Champion of Pewter City!",
+				"1": "I believe in the great resistance of stone!",
+				"2": "That's why my Pokémon are stone elementals!",
+				"3": "You still want to fight me? Fine. On guard!"
+			},
+			"victory": {
+				"0": "Hmm... Nice fight.",
+				"1": "You seem to be an exceptional Trainer!",
+				"2": "In recognition of your victory, here is the ROCK BADGE!",
+				"3": "This is an official Pokémon League Badge!",
+				"4": "You will need eight of them to be able to face the Elite Four."
+			},
+			"defeat": {
+				"0": "Your Pokémon couldn't get past my rock defense..."
+			}
+		},
+		"ondine": {
+			"start": {
+				"0": "Hi! Are you new?",
+				"1": "If you want to be a real trainer, you need a strategy!",
+				"2": "What is your tactic for capturing wild Pokémon?",
+				"3": "I'm charging into them with my water Pokémon!"
+			},
+			"victory": {
+				"0": "Whoa! You're super strong! Very good!",
+				"1": "I give you the CASCADE BADGE for beating me!",
+				"2": "This badge opens the way to the cave north of Cerulean City."
+			},
+			"defeat": {
+				"0": "Haha, looks like your team took on water!"
+			}
+		},
+		"bob": {
+			"start": {
+				"0": "Hey, kid! What are you doing here?",
+				"1": "You wouldn't last long in war!",
+				"2": "I'll tell you, my Electric Pokémon saved my life!",
+				"3": "Yeah! They paralyzed my enemies with their lightning!",
+				"4": "A real butchery! The same thing will happen to you!",
+				"5": "Count your teeth! You're going to suffer!"
+			},
+			"victory": {
+				"0": "Whoo! Watch out! You're tough, little guy!",
+				"1": "Alright, take the LIGHTNING BADGE!",
+				"2": "You'll need it to enter the Pokémon League."
+			},
+			"defeat": {
+				"0": "Ha! Your defeat was lightning fast!",
+				"1": "A word of advice, kid! Electricity is very powerful!",
+				"2": "But it is powerless against Ground Pokémon !"
+			}
+		},
+		"erika": {
+			"start": {
+				"0": "Hello and welcome. The weather is nice, isn't it?",
+				"1": "I love life. I love flowers and songs. It's cute, isn't it?",
+				"2": "I'm ERIKA, the Champion of the Celadon Arena.",
+				"3": "Flower arrangement is my specialty.",
+				"4": "My Pokémon are grass type.",
+				"5": "It was very cold yesterday, so I put on a sweater.",
+				"6": "Huh? You want to fight? Well... Say it, then!",
+				"7": "You know what? You're gonna lose!"
+			},
+			"victory": {
+				"0": "Oh! I lost? Well done. It's deserved.",
+				"1": "I entrust you with the PRISM BADGE.",
+				"2": "Each badge you earn makes you face stronger Pokémon."
+			},
+			"defeat": {
+				"0": "Losing always hurts a little but...",
+				"1": "Fighting a good opponent is stimulating... ",
+				"2": "Come on, don't take root here!"
+			}
+		},
+		"koga": {
+			"start": {
+				"0": "Gwahahaha! A dwarf dares to challenge me?",
+				"1": "Me, the big, the handsome, the terrible Koga?",
+				"2": "By hell, by blood, by steel, I will win!",
+				"3": "May the grip of my poisons petrify your little Pokémon with fear!"
+			},
+			"victory": {
+				"0": "Gwaha... huh? You've proven your worth!",
+				"1": "Open your hand, for here is... the SOUL BADGE!",
+				"2": "I fought with all my strength...",
+				"3": "But... I'm not strong enough.",
+				"4": "Go to the next arena! Explore your limits!",
+				"5": "Good luck !"
+			},
+			"defeat": {
+				"0": "Ha ha! It's time to teach you that some Pokémon",
+				"1": "cannot be defeated by pure force!"
+			}
+		},
+		"morgane": {
+			"start": {
+				"0": "I predicted your arrival!",
+				"1": "I have had psychic powers since childhood.",
+				"2": "I learned to bend spoons by the power of my mind.",
+				"3": "It's not super useful, but it looks cool!",
+				"4": "I don't like fighting, but if you insist, I'll show you my powers!"
+			},
+			"victory": {
+				"0": "Ha! I'm surprised! You won.",
+				"1": "That's right, I didn't do my best!",
+				"2": "You deserve your victory! You win the MARSH BADGE!",
+				"3": "The Marsh Badge strengthens occult powers...",
+				"4": "And that... It's not a small thing.",
+				"5": "You will become a Master! I feel it!"
+			},
+			"defeat": {
+				"0": "This is exactly what I predicted."
+			}
+		},
+		"auguste": {
+			"start": {
+				"0": "Greetings. My name is... Blaine!",
+				"1": "I am the Champion of the Cinnabar Island!",
+				"2": "My fiery Pokémon will burn you to ashes!",
+				"3": "Haha! It's going to be very hot soon!"
+			},
+			"victory": {
+				"0": "Phew! I got vaporized!",
+				"1": "You have earned the VOLCANO BADGE!",
+				"2": "The more badges you have, the tougher the fights!"
+			},
+			"defeat": {
+				"0": "Now you know what I'm made of!"
+			}
+		},
+		"giovanni": {
+			"start": {
+				"0": "I have to say I'm surprised you made it this far!",
+				"1": "Here you are in my lair! I plan to reform Team Rocket here!",
+				"2": "You dare to challenge me, the great Giovanni? You're going to suffer!"
+			},
+			"victory": {
+				"0": "Ah! Now that's what I call a fight! You won!",
+				"1": "As a reward, here is the EARTH BADGE!",
+				"2": "Once you have obtained all 8 badges, you can compete in the Pokémon League.",
+				"4": "I'm not worthy of being the leader of Team Rocket!",
+				"5": "So his existence ends with my defeat!",
+				"6": "I'm going to retreat, far away, as a hermit, to study Pokémon!",
+				"7": "One day our paths will cross again! Goodbye!"
+			},
+			"defeat": {
+				"0": "You raise your Pokémon too carefully."
+			}
+		},
+		"hector": {
+			"start": {
+				"0": "Hey, did you find my camp? I'm Bugsy!",
+				"1": "I came to study the Bug Pokémon of this region.",
+				"2": "No one knows Bug Pokémon better than me!",
+				"3": "When I grow up, I'll be a great expert in Bug Pokémon!",
+				"4": "Do you want me to show you?",
+				"5": "Prepare yourself to admire the result of my research!"
+			},
+			"victory": {
+				"0": "Wow, wow! You really know Pokémon!",
+				"1": "Ah, I still have a lot to learn! ... ",
+				"2": "Yes, I know! Take my insect net as a reward!",
+				"3": "You'll see, it will be very useful to you!",
+				"4": "Well, I'm going to break camp. I've finished what I had to do here.",
+				"5": "This area is full of exotic Pokémon, you should come back!"
+			},
+			"defeat": {
+				"0": "Bug Pokémon have hidden abilities.",
+				"1": "It will take some time to discover them all.",
+				"2": "Study them carefully."
+			}
+		},
+		"sally": {
+			"start": {
+				"0": "Well, well. I've heard of you, my child.",
+				"1": "I am Sally, the Ballonlea Gym Leader in the Galar region.",
+				"2": "I came to Lavenderville to visit an old friend...",
+				"3": "This place has something magical to it for me.",
+				"4": "Well, how about a fight?",
+				"5": "I'd be interested to see how you fight..."
+			},
+			"victory": {
+				"0": "Congratulations on this victory! I had a blast!",
+				"1": "Even though I'm too old for that kind of thing...",
+				"2": "You remind me of my husband in his younger years.",
+				"3": "You know what? You should get that umbrella.",
+				"4": "It was very useful to me during my travels.",
+				"5": "Come on, get out! You have a League to face!"
+			},
+			"defeat": {
+				"0": "It’s beautiful, the energy of youth.",
+				"1": "But the power of the attacks is not everything...",
+				"2": "Are you finally beginning to understand what magic is?"
+			}
+		},
+		"olga": {
+			"start": {
+				"0": "Welcome to the Pokémon League!",
+				"1": "I am Lorelei of ze Elite Four!",
+				"2": "I am the master of Ize Pokémon!",
+				"3": "And the Ize... It'z really ztrong!",
+				"4": "Your Pokemon will be frozen to my mercy!",
+				"5": "Ach! Ach! Ach! Letz go!"
+			},
+			"victory": {
+				"0": "You are ztrong. It's good.",
+				"1": "But the Pokémon League has other zurprizes for you!"
+			},
+			"defeat": {
+				"0": "Zis is not enough!"
+			}
+		},
+		"aldo": {
+			"start": {
+				"0": "My name is Bruno from the Elite Four!",
+				"1": "My passion for me and my Pokémon is bodybuilding!",
+				"2": "To show off on the beach or to box the midgets,",
+				"3": "nothing like a dream body!",
+				"4": "Your team... I'm going to make yogurt out of it! Let's eat!"
+			},
+			"victory": {
+				"0": "Well done, kiddo! The next one is waiting for you!"
+			},
+			"defeat": {
+				"0": "Bang! In the teeth!"
+			}
+		},
+		"agatha": {
+			"victory": {
+				"0": "Mmmm... I see why Oak likes you so much!"
+			},
+			"defeat": {
+				"0": "You have talent, but it's not enough!"
+			},
+			"start": {
+				"0": "Gnnn... Hello my little one.",
+				"1": "I'm Agatha from the Elite Four!",
+				"2": "Oak has high hopes for you, son!",
+				"3": "Do you know that this old thing was once a handsome boy?",
+				"4": "Well... A long time ago!",
+				"5": "He just wants to show off his Pokedex!",
+				"6": "But that's stupid! Pokémon are for fighting!",
+				"7": "I'll show you how great Trainers fight!"
+			}
+		},
+		"peter": {
+			"start": {
+				"0": "Ah! Finally... I heard about you!",
+				"1": "I reign over the Elite Four!",
+				"2": "My name is Lance the Dragon Trainer!",
+				"3": "Dragons are mystical Pokémon!",
+				"4": "Capturing and training them is difficult but their powers are superior!",
+				"5": "They are almost invincible!",
+				"6": "The bell of defeat and shame tolls for you...",
+				"7": "Do you hear it?"
+			},
+			"victory": {
+				"0": "How could my dragons succumb to your attacks?",
+				"1": "You are now the Master of the Pokémon League!",
+				"2": "Well... not quite.",
+				"3": "A final test you must still pass...",
+				"4": "Another great Trainer awaits you.",
+				"5": "He defeated the Elite Four before you!",
+				"6": "He's the real Master of the Pokémon League!"
+			},
+			"defeat": {
+				"0": "I never give up. What about you?"
+			}
+		},
+		"rival": {
+			"start": {
+				"0": "Hi, loser. I've been waiting for you for ages!",
+				"1": "Your duty as a rival is to train my Pokémon.",
+				"2": "While improving my Pokédex, I searched for the overpowered Pokémon!",
+				"3": "I created the ultimate team, effective against all types of Pokémon!",
+				"4": "That impresses you, doesn't it?",
+				"5": "I am the Master! Do you know what that means?",
+				"6": "I'm the most powerful trainer in the world! Yaaa!"
+			},
+			"victory": {
+				"0": "Wha... Com... Huh? Me? Why? WHAAAAAAAAAAA!",
+				"1": "I trained my Pokémon to perfection... Oh my!",
+				"2": "You're the new Master! So that... That blows my mind"
+			},
+			"defeat": {
+				"0": "You amused me a little!",
+				"1": "You're really a loser!",
+				"2": "But I think you're starting to know, you loser!"
+			}
 		}
+	},
+	"trainer": {
+		"pierre": "Brock",
+		"ondine": "Misty",
+		"bob": "Lt. Surge",
+		"erika": "Erika",
+		"koga": "Koga",
+		"morgane": "Sabrina",
+		"auguste": "Blaine",
+		"giovanni": "Giovanni",
+		"hector": "Bugsy",
+		"sally": "Sally",
+		"olga": "Lorelei",
+		"aldo": "Bruno",
+		"agatha": "Agatha",
+		"peter": "Lance",
+		"assistant_tuto": "Prof Oak Assistant",
+		"sbire_rocket": "Team Rocket Grunt",
+		"dresseur_col_de_montagne": "Bird Keeper Bret",
+		"dresseur_dojo": "Koichi the Karate Master",
+		"dresseur_falaises": "Bob the Mountaineer",
+		"dresseur_safrania": "Polo the Physiotherapist",
+		"dresseur_piste_cyclable": "Karl the Thug",
+		"dresseur_iles_ecume": "Jerry the Fisherman",
+		"dresseur_centrale": "George the Mechanic",
+		"dresseur_foret_jade": "Calvin the Kid",
+		"dresseur_azuria": "Anya the Swimmer",
+		"dresseur_lavanville": "Henry the Gentleman",
+		"dresseur_mont_selenite": "Arthur the Paleontologist",
+		"dresseur_oceane": "Firmin the Sailor",
+		"mr_psy": "Mister Psychic",
+		"dresseur_champs_verdoyants": "Isabella the Florist",
+		"dresseur_camp_nomade": "Nancy the scout",
+		"dresseur_celadopole": "Valentine the City Girl",
+		"dresseur_argenta": "Roche the geologist",
+		"dresseur_grotte_azuree": "Ugo the wise old man",
+		"dresseur_carmin": "Elton the Rocker",
+		"dresseur_tour_pokemon": "Gwen the Exorcist",
+		"dresseur_pension": "Gale of the Pension",
+		"dresseur_cave_taupiqueur": "Joe the Burglar",
+		"dresseur_colline_royale": "Norbert the Dragon Fan",
+		"dresseur_mont_braise": "Duo Ron & Mya the Daredevils",
+		"dresseur_cramoisile": "Isaac the Scientist"
 	}
 }

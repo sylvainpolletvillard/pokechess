@@ -1,112 +1,115 @@
-@font-face { font-family: "Pokemon"; /*noinspection CssUnknownTarget*/
-    src: url("./fonts/Pokemon-FRLG.ttf") format("truetype"); }
+@font-face {
+	font-family: "Pokemon"; /*noinspection CssUnknownTarget*/
+	src: url("./fonts/Pokemon-FRLG.ttf") format("truetype");
+}
 
-html, body {
-    font-smoothing: never;
-    -moz-osx-font-smoothing: unset;
-    -webkit-font-smoothing: none;    
+html,
+body {
+	font-smoothing: never;
+	-moz-osx-font-smoothing: unset;
+	-webkit-font-smoothing: none;
 }
 
 body {
-    margin: 0 auto;
-    text-align: center;
-    color: #ccc;
-    background-color: #202020;
-    font-family: 'Pokemon', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	margin: 0 auto;
+	text-align: center;
+	color: #ccc;
+	background-color: #202020;
+	font-family: "Pokemon", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #gameboy {
-    width: 1100px;    
-    left: calc(50% - 550px);
-    position: absolute;
-    top: 20px;
-    touch-action: none;
-    pointer-events: all;
+	width: 1100px;
+	left: calc(50% - 550px);
+	position: absolute;
+	top: 20px;
+	touch-action: none;
+	pointer-events: all;
 }
 
 #game {
-    position: absolute;
-    left: calc(50% - 320px);
-    top: 150px;
-    width: 640px;
-    height: 640px;
-    background: #CACDB8;
-    box-shadow: 0 0 15px #CACDB8;
+	position: absolute;
+	left: calc(50% - 320px);
+	top: 150px;
+	width: 640px;
+	height: 640px;
+	background: #cacdb8;
+	box-shadow: 0 0 15px #cacdb8;
 }
 
 #infos {
-    width: 320px;
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    text-align: left;
+	width: 320px;
+	position: absolute;
+	top: 2rem;
+	left: 2rem;
+	text-align: left;
 }
 
 #infos img {
-    vertical-align: text-bottom;
+	vertical-align: text-bottom;
 }
 
 #infos h1 {
-    font-size: 1.4rem;
+	font-size: 1.4rem;
 }
 
 #options label {
-    display: flex;
-    width: 240px;
-    justify-content: space-between;
+	display: flex;
+	width: 240px;
+	justify-content: space-between;
 }
 
 #options input[type="range"] {
-    width: 100px;
-    background: #555;
-    appearance: none;
+	width: 100px;
+	background: #555;
+	appearance: none;
 }
 
-@media(max-width: 1800px){
-    #infos {
-        width: 96vw;
-        top: 0;
-        display: flex;
-        left: 2vw;
-        right: 2vw;
-        justify-content: space-between;
-    }
+@media (max-width: 1800px) {
+	#infos {
+		width: 96vw;
+		top: 0;
+		display: flex;
+		left: 2vw;
+		right: 2vw;
+		justify-content: space-between;
+	}
 
-    #infos h1 {
-        justify-self: flex-start;
-    }
+	#infos h1 {
+		justify-self: flex-start;
+	}
 
-    #infos p {
-        justify-self: flex-end
-    }
+	#infos p {
+		justify-self: flex-end;
+	}
 
-    #infos p.description {
-        display: none;
-    }
+	#infos p.description {
+		display: none;
+	}
 
-    #gameboy {
-        top: 50px;
-    }
+	#gameboy {
+		top: 50px;
+	}
 
-    #game {
-        top: 180px;
-    }
+	#game {
+		top: 180px;
+	}
 }
 
-@media(max-width: 1100px){
-    body {
-        overflow: hidden;
-    }
+@media (max-width: 1100px) {
+	body {
+		overflow: hidden;
+	}
 
-    #gameboy {
-        left: 0;
-        width: 100vw;
-    }
+	#gameboy {
+		left: 0;
+		width: 100vw;
+	}
 
-    #game {
-        top: 19vw;
-        width: 58vw;
-        height: 58vw;
-        left: 21vw;
-    }
+	#game {
+		top: 19vw;
+		width: 58vw;
+		height: 58vw;
+		left: 21vw;
+	}
 }

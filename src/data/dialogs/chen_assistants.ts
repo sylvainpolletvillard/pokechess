@@ -1,33 +1,37 @@
-import {startDialog} from "../../logic/dialog";
+import { t } from "../../i18n";
+import { startDialog } from "../../logic/dialog";
 
 export const assistant1 = () => {
-    return startDialog([
-      "Je pose la racine carrée, je retiens cinq...",
-        "Hmm ? C'est pour quoi ?",
-        {
-            "Qui êtes-vous ?": () => [
-                "J'assiste le PROF. CHEN. Je suis donc son... ASSISTANT !"
-            ],
-            "Où suis-je ?":  () => [
-                "Tu te trouves au labo Pokémon de Bourg Palette.",
-                "Nous étudions ici les différentes espèces de Pokémon de Kanto."
-            ],
-            "Que faites-vous ?": () => [
-                "Je regroupe les dernières données recueillies par les dresseurs comme toi.",
-                "En étudiant vos combats, nous recueillons des informations sur les Pokémon.",
-                "Ces informations sont ensuite regroupées dans le Pokédex.",
-                "C'est utile pour nos recherches, mais aussi pour vos stratégies de combat."
-            ]
-        }
-    ], { speaker: "assistant1"})
-}
-
+	return startDialog(
+		[
+			t("dialog.assistant1.0"),
+			t("dialog.assistant1.1"),
+			{
+				[t("dialog.assistant1.q1")]: () => [t("dialog.assistant1.r1")],
+				[t("dialog.assistant1.q2")]: () => [
+					t("dialog.assistant1.r2"),
+					t("dialog.assistant1.r3"),
+				],
+				[t("dialog.assistant1.q3")]: () => [
+					t("dialog.assistant1.r4"),
+					t("dialog.assistant1.r5"),
+					t("dialog.assistant1.r6"),
+					t("dialog.assistant1.r7"),
+				],
+			},
+		],
+		{ speaker: "assistant1" },
+	);
+};
 
 export const assistant2 = () => {
-    return startDialog([
-        "Cette machine garde en mémoire les équipes de Pokémon qui se sont illustrées",
-        "en battant le Conseil des 4 de la Ligue Pokémon.",
-        "Analyser les meilleures équipes nous permet d'en apprendre un maximum !",
-        "Si tu parviens à battre la ligue, nous ajouterons avec plaisir ton équipe."
-    ], { speaker: "assistant2"})
-}
+	return startDialog(
+		[
+			t("dialog.assistant2.0"),
+			t("dialog.assistant2.1"),
+			t("dialog.assistant2.2"),
+			t("dialog.assistant2.3"),
+		],
+		{ speaker: "assistant2" },
+	);
+};

@@ -1,53 +1,53 @@
-import Phaser from "phaser";
+import type Phaser from "phaser";
+import { FAST_TRAVELS } from "../data/destinations";
+import { BOURG_PALETTE } from "../data/destinations/bourg_palette";
+import { receiveItem } from "../data/dialogs/descriptions";
+import { ITEM_POKEBALL } from "../data/items";
+import type { Pokemon, PokemonEntry } from "../data/pokemons";
 import {
-	Destination,
-	RoomArena,
-	RoomTutorial,
+	ASSISTANT_TUTO_DIALOG_STATE,
+	CHAMPIONS,
+	CHAMPIONS_LIGUE,
+} from "../data/trainers";
+import { hideAlliancesInfo } from "../objects/alliancesInfo";
+import { drawFightStats, hideStatsBox } from "../objects/fightStatsBox";
+import { showCenterText } from "../objects/gui";
+import { type Menu, closeMenu } from "../objects/menu";
+import { updateFightButton } from "../objects/menuButtons";
+import { hidePokeballsCounter } from "../objects/pokeballsCounter";
+import type { PokemonOnBoard } from "../objects/pokemon";
+import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
+import type GameScene from "../scenes/GameScene";
+import type { MyScene } from "../scenes/MyScene";
+import type { Badge } from "../types/badge";
+import {
+	type Destination,
+	type RoomArena,
+	type RoomTutorial,
 	RoomType,
 } from "../types/destination";
-import { Player } from "./player";
+import type { Dialog, DialogLine } from "../types/dialog";
+import { fadeOut } from "../utils/camera";
+import { clearTimeouts, randomInt, wait } from "../utils/helpers";
+import { removeAllAlterations, updateAlterations } from "./alteration";
+import { startMusic } from "./audio";
 import {
-	Board,
+	type Board,
 	calcXpBoard,
 	clearPlacement,
 	setupPlayerIdleBoard,
 	spawnPokemon,
 } from "./board";
-import { enrageBoard, gainXP, initJumps, updatePokemonAction } from "./fight";
-import GameScene from "../scenes/GameScene";
-import { closeMenu, Menu } from "../objects/menu";
-import { Dialog, DialogLine } from "../types/dialog";
-import { startDialog } from "./dialog";
-import { showCenterText } from "../objects/gui";
-import { MyScene } from "../scenes/MyScene";
-import { Pokemon, PokemonEntry } from "../data/pokemons";
-import { pickStarters } from "./starters";
-import { BOURG_PALETTE } from "../data/destinations/bourg_palette";
-import { clearTimeouts, randomInt, wait } from "../utils/helpers";
-import { Badge } from "../types/badge";
-import {
-	CHAMPIONS,
-	CHAMPIONS_LIGUE,
-	ASSISTANT_DIALOG_STATE,
-} from "../data/trainers";
-import { checkProjectilesImpact } from "./projectile";
-import { updatePokemonInfoBox } from "../objects/pokemonInfoBox";
-import { removeAllAlterations, updateAlterations } from "./alteration";
-import { loadSave, saveState } from "./save";
-import { updateFightButton } from "../objects/menuButtons";
-import { PokemonOnBoard } from "../objects/pokemon";
-import { startMusic } from "./audio";
-import { fadeOut } from "../utils/camera";
-import { FAST_TRAVELS } from "../data/destinations";
-import { receiveItem } from "../data/dialogs/descriptions";
-import { ITEM_POKEBALL } from "../data/items";
-import { logStats, resetStats } from "./stats";
-import { spawnPensionTeam } from "./spawns";
-import { raisePokemonsPension } from "./pension";
 import { enterDestination } from "./destination";
-import { drawFightStats, hideStatsBox } from "../objects/fightStatsBox";
-import { hideAlliancesInfo } from "../objects/alliancesInfo";
-import { hidePokeballsCounter } from "../objects/pokeballsCounter";
+import { startDialog } from "./dialog";
+import { enrageBoard, gainXP, initJumps, updatePokemonAction } from "./fight";
+import { raisePokemonsPension } from "./pension";
+import { Player } from "./player";
+import { checkProjectilesImpact } from "./projectile";
+import { loadSave, saveState } from "./save";
+import { spawnPensionTeam } from "./spawns";
+import { pickStarters } from "./starters";
+import { logStats, resetStats } from "./stats";
 
 export enum GameStage {
 	CREATION = "CREATION",
@@ -220,12 +220,12 @@ export class GameState {
 			delay: 900,
 			callback: () => {
 				game.hideCenterText();
-				for (let pokemon of this.board.playerTeam) {
+				for (const pokemon of this.board.playerTeam) {
 					spawnPokemon(pokemon, game);
 				}
 
 				if (gameState.currentRoom.type === RoomType.ARENA) {
-					for (let pokemon of this.board.otherTeam) {
+					for (const pokemon of this.board.otherTeam) {
 						spawnPokemon(pokemon, game);
 					}
 				}
@@ -315,7 +315,7 @@ export class GameState {
 		await startDialog(lines);
 
 		if (hasWon) {
-			for (let pokemon of gameState.player.team) {
+			for (const pokemon of gameState.player.team) {
 				await gainXP(pokemon, xpPerPokemon);
 			}
 		}
@@ -368,7 +368,7 @@ export class GameState {
 					let dialog = room.trainer.dialogs.victory;
 					if (
 						gameState.dialogStates.assistant_tuto ===
-						ASSISTANT_DIALOG_STATE.AFTER_WILD
+						ASSISTANT_TUTO_DIALOG_STATE.AFTER_WILD
 					) {
 						dialog = room.trainer.dialogs.step3;
 					}
@@ -384,7 +384,7 @@ export class GameState {
 		if (
 			gameState.currentRoom.type === RoomType.TUTORIAL &&
 			gameState.dialogStates.assistant_tuto ===
-				ASSISTANT_DIALOG_STATE.BEFORE_WILD
+				ASSISTANT_TUTO_DIALOG_STATE.BEFORE_WILD
 		) {
 			const room = gameState.currentRoom as RoomTutorial;
 			startDialog(room.trainer.dialogs.step2, { speaker: room.trainer.ref });

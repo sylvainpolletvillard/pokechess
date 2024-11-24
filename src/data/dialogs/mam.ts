@@ -1,6 +1,8 @@
+import { t } from "../../i18n";
 import { startDialog } from "../../logic/dialog";
+import { gameState } from "../../logic/gamestate";
 import type { DialogLine } from "../../types/dialog";
-import { receiveItem } from "./descriptions";
+import { clamp, pickRandomIn } from "../../utils/helpers";
 import {
 	ATTAQUE_PLUS,
 	BAIE_CERIZ,
@@ -37,9 +39,7 @@ import {
 	SUPER_BONBON,
 	VITESSE_PLUS,
 } from "../items";
-import { gameState } from "../../logic/gamestate";
-import { clamp, pickRandomIn } from "../../utils/helpers";
-import { t } from "../../i18n";
+import { receiveItem } from "./descriptions";
 
 export const MAM_DIALOG_STATE = {
 	hello: 0,

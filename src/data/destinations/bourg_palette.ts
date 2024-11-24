@@ -1,16 +1,16 @@
+import { t } from "../../i18n";
+import { gameState } from "../../logic/gamestate";
+import { spawnTutoCaptureTeam } from "../../logic/spawns";
+import type { MyScene } from "../../scenes/MyScene";
 import {
-	Destination,
+	type Destination,
 	DestinationType,
 	RoomType,
 } from "../../types/destination";
-import { spawnTutoCaptureTeam } from "../../logic/spawns";
-import { ASSISTANT } from "../trainers";
+import { MAM_DIALOG_STATE } from "../dialogs/mam";
 import { homeLevel } from "../levels/home";
 import { chenLevel } from "../levels/labo_chen";
-import { MyScene } from "../../scenes/MyScene";
-import { gameState } from "../../logic/gamestate";
-import { MAM_DIALOG_STATE } from "../dialogs/mam";
-import { t } from "../../i18n";
+import { ASSISTANT_TUTO } from "../trainers";
 
 export const BOURG_PALETTE: Destination = {
 	ref: "BOURG_PALETTE",
@@ -33,7 +33,7 @@ export const BOURG_PALETTE: Destination = {
 			type: RoomType.TUTORIAL,
 			map: "foret_de_jade",
 			music: "music_guide",
-			trainer: ASSISTANT,
+			trainer: ASSISTANT_TUTO,
 			spawnOtherTeam() {
 				return spawnTutoCaptureTeam();
 			},
@@ -41,10 +41,8 @@ export const BOURG_PALETTE: Destination = {
 	},
 	customRoomOrder() {
 		if (gameState.day === 0) return ["labo", "tuto"];
-		else {
-			gameState.dialogStates.mam = MAM_DIALOG_STATE.hello;
-			return ["home"];
-		}
+		gameState.dialogStates.mam = MAM_DIALOG_STATE.hello;
+		return ["home"];
 	},
 	nextDestinations: {
 		JADIELLE: [[0, -3]],

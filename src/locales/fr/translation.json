@@ -52,7 +52,7 @@
 		"JADIELLE_SHOP": "Magasin de Jadielle",
 		"LAVANVILLE": "Lavanville",
 		"LAVANVILLE_ARENA": "Arène de Lavanville",
-		"LAVANVILLE_SHOP": "Magasin de Lavanville",
+		"LAVANVILLE_SHOP": "Maison Pokémon de Lavanville",
 		"LIGUE_FLOOR1": "Ligue Indigo - 1er étage",
 		"LIGUE_FLOOR2": "Ligue Indigo - 2ème étage",
 		"LIGUE_FLOOR3": "Ligue Indigo - 3ème étage",
@@ -439,7 +439,7 @@
 				"1": "Mais il existe une autre manière de faire monter en expérience un Pokémon.",
 				"2": "Il suffit de capturer un Pokémon sauvage de la même espèce.",
 				"3": "Il partagera son expérience avec ton Pokémon avant d'être relâché.",
-				"4": "Tiens, essaie tout de suite. Essaie de capturer mon ${playerPokemon.name}."
+				"4": "Tiens, essaie tout de suite. Essaie de capturer mon {{name}}."
 			},
 			"step3": {
 				"0": "Plus le niveau du Pokémon capturé est élevé, plus il donnera d'expérience",
@@ -806,12 +806,174 @@
 				"0": "Ah, un nouveau sujet d'expérience !",
 				"1": "Laisse-moi te montrer le fruit de mes recherches..."
 			},
-			"victory": {
-				"0": "Mes calculs ne sont pas bons !"
-			},
 			"defeat": {
 				"0": "Euréka !"
+			},
+			"victory": {
+				"0": "Mes calculs ne sont pas bons !"
 			}
+		},
+		"assistant1": {
+			"0": "Je pose la racine carrée, je retiens cinq...",
+			"1": " \"Hmm ? C'est pour quoi ?\"",
+			"q1": "Qui êtes-vous ?",
+			"r1": "\"J'assiste le PROF. CHEN. Je suis donc son... ASSISTANT !\",",
+			"q2": "Où suis-je ?",
+			"r2": "Tu te trouves au labo Pokémon de Bourg Palette.",
+			"r3": "Nous étudions ici les différentes espèces de Pokémon de Kanto.",
+			"q3": "Que faites-vous ?",
+			"r4": "Je regroupe les dernières données recueillies par les dresseurs comme toi.",
+			"r5": "En étudiant vos combats, nous recueillons des informations sur les Pokémon.",
+			"r6": "Ces informations sont ensuite regroupées dans le Pokédex.",
+			"r7": "C'est utile pour nos recherches, mais aussi pour vos stratégies de combat."
+		},
+		"assistant2": {
+			"0": "Cette machine garde en mémoire les équipes de Pokémon qui se sont illustrées",
+			"1": "en battant le Conseil des 4 de la Ligue Pokémon.",
+			"2": "Analyser les meilleures équipes nous permet d'en apprendre un maximum !",
+			"3": "Si tu parviens à battre la ligue, nous ajouterons avec plaisir ton équipe."
+		},
+		"chen": {
+			"0": "Bonjour Red ! Alors c'est aujourd'hui le grand jour !",
+			"1": "Le jour de ton voyage initiatique comme dresseur Pokémon !",
+			"2": "Tu vas voyager à travers tout Kanto, capturer des Pokémon,",
+			"3": "monter une équipe et affronter les 8 champions d'arènes.",
+			"4": "Peut-être même te confronter à la ligue Pokémon si tu en es capable !",
+			"5": "Mais d'abord, il te faut adopter ton premier Pokémon.",
+			"6": "Nous en avons capturé trois dans les pokeballs derrière moi.",
+			"7": "Il y en a un pour toi. Allez ! Choisis-en un !",
+			"8": "Vas-y, tu peux prendre une des pokéballs sur la table derrière moi.",
+			"9": "{{pokemon}} ? Excellent choix !",
+			"10": "Ton Pokémon te protégera des Pokémon sauvages.",
+			"11": "Mais tout seul il ne sera pas de taille face aux champions d'arène!",
+			"12": "Il te faudra capturer des Pokémon sauvages pour composer une équipe.",
+			"13": "Chaque espèce de Pokémon a ses forces et faiblesses. N'oublie pas ça:",
+			"14": "La clé de la victoire est une équipe équilibrée et bien positionnée.",
+			"15": "Tu devrais te rendre dans une ville voisine pour capturer d'autres Pokémon.",
+			"16": "Bon voyage et bonne chance !",
+			"17": "Vas-y, enregistre ton équipe sur l'ordinateur pour la postérité !",
+			"18": "Hum-hum! Félicitations !",
+			"19": "Cet étage est réservé aux célébrités Pokémon !",
+			"20": "Les Champions de la Ligue sont consacrés ici !",
+			"21": "Leurs Pokémon sont enregistrés en tant que Célébrités !",
+			"22": "Long fut ton périple jusqu'à la victoire ! Encore bravo."
+		},
+		"item_received": "Vous {{verb}}: {{label}} {{quantity}}",
+		"find": "trouvez",
+		"receive": "recevez",
+		"guide": {
+			"jadielle": {
+				"0": "J'ai voulu aller sur la route Victoire à l'ouest, mais on ne m'a pas laissé passer...",
+				"1": "Seuls ceux qui ont les huit badges d'arène peuvent accéder au plateau Indigo.",
+				"2": "C'est pas juste ! Je veux aller voir les Champions de la Ligue !"
+			},
+			"argenta": {
+				"0": "La montagne qui culmine au dessus d'Argenta est le Mont Sélénite.",
+				"1": "Il s'agit d'une des régions les plus anciennes de Kanto !",
+				"2": "On dit qu'on peut y trouver de nombreux fossiles de Pokémon disparus.",
+				"3": "Imagine si on pouvait leur redonner vie..."
+			},
+			"azuria": {
+				"0": "Ce bateau, là, c'est l'Océane !",
+				"1": "Il est beau, hein ?",
+				"2": "Il va en croisière permanente entre Azuria, Carmin sur Mer et Cramois'Île.",
+				"3": "Si tu veux monter dedans au bon moment, tu devrais mémoriser ce trajet !"
+			},
+			"lavanville": {
+				"0": "Lavanville est une ville plutôt tranquille, coincée entre les montagnes...",
+				"1": "Mais il y a quelques lieux d'intérêt, comme la Tour Pokémon ou la Centrale."
+			},
+			"safrania": {
+				"0": "J'ai laissé mon Pokémon à la Pension au nord pendant quelques jours.",
+				"1": "Je l'ai retrouvé en pleine forme, plus fort que jamais !",
+				"2": "L'éleveur de la Pension fait vraiment un travail remarquable."
+			},
+			"celadopole": {
+				"0": "La Colline Royale qui surplombe Céladopole est un endroit légendaire.",
+				"1": "On raconte qu'on peut y croiser des Pokémons Dragon !",
+				"2": "Mais le chemin est bloqué par un énorme Pokémon endormi...",
+				"3": "Si seulement on trouvait un moyen de le réveiller..."
+			},
+			"carmin": {
+				"0": "J'ai pris le raccourci de la Cave Taupiqueur pour venir ici plus vite.",
+				"1": "Mais j'ai quand même raté le départ du bateau, alors j'attends ici..."
+			},
+			"parmanie": {
+				"0": "Le Parc Safari est la grande attraction de Parmanie.",
+				"1": "Il attire plein de dresseurs Pokémon de tout Kanto !",
+				"2": "On y trouve une grande variété de Pokémon de tous types.",
+				"3": "Mais les combats y sont interdits pour préserver leur tranquilité."
+			},
+			"cramoisile": {
+				"0": "Je travaille au Laboratoire d'étude des Pokémon du Dr. Fuji.",
+				"1": "J'étudie les fossiles rares de Pokémon.",
+				"2": "Comment ? Tu as trouvé un fossile ?",
+				"3": "Montre-le moi, allez montre-le !",
+				"4": "Incroyable ! Il est en parfait état !",
+				"5": "Je pourrais peut-être même... le ramener à la vie !",
+				"6": "Tu veux bien me le confier ?",
+				"7": "Excellent ! Je reviens vite !",
+				"8": "Incroyable !",
+				"9": "C'est un {{name}} ! Je les croyais disparus !",
+				"10": "Hmm ? Quoi ?",
+				"11": "Ah, oui, je suppose qu'il est à toi...",
+				"12": "Vous recevez un {{ name }} ramené à la vie !`,",
+				"13": "Reviens me voir si tu trouves d'autres spécimens !",
+				"14": "Mais... mais... c'est pour la science !",
+				"15": "J'ai conçu une machine de résurrection des fossiles Pokémon !",
+				"16": "Mais je n'ai pas encore de spécimens d'assez bonne qualité."
+			},
+			"ligue": {
+				"0": "Ah, alors tu veux des infos sur les Champions de la Ligue ?",
+				"1": "Pour prétendre au titre de maître de la Ligue Pokémon,",
+				"2": "tu devras affronter les 4 membres du Conseil des 4 l'un après l'autre.",
+				"3": "Tout d'abord tu affronteras Olga, la reine de la glace !",
+				"4": "Débarasse-toi en rapidement avec que ton équipe soit transformée en glaçon.",
+				"5": "Ensuite vient Aldo, spécialiste du combat et de la force brute.",
+				"6": "Ses Pokémon sont costauds, il va falloir ruser pour le vaincre !",
+				"7": "En troisième, la terrifiante Agatha et ses Pokémon Spectre !",
+				"8": "Ils sèment la confusion dans ton équipe, alors peaufine ton placement.",
+				"9": "Enfin tu affronteras Peter, maître des Dragons.",
+				"10": "Les Dragons sont très tenaces. Il te faudra donner tout ce que tu as !",
+				"11": "Voilà, je ne sais pas ce qu'il y a après. Je n'ai jamais pu aller plus loin !",
+				"12": "Ah, je croyais que... non, laisse tomber."
+			}
+		},
+		"healer": {
+			"0": "Les combats dans la Ligue sont très éprouvants pour tes Pokémon.",
+			"1": "Mais nous prenons soin de soigner toute ton équipe entre chaque combat."
+		},
+		"salut": "Salut ?",
+		"sellerm": {
+			"hello": "Bonjour ! Quelque-chose vous intéresse ?"
+		},
+		"sellerf": {
+			"hello": "Bonjour ! Que désirez-vous ?"
+		},
+		"trader": {
+			"aftertrade": "Trop cool, un {{name}} !",
+			"nopokemon": {
+				"0": "Salut, tu veux échanger des Pokémon ?",
+				"1": "Si tu as des Pokémon en réserve dans ta box, on peut se les échanger !"
+			},
+			"tradepropose": "Salut, tu veux échanger ton {{ given }} contre mon {{ received }} ?",
+			"tradeaccepted": "Vous échangez {{ given }} contre {{ received }} !"
+		},
+		"exitlab": {
+			"0": "Le prof Chen m'a promis de me confier mon premier Pokémon aujourd'hui."
+		},
+		"exitlab1": "Je ne compte pas repartir d'ici sans lui !",
+		"aftercapture": {
+			"0": "Le {{name}} sauvage partage son expérience avant d'être relaché.",
+			"1": "Votre {{name}} gagne {{xp}} XP"
+		},
+		"relacher": "Relâcher {{name}} et récupérer {{cost}} Pokéball ?",
+		"levelup": "{{name}} passe au niveau {{level}}",
+		"evolve": "{{old}} évolue en {{new}} !",
+		"starter": {
+			"after": "J'aurais peut-être dû prendre {{name}}...",
+			"choose": "Choisir {{name}} comme starter ?",
+			"chosen": "Vous choisissez {{name}} !"
 		}
 	},
 	"trainer": {
@@ -856,5 +1018,233 @@
 		"dresseur_colline_royale": "Norbert le Fan de Dragons",
 		"dresseur_mont_braise": "Duo Ron & Mya les Casse-Cous",
 		"dresseur_cramoisile": "Isaac le Scientifique"
-	}
+	},
+	"descriptions": {
+		"tv": {
+			"0": "La TV diffuse les actualités du jour...",
+			"1": "FLASH SPECIAL !",
+			"2": "On aurait aperçu un Electhor à la centrale !",
+			"3": "Un Artikodin a été vu aux Îles Ecume !",
+			"4": "Le Mont Braise serait le repère d'un Sulfura !",
+			"5": "Nos journalistes tâchent d'en savoir plus."
+		},
+		"frigo": {
+			"0": "MAM: Tu as encore faim ? Un vrai estomac sur pattes !"
+		},
+		"book": {
+			"0": "C'est mon cahier de cours d'études des Pokémon",
+			"1": "Les Pokémon normaux sont polyvalents, mais se font battre par les spécialistes du Combat.",
+			"2": "Les Pokémon de type Roche n'aiment pas l'eau.",
+			"3": "Les Pokémon aquatiques craignent l'électricité.",
+			"4": "Les Pokémon de type Feu sont impuissants face à l'eau.",
+			"5": "Le feu est mortel pour les pokémon Plante.",
+			"6": "Les Pokémon Vol craignent la foudre.",
+			"7": "Les Pokémon électriques sont neutralisés par la Terre.",
+			"8": "Les Pokémon Glace sont brisés par la Roche.",
+			"9": "Les Pokémon Combat ont une faiblesse: les attaques Psy.",
+			"10": "Les Pokémon Sol résistent bien au Poison.",
+			"11": "Les Pokémon Plante gagnent contre les Pokémon Sol au long terme.",
+			"12": "Les Pokémon Psy ont étrangement peur des Insectes.",
+			"13": "Les Pokémon Insecte se font picorer par les oiseaux.",
+			"14": "Seul un Spectre peut vraiment faire face à un autre Spectre.",
+			"15": "Les Dragons peuvent être piégés par la Glace."
+		},
+		"book_insect": {
+			"0": "C'est un cahier de notes sur les évolutions des Pokémon.",
+			"1": "Il est écrit que {{name}} évolue au niveau {{level}}",
+			"2": "Intéressant. Je devrais garder ça en mémoire !"
+		},
+		"map": "C'est la carte de la région de Kanto.",
+		"bed": "Ce n'est pas le moment d'aller dormir !",
+		"boat": "C'est une maquette de l'Océane, le célèbre bateau de croisière.",
+		"pc_end": {
+			"0": "Enregistrer l'équipe dans le livre des records ?",
+			"1": "Enregistrement...",
+			"2": "Félicitations ! Vous et vos Pokémon êtes célèbres !",
+			"3": "... Fin de session."
+		},
+		"pc_record": {
+			"0": "Bzzz... Ouverture du livre des records...",
+			"1": "Aucune donnée disponible.",
+			"2": "Dernier maître de la ligue recensé:\nMaître en {{nbTours}} tours",
+			"3": "{{nbCaptured}} Pokémon capturés\n{{nbSeen}} Pokémon observés",
+			"4": "Equipe de prédilection:",
+			"5": "Bzzz.. L'écran s'est éteint..."
+		}
+	},
+	"yes": "OUI",
+	"no": "NON",
+	"room": {
+		"ligueendroom": "Ligue Indigo - Panthéon",
+		"home": "Maison",
+		"oaklab": "Laboratoire de Chen"
+	},
+	"pokemon": {
+		"abo": "Abo",
+		"abra": "Abra",
+		"aeromite": "Aéromite",
+		"akwakwak": "Akwakwak",
+		"alakazam": "Alakazam",
+		"amonistar": "Amonistar",
+		"amonita": "Amonita",
+		"aquali": "Aquali",
+		"arbok": "Arbok",
+		"arcanin": "Arcanin",
+		"artikodin": "Artikodin",
+		"aspicot": "Aspicot",
+		"boustiflor": "Boustiflor",
+		"bulbizarre": "Bulbizarre",
+		"canarticho": "Canarticho",
+		"caninos": "Caninos",
+		"carabaffe": "Carabaffe",
+		"carapuce": "Carapuce",
+		"chenipan": "Chenipan",
+		"chetiflor": "Chétiflor",
+		"chrysacier": "Chrysacier",
+		"coconfort": "Coconfort",
+		"colossinge": "Colossinge",
+		"crustabri": "Crustabri",
+		"dardargnan": "Dardargnan",
+		"dodrio": "Dodrio",
+		"doduo": "Doduo",
+		"dracaufeu": "Dracaufeu",
+		"draco": "Draco",
+		"dracolosse": "Dracolosse",
+		"ectoplasma": "Ectoplasma",
+		"electhor": "Electhor",
+		"electrode": "Electrode",
+		"elektek": "Elektek",
+		"empiflor": "Empiflor",
+		"evoli": "Evoli",
+		"excelangue": "Excelangue",
+		"fantominus": "Fantominus",
+		"ferosinge": "Férosinge",
+		"feunard": "Feunard",
+		"flagadoss": "Flagadoss",
+		"florizarre": "Florizarre",
+		"galopa": "Galopa",
+		"goupix": "Goupix",
+		"gravalanch": "Gravalanch",
+		"grodoudou": "Grodoudou",
+		"grolem": "Grolem",
+		"grotadmorv": "Grotadmorv",
+		"herbizarre": "Herbizarre",
+		"hypnomade": "Hypnomade",
+		"hypocean": "Hypocean",
+		"hypotrempe": "Hypotrempe",
+		"insecateur": "Insecateur",
+		"kabuto": "Kabuto",
+		"kabutops": "Kabutops",
+		"kadabra": "Kadabra",
+		"kangourex": "Kangourex",
+		"kicklee": "Kicklee",
+		"kokiyas": "Kokiyas",
+		"krabboss": "Krabboss",
+		"krabby": "Krabby",
+		"lamantine": "Lamantine",
+		"leveinard": "Leveinard",
+		"leviator": "Leviator",
+		"lippoutou": "Lippoutou",
+		"lokhlass": "Lokhlass",
+		"machoc": "Machoc",
+		"machopeur": "Machopeur",
+		"mackogneur": "Mackogneur",
+		"magicarpe": "Magicarpe",
+		"magmar": "Magmar",
+		"magneti": "Magneti",
+		"magneton": "Magneton",
+		"melodelfe": "Mélodelfe",
+		"melofee": "Mélofée",
+		"metamorph": "Metamorph",
+		"mew": "Mew",
+		"mewtwo": "Mewtwo",
+		"miaouss": "Miaouss",
+		"mimitoss": "Mimitoss",
+		"minidraco": "Minidraco",
+		"mrmime": "Mr. Mime",
+		"mystherbe": "Mystherbe",
+		"nidoking": "Nidoking",
+		"nidoqueen": "Nidoqueen",
+		"nidoranf": "Nidoran ♀",
+		"nidoranm": "Nidoran ♂",
+		"nidorina": "Nidorina",
+		"nidorino": "Nidorino",
+		"noadkoko": "Noadkoko",
+		"noeufnoeuf": "Noeufnoeuf",
+		"nosferalto": "Nosferalto",
+		"nosferapti": "Nosferapti",
+		"onix": "Onix",
+		"ortide": "Ortide",
+		"ossatueur": "Ossatueur",
+		"osselait": "Osselait",
+		"otaria": "Otaria",
+		"papillusion": "Papillusion",
+		"paras": "Paras",
+		"parasect": "Parasect",
+		"persian": "Persian",
+		"piafabec": "Piafabec",
+		"pikachu": "Pikachu",
+		"poissirene": "Poissirène",
+		"poissoroy": "Poissoroy",
+		"ponyta": "Ponyta",
+		"porygon": "Porygon",
+		"psykokwak": "Psykokwak",
+		"ptera": "Ptéra",
+		"ptitard": "Ptitard",
+		"pyroli": "Pyroli",
+		"racailou": "Racaillou",
+		"rafflesia": "Rafflesia",
+		"raichu": "Raichu",
+		"ramoloss": "Ramoloss",
+		"rapasdepic": "Rapasdepic",
+		"rattata": "Rattata",
+		"rattatac": "Rattatac",
+		"reptincel": "Reptincel",
+		"rhinocorne": "Rhinocorne",
+		"rhinoferos": "Rhinoféros",
+		"rondoudou": "Rondoudou",
+		"ronflex": "Ronflex",
+		"roucarnage": "Roucarnage",
+		"roucool": "Roucool",
+		"roucoups": "Roucoups",
+		"sabelette": "Sabelette",
+		"sablaireau": "Sablaireau",
+		"salameche": "Salamèche",
+		"saquedeneu": "Saquedeneu",
+		"scarabrute": "Scarabrute",
+		"smogo": "Smogo",
+		"smogogo": "Smogogo",
+		"soporifik": "Soporifik",
+		"spectrum": "Spectrum",
+		"stari": "Stari",
+		"staross": "Staross",
+		"sulfura": "Sulfura",
+		"tadmorv": "Tadmorv",
+		"tartard": "Tartard",
+		"taupiqueur": "Taupiqueur",
+		"tauros": "Tauros",
+		"tentacool": "Tentacool",
+		"tentacruel": "Tentacruel",
+		"tetarte": "Tetarte",
+		"tortank": "Tortank",
+		"triopikeur": "Triopikeur",
+		"tygnon": "Tygnon",
+		"voltali": "Voltali",
+		"voltorbe": "Voltorbe"
+	},
+	"menu": {
+		"see_pokemon": "Voir {{name}}",
+		"remove_pokemon": "Retirer {{name}}",
+		"retrieve_item": "`Récupérer {{item}}",
+		"no_item": "{{ name }} ne tient pas d'objet",
+		"stock_item": "Ranger {{item}}",
+		"change_place": "Changer d'endroit",
+		"release_pokemon": "Libérer {{name}}"
+	},
+	"gameover": {
+		"duree": "Durée jeu: {{duree}} tours",
+		"seen": "Vus: {{number}}",
+		"caught": "Pris: {{number}}"
+	},
+	"pokedex": "Pokédex"
 }

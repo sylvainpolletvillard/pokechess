@@ -1,15 +1,15 @@
-import {HitSkill, SkillBehavior} from "../../logic/skill";
-import {POKEMON_TYPES} from "../types";
-import {EFFECTS} from "../effects";
+import { type HitSkill, SkillBehavior } from "../../logic/skill";
+import { EFFECTS } from "../effects";
+import { POKEMON_TYPES } from "../types";
 
 export const GRIFFE: HitSkill = {
-    name: "Griffe",
-    type: POKEMON_TYPES.NORMAL,
-    effect: EFFECTS.GRIFFE,
-    behavior: SkillBehavior.DIRECT_HIT,
-    hitDelay: 100,
-    power: 40,
-    rotateSprite: true,
-    attackRange: 1,
-    chargeDelta: 8,
-}
+	name: "Griffe",
+	type: POKEMON_TYPES.NORMAL,
+	effect: EFFECTS.GRIFFE,
+	behavior: SkillBehavior.DIRECT_HIT,
+	hitDelay: 100,
+	power: 40,
+	rotateSprite: true,
+	attackRange: 1,
+	chargeDelta: 8,
+};

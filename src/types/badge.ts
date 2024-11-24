@@ -1,4 +1,4 @@
 export interface Badge {
-    ref: string;
-    frameIndex: number
+	ref: string;
+	frameIndex: number;
 }

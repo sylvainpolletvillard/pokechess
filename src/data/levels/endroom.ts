@@ -1,8 +1,9 @@
-import {LevelConfig} from "../../types/level";
+import { t } from "../../i18n";
+import type { LevelConfig } from "../../types/level";
 
 export const END_ROOM: LevelConfig = {
-    title: "Ligue Indigo - Panthéon",
-    tilemap: "endroom",
-    tilesets: ["tileset_inside"],
-    startAt: "enter"
-}
+	title: t("room.ligueendroom"),
+	tilemap: "endroom",
+	tilesets: ["tileset_inside"],
+	startAt: "enter",
+};

@@ -1,17 +1,17 @@
-import {HitSkill, SkillBehavior} from "../../logic/skill";
-import {POKEMON_TYPES} from "../types";
-import {EFFECTS} from "../effects";
+import { type HitSkill, SkillBehavior } from "../../logic/skill";
 import { AlterationType } from "../alterations";
+import { EFFECTS } from "../effects";
+import { POKEMON_TYPES } from "../types";
 
 export const HYDROCANON: HitSkill = {
-    name: "Hydrocanon",
-    description: "Geyser propulsant l'adversaire dans les airs",
-    type: POKEMON_TYPES.EAU,
-    effect: EFFECTS.HYDROCANON,
-    behavior: SkillBehavior.DIRECT_HIT,
-    hitDelay: 2000,
-    power: 300,
-    rotateSprite: false, 
-    triggerAlteration: { type: AlterationType.TOURBILLON, stacks: 30 },
-    attackRange: 4
-}
+	name: "Hydrocanon",
+	description: "Geyser propulsant l'adversaire dans les airs",
+	type: POKEMON_TYPES.EAU,
+	effect: EFFECTS.HYDROCANON,
+	behavior: SkillBehavior.DIRECT_HIT,
+	hitDelay: 2000,
+	power: 300,
+	rotateSprite: false,
+	triggerAlteration: { type: AlterationType.TOURBILLON, stacks: 30 },
+	attackRange: 4,
+};

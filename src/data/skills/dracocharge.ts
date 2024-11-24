@@ -1,16 +1,16 @@
-import { ProjectileSkill, SkillBehavior} from "../../logic/skill";
-import {POKEMON_TYPES} from "../types";
-import {EFFECTS} from "../effects";
+import { type ProjectileSkill, SkillBehavior } from "../../logic/skill";
+import { EFFECTS } from "../effects";
+import { POKEMON_TYPES } from "../types";
 
 export const DRACOCHARGE: ProjectileSkill = {
-    name: "Dracocharge",
-    type: POKEMON_TYPES.DRAGON,
-    effect: EFFECTS.DRACOCHARGE,
-    hitEffect: EFFECTS.BULLES_D_O_HIT,
-    behavior: SkillBehavior.PROJECTILE,
-    travelSpeed: 8,
-    projectileRadius: 6,
-    rotateProjectile: true,
-    power: 50,
-    attackRange: 3
-}
+	name: "Dracocharge",
+	type: POKEMON_TYPES.DRAGON,
+	effect: EFFECTS.DRACOCHARGE,
+	hitEffect: EFFECTS.BULLES_D_O_HIT,
+	behavior: SkillBehavior.PROJECTILE,
+	travelSpeed: 8,
+	projectileRadius: 6,
+	rotateProjectile: true,
+	power: 50,
+	attackRange: 3,
+};
