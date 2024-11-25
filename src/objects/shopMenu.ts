@@ -7,16 +7,18 @@ import { canAfford, getShopContent, spend } from "../logic/shop";
 import { wait } from "../utils/helpers";
 import { addText } from "../utils/text";
 import { hideItemDescription, showItemDescription } from "./itemDescriptionBox";
-import { type MenuEntry, closeMenu, openMenu } from "./menu";
+import { type MenuEntry, closeMenu, openMenu, type Menu } from "./menu";
 import { drawPokeballsCounter } from "./pokeballsCounter";
 
-export function openBuyMenu(seller: string) {
-	if (!gameState.currentDestination.shopId)
-		return console.error(`Missing shopId`);
+export function openBuyMenu(seller: string): Menu | void {
+	if (!gameState.currentDestination.shopId) {
+		console.error("Missing shopId");
+		return;
+	}
 	drawPokeballsCounter();
 	const rowHeight = 20;
-	const width = 144,
-		height = 6 * rowHeight + 8;
+	const width = 144;
+	const height = 6 * rowHeight + 8;
 	const ox = 320 - width - 8;
 	const oy = 8;
 	const items = getShopContent(gameState.currentDestination.shopId);
@@ -52,7 +54,7 @@ export function openBuyMenu(seller: string) {
 					.sprite(ox + 114, oy + 15 + i * rowHeight, "pokeball", 0)
 					.play("POKEBALL_idle")
 					.setScrollFactor(0);
-				const cost = addText(320 - 28, 17 + i * rowHeight, "x" + item.cost, {
+				const cost = addText(320 - 28, 17 + i * rowHeight, `x${item.cost}`, {
 					color: canAfford(item.cost!) ? "black" : "red",
 				});
 				container.add(pokeball);

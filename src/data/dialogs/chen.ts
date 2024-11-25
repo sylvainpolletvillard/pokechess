@@ -37,7 +37,7 @@ export const CHEN: () => Promise<void> = () => {
 		return startDialog(
 			[
 				t("dialog.chen.9", {
-					pokemon: t("pokemon." + gameState.player.team[0].entry.ref),
+					pokemon: t(`pokemon.${gameState.player.team[0].entry.ref}`),
 				}),
 				t("dialog.chen.10"),
 				t("dialog.chen.11"),

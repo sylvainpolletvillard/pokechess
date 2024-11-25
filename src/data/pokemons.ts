@@ -525,7 +525,7 @@ export function getNonLegendaryPokemonsOfType(type: PokemonType) {
 }
 
 export function getPokedexIndex(pokemon: PokemonEntry) {
-	return ("00" + (POKEMONS.indexOf(pokemon) + 1)).slice(-3);
+	return `00${POKEMONS.indexOf(pokemon) + 1}`.slice(-3);
 }
 
 export function getPokemonCry(pokemon: PokemonEntry) {

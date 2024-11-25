@@ -957,12 +957,13 @@
 				"1": "Si tu as des Pokémon en réserve dans ta box, on peut se les échanger !"
 			},
 			"tradepropose": "Salut, tu veux échanger ton {{ given }} contre mon {{ received }} ?",
-			"tradeaccepted": "Vous échangez {{ given }} contre {{ received }} !"
+			"tradeaccepted": "Vous échangez {{ given }} contre {{ received }} !",
+			"traderefused": "Ah, bon tant pis."
 		},
 		"exitlab": {
-			"0": "Le prof Chen m'a promis de me confier mon premier Pokémon aujourd'hui."
+			"0": "Le prof Chen m'a promis de me confier mon premier Pokémon aujourd'hui.",
+			"1": "Je ne compte pas repartir d'ici sans lui !"
 		},
-		"exitlab1": "Je ne compte pas repartir d'ici sans lui !",
 		"aftercapture": {
 			"0": "Le {{name}} sauvage partage son expérience avant d'être relaché.",
 			"1": "Votre {{name}} gagne {{xp}} XP"
@@ -1178,7 +1179,7 @@
 		"ossatueur": "Ossatueur",
 		"osselait": "Osselait",
 		"otaria": "Otaria",
-		"papillusion": "Papillusion",
+		"papillusion": "Papilusion",
 		"paras": "Paras",
 		"parasect": "Parasect",
 		"persian": "Persian",
@@ -1235,7 +1236,7 @@
 	"menu": {
 		"see_pokemon": "Voir {{name}}",
 		"remove_pokemon": "Retirer {{name}}",
-		"retrieve_item": "`Récupérer {{item}}",
+		"retrieve_item": "Récupérer {{item}}",
 		"no_item": "{{ name }} ne tient pas d'objet",
 		"stock_item": "Ranger {{item}}",
 		"change_place": "Changer d'endroit",

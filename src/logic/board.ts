@@ -173,7 +173,8 @@ export function launchPokeball(
 	shouldPlaySound = false,
 ) {
 	return new Promise<Phaser.GameObjects.Sprite>((resolve) => {
-		let playerX, playerY;
+		let playerX: number;
+		let playerY: number;
 		if (player === 1) {
 			playerX = 50;
 			playerY = 280;
@@ -246,7 +247,7 @@ export async function capturePokemon(
 		pokeball.play(`${pokemon.pokeball}_catch`);
 		playSound(getPokemonCry(pokemon.entry));
 
-		if (getCurrentPokemonInfoDisplayed() == pokemon) {
+		if (getCurrentPokemonInfoDisplayed() === pokemon) {
 			hidePokemonInfo();
 		}
 		await wait(500);
@@ -274,7 +275,7 @@ export async function capturePokemon(
 			await wait(100);
 			await startDialog([
 				t("dialog.aftercapture.0", {
-					name: t("pokemon." + myPokemon.entry.ref),
+					name: t(`pokemon.${myPokemon.entry.ref}`),
 				}),
 				t("dialog.aftercapture.1", {
 					name: myPokemon.entry.ref,
@@ -359,7 +360,7 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: GameScene) {
 
 	// prevent changing active tile if menu is opened
 	if (gameState.activeMenu?.ref === "pokedex") return;
-	else if (gameState.activeMenu?.ref === "box" && j >= 2 && j <= 3) return; // ignore tiles below pokemon box menu
+	if (gameState.activeMenu?.ref === "box" && j >= 2 && j <= 3) return; // ignore tiles below pokemon box menu
 
 	if (
 		gameState.board.activeTile != null &&
@@ -391,13 +392,13 @@ export function setActiveTile(zone: Phaser.GameObjects.Zone, game: GameScene) {
 	if (pokemonOnTile == null) {
 		if (
 			gameState.activeMenu == null ||
-			(gameState.activeMenu?.ref == "box" && j > 4)
+			(gameState.activeMenu?.ref === "box" && j > 4)
 		) {
 			hidePokemonInfo();
 		}
 	} else if (
 		!dragState.draggedElem &&
-		(gameState.activeMenu == null || gameState.activeMenu?.ref == "box")
+		(gameState.activeMenu == null || gameState.activeMenu?.ref === "box")
 	) {
 		if (
 			pokemonOnTile.owner === OWNER_PLAYER ||

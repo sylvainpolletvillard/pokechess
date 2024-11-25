@@ -2,10 +2,16 @@
 	"linter": {
 		"rules": {
 			"style": {
-				"noNonNullAssertion": "off"
+				"noNonNullAssertion": "off",
+				"useLiteralEnumMembers": "off",
+				"noParameterAssign": "off"
+			},
+			"suspicious": {
+				"noConfusingVoidType": "off"
 			},
 			"complexity": {
-				"noForEach": "off"
+				"noForEach": "off",
+				"noUselessSwitchCase": "off"
 			}
 		}
 	}

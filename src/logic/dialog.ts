@@ -162,7 +162,7 @@ export function sayLine(line: string) {
 export function endDialog() {
 	if (gameState.activeDialog) {
 		gameState.activeDialog.dialogGroup?.destroy(true, true);
-		gameState.activeDialog.onEnd && gameState.activeDialog.onEnd();
+		gameState.activeDialog.onEnd?.();
 		gameState.activeDialog = null;
 		if (dialogStack.length > 0) {
 			const dialogStacked = dialogStack.pop();

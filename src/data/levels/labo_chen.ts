@@ -11,7 +11,7 @@ export const chenLevel: LevelConfig = {
 	startAt: "labo_exit",
 	canExit() {
 		if (gameState.player.team.length === 0) {
-			startDialog([t("dialog.exitlab.0"), t("dialog.exitlab1")], {
+			startDialog([t("dialog.exitlab.0"), t("dialog.exitlab.1")], {
 				speaker: "red",
 			});
 			return false;

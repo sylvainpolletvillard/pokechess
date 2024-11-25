@@ -90,15 +90,15 @@ export function releasePokemon(pokemon: Pokemon) {
 	const game = gameState.activeScene as GameScene;
 	return startDialog([
 		t("dialog.relacher", {
-			name: t("pokemon." + pokemon.entry.ref),
+			name: t(`pokemon.${pokemon.entry.ref}`),
 			cost: pokemon.cost,
 		}),
 		{
-			Non() {
+			[t("no")]() {
 				addToBox(pokemon);
 				return false;
 			},
-			Oui() {
+			[t("yes")]() {
 				if (pokemon instanceof PokemonOnBoard) {
 					removeFromTeam(pokemon, gameState.board.playerTeam);
 				} else {

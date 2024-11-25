@@ -108,7 +108,7 @@ export const GUIDES: { [destination: string]: DialogLine[] } = {
 										"!!!",
 										t("dialog.guide.cramoisile.8"),
 										t("dialog.guide.cramoisile.9", {
-											name: t("pokemon." + pokemon.entry.ref),
+											name: t(`pokemon.${pokemon.entry.ref}`),
 										}),
 										t("dialog.guide.cramoisile.10"),
 										t("dialog.guide.cramoisile.11"),
@@ -117,7 +117,7 @@ export const GUIDES: { [destination: string]: DialogLine[] } = {
 											return startDialog(
 												[
 													t("dialog.guide.cramoisile.12", {
-														name: t("pokemon." + pokemon.entry.ref),
+														name: t(`pokemon.${pokemon.entry.ref}`),
 													}),
 												],
 												{ speaker: "system" },

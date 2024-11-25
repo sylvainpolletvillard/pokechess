@@ -92,7 +92,7 @@ export const DESCRIPTIONS: {
 			const pokemon: PokemonEntry = pokemons[bookIndex % pokemons.length];
 			bookIndex++;
 			return t("descriptions.book_insect.1", {
-				name: t("pokemon." + pokemon.ref),
+				name: t(`pokemon.${pokemon.ref}`),
 				level: pokemon.evolutionLevel,
 			});
 		},
@@ -141,7 +141,7 @@ export const DESCRIPTIONS: {
 				t("descriptions.pc_record.4"),
 				...splitInGroups(
 					record.team.map(
-						(p) => `${t("pokemon." + p.entry.ref)} lvl ${p.level}`,
+						(p) => `${t(`pokemon.${p.entry.ref}`)} lvl ${p.level}`,
 					),
 					2,
 				).map((pair: string[]) => `${pair[0]}\n${pair[1]}`),

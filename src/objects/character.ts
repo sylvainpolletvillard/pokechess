@@ -10,18 +10,18 @@ import { declareAnims } from "../utils/anims";
 import { Direction } from "../utils/directions";
 import { pickRandomIn } from "../utils/helpers";
 
-export enum CHARACTER_STATE {
-	LEFT = Direction.LEFT,
-	RIGHT = Direction.RIGHT,
-	UP = Direction.UP,
-	DOWN = Direction.DOWN,
-	WALKING_LEFT = "WALKING_" + Direction.LEFT,
-	WALKING_RIGHT = "WALKING_" + Direction.RIGHT,
-	WALKING_UP = "WALKING_" + Direction.UP,
-	WALKING_DOWN = "WALKING_" + Direction.DOWN,
-}
+export const CHARACTER_STATE = {
+	LEFT: Direction.LEFT,
+	RIGHT: Direction.RIGHT,
+	UP: Direction.UP,
+	DOWN: Direction.DOWN,
+	WALKING_LEFT: `WALKING_${Direction.LEFT}`,
+	WALKING_RIGHT: `WALKING_${Direction.RIGHT}`,
+	WALKING_UP: `WALKING_${Direction.UP}`,
+	WALKING_DOWN: `WALKING_${Direction.DOWN}`,
+} as const;
 
-const ANIM_BY_STATE: { [state in CHARACTER_STATE]: string } = {
+const ANIM_BY_STATE: { [state in keyof typeof CHARACTER_STATE]: string } = {
 	[CHARACTER_STATE.DOWN]: "_idle_down",
 	[CHARACTER_STATE.UP]: "_idle_up",
 	[CHARACTER_STATE.LEFT]: "_idle_side",
@@ -37,7 +37,7 @@ const WALK_ANIM_SPEED = 8;
 
 export class Character {
 	sprite: Phaser.Physics.Arcade.Sprite;
-	state: CHARACTER_STATE;
+	state: keyof typeof CHARACTER_STATE;
 	walkingDirection: Direction | null;
 	isForceMoving: boolean;
 	forceMoveTimeout?: number;
@@ -90,11 +90,11 @@ export class Character {
 				return 5;
 			case "trader":
 				return 6 + ((gameState.currentDestination.shopId ?? 0) % 10);
+			case "healer":
+				return 26;
 			case "info":
 			default:
 				return 16 + ((gameState.currentDestination.shopId ?? 0) % 10);
-			case "healer":
-				return 26;
 		}
 	}
 
@@ -118,26 +118,25 @@ export class Character {
 
 	update() {
 		this.sprite.play(this.name + ANIM_BY_STATE[this.state], true);
-		this.sprite.flipX = [
-			CHARACTER_STATE.WALKING_RIGHT,
-			CHARACTER_STATE.RIGHT,
-		].includes(this.state);
+		this.sprite.flipX =
+			this.state === CHARACTER_STATE.WALKING_RIGHT ||
+			this.state === CHARACTER_STATE.RIGHT;
 	}
 
 	addAnimations() {
 		const di = this.spriteRowIndex * 9;
 		declareAnims(this.sprite.anims, "characters", [
-			[this.name + "_idle_down", [di]],
-			[this.name + "_idle_up", [di + 1]],
-			[this.name + "_idle_side", [di + 2]],
-			[this.name + "_walk_down", [di + 3, di, di + 4, di], WALK_ANIM_SPEED],
+			[`${this.name}_idle_down`, [di]],
+			[`${this.name}_idle_up`, [di + 1]],
+			[`${this.name}_idle_side`, [di + 2]],
+			[`${this.name}_walk_down`, [di + 3, di, di + 4, di], WALK_ANIM_SPEED],
 			[
-				this.name + "_walk_up",
+				`${this.name}_walk_up`,
 				[di + 5, di + 1, di + 6, di + 1],
 				WALK_ANIM_SPEED,
 			],
 			[
-				this.name + "_walk_side",
+				`${this.name}_walk_side`,
 				[di + 7, di + 2, di + 8, di + 2],
 				WALK_ANIM_SPEED,
 			],
@@ -146,7 +145,7 @@ export class Character {
 
 	stopMoving() {
 		this.walkingDirection = null;
-		this.sprite.body.stop();
+		this.sprite.body?.stop();
 		this.alignOnGrid();
 
 		// idle
@@ -191,7 +190,7 @@ export class Character {
 	}
 
 	moveBack(nbSteps: number) {
-		let backwards;
+		let backwards = Direction.UP;
 		switch (this.direction) {
 			case Direction.LEFT:
 				backwards = Direction.RIGHT;
@@ -203,6 +202,7 @@ export class Character {
 				backwards = Direction.DOWN;
 				break;
 			case Direction.DOWN:
+			default:
 				backwards = Direction.UP;
 				break;
 		}
@@ -224,6 +224,7 @@ export class Character {
 
 	alignOnGrid() {
 		// used to deal with floating point precision when using arcade velocity
+		if (this.sprite.body == null) return;
 		this.sprite.body.x = Math.round(this.sprite.body.x);
 		this.sprite.body.y = Math.round(this.sprite.body.y);
 	}

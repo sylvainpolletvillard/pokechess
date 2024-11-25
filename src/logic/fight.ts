@@ -132,8 +132,10 @@ export function moveToTarget(
 	game: GameScene,
 ): void {
 	const sprite = game.sprites.get(pokemon.uid);
-	if (sprite == null)
-		return console.error(`Sprite not found for pokemon ${pokemon.uid}`);
+	if (sprite == null) {
+		console.error(`Sprite not found for pokemon ${pokemon.uid}`);
+		return;
+	}
 
 	if (
 		target.nextAction.type === PokemonTypeAction.MOVE &&
@@ -150,8 +152,11 @@ export function moveToTarget(
 	if (path.length === 0) {
 		//TODO : no path to current target, try to find another target
 		const newTarget = findAnotherTarget(pokemon, [target]);
-		if (newTarget != null) return moveToTarget(pokemon, newTarget, game);
-		else path = tryToGetCloserToTarget(pokemon, target);
+		if (newTarget != null) {
+			moveToTarget(pokemon, newTarget, game);
+			return;
+		}
+		path = tryToGetCloserToTarget(pokemon, target);
 	}
 
 	//console.log(`${pokemon.entry.ref} va vers ${target.ref}`, path)
@@ -244,8 +249,8 @@ export function initJumps() {
 	for (const pokemon of gameState.allPokemonsOnBoard) {
 		if (!pokemon.hasType(TYPE_VOL)) continue;
 		// find coordinates where to jump
-		let i = pokemon.placementX,
-			j = pokemon.owner === OWNER_PLAYER ? 0 : 7; // ideal tile to jump
+		let i = pokemon.placementX;
+		let j = pokemon.owner === OWNER_PLAYER ? 0 : 7; // ideal tile to jump
 		let dx = 1;
 		let dy = 0;
 		while (
@@ -318,7 +323,7 @@ export function testPrecision(
 	const precisionScore =
 		(attacker.precision - (target.dodge ?? 0)) * (skill.precision ?? 1);
 	if (precisionScore >= 1) return true;
-	else return Math.random() <= precisionScore;
+	return Math.random() <= precisionScore;
 }
 
 export function applyDamage(
