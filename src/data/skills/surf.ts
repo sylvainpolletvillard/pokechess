@@ -3,8 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const SURF: ProjectileSkill = {
-	name: "Surf",
-	description: "Une vague balayant tout sur son passage",
+	ref: "surf",
 	type: POKEMON_TYPES.EAU,
 	effect: EFFECTS.SURF,
 	behavior: SkillBehavior.PROJECTILE,

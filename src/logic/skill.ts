@@ -5,8 +5,7 @@ import type { PokemonOnBoard } from "../objects/pokemon";
 
 export interface Skill {
 	type: PokemonType;
-	name: string;
-	description?: string;
+	ref: string;
 	effect?: Effect;
 	hitDelay?: number;
 	hitEffect?: Effect;

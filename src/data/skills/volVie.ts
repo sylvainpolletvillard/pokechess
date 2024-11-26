@@ -4,7 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const VOL_VIE: HitSkill = {
-	name: "Vol-Vie",
+	ref: "vol_vie",
 	type: POKEMON_TYPES.PLANTE,
 	effect: EFFECTS.VOL_VIE,
 	behavior: SkillBehavior.DIRECT_HIT,

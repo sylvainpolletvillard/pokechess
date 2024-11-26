@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const ABRI: SpecialSkill = {
-	name: "Abri",
-	description: "Rend le lanceur invulnérable pendant un court instant",
+	ref: "abri",
 	attackRange: 9,
 	behavior: SkillBehavior.SPECIAL,
 	type: POKEMON_TYPES.NORMAL,

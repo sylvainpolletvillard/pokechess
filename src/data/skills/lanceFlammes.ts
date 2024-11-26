@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const LANCE_FLAMMES: HitSkill = {
-	name: "Lance-Flammes",
-	description: "Jet de flammes infligeant de grosses brulures à la cible",
+	ref: "lance_flammes",
 	type: POKEMON_TYPES.FEU,
 	effect: EFFECTS.LANCE_FLAMMES,
 	behavior: SkillBehavior.DIRECT_HIT,

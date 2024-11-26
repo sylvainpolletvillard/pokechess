@@ -4,7 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const LECHOUILLE: HitSkill = {
-	name: "Léchouille",
+	ref: "lechouille",
 	type: POKEMON_TYPES.SPECTRE,
 	effect: EFFECTS.LECHOUILLE,
 	behavior: SkillBehavior.DIRECT_HIT,

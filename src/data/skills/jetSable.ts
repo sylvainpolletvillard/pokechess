@@ -4,9 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const JET_DE_SABLE: HitSkill = {
-	name: "Jet de Sable",
-	description:
-		"Aveugle l'ennemi et réduit sa précision de 50% pendant 8 secondes",
+	ref: "jet_de_sable",
 	type: POKEMON_TYPES.SOL,
 	effect: EFFECTS.JET_DE_SABLE,
 	behavior: SkillBehavior.DIRECT_HIT,

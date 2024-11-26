@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const FOUET_LIANES: HitSkill = {
-	name: "Fouet-Lianes",
+	ref: "fouet_lianes",
 	type: POKEMON_TYPES.PLANTE,
 	effect: EFFECTS.FOUET_LIANES,
 	behavior: SkillBehavior.DIRECT_HIT,

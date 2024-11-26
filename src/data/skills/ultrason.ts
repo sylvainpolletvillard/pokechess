@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const ULTRASON: ProjectileSkill = {
-	name: "Ultrason",
-	description: "Onde sonore rendant confus les Pokémon touchés",
+	ref: "ultrason",
 	type: POKEMON_TYPES.NORMAL,
 	effect: EFFECTS.ULTRASON,
 	behavior: SkillBehavior.PROJECTILE,

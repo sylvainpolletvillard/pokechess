@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const PIQURE: HitSkill = {
-	name: "Piqure",
+	ref: "piqure",
 	type: POKEMON_TYPES.INSECTE,
 	effect: EFFECTS.PIQURE,
 	behavior: SkillBehavior.DIRECT_HIT,

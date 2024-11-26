@@ -5,8 +5,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const BOMB_BEURK: AOESkill = {
-	name: "Bomb Beurk",
-	description: "Bombe toxique empoisonnant la zone où elle tombe",
+	ref: "bomb_beurk",
 	type: POKEMON_TYPES.POISON,
 	attackRange: 4,
 	behavior: SkillBehavior.AREA_OF_EFFECT,

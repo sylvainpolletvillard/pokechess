@@ -3,9 +3,7 @@ import { AlterationType } from "../alterations";
 import { POKEMON_TYPES } from "../types";
 
 export const REPOS: SpecialSkill = {
-	name: "Repos",
-	description:
-		"S'endort et regagne une grosse partie de ses PV tant qu'il est endormi",
+	ref: "repos",
 	attackRange: 9,
 	behavior: SkillBehavior.SPECIAL,
 	power: 0,

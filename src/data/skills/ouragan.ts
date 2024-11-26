@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const OURAGAN: ProjectileSkill = {
-	name: "Ouragan",
-	description: `Une tornade soulevant tous les adversaires sur son passage`,
+	ref: "ouragan",
 	type: POKEMON_TYPES.DRAGON,
 	effect: EFFECTS.OURAGAN,
 	behavior: SkillBehavior.PROJECTILE,

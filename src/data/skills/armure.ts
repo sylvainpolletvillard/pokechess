@@ -4,9 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const ARMURE: SpecialSkill = {
-	name: "Armure",
-	description:
-		"Augmente la défense du lanceur jusqu'à la fin du combat - Accumulable",
+	ref: "armure",
 	attackRange: 9,
 	behavior: SkillBehavior.SPECIAL,
 	type: POKEMON_TYPES.ROCHE,

@@ -5,8 +5,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const RUGISSEMENT: AOESkill = {
-	name: "Rugissement",
-	description: "Réduit temporairement l'attaque de tous les adversaires autour",
+	ref: "rugissement",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.NORMAL,

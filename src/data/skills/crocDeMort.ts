@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const CROC_DE_MORT: HitSkill = {
-	name: "Croc de Mort",
-	description: "Puissante morsure qui apeure la cible pendant 3 secondes",
+	ref: "croc_de_mort",
 	type: POKEMON_TYPES.NORMAL,
 	effect: EFFECTS.CROC_DE_MORT,
 	behavior: SkillBehavior.DIRECT_HIT,

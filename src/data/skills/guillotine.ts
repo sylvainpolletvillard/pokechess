@@ -4,9 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const GUILLOTINE: HitSkill = {
-	name: "Guillotine",
-	description:
-		"Coup mortel exécutant l'adversaire s'il a moins de 30% de ses PV max",
+	ref: "guillotine",
 	type: POKEMON_TYPES.NORMAL,
 	effect: EFFECTS.GUILLOTINE,
 	behavior: SkillBehavior.DIRECT_HIT,

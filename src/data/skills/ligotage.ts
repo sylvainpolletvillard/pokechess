@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const LIGOTAGE: HitSkill = {
-	name: "Ligotage",
-	description: "Empêche la cible de bouger et inflige des dégâts sur la durée",
+	ref: "ligotage",
 	type: POKEMON_TYPES.NORMAL,
 	effect: EFFECTS.LIGOTAGE,
 	behavior: SkillBehavior.DIRECT_HIT,

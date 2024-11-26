@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const HYPNOSE: HitSkill = {
-	name: "Hypnose",
-	description: "Endort profondément la cible",
+	ref: "hypnose",
 	type: POKEMON_TYPES.PSY,
 	effect: EFFECTS.HYPNOSE,
 	behavior: SkillBehavior.DIRECT_HIT,

@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const PILONNAGE: ProjectileSkill = {
-	name: "Pilonnage",
+	ref: "pilonnage",
 	type: POKEMON_TYPES.NORMAL,
 	effect: EFFECTS.PILONNAGE,
 	behavior: SkillBehavior.PROJECTILE,

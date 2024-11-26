@@ -7,9 +7,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const BLIZZARD: SpecialSkill = {
-	name: "Blizzard",
-	description:
-		"Gèle tous les adversaires et fait tomber une pluie de grêlons dévastateurs",
+	ref: "blizzard",
 	attackRange: 9,
 	effect: EFFECTS.BLIZZARD,
 	behavior: SkillBehavior.SPECIAL,
@@ -20,7 +18,7 @@ export const BLIZZARD: SpecialSkill = {
 };
 
 export const BLIZZARD_GRELON: ProjectileSkill = {
-	name: "Blizzard",
+	ref: "blizzard",
 	behavior: SkillBehavior.PROJECTILE,
 	effect: EFFECTS.GRELON,
 	hitEffect: EFFECTS.GRELON_HIT,

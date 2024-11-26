@@ -4,7 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const DARD_VENIN: ProjectileSkill = {
-	name: "Dard-Venin",
+	ref: "dard_venin",
 	type: POKEMON_TYPES.POISON,
 	effect: EFFECTS.DARD_VENIN,
 	behavior: SkillBehavior.PROJECTILE,

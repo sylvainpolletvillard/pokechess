@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const JET_PIERRES: ProjectileSkill = {
-	name: "Jet-Pierres",
+	ref: "jet_pierres",
 	type: POKEMON_TYPES.ROCHE,
 	effect: EFFECTS.JET_PIERRES,
 	behavior: SkillBehavior.PROJECTILE,

@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const DRACOCHARGE: ProjectileSkill = {
-	name: "Dracocharge",
+	ref: "dracocharge",
 	type: POKEMON_TYPES.DRAGON,
 	effect: EFFECTS.DRACOCHARGE,
 	hitEffect: EFFECTS.BULLES_D_O_HIT,

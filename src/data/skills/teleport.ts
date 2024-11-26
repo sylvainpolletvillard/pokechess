@@ -3,8 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const TELEPORT: SpecialSkill = {
-	name: "Teleport",
-	description: "Téléporte le lanceur sur une case aléatoire du plateau",
+	ref: "teleport",
 	attackRange: 9,
 	effect: EFFECTS.TELEPORT,
 	behavior: SkillBehavior.SPECIAL,

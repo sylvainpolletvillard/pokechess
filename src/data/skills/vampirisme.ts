@@ -4,7 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const VAMPIRISME: HitSkill = {
-	name: "Vampirisme",
+	ref: "vampirisme",
 	type: POKEMON_TYPES.INSECTE,
 	effect: EFFECTS.VAMPIRISME,
 	behavior: SkillBehavior.DIRECT_HIT,

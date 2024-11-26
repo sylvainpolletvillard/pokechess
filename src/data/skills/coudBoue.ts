@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const COUD_BOUE: ProjectileSkill = {
-	name: "Coud'Boue",
-	description: "Réduit la précision de la cible",
+	ref: "coud_boue",
 	type: POKEMON_TYPES.SOL,
 	effect: EFFECTS.COUD_BOUE,
 	behavior: SkillBehavior.PROJECTILE,

@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const MASSDOS: ProjectileSkill = {
-	name: "Massd'Os",
+	ref: "massdos",
 	type: POKEMON_TYPES.SOL,
 	effect: EFFECTS.MASSDOS,
 	behavior: SkillBehavior.PROJECTILE,

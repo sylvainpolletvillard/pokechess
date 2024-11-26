@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const PISTOLET_A_O: ProjectileSkill = {
-	name: "Pistolet à O",
+	ref: "pistolet_a_o",
 	type: POKEMON_TYPES.EAU,
 	effect: EFFECTS.PISTOLET_A_O,
 	behavior: SkillBehavior.PROJECTILE,

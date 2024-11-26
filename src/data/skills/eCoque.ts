@@ -3,8 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const E_COQUE: SpecialSkill = {
-	name: "E-Coque",
-	description: "Libère un oeuf magique qui soigne toute votre équipe",
+	ref: "e_coque",
 	attackRange: 9,
 	effect: EFFECTS.E_COQUE,
 	behavior: SkillBehavior.SPECIAL,

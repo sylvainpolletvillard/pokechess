@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const EMPAL_KORNE: HitSkill = {
-	name: "Empal'Korne",
-	description: "Empale la cible avec une stalagmite surgissant du sol",
+	ref: "empal_korne",
 	type: POKEMON_TYPES.SOL,
 	effect: EFFECTS.EMPAL_KORNE,
 	behavior: SkillBehavior.DIRECT_HIT,

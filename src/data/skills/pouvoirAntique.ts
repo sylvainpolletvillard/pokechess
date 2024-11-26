@@ -5,9 +5,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const POUVOIR_ANTIQUE: AOESkill = {
-	name: "Pouvoir Antique",
-	description:
-		"Une attaque préhistorique qui augmente toutes les stats du lanceur",
+	ref: "pouvoir_antique",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.ROCHE,

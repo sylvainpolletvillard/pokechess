@@ -4,9 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const BOMB_OEUF: AOESkill = {
-	name: "Bomb Oeuf",
-	description:
-		"Lance un oeuf explosif infligeant des dégâts dans une large zone",
+	ref: "bomb_oeuf",
 	type: POKEMON_TYPES.NORMAL,
 	attackRange: 4,
 	behavior: SkillBehavior.AREA_OF_EFFECT,

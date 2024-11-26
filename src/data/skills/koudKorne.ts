@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const KOUD_KORNE: HitSkill = {
-	name: "Koud'Korne",
+	ref: "koud_korne",
 	type: POKEMON_TYPES.NORMAL,
 	effect: EFFECTS.KOUD_KORNE,
 	behavior: SkillBehavior.DIRECT_HIT,

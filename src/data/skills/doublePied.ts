@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const DOUBLE_PIED: HitSkill = {
-	name: "Double-Pied",
+	ref: "double_pied",
 	type: POKEMON_TYPES.COMBAT,
 	effect: EFFECTS.DOUBLE_PIED,
 	behavior: SkillBehavior.DIRECT_HIT,

@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const POING_KARATE: HitSkill = {
-	name: "Poing Karaté",
+	ref: "poing_karate",
 	type: POKEMON_TYPES.COMBAT,
 	effect: EFFECTS.POING_KARATE,
 	behavior: SkillBehavior.DIRECT_HIT,

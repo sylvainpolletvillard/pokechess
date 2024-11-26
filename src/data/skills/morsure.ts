@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const MORSURE: HitSkill = {
-	name: "Morsure",
+	ref: "morsure",
 	type: POKEMON_TYPES.NORMAL,
 	effect: EFFECTS.MORSURE,
 	behavior: SkillBehavior.DIRECT_HIT,

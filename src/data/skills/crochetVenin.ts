@@ -4,7 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const CROCHET_VENIN: HitSkill = {
-	name: "Crochet Venin",
+	ref: "crochet_venin",
 	type: POKEMON_TYPES.POISON,
 	effect: EFFECTS.CROCHET_VENIN,
 	behavior: SkillBehavior.DIRECT_HIT,

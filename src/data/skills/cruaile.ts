@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const CRUAILE: HitSkill = {
-	name: "Cru-Ailes",
+	ref: "cruaile",
 	type: POKEMON_TYPES.VOL,
 	effect: EFFECTS.CRUAILE,
 	behavior: SkillBehavior.DIRECT_HIT,

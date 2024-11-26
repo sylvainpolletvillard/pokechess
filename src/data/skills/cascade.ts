@@ -3,8 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const CASCADE: HitSkill = {
-	name: "Cascade",
-	description: "Fait tomber une trombe d'eau qui repousse l'adversaire'",
+	ref: "cascade",
 	type: POKEMON_TYPES.EAU,
 	effect: EFFECTS.CASCADE,
 	behavior: SkillBehavior.DIRECT_HIT,

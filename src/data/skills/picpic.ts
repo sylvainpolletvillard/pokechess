@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const PICPIC: HitSkill = {
-	name: "Picpic",
+	ref: "picpic",
 	type: POKEMON_TYPES.VOL,
 	effect: EFFECTS.PICPIC,
 	behavior: SkillBehavior.DIRECT_HIT,

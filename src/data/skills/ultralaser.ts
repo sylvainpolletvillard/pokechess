@@ -2,8 +2,7 @@ import { SkillBehavior, type SpecialSkill } from "../../logic/skill";
 import { POKEMON_TYPES } from "../types";
 
 export const ULTRALASER: SpecialSkill = {
-	name: "Ultralaser",
-	description: "Un laser surpuissant qui pulvérise tout sur une ligne droite",
+	ref: "ultralaser",
 	type: POKEMON_TYPES.DRAGON,
 	behavior: SkillBehavior.SPECIAL,
 	attackRange: 1,

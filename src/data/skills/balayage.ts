@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const BALAYAGE: AOESkill = {
-	name: "Balayage",
-	description: "Attaque large pouvant toucher jusqu'à 3 adversaires en face",
+	ref: "balayage",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.COMBAT,

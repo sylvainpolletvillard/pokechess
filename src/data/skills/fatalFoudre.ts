@@ -3,9 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const FATAL_FOUDRE: SpecialSkill = {
-	name: "Fatal Foudre",
-	description:
-		"Fait tomber la foudre sur 3 ennemis et paralyse tous les autres",
+	ref: "fatal_foudre",
 	attackRange: 9,
 	effect: EFFECTS.FATAL_FOUDRE,
 	behavior: SkillBehavior.SPECIAL,

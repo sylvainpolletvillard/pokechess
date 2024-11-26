@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const CHOC_MENTAL: ProjectileSkill = {
-	name: "Choc mental",
+	ref: "choc_mental",
 	type: POKEMON_TYPES.PSY,
 	effect: EFFECTS.CHOC_MENTAL,
 	behavior: SkillBehavior.PROJECTILE,

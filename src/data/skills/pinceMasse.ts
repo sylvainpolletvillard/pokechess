@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const PINCE_MASSE: HitSkill = {
-	name: "Pince-Masse",
+	ref: "pince_masse",
 	type: POKEMON_TYPES.EAU,
 	effect: EFFECTS.PINCE_MASSE,
 	behavior: SkillBehavior.DIRECT_HIT,

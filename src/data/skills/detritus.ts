@@ -4,7 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const DETRITUS: ProjectileSkill = {
-	name: "Détritus",
+	ref: "detritus",
 	type: POKEMON_TYPES.POISON,
 	effect: EFFECTS.DETRITUS,
 	behavior: SkillBehavior.PROJECTILE,

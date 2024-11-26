@@ -3,8 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const JACKPOT: SpecialSkill = {
-	name: "Jackpot",
-	description: "A 50% de chance de vous rapporter une Pokéball",
+	ref: "jackpot",
 	attackRange: 1,
 	behavior: SkillBehavior.SPECIAL,
 	type: POKEMON_TYPES.NORMAL,

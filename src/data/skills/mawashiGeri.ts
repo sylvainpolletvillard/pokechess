@@ -4,9 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const MAWASHI_GERI: AOESkill = {
-	name: "Mawashi Geri",
-	description:
-		"Un coup de pied circulaire qui touche également l'adversaire derrière le lanceur",
+	ref: "mawashi_geri",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.COMBAT,

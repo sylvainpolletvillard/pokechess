@@ -3,8 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const BELIER: HitSkill = {
-	name: "Bélier",
-	description: "Une violente charge qui blesse également le lanceur",
+	ref: "belier",
 	type: POKEMON_TYPES.NORMAL,
 	behavior: SkillBehavior.DIRECT_HIT,
 	hitDelay: 150,

@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const HYDROCANON: HitSkill = {
-	name: "Hydrocanon",
-	description: "Geyser propulsant l'adversaire dans les airs",
+	ref: "hydrocanon",
 	type: POKEMON_TYPES.EAU,
 	effect: EFFECTS.HYDROCANON,
 	behavior: SkillBehavior.DIRECT_HIT,

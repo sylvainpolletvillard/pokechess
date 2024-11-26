@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const TORGNOLES: HitSkill = {
-	name: "Torgnoles",
+	ref: "torgnoles",
 	type: POKEMON_TYPES.NORMAL,
 	effect: EFFECTS.TORGNOLES,
 	behavior: SkillBehavior.DIRECT_HIT,

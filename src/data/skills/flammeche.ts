@@ -4,7 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const FLAMMECHE: HitSkill = {
-	name: "Flammèche",
+	ref: "flammeche",
 	type: POKEMON_TYPES.FEU,
 	effect: EFFECTS.FLAMMECHE,
 	behavior: SkillBehavior.DIRECT_HIT,

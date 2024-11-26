@@ -3,8 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const METEORES: ProjectileSkill = {
-	name: "Météores",
-	description: "Une pluie d'étoiles qui touche à tous les coups",
+	ref: "meteores",
 	type: POKEMON_TYPES.NORMAL,
 	effect: EFFECTS.METEORES,
 	behavior: SkillBehavior.PROJECTILE,

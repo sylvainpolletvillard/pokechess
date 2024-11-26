@@ -5,8 +5,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const TONNERRE: AOESkill = {
-	name: "Tonnerre",
-	description: "Inflige de gros dégâts électriques autour du lanceur",
+	ref: "tonnerre",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.ELECTRIQUE,

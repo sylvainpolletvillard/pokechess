@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const CROCS_FEU: HitSkill = {
-	name: "Crocs de Feu",
-	description: "Une morsure infligeant de grosses brulures",
+	ref: "crocs_feu",
 	type: POKEMON_TYPES.FEU,
 	effect: EFFECTS.CROCS_FEU,
 	behavior: SkillBehavior.DIRECT_HIT,

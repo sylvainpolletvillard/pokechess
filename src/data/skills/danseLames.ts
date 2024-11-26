@@ -4,9 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const DANSE_LAMES: AOESkill = {
-	name: "Danse-Lames",
-	description:
-		"Attaque circulaire infligeant des dégâts à tous les adversaires autour",
+	ref: "danse_lames",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.NORMAL,

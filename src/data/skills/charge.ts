@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const CHARGE: HitSkill = {
-	name: "Charge",
+	ref: "charge",
 	type: POKEMON_TYPES.NORMAL,
 	behavior: SkillBehavior.DIRECT_HIT,
 	hitDelay: 150,

@@ -5,8 +5,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const POUDRE_TOXIK: AOESkill = {
-	name: "Poudre Toxik",
-	description: "Toxines empoisonnant tous les adversaires autour du lanceur",
+	ref: "poudre_toxik",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.PLANTE,

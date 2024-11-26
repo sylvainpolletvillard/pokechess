@@ -3,8 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const AMNESIE: SpecialSkill = {
-	name: "Amnésie",
-	description: "Soigne toutes les altérations actuelles du lanceur",
+	ref: "amnesie",
 	attackRange: 9,
 	effect: EFFECTS.AMNESIE,
 	behavior: SkillBehavior.SPECIAL,

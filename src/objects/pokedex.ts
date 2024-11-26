@@ -411,7 +411,9 @@ function drawPokemonInfo(pokemon: PokemonEntry) {
 		pokemon.baseSkill.type.frameIndex,
 	);
 	pokedexContainer.add(attackTypeSprite);
-	pokedexContainer.add(addText(cx + 22, cy + 14, pokemon.baseSkill.name));
+	pokedexContainer.add(
+		addText(cx + 22, cy + 14, t(`skill.${pokemon.baseSkill.ref}`)),
+	);
 
 	if (pokemon.ppSkill) {
 		const effectTypeSprite = game.add.sprite(
@@ -422,10 +424,12 @@ function drawPokemonInfo(pokemon: PokemonEntry) {
 		);
 		pokedexContainer.add(effectTypeSprite);
 		pokedexContainer.add(
-			addText(cx + 22, cy + 31, pokemon.ppSkill.name, { color: "blue" }),
+			addText(cx + 22, cy + 31, t(`skill.${pokemon.ppSkill.ref}`), {
+				color: "blue",
+			}),
 		);
 		pokedexContainer.add(
-			addText(cx + 10, cy + 46, pokemon.ppSkill.description ?? "", {
+			addText(cx + 10, cy + 46, t(`skill_desc.${pokemon.ppSkill.ref}`) ?? "", {
 				color: "black",
 				fontSize: "10px",
 				wordWrap: { width: 160 },
@@ -433,11 +437,16 @@ function drawPokemonInfo(pokemon: PokemonEntry) {
 		);
 	} else {
 		pokedexContainer.add(
-			addText(cx + 10, cy + 28, pokemon.baseSkill.description ?? "", {
-				color: "black",
-				fontSize: "10px",
-				wordWrap: { width: 160 },
-			}),
+			addText(
+				cx + 10,
+				cy + 28,
+				t(`skill_desc.${pokemon.baseSkill.ref}`) ?? "",
+				{
+					color: "black",
+					fontSize: "10px",
+					wordWrap: { width: 160 },
+				},
+			),
 		);
 	}
 

@@ -3,8 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const ENCORE: SpecialSkill = {
-	name: "Encore",
-	description: "Reproduit la dernière attaque spéciale observée sur le terrain",
+	ref: "encore",
 	attackRange: 9,
 	effect: EFFECTS.ENCORE,
 	behavior: SkillBehavior.SPECIAL,

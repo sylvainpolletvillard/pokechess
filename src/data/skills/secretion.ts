@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const SECRETION: ProjectileSkill = {
-	name: "Sécrétion",
-	description: "Réduit la vitesse de l'adversaire",
+	ref: "secretion",
 	type: POKEMON_TYPES.INSECTE,
 	effect: EFFECTS.SECRETION,
 	behavior: SkillBehavior.PROJECTILE,

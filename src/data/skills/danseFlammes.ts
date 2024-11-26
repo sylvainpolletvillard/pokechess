@@ -5,8 +5,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const DANSE_FLAMMES: AOESkill = {
-	name: "Danse-Flammes",
-	description: "Inflige des brûlures à tous les adversaires autour du lanceur",
+	ref: "danse_flammes",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.FEU,

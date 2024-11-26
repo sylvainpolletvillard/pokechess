@@ -5,8 +5,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const CAGE_ECLAIR: AOESkill = {
-	name: "Cage Eclair",
-	description: "Paralyse tous les adversaires autour du lanceur",
+	ref: "cage_eclair",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.ELECTRIQUE,

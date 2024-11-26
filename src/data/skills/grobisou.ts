@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const GROBISOU: HitSkill = {
-	name: "Grobisou",
-	description: "Un bisou glacé qui gèle la cible temporairement",
+	ref: "grobisou",
 	type: POKEMON_TYPES.PSY,
 	effect: EFFECTS.GROBISOU,
 	behavior: SkillBehavior.DIRECT_HIT,

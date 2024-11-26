@@ -5,8 +5,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const ACIDE: AOESkill = {
-	name: "Acide",
-	description: "Jet de suc gastrique réduisant fortement la défense des cibles",
+	ref: "acide",
 	type: POKEMON_TYPES.POISON,
 	attackRange: 3,
 	behavior: SkillBehavior.AREA_OF_EFFECT,

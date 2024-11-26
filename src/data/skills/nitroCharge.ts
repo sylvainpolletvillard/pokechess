@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const NITROCHARGE: HitSkill = {
-	name: "Nitrocharge",
-	description: "Une violente charge enflammée qui blesse également le lanceur",
+	ref: "nitrocharge",
 	type: POKEMON_TYPES.FEU,
 	behavior: SkillBehavior.DIRECT_HIT,
 	hitDelay: 150,

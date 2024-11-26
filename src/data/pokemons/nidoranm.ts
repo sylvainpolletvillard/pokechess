@@ -1,11 +1,10 @@
-import { t } from "../../i18n";
 import type { PokemonEntry } from "../pokemons";
 import { SKILLS } from "../skills";
 import { POKEMON_TYPES } from "../types";
 import { NIDORINO } from "./nidorino";
 
 export const NIDORAN_MALE: PokemonEntry = {
-	ref: "nidoran_m",
+	ref: "nidoranm",
 	maxPV: 46,
 	maxPP: 20,
 	attack: 57,

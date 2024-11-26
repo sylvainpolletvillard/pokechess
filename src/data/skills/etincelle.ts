@@ -4,7 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const ETINCELLE: HitSkill = {
-	name: "Etincelle",
+	ref: "etincelle",
 	type: POKEMON_TYPES.ELECTRIQUE,
 	effect: EFFECTS.ETINCELLE,
 	behavior: SkillBehavior.DIRECT_HIT,

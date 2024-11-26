@@ -2,8 +2,7 @@ import { SkillBehavior, type SpecialSkill } from "../../logic/skill";
 import { POKEMON_TYPES } from "../types";
 
 export const LASER_GLACE: SpecialSkill = {
-	name: "Laser Glace",
-	description: "Gèle les adversaires un court instant sur une ligne droite",
+	ref: "laser_glace",
 	type: POKEMON_TYPES.GLACE,
 	behavior: SkillBehavior.SPECIAL,
 	attackRange: 1,

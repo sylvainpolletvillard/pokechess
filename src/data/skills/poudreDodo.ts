@@ -5,8 +5,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const POUDRE_DODO: AOESkill = {
-	name: "Poudre Dodo",
-	description: "Projète un somnifère qui endort tous les adversaires autour",
+	ref: "poudre_dodo",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.PLANTE,

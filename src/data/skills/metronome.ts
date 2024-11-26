@@ -3,9 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const METRONOME: SpecialSkill = {
-	name: "Métronome",
-	description:
-		"Déclenche une capacité aléatoire parmi toutes celles existantes",
+	ref: "metronome",
 	attackRange: 9,
 	effect: EFFECTS.METRONOME,
 	behavior: SkillBehavior.SPECIAL,

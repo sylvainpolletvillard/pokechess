@@ -4,8 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const DESTRUCTION: AOESkill = {
-	name: "Destruction",
-	description: "Autodestruction pulvérisant tout aux alentours",
+	ref: "destruction",
 	attackRange: 1,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.NORMAL,

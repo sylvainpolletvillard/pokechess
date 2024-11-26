@@ -46,7 +46,7 @@ export function triggerSkill(
 	if (skill.behavior === SkillBehavior.AREA_OF_EFFECT) {
 		return renderAOEAttack(skill as AOESkill, attacker, target, game);
 	}
-	console.error(`Not yet implemented: ${skill.name}`);
+	console.error(`Not yet implemented: ${skill.ref}`);
 }
 
 export function makeEffectSprite(

@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const POUDREUSE: HitSkill = {
-	name: "Poudreuse",
+	ref: "poudreuse",
 	type: POKEMON_TYPES.GLACE,
 	effect: EFFECTS.POUDREUSE,
 	behavior: SkillBehavior.DIRECT_HIT,

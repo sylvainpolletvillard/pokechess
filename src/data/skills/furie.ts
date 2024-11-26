@@ -4,9 +4,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const FURIE: AOESkill = {
-	name: "Furie",
-	description:
-		"Augmente l'attaque du lanceur jusqu'à la fin du combat - Accumulable",
+	ref: "furie",
 	type: POKEMON_TYPES.NORMAL,
 	attackRange: 9,
 	effect: EFFECTS.FURIE,

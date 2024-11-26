@@ -5,8 +5,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const DRACORAGE: AOESkill = {
-	name: "Draco-Rage",
-	description: "Invoque une tempête qui inflige des dégâts bruts dans la zone",
+	ref: "dracorage",
 	attackRange: 2,
 	behavior: SkillBehavior.AREA_OF_EFFECT,
 	type: POKEMON_TYPES.DRAGON,

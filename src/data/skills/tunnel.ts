@@ -3,9 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const TUNNEL: SpecialSkill = {
-	name: "Tunnel",
-	description:
-		"Creuse un tunnel vers une case libre du plateau, attaquant par le sol au passage",
+	ref: "tunnel",
 	attackRange: 9,
 	effect: EFFECTS.TUNNEL,
 	behavior: SkillBehavior.SPECIAL,

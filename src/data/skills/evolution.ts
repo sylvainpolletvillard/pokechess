@@ -3,9 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const EVOLUTION: SpecialSkill = {
-	name: "Evolution",
-	description:
-		"Evolue temporairement en Pyroli, Voltali ou Aquali selon le type de la cible",
+	ref: "evolution",
 	attackRange: 9,
 	effect: EFFECTS.EVOLUTION,
 	behavior: SkillBehavior.SPECIAL,

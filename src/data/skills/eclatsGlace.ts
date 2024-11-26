@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const ECLATS_GLACE: ProjectileSkill = {
-	name: "Eclats Glace",
+	ref: "eclats_glace",
 	type: POKEMON_TYPES.GLACE,
 	effect: EFFECTS.ECLATS_GLACE,
 	hitEffect: EFFECTS.ECLATS_GLACE_HIT,

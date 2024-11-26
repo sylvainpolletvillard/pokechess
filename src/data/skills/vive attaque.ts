@@ -3,7 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const VIVE_ATTAQUE: HitSkill = {
-	name: "Vive-Attaque",
+	ref: "vive_attaque",
 	type: POKEMON_TYPES.NORMAL,
 	effect: EFFECTS.VIVE_ATTAQUE,
 	behavior: SkillBehavior.DIRECT_HIT,

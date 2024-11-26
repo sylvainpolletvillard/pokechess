@@ -3,9 +3,7 @@ import { EFFECTS } from "../effects";
 import { POKEMON_TYPES } from "../types";
 
 export const DEFLAGRATION: SpecialSkill = {
-	name: "Déflagration",
-	description:
-		"Enflamme tout le terrain et déclenche des éruptions sur 8 cases aléatoires",
+	ref: "deflagration",
 	attackRange: 9,
 	effect: EFFECTS.DEFLAGRATION,
 	behavior: SkillBehavior.SPECIAL,
