@@ -45,7 +45,7 @@ export default class MenuScene extends MyScene {
 		this.swipe("racaillou", 6700, "right", 260);
 		this.swipe("otaria", 7400, "left", 100);
 		this.swipe("sabelette", 7400, "right", 220);
-		this.swipe("nidoran_m", 8100, "left", 140);
+		this.swipe("nidoranm", 8100, "left", 140);
 		this.swipe("abra", 8100, "right", 180);
 
 		this.finalPose(7700);
@@ -167,7 +167,7 @@ export default class MenuScene extends MyScene {
 			.play("minidraco_portrait");
 		const nidoran = this.add
 			.sprite(this.scale.width / 2 - 115, 408, "pokemon_portraits")
-			.play("nidoran_m_portrait");
+			.play("nidoranm_portrait");
 		const abra = this.add
 			.sprite(this.scale.width / 2 + 74, 400, "pokemon_portraits")
 			.play("abra_portrait");
