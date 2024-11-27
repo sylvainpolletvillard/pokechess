@@ -208,7 +208,7 @@ function drawList() {
 		const name = addText(
 			188,
 			35 + i * 20,
-			`${pokemonNum}. ${t("pokemon." + pokemon.ref).toUpperCase()}`,
+			`${pokemonNum}. ${t(`pokemon.${pokemon.ref}`).toUpperCase()}`,
 		)!
 			.setDepth(Z.MENU_OBJECTS)
 			.setAlign("left");
@@ -318,7 +318,7 @@ function drawPokemonInfo(pokemon: PokemonEntry) {
 	const pokemonNameText = addText(
 		cx + 36,
 		cy - 18,
-		t("pokemon." + pokemon.ref),
+		t(`pokemon.${pokemon.ref}`),
 		{
 			fontSize: "14px",
 		},
@@ -460,12 +460,12 @@ function drawPokemonInfo(pokemon: PokemonEntry) {
 
 	let family: PokemonEntry[] = [];
 	let currentMember: PokemonEntry | undefined = pokemon;
-	while (currentMember != undefined) {
+	while (currentMember !== undefined) {
 		family.unshift(currentMember);
 		currentMember = currentMember.devolution;
 	}
 	currentMember = pokemon.evolution;
-	while (currentMember != undefined) {
+	while (currentMember !== undefined) {
 		family.push(currentMember);
 		currentMember = currentMember.evolution;
 	}

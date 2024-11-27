@@ -48,6 +48,7 @@ import {
 import { SAFRANIA } from "./destinations/safrania";
 import { TOUR_POKEMON } from "./destinations/tour_pokemon";
 import { POKEFLUTE } from "./items";
+import { t } from "../i18n";
 
 export const DESTINATIONS: { [ref: string]: Destination } = {
 	BOURG_PALETTE,
@@ -178,20 +179,21 @@ export const DestinationTypeHighlightTint: {
 function onReachSleepyRonflex(): Promise<boolean> {
 	return new Promise((resolve) => {
 		if (gameState.wokeUpRonflex) return resolve(true);
-		else if (gameState.player.inventory[POKEFLUTE.ref] > 0)
+		if (gameState.player.inventory[POKEFLUTE.ref] > 0)
 			return startDialog([
-				`Un Pokémon endormi bloque le chemin. Le réveiller avec la Pokéflute ?`,
+				t("dialog.sleeping_pokemon.0"),
+				t("dialog.sleeping_pokemon.1"),
 				{
-					OUI: () => {
+					[t("yes")]: () => {
 						enterDestination(RONFLEX_ENDORMI);
 						resolve(true);
 					},
-					NON: () => resolve(false),
+					[t("no")]: () => resolve(false),
 				},
 			]);
-		else
-			return startDialog([`Un Pokémon endormi bloque le chemin.`]).then(() =>
-				resolve(false),
-			);
+
+		return startDialog([t("dialog.sleeping_pokemon.0")]).then(() =>
+			resolve(false),
+		);
 	});
 }

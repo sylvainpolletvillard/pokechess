@@ -24,7 +24,6 @@ export const POUDRE_DODO: AOESkill = {
 		return tiles.filter(([i, j]) => i >= 0 && j >= 0 && i < 7 && j < 8);
 	},
 	effect: EFFECTS.POUDRE_DODO,
-	effectOrigin: "source_ground",
 	power: 0,
 	hitDelay: 400,
 	hitAlteration: {

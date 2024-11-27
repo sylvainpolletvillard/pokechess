@@ -975,6 +975,10 @@
 			"after": "Maybe I should have taken {{name}} ...",
 			"choose": "Choose {{name}} as starter?",
 			"chosen": "You choose {{name}} !"
+		},
+		"sleeping_pokemon": {
+			"0": "A sleeping Pokémon is blocking the path.",
+			"1": "Wake it up with the Poké Flute?"
 		}
 	},
 	"trainer": {
