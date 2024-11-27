@@ -1,5 +1,6 @@
 import { receiveItem } from "../data/dialogs/descriptions";
 import { ITEMS, type Item } from "../data/items";
+import { t } from "../i18n";
 import { playSound } from "../logic/audio";
 import { endDialog, startDialog, waitBeforeNextLine } from "../logic/dialog";
 import { gameState } from "../logic/gamestate";
@@ -26,14 +27,14 @@ export function openBuyMenu(seller: string): Menu | void {
 		([itemRef, quantity], i) => ({
 			x: 4,
 			y: 4 + i * rowHeight,
-			label: `${ITEMS[itemRef].label}`,
+			label: t(`item.${itemRef}`),
 			value: itemRef,
 		}),
 	);
 	entries.push({
 		x: 4,
 		y: 4 + entries.length * rowHeight,
-		label: "Quitter",
+		label: t("menu.quit"),
 	});
 
 	playSound("menu_open");
@@ -72,18 +73,20 @@ export function openBuyMenu(seller: string): Menu | void {
 			waitBeforeNextLine(1600);
 			startDialog(
 				[
-					`1 ${item.label} pour ${item.cost} ball${item.cost > 1 ? "s" : ""}, c'est ça ?`,
+					t("dialog.shop.confirm", {
+						item: t(`item.${item.ref}`),
+						count: item.cost,
+					}),
 					{
-						OUI: () => {
-							if (!canAfford(item.cost!))
-								return "Tu n'as pas assez de Pokéballs, gamin !";
+						[t("yes")]: () => {
+							if (!canAfford(item.cost!)) return t("dialog.shop.nomoney");
 							endDialog();
 							spend(item.cost!);
 							return receiveItem(item, 1, true, "shop").then(() => {
 								openBuyMenu(seller);
 							});
 						},
-						NON: () =>
+						[t("no")]: () =>
 							wait(100).then(() => {
 								endDialog();
 								openBuyMenu(seller);
@@ -98,6 +101,7 @@ export function openBuyMenu(seller: string): Menu | void {
 			closeMenu();
 		},
 		onSelect(entry) {
+			if (!entry.value) return;
 			const item = ITEMS[entry.value];
 			if (item) showItemDescription(item);
 			else hideItemDescription();

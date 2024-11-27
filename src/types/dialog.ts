@@ -16,11 +16,11 @@ export interface Dialog {
 	params: DialogParams;
 	dialogGroup: Phaser.GameObjects.Group;
 	textSprite: Phaser.GameObjects.Text;
-	bgSprite: Phaser.GameObjects.RenderTexture;
+	bgSprite: Phaser.GameObjects.NineSlice;
 	speech?: any;
 	choice?: Menu;
-	selectedChoice?: any;
-	onEnd?: () => any;
+	selectedChoice?: DialogChoice;
+	onEnd?: () => void;
 	waitBeforeNextLine?: boolean;
 }
 
@@ -29,10 +29,10 @@ export interface DialogParams {
 	wait?: number;
 }
 
-export type DialogChoice = { [option: string]: () => any };
+export type DialogChoice = { [option: string]: DialogLine };
 
 export interface DialogStacked {
 	lines: DialogLine[];
 	params: DialogParams;
-	onEndCallback?: () => Promise<void>;
+	onEndCallback?: () => void;
 }

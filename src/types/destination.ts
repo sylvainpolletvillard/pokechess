@@ -49,7 +49,7 @@ export interface RoomConfig {
 	type: RoomType;
 	name: string;
 	music: string;
-	beforeExit?: () => Promise<any>;
+	beforeExit?: () => Promise<void>;
 }
 
 export type Room =

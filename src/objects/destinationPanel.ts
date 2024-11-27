@@ -6,11 +6,13 @@ import { addText } from "../utils/text";
 
 let destinationPanel: Phaser.GameObjects.Container | null = null;
 
-const DestinationTypeSubtextColor: { [type in DestinationType]: string } = {
+export const DestinationTypeSubtextColor: {
+	[type in DestinationType]: string;
+} = {
 	[DestinationType.ARENA]: "#006699",
 	[DestinationType.WILD]: "#669900",
 	[DestinationType.SPECIAL]: "#996600",
-};
+} as const;
 
 export function showDestinationPanel(
 	destination: Destination,

@@ -18,8 +18,8 @@ export function startMusic(
 	const scene = gameState.activeScene!;
 	return new Promise((resolve, reject) => {
 		params = Object.assign({ volume: store.MUSIC_VOLUME }, params);
-		console.log("playing " + name);
-		if (gameState.music && gameState.music.isPlaying) {
+		//console.log("playing " + name);
+		if (gameState.music?.isPlaying) {
 			if (gameState.music.key === name) return; // already playing
 			gameState.music.stop();
 		}
@@ -59,7 +59,7 @@ export function playSound(
 	params: Phaser.Types.Sound.SoundConfig = {},
 ): { sound: Phaser.Sound.BaseSound; waitEnd: Promise<void> } {
 	params = Object.assign({ volume: store.SFX_VOLUME }, params);
-	console.log("playing sound " + name);
+	//console.log(`playing sound ${name}`);
 
 	const sound = gameState.activeScene?.sound.add(name, params)!;
 	sound.play();

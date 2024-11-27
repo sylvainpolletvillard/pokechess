@@ -7,11 +7,16 @@
 				"noParameterAssign": "off"
 			},
 			"suspicious": {
-				"noConfusingVoidType": "off"
+				"noExplicitAny": "off",
+				"noConfusingVoidType": "off",
+				"noPrototypeBuiltins": "off"
 			},
 			"complexity": {
 				"noForEach": "off",
 				"noUselessSwitchCase": "off"
+			},
+			"performance": {
+				"noDelete": "off"
 			}
 		}
 	}

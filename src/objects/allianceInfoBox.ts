@@ -1,6 +1,7 @@
 import { ALLIANCES } from "../data/alliances";
 import { Z } from "../data/depths";
 import type { PokemonType } from "../data/types";
+import { t } from "../i18n";
 import { GameStage, gameState } from "../logic/gamestate";
 import type { MyScene } from "../scenes/MyScene";
 import { addText } from "../utils/text";
@@ -41,7 +42,7 @@ export function showAllianceInfoBox(type: PokemonType, player: number) {
 
 	allianceInfoBox.add(allianceInfoBoxBackground);
 
-	const allianceNameText = addText(ox - 60, oy + 16, `${type.label}`);
+	const allianceNameText = addText(ox - 60, oy + 16, t(`type.${type.ref}`));
 	allianceInfoBox.add(allianceNameText);
 
 	const icon = scene.add.sprite(
@@ -59,7 +60,7 @@ export function showAllianceInfoBox(type: PokemonType, player: number) {
 	const allianceDescriptionText = addText(
 		ox - 86,
 		y,
-		`${alliance.description}`,
+		t(`alliance_desc.${type.ref}`),
 		{
 			color: "black",
 			fontSize: "10px",
@@ -78,7 +79,7 @@ export function showAllianceInfoBox(type: PokemonType, player: number) {
 		const stepText = addText(
 			ox - 86,
 			y,
-			`[${step.numberRequired}] ${step.description}`,
+			`[${step.numberRequired}] ${t(`alliance_desc.${step.ref}`)}`,
 			{
 				color: allianceState.stepReached?.ref === step.ref ? "blue" : "gray",
 				fontSize: "10px",

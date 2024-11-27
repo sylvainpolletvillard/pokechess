@@ -9,6 +9,7 @@ import {
 	CHAMPIONS,
 	CHAMPIONS_LIGUE,
 } from "../data/trainers";
+import { t } from "../i18n";
 import { hideAlliancesInfo } from "../objects/alliancesInfo";
 import { drawFightStats, hideStatsBox } from "../objects/fightStatsBox";
 import { showCenterText } from "../objects/gui";
@@ -105,7 +106,7 @@ export class GameState {
 		this.starters = pickStarters();
 		this.pension = [];
 		this.dialogStates = {};
-		this.seed = randomInt(1, Math.pow(4, 10));
+		this.seed = randomInt(1, 4 ** 10);
 		this.lastCaptureDestination = null;
 		this.lastTourMam = 0;
 		this.pokedexCaptured = new Set();
@@ -276,14 +277,14 @@ export class GameState {
 		const player = game.sprites.get("player");
 		const hasWon = loser !== 1;
 		if (hasWon) {
-			player && player.play("trainer_victory");
+			player?.play("trainer_victory");
 			showCenterText("text_victoire", game);
 			if (room.type === RoomType.WILD) startMusic("music_victory_wild");
 			else if (CHAMPIONS.includes((room as RoomArena).trainer))
 				startMusic("music_victory_champion");
 			else startMusic("music_victory_trainer");
 		} else {
-			player && player.play("trainer_defeat");
+			player?.play("trainer_defeat");
 			showCenterText("text_defaite", game);
 		}
 
@@ -301,13 +302,14 @@ export class GameState {
 		const lines: DialogLine[] = [];
 		if (hasWon) {
 			if (room.type === RoomType.ARENA && room.trainer)
-				lines.push(`Vous avez vaincu ${room.trainer.name} !`);
-			lines.push(`Vos Pokémon gagnent ${Math.round(xpPerPokemon / 10)}xp`);
-		} else if (room.type !== RoomType.TUTORIAL) {
+				lines.push(t("victory", { trainer: t(`trainer.${room.trainer.ref}`) }));
 			lines.push(
-				`Votre équipe est KO !`,
-				`Vous courrez jusqu'au centre Pokémon le plus proche.`,
+				t("victory_xp", {
+					xp: Math.round(xpPerPokemon / 10),
+				}),
 			);
+		} else if (room.type !== RoomType.TUTORIAL) {
+			lines.push(t("defeat.0"), t("defeat.1"));
 		}
 
 		gameState.player.team.forEach((pokemon) => pokemon.resetAfterFight());
@@ -358,7 +360,7 @@ export class GameState {
 		game.time.removeEvent(this.fightClock!);
 
 		const player = game.sprites.get("player");
-		player && player.play("trainer_victory");
+		player?.play("trainer_victory");
 		updateFightButton();
 
 		return wait(100)
@@ -389,7 +391,7 @@ export class GameState {
 			const room = gameState.currentRoom as RoomTutorial;
 			startDialog(room.trainer.dialogs.step2, { speaker: room.trainer.ref });
 		} else {
-			const beforeExit: () => Promise<any> =
+			const beforeExit: () => Promise<void> =
 				gameState.currentRoom.beforeExit || (() => Promise.resolve());
 			beforeExit()
 				.then(() => fadeOut(400))

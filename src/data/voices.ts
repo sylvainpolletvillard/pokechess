@@ -256,4 +256,4 @@ export const VOICES_BY_SPRITE_INDEX: { [index: number]: VoiceConfig } = {
 };
 
 for (const index in VOICES_BY_SPRITE_INDEX)
-	VOICES_BY_ACTOR["character" + index] = VOICES_BY_SPRITE_INDEX[index];
+	VOICES_BY_ACTOR[`character${index}`] = VOICES_BY_SPRITE_INDEX[index];

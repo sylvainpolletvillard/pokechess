@@ -104,7 +104,8 @@ export function triggerSpecial(
 
 export function teleport(pokemon: PokemonOnBoard, game: GameScene) {
 	const { x: originX, y: originY } = pokemon;
-	let x: number, y: number;
+	let x: number;
+	let y: number;
 	do {
 		// find random empty tile
 		x = randomInt(0, 6);
@@ -127,7 +128,8 @@ export function tunnel(
 	game: GameScene,
 ) {
 	const { x: originX, y: originY } = pokemon;
-	let x: number, y: number;
+	let x: number;
+	let y: number;
 	do {
 		// find random empty tile
 		x = randomInt(0, 6);
@@ -238,7 +240,7 @@ export function encore(
 	target: PokemonOnBoard,
 	game: GameScene,
 ) {
-	//console.log("Encore: " + lastSkillSeen.name);
+	//console.log("Encore: " + lastSkillSeen.ref);
 	return wait(500).then(() =>
 		triggerSkill(lastSkillSeen, attacker, target, game),
 	);
@@ -255,7 +257,7 @@ export function metronome(
 ) {
 	const randomSkill = pickRandomIn(PP_SKILLS);
 	lastSkillSeen = randomSkill;
-	//console.log("Metronome: " + randomSkill.name);
+	//console.log("Metronome: " + randomSkill.ref);
 	return triggerSkill(randomSkill, attacker, target, game);
 }
 

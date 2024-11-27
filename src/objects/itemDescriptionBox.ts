@@ -1,5 +1,6 @@
 import { Z } from "../data/depths";
 import type { Item } from "../data/items";
+import { t } from "../i18n";
 import { gameState } from "../logic/gamestate";
 import type { MyScene } from "../scenes/MyScene";
 import { addText } from "../utils/text";
@@ -42,13 +43,13 @@ export function showItemDescription(item: Item) {
 	itemDescriptionGroup.add(itemSprite);
 
 	itemDescriptionGroup.add(
-		addText(ox + 56, oy + 8, item.label, {
+		addText(ox + 56, oy + 8, t(`item.${item.ref}`), {
 			fontStyle: "strong",
 			color: "blue",
 		}),
 	);
 	itemDescriptionGroup.add(
-		addText(ox + 56, oy + 28, item.desc, {
+		addText(ox + 56, oy + 28, t(`item_desc.${item.ref}`), {
 			wordWrap: {
 				width: scene.scale.width - 96,
 				useAdvancedWrap: true,

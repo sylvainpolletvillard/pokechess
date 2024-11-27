@@ -113,7 +113,7 @@ export default class MenuScene extends MyScene {
 		const x = dir === "left" ? 350 : -30;
 		const sprite = this.add
 			.sprite(x, y, "pokemon_portraits")
-			.play(name + "_portrait");
+			.play(`${name}_portrait`);
 		this.tweens.add({
 			targets: [sprite],
 			delay,
@@ -133,7 +133,7 @@ export default class MenuScene extends MyScene {
 		const y = dir === "top-left" || dir === "top-right" ? 350 : -30;
 		const sprite = this.add
 			.sprite(x, y, "pokemon_portraits")
-			.play(name + "_portrait");
+			.play(`${name}_portrait`);
 		this.tweens.add({
 			targets: [sprite],
 			duration,

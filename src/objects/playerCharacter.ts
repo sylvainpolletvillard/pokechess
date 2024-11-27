@@ -42,15 +42,13 @@ export class PlayerCharacter extends Character {
 		super.update();
 		this.updateControls();
 
-		this.interactionSprite.setPosition(
-			this.sprite.getCenter().x + 8,
-			this.sprite.getCenter().y - 8,
-		);
+		const { x = 0, y = 0 } = this.sprite.getCenter();
+		this.interactionSprite.setPosition(x + 8, y - 8);
 	}
 
 	getWatchingPoint(distance = 1): { x: number; y: number } {
 		// coordonnées du point ciblé
-		let { x, y } = this.sprite.getCenter();
+		let { x = 0, y = 0 } = this.sprite.getCenter();
 		y += TILE_SIZE / 2;
 		switch (this.state) {
 			case CHARACTER_STATE.LEFT:
@@ -100,14 +98,15 @@ export class PlayerCharacter extends Character {
 	}
 
 	updateControls() {
+		const { x = 0, y = 0 } = this.sprite.body ?? {};
 		const isAlignedOnGrid =
 			isBetween(
-				(this.sprite.body.x + TILE_SIZE / 2) % TILE_SIZE,
+				(x + TILE_SIZE / 2) % TILE_SIZE,
 				TILE_SIZE / 2 - 1,
 				TILE_SIZE / 2 + 1,
 			) &&
 			isBetween(
-				(this.sprite.body.y + TILE_SIZE / 2) % TILE_SIZE,
+				(y + TILE_SIZE / 2) % TILE_SIZE,
 				TILE_SIZE / 2 - 1,
 				TILE_SIZE / 2 + 1,
 			);
@@ -139,7 +138,7 @@ export class PlayerCharacter extends Character {
 		const d = 4; // delta margin
 		return group.getChildren().find((obj: Phaser.GameObjects.GameObject) => {
 			if (obj instanceof Phaser.GameObjects.Sprite) {
-				let { x: cx, y: cy } = obj.getBottomCenter();
+				let { x: cx = 0, y: cy = 0 } = obj.getBottomCenter();
 				const distance = obj.getData("interactionDistance") ?? 1;
 				const { x, y } = this.getWatchingPoint(distance);
 				cy -= 8;
@@ -179,13 +178,13 @@ export class PlayerCharacter extends Character {
 		const scene = gameState.activeScene as RoomScene;
 		const door = findObjectByName(doorName, "door", scene.level.tilemap);
 
-		this.sprite.body.reset(
+		this.sprite.body?.reset(
 			door.x * MAP_SCALING + TILE_SIZE / 2,
 			door.y * MAP_SCALING,
 		);
 		this.alignOnGrid();
 		const outDirection =
-			Direction[door.properties["outDirection"] as Direction] ?? Direction.UP;
+			Direction[door.properties.outDirection as Direction] ?? Direction.UP;
 		scene.disableTriggers = true;
 		this.forceMove(outDirection, 350).then(() => {
 			scene.disableTriggers = false;

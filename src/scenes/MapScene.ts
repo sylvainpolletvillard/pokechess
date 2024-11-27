@@ -137,7 +137,7 @@ export default class MapScene extends MyScene {
 
 	onPressA() {
 		if (gameState.activeMenu != null) return clickEntry();
-		else if (gameState.activeDialog) return showNextLine();
+		if (gameState.activeDialog) return showNextLine();
 
 		if (
 			!this.isMoving &&
@@ -234,7 +234,7 @@ export default class MapScene extends MyScene {
 			? this.origin
 			: (this.availableDestinations
 					.map((dest) => this.sprites.get(`${dest.ref}_highlight`))
-					.find((sprite) => sprite && sprite.getBounds().contains(x, y + 5))
+					.find((sprite) => sprite?.getBounds().contains(x, y + 5))
 					?.getData("destination") ?? null);
 
 		if (this.destinationReached !== destinationReached) {
@@ -261,6 +261,7 @@ export default class MapScene extends MyScene {
 	drawMap() {
 		const map = this.make.tilemap({ key: "overworld" });
 		const tileset = map.addTilesetImage("overworld", "overworld");
+		if (!tileset) return;
 		map.createLayer("ground0", tileset);
 		map.createLayer("ground1", tileset);
 		map.createLayer("ground2", tileset);
@@ -293,8 +294,8 @@ export default class MapScene extends MyScene {
 	drawBadges() {
 		const nbBadges = ALL_BADGES.length;
 		ALL_BADGES.forEach((badge, i) => {
-			const x = 48 + (i % (nbBadges / 2)) * 17,
-				y = 12 + Math.floor(i / (nbBadges / 2)) * 17;
+			const x = 48 + (i % (nbBadges / 2)) * 17;
+			const y = 12 + Math.floor(i / (nbBadges / 2)) * 17;
 			const frame = badge.frameIndex + (gameState.hasBadge(badge) ? 0 : 16);
 			const sprite = this.add.sprite(x, y, "icons16x16").setFrame(frame);
 			this.sprites.set(badge.ref, sprite);
@@ -398,8 +399,8 @@ export default class MapScene extends MyScene {
 				targets: [dirSprite],
 				duration: 300,
 				ease: Phaser.Math.Easing.Sine,
-				x: "+=" + dx * 4,
-				y: "+=" + dy * 4,
+				x: `+=${dx * 4}`,
+				y: `+=${dy * 4}`,
 				yoyo: true,
 				repeat: -1,
 			});
@@ -410,14 +411,14 @@ export default class MapScene extends MyScene {
 		const WALK_SPEED = 2.5;
 		if (!this.player) return;
 
-		let x = from[0],
-			y = from[1];
+		let x = from[0];
+		let y = from[1];
 		this.player.setPosition(x, y);
 		this.isMoving = true;
 		this.directionsGroup?.clear(false, true);
 
 		path
-			.reduce(async (previousStep: Promise<any>, step) => {
+			.reduce(async (previousStep: Promise<void>, step) => {
 				await previousStep;
 				if (
 					this.intersectionReached &&
@@ -432,8 +433,8 @@ export default class MapScene extends MyScene {
 					targets: [this.player],
 					t: 1,
 					duration: stepDuration,
-					x: "+=" + dx * 16,
-					y: "+=" + dy * 16,
+					x: `+=${dx * 16}`,
+					y: `+=${dy * 16}`,
 				});
 				if (dy >= 1) {
 					this.player?.play("player_down", true);
