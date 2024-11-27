@@ -1,44 +1,153 @@
 {
-	"new_game": "New game",
+	"alliance_desc": {
+		"COMBAT": "Fighting Pokémon know no fear and have their stats increased with the number of opponents targeting them.",
+		"COMBAT2": "+5% ATK and DEF per opponent",
+		"COMBAT4": "+10% ATK and DEF per opponent",
+		"COMBAT6": "+20% ATK and DEF per opponent",
+		"DRAGON": "When a Dragon Pokémon is the last Pokémon of the team on the board, it gains large bonuses to all of its stats.",
+		"DRAGON1": "+20% to the stats of the last dragon",
+		"DRAGON2": "+40% to the stats of the last dragon",
+		"DRAGON3": "+60% to the stats of the last dragon",
+		"EAU": "Water Pokémon are immune to Burn. Water moves can push the target back one or more tiles.",
+		"EAU2": "Push back one tile",
+		"EAU4": "Push back 2 tiles",
+		"EAU6": "Push back 3 tiles",
+		"ELEC2": "+10% SPD; 2 damage per hit received",
+		"ELEC4": "+20% SPD; 4 damage per hit received",
+		"ELEC6": "+30% SPD; 6 damage per hit received",
+		"ELECTRIQUE": "Electric Pokémon gain Speed and deal Electric damage with each hit they received on contact.",
+		"FEE": "Fairy Pokémon gradually gain PP for your entire team.",
+		"FEE1": "+1 PP per second",
+		"FEE2": "+2 PP per second",
+		"FEE3": "+3 PP per second",
+		"FEU": "Fire Pokémon are immune to Freeze. Their attacks apply a burn that deals damage over time and reduces the effectiveness of healing by 50%.",
+		"FEU2": "2 burns per attack",
+		"FEU4": "3 burns per attack",
+		"FEU6": "4 burns per attack",
+		"GLACE": "Ice Pokémon are surrounded by an aura of frost that slows opponents on adjacent tiles.",
+		"GLACE2": "-20% speed",
+		"GLACE3": "-30% speed",
+		"GLACE4": "-40% speed",
+		"INSECTE": "Bug Pokémon grow and evolve faster, and gain bonus experience with each battle.",
+		"INSECTE2": "+20% to experience gains",
+		"INSECTE4": "+40% to experience gains",
+		"INSECTE6": "+60% to experience gains",
+		"NORMAL": "Normal Pokémon reduce damage penalties taken from type weaknesses.",
+		"NORMAL2": "-30% weakness damage received",
+		"NORMAL4": "-60% weakness damage received",
+		"NORMAL6": "-90% weakness damage received",
+		"PLANTE": "Grass Pokémon cannot be knocked back by enemy skills and regenerate naturally.",
+		"PLANTE2": "Regen 1% of max HP per second",
+		"PLANTE4": "Regen 2% of max HP per second",
+		"PLANTE6": "Regen 3% of max HP per second",
+		"POISON": "Poison Pokémon poison their targets, dealing damage over time proportional to their max HP.",
+		"POISON2": "Poison damage dealt +40%",
+		"POISON4": "Poison damage dealt +80%",
+		"POISON6": "Poison damage dealt +120%",
+		"PSY": "Psychic Pokémon are immune to Confusion, and their attacks cause their target to lose PP.",
+		"PSY2": "Target loses 2 PP per attack",
+		"PSY4": "The target loses 4 PP per attack",
+		"PSY6": "The target loses 6 PP per attack",
+		"ROCHE": "Rock Pokémon reduce damage received from status affliction (poison, burn).",
+		"ROCHE2": "-30% affliction damage",
+		"ROCHE4": "-60% affliction damage",
+		"ROCHE6": "-90% affliction damage",
+		"SOL": "Ground Pokémon dig a tunnel to temporarily protect themselves when they fall below a certain HP threshold.",
+		"SOL2": "Tunnel at 20% of HP",
+		"SOL4": "Tunnel at 20% and 50% of HP",
+		"SOL6": "Tunnel at 20%, 50% and 80% of HP",
+		"SPECTRE": "Ghost Pokémon cannot be put to sleep and their attacks scare their target, reducing their Attack.",
+		"SPECTRE2": "2 stacks of Fear per attack",
+		"SPECTRE4": "4 stacks of Fear per attack",
+		"SPECTRE6": "6 stacks of Fear per attack",
+		"VOL": "Flying Pokémon fly away from the board at the start of the battle, and can dodge incoming attacks.",
+		"VOL2": "20% chance to dodge",
+		"VOL4": "40% chance to dodge",
+		"VOL6": "60% chance to dodge"
+	},
 	"continue": "Continue",
-	"home": {
-		"description": "A fangame remake of Pokemon Red/Blue as an autobattler",
-		"controls": "Controls",
-		"gamepad": "Gamepad",
-		"keyboard": "Keyboard",
-		"mouse": "Mouse",
-		"music": "Music",
-		"sfx": "Sound effects",
-		"volume": "Volume",
-		"language": "Language"
+	"defeat": {
+		"0": "Your team is KO !",
+		"1": "You run to the nearest Pokémon Center."
+	},
+	"descriptions": {
+		"bed": "This is not the time to go to sleep!",
+		"boat": "This is a model of the S.S. Anne, the famous cruise ship.",
+		"book": {
+			"0": "This is my Pokémon study course notebook.",
+			"1": "Normal Pokémon are versatile, but get beaten by Fighting specialists.",
+			"10": "Ground Pokémon are highly resistant to Poison.",
+			"11": "Grass Pokémon win against Ground Pokémon in the long run.",
+			"12": "Psychic Pokémon are strangely afraid of Bugs.",
+			"13": "Bug Pokémon are pecked by birds.",
+			"14": "Only a Spectre can truly face another Spectre.",
+			"15": "Dragons can be trapped by Ice.",
+			"2": "Rock-type Pokémon don't like water.",
+			"3": "Water Pokémon fear electricity.",
+			"4": "Fire-type Pokémon are powerless against water.",
+			"5": "Fire is deadly to Grass Pokémon.",
+			"6": "Flying Pokémon fear lightning.",
+			"7": "Electric Pokémon are neutralized by Ground.",
+			"8": "Ice Pokémon are shattered by Rock.",
+			"9": "Fighting Pokémon have one weakness: Psychic attacks."
+		},
+		"book_insect": {
+			"0": "This is a notebook about Pokémon evolutions.",
+			"1": "It is written that {{name}} evolves at the level {{level}}",
+			"2": "Interesting. I should keep that in mind!"
+		},
+		"frigo": {
+			"0": "MAM: Are you still hungry? What a glutton!"
+		},
+		"map": "This is the map of the Kanto region.",
+		"pc_end": {
+			"0": "Record the team in the record books?",
+			"1": "Registering team...",
+			"2": "Congratulations! You and your Pokémon are famous!",
+			"3": "... End of session."
+		},
+		"pc_record": {
+			"0": "Bzzz... Opening the record book...",
+			"1": "No data available.",
+			"2": "Last league master recorded:\nMaster in {{nbTours}} tours",
+			"3": "{{nbCaptured}} Pokémon captured\n{{nbSeen}} Pokémon seen",
+			"4": "Favorite team:",
+			"5": "Bzzz.. The screen went off..."
+		},
+		"tv": {
+			"0": "The TV broadcasts the news of the day...",
+			"1": "BREAKING NEWS!",
+			"2": "A Zapdos was spotted at the power plant!",
+			"3": "An Articuno has been seen in the Foam Islands!",
+			"4": "Mount Ember is said to be the lair of a Moltres!",
+			"5": "Our reporters are trying to find out more."
+		}
 	},
 	"destination": {
-		"BOURG_PALETTE": "Pallet Town",
-		"HOME": "At home",
-		"LABO_CHEN": "Prof. Oak Laboratory",
-		"BOURG_PALETTE_ROAD": "Pallet Town Road",
-		"ARGENTA_ARENA": "Pewter City Arena",
 		"ARGENTA": "Pewter City",
+		"ARGENTA_ARENA": "Pewter City Arena",
 		"ARGENTA_SHOP": "Pewter City Shop",
 		"AZURIA": "Cerulean City",
 		"AZURIA_ARENA": "Cerulean City Arena",
 		"AZURIA_SHOP": "Cerulean City Shop",
+		"BOURG_PALETTE": "Pallet Town",
+		"BOURG_PALETTE_ROAD": "Pallet Town Road",
 		"CAMP_NOMADE": "Nomad Camp",
 		"CAMP_NOMADE_ARENA": "Wild Arena",
 		"CARMIN": "Vermilion City",
 		"CARMIN_ARENA": "Vermilion City Arena",
 		"CARMIN_SHOP": "Vermilion City Shop",
 		"CAVE_TAUPIQUEUR": "Diglett's Cave",
-		"CAVE_TAUPIQUEUR_WEST": "Diglett's Cave (West entrance)",
 		"CAVE_TAUPIQUEUR_EAST": "Diglett's Cave (East entrance)",
+		"CAVE_TAUPIQUEUR_WEST": "Diglett's Cave (West entrance)",
 		"CELADOPOLE": "Celadon City",
 		"CELADOPOLE_ARENA": "Celadon City Arena",
 		"CELADOPOLE_SHOP": "Celadon City Shop",
 		"CENTRALE": "Power plant",
 		"CHAMPS_VERDOYANTS": "Green fields",
-		"COL_MONTAGNE": "Mountain Pass",
-		"COLLINE_ROYALE": "Dragon Hill",
 		"CHEMIN_COLLINE": "Path to the Hill",
+		"COLLINE_ROYALE": "Dragon Hill",
+		"COL_MONTAGNE": "Mountain Pass",
 		"CRAMOISILE": "Cinnabar Island",
 		"CRAMOISILE_ARENA": "Cinnabar Island Arena",
 		"CRAMOISILE_SHOP": "Cinnabar Island Shop",
@@ -46,25 +155,27 @@
 		"FALAISES": "Cliffs",
 		"FORET_JADE": "Viridian Forest",
 		"GROTTE_AZUREE": "Cerulean Cave",
+		"HOME": "At home",
 		"ILES_ECUME": "Seafoam Islands",
 		"JADIELLE": "Viridian City",
 		"JADIELLE_ARENA": "Viridian City Arena",
 		"JADIELLE_SHOP": "Viridian City Shop",
+		"LABO_CHEN": "Prof. Oak Laboratory",
 		"LAVANVILLE": "Lavender Town",
 		"LAVANVILLE_ARENA": "Lavender Town Arena",
 		"LAVANVILLE_SHOP": "Lavender Town Shop",
+		"LIGUE": "Indigo League",
 		"LIGUE_FLOOR1": "Indigo League - 1st floor",
 		"LIGUE_FLOOR2": "Indigo League - 2nd floor",
 		"LIGUE_FLOOR3": "Indigo League - 3rd floor",
 		"LIGUE_FLOOR4": "Indigo League - 4th floor",
 		"LIGUE_FLOOR5": "Indigo League - Top floor",
-		"LIGUE": "Indigo League",
 		"LIGUE_HALL": "Indigo League Hall",
 		"MAISON_PSY": "Mr. Psychic's House",
 		"MONT_BRAISE": "Mt. Ember",
 		"MONT_SELENITE": "Mt. Moon",
-		"OCEANE_DECK": "On the S.S. Anne",
 		"OCEANE": "S.S. Anne",
+		"OCEANE_DECK": "On the S.S. Anne",
 		"PARC_SAFARI": "Safari Zone",
 		"PARMANIE": "Fuchsia City",
 		"PARMANIE_ARENA": "Fuchsia City Arena",
@@ -84,75 +195,127 @@
 		"BOURG_PALETTE": "Mom",
 		"CAPTURE": "Capture",
 		"CONSEIL_DES_4": "Elite Four",
+		"FIGHT": "Fight",
+		"SAFARI": "Catch'em all",
 		"fast_travel": "Fast travel",
-		"fast_travel_CRAMOISILE": "Fast travel to Cinnabar Island",
 		"fast_travel_AZURIA": "Fast travel to Cerulean City",
 		"fast_travel_CARMIN": "Fast travel to Vermilion City",
-		"FIGHT": "Fight",
-		"SAFARI": "Catch'em all"
+		"fast_travel_CRAMOISILE": "Fast travel to Cinnabar Island"
 	},
 	"dialog": {
-		"mom": {
-			"hello": "Hello, my dear!",
-			"gift1": "Here, before you go... I found this under your bed.",
-			"gift2": "You haven't been gone long. How are you?",
-			"gift3": "I picked some berries from the garden. Your Pokémon will love them!",
-			"gift4": "How is your adventure going?",
-			"gift5": "Hey, I found this for you at Prof. Oak's Lab.",
-			"gift6": "Is the trip going well?",
-			"gift7": "Have you caught a lot of Pokémon?",
-			"gift8": "Here, I have something to offer you.",
-			"gift9": "This is a very rare gem.",
-			"gift10": "It allows you to add a new type to one of your Pokémon!",
-			"gift11": "I hope this is useful to you.",
-			"gift12": "You've been gone for a while. Have you made any new friends?",
-			"gift13": "I stopped by the store and found something for you.",
-			"gift14": "The seller told me that all the best trainers had one!",
-			"gift15": "But you have to choose the right Pokémon to give it to.",
-			"gift16": "It's been so long since you left home!",
-			"gift17": "You must have a lot of stories to tell.",
-			"gift18": "For your return, I would like to offer you a gift:",
-			"gift19": "All the savings went into it! But it's a special occasion.",
-			"gift20": "You are so close to your goal! I believe in you my darling!",
-			"after_gift": "Good luck in your adventure!"
+		"aftercapture": {
+			"0": "The wild {{name}} shares his experience before being released.",
+			"1": "Your {{name}} gains {{xp}} XP"
 		},
-		"pierre": {
+		"agatha": {
+			"defeat": {
+				"0": "You have talent, but it's not enough!"
+			},
 			"start": {
-				"0": "I am Brock! I am the Champion of Pewter City!",
-				"1": "I believe in the great resistance of stone!",
-				"2": "That's why my Pokémon are stone elementals!",
-				"3": "You still want to fight me? Fine. On guard!"
+				"0": "Gnnn... Hello my little one.",
+				"1": "I'm Agatha from the Elite Four!",
+				"2": "Oak has high hopes for you, son!",
+				"3": "Do you know that this old thing was once a handsome boy?",
+				"4": "Well... A long time ago!",
+				"5": "He just wants to show off his Pokedex!",
+				"6": "But that's stupid! Pokémon are for fighting!",
+				"7": "I'll show you how great Trainers fight!"
 			},
 			"victory": {
-				"0": "Hmm... Nice fight.",
-				"1": "You seem to be an exceptional Trainer!",
-				"2": "In recognition of your victory, here is the ROCK BADGE!",
-				"3": "This is an official Pokémon League Badge!",
-				"4": "You will need eight of them to be able to face the Elite Four."
-			},
-			"defeat": {
-				"0": "Your Pokémon couldn't get past my rock defense...",
-				"1": "Train them and come back and fight me when you're strong enough."
+				"0": "Mmmm... I see why Oak likes you so much!",
+				"1": "My shadows have lost. You can pass."
 			}
 		},
-		"ondine": {
+		"aldo": {
+			"defeat": {
+				"0": "Bang! In the teeth!"
+			},
 			"start": {
-				"0": "Hi! Are you new?",
-				"1": "If you want to be a real trainer, you need a strategy!",
-				"2": "What is your tactic for capturing wild Pokémon?",
-				"3": "I'm charging into them with my water Pokémon!"
+				"0": "My name is Bruno from the Elite Four!",
+				"1": "My passion for me and my Pokémon is bodybuilding!",
+				"2": "To show off on the beach or to box the midgets,",
+				"3": "nothing like a dream body!",
+				"4": "Your team... I'm going to make yogurt out of it! Let's eat!"
 			},
 			"victory": {
-				"0": "Whoa! You're super strong! Very good!",
-				"1": "I give you the CASCADE BADGE for beating me!",
-				"2": "This badge opens the way to the cave north of Cerulean City."
-			},
+				"0": "Well done, kiddo! The next one is waiting for you!"
+			}
+		},
+		"assistant1": {
+			"0": "I put the square root, I retain five...",
+			"1": "Hmm? What's that for?",
+			"q1": "Who are you ?",
+			"q2": "Where am I?",
+			"q3": "What are you doing ?",
+			"r1": "I assist PROF. OAK. So I am his... ASSISTANT!",
+			"r2": "You are at the Pokémon Lab in Pallet Town.",
+			"r3": "Here we study the different species of Pokémon from Kanto.",
+			"r4": "I'm gathering the latest data collected by trainers like you.",
+			"r5": "By studying your battles, we collect information about Pokémon.",
+			"r6": "This information is then grouped into the Pokédex.",
+			"r7": "This is useful for our research, but also for your combat strategies."
+		},
+		"assistant2": {
+			"0": "This machine keeps track of the Pokémon teams that have distinguished themselves",
+			"1": "by defeating the Pokémon League Elite Four.",
+			"2": "Analyzing the best teams allows us to learn a lot!",
+			"3": "If you manage to beat the league, we will happily add your team."
+		},
+		"assistant_tuto": {
 			"defeat": {
-				"0": "Haha, looks like your team took on water!",
-				"1": "You're going to have to find another tactic."
+				"0": "Next time, use my Pokéballs!",
+				"1": "You will significantly increase your chances of victory!"
+			},
+			"start": {
+				"0": "Wait a minute! If you want to build a team, you need Pokéballs!",
+				"1": "Here are 5 Pokéballs to catch your first Pokémon.",
+				"2": "Do you know how to use it?",
+				"no0": "You can capture a wild Pokémon instead of battling it.",
+				"no1": "The more powerful the Pokémon, the more Pokéballs you will need to capture it.",
+				"no2": "A captured Pokémon joins your box, which can contain up to 8 Pokémon.",
+				"no3": "You can then move them from your box to the field for them to fight.",
+				"no4": "Go ahead, try to capture these wild Pokémon!",
+				"yes0": "Alright, then catch these wild Pokémon. Or knock them out, whatever you want!"
+			},
+			"step2": {
+				"0": "Your Pokémon become stronger by gaining experience after a battle.",
+				"1": "But there is another way to increase the experience of a Pokémon.",
+				"2": "All you need to do is capture a wild Pokémon of the same species.",
+				"3": "They will share his experience with your Pokémon before being released.",
+				"4": "Here, try it right now. Try to capture my {{name}} ."
+			},
+			"step3": {
+				"0": "The higher the level of the captured Pokémon, the more experience they will give.",
+				"1": "Remember, this only works if the Pokémon are the same species!",
+				"2": "Well, you know everything. Have a good trip and good luck!"
+			},
+			"victory": {
+				"0": "Well, you seem to be doing great!"
+			}
+		},
+		"auguste": {
+			"defeat": {
+				"0": "Now you know what I'm made of!"
+			},
+			"start": {
+				"0": "Greetings. My name is... Blaine!",
+				"1": "I am the Champion of the Cinnabar Island!",
+				"2": "My fiery Pokémon will burn you to ashes!",
+				"3": "Haha! It's going to be very hot soon!"
+			},
+			"victory": {
+				"0": "Phew! I got vaporized!",
+				"1": "You have earned the VOLCANO BADGE!",
+				"2": "The more badges you have, the tougher the fights!",
+				"3": "This is the price to pay to climb up the League!"
 			}
 		},
 		"bob": {
+			"defeat": {
+				"0": "Ha! Your defeat was lightning fast!",
+				"1": "A word of advice, kid! Electricity is very powerful!",
+				"2": "But it is powerless against Ground Pokémon !"
+			},
 			"start": {
 				"0": "Hey, kid! What are you doing here?",
 				"1": "You wouldn't last long in war!",
@@ -165,14 +328,363 @@
 				"0": "Whoo! Watch out! You're tough, little guy!",
 				"1": "Alright, take the LIGHTNING BADGE!",
 				"2": "You'll need it to enter the Pokémon League."
-			},
+			}
+		},
+		"chen": {
+			"0": "Hello Red! So today is the big day!",
+			"1": "The day of your initiatory journey as a Pokémon trainer!",
+			"10": "Your Pokémon will protect you from wild Pokémon.",
+			"11": "But alone he will be no match for the gym leaders!",
+			"12": "You will need to capture wild Pokémon to form a team.",
+			"13": "Each species of Pokémon has its strengths and weaknesses. Remember this:",
+			"14": "The key to victory is a balanced and well-positioned team.",
+			"15": "You should go to a nearby town to catch more Pokémon.",
+			"16": "Have a good trip and good luck!",
+			"17": "Go ahead, save your team on the computer for posterity!",
+			"18": "Hum-hum! Congratulations!",
+			"19": "This floor is reserved for Pokémon trainers celebrities!",
+			"2": "You will travel throughout Kanto, capturing Pokémon,",
+			"20": "The Champions League are consecrated here!",
+			"21": "Their Pokémon are registered as Celebrities!",
+			"22": "Your journey to victory was long! Well done again.",
+			"3": "build a team and face the 8 gym leaders.",
+			"4": "Maybe even take on the Pokemon League if you're up for it!",
+			"5": "But first, you need to adopt your first Pokémon.",
+			"6": "We caught three of them in the pokeballs behind me.",
+			"7": "There's one for you. Come on! Pick one!",
+			"8": "Go ahead, you can take one of the pokeballs on the table behind me.",
+			"9": "{{pokemon}} ? Excellent choice!"
+		},
+		"dresseur_argenta": {
 			"defeat": {
-				"0": "Ha! Your defeat was lightning fast!",
-				"1": "A word of advice, kid! Electricity is very powerful!",
-				"2": "But it is powerless against Ground Pokémon !"
+				"0": "You sink like a stone !"
+			},
+			"start": {
+				"0": "You defeated Brock, but I am as solid as a rock!"
+			},
+			"victory": {
+				"0": "I think I have a pebble in my shoe..."
+			}
+		},
+		"dresseur_azuria": {
+			"defeat": {
+				"0": "Keep your head above water!"
+			},
+			"start": {
+				"0": "You won against Misty, but that's water under the bridge!",
+				"1": "I'm fresher than ever! Expect a tidal wave!"
+			},
+			"victory": {
+				"0": "Man, I'm washed up!"
+			}
+		},
+		"dresseur_camp_nomade": {
+			"defeat": {
+				"0": "Your Pokémon dropped like flies!"
+			},
+			"start": {
+				"0": "Wait a minute butterfly!",
+				"1": "You look like you have ants in your pants.",
+				"2": "Let me show you my insect collection!"
+			},
+			"victory": {
+				"0": "Ouch! I got bitten by a mosquito!"
+			}
+		},
+		"dresseur_carmin": {
+			"defeat": {
+				"0": "This is rock'n roll baby!!!"
+			},
+			"start": {
+				"0": "Hey, did you come to my concert? The atmosphere is electric here!",
+				"1": "What do you mean, no? You've never listened to my CD?!",
+				"2": "I'm not gonna let you ruin the party!"
+			},
+			"victory": {
+				"0": "That's it, you've ruined the mood!"
+			}
+		},
+		"dresseur_cave_taupiqueur": {
+			"defeat": {
+				"0": "That'll teach you to come snooping around in dark corners!"
+			},
+			"start": {
+				"0": "Huh? No, it's not me!",
+				"1": "I have an alibi! I was at the movies!"
+			},
+			"victory": {
+				"0": "No need to get upset! Here, take these Pokéballs!",
+				"1": "And... they say you've never seen me, okay?"
+			}
+		},
+		"dresseur_celadopole": {
+			"defeat": {
+				"0": "Finally I don't really want us to hang out together anymore, haha!"
+			},
+			"start": {
+				"0": "I've seen you around town before, right?",
+				"1": "I can get you into the fanciest trainer clubs here!",
+				"2": "But first you have to prove you deserve it! Attack!"
+			},
+			"victory": {
+				"0": "But uh! You were supposed to let me win!",
+				"1": "Countryside people have no manners!"
+			}
+		},
+		"dresseur_centrale": {
+			"defeat": {
+				"0": "It was a lightning victory!"
+			},
+			"start": {
+				"0": "Hey, did you blacked out ?",
+				"1": "This is not a place for children!",
+				"2": "My Electric Pokémon team will blast you!"
+			},
+			"victory": {
+				"0": "I'm shocked! You made me blow a fuse!"
+			}
+		},
+		"dresseur_champs_verdoyants": {
+			"defeat": {
+				"0": "I'm going to do you a favor and give you some advice:",
+				"1": "Even the most beautiful roses need thorns.",
+				"2": "You need a good attack if you want to win."
+			},
+			"start": {
+				"0": "Hey? Who are you little flower?",
+				"1": "This is my garden! I'll send you pushing up daisies!"
+			},
+			"victory": {
+				"0": "Looks like my team is in need of some pruning!",
+				"1": "Well played, you're a real gardener!"
+			}
+		},
+		"dresseur_col_de_montagne": {
+			"defeat": {
+				"0": "Another feather in my cap!"
+			},
+			"start": {
+				"0": "Hey kid, are you lost! Well, I rule the roost here!",
+				"1": "A little birdie told me you’re about to lose this fight",
+				"2": "Let me show you how FLY my bird pokemon are!"
+			},
+			"victory": {
+				"0": "Ouch, I'm dead as a dodo ! Bye, flying away!"
+			}
+		},
+		"dresseur_colline_royale": {
+			"defeat": {
+				"0": "My dragons are so strong! so terrifying!",
+				"1": "so powerful! so... ah, he's gone."
+			},
+			"start": {
+				"0": "Are you looking for Dragon Pokémon?",
+				"1": "Me too! Me too!",
+				"2": "They are so big! so beautiful! so majestic!",
+				"3": "They're mine! Do you hear me? Mine alone!"
+			},
+			"victory": {
+				"0": "The dragon's ancestral force has abandoned me!"
+			}
+		},
+		"dresseur_cramoisile": {
+			"defeat": {
+				"0": "Eureka!"
+			},
+			"start": {
+				"0": "Ah, a new subject for experiment!",
+				"1": "Let me show you the fruit of my research..."
+			},
+			"victory": {
+				"0": "My calculations are wrong!"
+			}
+		},
+		"dresseur_dojo": {
+			"defeat": {
+				"0": "Your training is not enough yet! Ayaaaaa!"
+			},
+			"start": {
+				"0": "Little weakling! I am the GRAND MASTER of KARATE!",
+				"1": "Are you provoking me? Do you want to fight?",
+				"2": "Are you looking for close combat? HAHAHA! Ayaaaaa!"
+			},
+			"victory": {
+				"0": "STOP! You beat me! I'm ashamed!",
+				"1": "Okay, you win! You fought tooth and nail!"
+			}
+		},
+		"dresseur_falaises": {
+			"defeat": {
+				"0": "So, you still have to learn the ropes!"
+			},
+			"start": {
+				"0": "Hey little guy! I'm the greatest climber in Kanto!",
+				"1": "And I fully intend to rise to the top!",
+				"2": "Hang on tight cuz it's gonna get bumpy!"
+			},
+			"victory": {
+				"0": "That battle rocked! I can see you climb the league!"
+			}
+		},
+		"dresseur_foret_jade": {
+			"defeat": {
+				"0": "Yeeeesss I won for the first time!"
+			},
+			"start": {
+				"0": "Are you a Pokemon trainer? Me too!",
+				"1": "I caught a lot of bug Pokémon!",
+				"2": "Now we have to have a fight, that's the rule!"
+			},
+			"victory": {
+				"0": "I'll tell my mother!"
+			}
+		},
+		"dresseur_grotte_azuree": {
+			"defeat": {
+				"0": "Hmm... Your team got cold feet.",
+				"1": "What are you still doing here? Are you waiting for the thaw?"
+			},
+			"start": {
+				"0": "Hmmm... Strange place for a meeting.",
+				"1": "Let me break the ice. On guard!"
+			},
+			"victory": {
+				"0": "My defense melted like snow in the sun!"
+			}
+		},
+		"dresseur_iles_ecume": {
+			"defeat": {
+				"0": "I’ve got you now! You’re hooked!"
+			},
+			"start": {
+				"0": "Don't make any noise, you'll scare away the fish!"
+			},
+			"victory": {
+				"0": "Aw, man! My line snapped!"
+			}
+		},
+		"dresseur_lavanville": {
+			"defeat": {
+				"0": "Go and rest. Continue to believe in your dreams!"
+			},
+			"start": {
+				"0": "Sally has told me a lot about you.",
+				"1": "Will you do me the honor of a fight?"
+			},
+			"victory": {
+				"0": "It was a magical fight, I couldn't have dreamed of anything better."
+			}
+		},
+		"dresseur_mont_braise": {
+			"defeat": {
+				"0": "You see what it's like to be caught in the crossfire!"
+			},
+			"start": {
+				"0": "Well what is a young boy doing in a place like this?",
+				"1": "You're in hot water, kid!",
+				"2": "Hey Ron, how about we give him a baptism by fire?"
+			},
+			"victory": {
+				"0": "Ceasefire! Come on Ron, let's go!"
+			}
+		},
+		"dresseur_mont_selenite": {
+			"defeat": {
+				"0": "You won't live long here, you'd better leave."
+			},
+			"start": {
+				"0": "I'm looking for fossils, have you seen any?"
+			},
+			"victory": {
+				"0": "It seems I'm the fossil..."
+			}
+		},
+		"dresseur_oceane": {
+			"defeat": {
+				"0": "Loser has to walk the plank!",
+				"1": "Ha ha, I'm just kidding!"
+			},
+			"start": {
+				"0": "Ahoy, a challenger ahead!",
+				"1": "The crossing is going to be long...",
+				"2": "Let's have a fight to pass the time!",
+				"3": "Ready? Drop the anchors, it's time to battle!"
+			},
+			"victory": {
+				"0": "I'll just get back to setting the sails for our next destination..."
+			}
+		},
+		"dresseur_parmanie": {
+			"defeat": {
+				"0": "To protect the world from devastation...`, `To unite all peoples within our nation..."
+			},
+			"start": {
+				"0": "Get out you dirty brat!",
+				"1": "Team Rocket is conducting covert operations here!"
+			},
+			"victory": {
+				"0": "Team Rocket is blasting off again!"
+			}
+		},
+		"dresseur_pension": {
+			"bye": {
+				"0": "I'll take care of your Pokémon while you're away!",
+				"1": "Come back whenever you want!"
+			},
+			"start": {
+				"0": "Hey, it's you! You want us to train some of your Pokémon?",
+				"1": "Ah, there you are again! Your Pokémon have grown up a lot, look!",
+				"2": "Welcome to the Pokémon Day Care!",
+				"3": "Here we take care of Pokémon when their owners have to go away.",
+				"4": "You can lend us some of your Pokémon if you want.",
+				"5": "There are also Pokémon that are just looking to be adopted!",
+				"6": "Their type is ordinary so they don't interest other trainers..."
+			}
+		},
+		"dresseur_piste_cyclable": {
+			"defeat": {
+				"0": "You were just a bump in the road. See you loser!"
+			},
+			"start": {
+				"0": "Come on kid, show me what you got! I'm gonna roll you over!",
+				"1": "Don't try to run away! Check out my bike!",
+				"2": "You won't get far with your little bicycle!"
+			},
+			"victory": {
+				"0": "Raaah you scratched the bodywork! Quick, to the garage!"
+			}
+		},
+		"dresseur_safrania": {
+			"defeat": {
+				"0": "Brute force is no match for the power of intellect!"
+			},
+			"start": {
+				"0": "You dare to come back here? Have you lost your mind?",
+				"1": "We Psychic fight with our mental !",
+				"2": "My power will make your head spin!"
+			},
+			"victory": {
+				"0": "You gave me a migraine!"
+			}
+		},
+		"dresseur_tour_pokemon": {
+			"defeat": {
+				"0": "Did it...? Did it work?",
+				"1": "Demons don't usually take hits..."
+			},
+			"start": {
+				"0": "Back off, demon!!!"
+			},
+			"victory": {
+				"0": "AaAaaaAaaah!!! Run for your lives!!!"
 			}
 		},
 		"erika": {
+			"defeat": {
+				"0": "Losing always hurts a little but...",
+				"1": "Fighting a good opponent is stimulating... ",
+				"2": "Come on, don't take root here!"
+			},
 			"start": {
 				"0": "Hello and welcome. The weather is nice, isn't it?",
 				"1": "I love life. I love flowers and songs. It's cute, isn't it?",
@@ -188,71 +700,19 @@
 				"1": "I entrust you with the PRISM BADGE.",
 				"2": "Each badge you earn makes you face stronger Pokémon.",
 				"3": "Did you notice?"
-			},
-			"defeat": {
-				"0": "Losing always hurts a little but...",
-				"1": "Fighting a good opponent is stimulating... ",
-				"2": "Come on, don't take root here!"
 			}
 		},
-		"koga": {
-			"start": {
-				"0": "Gwahahaha! A dwarf dares to challenge me?",
-				"1": "Me, the big, the handsome, the terrible Koga?",
-				"2": "By hell, by blood, by steel, I will win!",
-				"3": "May the grip of my poisons petrify your little Pokémon with fear!"
-			},
-			"victory": {
-				"0": "Gwaha... huh? You've proven your worth!",
-				"1": "Open your hand, for here is... the SOUL BADGE!",
-				"2": "I fought with all my strength...",
-				"3": "But... I'm not strong enough.",
-				"4": "Go to the next arena! Explore your limits!",
-				"5": "Good luck !"
-			},
-			"defeat": {
-				"0": "Ha ha! It's time to teach you that some Pokémon",
-				"1": "cannot be defeated by pure force!"
-			}
+		"evolve": "{{old}} evolves into {{new}} !",
+		"exitlab": {
+			"0": "Professor Oak promised to give me my first Pokémon today.",
+			"1": "I don't plan on leaving here without him!"
 		},
-		"morgane": {
-			"start": {
-				"0": "I predicted your arrival!",
-				"1": "I have had psychic powers since childhood.",
-				"2": "I learned to bend spoons by the power of my mind.",
-				"3": "It's not super useful, but it looks cool!",
-				"4": "I don't like fighting, but if you insist, I'll show you my powers!"
-			},
-			"victory": {
-				"0": "Ha! I'm surprised! You won.",
-				"1": "That's right, I didn't do my best!",
-				"2": "You deserve your victory! You win the MARSH BADGE!",
-				"3": "The Marsh Badge strengthens occult powers...",
-				"4": "And that... It's not a small thing.",
-				"5": "You will become a Master! I feel it!"
-			},
-			"defeat": {
-				"0": "This is exactly what I predicted."
-			}
-		},
-		"auguste": {
-			"start": {
-				"0": "Greetings. My name is... Blaine!",
-				"1": "I am the Champion of the Cinnabar Island!",
-				"2": "My fiery Pokémon will burn you to ashes!",
-				"3": "Haha! It's going to be very hot soon!"
-			},
-			"victory": {
-				"0": "Phew! I got vaporized!",
-				"1": "You have earned the VOLCANO BADGE!",
-				"2": "The more badges you have, the tougher the fights!",
-				"3": "This is the price to pay to climb up the League!"
-			},
-			"defeat": {
-				"0": "Now you know what I'm made of!"
-			}
-		},
+		"find": "find",
 		"giovanni": {
+			"defeat": {
+				"0": "You raise your Pokémon too carefully.",
+				"1": "A kid like you can't understand my plans!"
+			},
 			"start": {
 				"0": "I have to say I'm surprised you made it this far!",
 				"1": "Here you are in my lair! I plan to reform Team Rocket here!",
@@ -267,13 +727,96 @@
 				"5": "So his existence ends with my defeat!",
 				"6": "I'm going to retreat, far away, as a hermit, to study Pokémon!",
 				"7": "One day our paths will cross again! Goodbye!"
-			},
-			"defeat": {
-				"0": "You raise your Pokémon too carefully.",
-				"1": "A kid like you can't understand my plans!"
 			}
 		},
+		"guide": {
+			"argenta": {
+				"0": "The mountain that peaks above Pewter City is Mount Moon.",
+				"1": "This is one of the oldest regions in Kanto!",
+				"2": "It is said that many fossils of extinct Pokémon can be found there.",
+				"3": "Imagine if we could bring them back to life..."
+			},
+			"azuria": {
+				"0": "This boat, there, is the S.S. Anne!",
+				"1": "What a beauty, huh?",
+				"2": "It goes on a permanent cruise between Cerulean, Vermillion and Cinnabar Island.",
+				"3": "If you want to get in at the right time, you should memorize this roadmap !"
+			},
+			"carmin": {
+				"0": "I took the shortcut through Diglett's cave to get here faster.",
+				"1": "But I still missed the boat departure, so I'm waiting here..."
+			},
+			"celadopole": {
+				"0": "The Dragon Hill overlooking Celadon is a legendary place.",
+				"1": "It is said that you can come across Dragon Pokémon there!",
+				"2": "But the path is blocked by a huge sleeping Pokémon...",
+				"3": "If only we could find a way to wake him up..."
+			},
+			"cramoisile": {
+				"0": "I work at Dr. Fuji's Pokémon Research Lab.",
+				"1": "I study rare Pokémon fossils.",
+				"10": "Hmm? What?",
+				"11": "Ah, yes, I guess it's yours...",
+				"12": "You receive a {{ name }} brought back to life!`,",
+				"13": "Come back to me if you find any more specimens!",
+				"14": "But... but... it's for science!",
+				"15": "I built a Pokemon Fossil Resurrection Machine!",
+				"16": "But I don't have any specimens of good enough quality yet.",
+				"2": "What? You found a fossil?",
+				"3": "Show it to me, come on show it!",
+				"4": "Amazing! It's in perfect condition!",
+				"5": "Maybe I could even... bring him back to life!",
+				"6": "What do you say? Can I take it?",
+				"7": "Excellent! I'll be back soon!",
+				"8": "Amazing !",
+				"9": "It's a {{name}} ! I thought they were gone!"
+			},
+			"jadielle": {
+				"0": "I wanted to go to the Victory Road to the west, but they wouldn't let me pass...",
+				"1": "Only those with all eight Arena Badges can access the Indigo League.",
+				"2": "It's not fair! I want to go see the Elite Four!"
+			},
+			"lavanville": {
+				"0": "Lavender Town is a rather quiet town, stuck between the mountains...",
+				"1": "But there are some places of interest, like the Pokémon Tower or the Power Plant."
+			},
+			"ligue": {
+				"0": "Ah, so you want information on the League champions?",
+				"1": "To claim the title of Pokémon League Master,",
+				"10": "Dragons are very tenacious. You'll have to give it your all!",
+				"11": "Well, I don't know what's next. I could never go any further!",
+				"12": "Ah, I thought that... no, never mind.",
+				"2": "You will have to face the Elite Four one after the other.",
+				"3": "First you will face Lorelei, the Ice Queen!",
+				"4": "Get rid of her quickly before your team is turned into ice cubes.",
+				"5": "Next comes Bruno, a specialist in combat and brute force.",
+				"6": "His Pokémon are tough, you'll have to be cunning to defeat him!",
+				"7": "Third, the terrifying Agatha and her Ghost Pokémon!",
+				"8": "They confuse your team, so refine your placement.",
+				"9": "Finally you will face Lance, master of the Dragons."
+			},
+			"parmanie": {
+				"0": "The Safari Zone is the big attraction of Fuschia City.",
+				"1": "It attracts lots of Pokémon trainers from all over Kanto!",
+				"2": "There is a wide variety of Pokémon of all types.",
+				"3": "But fighting is forbidden there to preserve their tranquility."
+			},
+			"safrania": {
+				"0": "I left my Pokemon at the Day Care in the north for a few days.",
+				"1": "After that, I found him in great shape, stronger than ever!",
+				"2": "The breeder at the Day Care really does a remarkable job."
+			}
+		},
+		"healer": {
+			"0": "Battles in the League are very exhausting for your Pokémon.",
+			"1": "But we take care to heal your entire team between each fight."
+		},
 		"hector": {
+			"defeat": {
+				"0": "Bug Pokémon have hidden abilities.",
+				"1": "It will take some time to discover them all.",
+				"2": "Study them carefully."
+			},
 			"start": {
 				"0": "Hey, did you find my camp? I'm Bugsy!",
 				"1": "I came to study the Bug Pokémon of this region.",
@@ -289,37 +832,94 @@
 				"3": "You'll see, it will be very useful to you!",
 				"4": "Well, I'm going to break camp. I've finished what I had to do here.",
 				"5": "This area is full of exotic Pokémon, you should come back!"
-			},
-			"defeat": {
-				"0": "Bug Pokémon have hidden abilities.",
-				"1": "It will take some time to discover them all.",
-				"2": "Study them carefully."
 			}
 		},
-		"sally": {
+		"item_no_use": "It won't work here...",
+		"item_received": "You {{verb}} : {{label}} {{quantity}}",
+		"item_use": "Use {{item}}?",
+		"koga": {
+			"defeat": {
+				"0": "Ha ha! It's time to teach you that some Pokémon",
+				"1": "cannot be defeated by pure force!"
+			},
 			"start": {
-				"0": "Well, well. I've heard of you, my child.",
-				"1": "I am Sally, the Ballonlea Gym Leader in the Galar region.",
-				"2": "I came to Lavenderville to visit an old friend...",
-				"3": "This place has something magical to it for me.",
-				"4": "Well, how about a fight?",
-				"5": "I'd be interested to see how you fight..."
+				"0": "Gwahahaha! A dwarf dares to challenge me?",
+				"1": "Me, the big, the handsome, the terrible Koga?",
+				"2": "By hell, by blood, by steel, I will win!",
+				"3": "May the grip of my poisons petrify your little Pokémon with fear!"
 			},
 			"victory": {
-				"0": "Congratulations on this victory! I had a blast!",
-				"1": "Even though I'm too old for that kind of thing...",
-				"2": "You remind me of my husband in his younger years.",
-				"3": "You know what? You should get that umbrella.",
-				"4": "It was very useful to me during my travels.",
-				"5": "Come on, get out! You have a League to face!"
-			},
+				"0": "Gwaha... huh? You've proven your worth!",
+				"1": "Open your hand, for here is... the SOUL BADGE!",
+				"2": "I fought with all my strength...",
+				"3": "But... I'm not strong enough.",
+				"4": "Go to the next arena! Explore your limits!",
+				"5": "Good luck !"
+			}
+		},
+		"levelup": "{{name}} is now level {{level}}",
+		"mom": {
+			"after_gift": "Good luck in your adventure!",
+			"gift1": "Here, before you go... I found this under your bed.",
+			"gift10": "It allows you to add a new type to one of your Pokémon!",
+			"gift11": "I hope this is useful to you.",
+			"gift12": "You've been gone for a while. Have you made any new friends?",
+			"gift13": "I stopped by the store and found something for you.",
+			"gift14": "The seller told me that all the best trainers had one!",
+			"gift15": "But you have to choose the right Pokémon to give it to.",
+			"gift16": "It's been so long since you left home!",
+			"gift17": "You must have a lot of stories to tell.",
+			"gift18": "For your return, I would like to offer you a gift:",
+			"gift19": "All the savings went into it! But it's a special occasion.",
+			"gift2": "You haven't been gone long. How are you?",
+			"gift20": "You are so close to your goal! I believe in you my darling!",
+			"gift3": "I picked some berries from the garden. Your Pokémon will love them!",
+			"gift4": "How is your adventure going?",
+			"gift5": "Hey, I found this for you at Prof. Oak's Lab.",
+			"gift6": "Is the trip going well?",
+			"gift7": "Have you caught a lot of Pokémon?",
+			"gift8": "Here, I have something to offer you.",
+			"gift9": "This is a very rare gem.",
+			"hello": "Hello, my dear!"
+		},
+		"morgane": {
 			"defeat": {
-				"0": "It’s beautiful, the energy of youth.",
-				"1": "But the power of the attacks is not everything...",
-				"2": "Are you finally beginning to understand what magic is?"
+				"0": "This is exactly what I predicted."
+			},
+			"start": {
+				"0": "I predicted your arrival!",
+				"1": "I have had psychic powers since childhood.",
+				"2": "I learned to bend spoons by the power of my mind.",
+				"3": "It's not super useful, but it looks cool!",
+				"4": "I don't like fighting, but if you insist, I'll show you my powers!"
+			},
+			"victory": {
+				"0": "Ha! I'm surprised! You won.",
+				"1": "That's right, I didn't do my best!",
+				"2": "You deserve your victory! You win the MARSH BADGE!",
+				"3": "The Marsh Badge strengthens occult powers...",
+				"4": "And that... It's not a small thing.",
+				"5": "You will become a Master! I feel it!"
+			}
+		},
+		"mr_psy": {
+			"defeat": {
+				"0": "What a disappointment!",
+				"1": "Come back to me and I'll let you catch more Psychic Pokémon.",
+				"2": "Your team needs to improve its mental!"
+			},
+			"start": {
+				"0": "Ah, here you are again! So, have you trained your Pokémon's minds?",
+				"1": "It's time for... the Mr Psychic exam!"
+			},
+			"victory": {
+				"0": "That's a 10/10! You graduated from Mr. Psychic's school!"
 			}
 		},
 		"olga": {
+			"defeat": {
+				"0": "Zis is not enough!"
+			},
 			"start": {
 				"0": "Welcome to the Pokémon League!",
 				"1": "I am Lorelei of ze Elite Four!",
@@ -331,46 +931,29 @@
 			"victory": {
 				"0": "You are ztrong. It's good.",
 				"1": "But the Pokémon League has other zurprizes for you!"
-			},
-			"defeat": {
-				"0": "Zis is not enough!"
 			}
 		},
-		"aldo": {
-			"start": {
-				"0": "My name is Bruno from the Elite Four!",
-				"1": "My passion for me and my Pokémon is bodybuilding!",
-				"2": "To show off on the beach or to box the midgets,",
-				"3": "nothing like a dream body!",
-				"4": "Your team... I'm going to make yogurt out of it! Let's eat!"
-			},
-			"victory": {
-				"0": "Well done, kiddo! The next one is waiting for you!"
-			},
+		"ondine": {
 			"defeat": {
-				"0": "Bang! In the teeth!"
-			}
-		},
-		"agatha": {
-			"victory": {
-				"0": "Mmmm... I see why Oak likes you so much!",
-				"1": "My shadows have lost. You can pass."
-			},
-			"defeat": {
-				"0": "You have talent, but it's not enough!"
+				"0": "Haha, looks like your team took on water!",
+				"1": "You're going to have to find another tactic."
 			},
 			"start": {
-				"0": "Gnnn... Hello my little one.",
-				"1": "I'm Agatha from the Elite Four!",
-				"2": "Oak has high hopes for you, son!",
-				"3": "Do you know that this old thing was once a handsome boy?",
-				"4": "Well... A long time ago!",
-				"5": "He just wants to show off his Pokedex!",
-				"6": "But that's stupid! Pokémon are for fighting!",
-				"7": "I'll show you how great Trainers fight!"
+				"0": "Hi! Are you new?",
+				"1": "If you want to be a real trainer, you need a strategy!",
+				"2": "What is your tactic for capturing wild Pokémon?",
+				"3": "I'm charging into them with my water Pokémon!"
+			},
+			"victory": {
+				"0": "Whoa! You're super strong! Very good!",
+				"1": "I give you the CASCADE BADGE for beating me!",
+				"2": "This badge opens the way to the cave north of Cerulean City."
 			}
 		},
 		"peter": {
+			"defeat": {
+				"0": "I never give up. What about you?"
+			},
 			"start": {
 				"0": "Ah! Finally... I heard about you!",
 				"1": "I reign over the Elite Four!",
@@ -389,12 +972,35 @@
 				"4": "Another great Trainer awaits you.",
 				"5": "He defeated the Elite Four before you!",
 				"6": "He's the real Master of the Pokémon League!"
-			},
-			"defeat": {
-				"0": "I never give up. What about you?"
 			}
 		},
+		"pierre": {
+			"defeat": {
+				"0": "Your Pokémon couldn't get past my rock defense...",
+				"1": "Train them and come back and fight me when you're strong enough."
+			},
+			"start": {
+				"0": "I am Brock! I am the Champion of Pewter City!",
+				"1": "I believe in the great resistance of stone!",
+				"2": "That's why my Pokémon are stone elementals!",
+				"3": "You still want to fight me? Fine. On guard!"
+			},
+			"victory": {
+				"0": "Hmm... Nice fight.",
+				"1": "You seem to be an exceptional Trainer!",
+				"2": "In recognition of your victory, here is the ROCK BADGE!",
+				"3": "This is an official Pokémon League Badge!",
+				"4": "You will need eight of them to be able to face the Elite Four."
+			}
+		},
+		"receive": "receive",
+		"relacher": "Release {{name}} and retrieve {{cost}} Pokéball?",
 		"rival": {
+			"defeat": {
+				"0": "You amused me a little!",
+				"1": "You're really a loser!",
+				"2": "But I think you're starting to know, you loser!"
+			},
 			"start": {
 				"0": "Hi, loser. I've been waiting for you for ages!",
 				"1": "Your duty as a rival is to train my Pokémon.",
@@ -408,58 +1014,48 @@
 				"0": "Wha... Com... Huh? Me? Why? WHAAAAAAAAAAA!",
 				"1": "I trained my Pokémon to perfection... Oh my!",
 				"2": "You're the new Master! So that... That blows my mind"
-			},
-			"defeat": {
-				"0": "You amused me a little!",
-				"1": "You're really a loser!",
-				"2": "But I think you're starting to know, you loser!"
 			}
 		},
-		"assistant_tuto": {
+		"sally": {
+			"defeat": {
+				"0": "It’s beautiful, the energy of youth.",
+				"1": "But the power of the attacks is not everything...",
+				"2": "Are you finally beginning to understand what magic is?"
+			},
 			"start": {
-				"0": "Wait a minute! If you want to build a team, you need Pokéballs!",
-				"1": "Here are 5 Pokéballs to catch your first Pokémon.",
-				"2": "Do you know how to use it?",
-				"yes0": "Alright, then catch these wild Pokémon. Or knock them out, whatever you want!",
-				"no0": "You can capture a wild Pokémon instead of battling it.",
-				"no1": "The more powerful the Pokémon, the more Pokéballs you will need to capture it.",
-				"no2": "A captured Pokémon joins your box, which can contain up to 8 Pokémon.",
-				"no3": "You can then move them from your box to the field for them to fight.",
-				"no4": "Go ahead, try to capture these wild Pokémon!"
+				"0": "Well, well. I've heard of you, my child.",
+				"1": "I am Sally, the Ballonlea Gym Leader in the Galar region.",
+				"2": "I came to Lavenderville to visit an old friend...",
+				"3": "This place has something magical to it for me.",
+				"4": "Well, how about a fight?",
+				"5": "I'd be interested to see how you fight..."
 			},
 			"victory": {
-				"0": "Well, you seem to be doing great!"
-			},
-			"defeat": {
-				"0": "Next time, use my Pokéballs!",
-				"1": "You will significantly increase your chances of victory!"
-			},
-			"step2": {
-				"0": "Your Pokémon become stronger by gaining experience after a battle.",
-				"1": "But there is another way to increase the experience of a Pokémon.",
-				"2": "All you need to do is capture a wild Pokémon of the same species.",
-				"3": "They will share his experience with your Pokémon before being released.",
-				"4": "Here, try it right now. Try to capture my {{name}} ."
-			},
-			"step3": {
-				"0": "The higher the level of the captured Pokémon, the more experience they will give.",
-				"1": "Remember, this only works if the Pokémon are the same species!",
-				"2": "Well, you know everything. Have a good trip and good luck!"
+				"0": "Congratulations on this victory! I had a blast!",
+				"1": "Even though I'm too old for that kind of thing...",
+				"2": "You remind me of my husband in his younger years.",
+				"3": "You know what? You should get that umbrella.",
+				"4": "It was very useful to me during my travels.",
+				"5": "Come on, get out! You have a League to face!"
 			}
 		},
+		"salut": "Hi ?",
 		"sbire_rocket": {
+			"defeat": {
+				"0": "Mouahaha! It's the rebirth of Team Rocket!"
+			},
 			"start": {
 				"0": "Giovanni may be gone, but Team Rocket never dies!",
 				"1": "I intend to take his seat! Let's battle!"
 			},
 			"victory": {
 				"0": "Looks like Team Rocket's blasting off again!"
-			},
-			"defeat": {
-				"0": "Mouahaha! It's the rebirth of Team Rocket!"
 			}
 		},
 		"sbire_rocket_tuto": {
+			"defeat": {
+				"0": "Come on, get out of here, little one, and come back when you have a real team!"
+			},
 			"start": {
 				"0": "Hey you, what are you doing here?",
 				"1": "This is the territory of Giovanni, our master and gym leader!",
@@ -470,485 +1066,27 @@
 				"0": "Hmpff! You're tougher than you look... ",
 				"1": "But it doesn't change anything! Giovanni will settle your score!",
 				"2": "Come back later when you have a real team."
-			},
-			"defeat": {
-				"0": "Come on, get out of here, little one, and come back when you have a real team!"
 			}
-		},
-		"dresseur_col_de_montagne": {
-			"start": {
-				"0": "Hey kid, are you lost! Well, I rule the roost here!",
-				"1": "A little birdie told me you’re about to lose this fight",
-				"2": "Let me show you how FLY my bird pokemon are!"
-			},
-			"victory": {
-				"0": "Ouch, I'm dead as a dodo ! Bye, flying away!"
-			},
-			"defeat": {
-				"0": "Another feather in my cap!"
-			}
-		},
-		"dresseur_dojo": {
-			"start": {
-				"0": "Little weakling! I am the GRAND MASTER of KARATE!",
-				"1": "Are you provoking me? Do you want to fight?",
-				"2": "Are you looking for close combat? HAHAHA! Ayaaaaa!"
-			},
-			"victory": {
-				"0": "STOP! You beat me! I'm ashamed!",
-				"1": "Okay, you win! You fought tooth and nail!"
-			},
-			"defeat": {
-				"0": "Your training is not enough yet! Ayaaaaa!"
-			}
-		},
-		"dresseur_falaises": {
-			"start": {
-				"0": "Hey little guy! I'm the greatest climber in Kanto!",
-				"1": "And I fully intend to rise to the top!",
-				"2": "Hang on tight cuz it's gonna get bumpy!"
-			},
-			"victory": {
-				"0": "That battle rocked! I can see you climb the league!"
-			},
-			"defeat": {
-				"0": "So, you still have to learn the ropes!"
-			}
-		},
-		"dresseur_safrania": {
-			"start": {
-				"0": "You dare to come back here? Have you lost your mind?",
-				"1": "We Psychic fight with our mental !",
-				"2": "My power will make your head spin!"
-			},
-			"victory": {
-				"0": "You gave me a migraine!"
-			},
-			"defeat": {
-				"0": "Brute force is no match for the power of intellect!"
-			}
-		},
-		"dresseur_piste_cyclable": {
-			"start": {
-				"0": "Come on kid, show me what you got! I'm gonna roll you over!",
-				"1": "Don't try to run away! Check out my bike!",
-				"2": "You won't get far with your little bicycle!"
-			},
-			"victory": {
-				"0": "Raaah you scratched the bodywork! Quick, to the garage!"
-			},
-			"defeat": {
-				"0": "You were just a bump in the road. See you loser!"
-			}
-		},
-		"dresseur_iles_ecume": {
-			"start": {
-				"0": "Don't make any noise, you'll scare away the fish!"
-			},
-			"victory": {
-				"0": "Aw, man! My line snapped!"
-			},
-			"defeat": {
-				"0": "I’ve got you now! You’re hooked!"
-			}
-		},
-		"dresseur_centrale": {
-			"start": {
-				"0": "Hey, did you blacked out ?",
-				"1": "This is not a place for children!",
-				"2": "My Electric Pokémon team will blast you!"
-			},
-			"victory": {
-				"0": "I'm shocked! You made me blow a fuse!"
-			},
-			"defeat": {
-				"0": "It was a lightning victory!"
-			}
-		},
-		"dresseur_foret_jade": {
-			"start": {
-				"0": "Are you a Pokemon trainer? Me too!",
-				"1": "I caught a lot of bug Pokémon!",
-				"2": "Now we have to have a fight, that's the rule!"
-			},
-			"victory": {
-				"0": "I'll tell my mother!"
-			},
-			"defeat": {
-				"0": "Yeeeesss I won for the first time!"
-			}
-		},
-		"dresseur_azuria": {
-			"start": {
-				"0": "You won against Misty, but that's water under the bridge!",
-				"1": "I'm fresher than ever! Expect a tidal wave!"
-			},
-			"victory": {
-				"0": "Man, I'm washed up!"
-			},
-			"defeat": {
-				"0": "Keep your head above water!"
-			}
-		},
-		"dresseur_lavanville": {
-			"start": {
-				"0": "Sally has told me a lot about you.",
-				"1": "Will you do me the honor of a fight?"
-			},
-			"victory": {
-				"0": "It was a magical fight, I couldn't have dreamed of anything better."
-			},
-			"defeat": {
-				"0": "Go and rest. Continue to believe in your dreams!"
-			}
-		},
-		"dresseur_mont_selenite": {
-			"start": {
-				"0": "I'm looking for fossils, have you seen any?"
-			},
-			"victory": {
-				"0": "It seems I'm the fossil..."
-			},
-			"defeat": {
-				"0": "You won't live long here, you'd better leave."
-			}
-		},
-		"dresseur_oceane": {
-			"start": {
-				"0": "Ahoy, a challenger ahead!",
-				"1": "The crossing is going to be long...",
-				"2": "Let's have a fight to pass the time!",
-				"3": "Ready? Drop the anchors, it's time to battle!"
-			},
-			"victory": {
-				"0": "I'll just get back to setting the sails for our next destination..."
-			},
-			"defeat": {
-				"0": "Loser has to walk the plank!",
-				"1": "Ha ha, I'm just kidding!"
-			}
-		},
-		"mr_psy": {
-			"start": {
-				"0": "Ah, here you are again! So, have you trained your Pokémon's minds?",
-				"1": "It's time for... the Mr Psychic exam!"
-			},
-			"victory": {
-				"0": "That's a 10/10! You graduated from Mr. Psychic's school!"
-			},
-			"defeat": {
-				"0": "What a disappointment!",
-				"1": "Come back to me and I'll let you catch more Psychic Pokémon.",
-				"2": "Your team needs to improve its mental!"
-			}
-		},
-		"dresseur_champs_verdoyants": {
-			"start": {
-				"0": "Hey? Who are you little flower?",
-				"1": "This is my garden! I'll send you pushing up daisies!"
-			},
-			"victory": {
-				"0": "Looks like my team is in need of some pruning!",
-				"1": "Well played, you're a real gardener!"
-			},
-			"defeat": {
-				"0": "I'm going to do you a favor and give you some advice:",
-				"1": "Even the most beautiful roses need thorns.",
-				"2": "You need a good attack if you want to win."
-			}
-		},
-		"dresseur_camp_nomade": {
-			"start": {
-				"0": "Wait a minute butterfly!",
-				"1": "You look like you have ants in your pants.",
-				"2": "Let me show you my insect collection!"
-			},
-			"victory": {
-				"0": "Ouch! I got bitten by a mosquito!"
-			},
-			"defeat": {
-				"0": "Your Pokémon dropped like flies!"
-			}
-		},
-		"dresseur_celadopole": {
-			"start": {
-				"0": "I've seen you around town before, right?",
-				"1": "I can get you into the fanciest trainer clubs here!",
-				"2": "But first you have to prove you deserve it! Attack!"
-			},
-			"victory": {
-				"0": "But uh! You were supposed to let me win!",
-				"1": "Countryside people have no manners!"
-			},
-			"defeat": {
-				"0": "Finally I don't really want us to hang out together anymore, haha!"
-			}
-		},
-		"dresseur_argenta": {
-			"start": {
-				"0": "You defeated Brock, but I am as solid as a rock!"
-			},
-			"victory": {
-				"0": "I think I have a pebble in my shoe..."
-			},
-			"defeat": {
-				"0": "You sink like a stone !"
-			}
-		},
-		"dresseur_grotte_azuree": {
-			"start": {
-				"0": "Hmmm... Strange place for a meeting.",
-				"1": "Let me break the ice. On guard!"
-			},
-			"victory": {
-				"0": "My defense melted like snow in the sun!"
-			},
-			"defeat": {
-				"0": "Hmm... Your team got cold feet.",
-				"1": "What are you still doing here? Are you waiting for the thaw?"
-			}
-		},
-		"dresseur_carmin": {
-			"start": {
-				"0": "Hey, did you come to my concert? The atmosphere is electric here!",
-				"1": "What do you mean, no? You've never listened to my CD?!",
-				"2": "I'm not gonna let you ruin the party!"
-			},
-			"victory": {
-				"0": "That's it, you've ruined the mood!"
-			},
-			"defeat": {
-				"0": "This is rock'n roll baby!!!"
-			}
-		},
-		"dresseur_tour_pokemon": {
-			"start": {
-				"0": "Back off, demon!!!"
-			},
-			"victory": {
-				"0": "AaAaaaAaaah!!! Run for your lives!!!"
-			},
-			"defeat": {
-				"0": "Did it...? Did it work?",
-				"1": "Demons don't usually take hits..."
-			}
-		},
-		"dresseur_pension": {
-			"start": {
-				"0": "Hey, it's you! You want us to train some of your Pokémon?",
-				"1": "Ah, there you are again! Your Pokémon have grown up a lot, look!",
-				"2": "Welcome to the Pokémon Day Care!",
-				"3": "Here we take care of Pokémon when their owners have to go away.",
-				"4": "You can lend us some of your Pokémon if you want.",
-				"5": "There are also Pokémon that are just looking to be adopted!",
-				"6": "Their type is ordinary so they don't interest other trainers..."
-			},
-			"bye": {
-				"0": "I'll take care of your Pokémon while you're away!",
-				"1": "Come back whenever you want!"
-			}
-		},
-		"dresseur_cave_taupiqueur": {
-			"start": {
-				"0": "Huh? No, it's not me!",
-				"1": "I have an alibi! I was at the movies!"
-			},
-			"victory": {
-				"0": "No need to get upset! Here, take these Pokéballs!",
-				"1": "And... they say you've never seen me, okay?"
-			},
-			"defeat": {
-				"0": "That'll teach you to come snooping around in dark corners!"
-			}
-		},
-		"dresseur_colline_royale": {
-			"start": {
-				"0": "Are you looking for Dragon Pokémon?",
-				"1": "Me too! Me too!",
-				"2": "They are so big! so beautiful! so majestic!",
-				"3": "They're mine! Do you hear me? Mine alone!"
-			},
-			"victory": {
-				"0": "The dragon's ancestral force has abandoned me!"
-			},
-			"defeat": {
-				"0": "My dragons are so strong! so terrifying!",
-				"1": "so powerful! so... ah, he's gone."
-			}
-		},
-		"dresseur_mont_braise": {
-			"start": {
-				"0": "Well what is a young boy doing in a place like this?",
-				"1": "You're in hot water, kid!",
-				"2": "Hey Ron, how about we give him a baptism by fire?"
-			},
-			"victory": {
-				"0": "Ceasefire! Come on Ron, let's go!"
-			},
-			"defeat": {
-				"0": "You see what it's like to be caught in the crossfire!"
-			}
-		},
-		"dresseur_parmanie": {
-			"start": {
-				"0": "Get out you dirty brat!",
-				"1": "Team Rocket is conducting covert operations here!"
-			},
-			"victory": {
-				"0": "Team Rocket is blasting off again!"
-			},
-			"defeat": {
-				"0": "To protect the world from devastation...`, `To unite all peoples within our nation..."
-			}
-		},
-		"dresseur_cramoisile": {
-			"start": {
-				"0": "Ah, a new subject for experiment!",
-				"1": "Let me show you the fruit of my research..."
-			},
-			"defeat": {
-				"0": "Eureka!"
-			},
-			"victory": {
-				"0": "My calculations are wrong!"
-			}
-		},
-		"assistant1": {
-			"0": "I put the square root, I retain five...",
-			"1": "Hmm? What's that for?",
-			"q1": "Who are you ?",
-			"r1": "I assist PROF. OAK. So I am his... ASSISTANT!",
-			"q2": "Where am I?",
-			"r2": "You are at the Pokémon Lab in Pallet Town.",
-			"r3": "Here we study the different species of Pokémon from Kanto.",
-			"q3": "What are you doing ?",
-			"r4": "I'm gathering the latest data collected by trainers like you.",
-			"r5": "By studying your battles, we collect information about Pokémon.",
-			"r6": "This information is then grouped into the Pokédex.",
-			"r7": "This is useful for our research, but also for your combat strategies."
-		},
-		"assistant2": {
-			"0": "This machine keeps track of the Pokémon teams that have distinguished themselves",
-			"1": "by defeating the Pokémon League Elite Four.",
-			"2": "Analyzing the best teams allows us to learn a lot!",
-			"3": "If you manage to beat the league, we will happily add your team."
-		},
-		"chen": {
-			"0": "Hello Red! So today is the big day!",
-			"1": "The day of your initiatory journey as a Pokémon trainer!",
-			"2": "You will travel throughout Kanto, capturing Pokémon,",
-			"3": "build a team and face the 8 gym leaders.",
-			"4": "Maybe even take on the Pokemon League if you're up for it!",
-			"5": "But first, you need to adopt your first Pokémon.",
-			"6": "We caught three of them in the pokeballs behind me.",
-			"7": "There's one for you. Come on! Pick one!",
-			"8": "Go ahead, you can take one of the pokeballs on the table behind me.",
-			"9": "{{pokemon}} ? Excellent choice!",
-			"10": "Your Pokémon will protect you from wild Pokémon.",
-			"11": "But alone he will be no match for the gym leaders!",
-			"12": "You will need to capture wild Pokémon to form a team.",
-			"13": "Each species of Pokémon has its strengths and weaknesses. Remember this:",
-			"14": "The key to victory is a balanced and well-positioned team.",
-			"15": "You should go to a nearby town to catch more Pokémon.",
-			"16": "Have a good trip and good luck!",
-			"17": "Go ahead, save your team on the computer for posterity!",
-			"18": "Hum-hum! Congratulations!",
-			"19": "This floor is reserved for Pokémon trainers celebrities!",
-			"20": "The Champions League are consecrated here!",
-			"21": "Their Pokémon are registered as Celebrities!",
-			"22": "Your journey to victory was long! Well done again."
-		},
-		"item_received": "You {{verb}} : {{label}} {{quantity}}",
-		"find": "find",
-		"receive": "receive",
-		"guide": {
-			"jadielle": {
-				"0": "I wanted to go to the Victory Road to the west, but they wouldn't let me pass...",
-				"1": "Only those with all eight Arena Badges can access the Indigo League.",
-				"2": "It's not fair! I want to go see the Elite Four!"
-			},
-			"argenta": {
-				"0": "The mountain that peaks above Pewter City is Mount Moon.",
-				"1": "This is one of the oldest regions in Kanto!",
-				"2": "It is said that many fossils of extinct Pokémon can be found there.",
-				"3": "Imagine if we could bring them back to life..."
-			},
-			"azuria": {
-				"0": "This boat, there, is the S.S. Anne!",
-				"1": "What a beauty, huh?",
-				"2": "It goes on a permanent cruise between Cerulean, Vermillion and Cinnabar Island.",
-				"3": "If you want to get in at the right time, you should memorize this roadmap !"
-			},
-			"lavanville": {
-				"0": "Lavender Town is a rather quiet town, stuck between the mountains...",
-				"1": "But there are some places of interest, like the Pokémon Tower or the Power Plant."
-			},
-			"safrania": {
-				"0": "I left my Pokemon at the Day Care in the north for a few days.",
-				"1": "After that, I found him in great shape, stronger than ever!",
-				"2": "The breeder at the Day Care really does a remarkable job."
-			},
-			"celadopole": {
-				"0": "The Dragon Hill overlooking Celadon is a legendary place.",
-				"1": "It is said that you can come across Dragon Pokémon there!",
-				"2": "But the path is blocked by a huge sleeping Pokémon...",
-				"3": "If only we could find a way to wake him up..."
-			},
-			"carmin": {
-				"0": "I took the shortcut through Diglett's cave to get here faster.",
-				"1": "But I still missed the boat departure, so I'm waiting here..."
-			},
-			"parmanie": {
-				"0": "The Safari Zone is the big attraction of Fuschia City.",
-				"1": "It attracts lots of Pokémon trainers from all over Kanto!",
-				"2": "There is a wide variety of Pokémon of all types.",
-				"3": "But fighting is forbidden there to preserve their tranquility."
-			},
-			"cramoisile": {
-				"0": "I work at Dr. Fuji's Pokémon Research Lab.",
-				"1": "I study rare Pokémon fossils.",
-				"2": "What? You found a fossil?",
-				"3": "Show it to me, come on show it!",
-				"4": "Amazing! It's in perfect condition!",
-				"5": "Maybe I could even... bring him back to life!",
-				"6": "What do you say? Can I take it?",
-				"7": "Excellent! I'll be back soon!",
-				"8": "Amazing !",
-				"9": "It's a {{name}} ! I thought they were gone!",
-				"10": "Hmm? What?",
-				"11": "Ah, yes, I guess it's yours...",
-				"12": "You receive a {{ name }} brought back to life!`,",
-				"13": "Come back to me if you find any more specimens!",
-				"14": "But... but... it's for science!",
-				"15": "I built a Pokemon Fossil Resurrection Machine!",
-				"16": "But I don't have any specimens of good enough quality yet."
-			},
-			"ligue": {
-				"0": "Ah, so you want information on the League champions?",
-				"1": "To claim the title of Pokémon League Master,",
-				"2": "You will have to face the Elite Four one after the other.",
-				"3": "First you will face Lorelei, the Ice Queen!",
-				"4": "Get rid of her quickly before your team is turned into ice cubes.",
-				"5": "Next comes Bruno, a specialist in combat and brute force.",
-				"6": "His Pokémon are tough, you'll have to be cunning to defeat him!",
-				"7": "Third, the terrifying Agatha and her Ghost Pokémon!",
-				"8": "They confuse your team, so refine your placement.",
-				"9": "Finally you will face Lance, master of the Dragons.",
-				"10": "Dragons are very tenacious. You'll have to give it your all!",
-				"11": "Well, I don't know what's next. I could never go any further!",
-				"12": "Ah, I thought that... no, never mind."
-			}
-		},
-		"healer": {
-			"0": "Battles in the League are very exhausting for your Pokémon.",
-			"1": "But we take care to heal your entire team between each fight."
-		},
-		"salut": "Hi ?",
-		"sellerm": {
-			"hello": "Hello! Are you interested in something?"
 		},
 		"sellerf": {
 			"hello": "Hello! What do you want?"
+		},
+		"sellerm": {
+			"hello": "Hello! Are you interested in something?"
+		},
+		"shop": {
+			"confirm_one": "1 {{item}} for {{count}} ball, right?",
+			"confirm_other": "1 {{item}} for {{count}} balls, right?",
+			"nomoney": "You don't have enough Pokéballs, kid!"
+		},
+		"sleeping_pokemon": {
+			"0": "A sleeping Pokémon is blocking the path.",
+			"1": "Wake it up with the Poké Flute?"
+		},
+		"starter": {
+			"after": "Maybe I should have taken {{name}} ...",
+			"choose": "Choose {{name}} as starter?",
+			"chosen": "You choose {{name}} !"
 		},
 		"trader": {
 			"aftertrade": "So cool, a {{name}} !",
@@ -956,134 +1094,126 @@
 				"0": "Hi, do you want to trade Pokemon?",
 				"1": "If you have any Pokémon in reserve in your box, we can trade them!"
 			},
-			"tradepropose": "Hi, do you want to trade your {{ given }} for my {{ received }} ?",
 			"tradeaccepted": "You exchange {{ given }} for {{ received }} !",
+			"tradepropose": "Hi, do you want to trade your {{ given }} for my {{ received }} ?",
 			"traderefused": "Ah, well, too bad."
-		},
-		"exitlab": {
-			"0": "Professor Oak promised to give me my first Pokémon today.",
-			"1": "I don't plan on leaving here without him!"
-		},
-		"aftercapture": {
-			"0": "The wild {{name}} shares his experience before being released.",
-			"1": "Your {{name}} gains {{xp}} XP"
-		},
-		"relacher": "Release {{name}} and retrieve {{cost}} Pokéball?",
-		"levelup": "{{name}} is now level {{level}}",
-		"evolve": "{{old}} evolves into {{new}} !",
-		"starter": {
-			"after": "Maybe I should have taken {{name}} ...",
-			"choose": "Choose {{name}} as starter?",
-			"chosen": "You choose {{name}} !"
-		},
-		"sleeping_pokemon": {
-			"0": "A sleeping Pokémon is blocking the path.",
-			"1": "Wake it up with the Poké Flute?"
 		}
 	},
-	"trainer": {
-		"pierre": "Brock",
-		"ondine": "Misty",
-		"bob": "Lt. Surge",
-		"erika": "Erika",
-		"koga": "Koga",
-		"morgane": "Sabrina",
-		"auguste": "Blaine",
-		"giovanni": "Giovanni",
-		"hector": "Bugsy",
-		"sally": "Sally",
-		"olga": "Lorelei",
-		"aldo": "Bruno",
-		"agatha": "Agatha",
-		"peter": "Lance",
-		"assistant_tuto": "Prof Oak Assistant",
-		"sbire_rocket": "Team Rocket Grunt",
-		"dresseur_col_de_montagne": "Bird Keeper Bret",
-		"dresseur_dojo": "Koichi the Karate Master",
-		"dresseur_falaises": "Bob the Mountaineer",
-		"dresseur_safrania": "Polo the Physiotherapist",
-		"dresseur_piste_cyclable": "Karl the Thug",
-		"dresseur_iles_ecume": "Jerry the Fisherman",
-		"dresseur_centrale": "George the Mechanic",
-		"dresseur_foret_jade": "Calvin the Kid",
-		"dresseur_azuria": "Anya the Swimmer",
-		"dresseur_lavanville": "Henry the Gentleman",
-		"dresseur_mont_selenite": "Arthur the Paleontologist",
-		"dresseur_oceane": "Firmin the Sailor",
-		"mr_psy": "Mister Psychic",
-		"dresseur_champs_verdoyants": "Isabella the Florist",
-		"dresseur_camp_nomade": "Nancy the scout",
-		"dresseur_celadopole": "Valentine the City Girl",
-		"dresseur_argenta": "Roche the geologist",
-		"dresseur_grotte_azuree": "Ugo the wise old man",
-		"dresseur_carmin": "Elton the Rocker",
-		"dresseur_tour_pokemon": "Gwen the Exorcist",
-		"dresseur_pension": "Gale of the Pension",
-		"dresseur_cave_taupiqueur": "Joe the Burglar",
-		"dresseur_colline_royale": "Norbert the Dragon Fan",
-		"dresseur_mont_braise": "Duo Ron & Mya the Daredevils",
-		"dresseur_cramoisile": "Isaac the Scientist"
+	"gameover": {
+		"caught": "Taken: {{number}}",
+		"duree": "Game duration: {{duree}} rounds",
+		"seen": "Seen: {{number}}"
 	},
-	"descriptions": {
-		"tv": {
-			"0": "The TV broadcasts the news of the day...",
-			"1": "BREAKING NEWS!",
-			"2": "A Zapdos was spotted at the power plant!",
-			"3": "An Articuno has been seen in the Foam Islands!",
-			"4": "Mount Ember is said to be the lair of a Moltres!",
-			"5": "Our reporters are trying to find out more."
-		},
-		"frigo": {
-			"0": "MAM: Are you still hungry? What a glutton!"
-		},
-		"book": {
-			"0": "This is my Pokémon study course notebook.",
-			"1": "Normal Pokémon are versatile, but get beaten by Fighting specialists.",
-			"2": "Rock-type Pokémon don't like water.",
-			"3": "Water Pokémon fear electricity.",
-			"4": "Fire-type Pokémon are powerless against water.",
-			"5": "Fire is deadly to Grass Pokémon.",
-			"6": "Flying Pokémon fear lightning.",
-			"7": "Electric Pokémon are neutralized by Ground.",
-			"8": "Ice Pokémon are shattered by Rock.",
-			"9": "Fighting Pokémon have one weakness: Psychic attacks.",
-			"10": "Ground Pokémon are highly resistant to Poison.",
-			"11": "Grass Pokémon win against Ground Pokémon in the long run.",
-			"12": "Psychic Pokémon are strangely afraid of Bugs.",
-			"13": "Bug Pokémon are pecked by birds.",
-			"14": "Only a Spectre can truly face another Spectre.",
-			"15": "Dragons can be trapped by Ice."
-		},
-		"book_insect": {
-			"0": "This is a notebook about Pokémon evolutions.",
-			"1": "It is written that {{name}} evolves at the level {{level}}",
-			"2": "Interesting. I should keep that in mind!"
-		},
-		"map": "This is the map of the Kanto region.",
-		"bed": "This is not the time to go to sleep!",
-		"boat": "This is a model of the S.S. Anne, the famous cruise ship.",
-		"pc_end": {
-			"0": "Record the team in the record books?",
-			"1": "Registering team...",
-			"2": "Congratulations! You and your Pokémon are famous!",
-			"3": "... End of session."
-		},
-		"pc_record": {
-			"0": "Bzzz... Opening the record book...",
-			"1": "No data available.",
-			"2": "Last league master recorded:\nMaster in {{nbTours}} tours",
-			"3": "{{nbCaptured}} Pokémon captured\n{{nbSeen}} Pokémon seen",
-			"4": "Favorite team:",
-			"5": "Bzzz.. The screen went off..."
-		}
+	"home": {
+		"controls": "Controls",
+		"description": "A fangame remake of Pokemon Red/Blue as an autobattler",
+		"gamepad": "Gamepad",
+		"keyboard": "Keyboard",
+		"language": "Language",
+		"mouse": "Mouse",
+		"music": "Music",
+		"sfx": "Sound effects",
+		"volume": "Volume"
 	},
-	"yes": "YES",
+	"item": {
+		"attaque+": "X Attack",
+		"baie_ceriz": "Cheri Berry",
+		"baie_mepo": "Leppa Berry",
+		"baie_oran": "Oran Berry",
+		"baie_sitrus": "Sitrus Berry",
+		"boule_fumee": "Smoke Ball",
+		"defense+": "X Défense",
+		"encens_fleur": "Rose Incense",
+		"filet": "Hector's net",
+		"fossile_amonita": "Helix Fossil",
+		"fossile_kabuto": "Dome Fossil",
+		"fossile_ptera": "Old Amber",
+		"gemme_ciel": "Sky Gem",
+		"gemme_draco": "Draco Gem",
+		"gemme_flamme": "Flame Gem",
+		"gemme_glace": "Ice Gem",
+		"gemme_grise": "Grey Gem",
+		"gemme_herbe": "Grass Gem",
+		"gemme_hydro": "Hydro Gem",
+		"gemme_insecte": "Bug Gem",
+		"gemme_ombre": "Shadow Gem",
+		"gemme_pixie": "Pixie Gem",
+		"gemme_poing": "Battle Gem",
+		"gemme_psy": "Psy Gem",
+		"gemme_roc": "Rock Gem",
+		"gemme_terre": "Earth Gem",
+		"gemme_toxic": "Toxic Gem",
+		"gemme_volt": "Volt Gem",
+		"grelot_coque": "Shell Bell",
+		"max_elixir": "Max Elixir",
+		"multi_exp": "Exp. Share",
+		"orbe_flamme": "Flame Orb",
+		"orbe_foudre": "Lightning Orb",
+		"orbe_toxique": "Toxic Orb",
+		"parapluie": "Sally's umbrella",
+		"pokeball": "Pokéball",
+		"pokeflute": "Poké Flute",
+		"pv+": "HP Up",
+		"repousse": "Repel",
+		"super_bonbon": "Rare Candy",
+		"vitesse+": "X Speed"
+	},
+	"item_desc": {
+		"attaque+": "+20% Attack",
+		"baie_ceriz": "Consumed on first status affliction suffered - Heals afflictions for 10 seconds",
+		"baie_mepo": "Consumed on first hit received - Gain 2 extra PP per hit received",
+		"baie_oran": "Def +30% - Consumed when HP falls below 50% the first time",
+		"baie_sitrus": "Heals 25% of max HP - Consumed when HP drops below 50% the first time",
+		"boule_fumee": "Makes the Pokémon untargetable for 3s when HP drops below 30%.",
+		"defense+": "+20% Defense",
+		"encens_fleur": "Heals 1% of the wearer's and allies' max HP on an adjacent tile every second",
+		"filet": "Collects one Pokéball for each Pokémon eliminated by its holder",
+		"fossile_amonita": "An ancient snail-shaped Pokémon fossil",
+		"fossile_kabuto": "An ancient Pokémon shell-shaped fossil",
+		"fossile_ptera": "An ancient Pokémon egg-shaped fossil",
+		"gemme_ciel": "Gives the wearer the Flying type",
+		"gemme_draco": "Gives the wearer the Dragon type",
+		"gemme_flamme": "Gives the wearer the Fire type",
+		"gemme_glace": "Gives the wearer the Ice type",
+		"gemme_grise": "Gives the wearer the Normal type",
+		"gemme_herbe": "Gives the wearer the Grass type",
+		"gemme_hydro": "Gives the wearer the Water type",
+		"gemme_insecte": "Gives the wearer the Bug type",
+		"gemme_ombre": "Gives the wearer the Ghost type",
+		"gemme_pixie": "Gives the wearer the Fairy type",
+		"gemme_poing": "Gives the wearer the Fighting type",
+		"gemme_psy": "Gives the wearer the Psychic type",
+		"gemme_roc": "Gives the wearer the Rock type",
+		"gemme_terre": "Gives the wearer the Ground type",
+		"gemme_toxic": "Gives the wearer the Poison type",
+		"gemme_volt": "Gives the wearer the Electric type",
+		"grelot_coque": "Restores 20% of damage dealt as HP",
+		"max_elixir": "Gain 4PP on each attack",
+		"multi_exp": "Increases experience gains by 30%",
+		"orbe_flamme": "Inflicts the Burn affliction on every hit received or landed",
+		"orbe_foudre": "Inflicts the Paralysis affliction on every hit received or landed",
+		"orbe_toxique": "Inflicts the Poison affliction on every hit received or landed",
+		"parapluie": "Protects the wearer from all alterations",
+		"pokeball": "The capture tool for any trainer and currency in stores",
+		"pokeflute": "Wakes up the most deeply sleeping Pokémon",
+		"pv+": "+20% HP",
+		"repousse": "Scares away wild Pokémon and brings back new ones",
+		"super_bonbon": "Gain an additional level at the end of each fight",
+		"vitesse+": "+20% Speed"
+	},
+	"menu": {
+		"change_place": "Change place",
+		"no_item": "{{ name }} does not hold an object",
+		"quit": "Quit",
+		"release_pokemon": "Release {{name}}",
+		"remove_pokemon": "Remove {{name}}",
+		"retrieve_item": "Retrieve {{item}}",
+		"see_pokemon": "See {{name}}",
+		"stock_item": "Stock {{item}}"
+	},
+	"new_game": "New game",
 	"no": "NO",
-	"room": {
-		"ligueendroom": "Indigo League - Pantheon",
-		"home": "Home",
-		"oaklab": "Prof. Oak's Lab"
-	},
+	"pokedex": "Pokedex",
 	"pokemon": {
 		"abo": "Ekans",
 		"abra": "Abra",
@@ -1237,21 +1367,11 @@
 		"voltali": "Jolteon",
 		"voltorbe": "Voltorb"
 	},
-	"menu": {
-		"see_pokemon": "See {{name}}",
-		"remove_pokemon": "Remove {{name}}",
-		"retrieve_item": "Retrieve {{item}}",
-		"no_item": "{{ name }} does not hold an object",
-		"stock_item": "Stock {{item}}",
-		"change_place": "Change place",
-		"release_pokemon": "Release {{name}}"
+	"room": {
+		"home": "Home",
+		"ligueendroom": "Indigo League - Pantheon",
+		"oaklab": "Prof. Oak's Lab"
 	},
-	"gameover": {
-		"duree": "Game duration: {{duree}} rounds",
-		"seen": "Seen: {{number}}",
-		"caught": "Taken: {{number}}"
-	},
-	"pokedex": "Pokedex",
 	"skill": {
 		"abri": "Protect",
 		"acide": "Acid",
@@ -1285,9 +1405,9 @@
 		"double_pied": "Double Kick",
 		"dracocharge": "Dragon Rush",
 		"dracorage": "Dragon Rage",
+		"e_coque": "Soft-Boiled",
 		"eclair": "Thunder Shock",
 		"eclat_glace": "Ice Shard",
-		"e_coque": "Soft-Boiled",
 		"empal_korne": "Horn Drill",
 		"encore": "Encore",
 		"etincelle": "Spark",
@@ -1303,8 +1423,8 @@
 		"hydrocanon": "Hydro Pump",
 		"hypnose": "Hypnosis",
 		"jackpot": "Pay Day",
-		"jet_pierres": "Rock Throw",
 		"jet_de_sable": "Sand Attack",
+		"jet_pierres": "Rock Throw",
 		"koud_korne": "Horn Attack",
 		"lance_flammes": "Flamethrower",
 		"lance_soleil": "Solar Beam",
@@ -1375,8 +1495,8 @@
 		"destruction": "Self-destruction pulverizing everything around",
 		"devoreve": "Terrifies the opponent with nightmare visions",
 		"dracorage": "Summons a storm that deals true damage in the area",
-		"eclair": "Lightning strikes a randomly selected opponent",
 		"e_coque": "Releases a magic egg that heals your entire team",
+		"eclair": "Lightning strikes a randomly selected opponent",
 		"empal_korne": "Impales the target with a stalagmite that rises from the ground",
 		"encore": "Reproduces the last special attack observed on the field",
 		"evolution": "Temporarily evolves into Flareon, Jolteon or Vaporeon depending on the target's type",
@@ -1419,156 +1539,69 @@
 		"ultralaser": "A powerful laser that pulverizes everything in a line",
 		"ultrason": "Sound wave that confuses affected Pokémon"
 	},
-	"alliance_desc": {
-		"COMBAT": "Fighting Pokémon know no fear and have their stats increased with the number of opponents targeting them.",
-		"COMBAT2": "+5% ATK and DEF per opponent",
-		"COMBAT4": "+10% ATK and DEF per opponent",
-		"COMBAT6": "+20% ATK and DEF per opponent",
-		"DRAGON": "When a Dragon Pokémon is the last Pokémon of the team on the board, it gains large bonuses to all of its stats.",
-		"DRAGON1": "+20% to the stats of the last dragon",
-		"DRAGON2": "+40% to the stats of the last dragon",
-		"DRAGON3": "+60% to the stats of the last dragon",
-		"EAU": "Water Pokémon are immune to Burn. Water moves can push the target back one or more tiles.",
-		"EAU2": "Push back one tile",
-		"EAU4": "Push back 2 tiles",
-		"EAU6": "Push back 3 tiles",
-		"ELECTRIQUE": "Electric Pokémon gain Speed and deal Electric damage with each hit they received on contact.",
-		"ELEC2": "+10% SPD; 2 damage per hit received",
-		"ELEC4": "+20% SPD; 4 damage per hit received",
-		"ELEC6": "+30% SPD; 6 damage per hit received",
-		"FEE": "Fairy Pokémon gradually gain PP for your entire team.",
-		"FEE1": "+1 PP per second",
-		"FEE2": "+2 PP per second",
-		"FEE3": "+3 PP per second",
-		"FEU": "Fire Pokémon are immune to Freeze. Their attacks apply a burn that deals damage over time and reduces the effectiveness of healing by 50%.",
-		"FEU2": "2 burns per attack",
-		"FEU4": "3 burns per attack",
-		"FEU6": "4 burns per attack",
-		"GLACE": "Ice Pokémon are surrounded by an aura of frost that slows opponents on adjacent tiles.",
-		"GLACE2": "-20% speed",
-		"GLACE3": "-30% speed",
-		"GLACE4": "-40% speed",
-		"INSECTE": "Bug Pokémon grow and evolve faster, and gain bonus experience with each battle.",
-		"INSECTE2": "+20% to experience gains",
-		"INSECTE4": "+40% to experience gains",
-		"INSECTE6": "+60% to experience gains",
-		"NORMAL": "Normal Pokémon reduce damage penalties taken from type weaknesses.",
-		"NORMAL2": "-30% weakness damage received",
-		"NORMAL4": "-60% weakness damage received",
-		"NORMAL6": "-90% weakness damage received",
-		"PLANTE": "Grass Pokémon cannot be knocked back by enemy skills and regenerate naturally.",
-		"PLANTE2": "Regen 1% of max HP per second",
-		"PLANTE4": "Regen 2% of max HP per second",
-		"PLANTE6": "Regen 3% of max HP per second",
-		"POISON": "Poison Pokémon poison their targets, dealing damage over time proportional to their max HP.",
-		"POISON2": "Poison damage dealt +40%",
-		"POISON4": "Poison damage dealt +80%",
-		"POISON6": "Poison damage dealt +120%",
-		"PSY": "Psychic Pokémon are immune to Confusion, and their attacks cause their target to lose PP.",
-		"PSY2": "Target loses 2 PP per attack",
-		"PSY4": "The target loses 4 PP per attack",
-		"PSY6": "The target loses 6 PP per attack",
-		"ROCHE": "Rock Pokémon reduce damage received from status affliction (poison, burn).",
-		"ROCHE2": "-30% affliction damage",
-		"ROCHE4": "-60% affliction damage",
-		"ROCHE6": "-90% affliction damage",
-		"SOL": "Ground Pokémon dig a tunnel to temporarily protect themselves when they fall below a certain HP threshold.",
-		"SOL2": "Tunnel at 20% of HP",
-		"SOL4": "Tunnel at 20% and 50% of HP",
-		"SOL6": "Tunnel at 20%, 50% and 80% of HP",
-		"SPECTRE": "Ghost Pokémon cannot be put to sleep and their attacks scare their target, reducing their Attack.",
-		"SPECTRE2": "2 stacks of Fear per attack",
-		"SPECTRE4": "4 stacks of Fear per attack",
-		"SPECTRE6": "6 stacks of Fear per attack",
-		"VOL2": "20% chance to dodge",
-		"VOL4": "40% chance to dodge",
-		"VOL6": "60% chance to dodge",
-		"VOL": "Flying Pokémon fly away from the board at the start of the battle, and can dodge incoming attacks."
+	"trainer": {
+		"agatha": "Agatha",
+		"aldo": "Bruno",
+		"assistant_tuto": "Prof Oak Assistant",
+		"auguste": "Blaine",
+		"major_bob": "Lt. Surge",
+		"dresseur_argenta": "Roche the geologist",
+		"dresseur_azuria": "Anya the Swimmer",
+		"dresseur_camp_nomade": "Nancy the scout",
+		"dresseur_carmin": "Elton the Rocker",
+		"dresseur_cave_taupiqueur": "Joe the Burglar",
+		"dresseur_celadopole": "Valentine the City Girl",
+		"dresseur_centrale": "George the Mechanic",
+		"dresseur_champs_verdoyants": "Isabella the Florist",
+		"dresseur_col_de_montagne": "Bird Keeper Bret",
+		"dresseur_colline_royale": "Norbert the Dragon Fan",
+		"dresseur_cramoisile": "Isaac the Scientist",
+		"dresseur_dojo": "Koichi the Karate Master",
+		"dresseur_falaises": "Bob the Mountaineer",
+		"dresseur_foret_jade": "Calvin the Kid",
+		"dresseur_grotte_azuree": "Ugo the wise old man",
+		"dresseur_iles_ecume": "Jerry the Fisherman",
+		"dresseur_lavanville": "Henry the Gentleman",
+		"dresseur_mont_braise": "Duo Ron & Mya the Daredevils",
+		"dresseur_mont_selenite": "Arthur the Paleontologist",
+		"dresseur_oceane": "Firmin the Sailor",
+		"dresseur_pension": "Gale of the Pension",
+		"dresseur_piste_cyclable": "Karl the Thug",
+		"dresseur_safrania": "Polo the Physiotherapist",
+		"dresseur_tour_pokemon": "Gwen the Exorcist",
+		"erika": "Erika",
+		"giovanni": "Giovanni",
+		"hector": "Bugsy",
+		"koga": "Koga",
+		"morgane": "Sabrina",
+		"mr_psy": "Mister Psychic",
+		"olga": "Lorelei",
+		"ondine": "Misty",
+		"peter": "Lance",
+		"pierre": "Brock",
+		"rival": "Blue",
+		"sally": "Sally",
+		"sbire_rocket": "Team Rocket Grunt"
 	},
-	"item": {
-		"pokeball": "Pokéball",
-		"baie_sitrus": "Sitrus Berry",
-		"baie_ceriz": "Cheri Berry",
-		"baie_oran": "Oran Berry",
-		"baie_mepo": "Leppa Berry",
-		"attaque+": "X Attack",
-		"defense+": "X Défense",
-		"vitesse+": "X Speed",
-		"pv+": "HP Up",
-		"pokeflute": "Poké Flute",
-		"repousse": "Repel",
-		"gemme_draco": "Draco Gem",
-		"gemme_hydro": "Hydro Gem",
-		"gemme_flamme": "Flame Gem",
-		"gemme_herbe": "Grass Gem",
-		"gemme_volt": "Volt Gem",
-		"gemme_terre": "Earth Gem",
-		"gemme_insecte": "Bug Gem",
-		"gemme_pixie": "Pixie Gem",
-		"gemme_ciel": "Sky Gem",
-		"gemme_poing": "Battle Gem",
-		"gemme_glace": "Ice Gem",
-		"gemme_psy": "Psy Gem",
-		"gemme_toxic": "Toxic Gem",
-		"gemme_roc": "Rock Gem",
-		"gemme_ombre": "Shadow Gem",
-		"gemme_grise": "Grey Gem",
-		"grelot_coque": "Shell Bell",
-		"boule_fumee": "Smoke Ball",
-		"multi_exp": "Exp. Share",
-		"max_elixir": "Max Elixir",
-		"encens_fleur": "Rose Incense",
-		"orbe_toxique": "Toxic Orb",
-		"orbe_flamme": "Flame Orb",
-		"orbe_foudre": "Lightning Orb",
-		"super_bonbon": "Rare Candy",
-		"fossile_amonita": "Helix Fossil",
-		"fossile_kabuto": "Dome Fossil",
-		"fossile_ptera": "Old Amber",
-		"filet": "Hector's net",
-		"parapluie": "Sally's umbrella"
+	"type": {
+		"COMBAT": "Fighting",
+		"DRAGON": "Dragon",
+		"EAU": "Water",
+		"ELECTRIQUE": "Electric",
+		"FEE": "Fairy",
+		"FEU": "Fire",
+		"GLACE": "Ice",
+		"INSECTE": "Bug",
+		"NORMAL": "Normal",
+		"PLANTE": "Grass",
+		"POISON": "Poison",
+		"PSY": "Psychic",
+		"ROCHE": "Rock",
+		"SOL": "Ground",
+		"SPECTRE": "Ghost",
+		"VOL": "Flying"
 	},
-	"item_desc": {
-		"pokeball": "The capture tool for any trainer and currency in stores",
-		"baie_sitrus": "Heals 25% of max HP - Consumed when HP drops below 50% the first time",
-		"baie_ceriz": "Consumed on first status affliction suffered - Heals afflictions for 10 seconds",
-		"baie_oran": "Def +30% - Consumed when HP falls below 50% the first time",
-		"baie_mepo": "Consumed on first hit received - Gain 2 extra PP per hit received",
-		"attaque+": "+20% Attack",
-		"defense+": "+20% Defense",
-		"vitesse+": "+20% Speed",
-		"pv+": "+20% HP",
-		"pokeflute": "Wakes up the most deeply sleeping Pokémon",
-		"repousse": "Scares away wild Pokémon and brings back new ones",
-		"gemme_draco": "Gives the wearer the Dragon type",
-		"gemme_hydro": "Gives the wearer the Water type",
-		"gemme_flamme": "Gives the wearer the Fire type",
-		"gemme_herbe": "Gives the wearer the Grass type",
-		"gemme_volt": "Gives the wearer the Electric type",
-		"gemme_terre": "Gives the wearer the Ground type",
-		"gemme_insecte": "Gives the wearer the Bug type",
-		"gemme_pixie": "Gives the wearer the Fairy type",
-		"gemme_ciel": "Gives the wearer the Flying type",
-		"gemme_poing": "Gives the wearer the Fighting type",
-		"gemme_glace": "Gives the wearer the Ice type",
-		"gemme_psy": "Gives the wearer the Psychic type",
-		"gemme_toxic": "Gives the wearer the Poison type",
-		"gemme_roc": "Gives the wearer the Rock type",
-		"gemme_ombre": "Gives the wearer the Ghost type",
-		"gemme_grise": "Gives the wearer the Normal type",
-		"grelot_coque": "Restores 20% of damage dealt as HP",
-		"boule_fumee": "Makes the Pokémon untargetable for 3s when HP drops below 30%.",
-		"multi_exp": "Increases experience gains by 30%",
-		"max_elixir": "Gain 4PP on each attack",
-		"encens_fleur": "Heals 1% of the wearer's and allies' max HP on an adjacent tile every second",
-		"orbe_toxique": "Inflicts the Poison affliction on every hit received or landed",
-		"orbe_flamme": "Inflicts the Burn affliction on every hit received or landed",
-		"orbe_foudre": "Inflicts the Paralysis affliction on every hit received or landed",
-		"super_bonbon": "Gain an additional level at the end of each fight",
-		"fossile_amonita": "An ancient snail-shaped Pokémon fossil",
-		"fossile_kabuto": "An ancient Pokémon shell-shaped fossil",
-		"fossile_ptera": "An ancient Pokémon egg-shaped fossil",
-		"filet": "Collects one Pokéball for each Pokémon eliminated by its holder",
-		"parapluie": "Protects the wearer from all alterations"
-	}
+	"victory": "You beated {{trainer}} !",
+	"victory_xp": "Your Pokémon gain {{xp}}xp",
+	"yes": "YES"
 }
