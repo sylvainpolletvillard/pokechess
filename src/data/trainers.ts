@@ -22,7 +22,6 @@ import { ITEM_FILET, ITEM_PARAPLUIE, ITEM_POKEBALL } from "./items";
 
 export const PIERRE: Trainer = {
 	ref: "pierre",
-	name: t("trainer.pierre"),
 	frameIndex: 8,
 	introFrameIndex: 0,
 	dialogs: {
@@ -48,7 +47,6 @@ export const PIERRE: Trainer = {
 
 export const ONDINE: Trainer = {
 	ref: "ondine",
-	name: t("trainer.ondine"),
 	frameIndex: 9,
 	introFrameIndex: 1,
 	dialogs: {
@@ -72,7 +70,6 @@ export const ONDINE: Trainer = {
 
 export const MAJOR_BOB: Trainer = {
 	ref: "major_bob",
-	name: t("trainer.bob"),
 	frameIndex: 10,
 	introFrameIndex: 2,
 	dialogs: {
@@ -102,7 +99,6 @@ export const MAJOR_BOB: Trainer = {
 
 export const ERIKA: Trainer = {
 	ref: "erika",
-	name: t("trainer.erika"),
 	frameIndex: 11,
 	introFrameIndex: 3,
 	dialogs: {
@@ -134,7 +130,6 @@ export const ERIKA: Trainer = {
 
 export const KOGA: Trainer = {
 	ref: "koga",
-	name: t("trainer.koga"),
 	frameIndex: 12,
 	introFrameIndex: 4,
 	dialogs: {
@@ -163,7 +158,6 @@ export const KOGA: Trainer = {
 
 export const MORGANE: Trainer = {
 	ref: "morgane",
-	name: t("trainer.morgane"),
 	frameIndex: 13,
 	introFrameIndex: 5,
 	dialogs: {
@@ -193,7 +187,6 @@ export const MORGANE: Trainer = {
 
 export const AUGUSTE: Trainer = {
 	ref: "auguste",
-	name: t("trainer.auguste"),
 	frameIndex: 14,
 	introFrameIndex: 6,
 	dialogs: {
@@ -217,7 +210,6 @@ export const AUGUSTE: Trainer = {
 
 export const GIOVANNI: Trainer = {
 	ref: "giovanni",
-	name: t("trainer.giovanni"),
 	frameIndex: 15,
 	introFrameIndex: 7,
 	dialogs: {
@@ -248,7 +240,6 @@ export enum HECTOR_DIALOG_STATE {
 }
 export const HECTOR: Trainer = {
 	ref: "hector",
-	name: t("trainer.hector"),
 	frameIndex: 16,
 	introFrameIndex: 8,
 	dialogs: {
@@ -288,7 +279,6 @@ export enum SALLY_DIALOG_STATE {
 }
 export const SALLY: Trainer = {
 	ref: "sally",
-	name: t("trainer.sally"),
 	frameIndex: 17,
 	introFrameIndex: 9,
 	dialogs: {
@@ -339,7 +329,6 @@ export const CHAMPIONS = [
 
 export const OLGA: Trainer = {
 	ref: "olga",
-	name: t("trainer.olga"),
 	frameIndex: 45,
 	introFrameIndex: null,
 	dialogs: {
@@ -358,7 +347,6 @@ export const OLGA: Trainer = {
 
 export const ALDO: Trainer = {
 	ref: "aldo",
-	name: t("trainer.aldo"),
 	frameIndex: 46,
 	introFrameIndex: null,
 	dialogs: {
@@ -376,7 +364,6 @@ export const ALDO: Trainer = {
 
 export const AGATHA: Trainer = {
 	ref: "agatha",
-	name: t("trainer.agatha"),
 	frameIndex: 47,
 	introFrameIndex: null,
 	dialogs: {
@@ -397,7 +384,6 @@ export const AGATHA: Trainer = {
 
 export const PETER: Trainer = {
 	ref: "peter",
-	name: t("trainer.peter"),
 	frameIndex: 48,
 	introFrameIndex: null,
 	dialogs: {
@@ -426,7 +412,6 @@ export const PETER: Trainer = {
 
 export const RIVAL: Trainer = {
 	ref: "rival",
-	name: "Blue",
 	frameIndex: 49,
 	introFrameIndex: null,
 	dialogs: {
@@ -462,7 +447,6 @@ export const ASSISTANT_TUTO_DIALOG_STATE = {
 
 export const ASSISTANT_TUTO: Trainer = {
 	ref: "assistant_tuto",
-	name: t("trainer.assistant_tuto"),
 	frameIndex: 19,
 	introFrameIndex: null,
 	dialogs: {
@@ -531,7 +515,6 @@ export const ASSISTANT_TUTO: Trainer = {
 
 export const SBIRE_ROCKET: Trainer = {
 	ref: "sbire_rocket",
-	name: t("trainer.sbire_rocket"),
 	frameIndex: 18,
 	introFrameIndex: null,
 	dialogs: {
@@ -543,7 +526,6 @@ export const SBIRE_ROCKET: Trainer = {
 
 export const SBIRE_ROCKET_TUTO: Trainer = {
 	ref: "sbire_rocket",
-	name: t("trainer.sbire_rocket"),
 	frameIndex: 18,
 	introFrameIndex: null,
 	dialogs: {
@@ -564,7 +546,6 @@ export const SBIRE_ROCKET_TUTO: Trainer = {
 
 export const DRESSEUR_COL_DE_MONTAGNE: Trainer = {
 	ref: "dresseur_col_de_montagne",
-	name: t("trainer.dresseur_col_de_montagne"),
 	frameIndex: 20,
 	introFrameIndex: null,
 	dialogs: {
@@ -580,7 +561,6 @@ export const DRESSEUR_COL_DE_MONTAGNE: Trainer = {
 
 export const DRESSEUR_DOJO: Trainer = {
 	ref: "dresseur_dojo",
-	name: t("trainer.dresseur_dojo"),
 	frameIndex: 21,
 	introFrameIndex: null,
 	dialogs: {
@@ -599,7 +579,6 @@ export const DRESSEUR_DOJO: Trainer = {
 
 export const DRESSEUR_FALAISES: Trainer = {
 	ref: "dresseur_falaises",
-	name: t("trainer.dresseur_falaises"),
 	frameIndex: 22,
 	introFrameIndex: null,
 	dialogs: {
@@ -615,7 +594,6 @@ export const DRESSEUR_FALAISES: Trainer = {
 
 export const DRESSEUR_SAFRANIA: Trainer = {
 	ref: "dresseur_safrania",
-	name: t("trainer.dresseur_safrania"),
 	frameIndex: 23,
 	introFrameIndex: null,
 	dialogs: {
@@ -631,7 +609,6 @@ export const DRESSEUR_SAFRANIA: Trainer = {
 
 export const DRESSEUR_PISTE_CYCLABLE: Trainer = {
 	ref: "dresseur_piste_cyclable",
-	name: t("trainer.dresseur_piste_cyclable"),
 	frameIndex: 24,
 	introFrameIndex: null,
 	dialogs: {
@@ -647,7 +624,6 @@ export const DRESSEUR_PISTE_CYCLABLE: Trainer = {
 
 export const DRESSEUR_ILES_ECUME: Trainer = {
 	ref: "dresseur_iles_ecume",
-	name: t("trainer.dresseur_iles_ecume"),
 	frameIndex: 25,
 	introFrameIndex: null,
 	dialogs: {
@@ -659,7 +635,6 @@ export const DRESSEUR_ILES_ECUME: Trainer = {
 
 export const DRESSEUR_CENTRALE: Trainer = {
 	ref: "dresseur_centrale",
-	name: t("trainer.dresseur_centrale"),
 	frameIndex: 26,
 	introFrameIndex: null,
 	dialogs: {
@@ -675,7 +650,6 @@ export const DRESSEUR_CENTRALE: Trainer = {
 
 export const DRESSEUR_FORET_JADE: Trainer = {
 	ref: "dresseur_foret_jade",
-	name: t("trainer.dresseur_foret_jade"),
 	frameIndex: 27,
 	introFrameIndex: null,
 	dialogs: {
@@ -691,7 +665,6 @@ export const DRESSEUR_FORET_JADE: Trainer = {
 
 export const DRESSEUR_AZURIA: Trainer = {
 	ref: "dresseur_azuria",
-	name: t("trainer.dresseur_azuria"),
 	frameIndex: 28,
 	introFrameIndex: null,
 	dialogs: {
@@ -706,7 +679,6 @@ export const DRESSEUR_AZURIA: Trainer = {
 
 export const DRESSEUR_LAVANVILLE: Trainer = {
 	ref: "dresseur_lavanville",
-	name: t("trainer.dresseur_lavanville"),
 	frameIndex: 29,
 	introFrameIndex: null,
 	dialogs: {
@@ -721,7 +693,6 @@ export const DRESSEUR_LAVANVILLE: Trainer = {
 
 export const DRESSEUR_MONT_SELENITE: Trainer = {
 	ref: "dresseur_mont_selenite",
-	name: t("trainer.dresseur_mont_selenite"),
 	frameIndex: 30,
 	introFrameIndex: null,
 	dialogs: {
@@ -733,7 +704,6 @@ export const DRESSEUR_MONT_SELENITE: Trainer = {
 
 export const DRESSEUR_OCEANE: Trainer = {
 	ref: "dresseur_oceane",
-	name: t("trainer.dresseur_oceane"),
 	frameIndex: 31,
 	introFrameIndex: null,
 	dialogs: {
@@ -753,7 +723,6 @@ export const DRESSEUR_OCEANE: Trainer = {
 
 export const DRESSEUR_MR_PSY: Trainer = {
 	ref: "mr_psy",
-	name: t("trainer.mr_psy"),
 	frameIndex: 32,
 	introFrameIndex: null,
 	dialogs: {
@@ -769,7 +738,6 @@ export const DRESSEUR_MR_PSY: Trainer = {
 
 export const DRESSEUR_CHAMPS_VERDOYANTS: Trainer = {
 	ref: "dresseur_champs_verdoyants",
-	name: t("trainer.dresseur_champs_verdoyants"),
 	frameIndex: 33,
 	introFrameIndex: null,
 	dialogs: {
@@ -791,7 +759,6 @@ export const DRESSEUR_CHAMPS_VERDOYANTS: Trainer = {
 
 export const DRESSEUR_CAMP_NOMADE: Trainer = {
 	ref: "dresseur_camp_nomade",
-	name: t("trainer.dresseur_camp_nomade"),
 	frameIndex: 34,
 	introFrameIndex: null,
 	dialogs: {
@@ -807,7 +774,6 @@ export const DRESSEUR_CAMP_NOMADE: Trainer = {
 
 export const DRESSEUR_CELADOPOLE: Trainer = {
 	ref: "dresseur_celadopole",
-	name: t("trainer.dresseur_celadopole"),
 	frameIndex: 35,
 	introFrameIndex: null,
 	dialogs: {
@@ -826,7 +792,6 @@ export const DRESSEUR_CELADOPOLE: Trainer = {
 
 export const DRESSEUR_ARGENTA: Trainer = {
 	ref: "dresseur_argenta",
-	name: t("trainer.dresseur_argenta"),
 	frameIndex: 36,
 	introFrameIndex: null,
 	dialogs: {
@@ -838,7 +803,6 @@ export const DRESSEUR_ARGENTA: Trainer = {
 
 export const DRESSEUR_GROTTE_AZUREE: Trainer = {
 	ref: "dresseur_grotte_azuree",
-	name: t("trainer.dresseur_grotte_azuree"),
 	frameIndex: 37,
 	introFrameIndex: null,
 	dialogs: {
@@ -856,7 +820,6 @@ export const DRESSEUR_GROTTE_AZUREE: Trainer = {
 
 export const DRESSEUR_CARMIN: Trainer = {
 	ref: "dresseur_carmin",
-	name: t("trainer.dresseur_carmin"),
 	frameIndex: 38,
 	introFrameIndex: null,
 	dialogs: {
@@ -872,7 +835,6 @@ export const DRESSEUR_CARMIN: Trainer = {
 
 export const DRESSEUR_TOUR_POKEMON: Trainer = {
 	ref: "dresseur_tour_pokemon",
-	name: t("trainer.dresseur_tour_pokemon"),
 	frameIndex: 39,
 	introFrameIndex: null,
 	dialogs: {
@@ -893,7 +855,6 @@ export const DRESSEUR_PENSION_DIALOG_STATE = {
 
 export const DRESSEUR_PENSION: Trainer = {
 	ref: "dresseur_pension",
-	name: t("trainer.dresseur_pension"),
 	frameIndex: 40,
 	introFrameIndex: null,
 	dialogs: {
@@ -931,7 +892,6 @@ export const DRESSEUR_PENSION: Trainer = {
 
 export const DRESSEUR_CAVE_TAUPIQUEUR: Trainer = {
 	ref: "dresseur_cave_taupiqueur",
-	name: t("trainer.dresseur_cave_taupiqueur"),
 	frameIndex: 41,
 	introFrameIndex: null,
 	dialogs: {
@@ -949,7 +909,6 @@ export const DRESSEUR_CAVE_TAUPIQUEUR: Trainer = {
 
 export const DRESSEUR_COLLINE_ROYALE: Trainer = {
 	ref: "dresseur_colline_royale",
-	name: t("trainer.dresseur_colline_royale"),
 	frameIndex: 42,
 	introFrameIndex: null,
 	dialogs: {
@@ -969,7 +928,6 @@ export const DRESSEUR_COLLINE_ROYALE: Trainer = {
 
 export const DRESSEUR_MONT_BRAISE: Trainer = {
 	ref: "dresseur_mont_braise",
-	name: t("trainer.dresseur_mont_braise"),
 	frameIndex: 43,
 	introFrameIndex: null,
 	dialogs: {
@@ -985,7 +943,6 @@ export const DRESSEUR_MONT_BRAISE: Trainer = {
 
 export const DRESSEUR_PARMANIE: Trainer = {
 	ref: "sbire_rocket",
-	name: t("trainer.sbire_rocket"),
 	frameIndex: 44,
 	introFrameIndex: null,
 	dialogs: {
@@ -1000,7 +957,6 @@ export const DRESSEUR_PARMANIE: Trainer = {
 
 export const DRESSEUR_CRAMOISILE: Trainer = {
 	ref: "dresseur_cramoisile",
-	name: t("trainer.dresseur_cramoisile"),
 	frameIndex: 19,
 	introFrameIndex: null,
 	dialogs: {

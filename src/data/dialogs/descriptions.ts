@@ -25,7 +25,7 @@ export function receiveItem(
 		gameState.player.inventory[item.ref] = 0;
 	}
 	gameState.player.inventory[item.ref] += quantity;
-	const label = item.label ?? "???";
+	const label = t(`item.${item.ref}`, { defaultValue: "???" });
 	if (item === ITEM_POKEBALL) drawPokeballsCounter();
 	waitBeforeNextLine(2000);
 	return startDialog(
