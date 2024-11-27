@@ -2,6 +2,7 @@ import { Z } from "../data/depths";
 import { playSound } from "../logic/audio";
 import { gameState } from "../logic/gamestate";
 import type { MyScene } from "../scenes/MyScene";
+import type { DialogLine } from "../types/dialog";
 import { addText } from "../utils/text";
 import { addInteractiveElem } from "./cursor";
 
@@ -10,7 +11,7 @@ let cursorSprite: Phaser.GameObjects.Sprite | null = null;
 
 export interface MenuEntry {
 	label: string;
-	value?: any;
+	value?: DialogLine;
 	x: number;
 	y: number;
 	color?: string;
@@ -27,10 +28,10 @@ export interface Menu {
 	entries?: MenuEntry[];
 	draw?: (container: Phaser.GameObjects.Container) => any;
 	handleMove?: (moveVector: Phaser.Math.Vector2) => any;
-	handleCancel?: () => any;
-	handleChoice?: (selectedEntry: MenuEntry) => any;
-	onSelect?: (selectedEntry: MenuEntry) => any;
-	onClose?: () => any;
+	handleCancel?: () => void;
+	handleChoice?: (selectedEntry: MenuEntry) => void | false;
+	onSelect?: (selectedEntry: MenuEntry) => void;
+	onClose?: () => void;
 	container?: Phaser.GameObjects.Container;
 }
 
@@ -56,15 +57,15 @@ export function getSelectedMenuEntry(): MenuEntry | null {
 
 export function clickEntry(): boolean {
 	if (!gameState.activeMenu) return false;
-	let selectedEntry;
+	let selectedEntry: MenuEntry | null = null;
 	if (gameState.activeMenu?.entries)
 		selectedEntry = gameState.activeMenu.entries[menuCursorPos];
 	const menu = gameState.activeMenu;
 
 	let shouldCloseMenu = false;
 	if (menu.handleChoice && selectedEntry) {
-		shouldCloseMenu = menu.handleChoice(selectedEntry);
-		if (shouldCloseMenu !== false) closeMenu();
+		shouldCloseMenu = menu.handleChoice(selectedEntry) !== false;
+		if (shouldCloseMenu) closeMenu();
 		return true;
 	}
 	playSound(shouldCloseMenu ? "menu_close" : "press_ab");
@@ -146,7 +147,7 @@ export function openMenu(menu: Menu) {
 export function closeMenu() {
 	if (!gameState.activeMenu || !gameState.activeMenu.container) return;
 	playSound("menu_close");
-	gameState.activeMenu.onClose && gameState.activeMenu.onClose();
+	gameState.activeMenu.onClose?.();
 	gameState.activeMenu.container.destroy(true);
 	gameState.activeMenu = null;
 }

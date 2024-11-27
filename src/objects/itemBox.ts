@@ -7,12 +7,14 @@ import {
 	ItemType,
 	REPOUSSE,
 } from "../data/items";
+import { t } from "../i18n";
 import { playSound } from "../logic/audio";
 import { refreshWildPokemons } from "../logic/board";
 import { startDialog } from "../logic/dialog";
 import { gameState } from "../logic/gamestate";
 import type GameScene from "../scenes/GameScene";
 import { RoomType } from "../types/destination";
+import type { DialogChoice } from "../types/dialog";
 import { wait } from "../utils/helpers";
 import { addText } from "../utils/text";
 import {
@@ -63,14 +65,14 @@ export function makeItemSprite(item: Item) {
 
 export function openItemMenu(game: GameScene) {
 	const rowHeight = 20;
-	const width = 128,
-		height = 6 * rowHeight + 10;
+	const width = 128;
+	const height = 6 * rowHeight + 10;
 	const ox = 320 - width - 8;
 	const oy = 8;
 	list.items = Object.entries(gameState.player.inventory)
 		.map(([itemRef, quantity], i) => ({
 			ref: itemRef,
-			label: `${ITEMS[itemRef]?.label} x${quantity}`,
+			label: `${t(`item.${itemRef}`)} x${quantity}`,
 			quantity,
 		}))
 		.filter((item) => item.quantity > 0 && item.ref in ITEMS)
@@ -118,7 +120,7 @@ export function openItemMenu(game: GameScene) {
 function useItem(item: Item, game: GameScene) {
 	if (item === REPOUSSE) {
 		if (gameState.currentRoom.type !== RoomType.WILD)
-			return startDialog(["Ça ne marchera pas ici..."]);
+			return startDialog([t("dialog.item_no_use")]);
 		gameState.player.inventory[REPOUSSE.ref] -= 1;
 		refreshWildPokemons(game);
 	}
@@ -133,17 +135,21 @@ function handleChoice(choice: ItemEntry) {
 		const itemSprite = makeItemSprite(item);
 		handleDragStart(itemSprite, game);
 	} else if (item.type === ItemType.Usable) {
-		wait(0).then(() =>
-			startDialog([
-				`Utiliser ${item.label} ?`,
-				{
-					OUI() {
-						useItem(item, game);
-					},
-					NON() {},
+		wait(0).then(() => {
+			const confirmChoice: DialogChoice = {
+				[t("yes")]() {
+					useItem(item, game);
+					return null;
 				},
-			]),
-		);
+				[t("no")]() {
+					return null;
+				},
+			};
+			startDialog([
+				t("dialog.item_use", { item: t(`item.${item.ref}`) }),
+				confirmChoice,
+			]);
+		});
 		return true;
 	} else if (item.type === ItemType.Trade) {
 		const shouldCloseMenu = item === ITEM_POKEBALL;

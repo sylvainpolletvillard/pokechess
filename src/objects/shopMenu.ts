@@ -50,7 +50,7 @@ export function openBuyMenu(seller: string): Menu | void {
 		draw(container) {
 			entries.forEach((entry, i) => {
 				if (!entry.value) return;
-				const item = ITEMS[entry.value];
+				const item = ITEMS[entry.value as string] as Item;
 				const pokeball = container.scene.add
 					.sprite(ox + 114, oy + 15 + i * rowHeight, "pokeball", 0)
 					.play("POKEBALL_idle")
@@ -67,7 +67,7 @@ export function openBuyMenu(seller: string): Menu | void {
 
 			if (!choice.value) return; // Quitter
 
-			const item = ITEMS[choice.value] as Item;
+			const item = ITEMS[choice.value as string];
 			if (!item.cost) return;
 
 			waitBeforeNextLine(1600);
@@ -102,7 +102,7 @@ export function openBuyMenu(seller: string): Menu | void {
 		},
 		onSelect(entry) {
 			if (!entry.value) return;
-			const item = ITEMS[entry.value];
+			const item = ITEMS[entry.value as string];
 			if (item) showItemDescription(item);
 			else hideItemDescription();
 		},

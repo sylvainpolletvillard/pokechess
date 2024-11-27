@@ -1,22 +1,28 @@
 import { Z } from "../data/depths";
 import { DIALOGS } from "../data/dialogs";
 import { DEFAULT_VOICE, VOICES_BY_ACTOR } from "../data/voices";
+import { t } from "../i18n";
 import { CHARACTER_STATE, type Character } from "../objects/character";
-import { closeMenu, openMenu } from "../objects/menu";
+import { closeMenu, type MenuEntry, openMenu } from "../objects/menu";
 import type { MyScene } from "../scenes/MyScene";
 import { RoomType } from "../types/destination";
-import type { DialogChoice, DialogLine, DialogParams } from "../types/dialog";
+import type {
+	DialogChoice,
+	DialogLine,
+	DialogParams,
+	DialogStacked,
+} from "../types/dialog";
 import { wait } from "../utils/helpers";
 import { addText } from "../utils/text";
 import { launchSpeech } from "./audio";
 import { gameState } from "./gamestate";
 
-const dialogStack: DialogStacked = [];
+const dialogStack: DialogStacked[] = [];
 
 export function startDialog(
 	lines: DialogLine[] | (() => DialogLine[]),
 	params: DialogParams = {},
-	onEndCallback?: () => Promise<void>,
+	onEndCallback?: () => void,
 ): Promise<void> {
 	const scene = gameState.activeScene;
 	if (!scene) return Promise.reject("No scene");
@@ -168,9 +174,9 @@ export function endDialog() {
 			const dialogStacked = dialogStack.pop();
 			wait(0).then(() =>
 				startDialog(
-					dialogStacked.lines,
-					dialogStacked.params,
-					dialogStacked.onEndCallback,
+					dialogStacked!.lines,
+					dialogStacked!.params,
+					dialogStacked!.onEndCallback,
 				),
 			);
 		}
@@ -186,27 +192,33 @@ export function startChoice(choice: DialogChoice) {
 	const ox = scene.scale.width - width - 28;
 	const oy = scene.scale.height - 32 - height;
 
+	const entries: MenuEntry[] = Object.entries(choice).map(
+		([label, value], i) => ({
+			label,
+			value: value as string,
+			x: 4,
+			y: i * 16,
+		}),
+	);
+
 	gameState.activeDialog!.choice = openMenu({
 		ref: "dialogChoice",
 		x: ox,
 		y: oy,
 		width,
 		height,
-		entries: Object.entries(choice).map(([label, value], i) => ({
-			label,
-			value,
-			x: 4,
-			y: i * 16,
-		})),
+		entries,
 		handleChoice,
 		handleCancel() {
-			if ("NON" in choice) handleChoice({ value: choice["NON"] });
-			else closeMenu();
+			if (t("no") in choice) {
+				const cancelChoice = choice[t("no")];
+				handleChoice({ label: t("no"), value: cancelChoice, x: 0, y: 0 });
+			} else closeMenu();
 		},
 	});
 }
 
-function handleChoice(selectedChoice) {
+function handleChoice(selectedChoice: MenuEntry) {
 	if (!gameState.activeDialog?.choice) return;
 	delete gameState.activeDialog.choice;
 	closeMenu();
@@ -217,7 +229,10 @@ function handleChoice(selectedChoice) {
 }
 
 let talkingTo: string | null = null;
-export function talkTo(pnj: Character, playerState: CHARACTER_STATE) {
+export function talkTo(
+	pnj: Character,
+	playerState: keyof typeof CHARACTER_STATE,
+) {
 	if (talkingTo != null) return; // already talking to someone
 
 	// talk to someone

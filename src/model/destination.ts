@@ -11,17 +11,17 @@ export interface Intersection {
 }
 
 export enum DestinationType {
-	ARENA = 0,
-	WILD = 1,
-	SPECIAL = 2,
+	ARENA = "ARENA",
+	WILD = "WILD",
+	SPECIAL = "SPECIAL",
 }
 
 export enum RoomType {
-	ARENA = 0,
-	WILD = 1,
-	FREEWALK = 2,
-	SAFARI = 3,
-	TUTORIAL = 4,
+	ARENA = "ARENA",
+	WILD = "WILD",
+	FREEWALK = "FREEWALK",
+	SAFARI = "SAFARI",
+	TUTORIAL = "TUTORIAL",
 }
 
 export interface Destination {
