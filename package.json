@@ -28,7 +28,7 @@
 		"@types/node": "^22.0.0",
 		"i18next-browser-languagedetector": "^8.0.0",
 		"i18next-http-backend": "^3.0.0",
-		"phaser": "^3.70.0",
+		"phaser": "3.86.0",
 		"typescript": "^5.3.3",
 		"vite": "^6.0.0"
 	},
