@@ -1243,12 +1243,39 @@
 		"retrieve_item": "Retrieve {{item}}",
 		"no_item": "{{ name }} does not hold an object",
 		"stock_item": "Stock {{item}}",
-		"change_place": "Change place"
+		"change_place": "Change place",
+		"release_pokemon": "Release {{name}}"
 	},
 	"gameover": {
 		"duree": "Game duration: {{duree}} rounds",
 		"seen": "Seen: {{number}}",
 		"caught": "Taken: {{number}}"
 	},
-	"pokedex": "Pokedex"
+	"pokedex": "Pokedex",
+	"skill": {
+		"abri": "Protect",
+		"acide": "Acid",
+		"adaptation": "Conversion",
+		"amnesie": "Amnesia",
+		"armure": "Harden",
+		"balayage": "Low Kick",
+		"belier": "Take Down",
+		"berceuse": "Sing",
+		"blizzard": "Blizzard",
+		"bomb_beurk": "Sludge Bomb",
+		"bomb_oeuf": "Egg Bomb",
+		"brouillard": "Smokescreen",
+		"bulles_d_o": "Bubble Beam",
+		"cage_eclair": "Thunder Wave",
+		"cascade": "Waterfall",
+		"charge": "Tackle",
+		"choc_mental": "Confusion",
+		"coud_boue": "Mud-Slap",
+		"croc_de_mort": "Hyper Fang",
+		"crochet_venin": "Poison Fang",
+		"crocs_feu": "Fire Fang",
+		"cruaile": "Wing Attack",
+		"danse_flammes": "Fire Spin",
+		"danse_lames": "Swords Dance"
+	}
 }
