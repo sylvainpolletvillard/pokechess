@@ -22,10 +22,12 @@ export function getDirection(dx: number, dy: number) {
 				: Direction.DOWN;
 }
 
+let animsSetup = false;
 export function setupAnims(
 	anims: Phaser.Animations.AnimationManager,
 	debug?: boolean,
 ) {
+	if (animsSetup) return;
 	generatePokemonsAnims(anims);
 	generatePokeballAnims(anims, debug);
 	setupEffects(anims, debug);
@@ -33,6 +35,7 @@ export function setupAnims(
 	setupMapAnims(anims, debug);
 	setupInteractionsAnims(anims, debug);
 	setupGUI(anims, debug);
+	animsSetup = true;
 }
 
 export function setupEffects(
@@ -49,9 +52,11 @@ export function setupEffects(
 	});
 }
 
+let pokemonAnimsSetup = false;
 export function generatePokemonsAnims(
 	anims: Phaser.Animations.AnimationManager,
 ) {
+	if (pokemonAnimsSetup) return;
 	POKEMONS.forEach((pokemon: PokemonEntry, dp: number) => {
 		anims.create({
 			key: `${pokemon.ref}_portrait`,
@@ -76,6 +81,7 @@ export function generatePokemonsAnims(
 			});
 		});
 	});
+	pokemonAnimsSetup = true;
 }
 
 export function generatePokeballAnims(

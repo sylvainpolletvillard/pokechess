@@ -20,7 +20,7 @@ export class Game extends Phaser.Game {
 		super(gameConfig);
 		this.state = gameState;
 		document.getElementById("infos")!.innerHTML = `
-    <h1>Pokechess v 1.1</h1>
+    <h1>Pokechess v 1.2</h1>
     <p class="description">${t("home.description")}</p>      
     <div id="options">
       <p>${t("home.controls")}: 

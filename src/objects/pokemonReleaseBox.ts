@@ -17,8 +17,8 @@ let pokemonReleaseBox: Phaser.GameObjects.Container | null;
 let elements: Phaser.GameObjects.GameObject[] = [];
 let dropZone: Phaser.GameObjects.Zone;
 
-const WIDTH = 120,
-	HEIGHT = 64;
+const WIDTH = 120;
+const HEIGHT = 64;
 
 export function displayPokemonReleaseBox(pokemon: PokemonOnBoard) {
 	if (pokemonReleaseBox != null) {
@@ -50,7 +50,7 @@ export function displayPokemonReleaseBox(pokemon: PokemonOnBoard) {
 	const text = addText(
 		0,
 		2,
-		t("menu.release_pokemon", { name: t(`pokemon.${pokemon.entry.ref})`) }),
+		t("menu.release_pokemon", { name: t(`pokemon.${pokemon.entry.ref}`) }),
 		{
 			color: "#000",
 		},
