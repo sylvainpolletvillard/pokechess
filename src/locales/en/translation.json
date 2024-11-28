@@ -1106,7 +1106,12 @@
 	},
 	"home": {
 		"controls": "Controls",
-		"description": "Pokéchess is the game prototype Curry was working on before joining Pokemon Auto Chess team. It was intended as a fangame remake of Pokemon Red/Blue as an autobattler. Although the game simulates a Gameboy to play on nostalgia, it does not respect the resolution and hardware constraints of the Gameboy, and the game is playable via gamepad or mouse.",
+		"description": {
+			"0": "Pokéchess is the game prototype Curry was working on before joining Pokemon Auto Chess team. It was intended as a fangame remake of Pokemon Red/Blue as an autobattler.",
+			"1": "Although the game simulates a Gameboy to play on nostalgia, it does not respect the screen resolution and hardware constraints of the original Gameboy Color, and the game is also playable with keyboard, gamepad or mouse for convenience.",
+			"2": "Your progression is automatically saved every time you reached the overworld map.",
+			"3": "This project quickly demonstrated the limitations of the Gameboy format for a genre as complex as the autobattler, but also allowed the exploration of some ideas that were later used in Pokémon Auto Chess."
+		},
 		"gamepad": "Gamepad",
 		"keyboard": "Keyboard",
 		"language": "Language",
@@ -1327,7 +1332,7 @@
 		"ptera": "Aerodactyl",
 		"ptitard": "Poliwag",
 		"pyroli": "Flareon",
-		"racailou": "Geodude",
+		"racaillou": "Geodude",
 		"rafflesia": "Vileplume",
 		"raichu": "Raichu",
 		"ramoloss": "Slowpoke",

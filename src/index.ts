@@ -21,7 +21,10 @@ export class Game extends Phaser.Game {
 		this.state = gameState;
 		document.getElementById("infos")!.innerHTML = `
     <h1>Pokéchess v 1.2</h1>
-    <p class="description">${t("home.description")}</p>      
+    <p class="description">${t("home.description.0")}</p>
+	<p class="description">${t("home.description.1")}</p>
+	<p class="description">${t("home.description.2")}</p>
+	<p class="description">${t("home.description.3")}</p>
     <div id="options">
       <p>${t("home.controls")}: 
         <img alt="${t("home.gamepad")}" height="24" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBhcmlhLWhpZGRlbj0idHJ1ZSIgcm9sZT0iaW1nIiBjbGFzcz0iaWNvbmlmeSBpY29uaWZ5LS1tZGkiIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IiM4ODg4ODgiIGQ9Ik03IDZoMTBhNiA2IDAgMCAxIDYgNmE2IDYgMCAwIDEtNiA2Yy0xLjc4IDAtMy4zNy0uNzctNC40Ny0yaC0xLjA2Yy0xLjEgMS4yMy0yLjY5IDItNC40NyAyYTYgNiAwIDAgMS02LTZhNiA2IDAgMCAxIDYtNk02IDl2Mkg0djJoMnYyaDJ2LTJoMnYtMkg4VjlINm05LjUgM2ExLjUgMS41IDAgMCAwLTEuNSAxLjVhMS41IDEuNSAwIDAgMCAxLjUgMS41YTEuNSAxLjUgMCAwIDAgMS41LTEuNWExLjUgMS41IDAgMCAwLTEuNS0xLjVtMy0zYTEuNSAxLjUgMCAwIDAtMS41IDEuNWExLjUgMS41IDAgMCAwIDEuNSAxLjVhMS41IDEuNSAwIDAgMCAxLjUtMS41QTEuNSAxLjUgMCAwIDAgMTguNSA5WiI+PC9wYXRoPjwvc3ZnPg==" />

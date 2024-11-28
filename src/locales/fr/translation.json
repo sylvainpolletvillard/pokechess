@@ -1106,7 +1106,12 @@
 	},
 	"home": {
 		"controls": "Contrôles",
-		"description": "Pokéchess est le prototype de jeu sur lequel Curry travaillait avant de rejoindre le projet Pokemon Auto Chess. Il s'agit d'un remake fangame de Pokemon Rouge/Bleu en tant qu'autobattler. Bien que le jeu simule le format et le style d'une gameboy pour jouer sur la corde de la nostalgie, il ne respecte pas la résolution et les contraintes matérielles de la gameboy, et le jeu est jouable via gamepad ou souris.",
+		"description": {
+			"0": "Pokéchess est le prototype de jeu sur lequel Curry travaillait avant de rejoindre le projet Pokemon Auto Chess. Il s'agit d'un remake fangame de Pokemon Rouge/Bleu en tant qu'autobattler.",
+			"1": "Bien que le jeu simule le format et le style d'une gameboy pour jouer sur la corde de la nostalgie, il ne respecte pas la résolution et les contraintes matérielles de la Gameboy Color, et le jeu est également jouable au clavier, à la manette ou à la souris pour plus de commodité.",
+			"2": "Votre progression est automatiquement sauvegardée chaque fois que vous arrivez sur l'écran de la carte du monde.",
+			"3": "Ce projet a rapidement montré les limites du format gameboy pour un genre aussi complexe que l'autobattler, mais a également permis d'explorer certaines idées qui ont été utilisées par la suite dans Pokémon Auto Chess."
+		},
 		"gamepad": "Manette",
 		"keyboard": "Clavier",
 		"language": "Langue",
@@ -1327,7 +1332,7 @@
 		"ptera": "Ptéra",
 		"ptitard": "Ptitard",
 		"pyroli": "Pyroli",
-		"racailou": "Racaillou",
+		"racaillou": "Racaillou",
 		"rafflesia": "Rafflesia",
 		"raichu": "Raichu",
 		"ramoloss": "Ramoloss",
