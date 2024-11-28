@@ -20,7 +20,7 @@ export class Game extends Phaser.Game {
 		super(gameConfig);
 		this.state = gameState;
 		document.getElementById("infos")!.innerHTML = `
-    <h1>Pokechess v 1.2</h1>
+    <h1>Pokéchess v 1.2</h1>
     <p class="description">${t("home.description")}</p>      
     <div id="options">
       <p>${t("home.controls")}: 
@@ -50,8 +50,10 @@ export class Game extends Phaser.Game {
 		const languageSelect = document.getElementById(
 			"language_select",
 		) as HTMLSelectElement;
+		languageSelect.value = i18n.language;
 		languageSelect.onchange = (e) => {
 			i18n.changeLanguage(languageSelect.value);
+			window.location.reload();
 		};
 	}
 }

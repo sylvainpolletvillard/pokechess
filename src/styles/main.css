@@ -40,9 +40,11 @@ body {
 #infos {
 	width: 320px;
 	position: absolute;
-	top: 2rem;
-	left: 2rem;
+	top: .5rem;
+	left: .5rem;
+	padding: .5rem;
 	text-align: left;
+	background-color: #202020;
 }
 
 #infos img {
@@ -66,33 +68,11 @@ body {
 }
 
 @media (max-width: 1800px) {
-	#infos {
-		width: 96vw;
-		top: 0;
-		display: flex;
-		left: 2vw;
-		right: 2vw;
-		justify-content: space-between;
-	}
-
-	#infos h1 {
-		justify-self: flex-start;
-	}
-
-	#infos p {
-		justify-self: flex-end;
-	}
-
-	#infos p.description {
-		display: none;
-	}
-
 	#gameboy {
-		top: 50px;
+		left: 340px;
 	}
-
 	#game {
-		top: 180px;
+		left: 570px;
 	}
 }
 

@@ -1106,7 +1106,7 @@
 	},
 	"home": {
 		"controls": "Contrôles",
-		"description": "Un fangame remake de Pokémon Rouge/Bleu en version autobattler",
+		"description": "Pokéchess est le prototype de jeu sur lequel Curry travaillait avant de rejoindre le projet Pokemon Auto Chess. Il s'agit d'un remake fangame de Pokemon Rouge/Bleu en tant qu'autobattler. Bien que le jeu simule le format et le style d'une gameboy pour jouer sur la corde de la nostalgie, il ne respecte pas la résolution et les contraintes matérielles de la gameboy, et le jeu est jouable via gamepad ou souris.",
 		"gamepad": "Manette",
 		"keyboard": "Clavier",
 		"language": "Langue",
