@@ -187,8 +187,12 @@ function onReachSleepyRonflex(): Promise<boolean> {
 					[t("yes")]: () => {
 						enterDestination(RONFLEX_ENDORMI);
 						resolve(true);
+						return null;
 					},
-					[t("no")]: () => resolve(false),
+					[t("no")]: () => {
+						resolve(false);
+						return null;
+					},
 				},
 			]);
 

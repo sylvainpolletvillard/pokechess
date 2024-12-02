@@ -14,7 +14,7 @@ export class Door {
 			.sprite(door.x * MAP_SCALING, door.y * MAP_SCALING, "collisions")
 			.setOrigin(0, 0)
 			.setAlpha(0);
-		this.sprite.body.setSize(
+		this.sprite.body?.setSize(
 			door.width * MAP_SCALING,
 			door.height * MAP_SCALING,
 			false,

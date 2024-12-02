@@ -278,7 +278,7 @@ export async function capturePokemon(
 					name: t(`pokemon.${myPokemon.entry.ref}`),
 				}),
 				t("dialog.aftercapture.1", {
-					name: myPokemon.entry.ref,
+					name: t(`pokemon.${myPokemon.entry.ref}`),
 					xp: pokemon.xp,
 				}),
 			]);

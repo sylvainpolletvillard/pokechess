@@ -1,4 +1,5 @@
 import { Z } from "../data/depths";
+import { t } from "../i18n";
 import { gameState } from "../logic/gamestate";
 import type { MyScene } from "../scenes/MyScene";
 import { addText } from "../utils/text";
@@ -16,9 +17,14 @@ export function drawTourCounter() {
 	);
 	bg.setOrigin(0.5, 0.5);
 
-	const text = addText(scene.scale.width / 2, -30, `Tour ${gameState.day}`, {
-		color: "#000",
-	});
+	const text = addText(
+		scene.scale.width / 2,
+		-30,
+		t("day_number", { day: gameState.day }),
+		{
+			color: "#000",
+		},
+	);
 	text.setOrigin(0.5, 0.5);
 	text.setScrollFactor(0);
 

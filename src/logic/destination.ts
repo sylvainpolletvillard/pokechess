@@ -24,7 +24,7 @@ export function enterDestination(destination: Destination) {
 		const loadingText = addText(
 			scene.scale.width / 2,
 			scene.scale.height - 30,
-			"Chargement...",
+			t("loading"),
 			{ align: "center", color: "white", strokeThickness: 4, stroke: "black" },
 		).setOrigin(0.5);
 		const enterAfterLoad = () => {
@@ -34,6 +34,7 @@ export function enterDestination(destination: Destination) {
 			scene.load.off("complete", enterAfterLoad);
 		};
 		scene.load.on("complete", enterAfterLoad);
+		scene.load.start();
 		return;
 	}
 

@@ -1,6 +1,7 @@
 import { Z } from "../data/depths";
 import { POKEBALL_LABEL_COLORS } from "../data/pokeballs";
 import type { Pokemon } from "../data/pokemons";
+import { t } from "../i18n";
 import { gameState } from "../logic/gamestate";
 import type GameScene from "../scenes/GameScene";
 import { addText } from "../utils/text";
@@ -10,8 +11,8 @@ let currentPokemonCaptureInfoDisplayed: Pokemon | null;
 let pokemonCaptureBox: Phaser.GameObjects.Container | null;
 let pokeballOnHand: Phaser.GameObjects.Sprite | null;
 
-const WIDTH = 100,
-	HEIGHT = 32;
+const WIDTH = 100;
+const HEIGHT = 32;
 
 export function displayPokemonCaptureInfo(
 	pokemon: PokemonOnBoard,
@@ -45,15 +46,15 @@ export function displayPokemonCaptureInfo(
 	pokemonCaptureBox.add(pokemonInfoBoxBackground);
 
 	if (gameState.player.inventory.pokeball < pokemon.cost) {
-		const text1 = addText(6, 2, `Pas assez de`);
-		const text2 = addText(6, 16, `pokeballs !`);
+		const text1 = addText(6, 2, t("capture.not_enough_balls.0"));
+		const text2 = addText(6, 16, t("capture.not_enough_balls.1"));
 		pokemonCaptureBox.add(text1).add(text2);
 	} else if (gameState.player.hasBoxFull) {
-		const text1 = addText(6, 2, `Box Pokémon`);
-		const text2 = addText(6, 16, `pleine !`);
+		const text1 = addText(6, 2, t("capture.box_full.0"));
+		const text2 = addText(6, 16, t("capture.box_full.1"));
 		pokemonCaptureBox.add(text1).add(text2);
 	} else {
-		const text1 = addText(6, 2, `Capturer avec`);
+		const text1 = addText(6, 2, t("capture.capture_with"));
 		const text2 = addText(6, 16, pokemon.pokeball, {
 			color: POKEBALL_LABEL_COLORS[pokemon.pokeball],
 		});

@@ -76,12 +76,6 @@
 		"book": {
 			"0": "This is my Pokémon study course notebook.",
 			"1": "Normal Pokémon are versatile, but get beaten by Fighting specialists.",
-			"10": "Ground Pokémon are highly resistant to Poison.",
-			"11": "Grass Pokémon win against Ground Pokémon in the long run.",
-			"12": "Psychic Pokémon are strangely afraid of Bugs.",
-			"13": "Bug Pokémon are pecked by birds.",
-			"14": "Only a Spectre can truly face another Spectre.",
-			"15": "Dragons can be trapped by Ice.",
 			"2": "Rock-type Pokémon don't like water.",
 			"3": "Water Pokémon fear electricity.",
 			"4": "Fire-type Pokémon are powerless against water.",
@@ -89,7 +83,13 @@
 			"6": "Flying Pokémon fear lightning.",
 			"7": "Electric Pokémon are neutralized by Ground.",
 			"8": "Ice Pokémon are shattered by Rock.",
-			"9": "Fighting Pokémon have one weakness: Psychic attacks."
+			"9": "Fighting Pokémon have one weakness: Psychic attacks.",
+			"10": "Ground Pokémon are highly resistant to Poison.",
+			"11": "Grass Pokémon win against Ground Pokémon in the long run.",
+			"12": "Psychic Pokémon are strangely afraid of Bugs.",
+			"13": "Bug Pokémon are pecked by birds.",
+			"14": "Only a Spectre can truly face another Spectre.",
+			"15": "Dragons can be trapped by Ice."
 		},
 		"book_insect": {
 			"0": "This is a notebook about Pokémon evolutions.",
@@ -333,6 +333,14 @@
 		"chen": {
 			"0": "Hello Red! So today is the big day!",
 			"1": "The day of your initiatory journey as a Pokémon trainer!",
+			"2": "You will travel throughout Kanto, capturing Pokémon,",
+			"3": "build a team and face the 8 gym leaders.",
+			"4": "Maybe even take on the Pokemon League if you're up for it!",
+			"5": "But first, you need to adopt your first Pokémon.",
+			"6": "We caught three of them in the pokeballs behind me.",
+			"7": "There's one for you. Come on! Pick one!",
+			"8": "Go ahead, you can take one of the pokeballs on the table behind me.",
+			"9": "{{pokemon}} ? Excellent choice!",
 			"10": "Your Pokémon will protect you from wild Pokémon.",
 			"11": "But alone he will be no match for the gym leaders!",
 			"12": "You will need to capture wild Pokémon to form a team.",
@@ -343,17 +351,9 @@
 			"17": "Go ahead, save your team on the computer for posterity!",
 			"18": "Hum-hum! Congratulations!",
 			"19": "This floor is reserved for Pokémon trainers celebrities!",
-			"2": "You will travel throughout Kanto, capturing Pokémon,",
 			"20": "The Champions League are consecrated here!",
 			"21": "Their Pokémon are registered as Celebrities!",
-			"22": "Your journey to victory was long! Well done again.",
-			"3": "build a team and face the 8 gym leaders.",
-			"4": "Maybe even take on the Pokemon League if you're up for it!",
-			"5": "But first, you need to adopt your first Pokémon.",
-			"6": "We caught three of them in the pokeballs behind me.",
-			"7": "There's one for you. Come on! Pick one!",
-			"8": "Go ahead, you can take one of the pokeballs on the table behind me.",
-			"9": "{{pokemon}} ? Excellent choice!"
+			"22": "Your journey to victory was long! Well done again."
 		},
 		"dresseur_argenta": {
 			"defeat": {
@@ -755,13 +755,6 @@
 			"cramoisile": {
 				"0": "I work at Dr. Fuji's Pokémon Research Lab.",
 				"1": "I study rare Pokémon fossils.",
-				"10": "Hmm? What?",
-				"11": "Ah, yes, I guess it's yours...",
-				"12": "You receive a {{ name }} brought back to life!`,",
-				"13": "Come back to me if you find any more specimens!",
-				"14": "But... but... it's for science!",
-				"15": "I built a Pokemon Fossil Resurrection Machine!",
-				"16": "But I don't have any specimens of good enough quality yet.",
 				"2": "What? You found a fossil?",
 				"3": "Show it to me, come on show it!",
 				"4": "Amazing! It's in perfect condition!",
@@ -769,7 +762,14 @@
 				"6": "What do you say? Can I take it?",
 				"7": "Excellent! I'll be back soon!",
 				"8": "Amazing !",
-				"9": "It's a {{name}} ! I thought they were gone!"
+				"9": "It's a {{name}} ! I thought they were gone!",
+				"10": "Hmm? What?",
+				"11": "Ah, yes, I guess it's yours...",
+				"12": "You receive a {{ name }} brought back to life!`,",
+				"13": "Come back to me if you find any more specimens!",
+				"14": "But... but... it's for science!",
+				"15": "I built a Pokemon Fossil Resurrection Machine!",
+				"16": "But I don't have any specimens of good enough quality yet."
 			},
 			"jadielle": {
 				"0": "I wanted to go to the Victory Road to the west, but they wouldn't let me pass...",
@@ -783,9 +783,6 @@
 			"ligue": {
 				"0": "Ah, so you want information on the League champions?",
 				"1": "To claim the title of Pokémon League Master,",
-				"10": "Dragons are very tenacious. You'll have to give it your all!",
-				"11": "Well, I don't know what's next. I could never go any further!",
-				"12": "Ah, I thought that... no, never mind.",
 				"2": "You will have to face the Elite Four one after the other.",
 				"3": "First you will face Lorelei, the Ice Queen!",
 				"4": "Get rid of her quickly before your team is turned into ice cubes.",
@@ -793,7 +790,10 @@
 				"6": "His Pokémon are tough, you'll have to be cunning to defeat him!",
 				"7": "Third, the terrifying Agatha and her Ghost Pokémon!",
 				"8": "They confuse your team, so refine your placement.",
-				"9": "Finally you will face Lance, master of the Dragons."
+				"9": "Finally you will face Lance, master of the Dragons.",
+				"10": "Dragons are very tenacious. You'll have to give it your all!",
+				"11": "Well, I don't know what's next. I could never go any further!",
+				"12": "Ah, I thought that... no, never mind."
 			},
 			"parmanie": {
 				"0": "The Safari Zone is the big attraction of Fuschia City.",
@@ -1606,7 +1606,20 @@
 		"SPECTRE": "Ghost",
 		"VOL": "Flying"
 	},
-	"victory": "You beated {{trainer}} !",
+	"victory": "You beat {{trainer}} !",
 	"victory_xp": "Your Pokémon gain {{xp}}xp",
-	"yes": "YES"
+	"yes": "YES",
+	"capture": {
+		"not_enough_balls": {
+			"0": "Not enough",
+			"1": "pokeballs!"
+		},
+		"box_full": {
+			"0": "Pokémon Box",
+			"1": "is full!"
+		},
+		"capture_with": "Capture with"
+	},
+	"loading": "Loading...",
+	"day_number": "Day {{day}}"
 }

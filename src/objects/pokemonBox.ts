@@ -25,15 +25,15 @@ import { displayPokemonInfo, hidePokemonInfo } from "./pokemonInfoBox";
 
 let selectedIndex = -1;
 let interactiveElems: InteractiveElem[] = [];
-const ox = 20,
-	oy = 100,
-	WIDTH = 248,
-	HEIGHT = 24;
-const NB_ROWS = 1,
-	NB_COLS = 8;
-const CASE_SIZE = 28,
-	CASE_GAP = 4,
-	L = CASE_SIZE + CASE_GAP;
+const ox = 20;
+const oy = 100;
+const WIDTH = 248;
+const HEIGHT = 24;
+const NB_ROWS = 1;
+const NB_COLS = 8;
+const CASE_SIZE = 28;
+const CASE_GAP = 4;
+const L = CASE_SIZE + CASE_GAP;
 
 enum CursorZone {
 	GRID = 0,
@@ -61,8 +61,8 @@ export function openBox(game: GameScene) {
 
 			const cursor = game.sprites.get("cursor");
 			if (!cursor) return;
-			let x = cursor.x,
-				y = cursor.y;
+			let x = cursor.x;
+			let y = cursor.y;
 
 			if (moveVector.y > 0 && cursorZone === CursorZone.BOX) {
 				cursorZone = CursorZone.GRID;
@@ -123,8 +123,8 @@ function draw(game: GameScene, container: Phaser.GameObjects.Container) {
 	interactiveElems = [];
 
 	// layout
-	const x = ox + 10 + CASE_GAP,
-		y = oy + 10 + CASE_GAP;
+	const x = ox + 10 + CASE_GAP;
+	const y = oy + 10 + CASE_GAP;
 	const cases = game.add
 		.graphics()
 		.lineStyle(2, 0x000000, 0.1)

@@ -102,12 +102,12 @@ export class PlayerCharacter extends Character {
 	updateControls() {
 		const isAlignedOnGrid =
 			isBetween(
-				(this.sprite.body.x + TILE_SIZE / 2) % TILE_SIZE,
+				(this.sprite.body!.x + TILE_SIZE / 2) % TILE_SIZE,
 				TILE_SIZE / 2 - 1,
 				TILE_SIZE / 2 + 1,
 			) &&
 			isBetween(
-				(this.sprite.body.y + TILE_SIZE / 2) % TILE_SIZE,
+				(this.sprite.body!.y + TILE_SIZE / 2) % TILE_SIZE,
 				TILE_SIZE / 2 - 1,
 				TILE_SIZE / 2 + 1,
 			);
@@ -177,13 +177,13 @@ export class PlayerCharacter extends Character {
 		const scene = gameState.activeScene as RoomScene;
 		const door = findObjectByName(doorName, "door", scene.level.tilemap);
 
-		this.sprite.body.reset(
+		this.sprite.body?.reset(
 			door.x * MAP_SCALING + TILE_SIZE / 2,
 			door.y * MAP_SCALING,
 		);
 		this.alignOnGrid();
 		const outDirection =
-			Direction[door.properties["outDirection"] as Direction] ?? Direction.UP;
+			Direction[door.properties.outDirection as Direction] ?? Direction.UP;
 		scene.disableTriggers = true;
 		this.forceMove(outDirection, 350).then(() => {
 			scene.disableTriggers = false;

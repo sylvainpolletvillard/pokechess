@@ -55,8 +55,8 @@ export function moveCursor(
 ) {
 	const cursor = scene.sprites.get("cursor");
 	if (cursor != null) {
-		let x = cursor.x,
-			y = cursor.y;
+		let x = cursor.x;
+		let y = cursor.y;
 
 		x += vector.x;
 		y += vector.y;
@@ -90,11 +90,12 @@ export function moveCursor(
 					[x, y] = [scene.scale.width - 16, Math.round(y / 24) * 24];
 					break;
 				case CursorZone.GRID:
-				default:
+				default: {
 					const [col, row] = getCoordsFromPosition(x, y + 10);
 					[x, y] = getPositionFromCoords(col, row);
 					y -= 10;
 					break;
+				}
 			}
 		}
 
@@ -225,7 +226,7 @@ export function testIfCanBeDroppedOn(elem: InteractiveElem) {
 		return false;
 
 	switch (dropZoneType) {
-		case "gridTile":
+		case "gridTile": {
 			const [x, y] = elem.getData("position");
 			if (draggedType === "pokemon") {
 				return (
@@ -243,6 +244,7 @@ export function testIfCanBeDroppedOn(elem: InteractiveElem) {
 				return pokemonOnTile != null && pokemonOnTile.owner === OWNER_PLAYER;
 			}
 			return false;
+		}
 		case "boxTile":
 		case "pokedexButton":
 		case "boxButton":

@@ -5,14 +5,16 @@ import type { PokemonOnBoard } from "./pokemon";
 const BAR_WIDTH = 16;
 
 export function updatePokemonBars(pokemon: PokemonOnBoard, game: GameScene) {
-	const graphics = game.objects.get("bars_" + pokemon.uid);
+	const graphics = game.objects.get(
+		`bars_${pokemon.uid}`,
+	) as Phaser.GameObjects.Graphics;
 	const sprite = game.sprites.get(pokemon.uid);
 	if (sprite != null && graphics != null) {
 		graphics.setDepth(Z.POKEMON_BARS);
 		graphics.clear();
 		graphics.fillStyle(0x000000, 1);
-		const ox = sprite.x - BAR_WIDTH / 2,
-			oy = sprite.y - 16;
+		const ox = sprite.x - BAR_WIDTH / 2;
+		const oy = sprite.y - 16;
 		graphics.fillRect(ox, oy, BAR_WIDTH, 2);
 		graphics.fillStyle(pokemon.owner === 1 ? 0x30ff30 : 0xff3030, 1);
 		graphics.fillRect(

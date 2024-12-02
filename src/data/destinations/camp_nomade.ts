@@ -104,7 +104,7 @@ export const CAMP_NOMADE: Destination = {
 		},
 	},
 	customRoomOrder() {
-		if (gameState.dialogStates["hector"] === HECTOR_DIALOG_STATE.BEATEN)
+		if (gameState.dialogStates.hector === HECTOR_DIALOG_STATE.BEATEN)
 			return ["shop", "trainer"];
 		return ["shop", "arena"];
 	},

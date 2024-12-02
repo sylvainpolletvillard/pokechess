@@ -104,7 +104,7 @@ export function launchSpeech(line: string) {
 				},
 			},
 			gameState.activeDialog?.voice,
-			{ volume: store.SFX_VOLUME * 100 },
+			{ volume: store.SFX_VOLUME * 80 },
 		),
 	);
 }

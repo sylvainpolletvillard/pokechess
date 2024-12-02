@@ -17,8 +17,8 @@ export class Description {
 		);
 		this.name = obj.name;
 		this.sprite.setSize(obj.width, obj.height);
-		this.sprite.body.setSize(10, 10);
-		this.sprite.body.immovable = true;
+		this.sprite.body?.setSize(10, 10);
+		if (this.sprite.body) this.sprite.body.immovable = true;
 		this.sprite.type = "description";
 		this.sprite.setData("name", this.name);
 		this.sprite.setData("description", this);

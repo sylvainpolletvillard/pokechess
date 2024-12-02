@@ -278,12 +278,17 @@ function selectType(index: number, shouldMoveCursor = true) {
 	typeSelectedIndex = index;
 	const type = Object.values(POKEMON_TYPES)[typeSelectedIndex];
 	typeLabelText && pokedexContainer?.remove(typeLabelText, true);
-	typeLabelText = addText(20 + 16 * typeSelectedIndex, -15, type.label, {
-		color: "white",
-		align: "middle",
-		strokeThickness: 4,
-		stroke: "black",
-	});
+	typeLabelText = addText(
+		20 + 16 * typeSelectedIndex,
+		-15,
+		t(`type.${type.ref}`),
+		{
+			color: "white",
+			align: "middle",
+			strokeThickness: 4,
+			stroke: "black",
+		},
+	);
 	typeLabelText.setOrigin(0.5, 0).setDepth(Z.MENU_TOOLTIPS);
 	pokedexContainer?.add(typeLabelText!);
 	if (shouldMoveCursor) {

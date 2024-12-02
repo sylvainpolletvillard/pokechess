@@ -88,7 +88,7 @@ export const MAM = () => {
 				if (elapsedDays <= 3)
 					lines = [
 						t("dialog.mom.gift1"),
-						() => receiveItem(ITEM_POKEBALL, clamp(elapsedDays, 1, 3)),
+						() => receiveItem(ITEM_POKEBALL, clamp(elapsedDays - 1, 1, 3)),
 					];
 				else if (elapsedDays < 9)
 					lines = [

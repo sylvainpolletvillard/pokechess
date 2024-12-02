@@ -35,7 +35,6 @@ export function logStats() {
 		const pkm = stats.pokemons.find((p) => p.uid === uid);
 		if (!pkm) {
 			console.error(`Unknown pokemon UID: ${uid}`);
-			continue;
 		}
 		//console.log(`${pkm.entry.ref} ${pkm.level} : ${damage}`);
 	}
@@ -45,7 +44,6 @@ export function logStats() {
 		const pkm = stats.pokemons.find((p) => p.uid === uid);
 		if (!pkm) {
 			console.error(`Unknown pokemon UID: ${uid}`);
-			continue;
 		}
 		//console.log(`${pkm.entry.ref} ${pkm.level} : ${damage}`);
 	}
@@ -55,7 +53,6 @@ export function logStats() {
 		const pkm = stats.pokemons.find((p) => p.uid === uid);
 		if (!pkm) {
 			console.error(`Unknown pokemon UID: ${uid}`);
-			continue;
 		}
 		//console.log(`${pkm.entry.ref} ${pkm.level} : ${damage}`);
 	}

@@ -20,8 +20,8 @@ export function drawPokeballsCounter() {
 		ox = -16;
 	}
 
-	let pokeballPos = [ox, -16],
-		counterPos = [ox + 40, 8];
+	let pokeballPos = [ox, -16];
+	let counterPos = [ox + 40, 8];
 
 	if (scene instanceof RoomScene) {
 		counterPos = [28, 8];
@@ -36,7 +36,7 @@ export function drawPokeballsCounter() {
 	pokeball
 		.play(`POKEBALL_${pokeballsCounterGroup ? "jiggle_once" : "in"}`)
 		.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () =>
-			pokeball.play(`POKEBALL_idle`),
+			pokeball.play("POKEBALL_idle"),
 		)
 		.setOrigin(0, 0)
 		.setScrollFactor(0);

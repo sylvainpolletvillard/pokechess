@@ -62,7 +62,7 @@ export function drawFightStats() {
 		const sprite = scene.add.sprite(px, py, "pokemon_portraits");
 		sprite.setOrigin(0, 0);
 		sprite.setCrop(0, pokemon.entry.portraitCropY ?? 16, 64, 21);
-		sprite.play(pokemon.entry.ref + "_portrait");
+		sprite.play(`${pokemon.entry.ref}_portrait`);
 		sprite.setDepth(Z.MENU_OBJECTS);
 		if (playerSide) sprite.flipX = true;
 		box?.add(sprite);

@@ -88,9 +88,13 @@ export default class GameScene extends MyScene {
 		}
 		this.currentTileMap = map;
 		const tileset = map.addTilesetImage("ground", "ground");
-		const ground0 = map.createLayer("ground0", tileset);
-		const ground1 = map.createLayer("ground1", tileset);
-		const top0 = map.createLayer("top0", tileset);
+		if (!tileset) {
+			console.error("Tileset not found");
+			return;
+		}
+		map.createLayer("ground0", tileset);
+		map.createLayer("ground1", tileset);
+		map.createLayer("top0", tileset);
 	}
 
 	drawIntro(): Promise<any> {
@@ -139,7 +143,7 @@ export default class GameScene extends MyScene {
 			hideMenuButtons();
 			gameState.initFight(this);
 			const player = this.sprites.get("player");
-			wait(500).then(() => player && player.play("trainer_launch"));
+			wait(500).then(() => player?.play("trainer_launch"));
 			showCenterText("text_fight", this);
 			if (gameState.currentRoom.type === RoomType.WILD)
 				startMusic("music_battle_wild");

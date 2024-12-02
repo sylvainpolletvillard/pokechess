@@ -18,7 +18,7 @@ export function drawAlliancesInfo(team: PokemonOnBoard[]) {
 		.sort((a, b) => {
 			if (a.stepReachedN !== b.stepReachedN)
 				return b.stepReachedN - a.stepReachedN;
-			else return b.numberOfThatTypeInTeam - a.numberOfThatTypeInTeam;
+			return b.numberOfThatTypeInTeam - a.numberOfThatTypeInTeam;
 		})
 		.slice(0, 10);
 
